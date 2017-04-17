@@ -1,0 +1,1352 @@
+
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documenation for oxd OpenID Connect and UMA client software">
+      
+      
+      
+      
+        <link rel="shortcut icon" href="../../favicon.ico">
+      
+      <meta name="generator" content="mkdocs+mkdocs-material#1.0.3">
+    
+    
+      
+        <title>Perl - oxd Docs</title>
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr-facb31f4a3.js"></script>
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application-f3ab63f78a.css">
+      
+      
+    
+    
+  </head>
+  
+  
+  
+  
+    <body>
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
+    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    
+      <header class="md-header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+	 <div class="md-flex__cell md-flex__cell--shrink">
+	    <a href="https://gluu.org/docs/" title="oxd Docs" class=" md-logo  md-header-nav__button">
+          
+            <img src="../../gluu.jpg" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <span class="md-flex__ellipsis md-header-nav__title">
+          
+            
+              
+                <span class="md-header-nav__parent">
+                  Libraries
+                </span>
+              
+                <span class="md-header-nav__parent">
+                  Languages
+                </span>
+              
+            
+            Perl
+          
+        </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+          
+<div class="md-search" data-md-component="search">
+  <div class="md-search__overlay"></div>
+  <div class="md-search__inner">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" accesskey="s" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false">
+      <label class="md-icon md-search__icon" for="search"></label>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+              
+
+
+  
+
+
+  <a href="https://github.com/GluuFederation/docs-oxd-3.0.1" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+            
+          </div>
+      </div>
+    </div>
+   </nav>
+</header>
+    
+    <div class="md-container">
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary">
+
+  <label class="md-nav__title md-nav__title--site" for="drawer">
+    <i class=" md-logo  md-nav__button">
+      
+        <img src="../../gluu.jpg">
+      
+    </i>
+    oxd Docs
+	<label for="Versions">Ver:
+	  <select id="versions" onchange="window.location.href=this.value;" style="
+		position: inherit;
+		display: inline;
+		min-width: 25%;
+		/* width: 120%; */
+		height: 22px;
+		padding: 5px 15px 5px 5px;
+		color: black;
+		border: none;
+		background: transparent;
+		outline: none;
+		-webkit-appearance: none;
+		z-index: 99;
+		cursor: pointer;
+		font-size: 10px;
+		margin-bottom: 10px;
+		border: 1px solid black;
+		overflow: auto
+	">
+	  <option value="/docs/oxd/latest">3.0.1</option>
+	  <!--<option value="/docs/oxd/3.0.0">3.0.0</option> -->
+	  <option value="/docs/oxd/2.4.4">2.4.4</option>	
+	  <option value="/docs">All Versions</option>
+		</select> 
+	</label>
+  </label>
+    
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/GluuFederation/docs-oxd-3.0.1" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      GitHub
+    </div>
+  </a>
+
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  <li class="md-nav__item">
+    
+      <a href="../.." title="Home" class="md-nav__link">
+        Home
+      </a>
+    
+  </li>
+
+    
+      
+      
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      oxd Server
+    </label>
+    <nav class="md-nav" data-md-component="collapsible">
+      <label class="md-nav__title" for="nav-2">
+        oxd Server
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../protocol/" title="Protocol" class="md-nav__link">
+        Protocol
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../install/" title="Installation" class="md-nav__link">
+        Installation
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../conf/" title="Configuration" class="md-nav__link">
+        Configuration
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../logs/" title="Logs" class="md-nav__link">
+        Logs
+      </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Libraries
+    </label>
+    <nav class="md-nav" data-md-component="collapsible">
+      <label class="md-nav__title" for="nav-3">
+        Libraries
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../api-client-libraries/" title="Overview-oxd API Client Libraries" class="md-nav__link">
+        Overview-oxd API Client Libraries
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2" checked>
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Languages
+    </label>
+    <nav class="md-nav" data-md-component="collapsible">
+      <label class="md-nav__title" for="nav-3-2">
+        Languages
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../python/" title="Python" class="md-nav__link">
+        Python
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../java/" title="Java" class="md-nav__link">
+        Java
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../php/" title="PHP" class="md-nav__link">
+        PHP
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../node/" title="Node" class="md-nav__link">
+        Node
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../ruby/" title="Ruby" class="md-nav__link">
+        Ruby
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../csharp/" title="CSharp" class="md-nav__link">
+        CSharp
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Perl
+      </label>
+    
+    <a href="./" title="Perl" class="md-nav__link md-nav__link--active">
+      Perl
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" title="Overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" title="Installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" title="Configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-code" title="Sample code" class="md-nav__link">
+    Sample code
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oxdconfigpm" title="OxdConfig.pm" class="md-nav__link">
+    OxdConfig.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oxdregisterpm" title="OxdRegister.pm" class="md-nav__link">
+    OxdRegister.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateregistrationpm" title="UpdateRegistration.pm" class="md-nav__link">
+    UpdateRegistration.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getauthorizationurlpm" title="GetAuthorizationUrl.pm" class="md-nav__link">
+    GetAuthorizationUrl.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettokenbycodepm" title="GetTokenByCode.pm" class="md-nav__link">
+    GetTokenByCode.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getuserinfopm" title="GetUserInfo.pm" class="md-nav__link">
+    GetUserInfo.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oxdlogoutpm" title="OxdLogout.pm" class="md-nav__link">
+    OxdLogout.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-uma-authentications-open-this-url-in-browser" title="For UMA authentications open this url in browser" class="md-nav__link">
+    For UMA authentications open this url in browser
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umarsprotectpm" title="UmaRsProtect.pm" class="md-nav__link">
+    UmaRsProtect.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umarscheckaccesspm" title="UmaRsCheckAccess.pm" class="md-nav__link">
+    UmaRsCheckAccess.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umarpgetrptpm" title="UmaRpGetRpt.pm" class="md-nav__link">
+    UmaRpGetRpt.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umarpauthorizerptpm" title="UmaRpAuthorizeRpt.pm" class="md-nav__link">
+    UmaRpAuthorizeRpt.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umarpgetgatpm" title="UmaRpGetGat.pm" class="md-nav__link">
+    UmaRpGetGat.pm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../golang/" title="Go" class="md-nav__link">
+        Go
+      </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Framework
+    </label>
+    <nav class="md-nav" data-md-component="collapsible">
+      <label class="md-nav__title" for="nav-3-3">
+        Framework
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../framework/spring/" title="Java Spring" class="md-nav__link">
+        Java Spring
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../framework/play/" title="Java Play Framework" class="md-nav__link">
+        Java Play Framework
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../framework/rails/" title="Ruby on Rails" class="md-nav__link">
+        Ruby on Rails
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../framework/flask/" title="Python Flask" class="md-nav__link">
+        Python Flask
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../framework/node/" title="Node/Express" class="md-nav__link">
+        Node/Express
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../framework/net/" title=".Net" class="md-nav__link">
+        .Net
+      </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Plugins
+    </label>
+    <nav class="md-nav" data-md-component="collapsible">
+      <label class="md-nav__title" for="nav-4">
+        Plugins
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../plugin/wordpress/" title="Wordpress" class="md-nav__link">
+        Wordpress
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../plugin/magento/" title="Magento" class="md-nav__link">
+        Magento
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../plugin/drupal/" title="Drupal" class="md-nav__link">
+        Drupal
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../plugin/opencart/" title="OpenCart" class="md-nav__link">
+        OpenCart
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../plugin/sugarcrm/" title="SugarCRM" class="md-nav__link">
+        SugarCRM
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../plugin/suitecrm/" title="SuiteCRM" class="md-nav__link">
+        SuiteCRM
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../plugin/roundcube/" title="RoundCube" class="md-nav__link">
+        RoundCube
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../plugin/shopify/" title="Shopify" class="md-nav__link">
+        Shopify
+      </a>
+    
+  </li>
+
+        
+          
+          
+  <li class="md-nav__item">
+    
+      <a href="../../plugin/nextcloud/" title="NextCloud" class="md-nav__link">
+        NextCloud
+      </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" title="Overview" class="md-nav__link">
+    Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" title="Installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" title="Configuration" class="md-nav__link">
+    Configuration
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sample-code" title="Sample code" class="md-nav__link">
+    Sample code
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#oxdconfigpm" title="OxdConfig.pm" class="md-nav__link">
+    OxdConfig.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oxdregisterpm" title="OxdRegister.pm" class="md-nav__link">
+    OxdRegister.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updateregistrationpm" title="UpdateRegistration.pm" class="md-nav__link">
+    UpdateRegistration.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getauthorizationurlpm" title="GetAuthorizationUrl.pm" class="md-nav__link">
+    GetAuthorizationUrl.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettokenbycodepm" title="GetTokenByCode.pm" class="md-nav__link">
+    GetTokenByCode.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getuserinfopm" title="GetUserInfo.pm" class="md-nav__link">
+    GetUserInfo.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oxdlogoutpm" title="OxdLogout.pm" class="md-nav__link">
+    OxdLogout.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-uma-authentications-open-this-url-in-browser" title="For UMA authentications open this url in browser" class="md-nav__link">
+    For UMA authentications open this url in browser
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umarsprotectpm" title="UmaRsProtect.pm" class="md-nav__link">
+    UmaRsProtect.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umarscheckaccesspm" title="UmaRsCheckAccess.pm" class="md-nav__link">
+    UmaRsCheckAccess.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umarpgetrptpm" title="UmaRpGetRpt.pm" class="md-nav__link">
+    UmaRpGetRpt.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umarpauthorizerptpm" title="UmaRpAuthorizeRpt.pm" class="md-nav__link">
+    UmaRpAuthorizeRpt.pm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#umarpgetgatpm" title="UmaRpGetGat.pm" class="md-nav__link">
+    UmaRpGetGat.pm
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+               
+                 <a href="https://github.com/GluuFederation/docs-oxd-3.0.1/blob/master/sources/libraries\perl\index.md" title="Edit this page" class="md-icon md-content__edit">edit</a>
+               
+              
+                
+                <h1 id="oxd-perl">oxd Perl<a class="headerlink" href="#oxd-perl" title="Permanent link">#</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h2>
+<p>The following documentation demonstrates 
+how to use Gluu's commercial OAuth 2.0 client software, 
+<a href="http://oxd.gluu.org">oxd</a>, to send users from a Perl app to an 
+OpenID Connect Provider (OP) for login. You can securely send users to 
+any standard OP for login, including Google and 
+the <a href="http://gluu.org/gluu-server">free open source Gluu Server</a>.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">#</a></h2>
+<p><strong>Source</strong></p>
+<p>oxd-perl source is available on Github:</p>
+<ul>
+<li><a href="https://github.com/GluuFederation/oxd-perl">Github sources</a></li>
+</ul>
+<p>oxd-perl source is available on cpan:</p>
+<ul>
+<li><a href="http://search.cpan.org/~inderpal/">OxdPerlModule</a></li>
+</ul>
+<p><strong>Download and install manually using following command</strong></p>
+<pre><code class="code">
+Path : /var/www/html/oxd-perl/oxdPerl/
+
+perl Build.PL
+./Build
+./Build test
+sudo ./Build install
+
+</code></pre>
+
+<p><strong>Install from http://search.cpan.org</strong></p>
+<pre><code class="code">
+Run following commands in terminal
+
+cpan 
+cpan &gt; install INDERPAL/OxdPerlModule-0.01.tar.gz
+
+</code></pre>
+
+<h2 id="configuration">Configuration<a class="headerlink" href="#configuration" title="Permanent link">#</a></h2>
+<p>The oxd-perl configuration file is located in 'oxd-settings.json'. The values here are used during registration. For a full list of supported oxd configuration parameters, see the oxd documentation Below is a typical configuration data set for registration:</p>
+<pre><code class="code">    {
+      &quot;op_host&quot;: &quot;https://ce-dev2.gluu.org&quot;,
+      &quot;oxd_host_port&quot;:8099,
+      &quot;authorization_redirect_uri&quot; : &quot;https://oxd-perl-example.com/login.cgi&quot;,
+      &quot;post_logout_redirect_uri&quot; : &quot;https://oxd-perl-example.com/logout.cgi&quot;,
+      &quot;scope&quot; : [ &quot;openid&quot;, &quot;profile&quot;,&quot;uma_protection&quot;,&quot;uma_authorization&quot; ],
+      &quot;application_type&quot; : &quot;web&quot;,
+      &quot;response_types&quot; : [&quot;code&quot;],
+      &quot;grant_types&quot;:[&quot;authorization_code&quot;],
+      &quot;acr_values&quot; : [ &quot;basic&quot; ]
+    }
+</code></pre>
+
+<ul>
+<li>oxd_host_port - oxd port or socket</li>
+</ul>
+<h3 id="sample-code">Sample code<a class="headerlink" href="#sample-code" title="Permanent link">#</a></h3>
+<h4 id="oxdconfigpm">OxdConfig.pm<a class="headerlink" href="#oxdconfigpm" title="Permanent link">#</a></h4>
+<pre><code>Class description.
+Oxd RP config.
+</code></pre>
+<p><strong>Example</strong></p>
+<pre><code class="code">
+OxdConfig:
+
+    Configuration Values from oxd-settings.json
+
+    $object = new OxdConfig();
+    my $opHost = $object-&gt;getOpHost();
+    my $oxdHostPort = $object-&gt;getOxdHostPort();
+    my $authorizationRedirectUrl = $object-&gt;getAuthorizationRedirectUrl();
+    my $postLogoutRedirectUrl = $object-&gt;setPostLogoutRedirectUrl();
+    my $scope = $object-&gt;getScope();
+    my $applicationType = $object-&gt;getApplicationType();
+    my $responseType = $object-&gt;getResponseType();
+    my $grantType = $object-&gt;getGrantTypes();
+    my $acrValues = $object-&gt;getAcrValues();
+
+</code></pre>
+
+<h4 id="oxdregisterpm">OxdRegister.pm<a class="headerlink" href="#oxdregisterpm" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="../protocol/#register-site">Register_site protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">OxdRegister:
+my $register_site = new OxdRegister( );
+
+$register_site-&gt;setRequestOpHost($gluu_server_url);
+$register_site-&gt;setRequestAcrValues($acrValues);
+$register_site-&gt;setRequestAuthorizationRedirectUri($authorizationRedirectUrl);
+$register_site-&gt;setRequestPostLogoutRedirectUri($postLogoutRedirectUrl);
+$register_site-&gt;setRequestContacts([$emal]);
+$register_site-&gt;setRequestGrantTypes($grantType);
+$register_site-&gt;setRequestResponseTypes($responseType);
+$register_site-&gt;setRequestScope($scope);
+$register_site-&gt;setRequestApplicationType($applicationType);
+$register_site-&gt;request();
+
+# storing data in the session
+$session-&gt;param('oxd_id', $register_site-&gt;getResponseOxdId());
+
+</code></pre>
+
+<h4 id="updateregistrationpm">UpdateRegistration.pm<a class="headerlink" href="#updateregistrationpm" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="../protocol/#update-site-registration">Update_site_registration protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UpdateRegistration:
+
+$update_site_registration = new UpdateRegistration();
+
+$update_site_registration-&gt;setRequestAcrValues($acrValues);
+$update_site_registration-&gt;setRequestOxdId($oxd_id);
+$update_site_registration-&gt;setRequestAuthorizationRedirectUri($authorizationRedirectUrl);
+$update_site_registration-&gt;setRequestPostLogoutRedirectUri($postLogoutRedirectUrl);
+$update_site_registration-&gt;setRequestContacts([$emal]);
+$update_site_registration-&gt;setRequestGrantTypes($grantType);
+$update_site_registration-&gt;setRequestResponseTypes($responseType);
+$update_site_registration-&gt;setRequestScope($scope);
+$update_site_registration-&gt;request();
+
+$session-&gt;param('oxd_id', $update_site_registration-&gt;getResponseOxdId());
+
+</code></pre>
+
+<h4 id="getauthorizationurlpm">GetAuthorizationUrl.pm<a class="headerlink" href="#getauthorizationurlpm" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="../protocol/#get-authorization-url">Get_authorization_url protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">GetAuthorizationUrl:
+
+$get_authorization_url = new GetAuthorizationUrl( );
+$get_authorization_url-&gt;setRequestOxdId($session-&gt;param('oxd_id'));
+$get_authorization_url-&gt;setRequestScope($scope);
+$get_authorization_url-&gt;setRequestAcrValues($acrValues);
+$get_authorization_url-&gt;request();
+my $oxdurl = $get_authorization_url-&gt;getResponseAuthorizationUrl();
+</code></pre>
+
+<h4 id="gettokenbycodepm">GetTokenByCode.pm<a class="headerlink" href="#gettokenbycodepm" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="../protocol/#get-tokens-id-access-by-code">Get_tokens_by_code protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">GetTokenByCode:
+
+my $oxd_id = $cgi-&gt;escapeHTML($session-&gt;param('oxd_id'));
+my $code = $cgi-&gt;escapeHTML($cgi-&gt;param(&quot;code&quot;));
+my $state = $cgi-&gt;escapeHTML($cgi-&gt;param(&quot;state&quot;));
+
+$get_tokens_by_code = new GetTokenByCode();
+$get_tokens_by_code-&gt;setRequestOxdId($oxd_id);
+$get_tokens_by_code-&gt;setRequestCode($code);
+$get_tokens_by_code-&gt;setRequestState($state);
+$get_tokens_by_code-&gt;request();
+#store values in sessions
+$session-&gt;param('user_oxd_id_token', $get_tokens_by_code-&gt;getResponseIdToken());
+$session-&gt;param('state', $state);
+$session-&gt;param('session_state', $cgi-&gt;escapeHTML($cgi-&gt;param(&quot;session_state&quot;)));
+
+print Dumper( $get_user_info-&gt;getResponseObject() );        
+
+</code></pre>
+
+<h4 id="getuserinfopm">GetUserInfo.pm<a class="headerlink" href="#getuserinfopm" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="../protocol/#get-user-info">Get_user_info protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">GetUserInfo:
+
+my $oxd_id = $cgi-&gt;escapeHTML($session-&gt;param('oxd_id'));
+
+$get_user_info = new GetUserInfo();
+$get_user_info-&gt;setRequestOxdId($oxd_id);
+$get_user_info-&gt;setRequestAccessToken($get_tokens_by_code-&gt;getResponseAccessToken());
+$get_user_info-&gt;request();
+
+print Dumper( $get_user_info-&gt;getResponseObject() );
+
+</code></pre>
+
+<h4 id="oxdlogoutpm">OxdLogout.pm<a class="headerlink" href="#oxdlogoutpm" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="../protocol/#log-out-uri">Get_logout_uri protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">OxdLogout:
+
+my $oxd_id = $cgi-&gt;escapeHTML($session-&gt;param('oxd_id'));
+my $user_oxd_id_token = $cgi-&gt;escapeHTML($session-&gt;param(&quot;user_oxd_id_token&quot;));
+my $session_state = $cgi-&gt;escapeHTML($session-&gt;param(&quot;session_state&quot;));
+my $state = $cgi-&gt;escapeHTML($session-&gt;param(&quot;state&quot;));
+
+$logout = new OxdLogout();
+$logout-&gt;setRequestOxdId($oxd_id);
+$logout-&gt;setRequestPostLogoutRedirectUri($postLogoutRedirectUrl);
+$logout-&gt;setRequestIdToken($user_oxd_id_token);
+$logout-&gt;setRequestSessionState($session_state);
+$logout-&gt;setRequestState($state);
+$logout-&gt;request();
+
+$session-&gt;delete();
+$logoutUrl = $logout-&gt;getResponseObject()-&gt;{data}-&gt;{uri};
+
+</code></pre>
+
+<h4 id="for-uma-authentications-open-this-url-in-browser">For UMA authentications open this url in browser<a class="headerlink" href="#for-uma-authentications-open-this-url-in-browser" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="https://oxd-perl-example.com/uma.cgi">https://oxd-perl-example.com/uma.cgi</a>.</li>
+</ul>
+<h4 id="umarsprotectpm">UmaRsProtect.pm<a class="headerlink" href="#umarsprotectpm" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="../protocol/#uma-protect-resources">Uma_rs_protect protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UmaRsProtect:
+
+my $oxdId = $session-&gt;param('oxd_id');
+
+$uma_rs_protect = new UmaRsProtect();
+$uma_rs_protect-&gt;setRequestOxdId($oxdId);
+
+$uma_rs_protect-&gt;addConditionForPath([&quot;GET&quot;],[&quot;https://photoz.example.com/dev/actions/view&quot;], [&quot;https://photoz.example.com/dev/actions/view&quot;]);
+$uma_rs_protect-&gt;addConditionForPath([&quot;POST&quot;],[ &quot;https://photoz.example.com/dev/actions/add&quot;],[ &quot;https://photoz.example.com/dev/actions/add&quot;]);
+$uma_rs_protect-&gt;addConditionForPath([&quot;DELETE&quot;],[&quot;https://photoz.example.com/dev/actions/remove&quot;], [&quot;https://photoz.example.com/dev/actions/remove&quot;]);
+$uma_rs_protect-&gt;addResource('/photo');
+
+$uma_rs_protect-&gt;request();
+print Dumper( $uma_rs_protect-&gt;getResponseObject() );
+
+
+</code></pre>
+
+<h4 id="umarscheckaccesspm">UmaRsCheckAccess.pm<a class="headerlink" href="#umarscheckaccesspm" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="../protocol/#uma-check-access">Uma_rs_check_access protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UmaRsCheckAccess:
+
+my $oxdId = $session-&gt;param('oxd_id');
+my $umaRpt = $session-&gt;param('uma_rpt');
+
+$uma_rs_authorize_rpt = new UmaRsCheckAccess();
+$uma_rs_authorize_rpt-&gt;setRequestOxdId($oxdId);
+$uma_rs_authorize_rpt-&gt;setRequestRpt($umaRpt);
+$uma_rs_authorize_rpt-&gt;setRequestPath(&quot;/photo&quot;);
+$uma_rs_authorize_rpt-&gt;setRequestHttpMethod(&quot;GET&quot;);
+$uma_rs_authorize_rpt-&gt;request();
+
+print Dumper($uma_rs_authorize_rpt-&gt;getResponseObject());
+my $uma_ticket= $uma_rs_authorize_rpt-&gt;getResponseTicket();
+$session-&gt;param('uma_ticket', $uma_ticket);
+
+</code></pre>
+
+<h4 id="umarpgetrptpm">UmaRpGetRpt.pm<a class="headerlink" href="#umarpgetrptpm" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="../protocol/#uma-rp-get-rpt">Uma_rp_get_rpt protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UmaRpGetRpt:
+
+my $oxdId = $session-&gt;param('oxd_id');
+
+
+$uma_rp_get_rpt = new UmaRpGetRpt();
+$uma_rp_get_rpt-&gt;setRequestOxdId($oxdId);
+$uma_rp_get_rpt-&gt;request();
+
+print Dumper($uma_rp_get_rpt-&gt;getResponseObject());
+
+my $uma_rpt= $uma_rp_get_rpt-&gt;getResponseRpt();
+$session-&gt;param('uma_rpt', $uma_rpt);
+
+</code></pre>
+
+<h4 id="umarpauthorizerptpm">UmaRpAuthorizeRpt.pm<a class="headerlink" href="#umarpauthorizerptpm" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="../protocol/#uma-rp-authorize-rpt">Uma_rp_authorize_rpt protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UmaRpAuthorizeRpt:
+
+my $oxdId = $session-&gt;param('oxd_id');
+my $uma_rpt = $session-&gt;param('uma_rpt');
+my $uma_ticket = $session-&gt;param('uma_ticket');
+
+$uma_rp_authorize_rpt = new UmaRpAuthorizeRpt();
+$uma_rp_authorize_rpt-&gt;setRequestOxdId($oxdId);
+$uma_rp_authorize_rpt-&gt;setRequestRpt($uma_rpt);
+$uma_rp_authorize_rpt-&gt;setRequestTicket($uma_ticket);
+$uma_rp_authorize_rpt-&gt;request();
+
+print Dumper($uma_rp_authorize_rpt-&gt;getResponseObject());
+
+</code></pre>
+
+<h4 id="umarpgetgatpm">UmaRpGetGat.pm<a class="headerlink" href="#umarpgetgatpm" title="Permanent link">#</a></h4>
+<ul>
+<li><a href="../protocol/#gluu-oauth2-access-management-apis">Uma_rp_get_gat protocol description</a>.</li>
+</ul>
+<p><strong>Example</strong></p>
+<pre><code class="code">UmaRpGetGat:
+
+my $oxdId = $session-&gt;param('oxd_id');
+
+$uma_rp_get_gat = new UmaRpGetGat();
+$uma_rp_get_gat-&gt;setRequestOxdId($oxdId);
+$uma_rp_get_gat-&gt;setRequestScopes([&quot;https://photoz.example.com/dev/actions/add&quot;,&quot;https://photoz.example.com/dev/actions/view&quot;, &quot;https://photoz.example.com/dev/actions/edit&quot;]);
+$uma_rp_get_gat-&gt;request();
+
+print Dumper( $uma_rp_get_gat-&gt;getResponseObject() );
+
+my $uma_gat= $uma_rp_get_gat-&gt;getResponseGat();
+$session-&gt;param('uma_gat', $uma_gat);
+print Dumper( $uma_rp_get_gat-&gt;getResponseGat() );
+
+</code></pre>
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../csharp/" title="CSharp" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                CSharp
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../golang/" title="Go" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Go
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2017, Gluu, Inc.
+          </div>
+        
+        powered by
+        <a href="http://www.mkdocs.org" title="MkDocs">MkDocs</a>
+        and
+        <a href="http://squidfunk.github.io/mkdocs-material/" title="Material for MkDocs">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application-2afe21e0b2.js"></script>
+      <script>var config={url:{base:"../.."}},app=new Application(config);app.initialize()</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
