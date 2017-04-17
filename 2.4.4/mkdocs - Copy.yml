@@ -1,0 +1,78 @@
+site_name: oxd Docs
+site_description: Documenation for oxd OpenID Connect and UMA client software
+site_favicon: '/img/gluu_favicon.ico'
+copyright: Copyright &copy; 2014, Gluu, Inc.
+docs_dir: sources 
+# repo_url: https://github.com/GluuFederation/docs-oxd
+repo_url: https://github.com/GluuFederation/docs-oxd/
+theme: readthedocs 
+theme_dir: ./theme/mkdocs/ 
+
+markdown_extensions:
+- admonition
+
+pages: 
+ 
+- [index.md, Home]
+
+# Protocol
+- [protocol/index.md, oxd Server, Protocol]
+
+# 2.4.4
+- [install/index.md, oxd Server, Installation]
+- [conf/index.md, oxd Server, Configuration]
+- [logs/index.md, oxd Server, Logs]
+## Libraries
+- [libraries/api-client-libraries.md, Libraries, oxd API Client Libraries]
+- [libraries/python/index.md, Libraries, Python]
+- [libraries/java/index.md, Libraries, Java]
+- [libraries/php/index.md, Libraries, PHP]
+- [libraries/node/index.md, Libraries, Node]
+- [libraries/ruby/index.md, Libraries, Ruby]
+- [libraries/csharp/index.md, Libraries, CSharp]
+- [libraries/perl/index.md, Libraries, Perl]
+
+## Plugins
+- [plugin/wordpress/index.md, Plugin, Wordpress]
+- [plugin/magento/index.md, Plugin, Magento]
+- [plugin/drupal/index.md, Plugin, Drupal]
+- [plugin/opencart/index.md, Plugin, OpenCart]
+- [plugin/sugarcrm/index.md, Plugin, SugarCRM]
+- [plugin/suitecrm/index.md, Plugin, SuiteCRM]
+- [plugin/roundcube/index.md, Plugin, RoundCube]
+- [plugin/shopify/index.md, Plugin, Shopify]
+- [plugin/nextcloud/index.md, Plugin , NextCloud]
+
+## Framework
+- [framework/spring/index.md, Framework, Java Spring]
+- [framework/play/index.md, Framework, Java Play Framework]
+- [framework/ruby/index.md, Framework, Ruby on Rails]
+- [framework/python/index.md, Framework, Python Flask]
+- [framework/node/index.md, Framework, Node/Express]
+- [framework/net/index.md, Framework, .Net]
+
+# master docs
+# - [install/index.md, hidden, hidden]
+# - [conf/index.md, hidden, hidden]
+# - [logs/index.md, hidden, hidden]
+# - [libraries/api-client-libraries.md, hidden, hidden]
+# - [libraries/python/index.md, hidden, hidden]
+# - [libraries/java/index.md, hidden, hidden]
+# - [libraries/php/index.md, hidden, hidden]
+# - [libraries/node/index.md, hidden, hidden]
+# - [libraries/ruby/index.md, hidden, hidden]
+# - [libraries/csharp/index.md, hidden, hidden]
+# - [libraries/perl/index.md, hidden, hidden]
+# - [plugin/wordpress/index.md, hidden, hidden]
+# - [plugin/magento/index.md, hidden, hidden]
+# - [plugin/drupal/index.md, hidden, hidden]
+# - [plugin/opencart/index.md, hidden, hidden]
+# - [plugin/sugarcrm/index.md, hidden, hidden]
+# - [plugin/suitecrm/index.md, hidden, hidden]
+# - [plugin/roundcube/index.md, hidden, hidden]
+# - [plugin/nextcloud/index.md, hidden, hidden]
+# - [framework/spring/index.md, hidden, hidden]
+# - [framework/play/index.md, hidden, hidden]
+# - [framework/ruby/index.md, hidden, hidden]
+# - [framework/python/index.md, hidden, hidden]
+# - [framework/node/index.md, hidden, hidden]
