@@ -4,7 +4,7 @@ site_favicon: '/img/gluu_favicon.ico'
 copyright: Copyright &copy; 2017, Gluu, Inc.
 docs_dir: sources 
 # repo_url: https://github.com/GluuFederation/docs-oxd
-repo_url: https://github.com/GluuFederation/docs-oxd/
+repo_url: https://github.com/GluuFederation/docs-oxd-prod/tree/2.4.4/2.4.4
 #theme: readthedocs 
 theme_dir: theme/material/
 extra:
