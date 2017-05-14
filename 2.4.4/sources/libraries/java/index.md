@@ -103,7 +103,7 @@ try {
 
      final GetLogoutUrlParams commandParams = new GetLogoutUrlParams();
      commandParams.setOxdId(site.getOxdId());
-     commandParams.setIdTokenHint("dummy_token");
+     commandParams.setIdTokenHint(idTokenHint);
      commandParams.setPostLogoutRedirectUri(postLogoutRedirectUrl);
      commandParams.setState(UUID.randomUUID().toString());
      commandParams.setSessionState(UUID.randomUUID().toString()); // here must be real session instead of dummy UUID
