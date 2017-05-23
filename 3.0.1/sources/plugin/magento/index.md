@@ -32,7 +32,7 @@ standard OP (like Google or a Gluu Server) and the oxd server.
 
 [Link to Magento marketplace](https://www.magentocommerce.com/magento-connect/openid-connect-sso.html)
 
-[Github source](https://raw.githubusercontent.com/GluuFederation/magento-oxd-extension/blob/master/Magento_gluu_SSO-2.4.4.tgz).
+[Github source](https://github.com/GluuFederation/magento-oxd-extension/blob/master/Magento_gluu_SSO-3.0.1.tgz).
 
 ### Install extension
 
