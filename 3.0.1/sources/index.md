@@ -1,6 +1,11 @@
 # oxd 3.0.1 Documentation
 
-To make integrating applications with the Gluu Server fast, easy, and secure, Gluu offers commercial OAuth 2.0 client software called [oxd](http://oxd.gluu.org). Your application(s) can use any client software that implements the open standards the Gluu Server supports, however you may want to consider using oxd because:
+To make integrating server-side applications with the Gluu Server fast, easy, and secure, Gluu offers commercial OAuth 2.0 client software called [oxd](http://oxd.gluu.org). 
+
+!!! Note
+    oxd is commercial software licensed by Gluu. You can learn more and get your license on the [oxd website](https://oxd.gluu.org).
+
+Your application(s) can use any client software that implements the open standards the Gluu Server supports, however you may want to consider using oxd because:
 
 1. oxd is super-easy to use;      
 2. We keep updating oxd to address the latest OAuth 2.0 security knowledge;      
