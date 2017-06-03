@@ -83,7 +83,7 @@ To generate your `client_id` and `client_secret` use the `Redirect URL` for cust
 3. Select `Manage People`.
 4. Find the person(s) who should have access.
 5. Click their user entry.
-6. Add the `User Permission` attribute to the person and specify the same value as in the extension. For instance, if in the extension you have limit enrollment to user(s) with role = `magento`, then you should also have `User Permission` = `magento` in the user entry. [See a screenshot example](https://raw.githubusercontent.com/GluuFederation/magento-oxd-extension/master/docu/permission.png).
+6. Add the `User Permission` attribute to the person and specify the same value as in the extension. For instance, if in the extension you have limit enrollment to user(s) with role = `magento`, then you should also have `User Permission` = `magento` in the user entry. 
 7. Update the user record.
 8. Go back to the Magento extension and make sure the `permission` scope is requested (see below).
 9. Now they are ready for enrollment at your Magento site.
