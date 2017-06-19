@@ -5,7 +5,7 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 
 ## Installation
 
-* [Github sources](https://github.com/GluuFederation/oxd-java)
+* [Github sources](https://github.com/GluuFederation/oxd)
 * Jar files are available on the [Maven repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
 * [Jenkins build server](https://ox.gluu.org/jenkins/job/oxd-java/ws/target/)
 * [Tests on github](https://github.com/GluuFederation/oxd-java/blob/master/src/test/java/org/xdi/oxd/client)
