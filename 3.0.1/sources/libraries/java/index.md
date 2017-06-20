@@ -7,8 +7,8 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 
 * [Github sources](https://github.com/GluuFederation/oxd)
 * Jar files are available on the [Maven repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
-* [Jenkins build server](https://ox.gluu.org/jenkins/job/oxd-java/ws/target/)
-* [Tests on github](https://github.com/GluuFederation/oxd-java/blob/master/src/test/java/org/xdi/oxd/client)
+* [Jenkins build server](https://ox.gluu.org/jenkins/job/oxd/)
+* [Tests on github](https://github.com/GluuFederation/oxd/tree/master/oxd-client/src/test/java/org/xdi/oxd/client)
 * [API Documentation (Javadocs)](https://ox.gluu.org/maven/org/xdi/oxd/3.0.1/)
 
 ## Configuration
@@ -17,6 +17,15 @@ There are no configuration files for oxd-java. Redirect URI and
 other information is set in the code.
 
 ## Sample code
+Below is a sample pom, for more of pom file, please refer to [snippet](http://ox.gluu.org/maven/org/xdi/oxd-client/3.0.1/oxd-client-3.0.1.pom)
+
+```
+<dependency>
+  <artifactId>oxd-client</artifactId>
+  <groupId>org.xdi</groupId>
+  <version>3.1.0-SNAPSHOT</version>
+</dependency>
+```
 
 ### Register 
 ```java
