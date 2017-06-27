@@ -2,9 +2,9 @@
 
 oxd configuration consists of two files :
 
-* `conf/oxd-conf.json` - general configuration
-* `conf/oxd-default-site-config.json` - fallback configuration for "Register site" command, see details on 
-[Protocol page](../protocol/)
+* `conf/oxd-conf.json` is the general configuration file for oxd, including where you add your license.
+* `conf/oxd-default-site-config.json` is the fallback configuration file for the "Register site" command. See details on 
+[Protocol page](../protocol/).
 
 ## oxd-conf.json
 
@@ -28,18 +28,20 @@ oxd-conf.json
 }
 ```
 
-* port - oxD socket port
+* port - oxd socket port
 * localhost_only - flag to restrict communication
-* time_out_in_seconds - time out for oxd socket in seconds. oxd closes sockets automatically after this time out (stops listen commands). Zero means listen indefinitely.
-* use_client_authentication_for_pat - true if client authentication is required, if false than user authentication is performed which require user_id and user_secret specified during register_site command.
+* time_out_in_seconds - time out for oxd socket (measured in seconds). oxd closes sockets automatically after this period of time (stops listen commands). Zero means listen indefinitely.
+* use_client_authentication_for_pat - true if client authentication is required. If false than user authentication is performed which requires user_id and user_secret to be specified during the register_site command.
 * use_client_authentication_for_aat - true if client authentication is required, if false than user authentication is performed which require user_id and user_secret specified during register_site command.
 * trust_all_certs - true to trust all certificates, if false then trust_store_path must be specified to store with valid certificates
 * trust_store_path - Path to Java .jks trust store to be used for an SSL connection.
 * trust_store_password - password of trust store
-* license_id - Will be supplied when you order a license.
-* public_key - Will be supplied when you order a license. It's very big--make sure you it's one line with no spaces (if your mail client added line breaks).
-* public_password - Will be supplied when you order a license.
-* license_password - Will be supplied when you order a license.
+* license_id - Will be supplied when you register for a license. 
+* public_key - Will be supplied when you register for a license. It's very big--make sure you add it as one line with no spaces (if your mail client added line breaks).
+* public_password - Will be supplied when you register for a license.
+* license_password - Will be supplied when you register for a license.
+
+Need an oxd license? Register on the [oxd website](https://oxd.gluu.org). 
 
 ## oxd-default-site-config.json
 
