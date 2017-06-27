@@ -52,6 +52,21 @@ standard OP (like Google or a Gluu Server) and the oxd server.
 
 ## Configuration
 
+### GLUU Server Configuration 
+
+Before using this plugin with GLUU open id provider make sure you have configured gluu to return email claim.
+
+To enable email claim in the gluu server do the following:
+
+1.First navigate to "OpenID Connect->Scopes" in the "Display Name" column click the "Email" link and then set the default scope to "True" from the drop down menu and make sure to add email claim in the "claims menu"(see following images for better reference).
+![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailScope.PNG)
+
+![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailScopeInner.PNG)
+
+2.Then navigate to "Configuration->Attributes" and make sure that the "Email" row is set to "Active" in the scopes.
+
+![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailInAttribute.PNG)
+
 ### General
 
 In your Magento admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:
@@ -119,3 +134,5 @@ Navigate to your OpenID Provider configuration webpage `https://OpenID-Provider/
 
 In the `Select acr` section of the extension page, choose the mechanism which you want for authentication. If the `Select acr` value in the extension is `none`, users will be sent to pass the OP's default authentication mechanism.
 
+#### Support
+If you are having any technical issue on using Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin you can check our support page or raise support ticket at [https://support.gluu.org](https://support.gluu.org)
