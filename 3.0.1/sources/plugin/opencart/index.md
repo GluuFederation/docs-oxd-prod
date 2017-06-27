@@ -34,6 +34,21 @@ In order to use the OpenCart module you will need to have a standard OP (like Go
 
 ## Configuration
 
+### GLUU Server Configuration 
+
+Before using this plugin with GLUU open id provider make sure you have configured gluu to return email claim.
+
+To enable email claim in the gluu server do the following:
+
+1.First navigate to "OpenID Connect->Scopes" in the "Display Name" column click the "Email" link and then set the default scope to "True" from the drop down menu and make sure to add email claim in the "claims menu"(see following images for better reference).
+![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailScope.PNG)
+
+![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailScopeInner.PNG)
+
+2.Then navigate to "Configuration->Attributes" and make sure that the "Email" row is set to "Active" in the scopes.
+
+![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailInAttribute.PNG)
+
 ### General
  
 In your OpenCart admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:
@@ -101,3 +116,6 @@ To signal which type of authentication should be used, an OpenID Connect client 
 Navigate to your OpenID Provider configuration webpage `https://OpenID-Provider/.well-known/openid-configuration` to see supported `acr_values`. In the `Select acr` section of the module page, choose the mechanism which you want for authentication. 
 
 Note: If the `Select acr` value is `none`, customers will be sent to pass the OP's default authentication mechanism.
+
+#### Support
+If you are having any technical issue on using Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin you can check our support page or raise support ticket at [https://support.gluu.org](https://support.gluu.org)
