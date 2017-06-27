@@ -3,7 +3,7 @@
 To make integrating server-side applications with the Gluu Server (or any standard OpenID Connect Provider) fast, easy, and secure, Gluu offers commercial OAuth 2.0 client software called [oxd](http://oxd.gluu.org). 
 
 !!! Note
-    oxd is commercial software licensed by Gluu. You can get a license and a $50 credit to get started on the [oxd website](https://oxd.gluu.org).
+    oxd is commercial software licensed by Gluu. You can get a license and a $50 credit to get started by registering for an account on the [oxd website](https://oxd.gluu.org).
 
 If your goal is to integrate applications with your Gluu Server to achieve single sign-on (SSO), there are many strategies available to you. However, you should consider using oxd because:
 
