@@ -15,7 +15,7 @@ If your goal is to integrate applications with your Gluu Server to achieve singl
 
 4. If you're also using the Gluu Server, Gluu can provide more complete end-to-end support if we know both the client and server software;      
 
-5. In addition to a simple JSON/REST API, there are oxd libraries for Php, Python, Java, Node, Ruby, C#, .Net, Perl and Go. 
+5. In addition to a simple JSON/REST API, there are oxd libraries for Php, Python, Java, Node, Ruby, C#, .Net, Perl and Go; 
 
 6. There are oxd plugins for many popular applications like: Wordpress, Drupal, Magento, OpenCart, SugarCRM, SuiteCRM, Roundcube, Shopify, and Kong. More are being added too. Next on the list are: MatterMost, RocketChat, NextCloud, and Liferay.      
 
