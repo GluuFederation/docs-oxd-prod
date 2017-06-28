@@ -5,6 +5,23 @@ To make integrating server-side applications with the Gluu Server (or any standa
 !!! Note
     You will need a license from Gluu to configure oxd. Get your license and a $50 credit by registering for an account on the [oxd website](https://oxd.gluu.org).
 
+## Overview
+
+The oxd Server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
+
+By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. oxd should be deployed on each server that has web applications.
+
+oxd APIs can be called by any application that can make REST calls. Gluu also provides several native libraries that wrap the
+oxd APIs, currently available for Php, Java, Python, Node, Ruby C#, and .Net.
+
+## Technical Architecture
+oxd is middleware service that simplifies the process of properly securing applications with OpenID Connect and UMA, two standard profiles of OAuth 2.0 for federated authentication and authorization, respectively. 
+
+By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. oxd should be deployed on each server that has web applications. 
+
+![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
+
+## Why OXD
 If your goal is to integrate applications with your Gluu Server to achieve single sign-on (SSO), there are many strategies available to you. However, you should consider using oxd because:
 
 1. oxd is super-easy to use;  
@@ -22,20 +39,6 @@ If your goal is to integrate applications with your Gluu Server to achieve singl
 To learn more about oxd review these docs and the [code on Github](https://github.com/GluuFederation/oxd). 
 
 When you're ready to deploy oxd, head over to the website to [get your oxd license](https://oxd.gluu.org). 
-
-## Overview
-
-The oxd Server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
-
-By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. oxd should be deployed on each server that has web applications.
-
-oxd APIs can be called by any application that can make REST calls. Gluu also provides several native libraries that wrap the
-oxd APIs, currently available for Php, Java, Python, Node, Ruby C#, and .Net.
-
-## Technical Architecture
-oxd is middleware service that simplifies the process of properly securing applications with OpenID Connect and UMA, two standard profiles of OAuth 2.0 for federated authentication and authorization, respectively. oxd should be deployed on the same server as the application you intend to secure, and can be called by the application using localhost. 
-
-![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
 
 ## Installation
 
