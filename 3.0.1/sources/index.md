@@ -9,7 +9,7 @@ If your goal is to integrate applications with your Gluu Server to achieve singl
 
 1. oxd is super-easy to use;  
 
-2. oxd provides a central place to manage security across heterogenous application environments (i.e. if you have applications written in many languages, e.g. php, python, ruby, java, etc., you **do not** want to use a different open source client library for each application. That makes managing security a nightmare!);
+2. oxd provides a central place to manage security across heterogenous application environments. If you have applications written in many languages, e.g. php, python, ruby, java, etc., you **do not** want to use a different open source client library for each application. That makes managing security a nightmare!;
 
 3. oxd is constantly being updated to address the latest OAuth 2.0 security knowledge;      
 
