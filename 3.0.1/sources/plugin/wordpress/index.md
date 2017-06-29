@@ -36,7 +36,7 @@ Activate the plugin by performing the following steps:
 
 ## Configuration
 
-### GLUU Server Configuration 
+### Gluu Server Configuration 
 
 Before using this plugin with GLUU open id provider make sure you have configured gluu to return email claim.
 
