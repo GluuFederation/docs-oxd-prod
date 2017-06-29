@@ -34,11 +34,11 @@ In order to use the OpenCart module you will need to have a standard OP (like Go
 
 ## Configuration
 
-### GLUU Server Configuration 
+### Gluu Server Configuration 
 
-Before using this plugin with GLUU open id provider make sure you have configured gluu to return email claim.
+Before using this plugin with Gluu open id provider make sure you have configured gluu to return email claim.
 
-To enable email claim in the gluu server do the following:
+To enable email claim in the Gluu server do the following:
 
 1.First navigate to "OpenID Connect->Scopes" in the "Display Name" column click the "Email" link and then set the default scope to "True" from the drop down menu and make sure to add email claim in the "claims menu"(see following images for better reference).
 ![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailScope.PNG)
@@ -93,7 +93,7 @@ To view your OP's available scopes, in a web browser navigate to `https://OpenID
 If you are using a Gluu server as your OpenID Provider, 
 you can view all available scopes by navigating to the Scopes interface in Gluu CE Server Admin UI 
 
-`OpenID Connect` > `Scopes` 
+`OpenID-Connect` > `Scopes` 
 
 In the module interface you can enable, disable and delete scopes. 
 
