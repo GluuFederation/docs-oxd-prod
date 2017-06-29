@@ -284,7 +284,7 @@ So you can communicate with gluu server from your c# library.
 * oxdId    - the port of the oxd server
 
 **Request:**
-```
+```csharp
      public ActionResult GetLogoutUrl(string opHost, int oxdPort, string oxdId)
         {
             //prepare input params for Getting Logout URI from a site
@@ -319,7 +319,7 @@ So you can communicate with gluu server from your c# library.
 * oxdport  - the port of the oxd server
 * oxdId    - the port of the oxd server
 
-```
+```csharp
    private UmaRsProtectResponse ProtectResources(string opHost, int oxdPort, string oxdId)
         {
             //prepare input params for Protect Resource
@@ -356,7 +356,7 @@ So you can communicate with gluu server from your c# library.
 
 #### UMA RS Check access
 **Request:**
-```
+```csharp
 	 private UmaRsCheckAccessResponse CheckAccess(string rpt, string path, string httpMethod, string opHost, int oxdPort, string oxdId)
         {
             //prepare input params for Check Access
@@ -386,7 +386,7 @@ Access Denied with valid Ticket
 
 #### UMA Get RPT
 **Request:**
-```
+```csharp
    private GetRPTResponse ObtainRpt(string opHost, int oxdPort, string oxdId)
         {
             //prepare input params for Protect Resource
@@ -426,7 +426,7 @@ Access Denied with valid data
 
 ##### Authorize RPT  
 **Request:**
-```
+```csharp
 	 private UmaRpAuthorizeRptResponse AuthorizeRpt(string rpt, string ticket, string opHost, int oxdPort, string oxdId)
         {
             //prepare input params for Check Access
@@ -466,7 +466,7 @@ Access Granted
 
 #### UMA Get GAT
 **Request:**
-```
+```csharp
  public ActionResult GetGat(string opHost, int oxdPort, string oxdId)
         {
             //prepare input params for Getting GAT
