@@ -116,7 +116,7 @@ To view your OP's available scopes, open a web browser and navigate to `https://
 If you are using a Gluu server as your OpenID Provider, 
 you can view all available scopes by navigating to the Scopes interface in Gluu CE Server Admin UI
 
-`OpenID Connect` > `Scopes`
+`openID-Connect` > `Scopes`
 
 In the extension interface you can enable, disable and delete scopes.
 
