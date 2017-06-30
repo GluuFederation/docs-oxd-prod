@@ -9,7 +9,7 @@ and the [free open source Gluu Server](http://gluu.org/gluu-server).
 
 
 ## Sample Project
-Download a sample project specific to this tutorial configured with your Auth0 API Keys.
+Download a sample project specific to this oxd library.
 [download](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip)
 
 ## oxd Server APIs
