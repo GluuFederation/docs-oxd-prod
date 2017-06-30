@@ -1,5 +1,5 @@
 # oxd-csharp
-##Overview
+## Overview
 The following documentation demonstrates 
 how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), 
 to send users from a C# app to an OpenID Connect Provider (OP) for login. 
@@ -43,7 +43,7 @@ The oxd Server also provides one Gluu OAuth2 Access Management API's. The API is
 * [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)
 
 
-###**Prerequisite**
+### **Prerequisite**
 
 1) You have to install [gluu server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/) in Ubuntu 14 VM and oxd-server in your hosting server to use oxd-csharp
    library with your application.
@@ -51,7 +51,7 @@ The oxd Server also provides one Gluu OAuth2 Access Management API's. The API is
 3) Client application url must be https:// . 
 
 
-###**Install oxd NuGet Package**
+### **Install oxd NuGet Package**
 
 ```PM> Install-Package Gluu.Oxd.OxdCSharp```
 
@@ -491,5 +491,6 @@ Access Granted
 
 ## Support
 Any technical support you need please checkout our [support page](https://support.gluu.org/)
+
 Bugs found in oxd CSharp libary can be reported at [github](https://github.com/GluuFederation/oxd-csharp/issues)
 
