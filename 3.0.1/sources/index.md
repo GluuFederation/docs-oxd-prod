@@ -1,6 +1,6 @@
 # oxd 3.0.1 Documentation
 
-To make securing server-side applications with a standard OpenID Connect Provider (OP) like the Gluu Server fast, easy, and secure, Gluu offers OAuth 2.0 client software called [oxd](http://oxd.gluu.org). 
+To make securing server-side applications with a standard OpenID Connect Provider (OP) like the [Gluu Server](https://gluu.org/gluu-server) fast, easy, and secure, Gluu offers OAuth 2.0 client software called [oxd](http://oxd.gluu.org). 
 
 oxd is commercial software licensed by Gluu. You can get a license and a $50 credit by registering for an account on the [oxd website](https://oxd.gluu.org).
 
