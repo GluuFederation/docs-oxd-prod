@@ -44,9 +44,6 @@ When you're ready to deploy oxd, head over to the website to [get your oxd licen
 
 Follow [these instructions](./install/index.md) to install and start oxd.
 
-!!! Note
-    You will need a valid license to start the oxd server. If you have not yet registered for a license, visit the [oxd website](https://oxd.gluu.org). 
-
 ## Configuration
 
 Follow [these instructions](./conf/index.md) to configure oxd.
