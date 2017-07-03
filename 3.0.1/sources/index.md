@@ -1,9 +1,8 @@
 # oxd 3.0.1 Documentation
 
-To make integrating server-side applications with the Gluu Server (or any standard OpenID Connect Provider) fast, easy, and secure, Gluu offers commercial OAuth 2.0 client software called [oxd](http://oxd.gluu.org). 
+To make securing server-side applications with a standard OpenID Connect Provider (OP) like the Gluu Server fast, easy, and secure, Gluu offers commercial OAuth 2.0 client software called [oxd](http://oxd.gluu.org). 
 
-!!! Note
-    You will need a license from Gluu to configure oxd. Get your license and a $50 credit by registering for an account on the [oxd website](https://oxd.gluu.org).
+You will need an active license to complete oxd configuration. You can get your license and a $50 credit by registering for an account on the [oxd website](https://oxd.gluu.org).
 
 ## Overview
 
@@ -74,6 +73,11 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [NextCloud](./plugin/nextcloud/index.md) 
 
 Gluu does its best to keep these plugins updated but does not guarantee specific functionality. If you find a bug, or would like feature enhancements, we would be happy to discuss allocating a resource to work on the plugin on a time and materials basis. [Schedule a call](https://gluu.org/booking) with us to discuss the project scope and funding.
+
+## Support
+Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
+
+If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract. 
 
 ## License
 oxd is commercial software licensed by Gluu. Learn more on the [oxd website](https://oxd.gluu.org).
