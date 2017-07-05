@@ -19,37 +19,24 @@ The oxd server provides the following six methods for authenticating users with 
 
 ## Installation
 
-### **Prerequisite**
-To install oxd-csharp, below are required as mandate
+### Prerequisites
 
-* [Github sources](https://github.com/GluuFederation/oxd-csharp/tree/3.0.1)
-* [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/) (Optional), Any other Standard OP could also be used such as Google
-* [oxd server](../../install/index.md)
+To install oxd-csharp, you need the following:
+* A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);
+* The [oxd server](../../install/index.md) running in the same server where the client is configured;
+* Client application url must be `https://` . 
+
+In addition, the following documents will be of assistance as well:
+* [Github sources](https://github.com/GluuFederation/oxd-csharp/tree/3.0.1).
 * [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/Clients)
 * [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)
 
 !!! Note:
     CSharp requires windows server or windows installed machine to work.
 
-### Installing oxd-csharp
-
-1) You have to install [gluu server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/) 
-   in Ubuntu 14 VM and oxd-server in your hosting server to use oxd-csharp
-   library with your application.
-2) [oxd server](../../install/index.md) must be running in the same server where client application is hosted
-3) Client application url must be https:// . 
-
-
 ### **Install oxd NuGet Package**
 
 ```PM> Install-Package Gluu.Oxd.OxdCSharp```
-
-
-!!! Note 
-    Install Gluu server in Ubuntu 14 VM in your windows machine. 
-    VM will need at least 4GB or RAM and 2 CPU units. 
-    So you can communicate with gluu server from your c# library.
-    you can start oxd server in your windows machine it self. 
 
 ## Sample Code
 
