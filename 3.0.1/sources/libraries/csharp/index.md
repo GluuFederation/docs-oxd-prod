@@ -504,5 +504,4 @@ Access Granted
 ```
 
 ## Support
-Any technical support you need please checkout our [support page](https://support.gluu.org/)
-Bugs found in oxd CSharp libary can be reported at [github](https://github.com/GluuFederation/oxd-csharp/issues)
+Please report technical issues and suspected bugs on our [support page](https://support.gluu.org/). You can use the same credentials you created to register for your oxd license to sign in on Gluu support.
