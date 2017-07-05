@@ -23,7 +23,7 @@ The oxd server provides the following six methods for authenticating users with 
 To install oxd-csharp, below are required as mandate
 
 * [Github sources](https://github.com/GluuFederation/oxd-csharp/tree/3.0.1)
-* [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/)
+* [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/) (Optional), Any other Standard OP could also be used such as Google
 * [oxd server](../../install/index.md)
 * [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/Clients)
 * [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)

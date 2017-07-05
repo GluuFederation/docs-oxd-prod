@@ -4,11 +4,13 @@
 
 Gluu's OpenID Connect Single Sign-On (SSO) OpenCart module will enable you to 
 authenticate users against any standard OpenID Connect Provider (OP). 
+
 If you don't already have an OP you can 
 [deploy the free open source Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/).  
 
 ## Requirements
-In order to use the OpenCart module you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.
+In order to use the OpenCart module you will need to have a 
+standard OP (like Google or a Gluu Server) and the oxd server.
 
 * Compatibility : 2.0.0.0 <= 2.3.0.0 versions
 
@@ -30,7 +32,7 @@ In order to use the OpenCart module you will need to have a standard OP (like Go
 1. Unzip file in your OpenCart site root directory.
 
 2. Open menu tab Extensions / Modules and find OpenID Connect Single Sign-On (SSO) Extension by Gluu click on ```Install``` button, than click on ```Edit``` button.
-![Manager](https://raw.githubusercontent.com/GluuFederation/opencart-oxd-module/master/docu/0.png) 
+![Manager](../img/plugin/0.png) 
 
 ## Configuration
 
@@ -40,20 +42,25 @@ Before using this plugin with Gluu open id provider make sure you have configure
 
 To enable email claim in the Gluu server do the following:
 
-1.First navigate to "OpenID Connect->Scopes" in the "Display Name" column click the "Email" link and then set the default scope to "True" from the drop down menu and make sure to add email claim in the "claims menu"(see following images for better reference).
-![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailScope.PNG)
+1.First navigate to `OpenID Connect` > `Scopes` in the `Display Name` column click the `Email`
+ link and then set the default scope to `True` from the drop down menu and make sure to add 
+ email claim in the `claims menu`(see following images for better reference).
+ 
+![image](../img/plugin/emailScope.PNG)
 
-![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailScopeInner.PNG)
+![image](../img/plugin/emailScopeInner.PNG)
 
-2.Then navigate to "Configuration->Attributes" and make sure that the "Email" row is set to "Active" in the scopes.
+2.Then navigate to `Configuration` > `Attributes` and make sure that the `Email`
+ row is set to `Active` in the scopes.
 
-![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailInAttribute.PNG)
+![image](../img/plugin/emailInAttribute.PNG)
 
 ### General
  
-In your OpenCart admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:
+In your OpenCart admin menu panel you should now see the OpenID Connect menu tab. 
+Click the link to navigate to the General configuration  page:
 
-![upload](https://raw.githubusercontent.com/GluuFederation/opencart-oxd-module/master/docu/1.png) 
+![upload](../img/plugin/opencart1.png) 
 
 1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to dynamically register for an account in your OpenCart site. They will be assigned the new user default role specified below.
 2. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `opencart`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
@@ -69,7 +76,7 @@ required in the general tab and you can navigate to the
 
 If your OpenID Connect Provider doesn't support dynamic registration, you will need to insert your OpenID Provider `client_id` and `client_secret` on the following page.
 
-![upload](https://raw.githubusercontent.com/GluuFederation/opencart-oxd-module/master/docu/2.png)  
+![upload](../img/plugin/opencart-ui.png)  
 
 To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
@@ -82,13 +89,17 @@ Navigate to your Gluu Server admin GUI. Click the `Users` tab in the left hand n
 
 ### OpenID Connect Configuration
 
-![upload](https://raw.githubusercontent.com/GluuFederation/opencart-oxd-module/master/docu/3.png) 
+![upload](../img/plugin/opencart3.png) 
 
 #### User Scopes
 
-Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. By default, the requested scopes are `profile`, `email`, and `openid`.  
+Scopes are groups of user attributes that are sent from the OP to the application 
+during login and enrollment. By default, the requested scopes are `profile`, `email`, and `openid`.  
 
-To view your OP's available scopes, in a web browser navigate to `https://OpenID-Provider/.well-known/openid-configuration`. For example, here are the scopes you can request if you're using [Google as your OP](https://accounts.google.com/.well-known/openid-configuration). 
+To view your OP's available scopes, in a web browser navigate 
+to `https://OpenID-Provider/.well-known/openid-configuration`. 
+For example, here are the scopes you can request if you're 
+using [Google as your OP](https://accounts.google.com/.well-known/openid-configuration). 
 
 If you are using a Gluu server as your OpenID Provider, 
 you can view all available scopes by navigating to the Scopes interface in Gluu CE Server Admin UI 
@@ -98,24 +109,38 @@ you can view all available scopes by navigating to the Scopes interface in Gluu 
 In the module interface you can enable, disable and delete scopes. 
 
 !!!Note:
-    If you have chosen to limit enrollment to users with specific roles in the OP, you will also need to request the `Permission` scope, as shown in the above screenshot. 
+    If you have chosen to limit enrollment to users with specific roles in the OP, 
+    you will also need to request the `Permission` scope, as shown in the above screenshot. 
 
 #### Authentication
 
 ##### Bypass the local OpenCart login page and send customers straight to the OP for authentication
 
-Check this box so that when customers attempt to login they are sent straight to the OP, bypassing the local OpenCart login screen.
-When it is not checked, it will give proof the following screen.   
+Check this box so that when customers attempt to login they are sent straight to the OP, 
+bypassing the local OpenCart login screen. When it is not checked, it will 
+give proof the following screen.   
 
-![upload](https://raw.githubusercontent.com/GluuFederation/opencart-oxd-module/master/docu/4.png) 
+![upload](../img/plugin/opencart4.png) 
 
 ##### Select acr
 
-To signal which type of authentication should be used, an OpenID Connect client may request a specific authentication context class reference value (a.k.a. "acr"). The authentication options available will depend on which types of mechanisms the OP has been configured to support. The Gluu Server supports the following authentication mechanisms out-of-the-box: username/password (basic), Duo Security, Super Gluu, and U2F tokens, like Yubikey.  
+To signal which type of authentication should be used, 
+an OpenID Connect client may request a specific authentication context class 
+reference value (a.k.a. "acr"). The authentication options available will depend on 
+which types of mechanisms the OP has been configured to support. 
+The Gluu Server supports the following authentication mechanisms out-of-the-box: 
+username/password (basic), Duo Security, Super Gluu, and U2F tokens, like Yubikey.  
 
-Navigate to your OpenID Provider configuration webpage `https://OpenID-Provider/.well-known/openid-configuration` to see supported `acr_values`. In the `Select acr` section of the module page, choose the mechanism which you want for authentication. 
+Navigate to your OpenID Provider 
+configuration webpage `https://OpenID-Provider/.well-known/openid-configuration` to 
+see supported `acr_values`. In the `Select acr` section of the module page, choose 
+the mechanism which you want for authentication. 
 
-Note: If the `Select acr` value is `none`, customers will be sent to pass the OP's default authentication mechanism.
+!!! Note: 
+    If the `Select acr` value is `none`, 
+    customers will be sent to pass the OP's default authentication mechanism.
 
 #### Support
-If you are having any technical issue on using Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin you can check our support page or raise support ticket at [https://support.gluu.org](https://support.gluu.org)
+If you are having any technical issue on using 
+Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin you can check 
+our support page or raise support ticket at [https://support.gluu.org](https://support.gluu.org)
