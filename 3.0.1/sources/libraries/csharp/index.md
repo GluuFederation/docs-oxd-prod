@@ -12,25 +12,25 @@ and the [free open source Gluu Server](http://gluu.org/gluu-server).
 Download a sample project specific to this oxd library.
 [download](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip)
 
-## oxd Server APIs
+## oxd Server Methods
 
-The Gluu's oxd Server provides basic six API's for OpenID Connect authentication. The all APIs are listed below.
+The Gluu's oxd Server provides six methods for OpenID Connect authentication using oxd-csharp API. Below are the methods.
 
-* [Register Site](https://gluu.org/docs/oxd/protocol/#register-site)
-* [Update Site Registration](https://gluu.org/docs/oxd/protocol/#update-site-registration)
-* [Get Authorization URL](https://gluu.org/docs/oxd/protocol/#get-authorization-url)
-* [Get Tokens by Code](https://gluu.org/docs/oxd/protocol/#get-user-info)
-* [Get User Info](https://gluu.org/docs/oxd/protocol/#get-user-info)
-* [Get Logout URI](https://gluu.org/docs/oxd/protocol/#log-out-uri)
+* [Register Site](../protocol/#register-site)
+* [Update Site Registration](../oxd/protocol/#update-site-registration)
+* [Get Authorization URL](../oxd/protocol/#get-authorization-url)
+* [Get Tokens by Code](../oxd/protocol/#get-user-info)
+* [Get User Info](../oxd/protocol/#get-user-info)
+* [Get Logout URI](../oxd/protocol/#log-out-uri)
 
 The Gluu's oxd Server provides two UMA Resource Server API's. The APIs are listed below
-* [UMA RS Protect resources](https://gluu.org/docs/oxd/protocol/#uma-rs-protect-resources)
-* [UMA RS Check Access](https://gluu.org/docs/oxd/protocol/#uma-rs-check-access)
+* [UMA RS Protect resources](../oxd/protocol/#uma-rs-protect-resources)
+* [UMA RS Check Access](../oxd/protocol/#uma-rs-check-access)
 The Gluu's oxd Server provides two UMA Client API's. The APIs are listed below
-* [UMA RP - Get RPT](https://gluu.org/docs/oxd/protocol/#uma-rp-get-rpt)
-* [UMA RP - Authorize RPT](https://gluu.org/docs/oxd/protocol/#uma-rp-authorize-rpt)
+* [UMA RP - Get RPT](../oxd/protocol/#uma-rp-get-rpt)
+* [UMA RP - Authorize RPT](../oxd/protocol/#uma-rp-authorize-rpt)
 The oxd Server also provides one Gluu OAuth2 Access Management API's. The API is
-* [UMA RP Get GAT](https://gluu.org/docs/oxd/protocol/#gluu-oauth2-access-management-apis)
+* [UMA RP Get GAT](../oxd/protocol/#gluu-oauth2-access-management-apis)
 
 
 
