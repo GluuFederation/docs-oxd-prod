@@ -1,14 +1,10 @@
 # oxd-csharp
 ## Overview
-The following documentation demonstrates 
-how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), 
-to send users from C# app to an OpenID Connect Provider (OP) for login. 
-You can securely send users to any standard OP for login, including Google 
+The following documentation demonstrates how to use the [oxd client software](http://oxd.gluu.org) to send users from a C# app to an OpenID Connect Provider (OP) for login. You can use oxd to securely send users to any standard OP for login, including Google 
 and the [free open source Gluu Server](http://gluu.org/gluu-server).
 
 ## Sample Project
-Download a sample project specific to this oxd library.
-[Download](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip)
+[Download a sample project](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip) specific to this oxd library.
 
 ## oxd Server Methods
 
