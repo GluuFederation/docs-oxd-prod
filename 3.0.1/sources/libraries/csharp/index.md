@@ -12,8 +12,7 @@ Download a sample project specific to this oxd library.
 
 ## oxd Server Methods
 
-The oxd server provides six methods for OpenID Connect authentication using oxd-csharp API. 
-Below are the methods. These methods helps you to perform various operations to authenticate users to an application.
+The oxd server provides the following six methods for authenticating users with OpenID Connect:
 
 * [Register Site](../protocol/#register-site)
 * [Update Site Registration](../protocol/#update-site-registration)
@@ -21,22 +20,6 @@ Below are the methods. These methods helps you to perform various operations to 
 * [Get Tokens by Code](../protocol/#get-user-info)
 * [Get User Info](../protocol/#get-user-info)
 * [Get Logout URI](../protocol/#log-out-uri)
-
-In addition to OpenID Connect, the oxd server provides two UMA Resource Server Methods, mentioned as below:
-
-* [UMA RS Protect resources](../protocol/#uma-rs-protect-resources)
-* [UMA RS Check Access](../protocol/#uma-rs-check-access)
-
-The oxd server provides two UMA Client methods:
-
-* [UMA RP - Get RPT](../protocol/#uma-rp-get-rpt)
-* [UMA RP - Authorize RPT](../protocol/#uma-rp-authorize-rpt)
-
-The oxd Server also provides one Gluu OAuth2 Access Management method, 
-which enables you to create a user profile and obtain a token from the AS 
-by explicitly specifying the requested scope.
-
-* [UMA RP Get GAT](../protocol/#gluu-oauth2-access-management-apis)
 
 ## Installation
 
