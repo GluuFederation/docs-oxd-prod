@@ -1,24 +1,12 @@
 # oxd 3.0.1 Documentation
 
-To make integrating server-side applications with the Gluu Server fast, easy, and secure, Gluu offers commercial OAuth 2.0 client software called [oxd](http://oxd.gluu.org). 
+To make securing server-side web applications with a standard OpenID Connect Provider (OP) like the [Gluu Server](https://gluu.org/gluu-server) fast, easy, and secure, Gluu offers OAuth 2.0 client software called [oxd](http://oxd.gluu.org). 
 
-!!! Note
-    oxd is commercial software licensed by Gluu. You can learn more and get your license on the [oxd website](https://oxd.gluu.org).
-
-Your application(s) can use any client software that implements the open standards the Gluu Server supports, however you may want to consider using oxd because:
-
-1. oxd is super-easy to use;      
-2. We keep updating oxd to address the latest OAuth 2.0 security knowledge;      
-3. We can provide more complete end-to-end support if we know both the client and server software;      
-4. oxd subscriptions help support this project so you can see more enhancements faster;      
-5. There are oxd libraries for Php, Python, Java, Node, Ruby, C#, .Net, Perl and Go. If your application is programmed in another language, oxd has a simple JSON/REST API;      
-6. There are oxd plugins for many popular applications like: Wordpress, Drupal, Magento, OpenCart, SugarCRM, SuiteCRM, Roundcube, Shopify, and Kong. More are being added too. Next on the list are: MatterMost, RocketChat, NextCloud, and Liferay.      
-
-To learn more about oxd review the docs and [code on Github](https://github.com/GluuFederation/oxd). When you're ready to deploy oxd, head over to the website to [get your oxd license](https://oxd.gluu.org). 
+oxd is commercial software licensed by Gluu. You can get a license and a $50 credit by registering for an account on the [oxd website](https://oxd.gluu.org).
 
 ## Overview
 
-The oxd Server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
+The oxd server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
 
 By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. oxd should be deployed on each server that has web applications.
 
@@ -26,14 +14,34 @@ oxd APIs can be called by any application that can make REST calls. Gluu also pr
 oxd APIs, currently available for Php, Java, Python, Node, Ruby C#, and .Net.
 
 ## Technical Architecture
+oxd is middleware service that simplifies the process of properly securing applications with OpenID Connect and UMA, two standard profiles of OAuth 2.0 for federated authentication and authorization, respectively. 
+
+By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. oxd should be deployed on each server that has web applications. 
+
 ![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
+
+## Why OXD
+If your goal is to integrate applications with your Gluu Server to achieve single sign-on (SSO), there are many strategies available to you. However, you should consider using oxd because:
+
+1. oxd is super-easy to use;  
+
+2. oxd provides a central place to manage security across heterogenous application environments. If you have applications written in many languages, e.g. php, python, ruby, java, etc., you **do not** want to use a different open source client library for each application. That makes managing security a nightmare!;
+
+3. oxd is constantly being updated to address the latest OAuth 2.0 security knowledge;      
+
+4. If you're also using the Gluu Server, Gluu can provide more complete end-to-end support if we know both the client and server software;      
+
+5. In addition to a simple JSON/REST API, there are oxd libraries for Php, Python, Java, Node, Ruby, C#, .Net, Perl and Go; 
+
+6. There are oxd plugins for many popular applications like: Wordpress, Drupal, Magento, OpenCart, SugarCRM, SuiteCRM, Roundcube, Shopify, and Kong. More are being added too. Next on the list are: MatterMost, RocketChat, NextCloud, and Liferay.      
+
+To learn more about oxd review these docs and the [code on Github](https://github.com/GluuFederation/oxd). 
+
+When you're ready to deploy oxd, head over to the website to [get your oxd license](https://oxd.gluu.org). 
 
 ## Installation
 
 Follow [these instructions](./install/index.md) to install and start oxd.
-
-!!! Note
-    You will need a valid license to start the oxd server. If you have not yet registered for a license, visit the [oxd website](https://oxd.gluu.org). 
 
 ## Configuration
 
@@ -41,6 +49,16 @@ Follow [these instructions](./conf/index.md) to configure oxd.
 
 !!! Note
     You will need a valid license to properly configure the oxd server. If you have not yet registered for a license, visit the [oxd website](https://oxd.gluu.org). 
+
+## Libraries
+oxd client libraries provide simple, flexible, powerful access to the oxd OpenID Connect and UMA authentication and authorization APIs.     
+- [Python](./libraries/python/index.md)       
+- [Java](./libraries/java/index.md)       
+- [Php](./libraries/php/index.md)       
+- [Node](./libraries/node/index.md)       
+- [Ruby](./libraries/ruby/index.md)       
+- [C#](./libraries/csharp/index.md)       
+- [Perl](./libraries/perl/index.md)       
 
 ## Plugins
 
@@ -54,15 +72,12 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [Roundcube](./plugin/roundcube/index.md)  
 - [NextCloud](./plugin/nextcloud/index.md) 
 
-## Libraries
-oxd client libraries provide simple, flexible, powerful access to the oxd OpenID Connect and UMA authentication and authorization APIs.     
-- [Python](./libraries/python/index.md)       
-- [Java](./libraries/java/index.md)       
-- [Php](./libraries/php/index.md)       
-- [Node](./libraries/node/index.md)       
-- [Ruby](./libraries/ruby/index.md)       
-- [C#](./libraries/csharp/index.md)       
-- [Perl](./libraries/perl/index.md)       
+Gluu does its best to keep these plugins up to date but does not guarantee specific functionality. If you find a bug, or would like feature enhancements, we would be happy to discuss allocating a resource to work on the plugin on a time and materials basis. [Schedule a call](https://gluu.org/booking) with us to discuss the project scope and funding.
+
+## Support
+Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
+
+If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract. 
 
 ## License
 oxd is commercial software licensed by Gluu. Learn more on the [oxd website](https://oxd.gluu.org).

@@ -579,7 +579,7 @@ Invalid rpt error:
 ## Gluu OAuth2 Access Management API's
 
 GAT stands for Gluu Access Token. It is invented by Gluu and is described here: 
-https://ox.gluu.org/doku.php?id=uma:oauth2_access_management.
+[Gluu OAuth2 Access Management](https://ox.gluu.org/doku.php?id=uma:oauth2_access_management)
 
 Request:
 
