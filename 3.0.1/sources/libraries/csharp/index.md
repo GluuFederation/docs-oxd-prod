@@ -6,17 +6,14 @@ to send users from C# app to an OpenID Connect Provider (OP) for login.
 You can securely send users to any standard OP for login, including Google 
 and the [free open source Gluu Server](http://gluu.org/gluu-server).
 
-
-
 ## Sample Project
 Download a sample project specific to this oxd library.
-[download](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip)
+[Download](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip)
 
 ## oxd Server Methods
 
-The Gluu's oxd Server provides six methods for OpenID Connect authentication using oxd-csharp API. 
-Below are the methods. These methods helps you to perform various operations to authenticate 
-an user to an application.
+The oxd server provides six methods for OpenID Connect authentication using oxd-csharp API. 
+Below are the methods. These methods helps you to perform various operations to authenticate users to an application.
 
 * [Register Site](../protocol/#register-site)
 * [Update Site Registration](../protocol/#update-site-registration)
@@ -25,12 +22,12 @@ an user to an application.
 * [Get User Info](../protocol/#get-user-info)
 * [Get Logout URI](../protocol/#log-out-uri)
 
-The Gluu's oxd Server provides two UMA Resource Server Methods, mentioned as below
+In addition to OpenID Connect, the oxd server provides two UMA Resource Server Methods, mentioned as below:
 
 * [UMA RS Protect resources](../protocol/#uma-rs-protect-resources)
 * [UMA RS Check Access](../protocol/#uma-rs-check-access)
 
-The Gluu's oxd Server provides two UMA Client methods.
+The oxd server provides two UMA Client methods:
 
 * [UMA RP - Get RPT](../protocol/#uma-rp-get-rpt)
 * [UMA RP - Authorize RPT](../protocol/#uma-rp-authorize-rpt)
