@@ -14,38 +14,51 @@ Download a sample project specific to this oxd library.
 
 ## oxd Server Methods
 
-The Gluu's oxd Server provides six methods for OpenID Connect authentication using oxd-csharp API. Below are the methods.
+The Gluu's oxd Server provides six methods for OpenID Connect authentication using oxd-csharp API. 
+Below are the methods. These methods helps you to perform various operations to authenticate 
+an user to an application.
 
 * [Register Site](../protocol/#register-site)
-* [Update Site Registration](../oxd/protocol/#update-site-registration)
-* [Get Authorization URL](../oxd/protocol/#get-authorization-url)
-* [Get Tokens by Code](../oxd/protocol/#get-user-info)
-* [Get User Info](../oxd/protocol/#get-user-info)
-* [Get Logout URI](../oxd/protocol/#log-out-uri)
+* [Update Site Registration](../protocol/#update-site-registration)
+* [Get Authorization URL](../protocol/#get-authorization-url)
+* [Get Tokens by Code](../protocol/#get-user-info)
+* [Get User Info](../protocol/#get-user-info)
+* [Get Logout URI](../protocol/#log-out-uri)
 
-The Gluu's oxd Server provides two UMA Resource Server API's. The APIs are listed below
-* [UMA RS Protect resources](../oxd/protocol/#uma-rs-protect-resources)
-* [UMA RS Check Access](../oxd/protocol/#uma-rs-check-access)
-The Gluu's oxd Server provides two UMA Client API's. The APIs are listed below
-* [UMA RP - Get RPT](../oxd/protocol/#uma-rp-get-rpt)
-* [UMA RP - Authorize RPT](../oxd/protocol/#uma-rp-authorize-rpt)
-The oxd Server also provides one Gluu OAuth2 Access Management API's. The API is
-* [UMA RP Get GAT](../oxd/protocol/#gluu-oauth2-access-management-apis)
+The Gluu's oxd Server provides two UMA Resource Server Methods, mentioned as below
 
+* [UMA RS Protect resources](../protocol/#uma-rs-protect-resources)
+* [UMA RS Check Access](../protocol/#uma-rs-check-access)
 
+The Gluu's oxd Server provides two UMA Client methods.
 
+* [UMA RP - Get RPT](../protocol/#uma-rp-get-rpt)
+* [UMA RP - Authorize RPT](../protocol/#uma-rp-authorize-rpt)
+
+The oxd Server also provides one Gluu OAuth2 Access Management method, 
+which enables you to create a user profile and obtain a token from the AS 
+by explicitly specifying the requested scope.
+
+* [UMA RP Get GAT](../protocol/#gluu-oauth2-access-management-apis)
 
 ## Installation
-* [Github sources](https://github.com/GluuFederation/oxd-csharp)
+
+### **Prerequisite**
+To install oxd-csharp, below are required as mandate
+
+* [Github sources](https://github.com/GluuFederation/oxd-csharp/tree/3.0.1)
 * [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/)
 * [oxd server](../../install/index.md)
 * [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/Clients)
 * [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)
 
+!!! Note:
+    CSharp requires windows server or windows installed machine to work.
 
-### **Prerequisite**
+### Installing oxd-csharp
 
-1) You have to install [gluu server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/) in Ubuntu 14 VM and oxd-server in your hosting server to use oxd-csharp
+1) You have to install [gluu server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/) 
+   in Ubuntu 14 VM and oxd-server in your hosting server to use oxd-csharp
    library with your application.
 2) [oxd server](../../install/index.md) must be running in the same server where client application is hosted
 3) Client application url must be https:// . 
@@ -56,10 +69,11 @@ The oxd Server also provides one Gluu OAuth2 Access Management API's. The API is
 ```PM> Install-Package Gluu.Oxd.OxdCSharp```
 
 
-!!! **Note:** Install Gluu server in Ubuntu 14 VM in your windows machine. 
-VM will need at least 4GB or RAM and 2 CPU units. 
-So you can communicate with gluu server from your c# library.
- you can start oxd server in your windows machine it self. 
+!!! Note 
+    Install Gluu server in Ubuntu 14 VM in your windows machine. 
+    VM will need at least 4GB or RAM and 2 CPU units. 
+    So you can communicate with gluu server from your c# library.
+    you can start oxd server in your windows machine it self. 
 
 ## Sample Code
 
@@ -493,4 +507,3 @@ Access Granted
 Any technical support you need please checkout our [support page](https://support.gluu.org/)
 
 Bugs found in oxd CSharp libary can be reported at [github](https://github.com/GluuFederation/oxd-csharp/issues)
-
