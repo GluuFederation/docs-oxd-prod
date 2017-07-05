@@ -42,18 +42,19 @@ Before using this plugin with GLUU open id provider make sure you have configure
 
 To enable email claim in the gluu server do the following:
 
-1.First navigate to "OpenID Connect->Scopes" in the "Display Name" column click the "Email" link and then set the default scope to "True" from the drop down menu and make sure to add email claim in the "claims menu"(see following images for better reference).
+1.First navigate to `OpenID Connect` > `Scopes` in the `Display Name` column click the `Email` link and then set the default scope to `True` from the drop down menu and make sure to add email claim in the `claims menu`(see following images for better reference).
+
 ![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailScope.PNG)
 
 ![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailScopeInner.PNG)
 
-2.Then navigate to "Configuration->Attributes" and make sure that the "Email" row is set to "Active" in the scopes.
+2.Then navigate to `Configuration` > `Attributes` and make sure that the `Email` row is set to `Active` in the scopes.
 
 ![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailInAttribute.PNG)
 
 ### General 
 
-In your WP admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:
+In your WP(WordPress) admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:
 
 ![General](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/1.png) 
 
@@ -74,7 +75,7 @@ If your OpenID Connect Provider doesn't support dynamic registration, you will n
 To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
 !!!Note:
-    If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect > Clients page. Search for your `oxd id`.
+    If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your     Gluu Server, navigate to the `OpenID Connect` > `Clients` page. Search for your `oxd id`.
 
 #### Enrollment and Access Management
 
