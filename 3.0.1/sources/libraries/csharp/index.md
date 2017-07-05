@@ -505,5 +505,4 @@ Access Granted
 
 ## Support
 Any technical support you need please checkout our [support page](https://support.gluu.org/)
-
 Bugs found in oxd CSharp libary can be reported at [github](https://github.com/GluuFederation/oxd-csharp/issues)
