@@ -6,7 +6,7 @@ The oxd OpenID Connect single sign-on (SSO) plugin for WordPress enables you to 
 
 ## WordPress Demo Video
 
-You can watch a video demo of the WordPress plugin installation and configuration [here](https://youtu.be/RfDrhGQ185M). In the video we use the Gluu Server as the OP. 
+You can watch a video demo of the WordPress plugin installation and configuration [here](https://youtu.be/RfDrhGQ185M). In the video we use a Gluu Server as the OP. 
 
 ## Requirements
 In order to use the WordPress plugin you will need a WordPress site, a standard OP (like Google or a Gluu Server), and an active oxd server. Some additional notes:
