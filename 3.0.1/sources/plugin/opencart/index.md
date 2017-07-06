@@ -140,6 +140,13 @@ the mechanism which you want for authentication.
     If the `Select acr` value is `none`, 
     customers will be sent to pass the OP's default authentication mechanism.
 
+## OpenCart Demo Video
+
+Demo of OpenCart installation and configuration with oxd.
+
+<a href = "https://youtu.be/OEPyhnM6Dmo" target="_blank">![OpenCart DEMO](https://img.youtube.com/vi/OEPyhnM6Dmo/0.jpg)</a>
+
+
 #### Support
 If you are having any technical issue on using 
 Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin you can check 

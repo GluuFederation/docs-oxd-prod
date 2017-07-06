@@ -41,9 +41,13 @@ In addition, the following documents will be of assistance as well:
 ## Sample Code
 
 #### Register Site
+
 **Required parameters:**
+
 * OpHost     - OpenId Provider Url
+
 * oxdport        - the port of the oxd server
+
 * redirectURI - A URL which the OP is authorized to redirect the user after authorization.
 
 **Request:**
@@ -80,10 +84,15 @@ In addition, the following documents will be of assistance as well:
 ```
 
 #### Update Site Registration
+
 **Required parameters:**
-* OpHost     - OpenId Provider Url
-* oxdport        - the port of the oxd server
-* oxdId       - the port of the oxd server
+
+* OpHost      - OpenId Provider Url
+
+* oxdport     - the port of the oxd server
+
+* oxdId       - oxdID from client registration
+
 * redirectURI - A URL which the OP is authorized to redirect the user after authorization.
 
 **Request:**
@@ -116,10 +125,14 @@ In addition, the following documents will be of assistance as well:
 ```
 
 #### Get Authorization URL
+
 **Required parameters:**
+
 * OpHost   - OpenId Provider Url
+
 * oxdport  - the port of the oxd server
-* oxdId    - the port of the oxd server
+
+* oxdId    - oxdID from client registration
 
 **Request:**
 ```csharp
@@ -152,11 +165,17 @@ In addition, the following documents will be of assistance as well:
 ```
 
 #### Get Tokens by Code
+
 **Required parameters:**
+
 * OpHost   - OpenId Provider Url
+
 * oxdport  - the port of the oxd server
-* oxdId    - the port of the oxd server
+
+* oxdId    - oxdID from client registration
+
 * authCode    - The Code from OP redirect url
+
 * authState    - The State from OP redirect url
 
 **Request:**
@@ -206,10 +225,15 @@ In addition, the following documents will be of assistance as well:
 
 
 #### Get User Info
+
 **Required parameters:**
+
 * OpHost   - OpenId Provider Url
+
 * oxdport  - the port of the oxd server
-* oxdId    - the port of the oxd server
+
+* oxdId    - oxdID from client registration
+
 * accessToken - accessToken from GetTokenByCode
 
 **Request:**
@@ -255,10 +279,14 @@ In addition, the following documents will be of assistance as well:
 ```
 
 #### Logout
+
 **Required parameters:**
+
 * OpHost   - OpenId Provider Url
+
 * oxdport  - the port of the oxd server
-* oxdId    - the port of the oxd server
+
+* oxdId    - oxdID from client registration
 
 **Request:**
 ```csharp

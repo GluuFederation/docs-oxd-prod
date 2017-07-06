@@ -127,6 +127,12 @@ In the `Select acr` section of the plugin page, choose the mechanism which you
 want for authentication. If the `Select acr` value in the plugin is `none`, users will be 
 sent to pass the OP's default authentication mechanism.
 
+## WordPress Demo Video
+
+Demo of WordPress installation and configuration with oxd.
+
+<a href = "https://youtu.be/RfDrhGQ185M" target="_blank">![WP DEMO](https://img.youtube.com/vi/RfDrhGQ185M/0.jpg)</a>
+
 
 
 #### Support
