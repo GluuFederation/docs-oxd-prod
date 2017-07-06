@@ -2,7 +2,7 @@
 
 ![image](../../img/plugin/wordpress.png)
 
-The oxd OpenID Connect single sign-on (SSO) plugin for WordPress enables you to authenticate and enroll users for a WordPress site with a standard OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/). 
+The oxd OpenID Connect single sign-on (SSO) plugin for WordPress enables you to use a standard OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/), to authenticate and enroll users for a WordPress site. 
 
 ## WordPress Demo Video
 
