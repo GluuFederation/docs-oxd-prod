@@ -58,7 +58,7 @@ If your OpenID Connect Provider does not support dynamic registration (like Goog
 
 Both values need to be obtained from the OP. To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
-!!!Note:
+!!! Note
     If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your     Gluu Server, navigate to the `OpenID Connect` > `Clients` page. Search for your `oxd id`.
 
 #### Enrollment and Access Management
