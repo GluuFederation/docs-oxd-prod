@@ -35,7 +35,7 @@ Activate the plugin by performing the following steps:
 
 ## Plugin Configuration 
 
-In your WordPress admin menu panel you should now see the OpenID Connect tab in the lefthand menu. Click the link to navigate to the General configuration page.
+In your WordPress admin dashboard you should now see the OpenID Connect tab in the lefthand menu. Click the link to navigate to the General configuration page.
 
 ### General
 
