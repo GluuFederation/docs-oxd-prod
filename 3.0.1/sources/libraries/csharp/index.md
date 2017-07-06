@@ -10,37 +10,38 @@ and the [free open source Gluu Server](http://gluu.org/gluu-server).
 
 The oxd server provides the following six methods for authenticating users with OpenID Connect:
 
-* [Register Site](../protocol/#register-site)
-* [Update Site Registration](../protocol/#update-site-registration)
-* [Get Authorization URL](../protocol/#get-authorization-url)
-* [Get Tokens by Code](../protocol/#get-user-info)
-* [Get User Info](../protocol/#get-user-info)
-* [Get Logout URI](../protocol/#log-out-uri)
+- [Register Site](../protocol/#register-site)    
+- [Update Site Registration](../protocol/#update-site-registration)    
+- [Get Authorization URL](../protocol/#get-authorization-url)   
+- [Get Tokens by Code](../protocol/#get-user-info)    
+- [Get User Info](../protocol/#get-user-info)   
+- [Get Logout URI](../protocol/#log-out-uri)   
 
 ## Installation
 
 ### Prerequisites
 
 To install oxd-csharp, you need the following:
-* A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);
-* The [oxd server](../../install/index.md) running in the same server where the client is configured;
-* Client application url must be `https://` . 
+
+- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
+- The [oxd server](../../install/index.md) running in the same server where the client is configured;    
+- Client application url must be `https://`.    
 
 In addition, the following documents will be of assistance as well:
-* [Github sources](https://github.com/GluuFederation/oxd-csharp/tree/3.0.1).
-* [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/Clients)
-* [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)
+- [Github sources](https://github.com/GluuFederation/oxd-csharp/tree/3.0.1)    
+- [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/Clients)    
+- [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)     
 
 !!! Note:
     CSharp requires windows server or windows installed machine to work.
 
-### **Install oxd NuGet Package**
+### Install oxd NuGet Package
 
 ```PM> Install-Package Gluu.Oxd.OxdCSharp```
 
 ## Sample Code
 
-#### Register Site
+### Register Site
 
 **Required parameters:**
 
@@ -83,7 +84,7 @@ In addition, the following documents will be of assistance as well:
 }
 ```
 
-#### Update Site Registration
+### Update Site Registration
 
 **Required parameters:**
 
@@ -124,7 +125,7 @@ In addition, the following documents will be of assistance as well:
 }
 ```
 
-#### Get Authorization URL
+### Get Authorization URL
 
 **Required parameters:**
 
@@ -164,7 +165,7 @@ In addition, the following documents will be of assistance as well:
 }
 ```
 
-#### Get Tokens by Code
+### Get Tokens by Code
 
 **Required parameters:**
 
@@ -224,7 +225,7 @@ In addition, the following documents will be of assistance as well:
 ```
 
 
-#### Get User Info
+### Get User Info
 
 **Required parameters:**
 
@@ -278,7 +279,7 @@ In addition, the following documents will be of assistance as well:
 }
 ```
 
-#### Logout
+### Logout
 
 **Required parameters:**
 
