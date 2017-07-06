@@ -1,6 +1,6 @@
 # OpenID Connect Single Sign-On (SSO) Magento Extension By Gluu
 
-![image](../img/plugin/magento.png)
+![image](../../img/plugin/magento.png)
 
 Gluu's OpenID Connect Single Sign-On (SSO) Magento Extension will 
 enable you to authenticate users against any standard 
@@ -28,26 +28,26 @@ Download Magento(OpenID Connect SSO) plugin from [Magento marketplace](https://w
 ### Disable cache
 
 1. Open menu tab System/Cache Management
-![Management](../img/plugin/mag0.png)
+![Management](../../img/plugin/mag0.png)
 
 2. Check select all, set action on disable and click on submit button.
-![submit](../img/plugin/mag1.png)
+![submit](../../img/plugin/mag1.png)
 
 
 ### Install extension
 
 1. Open menu tab System/Magento Connect/Magento Connect Manager
-![Manager](../img/plugin/mag2.png)
+![Manager](../../img/plugin/mag2.png)
 
 2. Choose downloaded file and click on upload button.
-![upload](../img/plugin/mag3.png)
+![upload](../../img/plugin/mag3.png)
 
 3. See Auto-scroll console contents, if extension successfully installed return to admin panel.
 
 #### Extension will be automatically activated.
 
 3. Open menu tab OpenID Connect/ Open extension page
-![GluuSSO](../img/plugin/44.mag4.png)
+![GluuSSO](../../img/plugin/44.mag4.png)
 
 
 ## Configuration
@@ -61,21 +61,21 @@ To enable email claim in the gluu server do the following:
 1.First navigate to `OpenID Connect` > `Scopes` in the `Display Name` column click the `Email`
  link and then set the default scope to `True` from the drop down menu and make sure to add email 
  claim in the `claims menu` (see following images for better reference).
-![image](../img/plugin/emailScope.PNG)
+![image](../../img/plugin/emailScope.PNG)
 
-![image](../img/plugin/emailScopeInner.PNG)
+![image](../../img/plugin/emailScopeInner.PNG)
 
 2.Then navigate to `Configuration` > `Attributes` and make sure 
 that the `Email` row is set to `Active` in the scopes.
 
-![image](../img/plugin/emailInAttribute.PNG)
+![image](../../img/plugin/emailInAttribute.PNG)
 
 ### General
 
 In your Magento admin menu panel you should now see the OpenID Connect menu tab. 
 Click the link to navigate to the General configuration  page:
 
-![General](../img/plugin/44.m1.png)  
+![General](../../img/plugin/44.m1.png)  
 
 1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to register for an account in your Magento site. They will be assigned the new user default role specified below.
 2. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `magento`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. 
@@ -90,7 +90,7 @@ general tab and you can navigate to the [OpenID Connect Configuration](#openid-c
 
 If your OpenID Connect Provider doesn't support dynamic registration, you will need to insert your OpenID Provider `client_id` and `client_secret` on the following page.
 
-![General](../img/plugin/44.m1.1.png) 
+![General](../../img/plugin/44.m1.1.png) 
 
 To generate your `client_id` and `client_secret` use the `Redirect URL` for customer page: `https://{site-base-url}/index.php/customer/account/login/?option=getOxdSocialLogin` and `Redirect URL` for administrator  page: `https://{site-base-url}/index.php/admin/?option=getOxdAdminLogin`.
 
@@ -110,7 +110,7 @@ To generate your `client_id` and `client_secret` use the `Redirect URL` for cust
 
 ### OpenID Connect Configuration
 
-![General](../img/plugin/config.png) 
+![General](../../img/plugin/config.png) 
 
 #### User Scopes
 
@@ -128,10 +128,10 @@ In the extension interface you can enable, disable and delete scopes.
 #### Authentication
 
  Bypass the local Magento customer login page and send users straight to the OP for authentication: Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local Magento customer login screen. When it is not checked, users will see the following screen when trying to login:
-![General](../img/plugin/customer_login.png) 
+![General](../../img/plugin/customer_login.png) 
 
  Bypass the local Magento administrator login page and send users straight to the OP for authentication: Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local Magento administrator login screen. When it is not checked, users will see the following screen when trying to login:
-![General](../img/plugin/admin_login.png) 
+![General](../../img/plugin/admin_login.png) 
 
 Select ACR: To signal which type of authentication should be used, an OpenID Connect client may request a specific authentication context class reference value (a.k.a. "acr"). The authentication options available will depend on which types of mechanisms the OP has been configured to support. The Gluu Server supports the following authentication mechanisms out-of-the-box: username/password (basic), Duo Security, Super Gluu, and U2F tokens, like Yubikey.
 

@@ -1,6 +1,6 @@
 # OpenCart  OpenID Connect Single Sign-On (SSO) Extension by Gluu 
 
-![image](https://raw.githubusercontent.com/GluuFederation/opencart-oxd-module/master/opencart.png)
+![image](../../img/plugin/opencart.png)
 
 Gluu's OpenID Connect Single Sign-On (SSO) OpenCart module will enable you to 
 authenticate users against any standard OpenID Connect Provider (OP). 
@@ -32,7 +32,7 @@ standard OP (like Google or a Gluu Server) and the oxd server.
 1. Unzip file in your OpenCart site root directory.
 
 2. Open menu tab Extensions / Modules and find OpenID Connect Single Sign-On (SSO) Extension by Gluu click on ```Install``` button, than click on ```Edit``` button.
-![Manager](../img/plugin/0.png) 
+![Manager](../../img/plugin/0.png) 
 
 ## Configuration
 
@@ -46,21 +46,21 @@ To enable email claim in the Gluu server do the following:
  link and then set the default scope to `True` from the drop down menu and make sure to add 
  email claim in the `claims menu`(see following images for better reference).
  
-![image](../img/plugin/emailScope.PNG)
+![image](../../img/plugin/emailScope.PNG)
 
-![image](../img/plugin/emailScopeInner.PNG)
+![image](../../img/plugin/emailScopeInner.PNG)
 
 2.Then navigate to `Configuration` > `Attributes` and make sure that the `Email`
  row is set to `Active` in the scopes.
 
-![image](../img/plugin/emailInAttribute.PNG)
+![image](../../img/plugin/emailInAttribute.PNG)
 
 ### General
  
 In your OpenCart admin menu panel you should now see the OpenID Connect menu tab. 
 Click the link to navigate to the General configuration  page:
 
-![upload](../img/plugin/opencart1.png) 
+![upload](../../img/plugin/opencart1.png) 
 
 1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to dynamically register for an account in your OpenCart site. They will be assigned the new user default role specified below.
 2. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `opencart`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
@@ -76,7 +76,7 @@ required in the general tab and you can navigate to the
 
 If your OpenID Connect Provider doesn't support dynamic registration, you will need to insert your OpenID Provider `client_id` and `client_secret` on the following page.
 
-![upload](../img/plugin/opencart-ui.png)  
+![upload](../../img/plugin/opencart-ui.png)  
 
 To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
@@ -89,7 +89,7 @@ Navigate to your Gluu Server admin GUI. Click the `Users` tab in the left hand n
 
 ### OpenID Connect Configuration
 
-![upload](../img/plugin/opencart3.png) 
+![upload](../../img/plugin/opencart3.png) 
 
 #### User Scopes
 
@@ -120,7 +120,7 @@ Check this box so that when customers attempt to login they are sent straight to
 bypassing the local OpenCart login screen. When it is not checked, it will 
 give proof the following screen.   
 
-![upload](../img/plugin/opencart4.png) 
+![upload](../../img/plugin/opencart4.png) 
 
 ##### Select acr
 

@@ -1,6 +1,6 @@
 # OpenID Connect Single Sign-On (SSO) WordPress Plugin By Gluu
 
-![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/wordpress.png)
+![image](../../img/plugin/wordpress.png)
 
 Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin will enable you to 
 authenticate users against any standard OpenID Connect Provider (OP). 
@@ -44,19 +44,19 @@ To enable email claim in the gluu server do the following:
 
 1.First navigate to `OpenID Connect` > `Scopes` in the `Display Name` column click the `Email` link and then set the default scope to `True` from the drop down menu and make sure to add email claim in the `claims menu`(see following images for better reference).
 
-![image](../img/plugin/emailScope.PNG)
+![image](../../img/plugin/emailScope.PNG)
 
-![image](../img/plugin/emailScopeInner.PNG)
+![image](../../img/plugin/emailScopeInner.PNG)
 
 2.Then navigate to `Configuration` > `Attributes` and make sure that the `Email` row is set to `Active` in the scopes.
 
-![image](../img/plugin/emailInAttribute.PNG)
+![image](../../img/plugin/emailInAttribute.PNG)
 
 ### General 
 
 In your WP(WordPress) admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:
 
-![General](../img/plugin/1.png) 
+![General](../../img/plugin/1.png) 
 
 1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to register for an account in your WordPress site. They will be assigned the new user default role specified below.
 2. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `wordpress`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
@@ -70,7 +70,7 @@ If your OpenID Provider supports dynamic registration, no additional steps are r
 
 If your OpenID Connect Provider doesn't support dynamic registration, you will need to insert your OpenID Provider `client_id` and `client_secret` on the following page.
 
-![General](../img/plugin/2.png) 
+![General](../../img/plugin/2.png) 
 
 To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
@@ -91,7 +91,7 @@ To generate your `client_id` and `client_secret` use the redirect uri: `https://
 
 ### OpenID Connect Configuration
 
-![OpenID Connect Configuration](../img/plugin/5.png)
+![OpenID Connect Configuration](../../img/plugin/5.png)
 
 #### User Scopes
 
@@ -113,7 +113,7 @@ Check this box so that when users attempt to login they are sent straight to the
 bypassing the local WP login screen. When it is not checked, users will see the following 
 screen when trying to login: 
 
-![upload](../img/plugin/6.png) 
+![upload](../../img/plugin/6.png) 
 
 **Select ACR**: To signal which type of authentication should be used, 
 an OpenID Connect client may request a specific authentication context class reference value (a.k.a. "acr"). 
@@ -132,8 +132,6 @@ sent to pass the OP's default authentication mechanism.
 Demo of WordPress installation and configuration with oxd.
 
 <a href = "https://youtu.be/RfDrhGQ185M" target="_blank">![WP DEMO](https://img.youtube.com/vi/RfDrhGQ185M/0.jpg)</a>
-
-
 
 #### Support
 If you are having any technical issue on using Gluu's OpenID Connect Single Sign-On (SSO) 
