@@ -21,13 +21,13 @@ The oxd server provides the following six methods for authenticating users with 
 
 ### Prerequisites
 
-To install oxd-csharp, you need the following:
+To use the oxd csharp library, you will need:
 
 - A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
-- The [oxd server](../../install/index.md) running in the same server where the client is configured;    
-- Client application url must be `https://`.    
+- An active installation of the [oxd server](../../install/index.md) running in the same server where the client is configured;    
+- A client application with a valid ssl cert, so the application url includes: `https://`    
 
-In addition, the following documents will be of assistance as well:
+In addition, the following resources will be of assistance as well:
 - [Github sources](https://github.com/GluuFederation/oxd-csharp/tree/3.0.1)    
 - [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/Clients)    
 - [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)     
