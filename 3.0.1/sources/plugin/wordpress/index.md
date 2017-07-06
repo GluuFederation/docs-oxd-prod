@@ -74,7 +74,7 @@ In the enrollment and access management section of the plugin configuration page
 
 2. New User Default Role: specify which role to give to new users upon registration.  
 
-#### Role Based Enrollment
+##### Role Based Enrollment
 In order to enable role based enrollment, perform the following: 
 
 1. Navigate to your Gluu Server admin GUI ("oxTrust"); 
