@@ -75,18 +75,28 @@ In the enrollment and access management section of the plugin configuration page
 2. New User Default Role: Use this field to specify which role to give to new users upon registration. If you have automatic registration set to disabled, you will have the opportunity to specify the users role during manual account creation. 
 
 ##### Role Based Enrollment
-In order to enable role based enrollment, perform the following: 
+In order to implement role based enrollment, you will need to make changes in both the plugin and the Gluu Server. 
+
+**Perform the following in the Plugin:**     
+
+1. In the Enrollment and Access Management section, choose the option: `Only register and allow ongoing...`;   
+2. Add a name for the role want to use to enforce access (e.g. `wordpress` or `website`);     
+3. Save the configuration.
+4. Navigate to the OpenID Connect Configuration tab;  
+5. In the User Scopes section, check the box for `permission`;
+6. Save your settings.
+
+**Perform the following in your Gluu Server:**    
 
 1. Navigate to your Gluu Server admin GUI ("oxTrust"); 
 2. Click the `Users` tab in the left hand navigation menu; 
 3. Select `Manage People`;  
 4. Find the person(s) who should have access;   
 5. Click their user entry;   
-6. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you specify that enrollment should be limited to users with role = `wordpress`, then you should also have `User Permission` = `wordpress` in the user entry. [See a screenshot example](https://cloud.githubusercontent.com/assets/5271048/19735932/2c3817c4-9b73-11e6-9d59-ace7ecdfed41.png).
+6. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you specify that enrollment should be limited to users with role = `wordpress`, then you should also have `User Permission` = `wordpress` in the user entry. [See a screenshot example](https://cloud.githubusercontent.com/assets/5271048/19735932/2c3817c4-9b73-11e6-9d59-ace7ecdfed41.png);
 7. Update the user record. 
-8. Go back to the WP plugin and navigate to the OpenID Configuration tab. 
-9. In the User Scopes section, check the box for `permission`.  
-10. Now users with the specified scope are ready for enrollment at your WordPress site. 
+
+Now only users with the role `wordpress` in the Gluu Server will be able to gain access to your WordPress site. 
 
 ### OpenID Connect Configuration
 Navigate to the OpenID Connect Configuration tab to set your preferences for scopes and authentication. 
