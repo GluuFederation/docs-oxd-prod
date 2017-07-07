@@ -56,7 +56,7 @@ click on submit button.
 3. when the extension is successfully installed return to admin panel.
 
     !!! Note:
-        Extension will be automatically activated.
+        Extension will be activated automatically.
 
 4. Log in to Magento Admin Panel and navigate to `OpenID Connect` > `Open extension page`
 
