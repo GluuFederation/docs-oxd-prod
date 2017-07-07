@@ -32,7 +32,8 @@ Navigate to the plugins page, e.g. `https://{site-base-url}/wp-admin/plugins.php
 
 ## Plugin Configuration 
 
-In your WordPress admin dashboard you should now see the OpenID Connect tab in the lefthand menu. Click the link to navigate to the General configuration page.
+In your WordPress admin dashboard you should now see the OpenID Connect tab in the lefthand menu. 
+Click the link to navigate to the General configuration page.
 
 ### General
 
