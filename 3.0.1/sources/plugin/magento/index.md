@@ -67,14 +67,14 @@ click on submit button.
 In your magento admin dashboard you should now see the OpenID Connect tab in the left hand menu. 
 Click the link to navigate to the General configuration page.
 
-## General
+### General
 In your Magento admin menu panel you should now see the OpenID Connect menu tab being displayed. 
 
 Click the link to navigate to the General configuration page:
 
  ![General](../../img/plugin/44.m1.png)
  
-### Server Settings
+#### Server Settings
 In the server settings section of the plugin configuration page you will need to enter 
 some information about your OP, your oxd server, and where you want to redirect users after logout. 
 
