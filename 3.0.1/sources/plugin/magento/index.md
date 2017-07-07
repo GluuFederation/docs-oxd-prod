@@ -7,78 +7,219 @@ enable you to authenticate users against any standard
 OpenID Connect Provider (OP). If you don't already have an OP you can use 
 Google or [deploy the free open source Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/).
 
+## Magento Demo Video
+
+You can watch a video demo of the Magento plugin installation and configuration 
+[here](https://youtu.be/2gXPMUsLOfU). In the video we use a Gluu Server as the OpenID Provider. 
+
 ## Requirements
 In order to use the Magento Extension you will need a 
-standard OP (like Google or a Gluu Server) and the oxd server.
+standard OP (like Google or a Gluu Server) and an active oxd server.
 
-* Compatibility : 1.5 <= 1.9.2 version
+- This plugin is compatible with Magento versions: 1.5 - 1.9.2.
 
-* [Gluu Server Installation Guide](https://gluu.org/docs/ce/3.0.1/installation-guide/install/).
+- If you prefer to have your own OP server, you can deploy the free open source 
+[Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google.
 
-* [oxd Webpage](https://oxd.gluu.org)
+- You will need a valid license to start the oxd server. You can get a license and a $50 credit by 
+signing up on the [oxd website](https://oxd.gluu.org).
 
-## Download
+## Plugin Installation
+ 
+### Download the Plugin
 
-Download Magento(OpenID Connect SSO) plugin from [Magento marketplace](https://www.magentocommerce.com/magento-connect/openid-connect-sso.html)
-> Click on Install now, to register or login to download and install plugin. 
-[Github source](https://github.com/GluuFederation/magento-oxd-extension/blob/master/Magento_gluu_SSO-3.0.1.tgz).
+You can either download Magento Plugin from the [Github source](https://github.com/GluuFederation/magento-oxd-extension/blob/master/Magento_gluu_SSO-3.0.1.tgz)
+or [Magento marketplace](https://www.magentocommerce.com/magento-connect/openid-connect-sso.html)
 
 ## Installation
 
 ### Disable cache
+To Install Magento plugin, you have to disable cache in Magento Admin console
 
-1. Open menu tab System/Cache Management
-![Management](../../img/plugin/mag0.png)
+1. Log in to Magento Admin Panel and in the menu click on `System` > `Cache Management`
 
-2. Check select all, set action on disable and click on submit button.
-![submit](../../img/plugin/mag1.png)
+    ![Management](../../img/plugin/mag0.png)
+
+2. Check `select all` option to select all cache type and set `Action` drop down menu to disable and 
+click on submit button.
+   
+    ![submit](../../img/plugin/mag1.png)
+
+### Upload Plugin
+
+1. Log in to Magento Admin Panel and navigate to `System` > `Magento Connect` > `Magento Connect Manager`
+
+    ![Manager](../../img/plugin/mag2.png)
+
+2. Select the downloaded plugin file and click on upload button.
+
+    ![upload](../../img/plugin/mag3.png)
+
+3. when the extension is successfully installed return to admin panel.
+
+    !!! Note:
+        Extension will be automatically activated.
+
+4. Log in to Magento Admin Panel and navigate `OpenID Connect` > `Open extension page`
+
+    ![GluuSSO](../../img/plugin/44.mag4.png)
+
+## Plugin Configuration 
+
+In your magento admin dashboard you should now see the OpenID Connect tab in the left hand menu. 
+Click the link to navigate to the General configuration page.
+
+## OP Configuration
+
+### Gluu Server Configuration 
+
+If you are using a Gluu Server as your OP, you will need to configure Gluu to release the email claim. 
+You can do so by following the below steps:
+
+1. Log in to your Gluu Server dashboard ("oxTrust") and navigate to `OpenID Connect` > `Scopes`. 
+
+2. Find the `email` scope and click on it. 
+
+3. Set the default scope field to `True`.
+
+4. If `Email` is not already added to the `Claims` field, click the `Add Claim`, search for email, and add it. 
+
+![image](../../img/plugin/emailScope1.png)
+
+![image](../../img/plugin/emailScopeInner1.png)
+
+5. Now navigate to `Configuration` > `Attributes` and make sure that the `Email` attribute is set to `Active`. If it is not, click on the `email` attribute and scroll down to the `Status` field where you can change the value to Active. Click update. 
+
+![image](../../img/plugin/emailInAttribute1.png)
 
 
-### Install extension
+## General
+In your Magento admin menu panel you should now see the OpenID Connect menu tab being displayed. 
 
-1. Open menu tab System/Magento Connect/Magento Connect Manager
-![Manager](../../img/plugin/mag2.png)
+Click the link to navigate to the General configuration page:
 
-2. Choose downloaded file and click on upload button.
-![upload](../../img/plugin/mag3.png)
+ ![General](../../img/plugin/44.m1.png)
+ 
+### Server Settings
+In the server settings section of the plugin configuration page you will need to enter 
+some information about your OP, your oxd server, and where you want to redirect users after logout. 
 
-3. See Auto-scroll console contents, if extension successfully installed return to admin panel.
+A short description of each field follows:
 
-#### Extension will be automatically activated.
+1. URI of the OpenID Provider: Insert the URI of the OpenID Connect Provider here. If you are using Google as your OP, this will simply be `https://accounts.google.com`. If you are using another OP it will be something like `https://idp.example.com`. 
 
-3. Open menu tab OpenID Connect/ Open extension page
-![GluuSSO](../../img/plugin/44.mag4.png)
+2. Custom URI after logout: Provide a URL for a landing page to redirect users after logout of the magento site, for instance `https://example.com/thank-you`. 
+If you don't have a preferred logout page, we recommend simply entering the URL of your website homepage URL. 
+If you leave this field blank the user will see the default logout page presented by magento. 
 
+3. oxd port: Enter the oxd-server port, which you can find in your `oxd-server/conf/oxd-conf.json` file.
 
-## Configuration
+4. Click `Register` to continue.
+
+If your OpenID Provider supports dynamic registration no additional steps are required. 
+
+If your OpenID Connect Provider does not support dynamic registration (like Google), 
+after clicking register two additional fields will be exposed where you need to enter 
+your `client_id` and `client_secret`. 
+
+Both values need to be obtained from the OP. To generate your `client_id` and `client_secret` 
+use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
+
+!!! Note
+    If you are using a Gluu server as your OpenID Provider, you can make sure everything is 
+    configured properly by logging into to your 
+    Gluu Server, navigate to the `OpenID Connect` > `Clients` page. Search for your `oxd id`. 
+    If you are able to find your oxd id in OP, everything worked.
+
+#### Enrollment and Access Management
+In the enrollment and access management section of the plugin configuration page you can decide, 
+(1), how new user registration will be handled, and, (2), what role new users will receive upon registration.
+
+1. You have three options for how new user registrations are handled: 
+
+- Automatically register any user with an account in the OpenID Provider: 
+By setting registration to automatic, any user with an account in the OP will be able to 
+dyanmically register for an account on your magento site;
+
+- Only register and allow ongoing access to users with one or more of the following roles in the OP: 
+Using this option you can limit registration to users that have a specified role in the OP, 
+for instance `magento`. Note: this is not configurable in all OP's. It is configurable if you are using a 
+Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
+Each time the user authenticates they will need to have this scope present in order to be approved for 
+access (i.e. if you remove this scope from the users profile in the OP, the user would be denied access); 
+
+- Disable automatic registration: If you choose to disable automatic registration, 
+you will need to manually add a user in magento for each person you want to have access. 
+Make sure that when you add the user in magento, you use the same email that they have registered in the OP. 
+
+2. New User Default Role: Use this field to specify which role to give to new users upon registration. 
+If you have automatic registration set to disabled, you will have the opportunity to specify 
+the users role during manual account creation. 
+
+##### Role Based Enrollment
+In order to implement role based enrollment, you will need to make changes in both the plugin and the Gluu Server. 
+
+**Perform the following in the Plugin:**     
+
+1. In the Enrollment and Access Management section, choose the option: `Only register and allow ongoing...`;   
+2. Add a name for the role want to use to enforce access (e.g. `magento` or `website`);     
+3. Save the configuration.
+4. Navigate to the OpenID Connect Configuration tab;  
+5. In the User Scopes section, check the box for `permission`;
+6. Save your settings.
+
+**Perform the following in your Gluu Server:**    
+
+1. Navigate to your Gluu Server admin GUI ("oxTrust"); 
+2. Click the `Users` tab in the left hand navigation menu; 
+3. Select `Manage People`;  
+4. Find the person(s) who should have access;   
+5. Click their user entry;   
+6. Add the `User Permission` attribute to the person and specify the same value as in the plugin. 
+For instance, if in the plugin you specify that enrollment should be limited to users with role = `magento`, 
+then you should also have `User Permission` = `Magento` in the user entry. [See a screenshot example](../../img/plugin/magento-users.png);
+7. Update the user record. 
+
+Now only users with the role `magento` in the Gluu Server will be able to gain access to your magento site. 
+
+<!-- **Removed** This will not render in public site
+## Plugin Configuration
 
 ### GLUU Server Configuration 
 
-Before using this plugin with GLUU open id provider make sure you have configured gluu to return email claim.
+!!! Note:
+    Before using this plugin with GLUU OpenID Provider make sure you have configured gluu to return email claim.
 
-To enable email claim in the gluu server do the following:
+#### Enable email Claim in Gluu Server
 
-1.First navigate to `OpenID Connect` > `Scopes` in the `Display Name` column click the `Email`
+1.Navigate to `OpenID Connect` > `Scopes` in the `Display Name` column click the `Email`
  link and then set the default scope to `True` from the drop down menu and make sure to add email 
  claim in the `claims menu` (see following images for better reference).
-![image](../../img/plugin/emailScope.PNG)
+ 
+ ![image](../../img/plugin/emailScope.PNG)
+ 
+ ![image](../../img/plugin/emailScopeInner.PNG)
 
-![image](../../img/plugin/emailScopeInner.PNG)
+2.Then navigate to `Configuration` > `Attributes` and make sure that the `Email` row is set to `Active` 
+in the scopes.
 
-2.Then navigate to `Configuration` > `Attributes` and make sure 
-that the `Email` row is set to `Active` in the scopes.
-
-![image](../../img/plugin/emailInAttribute.PNG)
+ ![image](../../img/plugin/emailInAttribute.PNG)
 
 ### General
 
 In your Magento admin menu panel you should now see the OpenID Connect menu tab. 
+
 Click the link to navigate to the General configuration  page:
 
-![General](../../img/plugin/44.m1.png)  
+ ![General](../../img/plugin/44.m1.png)  
 
-1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to register for an account in your Magento site. They will be assigned the new user default role specified below.
-2. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `magento`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. 
+1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, 
+   any user with an account in the OP will be able to register for an account in your Magento site. 
+   They will be assigned the new user default role specified below.
+2. Only register and allow ongoing access to users with one or more of the following roles in the OP: 
+   Using this option you can limit registration to users who have a specified role in the OP, 
+   for instance `magento`. This is not configurable in all OP's. It is configurable if you are 
+   using a Gluu Server. 
 3. New Customer Default Group: specify which group to give to new customer upon registration.
 4. URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.
 5. Custom URI after logout: custom URI after logout (for example "Thank you" page).
@@ -88,11 +229,14 @@ Click the link to navigate to the General configuration  page:
 If your OpenID Provider supports dynamic registration, no additional steps are required in the 
 general tab and you can navigate to the [OpenID Connect Configuration](#openid-connect-configuration) tab.
 
-If your OpenID Connect Provider doesn't support dynamic registration, you will need to insert your OpenID Provider `client_id` and `client_secret` on the following page.
+If your OpenID Connect Provider doesn't support dynamic registration, 
+you will need to insert your OpenID Provider `client_id` and `client_secret` on the following page.
 
-![General](../../img/plugin/44.m1.1.png) 
+ ![General](../../img/plugin/44.m1.1.png) 
 
-To generate your `client_id` and `client_secret` use the `Redirect URL` for customer page: `https://{site-base-url}/index.php/customer/account/login/?option=getOxdSocialLogin` and `Redirect URL` for administrator  page: `https://{site-base-url}/index.php/admin/?option=getOxdAdminLogin`.
+To generate your `client_id` and `client_secret` use the `Redirect URL` 
+for customer page: `https://{site-base-url}/index.php/customer/account/login/?option=getOxdSocialLogin` and 
+`Redirect URL` for administrator  page: `https://{site-base-url}/index.php/admin/?option=getOxdAdminLogin`.
 
 >> If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect > Clients page. Search for your `oxd id`.
 
@@ -107,43 +251,45 @@ To generate your `client_id` and `client_secret` use the `Redirect URL` for cust
 7. Update the user record.
 8. Go back to the Magento extension and make sure the `permission` scope is requested (see below).
 9. Now they are ready for enrollment at your Magento site.
+*Removed*-->
 
 ### OpenID Connect Configuration
-
-![General](../../img/plugin/config.png) 
+Navigate to the OpenID Connect Configuration tab to set your preferences for scopes and authentication. 
 
 #### User Scopes
 
-Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. By default, the requested scopes are `profile`, `email`, and `openid`.
+Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. By default, the requested scopes are `profile`, `email`, and `openid`. If you want more information about the users, you can request additional scopes. 
 
-To view your OP's available scopes, open a web browser and navigate to `https://OpenID-Provider/.well-known/openid-configuration`. For example, here are the scopes you can request if you're using [Google as your OP](https://accounts.google.com/.well-known/openid-configuration).
+To view your OP's available scopes, open a web browser and navigate to `https://<hostname>/.well-known/openid-configuration`. For example, if you are using Google the the OP, you can see the available scopes in the [Google's OP configuration](https://accounts.google.com/.well-known/openid-configuration). 
 
-If you are using a Gluu server as your OpenID Provider, 
-you can view all available scopes by navigating to the Scopes interface in Gluu CE Server Admin UI
-
-`openID-Connect` > `Scopes`
-
-In the extension interface you can enable, disable and delete scopes.
+If you are using a Gluu server as your OpenID Provider, you can view available scopes by navigating to the OpenID Configuration page as described above, or within oxTrust by navigating to `OpenID Connect` > `Scopes`.
 
 #### Authentication
+In the authentication settings, you have two options:
 
- Bypass the local Magento customer login page and send users straight to the OP for authentication: Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local Magento customer login screen. When it is not checked, users will see the following screen when trying to login:
+1. Bypass the local magento login page and send users straight to the OP for authentication: 
+If you would like to bypass Magento's default login page and send users straight to the OP, 
+check this box (**recommended**). When this option is left unchecked users will see the following screen 
+when trying to login: 
+
 ![General](../../img/plugin/customer_login.png) 
 
- Bypass the local Magento administrator login page and send users straight to the OP for authentication: Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local Magento administrator login screen. When it is not checked, users will see the following screen when trying to login:
-![General](../../img/plugin/admin_login.png) 
+2. Select ACR: `acr` is an OpenID Connect specific value that enables applications to request a 
+specific type of authentication from the OP, e.g. SMS based two factor authentication, or FIDO U2F tokens. 
+If you are using Google as your OP, you will have to accept their default authentication mechanism. 
+If you are using a Gluu Sever, you will be able to request any supported form of authentication. 
+To view the OP's supported ACR values, navigate to your OpenID Provider 
+configuration page, `https://<hostname>/.well-known/openid-configuration` and 
+find `acr_values`. In the `Select acr` field you can choose your preferred authentication 
+mechanism. If `Select acr` is `none`, users will be sent to pass the OP's default authentication mechanism.
 
-Select ACR: To signal which type of authentication should be used, an OpenID Connect client may request a specific authentication context class reference value (a.k.a. "acr"). The authentication options available will depend on which types of mechanisms the OP has been configured to support. The Gluu Server supports the following authentication mechanisms out-of-the-box: username/password (basic), Duo Security, Super Gluu, and U2F tokens, like Yubikey.
 
-Navigate to your OpenID Provider configuration webpage `https://OpenID-Provider/.well-known/openid-configuration` to see supported `acr_values`.
+## Google Configuration
 
-In the `Select acr` section of the extension page, choose the mechanism which you want for authentication. If the `Select acr` value in the extension is `none`, users will be sent to pass the OP's default authentication mechanism.
+To use Google as the OP, you will need to obtain a Client ID and Secret at Google. 
+To generate your `client_id` and `client_secret` at Google use 
+the redirect uri: `https://<hostname>/index.php?option=oxdOpenId`.
 
-## Magento Demo Video
-
-Demo of Magento installation and configuration with oxd.
-
-<a href = "https://youtu.be/2gXPMUsLOfU" target="_blank">![MAGENTO DEMO](https://img.youtube.com/vi/2gXPMUsLOfU/0.jpg)</a>
-
-#### Support
-If you are having any technical issue on using Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin you can check our support page or raise support ticket at [https://support.gluu.org](https://support.gluu.org)
+## Support
+If you are having any technical issue on using Gluu's OpenID Connect Single Sign-On (SSO) 
+Magento Plugin you can check our support page or raise support ticket at [https://support.gluu.org](https://support.gluu.org)

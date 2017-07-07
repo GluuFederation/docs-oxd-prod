@@ -91,7 +91,7 @@ In order to implement role based enrollment, you will need to make changes in bo
 3. Select `Manage People`;  
 4. Find the person(s) who should have access;   
 5. Click their user entry;   
-6. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you specify that enrollment should be limited to users with role = `wordpress`, then you should also have `User Permission` = `wordpress` in the user entry. [See a screenshot example](https://cloud.githubusercontent.com/assets/5271048/19735932/2c3817c4-9b73-11e6-9d59-ace7ecdfed41.png);
+6. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you specify that enrollment should be limited to users with role = `wordpress`, then you should also have `User Permission` = `wordpress` in the user entry. [See a screenshot example](../../img/plugin/wordpress-users.png);
 7. Update the user record. 
 
 Now only users with the role `wordpress` in the Gluu Server will be able to gain access to your WordPress site. 
@@ -130,13 +130,13 @@ If you are using a Gluu Server as your OP, you will need to configure Gluu to re
 
 4. If `Email` is not already added to the `Claims` field, click the `Add Claim`, search for email, and add it. 
 
-![image](../../img/plugin/emailScope.PNG)
+![image](../../img/plugin/emailScope1.png)
 
-![image](../../img/plugin/emailScopeInner.PNG)
+![image](../../img/plugin/emailScopeInner1.png)
 
 5. Now navigate to `Configuration` > `Attributes` and make sure that the `Email` attribute is set to `Active`. If it is not, click on the `email` attribute and scroll down to the `Status` field where you can change the value to Active. Click update. 
 
-![image](../../img/plugin/emailInAttribute.PNG)
+![image](../../img/plugin/emailInAttribute1.png)
 
 ### Google Configuration
 
