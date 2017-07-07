@@ -11,7 +11,7 @@ You can watch a video demo of the WordPress plugin installation and configuratio
 ## Requirements
 In order to use the WordPress plugin you will need a WordPress site, a standard OP (like Google or a Gluu Server), and an active oxd server. Some additional notes:
 
-* This plugin is compatible with WordPress versions: 2.9 - 4.7.2.
+* This plugin is compatible with WordPress versions: 2.9 - 4.8.
 
 * If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google. 
 
