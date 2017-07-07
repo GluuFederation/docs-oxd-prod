@@ -60,7 +60,7 @@ click on submit button.
     !!! Note:
         Extension will be automatically activated.
 
-4. Log in to Magento Admin Panel and navigate `OpenID Connect` > `Open extension page`
+4. Log in to Magento Admin Panel and navigate to `OpenID Connect` > `Open extension page`
 
     ![GluuSSO](../../img/plugin/44.mag4.png)
 
