@@ -140,7 +140,7 @@ If you are using a Gluu Server as your OP, you will need to configure Gluu to re
 
 ![image](../../img/plugin/emailInAttribute.PNG)
 
-## Google Configuration
+### Google Configuration
 
 To use Google as the OP, you will need to obtain a Client ID and Secret at Google. To generate your `client_id` and `client_secret` at Google use the redirect uri: `https://<hostname>/index.php?option=oxdOpenId`.
 
