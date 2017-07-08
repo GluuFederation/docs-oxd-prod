@@ -16,10 +16,9 @@ OpenCart site, standard OP (like Google or a Gluu Server) and an active oxd serv
 
 - This plugin is compatible with OpenCart Versions : 2.0.0.0 - 2.3.0.0
 
-- [Gluu Server Installation Guide](https://gluu.org/docs/ce/3.0.1/installation-guide/install/).
+- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google.
 
-- [oxd Server Installation Guide](https://oxd.gluu.org/docs/install/)
-
+- You will need a valid license to start the oxd server. You can get a license and a $50 credit by signing up on the [oxd website](https://oxd.gluu.org).
 
 ## Plugin Installation
 
