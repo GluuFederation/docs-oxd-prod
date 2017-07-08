@@ -45,7 +45,7 @@ top of the page.
 
 ## Plugin Configuration
 
-In your OpenCart admin dashboard you should now see the OpenID Connect tab in the left hand menu. 
+In your OpenCart admin module list you should now see the OpenID Connect tab in the left hand menu. 
 Click on `Edit` button to complete the General configuration.
 
 ### General
