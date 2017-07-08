@@ -2,10 +2,9 @@
 
 ![image](../../img/plugin/magento.png)
 
-Gluu's OpenID Connect Single Sign-On (SSO) Magento Extension will 
-enable you to authenticate users against any standard 
-OpenID Connect Provider (OP). If you don't already have an OP you can use 
-Google or [deploy the free open source Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/).
+The oxd OpenID Connect single sign-on (SSO) plugin for magento enables you to use a standard 
+OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/), 
+to authenticate and enroll users for a magento site. 
 
 ## Magento Demo Video
 
@@ -13,7 +12,7 @@ You can watch a video demo of the Magento plugin installation and configuration
 [here](https://youtu.be/2gXPMUsLOfU). In the video we use a Gluu Server as the OpenID Provider. 
 
 ## Requirements
-In order to use the Magento Extension you will need a 
+In order to use the Magento Extension you will need a Magento site,
 standard OP (like Google or a Gluu Server) and an active oxd server.
 
 - This plugin is compatible with Magento versions: 1.5 - 1.9.2.
