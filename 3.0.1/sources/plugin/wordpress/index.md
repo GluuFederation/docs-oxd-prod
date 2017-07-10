@@ -1,124 +1,151 @@
-# OpenID Connect Single Sign-On (SSO) WordPress Plugin By Gluu
+# oxd OpenID Connect Single Sign-On (SSO) Plugin for WordPress
 
-![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/wordpress.png)
+![image](../../img/plugin/wordpress.png)
 
-Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin will enable you to 
-authenticate users against any standard OpenID Connect Provider (OP). 
-If you don't already have an OP you can use Google or 
-[deploy the free open source Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/).  
+The oxd OpenID Connect single sign-on (SSO) plugin for WordPress enables you to use a standard 
+OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/), 
+to authenticate and enroll users for a WordPress site. 
+
+## WordPress Demo Video
+
+You can watch a video demo of the WordPress plugin installation and configuration [here](https://youtu.be/RfDrhGQ185M). In the video we use a Gluu Server as the OP. 
 
 ## Requirements
-In order to use the WordPress plugin you will need a standard OP (like Google or a Gluu Server) and the oxd server.
+In order to use this WordPress plugin you will need a WordPress site, 
+a standard OP (like Google or a Gluu Server), and an active oxd server. Some additional notes:
 
-* Compatibility : 2.9 <= 4.7.2 versions
+- This plugin is compatible with WordPress versions: 2.9 - 4.8.
 
-* [Gluu Server Installation Guide](https://gluu.org/docs/ce/3.0.1/installation-guide/install/).
+- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google. 
 
-* [oxd Webpage](https://oxd.gluu.org)
+- You will need a valid license to start the oxd server. You can get a license and a $50 credit by signing up on the [oxd website](https://oxd.gluu.org). 
 
-
-## Installation
+## Plugin Installation
  
-### Download
-[Github source](https://github.com/GluuFederation/wordpress-oxd-plugin/archive/v2.4.4.zip).
+### Download the Plugin
 
-[Link to WordPress marketplace](https://wordpress.org/plugins/openid-connect-sso-by-gluu/)
+You can either download the plugin from the [Github source](https://github.com/GluuFederation/wordpress-oxd-plugin/archive/v2.4.4.zip) or the [WordPress marketplace](https://wordpress.org/plugins/openid-connect-sso-by-gluu/).
 
-### Upload
-Open your WordPress site plugin page, e.g. `https://{site-base-url}/wp-admin/plugin-install.php?tab=upload`, upload the plugin and click on the install now button.
+### Upload the Plugin
+Navigate to the WP-admin portal of your WordPress site and open the plugin page, e.g. `https://{site-base-url}/wp-admin/plugin-install.php?tab=upload`. Upload the plugin and click the install now button.
 
-### Activate 
+### Activate the Plugin
 
-Activate the plugin by performing the following steps:
- 
-1. Go to `https://{site-base-url}/wp-admin/plugins.php`
-2. Find OpenID Connect Single Sign-On (SSO) Plugin By Gluu and click the activate button.
+Navigate to the plugins page, e.g. `https://{site-base-url}/wp-admin/plugins.php`, 
+find OpenID Connect Single Sign-On (SSO) Plugin By Gluu and click the Activate button.
 
-## Configuration
+## Plugin Configuration 
 
-### Gluu Server Configuration 
+In your WordPress admin dashboard you should now see the OpenID Connect tab in the left hand menu. 
+Click the link to navigate to the General configuration page.
 
-Before using this plugin with GLUU open id provider make sure you have configured gluu to return email claim.
+### General
 
-To enable email claim in the gluu server do the following:
+#### Server Settings
+In the server settings section of the plugin configuration page you will need to enter information about your OP, your oxd server, and where you want to redirect users after logout. 
 
-1.First navigate to `OpenID Connect` > `Scopes` in the `Display Name` column click the `Email` link and then set the default scope to `True` from the drop down menu and make sure to add email claim in the `claims menu`(see following images for better reference).
+A short description of each field follows:
 
-![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailScope.PNG)
+1. URI of the OpenID Provider: Insert the URI of the OpenID Connect Provider here. If you are using Google as your OP, this will simply be `https://accounts.google.com`. If you are using another OP it will be something like `https://idp.example.com`. 
 
-![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailScopeInner.PNG)
+2. Custom URI after logout: Provide a URL for a landing page to redirect users after logout of the WP site, for instance `https://example.com/thank-you`. If you don't have a preferred logout page we recommend simply entering your website homepage URL. If you leave this field blank the user will see the default logout page presented by WordPress. 
 
-2.Then navigate to `Configuration` > `Attributes` and make sure that the `Email` row is set to `Active` in the scopes.
+3. oxd port: Enter the oxd-server port, which you can find in your `oxd-server/conf/oxd-conf.json` file.
 
-![image](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/emailInAttribute.PNG)
+4. Click `Register` to continue.
 
-### General 
+If your OpenID Provider supports dynamic registration no additional steps are required. 
 
-In your WP(WordPress) admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:
+If your OpenID Connect Provider does not support dynamic registration (like Google), after clicking register two additional fields will be exposed where you need to enter your `client_id` and `client_secret`. Both values need to be obtained from the OP. To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
-![General](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/1.png) 
-
-1. Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to register for an account in your WordPress site. They will be assigned the new user default role specified below.
-2. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users who have a specified role in the OP, for instance `wordpress`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
-3. New User Default Role: specify which role to give to new users upon registration.  
-4. URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.
-5. Custom URI after logout: custom URI after logout (for example "Thank you" page).
-6. oxd port: enter the oxd-server port (you can find this in the `oxd-server/conf/oxd-conf.json` file).
-7. Click `Register` to continue.
-
-If your OpenID Provider supports dynamic registration, no additional steps are required in the general tab and you can navigate to the [OpenID Connect Configuration](#openid-connect-configuration) tab. 
-
-If your OpenID Connect Provider doesn't support dynamic registration, you will need to insert your OpenID Provider `client_id` and `client_secret` on the following page.
-
-![General](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/2.png) 
-
-To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
-
-!!!Note:
-    If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your     Gluu Server, navigate to the `OpenID Connect` > `Clients` page. Search for your `oxd id`.
+!!! Note
+    If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your     Gluu Server, navigate to the `OpenID Connect` > `Clients` page. Search for your `oxd id`. If it's present in the OP, everything worked.
 
 #### Enrollment and Access Management
+In the enrollment and access management section of the plugin configuration page you can decide, (1), how new user registrations will be handled, and, (2), what role new users will receive upon registration.
 
-1. Navigate to your Gluu Server admin GUI. 
-2. Click the `Users` tab in the left hand navigation menu. 
-3. Select `Manage People`. 
-4. Find the person(s) who should have access. 
-5. Click their user entry. 
-6. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you have limit enrollment to user(s) with role = `wordpress`, then you should also have `User Permission` = `wordpress` in the user entry. [See a screenshot example](https://cloud.githubusercontent.com/assets/5271048/19735932/2c3817c4-9b73-11e6-9d59-ace7ecdfed41.png).
+1. You have three options for new user registrations: 
+
+- Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to dyanmically register for an account on your WordPress site;
+
+- Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users that have a specified role in the OP, for instance `wordpress`. Each time the user authenticates they will need to have this scope present in order to be approved for access (i.e. if you remove this scope from the users profile in the OP, the user would be denied access);
+
+!!! Note 
+    This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role.  
+
+- Disable automatic registration: If you choose to disable automatic registration, you will need to manually add a user in WordPress for each person that needs access. Make sure that when you add the user in WordPress, you use the same email they have registered in the OP. 
+
+2. New User Default Role: Use this field to specify which role new users are assigned upon registration. If you have automatic registration set to disabled, you will have the opportunity to specify the users role during manual account creation. 
+
+##### Role Based Enrollment
+In order to implement role based enrollment, you will need to make changes in both the plugin and the Gluu Server. 
+
+**Perform the following in the Plugin:**     
+
+1. In the Enrollment and Access Management section, choose the option: `Only register and allow ongoing...`;   
+2. Add a name for the role want to use to enforce access (e.g. `wordpress` or `website`);     
+3. Save the configuration.
+4. Navigate to the OpenID Connect Configuration tab;  
+5. In the User Scopes section, check the box for `permission`;
+6. Save your settings.
+
+**Perform the following in your Gluu Server:**    
+
+1. Navigate to your Gluu Server admin GUI ("oxTrust"); 
+2. Click the `Users` tab in the left hand navigation menu; 
+3. Select `Manage People`;  
+4. Find the person(s) who should have access;   
+5. Click their user entry;   
+6. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you specify that enrollment should be limited to users with role = `wordpress`, then you should also have `User Permission` = `wordpress` in the user entry. [See a screenshot example](../../img/plugin/wordpress-users.png);
 7. Update the user record. 
-8. Go back to the WP plugin and make sure the `permission` scope is requested (see below). 
-9. Now they are ready for enrollment at your WordPress site. 
+
+Now only users with the role `wordpress` in the Gluu Server will be able to gain access to your WordPress site. 
 
 ### OpenID Connect Configuration
-
-![OpenID Connect Configuration](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/5.png)
+Navigate to the OpenID Connect Configuration tab to set your preferences for scopes and authentication. 
 
 #### User Scopes
 
-Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. By default, the requested scopes are `profile`, `email`, and `openid`.  
+Scopes are groups of user attributes that are sent from the OP to the application during login and enrollment. By default, the requested scopes are `profile`, `email`, and `openid`. If you want more information about the users, you can request additional scopes. 
 
-To view your OP's available scopes, open a web browser and navigate to `https://OpenID-Provider/.well-known/openid-configuration`. For example, here are the scopes you can request if you're using [Google as your OP](https://accounts.google.com/.well-known/openid-configuration). 
+To view your OP's available scopes, open a web browser and navigate to `https://<hostname>/.well-known/openid-configuration`. For example, if you are using Google the the OP, you can see the available scopes in the [Google's OP configuration](https://accounts.google.com/.well-known/openid-configuration). 
 
-If you are using a Gluu server as your OpenID Provider, 
-you can view all available scopes by navigating to the Scopes interface in Gluu CE Server Admin UI 
-
-`OpenID Connect` > `Scopes` 
-
-In the Plugin interface you can enable, disable and delete scopes. 
+If you are using a Gluu server as your OpenID Provider, you can view available scopes by navigating to the OpenID Configuration page as described above, or within oxTrust by navigating to `OpenID Connect` > `Scopes`.
 
 #### Authentication
+In the authentication settings, you have two options:
 
-Bypass the local WordPress login page and send users straight to the OP for authentication: Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local WP login screen. When it is not checked, users will see the following screen when trying to login: 
+1. Bypass the local WordPress login page and send users straight to the OP for authentication: If you would like to bypass WordPress's default login page and send users straight to the OP, check this box (**recommended**). When this option is left unchecked users will see the following screen when trying to login: 
 
-![upload](https://raw.githubusercontent.com/GluuFederation/wordpress-oxd-plugin/master/assets/6.png) 
+![upload](../../img/plugin/6.png) 
 
-Select ACR: To signal which type of authentication should be used, an OpenID Connect client may request a specific authentication context class reference value (a.k.a. "acr"). The authentication options available will depend on which types of mechanisms the OP has been configured to support. The Gluu Server supports the following authentication mechanisms out-of-the-box: username/password (basic), Duo Security, Super Gluu, and U2F tokens, like Yubikey.  
+2. Select ACR: `acr` is an OpenID Connect specific value that enables applications to request a specific type of authentication from the OP, e.g. SMS based two factor authentication, or FIDO U2F tokens. If you are using Google as your OP, you will have to accept their default authentication mechanism. If you are using a Gluu Sever, you will be able to request any supported form of authentication. To view the OP's supported ACR values, navigate to your OpenID Provider configuration page, `https://<hostname>/.well-known/openid-configuration` and find `acr_values`. In the `Select acr` field you can choose your preferred authentication mechanism. If `Select acr` is `none`, users will be sent to pass the OP's default authentication mechanism.
 
-Navigate to your OpenID Provider configuration webpage `https://OpenID-Provider/.well-known/openid-configuration` to see supported `acr_values`. 
+## OP Configuration
 
-In the `Select acr` section of the plugin page, choose the mechanism which you want for authentication. If the `Select acr` value in the plugin is `none`, users will be sent to pass the OP's default authentication mechanism.
+### Gluu Server Configuration 
 
+If you are using a Gluu Server as your OP, you will need to configure Gluu to release the email claim. You can do so by following the below steps:
 
+1. Log in to your Gluu Server dashboard ("oxTrust") and navigate to `OpenID Connect` > `Scopes`. 
 
-#### Support
-If you are having any technical issue on using Gluu's OpenID Connect Single Sign-On (SSO) WordPress Plugin you can check our support page or raise support ticket at [https://support.gluu.org](https://support.gluu.org)
+2. Find the `email` scope and click on it. 
+
+3. Set the default scope field to `True`.
+
+4. If `Email` is not already added to the `Claims` field, click the `Add Claim`, search for email, and add it. 
+
+![image](../../img/plugin/emailScope1.png)
+
+![image](../../img/plugin/emailScopeInner1.png)
+
+5. Now navigate to `Configuration` > `Attributes` and make sure that the `Email` attribute is set to `Active`. If it is not, click on the `email` attribute and scroll down to the `Status` field where you can change the value to Active. Click update. 
+
+![image](../../img/plugin/emailInAttribute1.png)
+
+### Google Configuration
+
+To use Google as the OP, you will need to obtain a Client ID and Secret at Google. To generate your `client_id` and `client_secret` at Google use the redirect uri: `https://<hostname>/index.php?option=oxdOpenId`.
+
+## Support
+Please report technical issues and suspected bugs on our [support page](https://support.gluu.org). If you do not already have an account on Gluu Support, you can login and create an account using the same credentials you created when you registered for your oxd license.

@@ -1,86 +1,54 @@
 # oxd-csharp
 ## Overview
-The following documentation demonstrates 
-how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), 
-to send users from C# app to an OpenID Connect Provider (OP) for login. 
-You can securely send users to any standard OP for login, including Google 
+The following documentation demonstrates how to use the [oxd client software](http://oxd.gluu.org) to send users from a C# app to an OpenID Connect Provider (OP) for login. You can use oxd to securely send users to any standard OP for login, including Google 
 and the [free open source Gluu Server](http://gluu.org/gluu-server).
 
-
-
 ## Sample Project
-Download a sample project specific to this oxd library.
-[download](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip)
+[Download a sample project](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip) specific to this oxd library.
 
 ## oxd Server Methods
 
-The Gluu's oxd Server provides six methods for OpenID Connect authentication using oxd-csharp API. 
-Below are the methods. These methods helps you to perform various operations to authenticate 
-an user to an application.
+The oxd server provides the following six methods for authenticating users with OpenID Connect:
 
-* [Register Site](../protocol/#register-site)
-* [Update Site Registration](../protocol/#update-site-registration)
-* [Get Authorization URL](../protocol/#get-authorization-url)
-* [Get Tokens by Code](../protocol/#get-user-info)
-* [Get User Info](../protocol/#get-user-info)
-* [Get Logout URI](../protocol/#log-out-uri)
-
-The Gluu's oxd Server provides two UMA Resource Server Methods, mentioned as below
-
-* [UMA RS Protect resources](../protocol/#uma-rs-protect-resources)
-* [UMA RS Check Access](../protocol/#uma-rs-check-access)
-
-The Gluu's oxd Server provides two UMA Client methods.
-
-* [UMA RP - Get RPT](../protocol/#uma-rp-get-rpt)
-* [UMA RP - Authorize RPT](../protocol/#uma-rp-authorize-rpt)
-
-The oxd Server also provides one Gluu OAuth2 Access Management method, 
-which enables you to create a user profile and obtain a token from the AS 
-by explicitly specifying the requested scope.
-
-* [UMA RP Get GAT](../protocol/#gluu-oauth2-access-management-apis)
+- [Register Site](../protocol/#register-site)    
+- [Update Site Registration](../protocol/#update-site-registration)    
+- [Get Authorization URL](../protocol/#get-authorization-url)   
+- [Get Tokens by Code](../protocol/#get-user-info)    
+- [Get User Info](../protocol/#get-user-info)   
+- [Get Logout URI](../protocol/#log-out-uri)   
 
 ## Installation
 
-### **Prerequisite**
-To install oxd-csharp, below are required as mandate
+### Prerequisites
 
-* [Github sources](https://github.com/GluuFederation/oxd-csharp/tree/3.0.1)
-* [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/)
-* [oxd server](../../install/index.md)
-* [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/Clients)
-* [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)
+To use the oxd csharp library, you will need:
+
+- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
+- An active installation of the [oxd server](../../install/index.md) running in the same server where the client is configured;    
+- A client application with a valid ssl cert, so the application url includes: `https://`    
+
+In addition, the following resources will be of assistance as well:
+- [Github sources](https://github.com/GluuFederation/oxd-csharp/tree/3.0.1)    
+- [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/Clients)    
+- [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)     
 
 !!! Note:
     CSharp requires windows server or windows installed machine to work.
 
-### Installing oxd-csharp
-
-1) You have to install [gluu server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/) 
-   in Ubuntu 14 VM and oxd-server in your hosting server to use oxd-csharp
-   library with your application.
-2) [oxd server](../../install/index.md) must be running in the same server where client application is hosted
-3) Client application url must be https:// . 
-
-
-### **Install oxd NuGet Package**
+### Install oxd NuGet Package
 
 ```PM> Install-Package Gluu.Oxd.OxdCSharp```
 
-
-!!! Note 
-    Install Gluu server in Ubuntu 14 VM in your windows machine. 
-    VM will need at least 4GB or RAM and 2 CPU units. 
-    So you can communicate with gluu server from your c# library.
-    you can start oxd server in your windows machine it self. 
-
 ## Sample Code
 
-#### Register Site
+### Register Site
+
 **Required parameters:**
+
 * OpHost     - OpenId Provider Url
+
 * oxdport        - the port of the oxd server
+
 * redirectURI - A URL which the OP is authorized to redirect the user after authorization.
 
 **Request:**
@@ -116,11 +84,16 @@ To install oxd-csharp, below are required as mandate
 }
 ```
 
-#### Update Site Registration
+### Update Site Registration
+
 **Required parameters:**
-* OpHost     - OpenId Provider Url
-* oxdport        - the port of the oxd server
-* oxdId       - the port of the oxd server
+
+* OpHost      - OpenId Provider Url
+
+* oxdport     - the port of the oxd server
+
+* oxdId       - oxdID from client registration
+
 * redirectURI - A URL which the OP is authorized to redirect the user after authorization.
 
 **Request:**
@@ -152,11 +125,15 @@ To install oxd-csharp, below are required as mandate
 }
 ```
 
-#### Get Authorization URL
+### Get Authorization URL
+
 **Required parameters:**
+
 * OpHost   - OpenId Provider Url
+
 * oxdport  - the port of the oxd server
-* oxdId    - the port of the oxd server
+
+* oxdId    - oxdID from client registration
 
 **Request:**
 ```csharp
@@ -188,12 +165,18 @@ To install oxd-csharp, below are required as mandate
 }
 ```
 
-#### Get Tokens by Code
+### Get Tokens by Code
+
 **Required parameters:**
+
 * OpHost   - OpenId Provider Url
+
 * oxdport  - the port of the oxd server
-* oxdId    - the port of the oxd server
+
+* oxdId    - oxdID from client registration
+
 * authCode    - The Code from OP redirect url
+
 * authState    - The State from OP redirect url
 
 **Request:**
@@ -242,11 +225,16 @@ To install oxd-csharp, below are required as mandate
 ```
 
 
-#### Get User Info
+### Get User Info
+
 **Required parameters:**
+
 * OpHost   - OpenId Provider Url
+
 * oxdport  - the port of the oxd server
-* oxdId    - the port of the oxd server
+
+* oxdId    - oxdID from client registration
+
 * accessToken - accessToken from GetTokenByCode
 
 **Request:**
@@ -291,11 +279,15 @@ To install oxd-csharp, below are required as mandate
 }
 ```
 
-#### Logout
+### Logout
+
 **Required parameters:**
+
 * OpHost   - OpenId Provider Url
+
 * oxdport  - the port of the oxd server
-* oxdId    - the port of the oxd server
+
+* oxdId    - oxdID from client registration
 
 **Request:**
 ```csharp
@@ -327,182 +319,5 @@ To install oxd-csharp, below are required as mandate
 }
 ```
 
-#### UMA RS Resource protection
-**Required parameters:**
-* OpHost   - OpenId Provider Url
-* oxdport  - the port of the oxd server
-* oxdId    - the port of the oxd server
-
-```csharp
-   private UmaRsProtectResponse ProtectResources(string opHost, int oxdPort, string oxdId)
-        {
-            //prepare input params for Protect Resource
-            var protectParams = new UmaRsProtectParams()
-            {
-                OxdId = oxdId,
-                ProtectResources = new List<ProtectResource>
-                {
-                    new ProtectResource
-                    {
-                        Path = "/scim",
-                        ProtectConditions = new List<ProtectCondition>
-                        {
-                            new ProtectCondition
-                            {
-                                HttpMethods = new List<string> { "GET" },
-                                Scopes = new List<string> { "https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1" },
-                                TicketScopes = new List<string> { "https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1" }
-                            }
-                        }
-                    }
-                }
-            };
-
-            var protectClient = new UmaRsProtectClient();
-
-            //Protect Resources
-            var protectResponse = protectClient.ProtectResources(opHost, oxdPort, protectParams);
-
-            //Response
-            return protectResponse;
-        }
-```
-
-#### UMA RS Check access
-**Request:**
-```csharp
-	 private UmaRsCheckAccessResponse CheckAccess(string rpt, string path, string httpMethod, string opHost, int oxdPort, string oxdId)
-        {
-            //prepare input params for Check Access
-            var checkAccessParams = new UmaRsCheckAccessParams()
-            {
-                OxdId = oxdId,
-                RPT = rpt,
-                Path = path,
-                HttpMethod = httpMethod
-            };
-
-            var checkAccessClient = new UmaRsCheckAccessClient();
-
-            //Check Access
-            var checkAccessResponse = checkAccessClient.CheckAccess(opHost, oxdPort, checkAccessParams);
-
-            //Response
-            return checkAccessResponse;
-        }
-```
-
-**Response:**
-```
-Access Denied with valid Ticket	
-```
- 
-
-#### UMA Get RPT
-**Request:**
-```csharp
-   private GetRPTResponse ObtainRpt(string opHost, int oxdPort, string oxdId)
-        {
-            //prepare input params for Protect Resource
-            var getRptParams = new UmaRpGetRptParams()
-            {
-                OxdId = oxdId,
-                ForceNew = false
-            };
-
-            var getRptClient = new UmaRpGetRptClient();
-
-            //Get RPT
-            var getRptResponse = getRptClient.GetRPT(opHost, oxdPort, getRptParams);
-
-            //Response
-            return getRptResponse;
-        }
-```
-
-**Response:**
-```
-Expect a valid RPT is returned
-```
-!!!Note: 
-    Once you get valid RPT you need to follow this steps again:
-
-##### UMA RS Check access  with valid RPT 
-**Request:**
-``` 
-UMA RS Check access again with valid RPT
-```
-
-**Response:**
-```
-Access Denied with valid data
-```
-
-##### Authorize RPT  
-**Request:**
-```csharp
-	 private UmaRpAuthorizeRptResponse AuthorizeRpt(string rpt, string ticket, string opHost, int oxdPort, string oxdId)
-        {
-            //prepare input params for Check Access
-            var authorizeRptParams = new UmaRpAuthorizeRptParams()
-            {
-                OxdId = oxdId,
-                RPT = rpt,
-                Ticket = ticket
-            };
-
-            var authorizeRptClient = new UmaRpAuthorizeRptClient();
-
-            //Authorize RPT
-            var authorizeRptResponse = authorizeRptClient.AuthorizeRpt(opHost, oxdPort, authorizeRptParams);
-
-            //Response
-            return authorizeRptResponse;
-        }
-```
-
-**Response:**
-```
-Status should be ok
-```
-
-##### UMA RS Check access (Check Access again after authorizing RPT)
-**Request:**
-``` 
-UMA RS Check access again after authorizing RPT 
-```
-
-**Response:**
-```
-Access Granted
-```
-
-
-#### UMA Get GAT
-**Request:**
-```csharp
- public ActionResult GetGat(string opHost, int oxdPort, string oxdId)
-        {
-            //prepare input params for Getting GAT
-            var getGatInputParams = new GetGATParams()
-            {
-                OxdId = oxdId,
-                Scopes = new List<string> {
-                                            "https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1",
-                                            "https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas2" }
-            };
-
-            var getGatClient = new GetGATClient();
-            
-            //Get GAT
-            var getGatResponse = getGatClient.GetGat(opHost, oxdPort, getGatInputParams);
-
-            //Response
-            return Json(new { getGatResponse = getGatResponse.Data.Rpt });
-        }
-
-```
-
 ## Support
-Any technical support you need please checkout our [support page](https://support.gluu.org/)
-Bugs found in oxd CSharp libary can be reported at [github](https://github.com/GluuFederation/oxd-csharp/issues)
+Please report technical issues and suspected bugs on our [support page](https://support.gluu.org/). You can use the same credentials you created to register for your oxd license to sign in on Gluu support.
