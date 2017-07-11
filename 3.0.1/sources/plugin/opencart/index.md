@@ -44,7 +44,8 @@ top of the page.
 
 ## Plugin Configuration
 
-In your OpenCart admin module list, you should now see the `OpenID Connect Single Sign-On (SSO) Extension by Gluu` in the left hand menu. 
+In your OpenCart admin Console, you should now see 
+the `OpenID Connect Single Sign-On (SSO) Extension by Gluu` under `Extensions` > `Modules`. 
 Click on `Edit` button to complete the General configuration.
 
 ### General
