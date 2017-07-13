@@ -115,7 +115,7 @@ During the registration operation, oxd will dynamically register an OpenID Conne
 
 * oxdport     - the port of the oxd server
 
-* oxdId       - oxd-Id from client registration
+* oxdId       - oxd Id from client registration
 
 * postLogoutRedirectUrl - URL to which the RP is requesting that the End-User's User Agent be redirected after a logout has been performed.
 
@@ -158,7 +158,7 @@ During the registration operation, oxd will dynamically register an OpenID Conne
 
 * oxdport  - the port of the oxd server
 
-* oxdId    - oxd-Id from client registration
+* oxdId    - oxd Id from client registration
 
 **Request:**
 ```csharp
