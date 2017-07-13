@@ -10,10 +10,8 @@ The following documentation demonstrates how to use the [oxd client software](ht
 To use the oxd csharp library, you will need:
 
 - A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
-- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application.    
-
-!!! Note
-    CSharp requires a windows server or windows installed machine to work.
+- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application;      
+- A Windows server or Windows installed machine.
 
 ### Install the Gluu.Oxd.OxdCSharp NuGet Package
 Use the NuGet Package Manager Console (Tools -> NuGet Package Manager -> Package Manager Console) to install the Gluu.Oxd.OxdCSharp package, running the following command:
