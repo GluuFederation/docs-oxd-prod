@@ -41,6 +41,18 @@ Use the NuGet Package Manager Console (Tools -> NuGet Package Manager -> Package
 ```PM> Install-Package Gluu.Oxd.OxdCSharp```
 
 ### Configure client application
+1.  Before using  the oxd CSharp client application, you need to ensure that client host name is not localhost or ip address. The host name should be a valid host name. You can configure host name by adding below entry at C:\Windows\System32\drivers\etc\host  file
+
+    `127.0.0.1  client.example.com`
+
+2. To enable SSL
+
+* Open Client application in Visual Studio
+
+* Select Client Application Property
+
+* Navigate to `Development Server` and set `SSL Enabled` to `True`
+
 
 
 
@@ -49,7 +61,7 @@ Use the NuGet Package Manager Console (Tools -> NuGet Package Manager -> Package
 ### Register Site
 Register a client, as shown in following example:
 
-During the registration operation, oxd will dynamically register an OpenID Connect client and save its configuration. Once client is registered, oxd server will return a unique identifier called oxd-id. For OpenID Connect Provider which does not support dynamic registration  like Google, ClinetID and Client Secret need to be passed as parameter to `RegisterSite` method. This Register Site method is one time task to configure client in oxd server.
+During the registration operation, oxd will dynamically register an OpenID Connect client and save its configuration. Upon successful registration of your CSharp client in the OP, a unique identifier will be issued by oxd server. OpenID Connect Provider which does not support dynamic registration  like Google, ClinetID and Client Secret need to be passed to `RegisterSite` method  as parameter. This Register Site method is one time task to configure client in oxd server.
 
 **Required parameters:**
 
@@ -105,7 +117,7 @@ During the registration operation, oxd will dynamically register an OpenID Conne
 
 * oxdId       - oxd-Id from client registration
 
-* redirectURI - A URL which the OP is authorized to redirect the user after authorization.
+* postLogoutRedirectUrl - URL to which the RP is requesting that the End-User's User Agent be redirected after a logout has been performed.
 
 **Request:**
 ```csharp
@@ -180,7 +192,7 @@ During the registration operation, oxd will dynamically register an OpenID Conne
 
 ### Get Tokens by Code
 
-On successful login, the login result will return code and state. `GetTokensByCode` uses code and state and returns access token, refresh token which can be used to access user claims.
+On successful login, the login result will return code and state. `GetTokensByCode` uses code and state to retrieve token which can be used to access user claims.
 
 
 **Required parameters:**
@@ -191,7 +203,7 @@ On successful login, the login result will return code and state. `GetTokensByCo
 
 * oxdId    - oxd Id from client registration
 
-* authCode    - The Code from OP authorization redirect url
+* authCode    - The Code from OP authorization redirect url 
 
 * authState    - The State from OP authorization redirect url
 
@@ -243,7 +255,7 @@ On successful login, the login result will return code and state. `GetTokensByCo
 
 ### Get User Info
 
-Once user is authenticated by OpenID Connect Provider, `GetUserInfo` method returns allowed `UserClaims` like User First name , Last Name, email id etc from the OpenID Connect Provider to the registered client.
+Once user is authenticated by OpenID Connect Provider, `GetUserInfo` method returns Claims (Like First name, Last Name, emailId) about the authenticated end user.
 
 **Required parameters:**
 
