@@ -6,32 +6,33 @@ The following documentation demonstrates how to use the [oxd client software](ht
 [Download a sample project](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip) specific to this oxd library.
 
 ## Prerequisites
+### Required Software
 To use the oxd csharp library, you will need:
 
 - A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
-- An active installation of the [oxd server](../../install/index.md) running in the same server where the client is configured;    
-- A client application with a valid ssl cert, so the application url includes: `https://`    
+- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application.    
 
 !!! Note
     CSharp requires a windows server or windows installed machine to work.
 
 ### Install the Gluu.Oxd.OxdCSharp NuGet Package
-Use the NuGet Package Manager Console (Tools -> NuGet Package Manager -> Package Manager Console) to install the Gluu.Oxd.OxdCSharp package, running the command:
+Use the NuGet Package Manager Console (Tools -> NuGet Package Manager -> Package Manager Console) to install the Gluu.Oxd.OxdCSharp package, running the following command:
 
 ```PM> Install-Package Gluu.Oxd.OxdCSharp```
 
-### Configure client application
-1.  Before using the oxd CSharp client application, you need to ensure that client host name is not localhost or ip address. The host name should be a valid host name. You can configure host name by adding below entry at `C:\Windows\System32\drivers\etc\host` file
+### Configure the Client Application
+
+- Your client application must have a valid ssl cert, so the url includes: `https://`    
+
+- The client hostname should be a valid hostname, not localhost or an IP Address. You can configure the hostname by adding the following entry in your `C:\Windows\System32\drivers\etc\host` file:
 
     `127.0.0.1  client.example.com`
 
-2. To enable SSL
+- Enable SSL using the following instructions:
 
-* Open Client application in Visual Studio
-
-* Select Client Application Property
-
-* Navigate to `Development Server` and set `SSL Enabled` to `True`
+    - Open the Client application in Visual Studio;
+    - Select Client Application Property;
+    - Navigate to `Development Server` and set `SSL Enabled` to `True`.
 
 
 ## oxd Server Methods
