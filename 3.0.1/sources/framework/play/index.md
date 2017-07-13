@@ -105,7 +105,7 @@ catch (Exception e)
 //create UpdateSiteParams
  try {
         final UpdateSiteParams commandParams = new UpdateSiteParams();
-        commandParams.setOxdId("Registered Sites Oxd-id");//Required
+        commandParams.setOxdId("Registered Sites oxd_id");//Required
 
 //Call "updateSite" method using created registerSiteParams
 
@@ -138,7 +138,7 @@ try
 //create GetAuthorizationUrlParams
 
             GetAuthorizationUrlParams commandParams = new GetAuthorizationUrlParams();
-            commandParams.setOxdId("Registered Sites Oxd-id");//required
+            commandParams.setOxdId("Registered Sites oxd_id");//required
             commandParams.setAcrValues("List of arc values"); //optional
             commandParams.setState("State from redirected uri");//optional
             commandParams.setScopes("Scope from redirected uri");//required
@@ -173,7 +173,7 @@ try
 //create GetTokensByCodeParams
 
             GetTokensByCodeParams getTokensByCodeParams = new GetTokensByCodeParams();
-            commandParams.setOxdId("Registered Site oxd-id code");//required
+            commandParams.setOxdId("Registered Site oxd_id code");//required
             commandParams.setState("State from op redirected uri");//optional
             commandParams.setScopes("Scope from op redirected uri");//required
             commandParams.setCode("Code from op redirected uri");//required
@@ -208,7 +208,7 @@ try
  //create GetUserInfoParams
 
         GetUserInfoParams getUserInfoParams = new GetUserInfoParams();
-        getUserInfoParams.setOxdId("Regitered site's oxd-id");
+        getUserInfoParams.setOxdId("Regitered site's oxd_id");
         getUserInfoParams.setAccessToken("Access token from GetTokensByCode call");
 
 // Call "getUserInfo" method using created GetTokensByCodeParams
@@ -239,7 +239,7 @@ catch (Exception e) {
 //create GetLogoutUrlParams
 try{
        final GetLogoutUrlParams getLogoutUrlParams = new GetLogoutUrlParams();
-                commandParams.setOxdId("Registered site's oxd-id"); //     required
+                commandParams.setOxdId("Registered site's oxd_id"); //     required
 
 
 // Call "getLogoutUri" method using created GetLogoutUrlParams

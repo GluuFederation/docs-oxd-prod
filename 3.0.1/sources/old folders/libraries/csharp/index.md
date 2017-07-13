@@ -25,7 +25,7 @@ after authorization.
 
 The response returned is 
 
-* oxd-id (Type: String)
+* oxd_id (Type: String)
 
 ```
 public RegisterSiteResponse RegisterSite(string host, int port, string redirectUrl)
@@ -68,7 +68,7 @@ The required parameters are
 
 The response returned is
 
-* oxd-id (Type: String)
+* oxd_id (Type: String)
 
 ```
     public UpdateSiteResponse UpdateSiteRegisteration(string host, int port)

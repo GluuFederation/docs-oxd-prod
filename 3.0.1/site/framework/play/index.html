@@ -910,7 +910,7 @@ catch (Exception e)
 //create UpdateSiteParams
  try {
         final UpdateSiteParams commandParams = new UpdateSiteParams();
-        commandParams.setOxdId(&quot;Registered Sites Oxd-id&quot;);//Required
+        commandParams.setOxdId(&quot;Registered Sites oxd_id&quot;);//Required
 
 //Call &quot;updateSite&quot; method using created registerSiteParams
 
@@ -939,7 +939,7 @@ try
 //create GetAuthorizationUrlParams
 
             GetAuthorizationUrlParams commandParams = new GetAuthorizationUrlParams();
-            commandParams.setOxdId(&quot;Registered Sites Oxd-id&quot;);//required
+            commandParams.setOxdId(&quot;Registered Sites oxd_id&quot;);//required
             commandParams.setAcrValues(&quot;List of arc values&quot;); //optional
             commandParams.setState(&quot;State from redirected uri&quot;);//optional
             commandParams.setScopes(&quot;Scope from redirected uri&quot;);//required
@@ -970,7 +970,7 @@ catch (Exception e) {
 //create GetTokensByCodeParams
 
             GetTokensByCodeParams getTokensByCodeParams = new GetTokensByCodeParams();
-            commandParams.setOxdId(&quot;Registered Site oxd-id code&quot;);//required
+            commandParams.setOxdId(&quot;Registered Site oxd_id code&quot;);//required
             commandParams.setState(&quot;State from op redirected uri&quot;);//optional
             commandParams.setScopes(&quot;Scope from op redirected uri&quot;);//required
             commandParams.setCode(&quot;Code from op redirected uri&quot;);//required
@@ -1002,7 +1002,7 @@ catch (Exception e) {
  //create GetUserInfoParams
 
         GetUserInfoParams getUserInfoParams = new GetUserInfoParams();
-        getUserInfoParams.setOxdId(&quot;Regitered site's oxd-id&quot;);
+        getUserInfoParams.setOxdId(&quot;Regitered site's oxd_id&quot;);
         getUserInfoParams.setAccessToken(&quot;Access token from GetTokensByCode call&quot;);
 
 // Call &quot;getUserInfo&quot; method using created GetTokensByCodeParams
@@ -1030,7 +1030,7 @@ catch (Exception e) {
 <pre><code class="java">//create GetLogoutUrlParams
 try{
        final GetLogoutUrlParams getLogoutUrlParams = new GetLogoutUrlParams();
-                commandParams.setOxdId(&quot;Registered site's oxd-id&quot;); //     required
+                commandParams.setOxdId(&quot;Registered site's oxd_id&quot;); //     required
 
 
 // Call &quot;getLogoutUri&quot; method using created GetLogoutUrlParams
