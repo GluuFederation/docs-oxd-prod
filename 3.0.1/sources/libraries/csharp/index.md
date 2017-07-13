@@ -1,47 +1,27 @@
 # oxd-csharp
 ## Overview
-The following documentation demonstrates how to use the [oxd client software](http://oxd.gluu.org) to send users from a C# app to an OpenID Connect Provider (OP) for login. You can use oxd to securely send users to any standard OP for login, including Google 
-and the [free open source Gluu Server](http://gluu.org/gluu-server).
+The following documentation demonstrates how to use the [oxd client software](http://oxd.gluu.org) C# library to send users from a C# web application to an OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 ## Sample Project
 [Download a sample project](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip) specific to this oxd library.
 
-## oxd Server Methods
-
-The oxd server provides the following six methods for authenticating users with OpenID Connect Provider:
-
-- [Register Site](../protocol/#register-site)    
-- [Update Site Registration](../protocol/#update-site-registration)    
-- [Get Authorization URL](../protocol/#get-authorization-url)   
-- [Get Tokens by Code](../protocol/#get-user-info)    
-- [Get User Info](../protocol/#get-user-info)   
-- [Get Logout URI](../protocol/#log-out-uri)   
-
-## Installation
-
-### Prerequisites
-
+## Prerequisites
 To use the oxd csharp library, you will need:
 
 - A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
 - An active installation of the [oxd server](../../install/index.md) running in the same server where the client is configured;    
 - A client application with a valid ssl cert, so the application url includes: `https://`    
 
-In addition, the following resources will be of assistance as well:
-- [Github sources](https://github.com/GluuFederation/oxd-csharp/tree/3.0.1)    
-- [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/Clients)    
-- [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)     
+!!! Note
+    CSharp requires a windows server or windows installed machine to work.
 
-!!! Note:
-    CSharp requires windows server or windows installed machine to work.
-
-### Install oxd NuGet Package
+### Install the Gluu.Oxd.OxdCSharp NuGet Package
 Use the NuGet Package Manager Console (Tools -> NuGet Package Manager -> Package Manager Console) to install the Gluu.Oxd.OxdCSharp package, running the command:
 
 ```PM> Install-Package Gluu.Oxd.OxdCSharp```
 
 ### Configure client application
-1.  Before using  the oxd CSharp client application, you need to ensure that client host name is not localhost or ip address. The host name should be a valid host name. You can configure host name by adding below entry at C:\Windows\System32\drivers\etc\host  file
+1.  Before using the oxd CSharp client application, you need to ensure that client host name is not localhost or ip address. The host name should be a valid host name. You can configure host name by adding below entry at `C:\Windows\System32\drivers\etc\host` file
 
     `127.0.0.1  client.example.com`
 
@@ -54,7 +34,16 @@ Use the NuGet Package Manager Console (Tools -> NuGet Package Manager -> Package
 * Navigate to `Development Server` and set `SSL Enabled` to `True`
 
 
+## oxd Server Methods
 
+The oxd server provides the following six methods for authenticating users with OpenID Connect Provider:
+
+- [Register Site](../protocol/#register-site)    
+- [Update Site Registration](../protocol/#update-site-registration)    
+- [Get Authorization URL](../protocol/#get-authorization-url)   
+- [Get Tokens by Code](../protocol/#get-user-info)    
+- [Get User Info](../protocol/#get-user-info)   
+- [Get Logout URI](../protocol/#log-out-uri)   
 
 ## Sample Code
 
