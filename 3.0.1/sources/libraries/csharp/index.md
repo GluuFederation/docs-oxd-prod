@@ -5,9 +5,18 @@ The following documentation demonstrates how to use the [oxd client software](ht
 ## Sample Project
 [Download a sample project](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip) specific to this oxd library.
 
+### System Requirements
+
+* Microsoft Visual Studio 2008 +
+
+* Windows 7 + or Windows Server 2008 +
+
+* Gluu.Oxd.OxdCSharp  3.1.0
+
+
 ## Prerequisites
 ### Required Software
-To use the oxd csharp library, you will need:
+To use the oxd C# library, you will need:
 
 - A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
 - An active installation of the [oxd server](../../install/index.md) running in the same server as the client application;      
@@ -49,7 +58,7 @@ The oxd server provides the following six methods for authenticating users with 
 ### Register Site
 Register a client, as shown in following example:
 
-During the registration operation, oxd will dynamically register an OpenID Connect client and save its configuration. Upon successful registration of your CSharp client in the OP, a unique identifier will be issued by oxd server. OpenID Connect Provider which does not support dynamic registration  like Google, ClinetID and Client Secret need to be passed to `RegisterSite` method  as parameter. This Register Site method is one time task to configure client in oxd server.
+During the registration operation, oxd will dynamically register an OpenID Connect client and save its configuration. Upon successful registration of your C# client in the OP, a unique identifier will be issued by oxd server. OpenID Connect Provider which does not support dynamic registration  like Google, ClinetID and Client Secret need to be passed to `RegisterSite` method  as parameter. This Register Site method is one time task to configure client in oxd server.
 
 **Required parameters:**
 
