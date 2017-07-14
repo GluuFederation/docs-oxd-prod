@@ -10,7 +10,7 @@
 # apt-get update
 # apt-get install gluu-oxd-server
 ```
-Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+Now configure oxd following the [configuration instructions](../conf/index.md). 
 
 Then run the following command to start the oxd server:
 
@@ -25,7 +25,7 @@ curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install gluu-oxd-server
 ```
-Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+Now configure oxd following the [configuration instructions](../conf/index.md). 
 
 Then run the following command to start the oxd server:
 
@@ -39,7 +39,7 @@ curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install gluu-oxd-server
 ```
-Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+Now configure oxd following the [configuration instructions](../conf/index.md). 
 
 Then run the following command to start the oxd server:
 
@@ -54,7 +54,7 @@ Then run the following command to start the oxd server:
 # yum clean all
 # yum install gluu-oxd-server
 ```
-Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+Now configure oxd following the [configuration instructions](../conf/index.md). 
 
 Then run the following command to start the oxd server:
 
@@ -69,7 +69,7 @@ Then run the following command to start the oxd server:
 # yum clean all
 # yum install gluu-oxd-server
 ```
-Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+Now configure oxd following the [configuration instructions](../conf/index.md). 
 
 Then run the following command to start the oxd server:
 
@@ -84,7 +84,7 @@ Then run the following command to start the oxd server:
 # yum clean all
 # yum install gluu-oxd-server
 ```
-Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+Now configure oxd following the [configuration instructions](../conf/index.md). 
 
 Then run the following command to start the oxd server:
 
@@ -99,7 +99,7 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
 yum install gluu-oxd-server
 ```
-Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+Now configure oxd following the [configuration instructions](../conf/index.md). 
 
 Then run the following command to start the oxd server:
 
@@ -121,7 +121,7 @@ available for download from [maven repository](http://ox.gluu.org/maven/org/xdi/
 2. Unzip the [zip distribution](http://ox.gluu.org/maven/org/xdi/oxd-server/3.0.1/oxd-server-3.0.1-distribution.zip)
 in the above folder you just created. 
 
-3. Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+3. Now configure oxd following the [configuration instructions](../conf/index.md). 
 
 4. Run `oxd-server/bin/oxd-start.bat`
 
@@ -133,7 +133,7 @@ in the above folder you just created.
 
 3. `$ unzip oxd-server-3.0.1-distribution.zip`
 
-4. Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+4. Now configure oxd following the [configuration instructions](../conf/index.md). 
 
 5. `$ nohup bin/oxd-start.sh &`
 
