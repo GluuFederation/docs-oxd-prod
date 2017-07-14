@@ -2,25 +2,34 @@
 
 ## Linux Packages
 
-### Ubuntu 14.04(trusty)
+### Ubuntu 14.04 (trusty)
 
 ```
 # echo "deb https://repo.gluu.org/ubuntu/ trusty main" > /etc/apt/sources.list.d/gluu-repo.list
 # curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 # apt-get update
 # apt-get install gluu-oxd-server
-# service gluu-oxd-server start
 ```
+Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
 
-### Ubuntu 16.04(xenial)
+Then run the following command to start the oxd server:
+
+`# service gluu-oxd-server start`
+
+
+### Ubuntu 16.04 (xenial)
 
 ```
 echo "deb https://repo.gluu.org/ubuntu/ xenial main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install gluu-oxd-server
-service gluu-oxd-server start
 ```
+Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+
+Then run the following command to start the oxd server:
+
+`service gluu-oxd-server start`
 
 ### Debian 8 (Jessie)
 
@@ -29,8 +38,12 @@ echo "deb https://repo.gluu.org/debian/ jessie main" > /etc/apt/sources.list.d/g
 curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install gluu-oxd-server
-service gluu-oxd-server start
 ```
+Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+
+Then run the following command to start the oxd server:
+
+`service gluu-oxd-server start`
 
 ### CentOS 6
 
@@ -40,8 +53,12 @@ service gluu-oxd-server start
 # rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 # yum clean all
 # yum install gluu-oxd-server
-# service gluu-oxd-server start
 ```
+Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+
+Then run the following command to start the oxd server:
+
+`# service gluu-oxd-server start`
 
 ### CentOS 7
 
@@ -51,8 +68,12 @@ service gluu-oxd-server start
 # rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 # yum clean all
 # yum install gluu-oxd-server
-# service gluu-oxd-server start
 ```
+Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+
+Then run the following command to start the oxd server:
+
+`# service gluu-oxd-server start`
 
 ### RHEL 6
 
@@ -62,8 +83,12 @@ service gluu-oxd-server start
 # rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 # yum clean all
 # yum install gluu-oxd-server
-# service gluu-oxd-server start
 ```
+Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+
+Then run the following command to start the oxd server:
+
+`# service gluu-oxd-server start`
 
 ### RHEL 7
 
@@ -73,8 +98,12 @@ wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
 yum install gluu-oxd-server
-service gluu-oxd-server start
 ```
+Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+
+Then run the following command to start the oxd server:
+
+`service gluu-oxd-server start`
 
 ## Manual installation
 
