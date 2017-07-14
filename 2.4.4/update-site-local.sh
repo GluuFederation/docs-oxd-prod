@@ -1,6 +1,5 @@
 #! /bin/bash
 git pull
-mkdocs build
 echo -n "Enter task Performed >"
 read text
 echo "Entered Task: $text"
