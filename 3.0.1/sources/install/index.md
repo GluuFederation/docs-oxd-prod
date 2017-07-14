@@ -107,7 +107,7 @@ Then run the following command to start the oxd server:
 
 ## Manual installation
 
-If you don't want to use one of the Unix packages, oxd is pretty easy to install. It requires
+If you don't want to use one of the Linux packages, oxd is pretty easy to install. It requires
 Java version 1.7 or higher. But otherwise it's self-contained, and you can just unzip the folder 
 and run it.
 
@@ -119,9 +119,11 @@ available for download from [maven repository](http://ox.gluu.org/maven/org/xdi/
 1. Make a folder called `oxd-server` (or whatever you like)
  
 2. Unzip the [zip distribution](http://ox.gluu.org/maven/org/xdi/oxd-server/3.0.1/oxd-server-3.0.1-distribution.zip)
-in the above folder you just created.
+in the above folder you just created. 
 
-3. Run `oxd-server/bin/oxd-start.bat`
+3. Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+
+4. Run `oxd-server/bin/oxd-start.bat`
 
 ### Unix
 
@@ -131,11 +133,13 @@ in the above folder you just created.
 
 3. `$ unzip oxd-server-3.0.1-distribution.zip`
 
-4. `$ nohup bin/oxd-start.sh &`
+4. Now confgure oxd folloing the [configuration instructions](../conf/index.md). 
+
+5. `$ nohup bin/oxd-start.sh &`
 
 ## Manual Build oxd Server
 
-If you're a Java geek, oxd server can be built using [Maven](http://maven.apache.org).
+If you're a Java geek, you can build the oxd server using [Maven](http://maven.apache.org).
 
 The code is available in [Github](https://github.com/GluuFederation/oxd). A zip file can be 
 downloaded directly from [this link](https://github.com/GluuFederation/oxd/archive/master.zip). 
