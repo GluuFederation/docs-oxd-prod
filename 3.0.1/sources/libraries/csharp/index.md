@@ -55,7 +55,6 @@ The oxd server provides the following six methods for authenticating users with 
 In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OP. During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration a unique identifier will be issued by the oxd server. If your OpenID Connect Provider does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `RegisterSite` method as a parameter. The `RegisterSite` method is a one time task to configure a client in the oxd server and OP.
 
 **Required parameters:**
-In order to form your `RegisterSite` request, you will need the following required parameters:
 
 - OpHost: The URL of the OpenID Connect Provider (OP)
 
@@ -64,7 +63,6 @@ In order to form your `RegisterSite` request, you will need the following requir
 - redirectURI: A URL which the OP is authorized to redirect the user after authorization.
 
 **Request:**
-The client will send a registration request to the OP via the oxd server using the required parameters like the following example:
 
 ```csharp
  public ActionResult RegisterClient(string OpHost, int oxdport, string redirectUrl)
@@ -89,7 +87,6 @@ The client will send a registration request to the OP via the oxd server using t
 ```
 
 **Response:**
-Upon successful registration, oxd will return a response with the `oxd_Id` like the following example:
 
 ```javascript
 {
@@ -114,7 +111,6 @@ The `UpdateSiteRegistration` method can be used to update an existing client in 
 - postLogoutRedirectUrl: URL to which the RP is requesting that the End-User's User Agent be redirected after a logout has been performed.
 
 **Request:**
-The client will send a update site registration request to the OP via the oxd server using the required parameters like the following example:
 
 ```csharp
      public ActionResult UpdateClient(string opHost, int oxdPort, string oxdId, string postLogoutRedirectUrl)
@@ -138,8 +134,6 @@ The client will send a update site registration request to the OP via the oxd se
 ```
 
 **Response:**
-Upon successful request, oxd will return a response with `status: ok` like the following example:
-
 
 ```javascript
 {
