@@ -1,4 +1,4 @@
-# oxd-csharp
+﻿# oxd-csharp
 ## Overview
 The following documentation demonstrates how to use the [oxd client software](http://oxd.gluu.org) C# library to send users from a C# web application to an OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
@@ -10,7 +10,7 @@ The following documentation demonstrates how to use the [oxd client software](ht
 
 * Windows 7 + or Windows Server 2008 +
 
-* Gluu.Oxd.OxdCSharp  3.1.0
+* Gluu.Oxd.OxdCSharp  3.0.1
 
 
 ## Prerequisites
@@ -45,7 +45,7 @@ The oxd server provides the following six methods for authenticating users with 
 - [Register Site](../protocol/#register-site)    
 - [Update Site Registration](../protocol/#update-site-registration)    
 - [Get Authorization URL](../protocol/#get-authorization-url)   
-- [Get Tokens by Code](../protocol/#get-user-info)    
+- [Get Tokens by Code](../protocol/#get-tokens-id-access-by-code)   
 - [Get User Info](../protocol/#get-user-info)   
 - [Get Logout URI](../protocol/#log-out-uri)   
 
