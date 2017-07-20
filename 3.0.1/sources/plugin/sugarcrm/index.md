@@ -10,7 +10,7 @@ to authenticate and enroll users for a SugarCRM site.
 In order to use the SugarCRM module you will need
 to have a SugarCRM site, standard OP (like Google or a Gluu Server) and the oxd server.
 
-- This plugin is compatible with SugarCRM sugarCRM versions: 6.5 - 7.6
+- This plugin is compatible with sugarCRM versions: 6.5 - 7.6
 
 - If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google.
 
@@ -67,10 +67,20 @@ A short description of each field follows:
 3. oxd port: Enter the oxd-server port, which you can find in your `oxd-server/conf/oxd-conf.json` file.
 
 4. Click `Register` to continue.
+   
+      If your OpenID Provider supports dynamic registration no additional steps are required. 
+   
+      If your OpenID Connect Provider does not support dynamic registration (like Google), 
+       after clicking register two additional fields will be exposed where you need to enter your `client_id` and `client_secret`. 
+       Both values need to be obtained from the OP. To generate your `client_id` and `client_secret` use 
+       the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
-If your OpenID Provider supports dynamic registration no additional steps are required. 
-
-If your OpenID Connect Provider does not support dynamic registration (like Google), after clicking register two additional fields will be exposed where you need to enter your `client_id` and `client_secret`. Both values need to be obtained from the OP. To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
+5. Add the following lines to the config_override.php in your SugarCRM setup, after you complete the registration.
+    
+        $sugar_config['http_referer']['list'][] = your-openid-provider.uri`;
+        $sugar_config['http_referer']['actions'] =array('index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize', 
+        'Authenticate', 'Login', 'SupportPortal', 'Wizard', 'index', 'ListView', 'DetailView', 'EditView', 'oauth', 'authorize',
+        'Authenticate', 'Login', 'SupportPortal', 'SetTimezone' );
 
 !!! Note
     If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your     Gluu Server, navigate to the `OpenID Connect` > `Clients` page. Search for your `oxd id`. If it's present in the OP, everything worked.
