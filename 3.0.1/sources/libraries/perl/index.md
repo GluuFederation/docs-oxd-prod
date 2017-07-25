@@ -285,6 +285,7 @@ print Dumper($register_site->getResponseObject());
 ### Update Site Registration
 
 The `UpdateRegistration` module can be used to update an existing client in the OP. 
+
 Fields like Authorization redirect url, post logout url, scope, client secret and other fields 
 can be updated using this method.
 
