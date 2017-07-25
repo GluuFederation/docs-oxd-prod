@@ -11,7 +11,7 @@ like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login.
 ### System Requirements
 - Microsoft Visual Studio 2008 or higher
 
-- Windows 7 or higher or Windows Server 2008 or higher
+- Windows 7 or higher / Windows Server 2008 or higher
 
 - Gluu.Oxd.OxdCSharp  3.0.1
 
