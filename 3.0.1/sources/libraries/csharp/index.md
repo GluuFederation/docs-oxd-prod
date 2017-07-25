@@ -1,57 +1,69 @@
-# oxd-csharp
+﻿# oxd-csharp
 ## Overview
-The following documentation demonstrates how to use the [oxd client software](http://oxd.gluu.org) to send users from a C# app to an OpenID Connect Provider (OP) for login. You can use oxd to securely send users to any standard OP for login, including Google 
-and the [free open source Gluu Server](http://gluu.org/gluu-server).
+The following documentation demonstrates how to use the [oxd client software](http://oxd.gluu.org) C# library to send users from a C# web application to an OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 ## Sample Project
 [Download a sample project](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip) specific to this oxd library.
 
-## oxd Server Methods
+### System Requirements
+* Microsoft Visual Studio 2008 +
 
-The oxd server provides the following six methods for authenticating users with OpenID Connect:
+* Windows 7 + or Windows Server 2008 +
+
+* Gluu.Oxd.OxdCSharp  3.0.1
+
+
+## Prerequisites
+### Required Software
+To use the oxd C# library, you will need:
+
+- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
+- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application;      
+- A Windows server or Windows installed machine.
+
+### Install the Gluu.Oxd.OxdCSharp NuGet Package
+Use the NuGet Package Manager Console (Tools -> NuGet Package Manager -> Package Manager Console) to install the Gluu.Oxd.OxdCSharp package, running the following command:
+
+```PM> Install-Package Gluu.Oxd.OxdCSharp```
+
+### Configure the Client Application
+- Your client application must have a valid ssl cert, so the url includes: `https://`    
+
+- The client hostname should be a valid hostname, not localhost or an IP Address. You can configure the hostname by adding the following entry in your `C:\Windows\System32\drivers\etc\host` file:
+
+    `127.0.0.1  client.example.com`
+
+- Enable SSL using the following instructions:
+
+    - Open the Client application in Visual Studio;
+    - Select Client Application Property;
+    - Navigate to `Development Server` and set `SSL Enabled` to `True`.
+
+## oxd Server Methods
+The oxd server provides the following six methods for authenticating users with an OpenID Connect Provider (OP):
 
 - [Register Site](../protocol/#register-site)    
 - [Update Site Registration](../protocol/#update-site-registration)    
 - [Get Authorization URL](../protocol/#get-authorization-url)   
-- [Get Tokens by Code](../protocol/#get-user-info)    
+- [Get Tokens by Code](../protocol/#get-tokens-id-access-by-code)   
 - [Get User Info](../protocol/#get-user-info)   
 - [Get Logout URI](../protocol/#log-out-uri)   
-
-## Installation
-
-### Prerequisites
-
-To use the oxd csharp library, you will need:
-
-- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
-- An active installation of the [oxd server](../../install/index.md) running in the same server where the client is configured;    
-- A client application with a valid ssl cert, so the application url includes: `https://`    
-
-In addition, the following resources will be of assistance as well:
-- [Github sources](https://github.com/GluuFederation/oxd-csharp/tree/3.0.1)    
-- [Tests in Github](https://github.com/GluuFederation/oxd-csharp/tree/master/CSharp/Clients)    
-- [CSharp API Documentation](https://github.com/GluuFederation/oxd-csharp)     
-
-!!! Note:
-    CSharp requires windows server or windows installed machine to work.
-
-### Install oxd NuGet Package
-
-```PM> Install-Package Gluu.Oxd.OxdCSharp```
 
 ## Sample Code
 
 ### Register Site
+In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OP. During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration a unique identifier will be issued by the oxd server. If your OpenID Connect Provider does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `RegisterSite` method as a parameter. The `RegisterSite` method is a one time task to configure a client in the oxd server and OP.
 
 **Required parameters:**
 
-* OpHost     - OpenId Provider Url
+- OpHost: The URL of the OpenID Connect Provider (OP)
 
-* oxdport        - the port of the oxd server
+- oxdport: the port of the oxd server 
 
-* redirectURI - A URL which the OP is authorized to redirect the user after authorization.
+- redirectURI: A URL which the OP is authorized to redirect the user after authorization.
 
 **Request:**
+
 ```csharp
  public ActionResult RegisterClient(string OpHost, int oxdport, string redirectUrl)
         {
@@ -61,7 +73,7 @@ In addition, the following resources will be of assistance as well:
                 AuthorizationRedirectUri = redirectUrl,
                 OpHost = OpHost,
                 ClientName = "<Your Client Name>",
-                Scope = new List<string> { "openid", "profile", "email", "uma_protection", "uma_authorization" }
+                Scope = new List<string> { "openid", "profile", "email" }
             };
 
             var registerSiteClient = new RegisterSiteClient();
@@ -75,6 +87,7 @@ In addition, the following resources will be of assistance as well:
 ```
 
 **Response:**
+
 ```javascript
 {
     "status":"ok",
@@ -85,18 +98,20 @@ In addition, the following resources will be of assistance as well:
 ```
 
 ### Update Site Registration
+The `UpdateSiteRegistration` method can be used to update an existing client in the OP. Fields like Authorization redirect url, post logout url, scope, client secret etc. can be updated using this method.
 
 **Required parameters:**
 
-* OpHost      - OpenId Provider Url
+- OpHost: The URL of the OpenID Connect Provider (OP)
 
-* oxdport     - the port of the oxd server
+- oxdport: the port of the oxd server 
 
-* oxdId       - oxdID from client registration
+- redirectURI: A URL which the OP is authorized to redirect the user after authorization.
 
-* redirectURI - A URL which the OP is authorized to redirect the user after authorization.
+- postLogoutRedirectUrl: URL to which the RP is requesting that the End-User's User Agent be redirected after a logout has been performed.
 
 **Request:**
+
 ```csharp
      public ActionResult UpdateClient(string opHost, int oxdPort, string oxdId, string postLogoutRedirectUrl)
         {
@@ -119,6 +134,7 @@ In addition, the following resources will be of assistance as well:
 ```
 
 **Response:**
+
 ```javascript
 {
     "status":"ok"
@@ -126,14 +142,15 @@ In addition, the following resources will be of assistance as well:
 ```
 
 ### Get Authorization URL
+The `GetAuthorizationURL` method returns the OpenID Connect Provider authentication URL to which the client application must redirect the user to authorize the release of personal data. The response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
 
 **Required parameters:**
 
-* OpHost   - OpenId Provider Url
+- OpHost: The URL of the OpenID Connect Provider (OP)
 
-* oxdport  - the port of the oxd server
+- oxdport: the port of the oxd server 
 
-* oxdId    - oxdID from client registration
+- oxdId: oxd Id from client registration
 
 **Request:**
 ```csharp
@@ -167,17 +184,19 @@ In addition, the following resources will be of assistance as well:
 
 ### Get Tokens by Code
 
+Upon successful login, the login result will return code and state. `GetTokensByCode` uses code and state to retrieve token which can be used to access user claims.
+
 **Required parameters:**
 
-* OpHost   - OpenId Provider Url
+- OpHost: The URL of the OpenID Connect Provider (OP)
 
-* oxdport  - the port of the oxd server
+- oxdport: the port of the oxd server 
 
-* oxdId    - oxdID from client registration
+- oxdId: oxd Id from client registration
 
-* authCode    - The Code from OP redirect url
+- authCode: The Code from OP authorization redirect url 
 
-* authState    - The State from OP redirect url
+- authState: The State from OP authorization redirect url
 
 **Request:**
 ```csharp
@@ -226,16 +245,17 @@ In addition, the following resources will be of assistance as well:
 
 
 ### Get User Info
+Once the user has been authenticated by the OpenID Connect Provider, the `GetUserInfo` method returns Claims (Like First Name, Last Name, emailId, etc.) about the authenticated end user.
 
 **Required parameters:**
 
-* OpHost   - OpenId Provider Url
+- OpHost: The URL of the OpenID Connect Provider (OP)
 
-* oxdport  - the port of the oxd server
+- oxdport: the port of the oxd server 
 
-* oxdId    - oxdID from client registration
+- oxdId: oxd Id from client registration
 
-* accessToken - accessToken from GetTokenByCode
+- accessToken: accessToken from GetTokenByCode
 
 **Request:**
 ```csharp
@@ -281,13 +301,16 @@ In addition, the following resources will be of assistance as well:
 
 ### Logout
 
+`GetLogoutURL` method returns the OpenID Connect Provider logout url. Client application  uses this logout url to end the user session.
+
+
 **Required parameters:**
 
-* OpHost   - OpenId Provider Url
+- OpHost: The URL of the OpenID Connect Provider (OP)
 
-* oxdport  - the port of the oxd server
+- oxdport: the port of the oxd server 
 
-* oxdId    - oxdID from client registration
+- oxdId: oxd Id from client registration
 
 **Request:**
 ```csharp
