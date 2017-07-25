@@ -167,7 +167,7 @@ oxd.register_site(oxd.Request,function(response){
 ```
 
 ### Update Site Registration
-The `update_site_registration` method can be used to update an existing client in the OP. Fields like Authorization redirect url, post logout url, scope, client secret etc. can be updated using this method.
+The `update_site_registration` method can be used to update an existing client in the OP. Fields like Authorization redirect url, post logout url, scope, client secret and other fields can be updated using this method.
 
 **Required parameters:**
 
@@ -327,7 +327,7 @@ oxd.get_user_info(oxd.Request,function(response){
 ### Logout
 
 `get_logout_uri` method returns the OpenID Connect Provider logout url. 
-Client application  uses this logout url to end the user session.
+Client application uses this logout url to end the user session.
 
 
 **Required parameters:**
