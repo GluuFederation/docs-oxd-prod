@@ -79,7 +79,7 @@ required for client application registration and other oxd methods.
 
 - Your client application must have a valid ssl cert, so the url includes: `https://`    
 
-- The client hostname should be a valid hostname, not localhost or an IP Address. 
+- The client hostname should be a valid `hostname`, not localhost or an IP Address. 
 You can configure the hostname by adding the following entry in your host file. 
 The hostname should be a valid FQDN.
 
