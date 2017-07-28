@@ -212,12 +212,12 @@ location `C:/apache/conf/extra/httpd-vhosts.conf`:
 
 The oxd server provides the following six methods for authenticating users with an OpenID Connect Provider (OP):
 
-- [Register Site](../protocol/#register-site)    
-- [Update Site Registration](../protocol/#update-site-registration)    
-- [Get Authorization URL](../protocol/#get-authorization-url)   
-- [Get Tokens by Code](../protocol/#get-tokens-id-access-by-code)    
-- [Get User Info](../protocol/#get-user-info)   
-- [Get Logout URI](../protocol/#log-out-uri) 
+- [Register Site](../../protocol/#register-site)    
+- [Update Site Registration](../../protocol/#update-site-registration)    
+- [Get Authorization URL](../../protocol/#get-authorization-url)   
+- [Get Tokens by Code](../../protocol/#get-tokens-id-access-by-code)    
+- [Get User Info](../../protocol/#get-user-info)   
+- [Get Logout URI](../../protocol/#log-out-uri) 
 
 
 ## Sample code
