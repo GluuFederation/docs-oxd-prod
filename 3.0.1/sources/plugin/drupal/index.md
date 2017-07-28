@@ -51,7 +51,7 @@ You can download the plugin from the [Github source](https://github.com/GluuFede
 
 ## Plugin Configuration 
 
-In your Drupal admin dashboard you should now see the OpenID Connect tab in the left hand menu. 
+In your Drupal admin portal, under `Module` you should now see the `OpenID Connect` section. 
 Click the link to navigate to the General configuration page.
 
 ### General

@@ -43,7 +43,7 @@ The other three oxd API's are:
 First of all, the web site must register itself with oxd server. If 
 registration is successful, ox will return an identifier for the 
 application, which must be presented in subsequent API calls. This
-is the `oxd-id`, not to be confused with the OpenID Connect client id.
+is the `oxd_id`, not to be confused with the OpenID Connect client id.
 
 During the registration operation, oxd will dynamically register an 
 OpenID Connect client and save its configuration.

@@ -1,46 +1,56 @@
-﻿# oxd-csharp
+# oxd-csharp
 ## Overview
-The following documentation demonstrates how to use the [oxd client software](http://oxd.gluu.org) C# library to send users from a C# web application to an OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
+The following documentation demonstrates how to use 
+the [oxd client software](http://oxd.gluu.org) C# library to send users from a 
+C# web application to an OpenID Connect Provider (OP), 
+like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 ## Sample Project
 [Download a sample project](https://github.com/GluuFederation/oxd-csharp/archive/3.0.1.zip) specific to this oxd library.
 
 ### System Requirements
-* Microsoft Visual Studio 2008 +
+- Microsoft Visual Studio 2008 or higher
 
-* Windows 7 + or Windows Server 2008 +
+- Windows 7 or higher / Windows Server 2008 or higher
 
-* Gluu.Oxd.OxdCSharp  3.0.1
+- Gluu.Oxd.OxdCSharp  3.0.1
 
 
 ## Prerequisites
 ### Required Software
 To use the oxd C# library, you will need:
 
-- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
-- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application;      
-- A Windows server or Windows installed machine.
+- A valid OpenID Connect Provider (OP), like Google or 
+the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).   
+- An active installation of the [oxd server](../../install/index.md)
+running in the same server as the client application.      
+- A Windows server or Windows installed machine meeting system requirements.
 
 ### Install the Gluu.Oxd.OxdCSharp NuGet Package
-Use the NuGet Package Manager Console (Tools -> NuGet Package Manager -> Package Manager Console) to install the Gluu.Oxd.OxdCSharp package, running the following command:
+Use the NuGet Package Manager Console 
+`Tools` > `NuGet Package Manager` > `Package Manager Console` to 
+install the Gluu.Oxd.OxdCSharp package, running the following command:
 
-```PM> Install-Package Gluu.Oxd.OxdCSharp```
+`PM> Install-Package Gluu.Oxd.OxdCSharp`
 
 ### Configure the Client Application
 - Your client application must have a valid ssl cert, so the url includes: `https://`    
 
-- The client hostname should be a valid hostname, not localhost or an IP Address. You can configure the hostname by adding the following entry in your `C:\Windows\System32\drivers\etc\host` file:
+- The client hostname should be a valid `hostname`(FQDN), not localhost or an IP Address. 
+You can configure the `hostname` by adding the following 
+entry in your `C:\Windows\System32\drivers\etc\host` file:
 
     `127.0.0.1  client.example.com`
 
 - Enable SSL using the following instructions:
 
-    - Open the Client application in Visual Studio;
-    - Select Client Application Property;
+    - Open the Client application in Visual Studio.
+    - Select Client Application Property.
     - Navigate to `Development Server` and set `SSL Enabled` to `True`.
 
 ## oxd Server Methods
-The oxd server provides the following six methods for authenticating users with an OpenID Connect Provider (OP):
+The oxd server provides the following six methods for authenticating users 
+with an OpenID Connect Provider (OP):
 
 - [Register Site](../protocol/#register-site)    
 - [Update Site Registration](../protocol/#update-site-registration)    
@@ -150,7 +160,7 @@ The `GetAuthorizationURL` method returns the OpenID Connect Provider authenticat
 
 - oxdport: the port of the oxd server 
 
-- oxdId: oxd Id from client registration
+- oxd_Id: oxd Id from client registration
 
 **Request:**
 ```csharp
@@ -192,7 +202,7 @@ Upon successful login, the login result will return code and state. `GetTokensBy
 
 - oxdport: the port of the oxd server 
 
-- oxdId: oxd Id from client registration
+- oxd_Id: oxd Id from client registration
 
 - authCode: The Code from OP authorization redirect url 
 
@@ -253,7 +263,7 @@ Once the user has been authenticated by the OpenID Connect Provider, the `GetUse
 
 - oxdport: the port of the oxd server 
 
-- oxdId: oxd Id from client registration
+- oxd_Id: oxd Id from client registration
 
 - accessToken: accessToken from GetTokenByCode
 
@@ -310,7 +320,7 @@ Once the user has been authenticated by the OpenID Connect Provider, the `GetUse
 
 - oxdport: the port of the oxd server 
 
-- oxdId: oxd Id from client registration
+- oxd_Id: oxd Id from client registration
 
 **Request:**
 ```csharp

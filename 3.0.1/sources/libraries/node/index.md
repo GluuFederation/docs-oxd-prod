@@ -2,17 +2,20 @@
 
 ## Overview
 The following documentation demonstrates 
-how to use the [oxd client software](http://oxd.gluu.org) Node.js library to send users from a Node.js application to an 
-OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login.
+how to use the [oxd client software](http://oxd.gluu.org) Node.js library to send users 
+from a Node.js application to an 
+OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or 
+Google, for login.
 
 ## Sample Project
 
-[Download a sample project](https://github.com/GluuFederation/oxd-node/archive/3.0.1.zip) specific to this oxd library.
+[Download a sample project](https://github.com/GluuFederation/oxd-node/archive/3.0.1.zip) 
+specific to this oxd library.
 
 ### System Requirements
 
 
-- Ubuntu / Debian / CentOS / RHEL / Windows 7 + / Windows Server 2008 +
+- Ubuntu / Debian / CentOS / RHEL / Windows 7 or higher / Windows Server 2008 or higher
 - Node.js 6.11.0 or higher
 - npm 3.10.10 or higher
 - oxd-node library
@@ -21,8 +24,8 @@ OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-serve
 ### Required Software
 To use the oxd Node.js library, you will need:
 
-- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
-- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application;      
+- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).    
+- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application.      
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 ### Install oxd-node-library from npm
@@ -37,7 +40,9 @@ $ npm install oxd-node
 
 
 - The oxd-node-library configuration file is located at 
-'node_modules\oxd-node\model\request_param.js'. This file contains the [parameters](../api-guide/openid-connect-api/) required for client application registration and other oxd methods.
+`node_modules\oxd-node\model\request_param.js`. 
+This file contains the [parameters](../api-guide/openid-connect-api/) 
+required for client application registration and other oxd methods.
 
 
 ```javascript
@@ -74,7 +79,9 @@ $ npm install oxd-node
 
 - Your client application must have a valid ssl cert, so the url includes: `https://`    
 
-- The client hostname should be a valid hostname, not localhost or an IP Address. You can configure the hostname by adding the following entry in your host file.
+- The client hostname should be a valid `hostname`, not localhost or an IP Address. 
+You can configure the hostname by adding the following entry in your host file. 
+The hostname should be a valid FQDN.
 
     #### Linux
   Host file location `/etc/host` :
@@ -109,7 +116,8 @@ $ npm install oxd-node
     module.exports = app;
 ```
 ## oxd Server Methods
-The oxd server provides the following six methods for authenticating users with an OpenID Connect Provider (OP):
+The oxd server provides the following six methods for authenticating users with 
+an OpenID Connect Provider (OP):
 
 - [Register Site](../protocol/#register-site)    
 - [Update Site Registration](../protocol/#update-site-registration)    
@@ -122,7 +130,14 @@ The oxd server provides the following six methods for authenticating users with 
 
 ### Register Site
 
-In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OP. During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration a unique identifier will be issued by the oxd server. If your OpenID Connect Provider does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `register_site` method as a parameter. The `register_site` method is a one time task to configure a client in the oxd server and OP.
+In order to use an OpenID Connect Provider (OP) for login, you need to 
+register your client application at the OP. During registration oxd will 
+dynamically register the OpenID Connect client and save its configuration. 
+Upon successful registration a unique identifier will be issued by the oxd server. 
+If your OpenID Connect Provider does not support dynamic registration (like Google), 
+you will need to obtain a ClientID and Client Secret which can be passed to 
+the `register_site` method as a parameter. The `register_site` method is a one 
+time task to configure a client in the oxd server and OP.
 
 **Required parameters:**
 
@@ -152,7 +167,7 @@ oxd.register_site(oxd.Request,function(response){
 ```
 
 ### Update Site Registration
-The `update_site_registration` method can be used to update an existing client in the OP. Fields like Authorization redirect url, post logout url, scope, client secret etc. can be updated using this method.
+The `update_site_registration` method can be used to update an existing client in the OP. Fields like Authorization redirect url, post logout url, scope, client secret and other fields can be updated using this method.
 
 **Required parameters:**
 
@@ -182,7 +197,11 @@ oxd.update_site_registration(oxd.Request,function(response){
 ```
 
 ### Get Authorization URL
-The `get_authorization_url` method returns the OpenID Connect Provider authentication URL to which the client application must redirect the user to authorize the release of personal data. The response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
+The `get_authorization_url` method returns the OpenID Connect Provider 
+authentication URL to which the client application must redirect the user to 
+authorize the release of personal data. The response URL includes state value,
+which can be used to obtain tokens required for authentication. This state value 
+used to maintain state between the request and the callback.
 
 **Required parameters:**
 
@@ -213,7 +232,8 @@ oxd.get_authorization_url(oxd.Request,function(response){
 ```
 
 ### Get Tokens by Code
-Upon successful login, the login result will return code and state. `get_tokens_by_code` uses code and state to retrieve token which can be used to access user claims.
+Upon successful login, the login result will return code and state. `get_tokens_by_code` 
+uses code and state to retrieve token which can be used to access user claims.
 
 **Required parameters:**
 
@@ -262,7 +282,9 @@ oxd.get_tokens_by_code(oxd.Request,function(response){
 
 ### Get User Info
 
-Once the user has been authenticated by the OpenID Connect Provider, the `get_user_info` method returns Claims (Like First Name, Last Name, emailId, etc.) about the authenticated end user.
+Once the user has been authenticated by the OpenID Connect Provider, 
+the `get_user_info` method returns Claims (Like First Name, Last Name, emailId, etc.) 
+about the authenticated end user.
 
 **Required parameters:**
 
@@ -304,7 +326,8 @@ oxd.get_user_info(oxd.Request,function(response){
 
 ### Logout
 
-`get_logout_uri` method returns the OpenID Connect Provider logout url. Client application  uses this logout url to end the user session.
+`get_logout_uri` method returns the OpenID Connect Provider logout url. 
+Client application uses this logout url to end the user session.
 
 
 **Required parameters:**

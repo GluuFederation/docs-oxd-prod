@@ -2,8 +2,8 @@
 
 ## Overview
 The following documentation demonstrates 
-how to use the [oxd client software](http://oxd.gluu.org) PHP library to send users from a PHP application to an 
-OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
+how to use the [oxd client software](http://oxd.gluu.org) PHP library to send users 
+from a PHP application to an OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 
 ## Sample Project
@@ -12,7 +12,7 @@ OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-serve
 
 ### System Requirements
 
-- Ubuntu / Debian / CentOS / RHEL / Windows 7 + / Windows Server 2008 +
+- Ubuntu / Debian / CentOS / RHEL / Windows 7 or higher / Windows Server 2008 or higher
 - PHP 5.3 or higher
 - Apache 2.4 or higher
 - oxd-php-library 3.0.1
@@ -22,8 +22,8 @@ OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-serve
 ### Required Software
 To use the oxd PHP library, you will need:
 
-- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
-- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application;      
+- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).    
+- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application. 
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 ### Install oxd-php-library from Composer
@@ -35,9 +35,11 @@ $ composer require "gluufederation/oxd-php-api"
 
 ### Configure the Client Application
 
-- The oxd-php-library configuration file is located at `oxdlibrary/oxd-rp-settings.json`. The values here are used during Client application registration in OpenID Connect Provider. For a full list of supported oxd configuration parameters, check this [document](../api-guide/openid-connect-api/). Below is a typical configuration data set required for registration:
+- The oxd-php-library configuration file is located at `oxdlibrary/oxd-rp-settings.json`. 
+The values here are used during Client application registration in OpenID Connect Provider. 
+For a full list of supported oxd configuration parameters, check this [document](https://gluu.org/docs/ce/3.0.2/api-guide/openid-connect-api/). Below is a typical configuration data set required for registration:
 
-    ```javascript
+```javascript
     {
     "op_host": "<OpenID Connect Provider Host>",
     "oxd_host_port":8099,
@@ -48,16 +50,18 @@ $ composer require "gluufederation/oxd-php-api"
     "response_types" : ["code"],
     "grant_types":["authorization_code"],
     "acr_values" : [ "basic" ]
-    }
-                            
-    ```
+    }              
+```
 
 - The PHP class `Oxd_RP_config` in the file `Oxd_RP_config.php` maps the above json setting and provides a config object to the sample project.
 
 
 - Your client application must have a valid ssl cert, so the url includes: `https://`    
 
-- The client hostname should be a valid hostname, not localhost or an IP Address. You can configure the hostname by adding the following entry in your `/etc/host` (for Ubuntu, might be different for different flavours of linux) file:
+- The client hostname should be a valid `hostname`(should be a FQDN), not localhost or 
+an IP Address. You can configure the hostname by adding the following entry in 
+your `/etc/host` 
+(for Ubuntu, might be different for different flavours of linux) file:
 
     `127.0.0.1  client.example.com`
 
@@ -244,7 +248,8 @@ print_r($get_tokens_by_code->getResponseObject());
 
 ```
 **Response:**
-```javascript
+
+```js
 {
     "status":"ok",
     "data":{

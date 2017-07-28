@@ -13,7 +13,7 @@ OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-serve
 ### System Requirements
 
 
-- Ubuntu / Debian / CentOS / RHEL / Windows 7 + / Windows Server 2008 +
+- Ubuntu / Debian / CentOS / RHEL / Windows 7 or higher / Windows Server 2008 or higher
 - Perl 5
 - Apache 2.4.4 +
 - OxdPerlModule 3.0.1
@@ -26,13 +26,15 @@ OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-serve
 ### Required Software
 To use the oxd Perl library, you will need:
 
-- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/);    
-- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application;      
+- A valid OpenID Connect Provider (OP), like Google or 
+the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).    
+- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application.     
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 ### Install oxdPerlModule from CPAN
 
-To install oxdPerlModule from CPAN run the following command in Linux terminal or Windows command window
+To install oxdPerlModule from CPAN run the following command in 
+Linux terminal or Windows command window
 
 ``` {.code }
 cpan > install INDERPAL/OxdPerlModule-0.01.tar.gz
@@ -50,7 +52,11 @@ cpan > install IO::Socket::SSL
 
 ### Configure the Client Application
 
-- The oxd-perl configuration file is located at `oxd-settings.json`. This file has to be in the Client application root directory. The values here are used during Client application registration in OpenID Connect Provider. For a full list of supported oxd configuration parameters, check this [document](../api-guide/openid-connect-api/). Below is a typical configuration data set required for registration:
+- The oxd-perl configuration file is located at `oxd-settings.json`. This file has to 
+be in the Client application root directory. The values here are used during Client 
+application registration in OpenID Connect Provider. For a full list of supported oxd 
+configuration parameters, check this [document](https://gluu.org/docs/ce/3.0.2/api-guide/openid-connect-api/). 
+Below is a typical configuration data set required for registration:
 
 	```javascript
 	{
@@ -77,7 +83,8 @@ Install Perl on ubuntu
 $ sudo apt-get install perl
 $ sudo apt-get install libapache2-mod-perl2 
 ```
-Then create virtual host of oxd-perl `oxd-perl.conf` under `/etc/apache2/sites-available/  file and add these lines :
+Then create virtual host of oxd-perl `oxd-perl.conf` 
+under `/etc/apache2/sites-available/`  file and add these lines :
 
 ```bash
 $ cd /etc/apache2/sites-available
@@ -168,11 +175,14 @@ cd /var/www/html/oxd-perl/example
 
 #### Windows
 
-- The client hostname should be a valid hostname, not localhost or an IP Address. You can configure the hostname by adding the following entry in your `C:\Windows\System32\drivers\etc\hosts` file:
+- The client hostname should be a valid `hostname` (FQDN), not localhost or an IP Address. 
+You can configure the hostname by adding the following entry in 
+your `C:\Windows\System32\drivers\etc\hosts` file:
 
     `127.0.0.1  client.example.com`
     
-- Enable SSL by	adding the following lines on virtual host file of Apache in the location `C:/apache/conf/extra/httpd-vhosts.conf`:
+- Enable SSL by	adding the following lines on virtual host file of Apache in the 
+location `C:/apache/conf/extra/httpd-vhosts.conf`:
 
     ```apache
     <VirtualHost *>
@@ -232,12 +242,19 @@ Use following code to assign required parameter values from `oxd-settings.json` 
 
 ### Register Site
 
-In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OP. During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration a unique identifier will be issued by the oxd server. If your OpenID Connect Provider does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `OxdRegister` module as a parameter. The Register Site method is a one time task to configure a client in the oxd server and OP.
+In order to use an OpenID Connect Provider (OP) for login, you need to register 
+your client application at the OP. During registration oxd will dynamically register 
+the OpenID Connect client and save its configuration. Upon successful registration a 
+unique identifier will be issued by the oxd server. If your OpenID Connect Provider 
+does not support dynamic registration (like Google), you will need to obtain a ClientID 
+and Client Secret which can be passed to the `OxdRegister` module as a parameter. 
+The Register Site method is a one time task to configure a client in the oxd server and OP.
 
 **Required parameters:**
 
 - opHost: The URL of the OpenID Connect Provider (OP)
-- authorizationRedirectUrl: A URL which the OP is authorized to redirect the user after authorization.
+- authorizationRedirectUrl: A URL which the OP is authorized to redirect the user 
+after authorization.
 
 **Request:**
 ```perl
@@ -267,7 +284,10 @@ print Dumper($register_site->getResponseObject());
 
 ### Update Site Registration
 
-The `UpdateRegistration` module can be used to update an existing client in the OP. Fields like Authorization redirect url, post logout url, scope, client secret etc. can be updated using this method.
+The `UpdateRegistration` module can be used to update an existing client in the OP. 
+
+Fields like Authorization redirect url, post logout url, scope, client secret and other fields 
+can be updated using this method.
 
 **Required parameters:**
 

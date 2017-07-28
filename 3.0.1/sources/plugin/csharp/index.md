@@ -55,7 +55,7 @@ according to [Protocol](./protocol/).
 	* redirectUrl	
 
 * Response 
-	* oxd-id (Type: String)	
+	* oxd_id (Type: String)	
 	
 ### Update Site Registeration
 
@@ -99,7 +99,7 @@ according to [Protocol](./protocol/).
 	* port 	
 
 * Response 
-	* oxd-id (Type: String)
+	* oxd_id (Type: String)
 	
 ### Get Authorization Url	
 

@@ -54,7 +54,7 @@ Please use the links below to download the `oxd Server` zip file. For complete i
 	* redirectUrl	
 
 * Response 
-	* oxd-id (Type: String)	
+	* oxd_id (Type: String)	
 	
 ### Update Site Registeration
 
@@ -98,7 +98,7 @@ Please use the links below to download the `oxd Server` zip file. For complete i
 	* port 	
 
 * Response 
-	* oxd-id (Type: String)
+	* oxd_id (Type: String)
 	
 ### Get Authorization Url	
 
