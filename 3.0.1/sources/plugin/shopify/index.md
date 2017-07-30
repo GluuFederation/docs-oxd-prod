@@ -19,7 +19,7 @@ In order to use the Shopify App you will need a standard OP (like Google or a Gl
  
 ### Download
 
-[Link to Shopify marketplace](https://apps.shopify.com/oxd-shopify)
+You can download the from [Github Source](https://github.com/GluuFederation/shopify-oxd-plugin)
 
 ### Upload
 Open your Shopify App Page, e.g. `https://apps.shopify.com/oxd-shopify`, click on the Get and install in any store.
