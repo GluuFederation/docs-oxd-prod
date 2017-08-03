@@ -73,30 +73,30 @@ your `/etc/host`
 
    **Windows**
 
-    `<apache installation directory>/conf/extra/httpd-vhosts.conf`:
+ `<apache installation directory>/conf/extra/httpd-vhosts.conf`:
 
 
-    ```apache
-        <VirtualHost *>
-            ServerName client.example.com
-            ServerAlias client.example.com
-            DocumentRoot "<apache web root directory>"
-        </VirtualHost>
+```apache
+<VirtualHost *>
+ServerName client.example.com
+ServerAlias client.example.com
+DocumentRoot "<apache web root directory>"
+</VirtualHost>
 
-        <VirtualHost *:443>
-            DocumentRoot "<apache web root directory>"
-            ServerName client.example.com
-            ServerAlias www.client.example.com
-            SSLEngine on
-            SSLCertificateFile "<Path to your ssl certificate file>"
-            SSLCertificateKeyFile "<Path to your ssl certificate key file>"
-            <Directory "<apache web root directory>">
-                AllowOverride All
-                Order allow,deny
-                Allow from all
-            </Directory>
-        </VirtualHost>
-    ```
+<VirtualHost *:443>
+DocumentRoot "<apache web root directory>"
+ServerName client.example.com
+ServerAlias www.client.example.com
+SSLEngine on
+SSLCertificateFile "<Path to your ssl certificate file>"
+SSLCertificateKeyFile "<Path to your ssl certificate key file>"
+<Directory "<apache web root directory>">
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+</Directory>
+</VirtualHost>
+```
 
 
 

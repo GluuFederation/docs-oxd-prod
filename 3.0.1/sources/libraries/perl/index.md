@@ -58,20 +58,20 @@ application registration in OpenID Connect Provider. For a full list of supporte
 configuration parameters, check this [document](https://gluu.org/docs/ce/3.0.2/api-guide/openid-connect-api/). 
 Below is a typical configuration data set required for registration:
 
-	```javascript
-	{
-	  "op_host": "<https://ophost_url>",
-	  "oxd_host_port":8099,
-	  "authorization_redirect_uri" : "https://client.example.com/login.cgi",
-	  "post_logout_redirect_uri" : "https://client.example.com/logout.cgi",
-      "client_logout_uris" : "https://client.example.com/logout.cgi",
-	  "scope" : [ "openid", "profile", "email" ],
-	  "application_type" : "web",
-	  "response_types" : ["code"],
-	  "grant_types":["authorization_code"],
-	  "acr_values" : [ "basic" ]
-	}
-	```
+```javascript
+{
+  "op_host": "<https://ophost_url>",
+  "oxd_host_port":8099,
+  "authorization_redirect_uri" : "https://client.example.com/login.cgi",
+  "post_logout_redirect_uri" : "https://client.example.com/logout.cgi",
+  "client_logout_uris" : "https://client.example.com/logout.cgi",
+  "scope" : [ "openid", "profile", "email" ],
+  "application_type" : "web",
+  "response_types" : ["code"],
+  "grant_types":["authorization_code"],
+  "acr_values" : [ "basic" ]
+}
+```
 
 - Your client application must have a valid ssl cert, so the url includes: `https://`    
 
@@ -184,26 +184,26 @@ your `C:\Windows\System32\drivers\etc\hosts` file:
 - Enable SSL by	adding the following lines on virtual host file of Apache in the 
 location `C:/apache/conf/extra/httpd-vhosts.conf`:
 
-    ```apache
-    <VirtualHost *>
-        ServerName client.example.com
-        ServerAlias client.example.com
-        DocumentRoot "<apache web root directory>"
-    </VirtualHost>
+```apache
+<VirtualHost *>
+    ServerName client.example.com
+    ServerAlias client.example.com
+    DocumentRoot "<apache web root directory>"
+</VirtualHost>
 
-    <VirtualHost *:443>
-        DocumentRoot "<apache web root directory>"
-        ServerName client.example.com
-        SSLEngine on
-        SSLCertificateFile "<Path to your ssl certificate file>"
-        SSLCertificateKeyFile "<Path to your ssl certificate key file>"
-        <Directory "<apache web root directory>">
-            AllowOverride All
-            Order allow,deny
-            Allow from all
-        </Directory>
-    </VirtualHost>
-    ```
+<VirtualHost *:443>
+    DocumentRoot "<apache web root directory>"
+    ServerName client.example.com
+    SSLEngine on
+    SSLCertificateFile "<Path to your ssl certificate file>"
+    SSLCertificateKeyFile "<Path to your ssl certificate key file>"
+    <Directory "<apache web root directory>">
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+```
 
 
 
