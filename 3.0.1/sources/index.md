@@ -4,6 +4,8 @@ To make securing server-side web applications with a standard OpenID Connect Pro
 
 oxd is commercial software licensed by Gluu. You can get a license and a $50 credit by registering for an account on the [oxd website](https://oxd.gluu.org).
 
+[Watch the oxd demo video](https://youtu.be/zZMf84wB2f0). 
+
 ## Overview
 
 The oxd server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
@@ -12,6 +14,8 @@ By default, oxd is restricted to `localhost`, which means these APIs cannot be r
 
 oxd APIs can be called by any application that can make REST calls. Gluu also provides several native libraries that wrap the
 oxd APIs, currently available for Php, Java, Python, Node, Ruby C#, and .Net.
+
+[Watch the oxd demo video](https://youtu.be/zZMf84wB2f0). 
 
 ## Technical Architecture
 oxd is middleware service that simplifies the process of properly securing applications with OpenID Connect and UMA, two standard profiles of OAuth 2.0 for federated authentication and authorization, respectively. 
