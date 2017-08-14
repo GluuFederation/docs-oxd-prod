@@ -1,4 +1,4 @@
-###View Profile
+# View Profile
 You can view your profile details by clicking on the `Manage` link next to your 
 Profile section on your dashboard.
 
@@ -7,7 +7,7 @@ Profile section on your dashboard.
 This shows your account type, billing address and a list of all billing administrators. 
 Click on the `Edit` link to edit your profile, or `Back` to go back to your dashboard
 
-###Edit Profile
+# Edit Profile
 ![oxd license](../../img/license/profile/edit-profile.png)
 
 You can update your billing address or deactivate your account here. 
