@@ -1,15 +1,13 @@
 # Signup
-To signup for your oxd license visit the [registration page](https://oxd.gluu.org/account/register/) and enter your personal and/or business details.
+To signup for your oxd license visit the [registration page](https://oxd.gluu.org/account/register/) and enter your personal and/or business details. If you have a Gluu support account, you can sign in using your existing account credentials to get the registration process started. Just click the `Sign into your account!` link.
+
 
 ![oxd signup](../../../img/license/signup/signup.png)
 
-Note: If you already registered for a Gluu support account, you can sign in using your existing account credentials. Click the `Sign into your account!` link.
 
-## Business account
 If you are signing up on behalf of a business, please select the `Business` account type and enter the official name and the physical address of your business.
 ![oxd business](../../../img/license/signup/business.png)
 
-## Individual
 If you are signing up to use oxd personally, please select the `Individual` account type and enter your physical address.
 ![oxd business](../../../img/license/signup/individual.png)
 
