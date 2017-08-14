@@ -1,5 +1,5 @@
 # Signup
-To signup for your oxd license visit oxd.gluu.org/register and fill in your details to 
+To signup for your oxd license visit [Registeration](https://oxd.gluu.org/register) page and fill in your details to 
 create an account.
 
 ![oxd signup](../../../img/license/signup/signup.png)
