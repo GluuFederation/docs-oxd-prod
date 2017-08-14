@@ -3,6 +3,8 @@
 ## Pricing
 oxd is priced $0.33 per server per day. New accounts include a $50 credit that will be automatically applied to any charges incurred within the first 60 days of usage.
 
+Each time you use your license to install oxd, the servers MAC address is recorded. For each subsequent day that the server is active, you will be charged $0.33. You can use your license to install as many oxd servers as needed. 
+
 ## Billing Cycle
 The oxd billing cycle has three important dates each month: the 1st, 7th and 14th of the month.
 
