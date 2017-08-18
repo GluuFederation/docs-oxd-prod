@@ -17,6 +17,7 @@ pages:
 - Home: 'index.md'
 # Protocol
 - License Management:
+    - Introduction: `license/index.md`
     - Authentication:
       - Signup: 'license/auth/signup/index.md'
       - Login: 'license/auth/login/index.md'
