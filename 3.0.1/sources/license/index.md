@@ -9,6 +9,7 @@ In order to run the oxd server you will need a valid license from Gluu. You can 
 Once you sign up for a license you will be directed to a dashboard that provides your license details. Each time you install oxd you will need to grab your license details from your dashboard and add them to your oxd configuration file. 
 
 - Read the [dashboard docs](./dashboard/index.md)     
+- Read the [installation docs](../install/index.md)
 - Read the [oxd configuration docs](../conf/index.md)   
 
 ## Pricing
