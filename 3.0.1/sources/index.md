@@ -6,6 +6,9 @@ oxd is commercial software licensed by Gluu. You can get a license and a $50 cre
 
 [Watch the oxd demo video](https://youtu.be/zZMf84wB2f0). 
 
+## License
+oxd is commercial software licensed by Gluu. Learn more in the [license management documentation](./license/index.md).
+
 ## Overview
 
 The oxd server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
@@ -87,9 +90,6 @@ Gluu does its best to keep these plugins up to date but does not guarantee speci
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
 
 If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract. 
-
-## License
-oxd is commercial software licensed by Gluu. Learn more on the [oxd website](https://oxd.gluu.org).
 
 ## FAQ's
 
