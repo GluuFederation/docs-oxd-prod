@@ -30,7 +30,7 @@ By default, oxd is restricted to `localhost`, which means these APIs cannot be r
 ## Protocol 
 The oxd server supports the OpenID Connect and UMA profiles of OAuth 2.0. OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA can be used to manage what digital resources the user should have access to.
 
-Learn more in the [protocol section](./protocol/index.md/)
+Learn more in the [protocol section](./protocol/index.md)
 
 ## Why OXD
 If your goal is to integrate applications with your Gluu Server to achieve single sign-on (SSO), there are many strategies available to you. However, you should consider using oxd because:
