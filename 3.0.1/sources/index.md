@@ -29,25 +29,6 @@ The oxd server supports the OpenID Connect and UMA profiles of OAuth 2.0. OpenID
 
 Learn more in the [protocol section](./protocol/index.md)
 
-## Why OXD
-If your goal is to integrate applications with your Gluu Server to achieve single sign-on (SSO), there are many strategies available to you. However, you should consider using oxd because:
-
-1. oxd is super-easy to use;  
-
-2. oxd provides a central place to manage security across heterogenous application environments. If you have applications written in many languages, e.g. php, python, ruby, java, etc., you **do not** want to use a different open source client library for each application. That makes managing security a nightmare!;
-
-3. oxd is constantly being updated to address the latest OAuth 2.0 security knowledge;      
-
-4. If you're also using the Gluu Server, Gluu can provide more complete end-to-end support if we know both the client and server software;      
-
-5. In addition to a simple JSON/REST API, there are oxd libraries for Php, Python, Java, Node, Ruby, C#, .Net, Perl and Go; 
-
-6. There are oxd plugins for many popular applications like: Wordpress, Drupal, Magento, OpenCart, SugarCRM, SuiteCRM, Roundcube, Shopify, and Kong. More are being added too. Next on the list are: MatterMost, RocketChat, NextCloud, and Liferay.      
-
-To learn more about oxd review these docs and the [code on Github](https://github.com/GluuFederation/oxd). 
-
-When you're ready to deploy oxd, head over to the website to [get your oxd license](https://oxd.gluu.org). 
-
 ## Installation
 
 Follow [these instructions](./install/index.md) to install and start oxd.
@@ -87,6 +68,25 @@ Gluu does its best to keep these plugins up to date but does not guarantee speci
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
 
 If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract. 
+
+## Why OXD
+If your goal is to integrate applications with your Gluu Server to achieve single sign-on (SSO), there are many strategies available to you. You should consider using oxd because:
+
+1. oxd is super-easy to use;  
+
+2. oxd provides a central place to manage security across heterogenous application environments. If you have applications written in many languages, e.g. php, python, ruby, java, etc., you do not want to use a different open source client library for each application. That makes managing security a nightmare!;
+
+3. oxd is constantly being updated to address the latest OAuth 2.0 security knowledge;      
+
+4. If you're also using the Gluu Server, Gluu can provide more complete end-to-end support if we know both the client and server software;      
+
+5. In addition to a simple JSON/REST API, there are oxd libraries for Php, Python, Java, Node, Ruby, C#, .Net, Perl and Go; 
+
+6. There are oxd plugins for many popular applications like: Wordpress, Drupal, Magento, OpenCart, SugarCRM, SuiteCRM, Roundcube, Shopify, and Kong. More are being added too. Next on the list are: MatterMost, RocketChat, NextCloud, and Liferay.      
+
+To learn more about oxd review these docs and the [code on Github](https://github.com/GluuFederation/oxd). 
+
+When you're ready to deploy oxd, head over to the website to [get your oxd license](https://oxd.gluu.org). 
 
 ## FAQ's
 
