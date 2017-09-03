@@ -1,19 +1,16 @@
 # oxd 3.0.1 Documentation
 
-To make securing server-side web applications with a standard OpenID Connect Provider (OP) like the [Gluu Server](https://gluu.org/gluu-server) fast, easy, and secure, Gluu offers OAuth 2.0 client software called [oxd](http://oxd.gluu.org). 
-
-oxd is commercial software licensed by Gluu. You can get a license and a $50 credit by registering for an account on the [oxd website](https://oxd.gluu.org).
+oxd is a middleware service that can be used to simplify the process of integrating server-side web applications with a standard OpenID Connect Provider (OP) like the [Gluu Server](https://gluu.org/gluu-server).
 
 [Watch the oxd demo video](https://youtu.be/zZMf84wB2f0). 
 
 ## License
-oxd is commercial software licensed by Gluu. Learn more in the [license management documentation](./license/index.md).
+oxd is commercial software licensed by Gluu. Get your license and a $50 credit by registering for an account on the [oxd website](https://oxd.gluu.org). Learn more in the [license management documentation](./license/index.md). 
 
 ## Overview
-
 The oxd server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
 
-By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. oxd should be deployed on each server that has web applications.
+By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. 
 
 oxd APIs can be called by any application that can make REST calls. Gluu also provides several native libraries that wrap the
 oxd APIs, currently available for Php, Java, Python, Node, Ruby C#, and .Net.
@@ -23,7 +20,7 @@ oxd APIs, currently available for Php, Java, Python, Node, Ruby C#, and .Net.
 ## Technical Architecture
 oxd is middleware service that simplifies the process of properly securing applications with OpenID Connect and UMA, two standard profiles of OAuth 2.0 for federated authentication and authorization, respectively. 
 
-By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. oxd should be deployed on each server that has web applications. 
+By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. 
 
 ![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
 
