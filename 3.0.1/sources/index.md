@@ -7,6 +7,16 @@ oxd is a middleware service that can be used to simplify the process of integrat
 !!! Note
     If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.    
 
+## Overview
+The oxd server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
+
+By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. 
+
+oxd APIs can be called by any application that can make REST calls. Gluu also provides several native libraries that wrap the
+oxd APIs, currently available for Php, Java, Python, Node, Ruby C#, and .Net.
+
+[Watch the oxd demo video](https://youtu.be/zZMf84wB2f0). 
+
 ## How it Works
 
 Step 1: [Sign up for a license](https://oxd.gluu.org/account/register/);      
@@ -17,16 +27,6 @@ Step 5: Integrate apps with your OP using the oxd REST API, or one of the native
 
 !!! Note
     If you need an OpenID Connect Provider (OP) to authenticate users, you can use Google or download and deploy the free open source [Gluu Server](https://gluu.org/docs/ce/installation-guide/). 
-
-## Overview
-The oxd server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
-
-By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. 
-
-oxd APIs can be called by any application that can make REST calls. Gluu also provides several native libraries that wrap the
-oxd APIs, currently available for Php, Java, Python, Node, Ruby C#, and .Net.
-
-[Watch the oxd demo video](https://youtu.be/zZMf84wB2f0). 
 
 ## Technical Architecture
 oxd is middleware service that simplifies the process of properly securing applications with OpenID Connect and UMA, two standard profiles of OAuth 2.0 for federated authentication and authorization, respectively. 
