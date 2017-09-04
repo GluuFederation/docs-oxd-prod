@@ -9,9 +9,9 @@ oxd is a middleware service that can be used to simplify the process of integrat
 
 The oxd server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
 
-By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. 
+By default, oxd is restricted to `localhost`, which means the oxd APIs can only be reached by services running locally on the server. 
 
-oxd APIs can be called by any application that can make REST calls. Gluu also provides several native libraries that wrap the
+oxd APIs can be called by any application that can make REST calls. In addition, there are native libraries that wrap the
 oxd APIs, currently available for Php, Java, Python, Node, Ruby C#, and .Net.
 
 ## How it Works
@@ -28,9 +28,7 @@ Step 5: Integrate apps with your OP using the oxd REST API, or one of the native
     If you need an OpenID Connect Provider (OP) to authenticate users, you can use Google or download and deploy the free open source [Gluu Server](https://gluu.org/docs/ce/installation-guide/). 
 
 ## Technical Architecture
-oxd is middleware service that simplifies the process of properly securing applications with OpenID Connect and UMA, two standard profiles of OAuth 2.0 for federated authentication and authorization, respectively. 
-
-By default, oxd is restricted to `localhost`, which means these APIs cannot be reached from another server on the network--only by services running locally on the server. 
+By default, oxd is restricted to `localhost`, which means its APIs can only be reached by services running locally on the server. Therefore oxd must be installed on each server that hosts a target application. 
 
 ![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
 
