@@ -9,10 +9,10 @@ oxd is a middleware service that can be used to simplify the process of integrat
 
 ## How it Works
 
-Step 1: [Sign up for a license](https://oxd.gluu.org/account/register/)     
-Step 2: [Deploy oxd](./install/index.md)     
-Step 3: [Configure oxd](./conf/index.md)     
-Step 4: [Run oxd](./install/index.md)      
+Step 1: [Sign up for a license](https://oxd.gluu.org/account/register/);      
+Step 2: [Deploy oxd](./install/index.md);      
+Step 3: [Configure oxd and add your license](./conf/index.md);      
+Step 4: [Run oxd](./install/index.md);      
 Step 5: Integrate apps with your OP using the oxd REST API, or one of the native libraries or plugins.     
 
 !!! Note
