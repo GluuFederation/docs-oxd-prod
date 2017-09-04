@@ -4,70 +4,51 @@ The oxd server supports the OpenID Connect and UMA profiles of OAuth 2.0. OpenID
 
 ## OpenID Connect Authentication
 
-OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. OpenID Connect is one of the most popular API's for an application to identify a person. Technically it is not an authentication protocol--
-it enables a person to authorize the release of information to 
-an application from a remote "identity provider". In the
-process of authorizing this release of information, the person is authenticated (if 
-no previous session exists). If you are familiar with Google 
-authentication, you've used OpenID Connect. 
+OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. Technically OpenID Connect is not an authentication protocol--it enables a person to authorize the release of information to an application from a remote "identity provider". 
+
+In the process of authorizing this release of information, the person is authenticated (if no previous session exists). If you are familiar with Google authentication, you've used OpenID Connect. 
 
 !!! Note
-    If you need an OpenID Connect Provider you can [deploy the Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/). 
-    The Gluu Server will enable your organization to centralize authentication and authorization decisions to enable Single Sign-On (SSO) and strong authentication for many applications. 
-
+    If you need an OpenID Connect Provider to authenticate users, you can use Google or [deploy the Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/). 
+    
 ### Authentication Flow
-oxd uses the [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) 
-for authentication. Future versions of oxd may support the Hybrid Flow. 
-Implicit Flow is not supported because it is intended for Javascript client-side 
-applications where the client does not authenticate.
+OpenID Connect specifies multiple authentication flows. oxd uses the [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth). Future versions of oxd may support the Hybrid Flow. 
 
-Learn more about authentication flows in the 
-[OpenID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html). 
+Learn more about OpenID Connect authentication flows in the [core spec](http://openid.net/specs/openid-connect-core-1_0.html). 
 
 ### oxd OpenID Connect APIs
-oxd provides six API's for OpenID Connect authentication. In general,
-you can think of the Authorization Code Flow as a three step process: 
+oxd provides six APIs for OpenID Connect authentication. In general, you can think of the Authorization Code Flow as a three step process: 
 
- - Redirect person to the authorization URL and obtain a code
- - Use code to obtain tokens (access, id_token, refresh)
- - Use access token to obtain user claims
+ - Step 1: Redirect person to the authorization URL and obtain a code;      
+ - Step 2: Use code to obtain tokens (access, id_token, refresh);          
+ - Step 3: Use access token to obtain user claims.
 
-The other three oxd API's are:
+The other three oxd OpenID Connect API enable the developer to:
  
- - Register site (called once--the first time your application uses oxd)
- - Update site registration (not used often)
- - Logout
+ - Register the website or application (called once--the first time your application uses oxd);    
+ - Update site registration (not used often);       
+ - Logout.    
 
 #### Register site
 
-First of all, the web site must register itself with oxd server. If 
-registration is successful, oxd will return an identifier for the 
-application, which must be presented in subsequent API calls. This
-is the `oxd_id`, not to be confused with the OpenID Connect client id.
+First of all, the website must register itself with oxd server. If registration is successful, oxd will return an identifier for the 
+application which must be presented in subsequent API calls. This is the `oxd_id`--not to be confused with the OpenID Connect `client_id`.
 
-During the registration operation, oxd will dynamically register an 
-OpenID Connect client and save its configuration.
+During the registration operation oxd will dynamically register an OpenID Connect client with the OpenID Connect Provider (OP) and save its configuration.
 
-All parameters to `register_site` are optional except the 
-`authorization_redirect_uri`. This is the URL on your website that the 
-OpenID Connect Provider (OP) will redirect the person to after 
-successful authorization.
+All parameters to `register_site` are optional except the `authorization_redirect_uri`. This is the URL that the OpenID Connect Provider (OP) will redirect the person to after successful authentication.
 
-`register_site` has many parameters, but you can ignore most of them!
-Default configuration values are taken from
+`register_site` has many parameters, but most of them can be ignored. Default configuration values are taken from
 [conf/oxd-default-site-config.json](../conf/).
-Even most of these options may be blank, with one exception: if the 
-`op_host` is missing from the `register_site` command parameters, 
-it must be present in this file--we need to know which OpenID Provider
-will be used! 
 
-The `register_site` command returns `oxd_id`. Several applications may 
-share an instance of oxd, and this identifier is used by oxd to 
+Even most of these options may be blank, with one exception: if the `op_host` is missing from the `register_site` command parameters, 
+it must be present in this file--we need to know which OpenID Provider to send users for authentication. 
+
+The `register_site` command returns `oxd_id`. Several applications may share an instance of oxd, and this identifier is used by oxd to 
 distinguish differences in configuration between them.
 
-`op_host` must point to a valid OpenID Connect Provider that supports 
-[client registration](http://openid.net/specs/openid-connect-registration-1_0.html), 
-for example, a [Gluu Server CE installation](https://gluu.org/docs/ce/3.0.1/installation-guide/). 
+`op_host` must point to a valid OpenID Connect Provider that supports [client registration](http://openid.net/specs/openid-connect-registration-1_0.html). 
+
 Sample: `"op_host":"https://idp.example.org"`
 
 Request:
@@ -112,8 +93,8 @@ Response:
 
 #### Update site registration
 
-API used to update a current registration.
-
+The `update_site_registration` API can be used to update information about a website or application that has already been registered with the OP.
+    
 Request:
 
 ```json
@@ -153,11 +134,9 @@ Response:
 
 #### Get authorization url
 
-Returns the URL at the OpenID Provider (OP) to which your application 
-must redirect the person to authorize the release of personal data (and
-perhaps be authenticated in the process if no previous session exists).
-The Response from the OP will include the code and state 
-values, which should be used to subsequently obtain tokens.
+The `get_authorization_url` returns the URL at the OpenID Provider (OP) to which your application must redirect the person to authorize the release of personal data (and perhaps be authenticated in the process if no previous session exists).
+
+The Response from the OP will include the code and state values, which should be used to subsequently obtain tokens.
 
 Request:
 
@@ -241,8 +220,7 @@ Response:
 
 #### Get User Info
 
-Use the access token from the step above to retrieve a JSON object 
-with the user claims.
+Use the access token from the step above to retrieve a JSON object with the user claims.
 
 Request:
 
