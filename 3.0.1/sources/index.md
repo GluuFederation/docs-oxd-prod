@@ -4,6 +4,9 @@ oxd is a middleware service that can be used to simplify the process of integrat
 
 [Watch the oxd demo video](https://youtu.be/zZMf84wB2f0). 
 
+!!! Note
+    If you need to integrate other types of apps, like single-page apps or native apps, with your Gluu Server, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
+
 ## License
 oxd is commercial software licensed by Gluu. Get your license and a $50 credit by registering for an account on the [oxd website](https://oxd.gluu.org). Learn more in the [license management documentation](./license/index.md). 
 
