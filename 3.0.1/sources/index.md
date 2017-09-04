@@ -5,10 +5,18 @@ oxd is a middleware service that can be used to simplify the process of integrat
 [Watch the oxd demo video](https://youtu.be/zZMf84wB2f0). 
 
 !!! Note
-    If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
+    If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.    
 
-## License
-oxd is commercial software licensed by Gluu. Get your license and a $50 credit by registering for an account on the [oxd website](https://oxd.gluu.org). Learn more in the [license management documentation](./license/index.md). 
+## How it Works
+
+Step 1: [Sign up for a license](https://oxd.gluu.org/account/register/)     
+Step 2: [Deploy oxd](./install/index.md)     
+Step 3: [Configure oxd](./conf/index.md)     
+Step 4: [Run oxd](./install/index.md)      
+Step 5: Integrate apps with your OP using the oxd REST API, or one of the native libraries or plugins.     
+
+!!! Note
+    If you need an OpenID Connect Provider (OP), you can use Google, or you can download and deploy the free open source [Gluu Server](https://gluu.org/docs/ce/installation-guide/). 
 
 ## Overview
 The oxd server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
@@ -67,11 +75,6 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 
 Gluu does its best to keep these plugins up to date but does not guarantee specific functionality. If you find a bug, or would like feature enhancements, we would be happy to discuss allocating a resource to work on the plugin on a time and materials basis. [Schedule a call](https://gluu.org/booking) with us to discuss the project scope and funding.
 
-## Support
-Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
-
-If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract. 
-
 ## Why OXD
 If your goal is to integrate applications with your Gluu Server to achieve single sign-on (SSO), there are many strategies available to you. You should consider using oxd because:
 
@@ -90,6 +93,14 @@ If your goal is to integrate applications with your Gluu Server to achieve singl
 To learn more about oxd review these docs and the [code on Github](https://github.com/GluuFederation/oxd). 
 
 When you're ready to deploy oxd, head over to the website to [get your oxd license](https://oxd.gluu.org). 
+
+## Support
+Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
+
+If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract. 
+
+## License
+oxd is commercial software licensed by Gluu. Get your license and a $50 credit by registering for an account on the [oxd website](https://oxd.gluu.org). Learn more in the [license management documentation](./license/index.md). 
 
 ## FAQ's
 
