@@ -23,7 +23,7 @@ oxd provides six APIs for OpenID Connect authentication. In general, you can thi
  - Step 2: Use code to obtain tokens (access, id_token, refresh);          
  - Step 3: Use access token to obtain user claims.
 
-The other three oxd OpenID Connect API enable the developer to:
+The other three oxd OpenID Connect APIs enable the developer to:
  
  - Register the website or application (called once--the first time your application uses oxd);    
  - Update site registration (not used often);       
