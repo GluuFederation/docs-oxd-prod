@@ -16,7 +16,7 @@ Step 4: [Run oxd](./install/index.md);
 Step 5: Integrate apps with your OP using the oxd REST API, or one of the native libraries or plugins.     
 
 !!! Note
-    If you need an OpenID Connect Provider (OP), you can use Google, or you can download and deploy the free open source [Gluu Server](https://gluu.org/docs/ce/installation-guide/). 
+    If you need an OpenID Connect Provider (OP) to authenticate users, you can use Google or download and deploy the free open source [Gluu Server](https://gluu.org/docs/ce/installation-guide/). 
 
 ## Overview
 The oxd server is designed to work as a standalone service demon. oxd is a web server, running in an embedded [Jetty](http://www.eclipse.org/jetty/) server. Start it and stop it like you would any other unix service.
