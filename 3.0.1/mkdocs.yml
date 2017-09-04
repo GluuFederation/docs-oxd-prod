@@ -29,9 +29,9 @@ pages:
       - Card Management: 'license/payments/primary/index.md'
     - Billing: 'license/billing/index.md'
 - oxd Server:
-    - 'Protocol': 'protocol/index.md'
     - 'Installation': 'install/index.md'
     - 'Configuration': 'conf/index.md'
+    - 'Protocol': 'protocol/index.md'
     - 'Logs': 'logs/index.md'
 # 3.0.1
 - Libraries:
