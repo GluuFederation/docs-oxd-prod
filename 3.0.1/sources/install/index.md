@@ -1,5 +1,13 @@
 # oxd Server Installation 
 
+## System Requirements
+
+oxd needs to be deployed on a server or VM with the following **minimum** requirements. 
+
+|CPU Unit  |    RAM     |   Disk Space      | Processor Type |
+|----------|------------|-------------------|----------------|
+|       1  |    400MB     |   200MB            |  64 Bit        |
+
 ## Linux Packages
 
 ### Ubuntu 14.04 (trusty)
