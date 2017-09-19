@@ -25,7 +25,7 @@ specific to this oxd library.
 To use the oxd Node.js library, you will need:
 
 - A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).    
-- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application.      
+- An active installation of the [oxd server](../../oxd-server/install/index.md) running in the same server as the client application.      
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 ### Install oxd-node-library from npm
@@ -119,12 +119,12 @@ The hostname should be a valid FQDN.
 The oxd server provides the following six methods for authenticating users with 
 an OpenID Connect Provider (OP):
 
-- [Register Site](../../protocol/#register-site)    
-- [Update Site Registration](../../protocol/#update-site-registration)    
-- [Get Authorization URL](../../protocol/#get-authorization-url)   
-- [Get Tokens by Code](../../protocol/#get-tokens-id-access-by-code)    
-- [Get User Info](../../protocol/#get-user-info)   
-- [Get Logout URI](../../protocol/#log-out-uri)   
+- [Register Site](../../oxd-server/api/#register-site)    
+- [Update Site Registration](../../oxd-server/api/#update-site-registration)    
+- [Get Authorization URL](../../oxd-server/api/#get-authorization-url)   
+- [Get Tokens by Code](../../oxd-server/api/#get-tokens-id-access-by-code)    
+- [Get User Info](../../oxd-server/api/#get-user-info)   
+- [Get Logout URI](../../oxd-server/api/#log-out-uri)   
 
 ## Sample Code
 

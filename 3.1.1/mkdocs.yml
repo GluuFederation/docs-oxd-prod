@@ -3,11 +3,11 @@ site_description: Documenation for oxd OpenID Connect and UMA client software
 site_favicon: 'favicon.ico'
 copyright: Copyright &copy; 2017, Gluu, Inc.
 docs_dir: sources 
-repo_url: https://github.com/GluuFederation/docs-oxd-prod/tree/3.1.0/3.1.0
+repo_url: https://github.com/GluuFederation/docs-oxd-prod/tree/3.1.1/3.1.1
 #theme: readthedocs
 theme_dir: theme/material/
 extra:
-    version: '3.1.0'
+    version: '3.1.1'
     logo: 'gluu.jpg'
 markdown_extensions:
 - admonition
@@ -15,30 +15,21 @@ markdown_extensions:
      permalink: '#'
 pages:
 - Home: 'index.md'
-# Protocol
 - Release Notes: 'release-notes/index.md'
-- License Management:
-    - Introduction: 'license/index.md'
-    - Authentication:
-      - Signup: 'license/auth/signup/index.md'
-      - Login: 'license/auth/login/index.md'
-    - Account Dashboard: 'license/dashboard/index.md'
-    - Account Profile: 'license/profile/index.md'
-    - Payments and Credit Card Information:
-      - Card List: 'license/payments/dashboard/index.md'
-      - Add Card: 'license/payments/add/index.md'
-      - Card Management: 'license/payments/primary/index.md'
-    - Billing: 'license/billing/index.md'
+- License: 'license/index.md'
 - oxd Server:
-    - 'Protocol': 'protocol/index.md'
-    - 'Installation': 'install/index.md'
-    - 'Configuration': 'conf/index.md'
-    - 'Logs': 'logs/index.md'
-# 3.0.1
-- Libraries:
+    - 'Installation': 'oxd-server/install/index.md'
+    - 'Configuration': 'oxd-server/configuration/index.md'
+    - 'Log Configuration': 'oxd-server/logs/index.md'
+    - 'API': 'oxd-server/api/index.md'
+- oxd-https-extension:
+  - 'Installation': 'oxd-https/install/index.md'
+  - 'Configuration': 'oxd-https/configuration/index.md'
+  - 'Log configuration': 'oxd-https/logs/index.md'
+  - 'API': 'oxd-https/api/index.md'
+- Native Libraries:
     - 'Overview-oxd API Client Libraries': 'libraries/api-client-libraries.md'
     - Languages:
-        
         - 'Python': 'libraries/python/index.md'
         - 'Java': 'libraries/java/index.md'
         - 'PHP':  'libraries/php/index.md'
@@ -64,29 +55,3 @@ pages:
     - 'RoundCube': 'plugin/roundcube/index.md'
     - 'Shopify': 'plugin/shopify/index.md'
     - 'NextCloud': 'plugin/nextcloud/index.md'
-
-# master docs
-# - [install/index.md, hidden, hidden]
-# - [conf/index.md, hidden, hidden]
-# - [logs/index.md, hidden, hidden]
-# - [libraries/api-client-libraries.md, hidden, hidden]
-# - [libraries/python/index.md, hidden, hidden]
-# - [libraries/java/index.md, hidden, hidden]
-# - [libraries/php/index.md, hidden, hidden]
-# - [libraries/node/index.md, hidden, hidden]
-# - [libraries/ruby/index.md, hidden, hidden]
-# - [libraries/csharp/index.md, hidden, hidden]
-# - [libraries/perl/index.md, hidden, hidden]
-# - [plugin/wordpress/index.md, hidden, hidden]
-# - [plugin/magento/index.md, hidden, hidden]
-# - [plugin/drupal/index.md, hidden, hidden]
-# - [plugin/opencart/index.md, hidden, hidden]
-# - [plugin/sugarcrm/index.md, hidden, hidden]
-# - [plugin/suitecrm/index.md, hidden, hidden]
-# - [plugin/roundcube/index.md, hidden, hidden]
-# - [plugin/nextcloud/index.md, hidden, hidden]
-# - [framework/spring/index.md, hidden, hidden]
-# - [framework/play/index.md, hidden, hidden]
-# - [framework/ruby/index.md, hidden, hidden]
-# - [framework/python/index.md, hidden, hidden]
-# - [framework/node/index.md, hidden, hidden]

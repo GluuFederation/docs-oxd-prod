@@ -21,9 +21,9 @@ To integrate applications, oxd exposes a simple REST API and native libraries th
 ## How it Works
 
 Step 1: [Sign up for a license](https://oxd.gluu.org/account/register/);       
-Step 2: [Deploy oxd-server](./install/index.md);        
-Step 3: [Configure oxd-server](./conf/index.md);         
-Step 5: [Run oxd-server](./install/index.md);        
+Step 2: [Deploy oxd-server](./oxd-server/install/index.md);        
+Step 3: [Configure oxd-server](./oxd-server/configuration/index.md);         
+Step 5: [Run oxd-server](./oxd-server/install/index.md);        
 Step 6: Integrate apps with your OP using the oxd native libraries or plugins.     
 
 [Watch the oxd demo video](https://youtu.be/zZMf84wB2f0). 
@@ -45,19 +45,19 @@ oxd-https-extension is an optional extension that enables apps to call oxd-serve
 
 ## Installation
 
-Follow [these instructions](./install/index.md) to install and start oxd server and oxd-https-extension.
+Follow [these instructions](./oxd-server/install/index.md) to install and start oxd server and oxd-https-extension.
 
 ## Configuration
 
-Follow [these instructions](./conf/index.md) to configure oxd server.
+Follow [these instructions](./oxd-server/configuration/index.md) to configure oxd server.
 
 !!! Note
     You will need a valid license to properly configure the oxd server. If you have not yet registered for a license, visit the [oxd website](https://oxd.gluu.org). 
 
-## Protocol 
+## oxd API
 The oxd server supports the OpenID Connect and UMA 2 profiles of OAuth 2.0. OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA can be used to manage what digital resources the user should have access to.
 
-Learn more in the [protocol section](./protocol/index.md)
+Learn more in the [oxd Server API section](./oxd-server/api/index.md)
 
 ## Libraries
 oxd client libraries provide simple, flexible, powerful access to the oxd OpenID Connect and UMA authentication and authorization APIs.     

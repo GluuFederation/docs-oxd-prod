@@ -25,8 +25,8 @@ like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login.
 To use the oxd Python library, you will need:
 
 - A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).    
-- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application.
-- An active installation of the [oxd web](../../install/index.md) if oxd-web connection is used.
+- An active installation of the [oxd server](../../oxd-server/install/index.md) running in the same server as the client application.
+- An active installation of the [oxd web](../../oxd-https/install/index.md) if oxd-web connection is used.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 ### Install oxdpython via pip
@@ -117,19 +117,19 @@ You can configure the host name by adding the following entry in your host file.
 The oxd server provides the following six methods for authenticating users with 
 an OpenID Connect Provider (OP):
 
-- [Setup Client](../../protocol/#setup-client)  
-- [Get Client Token](../../protocol/#get-client-token)
-- [Register Site](../../protocol/#register-site) 
-- [Update Site Registration](../../protocol/#update-site-registration)    
-- [Get Authorization URL](../../protocol/#get-authorization-url)   
-- [Get Tokens by Code](../../protocol/#get-tokens-id-access-by-code)
-- [Get Access Token by Refresh Token](../../protocol/#get-access-token-by-refresh-token)    
-- [Get User Info](../../protocol/#get-user-info)   
-- [Get Logout URI](../../protocol/#log-out-uri) 
-- [UMA RS Protect](../../protocol/#uma-rs-protect) 
-- [UMA RS Check Access](../../protocol/#uma-rs-check-access) 
-- [UMA RP Get RPT](../../protocol/#uma-rp-get-rpt) 
-- [UMA RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
+- [Setup Client](../../oxd-server/api/#setup-client)  
+- [Get Client Token](../../oxd-server/api/#get-client-token)
+- [Register Site](../../oxd-server/api/#register-site) 
+- [Update Site Registration](../../oxd-server/api/#update-site-registration)    
+- [Get Authorization URL](../../oxd-server/api/#get-authorization-url)   
+- [Get Tokens by Code](../../oxd-server/api/#get-tokens-id-access-by-code)
+- [Get Access Token by Refresh Token](../../oxd-server/api/#get-access-token-by-refresh-token)    
+- [Get User Info](../../oxd-server/api/#get-user-info)   
+- [Get Logout URI](../../oxd-server/api/#log-out-uri) 
+- [UMA RS Protect](../../oxd-server/api/#uma-rs-protect) 
+- [UMA RS Check Access](../../oxd-server/api/#uma-rs-check-access) 
+- [UMA RP Get RPT](../../oxd-server/api/#uma-rp-get-rpt) 
+- [UMA RP Get Claims Gathering URL](../../oxd-server/api/#uma-rp-get-claims-gathering-url) 
 
 
 ## Sample Code
