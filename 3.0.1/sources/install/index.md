@@ -158,3 +158,8 @@ The following command can be run inside the oxd folder to run the build:
   $ mvn clean package
 ```
 
+## Support
+
+If you run into any issues with installation, please review the [Gluu support portal](https://support.glu.uorg). If you can not find a similar existing public issue, register for an account and open a new ticket.
+
+If your organization needs guaranteed responses, SLAs, and priority access to the Gluu support and development team, consider purchasing one of our [VIP support contracts](https://gluu.org/pricing).
