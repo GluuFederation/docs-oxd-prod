@@ -72,22 +72,24 @@ You can configure the host name by adding the following entry in the host file.
 
 - Enable SSL by	setting the valid certificate and key in your application startup file (demosite.py):
 
-    ```{.code}
-    from flask_sslify import SSLify
+```{.code}
+from flask_sslify import SSLify
 
-    app = Flask(__name__)
-    sslify = SSLify(app)
+app = Flask(__name__)
+sslify = SSLify(app)
 
-    app.run('127.0.0.1', debug=True, port=8080, ssl_context=('<path>/demosite.crt', '<path>/demosite.key'))
-    ```
+app.run('127.0.0.1', debug=True, port=8080, ssl_context=('<path>/demosite.crt', '<path>/demosite.key'))
+```
 - Run the following command to install oxdpython library
-    ``` {.code }
-    pip install oxdpython==3.1.1
-    ```
+
+``` {.code }
+pip install oxdpython==3.1.1
+```
 - Run the following command to run the sample client application
-    ``` {.code }
-    python demosite.py
-    ```
+   
+``` {.code }
+python demosite.py
+```
 
 - Now navigate to following url to run Sample client application. Make sure oxd server is running. Setup client url can be used for registering Client in oxd server. Upon successful registration of the client application, oxd Id will be displayed in the UI. Then navigate to Login URL for authentication.
     - Setup client url: https://client.example.com:8080/setupClient
