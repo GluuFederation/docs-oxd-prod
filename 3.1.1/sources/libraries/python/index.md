@@ -6,16 +6,17 @@ how to use the [oxd client software](http://oxd.gluu.org) Python library to
 send users from a Python application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
+
 ## Sample Project
 
-[Download a sample project](https://github.com/GluuFederation/oxd-python/archive/master.zip) specific to this oxd library.
+[Download a sample project](https://github.com/GluuFederation/oxd-python/archive/3.1.1.zip) specific to this oxd python library.
 
 ### System Requirements
 
 - Ubuntu / Debian / CentOS / RHEL / Windows 7 or higher / Windows Server 2008 or higher
-- Python 2.7 or higher
+- Python 2.7
 - Flask
-- oxdpython 3.1.0
+- oxdpython 3.1.1
 - Flask-SSLify
 
 
@@ -25,9 +26,10 @@ like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login.
 To use the oxd Python library, you will need:
 
 - A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).    
-- An active installation of the [oxd server](../../oxd-server/install/index.md) running in the same server as the client application.
-- An active installation of the [oxd web](../../oxd-https/install/index.md) if oxd-web connection is used.
+- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application.
+- An active installation of the [oxd-https-extension](../../install/index.md) if oxd-https-extension connection is used.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
+
 
 ### Install oxdpython via pip
 
@@ -35,7 +37,7 @@ To install oxdpython via pip, run following commands in Linux terminal or
 Windows command window
 
 ``` {.code }
-pip install oxdpython
+pip install oxdpython==3.1.1
 ```
 
 To install Flask-SSLify via pip, run following commands in Linux terminal or 
@@ -45,56 +47,14 @@ Windows command window
 pip install Flask-SSLify
 ```
 
+
 ### Configure the Client Application
 
-- This oxd python library uses a configuration file (demosite.cfg) to specify 
-information needed by OpenID Connect dynamic client registration, and to save 
-information that is returned, like the oxd_id. So the config file needs to be 
-writable by the Client application.
+- Client application must have a valid ssl cert, so the url includes: `https://`    
 
-
-The minimal configuration required to get oxd-python working:
-
-```
-    [oxd]
-    host = localhost
-    port = 8099
-    id = <oxd_id>
-    
-    [client]
-    op_host = <https://ophost_url>
-    client_name = 
-    authorization_redirect_uri = https://client.example.com/CodeState
-    post_logout_redirect_uri = https://client.example.com
-    scope = openid,profile,email,uma_authorization,uma_protection
-    client_id = <client_id>
-    client_secret = <client_secret>
-    grant_types = authorization_code,client_credentials,uma_ticket
-    dynamic_registration = 'true' if the op_host supports dynamic registration otherwise 'false'
-```
-  
-Upon successful registration of the client application oxd_id is set to the 
-field 'id' in demosite.cfg.
-
-!!!Note: 
-    The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/3.0.1/sample.cfg)
-    file contains detailed documentation about the configuration values.
-
-- Your client application must have a valid ssl cert, so the url includes: `https://`    
-
-- Enable SSL by	setting the valid certificate and key in your application startup file:
-
-```{.code}
-from flask_sslify import SSLify
-
-app = Flask(__name__)
-sslify = SSLify(app)
-
-app.run('127.0.0.1', debug=True, port=8080, ssl_context=('<path>/demosite.crt', '<path>/demosite.key'))
-```
     
 - The client host name should be a valid `hostname`(FQDN), not localhost or an IP Address. 
-You can configure the host name by adding the following entry in your host file.
+You can configure the host name by adding the following entry in the host file.
 
     **Linux**
 
@@ -108,28 +68,78 @@ You can configure the host name by adding the following entry in your host file.
 
     `127.0.0.1  client.example.com`
 
-- setup_client url: https://client.example.com:8080/setupClient
-- Login URL: https://client.example.com:8080
+- Open the downloaded [sample project](https://github.com/GluuFederation/oxd-python/archive/3.1.1.zip) and navigate to `demosite` directory inside the project
+
+- Enable SSL by	setting the valid certificate and key in your application startup file (demosite.py):
+
+    ```{.code}
+    from flask_sslify import SSLify
+
+    app = Flask(__name__)
+    sslify = SSLify(app)
+
+    app.run('127.0.0.1', debug=True, port=8080, ssl_context=('<path>/demosite.crt', '<path>/demosite.key'))
+    ```
+- Run the following command to install oxdpython library
+    ``` {.code }
+    pip install oxdpython==3.1.1
+    ```
+- Run the following command to run the sample client application
+    ``` {.code }
+    python demosite.py
+    ```
+
+- Now navigate to following url to run Sample client application. Make sure oxd server is running. Setup client url can be used for registering Client in oxd server. Upon successful registration of the client application, oxd Id will be displayed in the UI. Then navigate to Login URL for authentication.
+    - Setup client url: https://client.example.com:8080/setupClient
+    - Login URL: https://client.example.com:8080
+    - UMA URL: https://client.example.com:8080/uma
+
+- The input values used during Setup Client are stored in a configuration file (demosite.cfg). So the config file needs to be writable by the Client application.
+
+
+!!!Note: 
+    The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/3.1.1/sample.cfg)
+    file contains detailed documentation about the configuration values.
+
 
 
 ## oxd Server Methods
 
-The oxd server provides the following six methods for authenticating users with 
+The oxd server provides the following methods for authenticating users with 
 an OpenID Connect Provider (OP):
 
-- [Setup Client](../../oxd-server/api/#setup-client)  
-- [Get Client Token](../../oxd-server/api/#get-client-token)
-- [Register Site](../../oxd-server/api/#register-site) 
-- [Update Site Registration](../../oxd-server/api/#update-site-registration)    
-- [Get Authorization URL](../../oxd-server/api/#get-authorization-url)   
-- [Get Tokens by Code](../../oxd-server/api/#get-tokens-id-access-by-code)
-- [Get Access Token by Refresh Token](../../oxd-server/api/#get-access-token-by-refresh-token)    
-- [Get User Info](../../oxd-server/api/#get-user-info)   
-- [Get Logout URI](../../oxd-server/api/#log-out-uri) 
-- [UMA RS Protect](../../oxd-server/api/#uma-rs-protect) 
-- [UMA RS Check Access](../../oxd-server/api/#uma-rs-check-access) 
-- [UMA RP Get RPT](../../oxd-server/api/#uma-rp-get-rpt) 
-- [UMA RP Get Claims Gathering URL](../../oxd-server/api/#uma-rp-get-claims-gathering-url) 
+- [Setup Client](../../protocol/#setup-client)  
+- [Get Client Token](../../protocol/#get-client-token)
+- [Register Site](../../protocol/#register-site) 
+- [Update Site Registration](../../protocol/#update-site-registration)    
+- [Get Authorization URL](../../protocol/#get-authorization-url)   
+- [Get Tokens by Code](../../protocol/#get-tokens-id-access-by-code)
+- [Get Access Token by Refresh Token](../../protocol/#get-access-token-by-refresh-token)    
+- [Get User Info](../../protocol/#get-user-info)   
+- [Get Logout URI](../../protocol/#log-out-uri) 
+- [UMA RS Protect](../../protocol/#uma-rs-protect) 
+- [UMA RS Check Access](../../protocol/#uma-rs-check-access) 
+- [UMA RP Get RPT](../../protocol/#uma-rp-get-rpt) 
+- [UMA RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
+
+
+## oxd https extension methods
+
+The oxd https extension provides the following methods for authenticating users with an OpenID Connect Provider (OP):
+
+- [Setup Client](../../oxd-https/api/#setup-client)  
+- [Get Client Token](../../oxd-https/api/#get-client-token)
+- [Register Site](../../oxd-https/api/#register-site) 
+- [Update Site Registration](../../oxd-https/api/#update-site-registration)    
+- [Get Authorization URL](../../oxd-https/api/#get-authorization-url)   
+- [Get Tokens by Code](../../oxd-https/api/#get-tokens-id-access-by-code)
+- [Get Access Token by Refresh Token](../../oxd-https/api/#get-access-token-by-refresh-token)    
+- [Get User Info](../../oxd-https/api/#get-user-info)   
+- [Get Logout URI](../../oxd-https/api/#log-out-uri) 
+- [UMA RS Protect](../../oxd-https/api/#uma-rs-protect) 
+- [UMA RS Check Access](../../oxd-https/api/#uma-rs-check-access) 
+- [UMA RP Get RPT](../../oxd-https/api/#uma-rp-get-rpt) 
+- [UMA RP Get Claims Gathering URL](../../oxd-https/api/#uma-rp-get-claims-gathering-url) 
 
 
 ## Sample Code
@@ -149,25 +159,25 @@ oxd server and OP.
 **Required parameters:**
 
 - op_host: OpenId Connect Provider
-- client_name: Client application name
 - authorization_redirect_uri: URL which the OP is authorized to redirect the user after authorization
+- connection_type: 'local' for oxd-local and 'web' for oxd-web
+- connection_type_value: 'oxd port number' for oxd-local type and 'oxd web url' for oxd-web type
+- client_name: Client application name
 - post_logout_uri: URL to which user is redirected after successful logout
 - clientId: Client Id from OpenID Connect Provider (Should be passed with Client Secret)
 - clientSecret: Client Secret from OpenID Connect Provider (Should be passed with Client Id)
-- connection_type: 'local' for oxd-local and 'web' for oxd-web
-- connection_type_value: 'oxd port number' for oxd-local type and 'oxd web url' for oxd-web type
 - claims_redirect_uri: 
 
 ```python
 from oxdpython import Client
 
 config = "/var/www/demosite/demosite.cfg"  # This should be writable by the server
-client = Client(config)
+oxc = Client(config)
 ```
 
 **Request:**
 ```python
-client_data = oxc.setup_client(op_host, client_name, authorization_redirect_uri, post_logout_uri, clientId, clientSecret, conn_type, conn_type_value,None)
+client_data = oxc.setup_client(op_host=str(op_host), authorization_redirect_uri=str(authorization_redirect_uri), conn_type=str(conn_type), conn_type_value=str(conn_type_value), client_name=str(client_name), post_logout_uri=str(post_logout_uri), client_id=str(client_id), client_secret=str(client_secret))
 oxd_id = client_data.oxd_id
 client_id = client_data.client_id
 client_secret = client_data.client_secret
@@ -182,6 +192,7 @@ client_secret = f8eb25a0-f69b-4e4f-8058-ba9cbe6bf7eb
 ```
 
 ### Get Client Token
+
 The `get_client_token` method is used to get a token which is sent as input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
 
 **Request:**
@@ -215,12 +226,12 @@ oxd server and OP.
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method.
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
 
 ```python
-oxd_id = client.register_site(protection_access_token)
+oxd_id = client.register_site(protection_access_token=str(protection_access_token))
 ```
 
 **Response:**
@@ -237,14 +248,14 @@ can be updated using this method.
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method.
-- client_name: Client application name
-- authorization_redirect_uri:  URL which the OP is authorized to redirect the user after authorization.
-- post_logout_uri: URL to which the RP is requesting that the 
+- client_name: (Optional) Client application name
+- contacts: (Optional) User's email Id
+- authorization_redirect_uri:  (Optional) URL which the OP is authorized to redirect the user after authorization.
+- post_logout_uri: (Optional) URL to which the RP is requesting that the 
 End-User's User Agent be redirected after a logout has been performed.
-- connection_type_value: 'oxd port number' for oxd-local type and 'oxd web url' for oxd-web type
-- connection_type: 'local' for oxd-local and 'web' for oxd-web
-
+- connection_type_value: (Optional) 'oxd port number' for oxd-local type and 'oxd web url' for oxd-web type
+- connection_type: (Optional) 'local' for oxd-local and 'web' for oxd-web
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
 
@@ -252,8 +263,10 @@ End-User's User Agent be redirected after a logout has been performed.
 authorization_redirect_uri = request.form['redirect_uri']
 client_name = request.form['client_name']
 post_logout_uri = request.form['post_logout_uri']
+conn_type_value = request.form['conn_type_name']
+conn_type = request.form['conn_type_radio']
 
-status = oxc.update_site_registration(protection_access_token, client_name, redirect_uri, post_logout_uri, conn_type_value, conn_type)
+status = oxc.update_site_registration(client_name=str(client_name), authorization_redirect_uri=str(redirect_uri), post_logout_uri=str(post_logout_uri), connection_type_value=str(conn_type_value), connection_type=str(conn_type), protection_access_token=str(protection_access_token))
 ```
 **Response:**
 
@@ -271,21 +284,22 @@ to maintain state between the request and the callback.
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method.
-- acr_values: (Optional)
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource.
+- acr_values: (Optional) Required for extened authenication. Custom Authentication script from Gluu server. 
 - prompt: (Optional)
-- scope: (Optional)
+- custom_params: (Optional) custom parameters
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
 
 ```python
-auth_url = client.get_authorization_url(protection_access_token)
+auth_url = oxc.get_authorization_url(custom_params=custom_params, protection_access_token=str(protection_access_token))
 ```
 
 **Response:**
 
 ```python
-auth_url = https://client.example.com/authorize?response_type=code&client_id=s6BhdRkqt3&redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb&scope=openid%20profile&acr_values=duo&state=af0ifjsldkj&nonce=n-0S6_WzA2Mj
+auth_url = https://client.example.com/authorize?response_type=code&client_id=s6BhdRkqt3&redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb&scope=openid%20profile&acr_values=duo&state=af0ifjsldkj&nonce=n-0S6_WzA2Mj&param2=value2&param1=value1
 ```
 
 ### Get Tokens by Code
@@ -295,14 +309,14 @@ uses code and state to retrieve token which can be used to access user claims.
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method.
 - code: The Code from OP authorization redirect url
 - state: The State from OP authorization redirect url
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
 
 ```python
-tokens = client.get_tokens_by_code(protection_access_token, code, state)
+tokens = oxc.get_tokens_by_code(code=code, state=state, protection_access_token=str(protection_access_token))
 
 accessToken = tokens.access_token
 refreshToken = tokens.refresh_token
@@ -316,19 +330,18 @@ refreshToken = aaAV32hkKG1
 ```
 ### Get Access Token by Refresh Token
 
-The `get_access_token_by_refresh_token` method is used to get a fresh access token and refresh 
-token by using the refresh token which is obtained from `get_tokens_by_code` method.
+The `get_access_token_by_refresh_token` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `get_tokens_by_code` method.
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method.
 - refreshToken: Obtained from the get_tokens_by_code method
-- scope: (Optional)
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource.
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
 
 ```python
-newtokens = oxc.get_access_token_by_refresh_token(protection_access_token, refresh_token)
+newtokens = oxc.get_access_token_by_refresh_token(refresh_token=tokens.refresh_token, protection_access_token=str(protection_access_token))
 accessToken = newtokens.access_token
 refreshToken = newtokens.refresh_token
 ```
@@ -348,13 +361,13 @@ about the authenticated end user.
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method.
 - access_token: access_token from GetTokenByCode or GetAccessTokenbyRefreshToken
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
 
 ```python
-user = client.get_user_info(protection_access_token, access_token)
+user = oxc.get_user_info(access_token=access_token, protection_access_token=str(protection_access_token))
 
 userName = user.name[0]
 userEmail = user.email[0]
@@ -373,16 +386,16 @@ Client application  uses this logout url to end the user session.
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method.
 - id_token_hint: (Optional)
 - post_logout_redirect_uri: (Optional) URL to which user is redirected after successful logout
 - state: (Optional)
 - session_state: (Optional)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
 
 ```python
-logout_url = client.get_logout_uri(protection_access_token)
+logout_url = oxc.get_logout_uri(protection_access_token=str(protection_access_token))
 session.clear()
 return redirect(logout_url)
 ```
@@ -394,18 +407,13 @@ logout_url = https://<server>/end_session?id_token_hint=<id token>&state=<state>
 ```
 ### UMA RS Protect
 
-`uma_rs_protect` method is used for protecting resource by the Resource Server. 
-Resource server need to construct the command which will protect the resource.
-The command will contain api path, http methods (POST,GET, PUT) and scopes. Scopes can be mapped 
-with authorization policy (uma_rpt_policies). If no authorization policy mapped, 
-`uma_rs_check_access` method will always return access as granted. To know more about uma_rpt_policies 
-you can check this [document](https://github.com/GluuFederation/docs-ce-prod/blob/3.1.0/3.1.0/source/admin-guide/uma.md#uma-rpt-authorization-policies).
+`uma_rs_protect` method is used for protecting resource by the Resource Server. Resource server need to construct the command which will protect the resource.
+The command will contain api path, http methods (POST,GET, PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy mapped, uma_rs_check_access method will always return access as granted. To know more about uma_rpt_policies you can check this [document]().
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method.
-- resources: One or more protected resources that a resource server manages as a set, abstractly. 
-In authorization policy terminology, a resource set is the "object" being protected. 
+- resources: One or more protected resources that a resource server manages as a set, abstractly. In authorization policy terminology, a resource set is the "object" being protected. 
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
 
@@ -422,7 +430,7 @@ resources = [
          }
     ]
 
-result = oxc.uma_rs_protect(protection_access_token, resources)
+result = oxc.uma_rs_protect(resources=resources, protection_access_token=str(protection_access_token))
 ```
 
 **Response:**
@@ -433,19 +441,19 @@ result = true
 
 ### UMA RS Check Access 
 
-Function to be used in a UMA Resource Server to check access by the 
+`uma_rs_check_access` method used in a UMA Resource Server to check the access to the resource.
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method.
 - rpt: Requesting Party Token
 - path: Path of the resource to be checked 
 - http_method: http metho like POST, GET, PUT
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
 
 ```python
-result = oxc.uma_rs_check_access(protection_access_token, rpt, path, http_method)
+result = oxc.uma_rs_check_access(rpt=str(rpt), path=path, http_method=http_method, protection_access_token=str(protection_access_token))
 ```
 
 **Response:**
@@ -506,19 +514,19 @@ The method uma_rp_get_rpt is called in order to obtain the rpt
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method.
 - ticket: Client Access Ticket generated by uma_rs_check_access method
-- rpt: (Optional)
-- state: (Optional) state that is returned from uma_rp_get_claims_gathering_url method
 - claim_token: (Optional)
 - claim_token_format: (Optional)
 - pct: (Optional)
+- rpt: (Optional)
 - scope: (Optional)
+- state: (Optional) state that is returned from uma_rp_get_claims_gathering_url method
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
 
 ```python
-result = oxc.uma_rp_get_rpt(protection_access_token=protection_access_token, ticket)
+result = oxc.uma_rp_get_rpt(ticket=str(ticket), scope='Test_scope', protection_access_token=str(protection_access_token))
 ```
 
 **Response:**
@@ -582,14 +590,14 @@ result = oxc.uma_rp_get_rpt(protection_access_token=protection_access_token, tic
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method.
-- claims_redirect_uri: 
 - ticket: Client Access Ticket generated by uma_rs_check_access method
+- claims_redirect_uri: 
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
 
 ```python
-result = oxc.uma_rp_get_claims_gathering_url(protection_access_token, claims_redirect_uri, ticket)
+result = oxc.uma_rp_get_claims_gathering_url(ticket=str(ticket), claims_redirect_uri=str(claims_redirect_uri), protection_access_token=str(protection_access_token))
 ```
 
 **Response:**
@@ -609,5 +617,4 @@ result = oxc.uma_rp_get_claims_gathering_url(protection_access_token, claims_red
 ```
 
 ## Support
-Please report technical issues and suspected bugs on our [support page](https://support.gluu.org/). 
-You can use the same credentials you created to register for your oxd license to sign in on Gluu support.
+Please report technical issues and suspected bugs on our [support page](https://support.gluu.org/). You can use the same credentials you created to register for your oxd license to sign in on Gluu support.
