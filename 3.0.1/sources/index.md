@@ -9,12 +9,10 @@ oxd is a middleware service that simplifies and standardizes the process of inte
 
 The oxd server is designed to work as a standalone service demon via sockets. By default, the oxd-server is restricted to `localhost`, which means oxd needs to be installed on each server hosting applications you want secured by your OP. 
 
-With the oxd-https-extension installed, web apps can connect to oxd via https. This enables you to host one central oxd service for all your web applications and will result in less maintenance and easier upgrades. 
-
 oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby C#, and .Net.
 
 ### License & Billing
-oxd is commercial software licensed by Gluu. The billing model is $0.33 per application per day (or roughly $10 per month per application). 
+oxd is commercial software licensed by Gluu. The billing model is $0.33 per server per day (or roughly $10 per month per server). 
 
 To complete the oxd-server setup you will need a valid license. Get your license and a $50 credit on the [oxd website](https://oxd.gluu.org). 
 
