@@ -17,11 +17,10 @@ pages:
 - Home: 'index.md'
 - Release Notes: 'release-notes/index.md'
 - License: 'license/index.md'
-- oxd Server:
-    - 'Installation': 'oxd-server/install/index.md'
-    - 'Configuration': 'oxd-server/configuration/index.md'
-    - 'Log Configuration': 'oxd-server/logs/index.md'
-    - 'API': 'oxd-server/api/index.md'
+- 'Installation': 'install/index.md'
+- 'Configuration': 'configuration/index.md'
+- 'Log Configuration': 'logs/index.md'
+- 'API': 'api/index.md'
 - oxd-https-extension:
   - 'Installation': 'oxd-https/install/index.md'
   - 'Configuration': 'oxd-https/configuration/index.md'
