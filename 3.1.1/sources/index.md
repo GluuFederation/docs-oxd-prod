@@ -7,21 +7,11 @@ oxd is a middleware service that simplifies and standardizes the process of inte
 
 ## Overview
 
-The oxd server is designed to work as a standalone service demon via sockets. 
-
-By default, the oxd-server is restricted to `localhost`, which means oxd needs to be installed on each server hosting applications you want secured by your OP. 
+The oxd server is designed to work as a standalone service demon via sockets. By default, the oxd-server is restricted to `localhost`, which means oxd needs to be installed on each server hosting applications you want secured by your OP. 
 
 With the oxd-https-extension installed, web apps can connect to oxd via https, enabling you to host one central oxd service for all your web applications. Using the oxd-https-extension will result in less maintenance and easier upgrades. 
 
 oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby C#, and .Net.
-
-### OpenID Providers (OP)
-oxd has been confirmed to work with the following OP's:
-
-- Gluu Server   
-- Google   
-
-If you have successfully tested oxd against another OP, please email us details at [sales@gluu.org](mailto:sales@gluu.org). 
 
 ### License & Billing
 oxd is commercial software licensed by Gluu. The billing model is $0.33 per application per day (or roughly $10 per month per application). 
@@ -40,6 +30,14 @@ To complete the oxd-server setup you will need a valid license. Get your license
 
 !!! Note
     If you need an OpenID Connect Provider (OP) to authenticate users, you can use Google or download and deploy the free open source [Gluu Server](https://gluu.org/docs/ce/installation-guide/). 
+
+## Supported OpenID Providers (OP)
+oxd has been confirmed to work with the following OP's:
+
+- Gluu Server   
+- Google   
+
+If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org). 
 
 ## Technical Architecture
 
