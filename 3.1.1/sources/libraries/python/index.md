@@ -89,7 +89,7 @@ You can configure the host name by adding the following entry in the host file.
     python demosite.py
     ```
 
-- Now navigate to following url to run Sample client application. Make sure oxd server is running. Setup client url can be used for registering Client in oxd server. Upon successful registration of the client application, oxd Id will be displayed in the UI. Then navigate to Login URL for authentication.
+- That's it!. Now navigate to following url to run Sample client application. Make sure oxd server is running. Setup client url can be used for registering Client in oxd server. Upon successful registration of the client application, oxd Id will be displayed in the UI. Then navigate to Login URL for authentication.
     - Setup client url: https://client.example.com:8080/setupClient
     - Login URL: https://client.example.com:8080
     - UMA URL: https://client.example.com:8080/uma
@@ -103,43 +103,46 @@ You can configure the host name by adding the following entry in the host file.
 
 
 
-## oxd Server Methods
+## oxd Server Endpoints
 
 The oxd server provides the following methods for authenticating users with 
 an OpenID Connect Provider (OP):
 
-- [Setup Client](../../protocol/#setup-client)  
-- [Get Client Token](../../protocol/#get-client-token)
-- [Register Site](../../protocol/#register-site) 
-- [Update Site Registration](../../protocol/#update-site-registration)    
-- [Get Authorization URL](../../protocol/#get-authorization-url)   
-- [Get Tokens by Code](../../protocol/#get-tokens-id-access-by-code)
-- [Get Access Token by Refresh Token](../../protocol/#get-access-token-by-refresh-token)    
-- [Get User Info](../../protocol/#get-user-info)   
-- [Get Logout URI](../../protocol/#log-out-uri) 
-- [UMA RS Protect](../../protocol/#uma-rs-protect) 
-- [UMA RS Check Access](../../protocol/#uma-rs-check-access) 
-- [UMA RP Get RPT](../../protocol/#uma-rp-get-rpt) 
-- [UMA RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
+- Available OpenId Connect Endpoints
+    - [Setup Client](../../protocol/#setup-client)  
+    - [Get Client Token](../../protocol/#get-client-token)
+    - [Register Site](../../protocol/#register-site) 
+    - [Update Site Registration](../../protocol/#update-site-registration)    
+    - [Get Authorization URL](../../protocol/#get-authorization-url)   
+    - [Get Tokens by Code](../../protocol/#get-tokens-id-access-by-code)
+    - [Get Access Token by Refresh Token](../../protocol/#get-access-token-by-refresh-token)    
+    - [Get User Info](../../protocol/#get-user-info)   
+    - [Get Logout URI](../../protocol/#log-out-uri) 
+- Available UMA (User Managed Access) Endpoints  
+    - [UMA RS Protect](../../protocol/#uma-rs-protect) 
+    - [UMA RS Check Access](../../protocol/#uma-rs-check-access) 
+    - [UMA RP Get RPT](../../protocol/#uma-rp-get-rpt) 
+    - [UMA RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
 
 
-## oxd https extension methods
+## oxd https extension Endpoints
 
 The oxd https extension provides the following methods for authenticating users with an OpenID Connect Provider (OP):
-
-- [Setup Client](../../oxd-https/api/#setup-client)  
-- [Get Client Token](../../oxd-https/api/#get-client-token)
-- [Register Site](../../oxd-https/api/#register-site) 
-- [Update Site Registration](../../oxd-https/api/#update-site-registration)    
-- [Get Authorization URL](../../oxd-https/api/#get-authorization-url)   
-- [Get Tokens by Code](../../oxd-https/api/#get-tokens-id-access-by-code)
-- [Get Access Token by Refresh Token](../../oxd-https/api/#get-access-token-by-refresh-token)    
-- [Get User Info](../../oxd-https/api/#get-user-info)   
-- [Get Logout URI](../../oxd-https/api/#log-out-uri) 
-- [UMA RS Protect](../../oxd-https/api/#uma-rs-protect) 
-- [UMA RS Check Access](../../oxd-https/api/#uma-rs-check-access) 
-- [UMA RP Get RPT](../../oxd-https/api/#uma-rp-get-rpt) 
-- [UMA RP Get Claims Gathering URL](../../oxd-https/api/#uma-rp-get-claims-gathering-url) 
+- Available OpenId Connect Endpoints
+    - [Setup Client](../../oxd-https/api/#setup-client)  
+    - [Get Client Token](../../oxd-https/api/#get-client-token)
+    - [Register Site](../../oxd-https/api/#register-site) 
+    - [Update Site Registration](../../oxd-https/api/#update-site-registration)    
+    - [Get Authorization URL](../../oxd-https/api/#get-authorization-url)   
+    - [Get Tokens by Code](../../oxd-https/api/#get-tokens-id-access-by-code)
+    - [Get Access Token by Refresh Token](../../oxd-https/api/#get-access-token-by-refresh-token)    
+    - [Get User Info](../../oxd-https/api/#get-user-info)   
+    - [Get Logout URI](../../oxd-https/api/#log-out-uri) 
+- Available UMA (User Managed Access) Endpoints 
+    - [UMA RS Protect](../../oxd-https/api/#uma-rs-protect) 
+    - [UMA RS Check Access](../../oxd-https/api/#uma-rs-check-access) 
+    - [UMA RP Get RPT](../../oxd-https/api/#uma-rp-get-rpt) 
+    - [UMA RP Get Claims Gathering URL](../../oxd-https/api/#uma-rp-get-claims-gathering-url) 
 
 
 ## Sample Code
@@ -158,10 +161,10 @@ oxd server and OP.
 
 **Required parameters:**
 
-- op_host: OpenId Connect Provider
+- op_host: OpenId Connect Provider url
 - authorization_redirect_uri: URL which the OP is authorized to redirect the user after authorization
-- connection_type: 'local' for oxd-local and 'web' for oxd-web
-- connection_type_value: 'oxd port number' for oxd-local type and 'oxd web url' for oxd-web type
+- connection_type: 'local' for oxd-server and 'web' for oxd-https-extension
+- connection_type_value: 'oxd port number' for oxd-server type and ' oxd-https-extension url' for  oxd-https-extension type
 - client_name: Client application name
 - post_logout_uri: URL to which user is redirected after successful logout
 - clientId: Client Id from OpenID Connect Provider (Should be passed with Client Secret)
@@ -224,6 +227,9 @@ ClientID and Client Secret which can be passed to the `register_site` method as 
 parameter. The Register Site method is a one time task to configure a client in the 
 oxd server and OP.
 
+!!!Note: 
+`register_site` endpoint is not required if client is registered using `setup_client`
+
 **Required parameters:**
 
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
@@ -253,8 +259,8 @@ can be updated using this method.
 - authorization_redirect_uri:  (Optional) URL which the OP is authorized to redirect the user after authorization.
 - post_logout_uri: (Optional) URL to which the RP is requesting that the 
 End-User's User Agent be redirected after a logout has been performed.
-- connection_type_value: (Optional) 'oxd port number' for oxd-local type and 'oxd web url' for oxd-web type
-- connection_type: (Optional) 'local' for oxd-local and 'web' for oxd-web
+- connection_type_value: (Optional) 'oxd port number' for oxd-server type and 'oxd-https-extension url' for oxd-https-extension  type
+- connection_type: (Optional) 'local' for oxd-server and 'web' for oxd-https-extension
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-web is used)
 
 **Request:**
