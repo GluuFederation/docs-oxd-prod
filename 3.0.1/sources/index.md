@@ -7,7 +7,7 @@ oxd is a middleware service that simplifies and standardizes the process of inte
 
 ## Overview
 
-The oxd server is designed to work as a standalone service demon via sockets. By default, the oxd-server is restricted to `localhost`, which means oxd needs to be installed on each server hosting applications you want secured by your OP. 
+The oxd server is designed to work as a standalone service demon via sockets. By default, the oxd-server is restricted to `localhost`, which means oxd needs to be installed on each server hosting applications you want secured. 
 
 oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby C#, and .Net.
 
