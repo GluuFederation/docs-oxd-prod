@@ -2,7 +2,7 @@
 
 ## Overview
 The following documentation demonstrates 
-how to use the [oxd client software](http://oxd.gluu.org) Python library to 
+how to use the [oxd Client Software](http://oxd.gluu.org) Python library to 
 send users from a Python application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
@@ -48,7 +48,7 @@ pip install Flask-SSLify
 
 ### Configure the Client Application
 
-- Client application must have a valid ssl cert, so the URL includes: `https://`    
+- Client application must have a valid SSL Certificate, so the URL includes: `https://`    
 
     
 - The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
@@ -149,20 +149,20 @@ The oxd-https-extension provides the following methods for authenticating users 
 ### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
-you need to setup your client application at the OP. 
+you need to setup your client application at the OpenID Connect Provider (OP). 
 During setup, oxd will dynamically register the OpenID Connect 
-client and save its configuration. Upon successful setup, the oxd-server will assign a unique oxd ID, return a Client ID and Client Secret. This Client ID and Client Secret can be used for `get_client_token` method. If your OP does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `setup_client` method as a parameter. The Setup Client method is a one time task to configure a client in the oxd-server and OP.
+client and save its configuration. Upon successful setup, the oxd-server will assign a unique oxd ID, return a Client ID and Client Secret. This Client ID and Client Secret can be used for `get_client_token` method. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `setup_client` method as a parameter. The Setup Client method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
 
 **Required parameters:**
 
 - op_host: OP URL
-- authorization_redirect_uri: URL which the OP is authorized to redirect the user after authorization
+- authorization_redirect_uri: URL which the OpenID Connect Provider (OP) is authorized to redirect the user after authorization
 - connection_type: 'local' for oxd-server and 'web' for oxd-https-extension
 - connection_type_value: 'oxd port number' for oxd-server type and ' oxd-https-extension URL' for  oxd-https-extension type
 - client_name: Client application name
 - post_logout_uri: URL to which user is redirected after successful logout
-- clientID: Client ID from OP (Should be passed with Client Secret)
-- ClientSecret: Client Secret from OP (should be passed with Client ID)
+- clientID: Client ID from OpenID Connect Provider (OP) (Should be passed with Client Secret)
+- ClientSecret: Client Secret from OpenID Connect Provider (OP) should be passed with Client ID
 - claims_redirect_uri: 
 
 ```python
@@ -211,21 +211,21 @@ response = {
 
 ### Register Site
 
-In order to use an OP for login, 
-you need to register your client application at the OP. 
+In order to use an OpenID Connect Provider (OP) for login, 
+you need to register your client application at the OpenID Connect Provider (OP). 
 During registration oxd will dynamically register the OpenID Connect 
 client and save its configuration. Upon successful registration, a unique 
-identifier will be issued by the oxd-server. If your OP does not support dynamic registration (like Google), you will need to obtain a 
+identifier will be issued by the oxd-server. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a 
 ClientID and Client Secret which can be passed to the `register_site` method as a 
 parameter. The Register Site method is a one time task to configure a client in the 
-oxd server and OP.
+oxd server and OpenID Connect Provider (OP).
 
 !!! Note: 
 `register_site` endpoint is not required if client is registered using `setup_client`
 
 **Required parameters:**
 
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-web is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -241,19 +241,19 @@ oxd_id = 6F9619FF-8B86-D011-B42D-00CF4FC964FF
 
 ### Update Site Registration
 
-The `update_site_registration` method can be used to update an existing client in the OP. 
+The `update_site_registration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
 Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields can be updated using this method.
 
 **Required parameters:**
 
 - client_name: (Optional) Client application name
 - contacts: (Optional) User's e-mail ID
-- authorization_redirect_uri:  (Optional) URL which the OP is authorized to redirect the user after authorization.
+- authorization_redirect_uri:  (Optional) URL which the OpenID Connect Provider (OP) is authorized to redirect the user after authorization.
 - post_logout_uri: (Optional) URL to which the RP is requesting that the 
 End-User's User Agent be redirected after a logout has been performed.
 - connection_type_value: (Optional) 'oxd port number' for oxd-server type and 'oxd-https-extension URL' for oxd-https-extension  type
 - connection_type: (Optional) 'local' for oxd-server and 'web' for oxd-https-extension
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-web is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -274,9 +274,9 @@ status = ok
 
 ### Get Authorization URL
 
-The `get_authorization_url` method returns the OP 
-authentication URL to which the client application must redirect the user to 
-authorize the release of personal data. The response URL includes state value, 
+The `get_authorization_url` method returns the OpenID Connect Provider (OP) 
+Authentication URL to which the client application must redirect the user to 
+authorize the release of personal data. The Response URL includes state value, 
 which can be used to obtain tokens required for authentication. This state value used 
 to maintain state between the request and the callback.
 
@@ -286,7 +286,7 @@ to maintain state between the request and the callback.
 - acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server. 
 - prompt: (Optional)
 - custom_params: (Optional) custom parameters
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-web is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -307,9 +307,9 @@ uses code and state to retrieve token which can be used to access user claims.
 
 **Required parameters:**
 
-- code: The Code from OP Authorization Redirect URL
-- state: The State from OP Authorization Redirect URL
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-web is used)
+- code: The Code from OpenID Connect Provider (OP) Authorization Redirect URL
+- state: The State from OpenID Connect Provider (OP) Authorization Redirect URL
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -334,7 +334,7 @@ The `get_access_token_by_refresh_token` method is used to get a new access token
 
 - refreshToken: Obtained from the get_tokens_by_code method
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource.
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-web is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -353,13 +353,13 @@ refreshToken = gh75UHGHHS88sd
 
 ### Get User Info
 
-Once the user has been authenticated by the OP, 
+Once the user has been authenticated by the OpenID Connect Provider (OP), 
 the `get_user_info` method returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
 
 **Required parameters:**
 
 - access_token: access_token from GetTokenByCode or GetAccessTokenbyRefreshToken
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-web is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -378,8 +378,8 @@ user = {given_name=["Jane"], family_name=["Doe"], email=["janedoe@example.com"],
 
 ### Logout
 
-`get_logout_uri` method returns the OpenID Connect Provider logout URL. 
-Client application  uses this logout URL to end the user session.
+`get_logout_uri` method returns the OpenID Connect Provider (OP) Logout URL. 
+Client application  uses this Logout URL to end the user session.
 
 **Required parameters:**
 
@@ -387,7 +387,7 @@ Client application  uses this logout URL to end the user session.
 - post_logout_redirect_uri: (Optional) URL to which user is redirected after successful logout
 - state: (Optional)
 - session_state: (Optional)
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-web is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -410,7 +410,7 @@ The command will contain an API path, HTTP methods (POST, GET and PUT) and scope
 **Required parameters:**
 
 - resources: One or more protected resources that a resource server manages, abstractly, as a set. In authorization policy terminology, a resource set is the "object" being protected. 
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-web is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -445,7 +445,7 @@ result = true
 - rpt: Requesting Party Token
 - path: Path of the resource to be checked 
 - http_method: HTTP method (POST, GET and PUT)
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-web is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -507,18 +507,18 @@ result = oxc.uma_rs_check_access(rpt=str(rpt), path=path, http_method=http_metho
 
 ### UMA RP Get RPT 
 
-The method uma_rp_get_rpt is called in order to obtain the rpt 
+The method uma_rp_get_rpt is called in order to obtain the RPT (Requesting Party Token). 
 
 **Required parameters:**
 
 - ticket: Client Access Ticket generated by uma_rs_check_access method
 - claim_token: (Optional)
 - claim_token_format: (Optional)
-- pct: (Optional)
-- rpt: (Optional)
+- pct: (Optional) Persisted Claims Token
+- rpt: (Optional) Requesting Party Token. 
 - scope: (Optional)
 - state: (Optional) state that is returned from uma_rp_get_claims_gathering_url method
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-web is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -589,7 +589,7 @@ result = oxc.uma_rp_get_rpt(ticket=str(ticket), scope='Test_scope', protection_a
 
 - ticket: Client Access Ticket generated by uma_rs_check_access method
 - claims_redirect_uri: 
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-web is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -614,4 +614,4 @@ result = oxc.uma_rp_get_claims_gathering_url(ticket=str(ticket), claims_redirect
 ```
 
 ## Support
-Please report technical issues and suspected bugs on our [support page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
+Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
