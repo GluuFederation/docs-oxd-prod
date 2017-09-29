@@ -58,11 +58,19 @@ oxd-conf.json
 * storage - Possible values: `h2`, `redis`. If `redis` is set then `storage_configuration` must be specified with redis configuration details. 
 * storage_configuration - storage configuration details. Required if `redis` value is set for `storage` key.
 
+
+**Redis storage configuration**
+
+It consists of:
+
+- redisProviderType - type of connection, valid values are : `STANDALONE` (redis standalone server), `CLUSTER` (redis cluster), `SHARDED` (client sharding)
+- servers - property with server connection string, example: `localhost:6379` (for tutorial cluster it will be `localhost:7000,localhost:7001,localhost:7002,localhost:7003,localhost:7004,localhost:7005`)
+
 Redis storage configuration sample:
 ```json
   "storage_configuration": {
-    "host":"localhost",
-    "port":6379
+    "servers":"localhost:6379",
+    "redisProviderType":"STANDALONE"
   }
 ```
 
