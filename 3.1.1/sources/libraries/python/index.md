@@ -102,21 +102,24 @@ python demosite.py
 
 
 
-## oxd-server Endpoints
+## Endpoints (oxd-server and oxd-https-extension)
 
-The oxd-server provides the following methods for authenticating users with 
-an OpenID Connect Provider (OP):
+The oxd-server provides the following methods for authenticating users with an OpenID Connect Provider (OP):
 
 - Available OpenID Connect Endpoints
     - [Setup Client](../../protocol/#setup-client)  
     - [Get Client Token](../../protocol/#get-client-token)
     - [Register Site](../../protocol/#register-site) 
-    - [Update Site Registration](../../protocol/#update-site-registration)    
+    - [Update Site Registration](../../protocol/#update-site-registration)
     - [Get Authorization URL](../../protocol/#get-authorization-url)   
     - [Get Tokens by Code](../../protocol/#get-tokens-id-access-by-code)
     - [Get Access Token by Refresh Token](../../protocol/#get-access-token-by-refresh-token)    
     - [Get User Info](../../protocol/#get-user-info)   
     - [Get Logout URI](../../protocol/#log-out-uri) 
+
+
+The oxd-server provides the following methods for authenticating users with UMA Authorization Service (AS):
+
 - Available UMA (User Managed Access) Endpoints  
     - [UMA RS Protect](../../protocol/#uma-rs-protect) 
     - [UMA RS Check Access](../../protocol/#uma-rs-check-access) 
@@ -124,30 +127,12 @@ an OpenID Connect Provider (OP):
     - [UMA RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
 
 
-## oxd-https-extension Endpoints
-
-The oxd-https-extension provides the following methods for authenticating users with an OpenID Connect Provider (OP):
-
-- Available OpenID Connect Endpoints
-    - [Setup Client](../../oxd-https/api/#setup-client)  
-    - [Get Client Token](../../oxd-https/api/#get-client-token)
-    - [Register Site](../../oxd-https/api/#register-site) 
-    - [Update Site Registration](../../oxd-https/api/#update-site-registration)    
-    - [Get Authorization URL](../../oxd-https/api/#get-authorization-url)   
-    - [Get Tokens by Code](../../oxd-https/api/#get-tokens-id-access-by-code)
-    - [Get Access Token by Refresh Token](../../oxd-https/api/#get-access-token-by-refresh-token)    
-    - [Get User Info](../../oxd-https/api/#get-user-info)   
-    - [Get Logout URI](../../oxd-https/api/#log-out-uri) 
-- Available User Managed Access (UMA) Endpoints 
-    - [UMA RS Protect](../../oxd-https/api/#uma-rs-protect) 
-    - [UMA RS Check Access](../../oxd-https/api/#uma-rs-check-access) 
-    - [UMA RP Get RPT](../../oxd-https/api/#uma-rp-get-rpt) 
-    - [UMA RP Get Claims Gathering URL](../../oxd-https/api/#uma-rp-get-claims-gathering-url) 
-
 
 ## Sample Code
 
-### Setup Client
+### OpenID Connect
+
+#### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to setup your client application at the OpenID Connect Provider (OP). 
@@ -189,7 +174,7 @@ client_id = @!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A125.EE21.F0E2.8C08
 client_secret = f8eb25a0-f69b-4e4f-8058-ba9cbe6bf7eb
 ```
 
-### Get Client Token
+#### Get Client Token
 
 The `get_client_token` method is used to get a token which is sent as an input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
 
@@ -210,7 +195,7 @@ response = {
     }
 ```
 
-### Register Site
+#### Register Site
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to register your client application at the OpenID Connect Provider (OP). 
@@ -240,7 +225,7 @@ oxd_id = client.register_site(protection_access_token=str(protection_access_toke
 oxd_id = 6F9619FF-8B86-D011-B42D-00CF4FC964FF
 ```
 
-### Update Site Registration
+#### Update Site Registration
 
 The `update_site_registration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
 Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields can be updated using this method.
@@ -273,7 +258,7 @@ status = oxc.update_site_registration(client_name=str(client_name), authorizatio
 status = ok
 ```
 
-### Get Authorization URL
+#### Get Authorization URL
 
 The `get_authorization_url` method returns the OpenID Connect Provider (OP) 
 Authentication URL to which the client application must redirect the user to 
@@ -301,7 +286,7 @@ auth_url = oxc.get_authorization_url(custom_params=custom_params, protection_acc
 auth_url = https://client.example.com/authorize?response_type=code&client_id=s6BhdRkqt3&redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb&scope=openid%20profile&acr_values=duo&state=af0ifjsldkj&nonce=n-0S6_WzA2Mj&param2=value2&param1=value1
 ```
 
-### Get Tokens by Code
+#### Get Tokens by Code
 
 Upon successful login, the login result will return code and state. `get_tokens_by_code` 
 uses code and state to retrieve token which can be used to access user claims.
@@ -327,7 +312,7 @@ refreshToken = tokens.refresh_token
 accessToken = SlAV32hkKG
 refreshToken = aaAV32hkKG1
 ```
-### Get Access Token by Refresh Token
+#### Get Access Token by Refresh Token
 
 The `get_access_token_by_refresh_token` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `get_tokens_by_code` method.
 
@@ -352,7 +337,7 @@ accessToken = ALSAKLDDKN9787DYAH
 refreshToken = gh75UHGHHS88sd
 ```
 
-### Get User Info
+#### Get User Info
 
 Once the user has been authenticated by the OpenID Connect Provider (OP), 
 the `get_user_info` method returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
@@ -377,7 +362,7 @@ userEmail = user.email[0]
 user = {given_name=["Jane"], family_name=["Doe"], email=["janedoe@example.com"], sub=["248289761001"], name=["Jane Doe"] }
 ```
 
-### Logout
+#### Logout
 
 `get_logout_uri` method returns the OpenID Connect Provider (OP) Logout URL. 
 Client application  uses this Logout URL to end the user session.
@@ -403,7 +388,10 @@ return redirect(logout_url)
 ```python
 logout_url = https://<server>/end_session?id_token_hint=<id token>&state=<state>&post_logout_redirect_uri=<...>
 ```
-### UMA RS Protect
+
+### UMA
+
+#### RS Protect
 
 `uma_rs_protect` method is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
 The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document]().
@@ -437,7 +425,7 @@ result = oxc.uma_rs_protect(resources=resources, protection_access_token=str(pro
 result = true
 ```
 
-### UMA RS Check Access 
+#### RS Check Access 
 
 `uma_rs_check_access` method is used in the UMA Resource Server to check the access to the resource.
 
@@ -494,7 +482,7 @@ result = oxc.uma_rs_check_access(rpt=str(rpt), path=path, http_method=http_metho
 }
 ```
 
-***Resource is not Protected***
+***Resource is not Protected:***
 
 ```javascript
 {
@@ -506,7 +494,7 @@ result = oxc.uma_rs_check_access(rpt=str(rpt), path=path, http_method=http_metho
 }
 ```
 
-### UMA RP Get RPT 
+#### RP Get RPT 
 
 The method uma_rp_get_rpt is called in order to obtain the RPT (Requesting Party Token). 
 
@@ -584,7 +572,7 @@ result = oxc.uma_rp_get_rpt(ticket=str(ticket), scope='Test_scope', protection_a
  }
 ```
 
-### UMA RP Get Claims Gathering URL 
+#### RP Get Claims Gathering URL 
 
 **Required Parameters:**
 
