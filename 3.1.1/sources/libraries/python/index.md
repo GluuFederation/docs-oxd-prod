@@ -48,7 +48,7 @@ pip install Flask-SSLify
 
 ### Configure the Client Application
 
-- Client application must have a valid SSL Certificate, so the URL includes: `https://`    
+- Client application must have a valid SSL certificate, so the URL includes: `https://`    
 
     
 - The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
