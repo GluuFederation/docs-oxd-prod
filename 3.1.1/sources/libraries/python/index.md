@@ -127,6 +127,7 @@ an OpenID Connect Provider (OP):
 ## oxd-https-extension Endpoints
 
 The oxd-https-extension provides the following methods for authenticating users with an OpenID Connect Provider (OP):
+
 - Available OpenID Connect Endpoints
     - [Setup Client](../../oxd-https/api/#setup-client)  
     - [Get Client Token](../../oxd-https/api/#get-client-token)
