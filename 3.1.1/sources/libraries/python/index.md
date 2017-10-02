@@ -141,14 +141,14 @@ client and save its configuration. Upon successful setup, the oxd-server will as
 
 **Required parameters:**
 
-- op_host: OP URL
-- authorization_redirect_uri: URL which the OpenID Connect Provider (OP) is authorized to redirect the user after authorization
+- op_host: The URL of the OpenID Connect Provider (OP)
+- authorization_redirect_uri: A URL that the OpenID Connect Provider (OP) is authorized to redirect the user after authorization
 - connection_type: 'local' for oxd-server and 'web' for oxd-https-extension
 - connection_type_value: 'oxd port number' for oxd-server type and ' oxd-https-extension URL' for  oxd-https-extension type
 - client_name: Client application name
-- post_logout_uri: URL to which user is redirected after successful logout
-- clientID: Client ID from OpenID Connect Provider (OP) (Should be passed with Client Secret)
-- ClientSecret: Client Secret from OpenID Connect Provider (OP) should be passed with Client ID
+- post_logout_uri: URL where the user is redirected after successful logout
+- clientID: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
+- ClientSecret: Client Secret from OpenID Connect Provider (OP) should be passed with the Client ID
 - claims_redirect_uri: 
 
 ```python
