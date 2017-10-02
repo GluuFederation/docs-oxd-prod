@@ -107,24 +107,24 @@ python demosite.py
 The oxd-server provides the following methods for authenticating users with an OpenID Connect Provider (OP):
 
 - Available OpenID Connect Endpoints
-    - [Setup Client](../../protocol/#setup-client)  
-    - [Get Client Token](../../protocol/#get-client-token)
-    - [Register Site](../../protocol/#register-site) 
-    - [Update Site Registration](../../protocol/#update-site-registration)
-    - [Get Authorization URL](../../protocol/#get-authorization-url)   
-    - [Get Tokens by Code](../../protocol/#get-tokens-id-access-by-code)
-    - [Get Access Token by Refresh Token](../../protocol/#get-access-token-by-refresh-token)    
-    - [Get User Info](../../protocol/#get-user-info)   
-    - [Get Logout URI](../../protocol/#log-out-uri) 
+    - [Setup Client](https://gluu.org/docs/oxd/3.1.1/api/#setup-client)  
+    - [Get Client Token](https://gluu.org/docs/oxd/3.1.1/api/#get-client-token)
+    - [Register Site](https://gluu.org/docs/oxd/3.1.1/api/#register-site) 
+    - [Update Site Registration](https://gluu.org/docs/oxd/3.1.1/api/#update-site-registration)
+    - [Get Authorization URL](https://gluu.org/docs/oxd/3.1.1/api/#get-authorization-url)   
+    - [Get Tokens by Code](https://gluu.org/docs/oxd/3.1.1/api/#get-tokens-id-access-by-code)
+    - [Get Access Token by Refresh Token](https://gluu.org/docs/oxd/3.1.1/api/#get-access-token-by-refresh-token)    
+    - [Get User Info](https://gluu.org/docs/oxd/3.1.1/api/#get-user-info)   
+    - [Get Logout URI](https://gluu.org/docs/oxd/3.1.1/api/#log-out-uri) 
 
 
 The oxd-server provides the following methods for authenticating users with UMA Authorization Service (AS):
 
 - Available UMA (User Managed Access) Endpoints  
-    - [UMA RS Protect](../../protocol/#uma-rs-protect) 
-    - [UMA RS Check Access](../../protocol/#uma-rs-check-access) 
-    - [UMA RP Get RPT](../../protocol/#uma-rp-get-rpt) 
-    - [UMA RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
+    - [UMA RS Protect](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-protect-resources) 
+    - [UMA RS Check Access](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-check-access) 
+    - [UMA RP Get RPT](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-rpt) 
+    - [UMA RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
 
 
 
@@ -394,7 +394,7 @@ logout_url = https://<server>/end_session?id_token_hint=<id token>&state=<state>
 #### RS Protect
 
 `uma_rs_protect` method is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
-The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document]().
+The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
 
 **Required parameters:**
 
