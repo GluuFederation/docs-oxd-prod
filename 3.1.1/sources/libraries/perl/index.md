@@ -689,9 +689,9 @@ print Dumper($logout->getResponseObject());
     }
 }
 ```
-### UMA
+### UMA (User Managed Access)
 
-#### UMA RS Protect
+#### RS Protect
 
 `UmaRsProtect` module is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
 The command will contain an API path, HTTP methods (POST,GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. To know more about uma_rpt_policies you can check this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
@@ -727,7 +727,7 @@ print Dumper( $uma_rs_protect->getResponseObject() );
 ```
 
 
-#### UMA RS Check Access 
+#### RS Check Access 
 
 `UmaRsCheckAccess` module used in a UMA Resource Server to check the access to the resource.
 
@@ -808,7 +808,7 @@ print Dumper($uma_rs_check_access->getResponseObject());
 ```
 
 
-#### UMA RP Get RPT 
+#### RP Get RPT 
 
 The module `UmaRpGetRpt` is called in order to obtain the RPT (Requesting Party Token).
 
@@ -901,7 +901,7 @@ print Dumper($uma_rp_get_rpt->getResponseObject());
 ```
 
 
-#### UMA RP Get Claims Gathering URL 
+#### RP Get Claims Gathering URL 
 
 **Required parameters:**
 
