@@ -1,4 +1,4 @@
-# oxd-csharp
+﻿# oxd-csharp
 ## Overview
 The following documentation demonstrates how to use 
 the [oxd Client Software](http://oxd.gluu.org) C# library to send users from a 
@@ -37,33 +37,57 @@ install the Gluu.Oxd.OxdCSharp package, by running the following command:
 
 ### Configure the Client Application
 
-- Your client application must have a valid SSL certification, so the url includes: `https://`    
+- Your client application must have a valid SSL certification, so the URL includes: `https://`    
 - The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP Address. 
 You can configure the `hostname` by adding the following 
-entry in your `C:\Windows\System32\drivers\etc\host` file:
+entry in `C:\Windows\System32\drivers\etc\host` file:
 
     `127.0.0.1  client.example.com`
 
-- Download [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip)
-- Open Sample Project in Visual Studio
+- Download a [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd-csharp library.
+- Open the Sample Project in Visual Studio
 
 - Enable SSL using the following instructions:
 
     - Open the Client application in Visual Studio.
-    - Select Client Application Property.
+    - Go to Client Application Properties.
     - Navigate to `Development Server` and set `SSL Enabled` to `True`.
 
-- With the oxd-server and the web application running, navigate to following URL's to run Sample Client Application. To register a client in the oxd-server use the Setup Client URL.  Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to Login URL for authentication.
+- Change the `hostname` in the project using the following instructions:
+
+     - Make hidden folders visible in the windows explorer.(If already done then ignore it).
+     - Navigate to `vs/config` folder in the root of the project in the windows explorer.
+     - Open the `applicationhost.config` file.
+     - Add the following lines to `bindings` section of the project:
+
+     ```xml
+     <binding protocol="https" bindingInformation="*:44383:client.example.com" />
+     <binding protocol="http" bindingInformation="*:1329:client.example.com" />
+     ```
+     - After adding the aforementioned lines the binding section will look like this:
+     
+    ```xml
+     <site name="GluuDemoWebsite" id="2">
+                <application path="/" applicationPool="Clr4IntegratedAppPool">
+                    <virtualDirectory path="/" physicalPath="<path of the project>" />
+                </application>
+                <bindings>
+    <binding protocol="https" bindingInformation="*:44383:localhost" />
+                    <binding protocol="http" bindingInformation="*:1329:localhost" />
+                  <binding protocol="https" bindingInformation="*:44383:client.example.com" />
+<binding protocol="http" bindingInformation="*:1329:client.example.com" /></bindings>
+            </site>
+      
+      
+- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
     - Setup Client URL: https://client.example.com:44383/setupClient
     - Login URL: https://client.example.com:44383
     - UMA URL: https://client.example.com:44383/uma
 
-- The input values used during Setup Client are stored in a configuration file (oxd_config.json). Therefore the configuration file needs to be writable by the client application.
-
- 
+- The input values used during Setup Client are stored in a configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the Client application.
 
 
-## oxd-server Endpoints
+## Endpoints (oxd-server and oxd-https-extension)
 
 The oxd server provides the following methods for authenticating users with an OpenID Connect Provider (OP):
 
@@ -86,52 +110,42 @@ The oxd server provides the following methods for authenticating users with an O
   - [UMA RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
 
 
-## oxd-https-extension Endpoints
-
-The oxd https extension provides the following methods for authenticating users with an OpenID Connect Provider (OP):
-
-Available OpenId Connect Endpoints 
-- [Setup Client](../../oxd-https/api/#setup-client)  
-- [Get Client Token](../../oxd-https/api/#get-client-token)
-- [Register Site](../../oxd-https/api/#register-site) 
-- [Update Site Registration](../../oxd-https/api/#update-site-registration)    
-- [Get Authorization URL](../../oxd-https/api/#get-authorization-url)   
-- [Get Tokens by Code](../../oxd-https/api/#get-tokens-id-access-by-code)
-- [Get Access Token by Refresh Token](../../oxd-https/api/#get-access-token-by-refresh-token)    
-- [Get User Info](../../oxd-https/api/#get-user-info)   
-- [Get Logout URI](../../oxd-https/api/#log-out-uri)
-
-Available UMA (User Managed Access) Endpoints
-
-- [UMA RS Protect](../../oxd-https/api/#uma-rs-protect) 
-- [UMA RS Check Access](../../oxd-https/api/#uma-rs-check-access) 
-- [UMA RP Get RPT](../../oxd-https/api/#uma-rp-get-rpt) 
-- [UMA RP Get Claims Gathering URL](../../oxd-https/api/#uma-rp-get-claims-gathering-url) 
-
-
 ## Sample Code
 
-### Setup Client
+### OpenID Connect
+
+#### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
-you need to setup your client application at the OpenID Connect Provider (OP). During setup, oxd will dynamically register the OpenID Connect 
-client and save its configuration. Upon successful setup, the oxd-server will assign a unique oxd ID, return a Client ID and Client Secret. This Client ID and Client Secret can be used for `GetClientToken` method. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `SetupClient` method as a parameter. The Setup Client method is a one time task to configure a client in the 
-oxd-server and OpenID Connect Provider (OP).
+you need to setup your client application at the OP. 
+During setup oxd will dynamically register the OpenID Connect 
+client and save its configuration. Upon successful setup a unique 
+identifier will be issued by the oxd server by assigning a specific oxd id. Along with oxd Id oxd server will also return client Id and client secret. This client Id and client secret can be used for `GetClientToken` method. If your OpenID Connect Provider 
+does not support dynamic registration (like Google), you will need to obtain a 
+ClientID and Client Secret which can be passed to the `SetupClient` method as a 
+parameter. The Setup Client method is a one time task to configure a client in the 
+oxd server and OP.
 
 
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional, required if oxd-https-extension is used).
-- OpHost: The URL of the OpenID Connect Provider (OP)
-- redirectUrl: URL which the OP is authorized to redirect the user after authorization
-- clientId: Client Id from OpenID Connect Provider (Should be passed with Client Secret)
-- clientSecret: Client Secret from OpenID Connect Provider (Should be passed with Client Id)
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
+- OpHost: URL of the OpenID Connect Provider (OP)
+- redirectUrl: URL to which the OpenID Connect Provider (OP)is authorized to redirect the user to after authorization.
+- clientId: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
+- clientSecret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 
 **Request:**
+
+ **Setup Client using oxd-server**
+
+
 ```csharp
-public ActionResult SetupClient(string oxdHost, int oxdPort, string oxdhttpsurl, string OpHost, string redirectUrl, string ClientId, string clientSecret)
+
+
+public ActionResult SetupClient(string oxdHost, int oxdPort,  string OpHost, string redirectUrl, string ClientId, string clientSecret)
         {
             //prepare input params for Setup client
             var setupClientInputParams = new SetupClientParams()
@@ -149,10 +163,36 @@ public ActionResult SetupClient(string oxdHost, int oxdPort, string oxdhttpsurl,
 
             var setupClientResponse = new SetupClientResponse();
 
-            //Setup Client using oxd-server
+            
             setupClientResponse = setupClientClient.SetupClient(oxdHost, oxdPort, setupClientInputParams);
 
-            //Setup Client using oxd-https-extension
+
+            return Json(new { oxdId = oxd.OxdId, clientId = clientid, clientSecret = clientsecret });
+        }
+```
+
+**Setup Client using oxd-https-extension**
+```csharp
+
+
+public ActionResult SetupClient( string oxdhttpsurl, string OpHost, string redirectUrl, string ClientId, string clientSecret)
+        {
+            //prepare input params for Setup client
+            var setupClientInputParams = new SetupClientParams()
+            {
+                AuthorizationRedirectUri = redirectUrl,
+                OpHost = OpHost,
+                ClientName = "<Your Client Name>",
+                Scope = new List<string> { "openid", "profile", "email", "uma_protection", "uma_authorization" },
+                GrantTypes = new List<string> { "authorization_code", "client_credentials", "uma_ticket" },
+                ClientId = clientId,
+                ClientSecret = clientSecret
+            };
+
+            var setupClientClient = new SetupClientClient();
+
+            var setupClientResponse = new SetupClientResponse();
+            
             setupClientResponse = setupClientClient.SetupClient(oxdhttpsurl, setupClientInputParams);
 
             return Json(new { oxdId = oxd.OxdId, clientId = clientid, clientSecret = clientsecret });
@@ -177,7 +217,7 @@ public ActionResult SetupClient(string oxdHost, int oxdPort, string oxdhttpsurl,
 }
 ```
 
-### Get Client Token
+#### Get Client Token
 
 The `GetClientToken` method is used to get a token which is sent as input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
 
@@ -185,16 +225,40 @@ The `GetClientToken` method is used to get a token which is sent as input parame
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional, required if oxd-https-extension is used).
-- OpHost: OpenId Connect Provider
-- clientId: Client Id from OpenID Connect Provider (Should be passed with Client Secret)
-- clientSecret: Client Secret from OpenID Connect Provider (Should be passed with Client Id)
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
+- OpHost: OpenID Connect Provider (OP)
+- clientId: Client ID from OpenID Connect Provider (OP).  Should be passed with the Client Secret.
+- clientSecret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 
 **Request:**
 
+**GetClientToken using oxd-server**
+
 ```csharp
-public string GetProtectionAccessToken(string oxdHost, int oxdPort, string oxdhttpsurl, string OpHost, string ClientId, string clientSecret)
+public string GetProtectionAccessToken(string oxdHost, int oxdPort, string OpHost, string ClientId, string clientSecret)
+        {
+            //prepare input params for Client Registration
+var getClientAccessTokenParams = new GetClientTokenParams()
+            {
+                clientId = clientid,
+                clientSecret = clientsecret,
+                opHost = OpHost
+            };
+
+            var getClientAccessToken = new GetClientTokenClient();
+
+            string protectionAccessToken;
+          
+            protectionAccessToken = getClientAccessToken.GetClientToken(oxdHost, oxdPort, getClientAccessTokenParams()).Data.accessToken;
+            return protectionAccessToken;
+        }
+```
+
+**GetClientToken using oxd-https-extension**
+
+```csharp
+public string GetProtectionAccessToken( string oxdhttpsurl, string OpHost, string ClientId, string clientSecret)
         {
             //prepare input params for Client Registration
 var getClientAccessTokenParams = new GetClientTokenParams()
@@ -208,10 +272,6 @@ var getClientAccessTokenParams = new GetClientTokenParams()
 
             string protectionAccessToken;
             
-            //For oxd-server
-            protectionAccessToken = getClientAccessToken.GetClientToken(oxdHost, oxdPort, getClientAccessTokenParams()).Data.accessToken;
-
-            //For oxd-https-extension
             protectionAccessToken = getClientAccessToken.GetClientToken(oxdhttpsurl, getClientAccessTokenParams()).Data.accessToken;
 
             return protectionAccessToken;
@@ -219,8 +279,8 @@ var getClientAccessTokenParams = new GetClientTokenParams()
 ```
 
 **Response:**
+```javascript
 
-````javascript
 {
   "status": "ok",
   "data": {
@@ -230,25 +290,28 @@ var getClientAccessTokenParams = new GetClientTokenParams()
     "refresh_token": null
   }
 }
+
 ```
 
-### Register Site
+#### Register Site
 
-In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OP. During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration a unique identifier will be issued by the oxd server. If your OpenID Connect Provider does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `RegisterSite` method as a parameter. The `RegisterSite` method is a one time task to configure a client in the oxd server and OP.
+In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OpenID Connect Provider (OP). During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration, a unique identifier will be issued by the oxd server. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `RegisterSite` method as a parameter. The `RegisterSite` method is a one time task to configure a client in the oxd server and OpenID Connect Provider (OP).
 
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional, required if oxd-https-extension is used).
-- OpHost: The URL of the OpenID Connect Provider (OP)
-- redirectUrl: A URL which the OP is authorized to redirect the user after authorization
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
+- OpHost: URL of the OpenID Connect Provider (OP)
+- redirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization.
 - protectionAccessToken: Generated from GetClientToken method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
+**Register Client using oxd-server**
+
 ```csharp
- public ActionResult RegisterClient(string oxdHost, int oxdPort, string oxdhttpsurl, string OpHost, string redirectUrl, string protectionAccessToken)
+ public ActionResult RegisterClient(string oxdHost, int oxdPort, string OpHost, string redirectUrl, string protectionAccessToken)
         {
             //prepare input params for Client Registration
 var registerSiteInputParams = new RegisterSiteParams()
@@ -264,10 +327,33 @@ var registerSiteInputParams = new RegisterSiteParams()
 
             var registerSiteResponse = new RegisterSiteResponse();
 
-//Register Client using oxd-server
+
 registerSiteResponse = registerSiteClient.RegisterSite(oxdHost, oxdPort, registerSiteInputParams);
 
-//Register Client using oxd-https-extension
+
+
+//Response
+return Json(new { oxdId = registerSiteResponse.Data.OxdId });
+        }
+```
+**Register Client using oxd-https-extension**
+
+```csharp
+ public ActionResult RegisterClient(string oxdhttpsurl, string OpHost, string redirectUrl, string protectionAccessToken)
+        {
+            //prepare input params for Client Registration
+var registerSiteInputParams = new RegisterSiteParams()
+            {
+                AuthorizationRedirectUri = redirectUrl,
+                OpHost = OpHost,
+                ClientName = "<Your Client Name>",
+                Scope = new List<string> { "openid", "profile", "email" }
+                ProtectionAccessToken = protectionAccessToken
+            };
+
+             var registerSiteClient = new RegisterSiteClient();
+
+            var registerSiteResponse = new RegisterSiteResponse();
             registerSiteResponse = registerSiteClient.RegisterSite(oxdhttpsurl, registerSiteInputParams);
 
 //Response
@@ -286,23 +372,25 @@ return Json(new { oxdId = registerSiteResponse.Data.OxdId });
 }
 ```
 
-### Update Site Registration
+#### Update Site Registration
 
 The `UpdateSiteRegistration` method can be used to update an existing client in the OP. Fields like Authorization redirect url, post logout url, scope, client secret etc. can be updated using this method.
 
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional, required if oxd-https-extension is used).
-- oxdId: oxd Id from client registration
-- postLogoutRedirectUrl: URL to which the RP is requesting that the End-User's User Agent be redirected after a logout has been performed.
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
+- oxdId: oxd ID from client registration
+- postLogoutRedirectUrl: URL to which the RP is requesting that the End-User's User Agent be redirected to after a logout has been performed.
 - protectionAccessToken: Generated from GetClientToken method.
 
 **Request:**
 
+**Update Client using  oxd-server**
+
 ```csharp
-     public ActionResult Update(string oxdHost, int oxdPort, string oxdhttpsurl, string oxdId, string postLogoutRedirectUrl, string protectionAccessToken)
+     public ActionResult Update(string oxdHost, int oxdPort,  string oxdId, string postLogoutRedirectUrl, string protectionAccessToken)
         {
             //prepare input params for Update Site Registration
             var updateSiteInputParams = new UpdateSiteParams()
@@ -316,10 +404,33 @@ The `UpdateSiteRegistration` method can be used to update an existing client in 
             var updateSiteClient = new UpdateSiteRegistrationClient();
             var updateSiteResponse = new UpdateSiteResponse();
 
-            //Update Client using  oxd-server
+           
             updateSiteResponse = updateSiteClient.UpdateSiteRegistration(oxdHost, oxdPort, updateSiteInputParams);
 
-            //Update Client using oxd-https-extension
+          
+            //Response
+            return Json(new { status = updateSiteResponse.Status });
+        }
+```
+
+**Update Client using oxd-https-extension**
+
+```csharp
+     public ActionResult Update(string oxdhttpsurl, string oxdId, string postLogoutRedirectUrl, string protectionAccessToken)
+        {
+            //prepare input params for Update Site Registration
+            var updateSiteInputParams = new UpdateSiteParams()
+            {
+                OxdId = oxdId,
+                Contacts = new List<string> { "support@email.com" },
+                PostLogoutRedirectUri = postLogoutRedirectUrl,
+                ProtectionAccessToken = protectionAccessToken
+            };
+
+            var updateSiteClient = new UpdateSiteRegistrationClient();
+            var updateSiteResponse = new UpdateSiteResponse();
+
+           
             updateSiteResponse = updateSiteClient.UpdateSiteRegistration(oxdhttpsurl, updateSiteInputParams);
 
             //Response
@@ -335,22 +446,25 @@ The `UpdateSiteRegistration` method can be used to update an existing client in 
 }
 ```
 
-### Get Authorization URL
+#### Get Authorization URL
 
-The `GetAuthorizationURL` method returns the OpenID Connect Provider authentication URL to which the client application must redirect the user to authorize the release of personal data. The response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
+The `GetAuthorizationURL` method returns the OpenID Connect Provider (OP) Authentication URL to which the client application must redirect the user to authorize the release of personal data. The Response URL includes state value, which can be used to obtain tokens required for authentication. This state value is used to maintain the state between the request and the callback.
 
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional, required if oxd-https-extension is used).
-- oxdId: oxd Id from client registration
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
+- oxdId: oxd ID from client registration
 - customParams: custom parameters
 - protectionAccessToken:  Generated from GetClientToken method (Optional, required if oxd-https-extension is used)
 
 **Request:**
+
+**Get Auth URL using  oxd-server**
+
 ```csharp
-    public ActionResult GetAuthorizationURL(string oxdHost, int oxdPort, string oxdhttpsurl, string oxdId, dictionary<string, string> customParams, string protectionAccessToken)
+    public ActionResult GetAuthorizationURL(string oxdHost, int oxdPort, string oxdId, dictionary<string, string> customParams, string protectionAccessToken)
         {
             //prepare input params for Getting Auth URL from a site
             var getAuthUrlInputParams = new GetAuthorizationUrlParams()
@@ -363,10 +477,33 @@ The `GetAuthorizationURL` method returns the OpenID Connect Provider authenticat
             var getAuthUrlClient = new GetAuthorizationUrlClient();
             var getAuthUrlResponse = new GetAuthorizationUrlResponse();
 
-            //Get Auth URL using  oxd-server
+            
             getAuthUrlResponse = getAuthUrlClient.GetAuthorizationURL(oxdHost, oxdPort, getAuthUrlInputParams);
 
-            //Get Auth URL using  oxd-https-extension
+          
+
+            //Response
+            return Json(new { authUrl = getAuthUrlResponse.Data.AuthorizationUrl });
+        }
+```
+
+**Get Auth URL using  oxd-https-extension**
+
+```csharp
+    public ActionResult GetAuthorizationURL(string oxdhttpsurl, string oxdId, dictionary<string, string> customParams, string protectionAccessToken)
+        {
+            //prepare input params for Getting Auth URL from a site
+            var getAuthUrlInputParams = new GetAuthorizationUrlParams()
+            {
+                OxdId = oxdId,
+                CustomParams = customParams,
+                ProtectionAccessToken = protectionAccessToken
+            };
+
+            var getAuthUrlClient = new GetAuthorizationUrlClient();
+            var getAuthUrlResponse = new GetAuthorizationUrlResponse();
+
+           
             getAuthUrlResponse = getAuthUrlClient.GetAuthorizationURL(oxdhttpsurl, getAuthUrlInputParams);
 
             //Response
@@ -384,23 +521,26 @@ The `GetAuthorizationURL` method returns the OpenID Connect Provider authenticat
 }
 ```
 
-### Get Tokens by Code
+#### Get Tokens by Code
 
 Upon successful login, the login result will return code and state. `GetTokensByCode` uses code and state to retrieve token which can be used to access user claims.
 
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional, required if oxd-https-extension is used).
-- oxdId: oxd Id from client registration
-- authCode: The Code from OP authorization redirect url 
-- authState: The State from OP authorization redirect url
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
+- oxdId: oxd ID from client registration
+- authCode: The code from OpenID Connect Provider (OP) authorization Redirect URL 
+- authState: The state from OpenID Connect Provider (OP) authorization Redirect URL
 - protectionAccessToken:  Generated from GetClientToken method (Optional, required if oxd-https-extension is used)
 
 **Request:**
+
+**Get Tokens by Code using oxd-server**
+
 ```csharp
-     public ActionResult GetTokenByCode(string oxdHost, int oxdPort, string oxdhttpsurl, string oxdId, string authCode, string authState, string protectionAccessToken)
+     public ActionResult GetTokenByCode(string oxdHost, int oxdPort, string oxdId, string authCode, string authState, string protectionAccessToken)
         {
             //prepare input params for Getting Tokens from a site
             var getTokenByCodeInputParams = new GetTokensByCodeParams()
@@ -413,11 +553,28 @@ Upon successful login, the login result will return code and state. `GetTokensBy
 
             var getTokenByCodeClient = new GetTokensByCodeClient();
             var getTokensByCodeResponse = new GetTokensByCodeResponse();
-
-            //Get Tokens by Code using oxd-server
             getTokensByCodeResponse = getTokenByCodeClient.GetTokensByCode(oxdHost, oxdPort, getTokenByCodeInputParams);
+            //Response
+            return Json(new { accessToken = getTokensByCodeResponse.Data.AccessToken, refreshToken = getTokensByCodeResponse.Data.RefreshToken });
+        }
+```
 
-            //Get Tokens by Code using oxd-https-extension
+**Get Tokens by Code using oxd-https-extension**
+
+```csharp
+     public ActionResult GetTokenByCode( string oxdhttpsurl, string oxdId, string authCode, string authState, string protectionAccessToken)
+        {
+            //prepare input params for Getting Tokens from a site
+            var getTokenByCodeInputParams = new GetTokensByCodeParams()
+            {
+                OxdId = oxdId,
+                Code = authCode,
+                State = authState,
+                ProtectionAccessToken = protectionAccessToken
+            };
+
+            var getTokenByCodeClient = new GetTokensByCodeClient();
+            var getTokensByCodeResponse = new GetTokensByCodeResponse();
             getTokensByCodeResponse = getTokenByCodeClient.GetTokensByCode(oxdhttpsurl, getTokenByCodeInputParams);
 
             //Response
@@ -449,23 +606,25 @@ Upon successful login, the login result will return code and state. `GetTokensBy
 ```
 
 
-### Get Access Token by Refresh Token
+#### Get Access Token by Refresh Token
 
 The `GetAccessTokenByRefreshToken` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `GetTokensByCode` method.
 
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional,required if oxd-https-extension is used).
-- oxdId: oxd Id from client registration
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional,required if oxd-https-extension is used).
+- oxdId: oxd ID from client registration
 - refreshToken: Generated from the GetTokensByCode method
 - protectionAccessToken:  Generated from GetClientToken method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
+**Get Access Token by Refresh Token using oxd-server**
+
 ```csharp
-     public ActionResult GetAccessTokenByRefreshToken(string oxdHost, int oxdPort, string oxdhttpsurl, string oxdId, string refreshToken, string protectionAccessToken)
+     public ActionResult GetAccessTokenByRefreshToken(string oxdHost, int oxdPort, string oxdId, string refreshToken, string protectionAccessToken)
         {
             //prepare input params for Getting Tokens from a site
             var getAccessTokenByRefreshTokenInputParams = new GetAccessTokenByRefreshTokenParams()
@@ -477,17 +636,36 @@ The `GetAccessTokenByRefreshToken` method is used to get a new access token and 
 
             var getTokenByCodeClient = new GetTokensByCodeClient();
             var getAccessTokenByRefreshTokenResponse = new GetAccessTokenByRefreshTokenResponse();
-
-            //Get Tokens by Code using oxd-server
             getAccessTokenByRefreshTokenResponse = getAccessTokenByRefreshTokenClient.GetAccessTokenByRefreshToken(oxdHost, oxdPort, getAccessTokenByRefreshTokenInputParams);
 
-            //Get Tokens by Code using oxd-https-extension
+            //Response
+            return Json(new { accessToken = getAccessTokenByRefreshTokenResponse.Data.AccessToken, refreshToken = getAccessTokenByRefreshTokenResponse.Data.RefreshToken });
+        }
+```
+
+**Get Access Token by Refresh Token using oxd-https-extension**
+
+```csharp
+     public ActionResult GetAccessTokenByRefreshToken(string oxdhttpsurl, string oxdId, string refreshToken, string protectionAccessToken)
+        {
+            //prepare input params for Getting Tokens from a site
+            var getAccessTokenByRefreshTokenInputParams = new GetAccessTokenByRefreshTokenParams()
+            {
+                OxdId = oxdId,
+                RefreshToken = refreshToken,
+                ProtectionAccessToken = protectionAccessToken
+            };
+
+            var getTokenByCodeClient = new GetTokensByCodeClient();
+            var getAccessTokenByRefreshTokenResponse = new GetAccessTokenByRefreshTokenResponse();
             getAccessTokenByRefreshTokenResponse = getAccessTokenByRefreshTokenClient.GetAccessTokenByRefreshToken(oxdhttpsurl, getAccessTokenByRefreshTokenInputParams);
 
             //Response
             return Json(new { accessToken = getAccessTokenByRefreshTokenResponse.Data.AccessToken, refreshToken = getAccessTokenByRefreshTokenResponse.Data.RefreshToken });
         }
 ```
+
+
 
 **Response:**
 
@@ -504,23 +682,26 @@ The `GetAccessTokenByRefreshToken` method is used to get a new access token and 
 ```
 
 
-### Get User Info
+#### Get User Info
 
-Once the user has been authenticated by the OpenID Connect Provider, the `GetUserInfo` method returns Claims (Like First Name, Last Name, emailId, etc.) about the authenticated end user.
+Once the user has been authenticated by the OpenID Connect Provider (OP), the `GetUserInfo` method returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
 
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional,required if oxd-https-extension is used).
-- OpHost: The URL of the OpenID Connect Provider (OP)
-- oxdId: oxd Id from client registration
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional,required if oxd-https-extension is used).
+- OpHost: URL of the OpenID Connect Provider (OP)
+- oxdId: oxd ID from client registration
 - accessToken: accessToken from GetTokenByCode
 - protectionAccessToken:  Generated from GetClientToken method (Optional, required if oxd-https-extension is used)
 
 **Request:**
+
+**Get User Info using oxd-server**
+
 ```csharp
-    public ActionResult GetUserInfo(string oxdHost, int oxdPort, string oxdhttpsurl, string oxdId, string accessToken, string protectionAccessToken)
+    public ActionResult GetUserInfo(string oxdHost, int oxdPort,  string oxdId, string accessToken, string protectionAccessToken)
         {
             //prepare input params for Getting User Info from a site
             var getUserInfoInputParams = new GetUserInfoParams()
@@ -533,10 +714,32 @@ Once the user has been authenticated by the OpenID Connect Provider, the `GetUse
             var getUserInfoClient = new GetUserInfoClient();
             var getUserInfoResponse = new GetUserInfoResponse();
 
-            //Get User Info using oxd-server
             getUserInfoResponse = getUserInfoClient.GetUserInfo(oxdHost, oxdPort, getUserInfoInputParams);
 
-            //Get User Info using oxd-https-extension
+            //Response
+            var userName = getUserInfoResponse.Data.UserClaims.Name.First();
+            var userEmail = getUserInfoResponse.Data.UserClaims.Email == null ? string.Empty : getUserInfoResponse.Data.UserClaims.Email.FirstOrDefault();
+
+            return Json(new { userName = userName, userEmail = userEmail });
+        }
+```
+
+**Get User Info using oxd-https-extension**
+
+```csharp
+    public ActionResult GetUserInfo(string oxdhttpsurl, string oxdId, string accessToken, string protectionAccessToken)
+        {
+            //prepare input params for Getting User Info from a site
+            var getUserInfoInputParams = new GetUserInfoParams()
+            {
+                OxdId = oxdId,
+                AccessToken = accessToken,
+                ProtectionAccessToken = protectionAccessToken
+            };
+
+            var getUserInfoClient = new GetUserInfoClient();
+            var getUserInfoResponse = new GetUserInfoResponse();
+           
             getUserInfoResponse = getUserInfoClient.GetUserInfo(oxdhttpsurl, getUserInfoInputParams);
 
             //Response
@@ -546,6 +749,7 @@ Once the user has been authenticated by the OpenID Connect Provider, the `GetUse
             return Json(new { userName = userName, userEmail = userEmail });
         }
 ```
+
 
 **Response:**
 ```javascript
@@ -565,23 +769,49 @@ Once the user has been authenticated by the OpenID Connect Provider, the `GetUse
 }
 ```
 
-### Logout
+#### Logout
 
-`GetLogoutURL` method returns the OpenID Connect Provider logout url. Client application  uses this logout url to end the user session.
+`GetLogoutURL` method returns the OpenID Connect Provider (OP) Logout URL. Client application  uses this Logout URL to end the user session.
 
 
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional, required if oxd-https-extension is used).
-- OpHost: The URL of the OpenID Connect Provider (OP)
-- oxdId: oxd Id from client registration
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
+- OpHost: URL of the OpenID Connect Provider (OP)
+- oxdId: oxd ID from client registration
 - protectionAccessToken:  Generated from GetClientToken method (Optional, required if oxd-https-extension is used)
 
 **Request:**
+
+**Get Logout URI using oxd-server**
+
 ```csharp
-     public ActionResult GetLogoutUrl(string oxdHost, int oxdPort, string oxdhttpsurl, string oxdId, string protectionAccessToken)
+     public ActionResult GetLogoutUrl(string oxdHost, int oxdPort, string oxdId, string protectionAccessToken)
+        {
+            //prepare input params for Getting Logout URI from a site
+            var getLogoutUriInputParams = new GetLogoutUrlParams()
+            {
+                OxdId = oxdId,
+                ProtectionAccessToken = protectionAccessToken
+            };
+
+            var getLogoutUriClient = new GetLogoutUriClient();
+            var getLogoutUriResponse = new GetLogoutUriResponse();
+            
+            getLogoutUriResponse = getLogoutUriClient.GetLogoutURL(oxdHost, oxdPort, getLogoutUriInputParams);
+           
+            //Response
+            return Json(new { logoutUri = getLogoutUriResponse.Data.LogoutUri });
+        }
+```
+
+
+**Get Logout URI using oxd-https-extension**
+
+```csharp
+     public ActionResult GetLogoutUrl(string oxdhttpsurl, string oxdId, string protectionAccessToken)
         {
             //prepare input params for Getting Logout URI from a site
             var getLogoutUriInputParams = new GetLogoutUrlParams()
@@ -593,16 +823,13 @@ Once the user has been authenticated by the OpenID Connect Provider, the `GetUse
             var getLogoutUriClient = new GetLogoutUriClient();
             var getLogoutUriResponse = new GetLogoutUriResponse();
 
-            //Get Logout URI using oxd-server
-            getLogoutUriResponse = getLogoutUriClient.GetLogoutURL(oxdHost, oxdPort, getLogoutUriInputParams);
-
-            //Get Logout URI using oxd-https-extension
             getLogoutUriResponse = getLogoutUriClient.GetLogoutURL(oxdhttpsurl, getLogoutUriInputParams);
 
             //Response
             return Json(new { logoutUri = getLogoutUriResponse.Data.LogoutUri });
         }
 ```
+
 
 **Response:**
 ```javascript
@@ -614,24 +841,27 @@ Once the user has been authenticated by the OpenID Connect Provider, the `GetUse
 }
 ```
 
+### UMA (User Managed Access)
 
-### UMA RS Protect
+#### RS Protect
 
-`ProtectResources` method is used for protecting resource by the Resource Server. Resource server need to construct the command which will protect the resource.
-The command will contain api path, http methods (POST,GET, PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy mapped, uma_rs_check_access method will always return access as granted. To know more about‚uma_rpt_policies you can check this [document]().
+`ProtectResources` method is used for protecting resource by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
+The command will contain an API path, HTTP methods (POST,GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document] (https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
 
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional, required if oxd-https-extension is used).
-- oxdId: oxd Id from client registration
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
+- oxdId: oxd ID from client registration
 - protectionAccessToken: Generated from GetClientToken method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
+**UMA RS Protect using oxd-server**
+
 ```csharp
-public ActionResult ProtectResources(string oxdHost, int oxdPort, string oxdhttpsurl, string oxdId, string protectionAccessToken)
+public ActionResult ProtectResources(string oxdHost, int oxdPort, string oxdId, string protectionAccessToken)
         {
             //prepare input params for Protect Resource
             var protectParams = new UmaRsProtectParams()
@@ -658,12 +888,50 @@ public ActionResult ProtectResources(string oxdHost, int oxdPort, string oxdhttp
             var protectClient = new UmaRsProtectClient();
             var protectResponse = new UmaRsProtectResponse();
 
-            //For oxd-server
+           
             protectResponse = protectClient.ProtectResources(oxdHost, oxdPort, protectParams);
             
-            //For oxd-https-extension
+                       
+            //process response
+            if (protectResponse.Status.ToLower().Equals("ok"))
+            {
+                return Json(new { Response = protectResponse.Status });
+            }
+        }
+```
+
+**UMA RS Protect using oxd-https-extension**
+
+```csharp
+public ActionResult ProtectResources(string oxdhttpsurl, string oxdId, string protectionAccessToken)
+        {
+            //prepare input params for Protect Resource
+            var protectParams = new UmaRsProtectParams()
+            {
+                OxdId = oxdId,
+                ProtectResources = new List<ProtectResource>
+                {
+                    new ProtectResource
+                    {
+                        Path = "/scim",
+                        ProtectConditions = new List<ProtectCondition>
+                        {
+                            new ProtectCondition
+                            {
+                                HttpMethods = new List<string> { "GET" },
+                                Scopes = new List<string> { "https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1" },
+                                TicketScopes = new List<string> { "https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1" }
+                            }
+                        }
+                    }
+                },
+                ProtectionAccessToken = protectionAccessToken
+            };
+            var protectClient = new UmaRsProtectClient();
+            var protectResponse = new UmaRsProtectResponse();
+                      
             protectResponse = protectClient.ProtectResources(oxdhttpsurl, protectParams);
-            
+
             //process response
             if (protectResponse.Status.ToLower().Equals("ok"))
             {
@@ -680,23 +948,26 @@ public ActionResult ProtectResources(string oxdHost, int oxdPort, string oxdhttp
 }
 ```
 
-### UMA RS Check Access 
+#### RS Check Access 
 
-`CheckAccess` method used in a UMA Resource Server to check the access to the resource.
+`CheckAccess` method is used in the UMA Resource Server to check the access to the resource.
 
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional, required if using oxd-https-extension).
-- oxdId: oxd Id from client registration
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional, required if using oxd-https-extension).
+- oxdId: oxd ID from client registration
 - rpt: Requesting Party Token
 - protectionAccessToken:  Generated from GetClientToken method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
+**Check Access using oxd-server**
+
+
 ```csharp
-public ActionResult CheckAccess(string oxdHost, int oxdPort, string oxdhttpsurl, string oxdId, string rpt, string protectionAccessToken)
+public ActionResult CheckAccess(string oxdHost, int oxdPort,  string oxdId, string rpt, string protectionAccessToken)
         {
             //prepare input params for Check Access
             var checkAccessParams = new UmaRsCheckAccessParams()
@@ -711,10 +982,33 @@ public ActionResult CheckAccess(string oxdHost, int oxdPort, string oxdhttpsurl,
             var checkAccessClient = new UmaRsCheckAccessClient();
             var checkAccessResponse = new UmaRsCheckAccessResponse();
 
-            //Check Access using oxd-server
             checkAccessResponse = checkAccessClient.CheckAccess(oxdHost, oxdPort, checkAccessParams);
-            
-            //Check Access using oxd-https-extension
+                       
+            if (checkAccessResponse.Status.ToLower().Equals("ok"))
+            {
+                return Json(new { Response = JsonConvert.SerializeObject(checkAccessResponse.Data) });
+            }
+        }
+```
+
+**Check Access using oxd-https-extension**
+
+```csharp
+public ActionResult CheckAccess( string oxdhttpsurl, string oxdId, string rpt, string protectionAccessToken)
+        {
+            //prepare input params for Check Access
+            var checkAccessParams = new UmaRsCheckAccessParams()
+            {
+                OxdId = oxdId,
+                RPT = rpt,
+                Path = "/scim",
+                HttpMethod = "GET",
+                ProtectionAccessToken = protectionAccessToken
+            };
+
+            var checkAccessClient = new UmaRsCheckAccessClient();
+            var checkAccessResponse = new UmaRsCheckAccessResponse();
+
             checkAccessResponse = checkAccessClient.CheckAccess(oxdhttpsurl, checkAccessParams);
             
             if (checkAccessResponse.Status.ToLower().Equals("ok"))
@@ -726,7 +1020,7 @@ public ActionResult CheckAccess(string oxdHost, int oxdPort, string oxdhttpsurl,
 
 **Response:**
 
-***Access Granted response:***
+***Access Granted Response***
 
 ```javascript
 {
@@ -737,7 +1031,7 @@ public ActionResult CheckAccess(string oxdHost, int oxdPort, string oxdhttpsurl,
 }
 ```
 
-***Access Denied with ticket response:***
+***Access Denied with Ticket Response***
 
 ```javascript
 {
@@ -753,7 +1047,7 @@ public ActionResult CheckAccess(string oxdHost, int oxdPort, string oxdhttpsurl,
 }
 ```
 
-***Access Denied without ticket response:***
+***Access Denied without Ticket Response***
 
 ```javascript
 {
@@ -764,7 +1058,7 @@ public ActionResult CheckAccess(string oxdHost, int oxdPort, string oxdhttpsurl,
 }
 ```
 
-***Resource is not protected***
+***Resource is not Protected***
 
 ```javascript
 {
@@ -776,23 +1070,27 @@ public ActionResult CheckAccess(string oxdHost, int oxdPort, string oxdhttpsurl,
 }
 ```
 
-### UMA RP Get RPT 
+#### RP Get RPT 
 
-The method `GetRPT` is called in order to obtain the rpt 
+The method `GetRPT` is called in order to obtain the RPT (Requesting Party Token) 
 
-**Required parameters:**
+**Required Parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional, required if oxd-https-extension is used).
-- oxdId: oxd Id from client registration
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
+- oxdId: oxd ID from client registration
 - ticket: Client Access Ticket generated by uma_rs_check_access method
-- protectionAccessToken:  Generated from GetClientToken method (Optional, required if oxd-https-extension is used)
+- protectionAccessToken:  Generated from GetClientToken method (Optional, required if oxd-https-extension is used).
+- pct: (Optional) Persisted Claims Token
+- rpt: (Optional) Requesting Party Token
 
 **Request:**
 
+**UMA RP Get RPT using oxd-server**
+
 ```csharp
-public ActionResult ObtainRpt(string oxdHost, int oxdPort, string oxdhttpsurl, string oxdId, string ticket, string protectionAccessToken)
+public ActionResult ObtainRpt(string oxdHost, int oxdPort,  string oxdId, string ticket, string protectionAccessToken, string pct, string rpt )
         {
             //prepare input params for Protect Resource
             var getRptParams = new UmaRpGetRptParams()
@@ -804,11 +1102,33 @@ public ActionResult ObtainRpt(string oxdHost, int oxdPort, string oxdhttpsurl, s
             
             var getRptClient = new UmaRpGetRptClient();
             var getRptResponse = new GetRPTResponse();
-
-            //For oxd-server
+            
             getRptResponse = getRptClient.GetRPT(oxdHost, oxdPort, getRptParams);
+           
+            //process response
+            if (getRptResponse.Status.ToLower().Equals("ok"))
+            {
+                return Json(new { Response = JsonConvert.SerializeObject(getRptResponse.Data) });
+            }
+        }
+```
 
-            //For oxd-https-extension
+**UMA RP Get RPT using oxd-https-extension**
+
+```csharp
+public ActionResult ObtainRpt(string oxdhttpsurl, string oxdId, string ticket, string protectionAccessToken, , string pct, string rpt)
+        {
+            //prepare input params for Protect Resource
+            var getRptParams = new UmaRpGetRptParams()
+            {
+                getRptParams.OxdId = oxdId,
+                getRptParams.ticket = ticket,
+                ProtectionAccessToken = protectionAccessToken
+            };
+            
+            var getRptClient = new UmaRpGetRptClient();
+            var getRptResponse = new GetRPTResponse();
+            
             getRptResponse = getRptClient.GetRPT(oxdhttpsurl, getRptParams);
 
             //process response
@@ -818,6 +1138,9 @@ public ActionResult ObtainRpt(string oxdHost, int oxdPort, string oxdhttpsurl, s
             }
         }
 ```
+
+
+
 
 **Response:**
 
@@ -864,7 +1187,7 @@ public ActionResult ObtainRpt(string oxdHost, int oxdPort, string oxdhttpsurl, s
 }
 ```
 
-***Invalid ticket error Response***
+***Invalid Ticket Error Response***
 
 ```javascript
  {
@@ -876,21 +1199,23 @@ public ActionResult ObtainRpt(string oxdHost, int oxdPort, string oxdhttpsurl, s
  }
 ```
 
-### UMA RP Get Claims Gathering URL 
+#### RP Get Claims Gathering URL 
 
 **Required parameters:**
 
 - oxdHost: The IP address of the oxd-server
-- oxdport: The port of the oxd server
-- oxdhttpsurl: The URL of the oxd-https-extension (optional- If using oxd-https-extension).
-- oxdId: oxd Id from client registration
+- oxdport: The port of the oxd-server
+- oxdhttpsurl: The URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
+- oxdId: oxd ID from client registration
 - ticket: Client Access Ticket generated by uma_rs_check_access method
 - protectionAccessToken:  Generated from GetClientToken method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
+**UMA RP Get Claims Gathering URL using oxd-server**
+
 ```csharp
-public ActionResult GetClaimsGatheringUrl(string oxdHost, int oxdPort, string oxdhttpsurl, string oxdId, string ticket, string protectionAccessToken)
+public ActionResult GetClaimsGatheringUrl(string oxdHost, int oxdPort, string oxdId, string ticket, string protectionAccessToken)
         {
             //prepare input params for Check Access
             var getClaimsGatheringUrlParams = new UmaRpGetClaimsGatheringUrlParams()
@@ -904,10 +1229,33 @@ public ActionResult GetClaimsGatheringUrl(string oxdHost, int oxdPort, string ox
             var getClaimsGatheringUrlClient = new UmaRpGetClaimsGatheringUrlClient();
             var getClaimsGatheringUrlResponse = new UmaRpGetClaimsGatheringUrlResponse();
 
-            //For oxd-server
+            
             getClaimsGatheringUrlResponse = getClaimsGatheringUrlClient.GetClaimsGatheringUrl(oxdHost, oxdPort, getClaimsGatheringUrlParams);
             
-            //For oxd-https-extension
+      
+            
+            //process response
+            return Json(new { Response = JsonConvert.SerializeObject(getClaimsGatheringUrlResponse.Data) });
+        }
+```
+
+**UMA RP Get Claims Gathering URL using oxd-https-extension**
+
+```csharp
+public ActionResult GetClaimsGatheringUrl( string oxdhttpsurl, string oxdId, string ticket, string protectionAccessToken)
+        {
+            //prepare input params for Check Access
+            var getClaimsGatheringUrlParams = new UmaRpGetClaimsGatheringUrlParams()
+            {
+                OxdId = oxdId,
+                Ticket = ticket,
+                ClaimsRedirectURI = "https://client.example.com",
+                ProtectionAccessToken = protectionAccessToken
+            };
+
+            var getClaimsGatheringUrlClient = new UmaRpGetClaimsGatheringUrlClient();
+            var getClaimsGatheringUrlResponse = new UmaRpGetClaimsGatheringUrlResponse();
+                     
             getClaimsGatheringUrlResponse = getClaimsGatheringUrlClient.GetClaimsGatheringUrl(oxdhttpsurl, getClaimsGatheringUrlParams);
             
             //process response
@@ -933,4 +1281,4 @@ public ActionResult GetClaimsGatheringUrl(string oxdHost, int oxdPort, string ox
 
 
 ## Support
-Please report technical issues and suspected bugs on our [support page](https://support.gluu.org/). You can use the same credentials you created to register for your oxd license to sign in on Gluu support.
+Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
