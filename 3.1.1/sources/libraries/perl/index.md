@@ -8,7 +8,7 @@ OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-serve
 
 ## Sample Project
 
-[Download a Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip) specific to this oxd-perl library.
+Download the [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip) specific to this oxd-perl library.
 
 ### System Requirements
 
@@ -240,10 +240,10 @@ an OpenID Connect Provider (OP):
 The oxd-server provides the following methods for authenticating users with UMA Authorization Service (AS):
 
 - Available UMA (User Managed Access) Endpoints  
-    - [UMA RS Protect](../../protocol/#uma-rs-protect) 
-    - [UMA RS Check Access](../../protocol/#uma-rs-check-access) 
-    - [UMA RP Get RPT](../../protocol/#uma-rp-get-rpt) 
-    - [UMA RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
+    - [RS Protect](../../protocol/#uma-rs-protect) 
+    - [RS Check Access](../../protocol/#uma-rs-check-access) 
+    - [RP Get RPT](../../protocol/#uma-rp-get-rpt) 
+    - [RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
 
 
 ## Sample Code
@@ -383,7 +383,7 @@ print Dumper($get_client_token->getResponseObject());
 #### Register Site
 
 In order to use an OpenID Connect Provider (OP) for login, you need to register 
-your client application at the OP. During registration oxd will dynamically register 
+your client application at the OpenID Connect Provider (OP). During registration oxd will dynamically register 
 the OpenID Connect client and save its configuration. Upon successful registration, a 
 unique identifier will be issued by the oxd-server. If your OpenID Connect Provider (OP)
 does not support dynamic registration (like Google), you will need to obtain a ClientID 
@@ -430,10 +430,9 @@ print Dumper($register_site->getResponseObject());
 
 #### Update Site Registration
 
-The `UpdateRegistration` module can be used to update an existing client in the OP. 
+The `UpdateRegistration` module can be used to update an existing client in the OpenID Connect Provider (OP). 
 
-Fields like Authorization redirect url, post logout url, scope, client secret and other fields 
-can be updated using this method.
+Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret, etc. can be updated using this method.
 
 **Required parameters:**
 
@@ -650,7 +649,7 @@ print Dumper($get_user_info->getResponseObject());
 
 #### Logout
 
-`OxdLogout` module returns the OpenID Connect Provider logout url. Client application  uses this logout url to end the user session.
+`OxdLogout` module returns the OpenID Connect Provider (OP) Logout URL. Client application  uses this Logout URL to end the user session.
 
 **Required parameters:**
 
