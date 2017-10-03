@@ -2,13 +2,13 @@
 
 ## Overview
 The following documentation demonstrates 
-how to use the [oxd client software](http://oxd.gluu.org) Perl library to send users from a Perl application to an 
+how to use the [oxd Client Software](http://oxd.gluu.org) Perl library to send users from a Perl application to an 
 OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 
 ## Sample Project
 
-[Download a sample project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip) specific to this oxd library.
+[Download a Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip) specific to this oxd-perl library.
 
 ### System Requirements
 
@@ -26,17 +26,16 @@ OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-serve
 
 ### Required Software
 
-To use the oxd Perl library, you will need:
+To use the oxd-perl library, you will need:
 
-- A valid OpenID Connect Provider (OP), like Google or 
-the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).    
-- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application.
-- An active installation of the [oxd-https-extension](../../install/index.md) if oxd-https-extension connection is used.  
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.
+- An active installation of the [oxd-server](../../install/index.md) running on the same server as the client application.
+- An active installation of the [oxd-https-extension](../../install/index.md) if oxd-https-extension connection is used.  In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
-### Install oxdPerlModule from CPAN
+### Install oxdPerl from CPAN
 
-To install oxdPerlModule from CPAN run the following command in 
+To install oxdPerl from CPAN, run the following command in 
 Linux terminal or Windows command window
 
 ``` {.code }
@@ -55,7 +54,7 @@ cpan > install IO::Socket::SSL
 
 ### Configure the Client Application
 
-- Your client application must have a valid ssl cert, so the url includes: `https://`    
+- Client application must have a valid SSL certificate, so the URL includes: `https://`    
 
 
 #### Linux
@@ -65,14 +64,14 @@ Install Perl on ubuntu
 $ sudo apt-get install perl
 $ sudo apt-get install libapache2-mod-perl2 
 ```
-Then create virtual host of oxd-perl `oxd-perl.conf` 
-under `/etc/apache2/sites-available/`  file and add these lines :
+Create a virtual host of oxd-perl `oxd-perl.conf` 
+under `/etc/apache2/sites-available/`  file and add these lines:
 
 ```bash
 $ cd /etc/apache2/sites-available
 $ vim oxd-perl-example.conf
 ```
-add below mention lines on  virtual host file
+Add the following lines to the virtual host file:
 
 ```
 <IfModule mod_ssl.c>
@@ -121,33 +120,30 @@ add below mention lines on  virtual host file
 </IfModule>
 ```
 
-Then enable `oxd-perl-example.conf` virtual host by running:
+Enable `oxd-perl-example.conf` virtual host by running:
 
 ```bash
 $ sudo a2ensite oxd-perl-example.conf 
 ```
 
-After that add domain name in virtual host file.
-In console:
+Add domain name in the virtual host file. In console:
 
 ```bash
 $ sudo nano /etc/hosts
 ```
 
-Add these lines in virtual host file:
+In virtual host file add:
 ```
 127.0.0.1 www.client.example.com
 127.0.0.1  client.example.com
 ```
 
-Reload the apache server
+Reload the Apache Server:
 
 ```bash
 $ sudo service apache2 restart
 ```
-**Setting up and running demo app**
-
-Navigate to perl app root:
+Set up and run the demo application. Navigate to perl app root:
 
 ```bash
 Copy example folder from oxdPerl directory and placed on root folder
@@ -157,12 +153,12 @@ cd /var/www/html/oxd-perl/example
 
 #### Windows
 
-- The client hostname should be a valid `hostname` (FQDN), not localhost or an IP Address. 
+- The client hostname should be a valid `hostname` (FQDN), not a localhost or an IP Address. 
 You can configure the hostname by adding the following entry in  `C:\Windows\System32\drivers\etc\hosts` file:
 
     `127.0.0.1  client.example.com`
     
-- Enable SSL by	adding the following lines on virtual host file of Apache in the 
+- Enable SSL by	adding the following lines to the virtual host file of Apache in the 
 location `C:/apache/conf/extra/httpd-vhosts.conf`:
 
     ```apache
@@ -186,19 +182,21 @@ location `C:/apache/conf/extra/httpd-vhosts.conf`:
     </VirtualHost>
     ```
 
-- Configure Apache to treat the project directory as script directory, set the path in `httpd.conf` file which is in the location `C:\Program Files\Apache Group\Apache\conf\httpd.conf`
+- Download the [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip)
+
+- Configure Apache to treat the project directory as a script directory. In the following location, `C:\Program Files\Apache Group\Apache\conf\httpd.conf`, set the path to `httpd.conf` 
 
     ```
     ScriptAlias /cgi-bin/ "<path to CGI files>"
     ```
 
-- To run CGI scripts anywhere in the domain, add the following line to `httpd.conf` file.
+- To run CGI scripts and .pl extension anywhere in the domain, add the following line to `httpd.conf` file:
 
     ```
-    AddHandler cgi-script .cgi
+    AddHandler cgi-script .cgi .pl
     ```
 
-- In the `Directory` section of `httpd.conf` file. Add CGI path
+- In the `Directory` section of `httpd.conf` file, add the folowing CGI path:
 
     ```code
     <Directory "<path to CGI files>">
@@ -208,33 +206,39 @@ location `C:/apache/conf/extra/httpd-vhosts.conf`:
     </Directory>
     ```
 
-- The initial line of perl script contains `#!/usr/bin/perl` , change it with the path of perl.exe `#!C:/program files/perl/bin/perl.exe` 
+- The first line of perl script contains `#!/usr/bin/perl`, replace it with the path of perl.exe `#!C:/program files/perl/bin/perl.exe` 
 
-- Move oxdperl module from lib directory to lib directory of perl installation (\perl\lib).
+- Restart the Apache server.
 
-- That's it!. Now navigate to following url to run Sample client application. Make sure oxd server and apache server is running. Setup client url can be used for registering Client in oxd server. Upon successful registration of the client application, oxd Id will be displayed in the UI. Then navigate to Login URL for authentication.
-    - Setup client url: https://client.example.com:8090/cgi-bin/settings.cgi
+- Move oxdperl module from lib directory to the lib directory of the perl installation (\perl\lib).
+
+- With the oxd-server and Apache Server running, navigate to the URL's below to run Sample Client Application. To register a client in the oxd-server use the Setup client URL. Upon successful registration of the client application, oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+    - Setup Client URL: https://client.example.com:8090/cgi-bin/settings.cgi
     - Login URL: https://client.example.com:8090/cgi-bin/index.cgi
     - UMA URL: https://client.example.com:8090/cgi-bin/uma.cgi
 
 - The input values used during Setup Client are stored in a configuration file (oxd-settings.json).
 
 
-## oxd Server Endpoints
+## Endpoints (oxd-server and oxd-https-extension)
 
-The oxd server provides the following methods for authenticating users with 
+The oxd-server provides the following methods for authenticating users with 
 an OpenID Connect Provider (OP):
 
-- Available OpenId Connect Endpoints
+- Available OpenID Connect Endpoints
     - [Setup Client](../../protocol/#setup-client)  
     - [Get Client Token](../../protocol/#get-client-token)
     - [Register Site](../../protocol/#register-site) 
-    - [Update Site Registration](../../protocol/#update-site-registration)    
+    - [Update Site Registration](../../protocol/#update-site-registration)
     - [Get Authorization URL](../../protocol/#get-authorization-url)   
     - [Get Tokens by Code](../../protocol/#get-tokens-id-access-by-code)
     - [Get Access Token by Refresh Token](../../protocol/#get-access-token-by-refresh-token)    
     - [Get User Info](../../protocol/#get-user-info)   
     - [Get Logout URI](../../protocol/#log-out-uri) 
+
+
+The oxd-server provides the following methods for authenticating users with UMA Authorization Service (AS):
+
 - Available UMA (User Managed Access) Endpoints  
     - [UMA RS Protect](../../protocol/#uma-rs-protect) 
     - [UMA RS Check Access](../../protocol/#uma-rs-check-access) 
@@ -242,31 +246,11 @@ an OpenID Connect Provider (OP):
     - [UMA RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
 
 
-## oxd https extension Endpoints
-
-The oxd https extension provides the following methods for authenticating users with an OpenID Connect Provider (OP):
-- Available OpenId Connect Endpoints
-    - [Setup Client](../../oxd-https/api/#setup-client)  
-    - [Get Client Token](../../oxd-https/api/#get-client-token)
-    - [Register Site](../../oxd-https/api/#register-site) 
-    - [Update Site Registration](../../oxd-https/api/#update-site-registration)    
-    - [Get Authorization URL](../../oxd-https/api/#get-authorization-url)   
-    - [Get Tokens by Code](../../oxd-https/api/#get-tokens-id-access-by-code)
-    - [Get Access Token by Refresh Token](../../oxd-https/api/#get-access-token-by-refresh-token)    
-    - [Get User Info](../../oxd-https/api/#get-user-info)   
-    - [Get Logout URI](../../oxd-https/api/#log-out-uri) 
-- Available UMA (User Managed Access) Endpoints 
-    - [UMA RS Protect](../../oxd-https/api/#uma-rs-protect) 
-    - [UMA RS Check Access](../../oxd-https/api/#uma-rs-check-access) 
-    - [UMA RP Get RPT](../../oxd-https/api/#uma-rp-get-rpt) 
-    - [UMA RP Get Claims Gathering URL](../../oxd-https/api/#uma-rp-get-claims-gathering-url) 
-
-
-## Sample code
+## Sample Code
 
 ***index.cgi***
 
-Use following code to assign required parameter values from `oxd-settings.json` to the perl client application. These values can be used as parameter for the oxd server methods.
+Use the following code to assign the required parameter values from `oxd-settings.json` to the perl client application. These values can be used as parameters for the oxd-server methods.
 
 
 ```perl
@@ -289,25 +273,31 @@ Use following code to assign required parameter values from `oxd-settings.json` 
     my $client_secret = $object->getClientSecret();
 ```
 
+### OpenID Connect
 
-### Setup Client
+#### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
-you need to setup your client application at the OP. 
-During setup oxd will dynamically register the OpenID Connect 
-client and save its configuration. Upon successful setup a unique 
-identifier will be issued by the oxd server by assigning a specific oxd id. Along with oxd Id oxd server will also return client Id and client secret. This client Id and client secret can be used for `GetClientToken` module. If your OpenID Connect Provider 
+you need to setup your client application at the OpenID Connect Provider (OP). During setup, oxd will dynamically register the OpenID Connect 
+client and save its configuration. Upon successful setup, the oxd-server will assign a unique 
+oxd-ID, return a Client ID and Client Secret. This Client ID and Client Secret can be used for `GetClientToken` module. If your OpenID Connect Provider (OP)
 does not support dynamic registration (like Google), you will need to obtain a 
 ClientID and Client Secret which can be passed to the `OxdSetupClient` module as a 
 parameter. The Setup Client method is a one time task to configure a client in the 
-oxd server and OP.
+oxd-server and OpenID Connect Provider (OP).
 
 **Required parameters:**
 
 - opHost: The URL of the OpenID Connect Provider (OP)
-- authorizationRedirectUrl: A URL which the OP is authorized to redirect the user 
+- authorizationRedirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to
 after authorization.
-
+- client_name: (Optional) Client application name
+- postLogoutRedirectUrl: (Optional) URL to which the user is redirected to after successful logout
+- client_id: (Optional) Client ID from the OpenID Connect Provider (OP). Should be passed with the Client Secret. 
+- client_secret: (Optional) Client Secret from the OpenID Connect Provider (OP). Should be passed with the Client ID. 
+- clientFrontChannelLogoutUrl: (Optional)
+- grantType: (Optional)
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP).
 
 **Request:**
 
@@ -315,15 +305,15 @@ after authorization.
 my $setup_client = new OxdSetupClient( );
 	
 $setup_client->setRequestOpHost($opHost);
-$setup_client->setRequestAcrValues($acrValues);
 $setup_client->setRequestAuthorizationRedirectUri($authorizationRedirectUrl);
+$setup_client->setRequestClientName($client_name);
 $setup_client->setRequestPostLogoutRedirectUri($postLogoutRedirectUrl);
+$setup_client->setRequestClientId($client_id);
+$setup_client->setRequestClientSecret($client_secret);
 $setup_client->setRequestClientLogoutUris([$clientFrontChannelLogoutUrl]);
 $setup_client->setRequestGrantTypes($grantType);
 $setup_client->setRequestResponseTypes($responseType);
 $setup_client->setRequestScope($scope);
-$setup_client->setRequestApplicationType($applicationType);
-$setup_client->setRequestClientName($client_name);
 $setup_client->request();
 
 my $oxd_id = $setup_client->getResponseOxdId();
@@ -351,15 +341,15 @@ print Dumper($setup_client->getResponseObject());
 ```
 
 
-### Get Client Token
+#### Get Client Token
 
 The `GetClientToken` module is used to get a token which is sent as input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
 
 **Required parameters:**
 
-- opHost: OpenId Connect Provider
-- client_id: Client Id from OpenID Connect Provider (Should be passed with Client Secret)
-- client_secret: Client Secret from OpenID Connect Provider (Should be passed with Client Id)
+- opHost: OpenID Connect Provider
+- client_id: Client ID from the OpenID Connect Provider (OP). Should be passed with the Client Secret.
+- client_secret: Client Secret from the OpenID Connect Provider (OP). Should be passed with Client ID.
 
 **Request:**
 
@@ -390,21 +380,26 @@ print Dumper($get_client_token->getResponseObject());
 ```
 
 
-### Register Site
+#### Register Site
 
 In order to use an OpenID Connect Provider (OP) for login, you need to register 
 your client application at the OP. During registration oxd will dynamically register 
-the OpenID Connect client and save its configuration. Upon successful registration a 
-unique identifier will be issued by the oxd server. If your OpenID Connect Provider 
+the OpenID Connect client and save its configuration. Upon successful registration, a 
+unique identifier will be issued by the oxd-server. If your OpenID Connect Provider (OP)
 does not support dynamic registration (like Google), you will need to obtain a ClientID 
 and Client Secret which can be passed to the `OxdRegister` module as a parameter. 
-The Register Site method is a one time task to configure a client in the oxd server and OP.
+The Register Site method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
+
+!!! Note: 
+    The `Register Site` endpoint is not required if client is registered using `Setup Client`
 
 **Required parameters:**
 
-- opHost: The URL of the OpenID Connect Provider (OP)
-- authorizationRedirectUrl: A URL which the OP is authorized to redirect the user 
+- opHost: URL of the OpenID Connect Provider (OP)
+- authorizationRedirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to
 after authorization.
+- postLogoutRedirectUrl: (Optional) URL to which the user is redirected to after successful logout.
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by OP
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -412,7 +407,6 @@ after authorization.
 my $register_site = new OxdRegister( );
 		
 $register_site->setRequestOpHost($opHost);
-$register_site->setRequestAcrValues($acrValues);
 $register_site->setRequestAuthorizationRedirectUri($authorizationRedirectUrl);
 $register_site->setRequestPostLogoutRedirectUri($postLogoutRedirectUrl);
 $register_site->setRequestScope($scope);
@@ -434,7 +428,7 @@ print Dumper($register_site->getResponseObject());
 ```
 
 
-### Update Site Registration
+#### Update Site Registration
 
 The `UpdateRegistration` module can be used to update an existing client in the OP. 
 
@@ -443,9 +437,9 @@ can be updated using this method.
 
 **Required parameters:**
 
-- oxd_id: oxd Id from client registration
-- authorization_redirect_uri: A URL which the OP is authorized to redirect the user after authorization.
-- post_logout_redirect_uri: URL to which the RP is requesting that the End-User's User Agent be redirected after a logout has been performed.
+- oxd_id: oxd ID from client registration
+- authorization_redirect_uri: (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization.
+- post_logout_redirect_uri: (Optional) URL to which the RP is requesting the End-User's User Agent be redirected to after a logout has been performed.
 - grantType: 
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
@@ -457,7 +451,6 @@ my $update_site_registration = new UpdateRegistration();
 $update_site_registration->setRequestOxdId($oxd_id);
 $update_site_registration->setRequestAuthorizationRedirectUri($authorizationRedirectUrl);
 $update_site_registration->setRequestPostLogoutRedirectUri($postLogoutRedirectUrl);
-$update_site_registration->setRequestContacts([$email]);
 $update_site_registration->setRequestGrantTypes($grantType);
 $update_site_registration->setRequestProtectionAccessToken($protection_access_token);
 $update_site_registration->request();
@@ -474,13 +467,16 @@ print Dumper($update_site_registration->getResponseObject());
 ```
 
 
-### Get Authorization URL
+#### Get Authorization URL
 
-The `GetAuthorizationUrl` module returns the OpenID Connect Provider authentication URL to which the client application must redirect the user to authorize the release of personal data. The response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
+The `GetAuthorizationUrl` module returns the OpenID Connect Provider (OP) authentication URL to which the client application must redirect the user to authorize the release of personal data. The response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
 
 **Required parameters:**
 
-- oxd_id: oxd Id from client registration
+- oxd_id: oxd ID from client registration
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by OP.
+- acrValues: (Optional) Required for extened authenication. Custom Authentication script from Gluu server.
+- customParams: (Optional) custom parameters
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -491,7 +487,7 @@ my $get_authorization_url = new GetAuthorizationUrl( );
 $get_authorization_url->setRequestOxdId($oxd_id);
 $get_authorization_url->setRequestScope($scope);
 $get_authorization_url->setRequestAcrValues($acrValues);
-$get_authorization_url->setRequestCustomParam($customParam);
+$get_authorization_url->setRequestCustomParam($customParams);
 $get_authorization_url->setRequestProtectionAccessToken($protection_access_token);
 $get_authorization_url->request();
 
@@ -516,9 +512,9 @@ Upon successful login, the login result will return code and state. `GetTokenByC
 
 **Required parameters:**
 
-- oxd_id: oxd Id from client registration
-- code: The Code from OP authorization redirect url
-- state: The State from OP authorization redirect url
+- oxd_id: oxd ID from client registration
+- code: The code from OpenID Connect Provider (OP) authorization redirect URL
+- state: The state from OpenID Connect Provider (OP) authorization redirect URL
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -566,14 +562,15 @@ print Dumper($get_tokens_by_code->getResponseObject());
 ```
 
 
-### Get Access Token by Refresh Token
+#### Get Access Token by Refresh Token
 
 The `GetAccessTokenByRefreshToken` module is used to get a new access token and a new refresh token by using the refresh token which is obtained from `GetTokensByCode` module.
 
 **Required parameters:**
 
-- oxd_id: oxd Id from client registration
+- oxd_id: oxd ID from client registration
 - refresh_token: Generated from the GetTokensByCode module
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -583,6 +580,7 @@ $get_access_token_by_refresh_token = new GetAccessTokenByRefreshToken();
 
 $get_access_token_by_refresh_token->setRequestOxdId($oxd_id);
 $get_access_token_by_refresh_token->setRequestRefreshToken($refresh_token);
+$get_access_token_by_refresh_token->setRequestScopes($scope);
 $get_access_token_by_refresh_token->setRequestProtectionAccessToken($protection_access_token);
 $get_access_token_by_refresh_token->request();
 
@@ -606,14 +604,14 @@ print Dumper($get_access_token_by_refresh_token->getResponseObject());
 ```
 
 
-### Get User Info
+#### Get User Info
 
-Once the user has been authenticated by the OpenID Connect Provider, the `GetUserInfo` module returns Claims (Like First Name, Last Name, emailId, etc.) about the authenticated end user.
+Once the user has been authenticated by the OpenID Connect Provider (OP), the `GetUserInfo` module returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
 
 **Required parameters:**
 
-- oxd_id: oxd Id from client registration
-- accessToken: accessToken from GetTokenByCode
+- oxd_id: oxd ID from client registration
+- accessToken: accessToken from GetTokenByCode or GetAccessTokenbyRefreshToken
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -650,13 +648,17 @@ print Dumper($get_user_info->getResponseObject());
 ```
 
 
-### Logout
+#### Logout
 
 `OxdLogout` module returns the OpenID Connect Provider logout url. Client application  uses this logout url to end the user session.
 
 **Required parameters:**
 
-- oxd_id: oxd Id from client registration
+- oxd_id: oxd ID from client registration
+- id_token_hint: (Optional)
+- postLogoutRedirectUrl: (Optional) URL to which user is redirected to after successful logout
+- state: (Optional)
+- session_state: (Optional)
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -665,10 +667,10 @@ print Dumper($get_user_info->getResponseObject());
 my $logout = new OxdLogout();
 
 $logout->setRequestOxdId($oxd_id);
+$logout->setRequestIdToken($id_token_hint);
 $logout->setRequestPostLogoutRedirectUri($postLogoutRedirectUrl);
-$logout->setRequestIdToken($user_oxd_id_token);
-$logout->setRequestSessionState($session_state);
 $logout->setRequestState($state);
+$logout->setRequestSessionState($session_state);
 $logout->setRequestProtectionAccessToken($protection_access_token);
 $logout->request();
 
@@ -687,16 +689,16 @@ print Dumper($logout->getResponseObject());
     }
 }
 ```
+### UMA
 
+#### UMA RS Protect
 
-### UMA RS Protect
-
-`UmaRsProtect` module is used for protecting resource by the Resource Server. Resource server need to construct the command which will protect the resource.
-The command will contain api path, http methods (POST,GET, PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy mapped, uma_rs_check_access method will always return access as granted. To know more about uma_rpt_policies you can check this [document]().
+`UmaRsProtect` module is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
+The command will contain an API path, HTTP methods (POST,GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. To know more about uma_rpt_policies you can check this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
 
 **Required parameters:**
 
-- oxd_id: oxd Id from client registration
+- oxd_id: oxd ID from client registration
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -725,14 +727,16 @@ print Dumper( $uma_rs_protect->getResponseObject() );
 ```
 
 
-### UMA RS Check Access 
+#### UMA RS Check Access 
 
 `UmaRsCheckAccess` module used in a UMA Resource Server to check the access to the resource.
 
 **Required parameters:**
 
-- oxd_id: oxd Id from client registration
-- uma_rpt: Requesting Party Token
+- oxd_id: oxd ID from client registration
+- rpt: Requesting Party Token
+- path: Path of the resource to be checked
+- http_method: HTTP methods (POST, GET and PUT)
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -741,9 +745,9 @@ print Dumper( $uma_rs_protect->getResponseObject() );
 $uma_rs_check_access = new UmaRsCheckAccess();
 
 $uma_rs_check_access->setRequestOxdId($oxd_id);
-$uma_rs_check_access->setRequestRpt($uma_rpt);
-$uma_rs_check_access->setRequestPath("/photo");
-$uma_rs_check_access->setRequestHttpMethod("GET");
+$uma_rs_check_access->setRequestRpt($rpt);
+$uma_rs_check_access->setRequestPath($path);
+$uma_rs_check_access->setRequestHttpMethod($http_method);
 $uma_rs_check_access->setRequestProtectionAccessToken($protection_access_token);
 $uma_rs_check_access->request();
 
@@ -753,7 +757,7 @@ print Dumper($uma_rs_check_access->getResponseObject());
 
 **Response:**
 
-***Access Granted response:***
+***Access Granted Response:***
 
 ```javascript
 {
@@ -764,7 +768,7 @@ print Dumper($uma_rs_check_access->getResponseObject());
 }
 ```
 
-***Access Denied with ticket response:***
+***Access Denied with Ticket Response:***
 
 ```javascript
 {
@@ -780,7 +784,7 @@ print Dumper($uma_rs_check_access->getResponseObject());
 }
 ```
 
-***Access Denied without ticket response:***
+***Access Denied without Ticket Response:***
 
 ```javascript
 {
@@ -791,7 +795,7 @@ print Dumper($uma_rs_check_access->getResponseObject());
 }
 ```
 
-***Resource is not protected***
+***Resource is not Protected:***
 
 ```javascript
 {
@@ -804,14 +808,20 @@ print Dumper($uma_rs_check_access->getResponseObject());
 ```
 
 
-### UMA RP Get RPT 
+#### UMA RP Get RPT 
 
-The module `UmaRpGetRpt` is called to get the rpt (Requesting Party Token). 
+The module `UmaRpGetRpt` is called in order to obtain the RPT (Requesting Party Token).
 
 **Required parameters:**
 
-- oxd_id: oxd Id from client registration
-- uma_ticket: Client Access Ticket generated by UmaRsCheckAccess module
+- oxd_id: oxd ID from client registration
+- ticket: Client Access Ticket generated by UmaRsCheckAccess module
+- claim_token: (Optional)
+- claim_token_format: (Optional)
+- pct: (Optional) Persisted Claims Token
+- rpt: (Optional) Requesting Party Token
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by OP
+- state: (Optional) state that is returned from uma_rp_get_claims_gathering_url method
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -819,7 +829,13 @@ The module `UmaRpGetRpt` is called to get the rpt (Requesting Party Token).
 ```perl
 $uma_rp_get_rpt = new UmaRpGetRpt();
 $uma_rp_get_rpt->setRequestOxdId($oxd_id);
-$uma_rp_get_rpt->setRequestTicket($uma_ticket);
+$uma_rp_get_rpt->setRequestTicket($ticket);
+$uma_rp_get_rpt->setRequestClaimToken($claim_token);
+$uma_rp_get_rpt->setRequestClaimTokenFormat($claim_token_format);
+$uma_rp_get_rpt->setRequestPCT($pct);
+$uma_rp_get_rpt->setRequestRPT($rpt);
+$uma_rp_get_rpt->setRequestScope($scope);
+$uma_rp_get_rpt->setRequestState($state);
 $uma_rp_get_rpt->setRequestProtectionAccessToken($protection_access_token);
 $uma_rp_get_rpt->request();
 
@@ -830,7 +846,7 @@ print Dumper($uma_rp_get_rpt->getResponseObject());
 **Response:**
 
 
-***Success Response***
+***Success Response:***
 
 ```javascript
  {
@@ -844,7 +860,7 @@ print Dumper($uma_rp_get_rpt->getResponseObject());
 }
 ```
 
-***Needs Info Error Response***
+***Needs Info Error Response:***
 
 ```javascript
 {
@@ -872,7 +888,7 @@ print Dumper($uma_rp_get_rpt->getResponseObject());
 }
 ```
 
-***Invalid ticket error Response***
+***Invalid Ticket Error Response:***
 
 ```javascript
  {
@@ -885,12 +901,12 @@ print Dumper($uma_rp_get_rpt->getResponseObject());
 ```
 
 
-### UMA RP Get Claims Gathering URL 
+#### UMA RP Get Claims Gathering URL 
 
 **Required parameters:**
 
-- oxd_id: oxd Id from client registration
-- uma_ticket: Client Access Ticket generated by UmaRsCheckAccess module
+- oxd_id: oxd ID from client registration
+- ticket: Client Access Ticket generated by UmaRsCheckAccess module
 - claims_redirect_Uri: 
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
@@ -899,7 +915,7 @@ print Dumper($uma_rp_get_rpt->getResponseObject());
 ```perl
 $uma_rp_get_claims_gathering_url = new UmaRpGetClaimsGatheringUrl();
 $uma_rp_get_claims_gathering_url->setRequestOxdId($oxd_id);
-$uma_rp_get_claims_gathering_url->setRequestTicket($uma_ticket);
+$uma_rp_get_claims_gathering_url->setRequestTicket($ticket);
 $uma_rp_get_claims_gathering_url->setRequestClaimsRedirectUri($claims_redirect_Uri);
 $uma_rp_get_claims_gathering_url->setRequestProtectionAccessToken($protection_access_token);
 $uma_rp_get_claims_gathering_url->request();
@@ -925,4 +941,4 @@ print Dumper($uma_rp_get_claims_gathering_url->getResponseObject());
 
 
 ## Support
-Please report technical issues and suspected bugs on our [support page](https://support.gluu.org/). You can use the same credentials you created to register for your oxd license to sign in on Gluu support.
+Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
