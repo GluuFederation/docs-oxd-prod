@@ -1,8 +1,7 @@
 # oxd-python
 
 ## Overview
-The following documentation demonstrates 
-how to use the [oxd Client Software](http://oxd.gluu.org) Python library to 
+The following documentation demonstrates how to use oxd's Python library to 
 send users from a Python application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
