@@ -93,7 +93,7 @@ python demosite.py
     - Login URL: https://client.example.com:8080
     - UMA URL: https://client.example.com:8080/uma
 
-- The input values used during Setup Client are stored in a configuration file (demosite.cfg). Therefore the configuration file needs to be writable by the client application.
+- The input values used during Setup Client are stored in a configuration file (demosite.cfg). Therefore, the configuration file needs to be writable by the client application.
 
 
 !!! Note: 
