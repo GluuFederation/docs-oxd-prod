@@ -141,12 +141,12 @@ client and save its configuration. Upon successful setup, the oxd-server will as
 
 **Required parameters:**
 
-- op_host: The URL of the OpenID Connect Provider (OP)
-- authorization_redirect_uri: A URL that the OpenID Connect Provider (OP) is authorized to redirect the user after authorization
+- op_host: URL of the OpenID Connect Provider (OP)
+- authorization_redirect_uri: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
 - connection_type: 'local' for oxd-server and 'web' for oxd-https-extension
 - connection_type_value: 'oxd port number' for oxd-server type and ' oxd-https-extension URL' for  oxd-https-extension type
 - client_name: Client application name
-- post_logout_uri: URL where the user is redirected after successful logout
+- post_logout_uri: URL to which the user is redirected to after successful logout
 - clientID: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
 - ClientSecret: Client Secret from OpenID Connect Provider (OP) should be passed with the Client ID
 - claims_redirect_uri: 
@@ -234,9 +234,9 @@ Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret an
 
 - client_name: (Optional) Client application name
 - contacts: (Optional) User's e-mail ID
-- authorization_redirect_uri:  (Optional) URL which the OpenID Connect Provider (OP) is authorized to redirect the user after authorization.
-- post_logout_uri: (Optional) URL to which the RP is requesting that the 
-End-User's User Agent be redirected after a logout has been performed.
+- authorization_redirect_uri:  (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization.
+- post_logout_uri: (Optional) URL to which the RP is requesting the 
+End-User's User Agent be redirected to after a logout has been performed.
 - connection_type_value: (Optional) 'oxd port number' for oxd-server type and 'oxd-https-extension URL' for oxd-https-extension  type
 - connection_type: (Optional) 'local' for oxd-server and 'web' for oxd-https-extension
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
@@ -293,8 +293,8 @@ uses code and state to retrieve token which can be used to access user claims.
 
 **Required parameters:**
 
-- code: The Code from OpenID Connect Provider (OP) Authorization Redirect URL
-- state: The State from OpenID Connect Provider (OP) Authorization Redirect URL
+- code: The code from OpenID Connect Provider (OP) Authorization Redirect URL
+- state: The state from OpenID Connect Provider (OP) Authorization Redirect URL
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -370,7 +370,7 @@ Client application  uses this Logout URL to end the user session.
 **Required parameters:**
 
 - id_token_hint: (Optional)
-- post_logout_redirect_uri: (Optional) URL to which user is redirected after successful logout
+- post_logout_redirect_uri: (Optional) URL to which user is redirected to after successful logout
 - state: (Optional)
 - session_state: (Optional)
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
