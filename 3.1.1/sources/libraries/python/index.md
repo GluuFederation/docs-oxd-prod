@@ -102,9 +102,9 @@ python demosite.py
 
 
 
-## Endpoints (oxd-server and oxd-https-extension)
+## Endpoints
 
-The oxd-server provides the following methods for authenticating users with an OpenID Connect Provider (OP):
+The oxd-server and oxd-https-extension provide the following methods for authenticating users with an OpenID Connect Provider (OP):
 
 - Available OpenID Connect Endpoints
     - [Setup Client](https://gluu.org/docs/oxd/3.1.1/api/#setup-client)  
@@ -118,7 +118,7 @@ The oxd-server provides the following methods for authenticating users with an O
     - [Get Logout URI](https://gluu.org/docs/oxd/3.1.1/api/#log-out-uri) 
 
 
-The oxd-server provides the following methods for authenticating users with UMA Authorization Service (AS):
+The oxd-server provides the following methods for performing access manageemnt with an UMA Authorization Server (AS):
 
 - Available UMA (User Managed Access) Endpoints  
     - [UMA RS Protect](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-protect-resources) 
