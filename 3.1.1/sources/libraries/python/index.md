@@ -263,7 +263,7 @@ status = ok
 The `get_authorization_url` method returns the OpenID Connect Provider (OP) 
 Authentication URL to which the client application must redirect the user to 
 authorize the release of personal data. The Response URL includes state value, 
-which can be used to obtain tokens required for authentication. This state value used 
+which can be used to obtain tokens required for authentication. This state value is used 
 to maintain state between the request and the callback.
 
 **Required parameters:**
@@ -389,7 +389,7 @@ return redirect(logout_url)
 logout_url = https://<server>/end_session?id_token_hint=<id token>&state=<state>&post_logout_redirect_uri=<...>
 ```
 
-### UMA
+### UMA (User Managed Access)
 
 #### RS Protect
 
