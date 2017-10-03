@@ -6,7 +6,7 @@ C# web application to an OpenID Connect Provider (OP),
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 ## Sample Project
-[Download a Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd C# library.
+Download the [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd C# library.
 
 ### System Requirements
 
@@ -44,7 +44,7 @@ entry in `C:\Windows\System32\drivers\etc\host` file:
 
     `127.0.0.1  client.example.com`
 
-- Download a [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd-csharp library.
+- Download the [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd-csharp library.
 - Open the Sample Project in Visual Studio
 
 - Enable SSL using the following instructions:
