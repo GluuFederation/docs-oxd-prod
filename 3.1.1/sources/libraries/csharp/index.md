@@ -91,7 +91,7 @@ entry in `C:\Windows\System32\drivers\etc\host` file:
 
 The oxd server provides the following methods for authenticating users with an OpenID Connect Provider (OP):
 
- Available OpenId Connect Endpoints 
+ Available OpenID Connect Endpoints 
   - [Setup Client](../../protocol/#setup-client)  
   - [Get Client Token](../../protocol/#get-client-token)
   - [Register Site](../../protocol/#register-site) 
@@ -104,10 +104,10 @@ The oxd server provides the following methods for authenticating users with an O
 
  Available UMA (User Managed Access) Endpoints 
 
-  - [UMA RS Protect](../../protocol/#uma-rs-protect) 
-  - [UMA RS Check Access](../../protocol/#uma-rs-check-access) 
-  - [UMA RP Get RPT](../../protocol/#uma-rp-get-rpt) 
-  - [UMA RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
+  - [RS Protect](../../protocol/#uma-rs-protect) 
+  - [RS Check Access](../../protocol/#uma-rs-check-access) 
+  - [RP Get RPT](../../protocol/#uma-rp-get-rpt) 
+  - [RP Get Claims Gathering URL](../../protocol/#uma-rp-get-claims-gathering-url) 
 
 
 ## Sample Code
@@ -117,14 +117,13 @@ The oxd server provides the following methods for authenticating users with an O
 #### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
-you need to setup your client application at the OP. 
-During setup oxd will dynamically register the OpenID Connect 
-client and save its configuration. Upon successful setup a unique 
-identifier will be issued by the oxd server by assigning a specific oxd id. Along with oxd Id oxd server will also return client Id and client secret. This client Id and client secret can be used for `GetClientToken` method. If your OpenID Connect Provider 
-does not support dynamic registration (like Google), you will need to obtain a 
+you need to setup your client application at the OpenID Connect Provider (OP). 
+During setup, oxd will dynamically register the OpenID Connect 
+client and save its configuration. Upon successful setup, the oxd-server will assign a unique 
+oxd ID, Client ID and Client Secret. This Client ID and Client Secret can be used for `GetClientToken` method. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a 
 ClientID and Client Secret which can be passed to the `SetupClient` method as a 
 parameter. The Setup Client method is a one time task to configure a client in the 
-oxd server and OP.
+oxd-server and OpenID Connect Provider (OP).
 
 
 **Required parameters:**
@@ -133,7 +132,7 @@ oxd server and OP.
 - oxdport: The port of the oxd-server
 - oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
 - OpHost: URL of the OpenID Connect Provider (OP)
-- redirectUrl: URL to which the OpenID Connect Provider (OP)is authorized to redirect the user to after authorization.
+- redirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization.
 - clientId: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
 - clientSecret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 
@@ -374,7 +373,7 @@ return Json(new { oxdId = registerSiteResponse.Data.OxdId });
 
 #### Update Site Registration
 
-The `UpdateSiteRegistration` method can be used to update an existing client in the OP. Fields like Authorization redirect url, post logout url, scope, client secret etc. can be updated using this method.
+The `UpdateSiteRegistration` method can be used to update an existing client in the OpenID Connect Provider (OP). Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret, etc. can be updated using this method.
 
 **Required parameters:**
 
