@@ -87,9 +87,9 @@ entry in `C:\Windows\System32\drivers\etc\host` file:
 - The input values used during Setup Client are stored in a configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the Client application.
 
 
-## Endpoints (oxd-server and oxd-https-extension)
+## Endpoints
 
-The oxd server provides the following methods for authenticating users with an OpenID Connect Provider (OP):
+The oxd-server and oxd-https-extension provide the following methods for authenticating users with an OpenID Connect Provider (OP):
 
  Available OpenID Connect Endpoints 
   - [Setup Client](../../protocol/#setup-client)  
@@ -102,8 +102,9 @@ The oxd server provides the following methods for authenticating users with an O
   - [Get User Info](../../protocol/#get-user-info)   
   - [Get Logout URI](../../protocol/#log-out-uri)
 
- Available UMA (User Managed Access) Endpoints 
+The oxd-server provides the following methods for performing access management with a UMA Authorization Server (AS):
 
+ Available UMA (User Managed Access) Endpoints
   - [RS Protect](../../protocol/#uma-rs-protect) 
   - [RS Check Access](../../protocol/#uma-rs-check-access) 
   - [RP Get RPT](../../protocol/#uma-rp-get-rpt) 
@@ -530,8 +531,8 @@ Upon successful login, the login result will return code and state. `GetTokensBy
 - oxdport: The port of the oxd-server
 - oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used).
 - oxdId: oxd ID from client registration
-- authCode: The code from OpenID Connect Provider (OP) authorization Redirect URL 
-- authState: The state from OpenID Connect Provider (OP) authorization Redirect URL
+- authCode: The code from OpenID Connect Provider (OP) Authorization Redirect URL 
+- authState: The state from OpenID Connect Provider (OP) Authorization Redirect URL
 - protectionAccessToken:  Generated from GetClientToken method (Optional, required if oxd-https-extension is used)
 
 **Request:**
