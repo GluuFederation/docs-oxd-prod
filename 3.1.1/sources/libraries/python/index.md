@@ -117,7 +117,7 @@ The oxd-server and oxd-https-extension provide the following methods for authent
     - [Get Logout URI](https://gluu.org/docs/oxd/3.1.1/api/#log-out-uri) 
 
 
-The oxd-server provides the following methods for performing access manageemnt with an UMA Authorization Server (AS):
+The oxd-server provides the following methods for performing access management with a UMA Authorization Server (AS):
 
 - Available UMA (User Managed Access) Endpoints  
     - [UMA RS Protect](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-protect-resources) 
