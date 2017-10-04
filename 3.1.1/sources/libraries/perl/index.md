@@ -220,9 +220,9 @@ location `C:/apache/conf/extra/httpd-vhosts.conf`:
 - The input values used during Setup Client are stored in a configuration file (oxd-settings.json).
 
 
-## Endpoints (oxd-server and oxd-https-extension)
+## Endpoints
 
-The oxd-server provides the following methods for authenticating users with 
+The oxd-server and oxd-https-extension provide the following methods for authenticating users with 
 an OpenID Connect Provider (OP):
 
 - Available OpenID Connect Endpoints
@@ -237,7 +237,7 @@ an OpenID Connect Provider (OP):
     - [Get Logout URI](../../protocol/#log-out-uri) 
 
 
-The oxd-server provides the following methods for authenticating users with UMA Authorization Service (AS):
+The oxd-server provides the following methods for performing access management with a UMA Authorization Server (AS):
 
 - Available UMA (User Managed Access) Endpoints  
     - [RS Protect](../../protocol/#uma-rs-protect) 
@@ -468,7 +468,7 @@ print Dumper($update_site_registration->getResponseObject());
 
 #### Get Authorization URL
 
-The `GetAuthorizationUrl` module returns the OpenID Connect Provider (OP) authentication URL to which the client application must redirect the user to authorize the release of personal data. The response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
+The `GetAuthorizationUrl` module returns the OpenID Connect Provider (OP) Authentication URL to which the client application must redirect the user to authorize the release of personal data. The response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
 
 **Required parameters:**
 
@@ -512,8 +512,8 @@ Upon successful login, the login result will return code and state. `GetTokenByC
 **Required parameters:**
 
 - oxd_id: oxd ID from client registration
-- code: The code from OpenID Connect Provider (OP) authorization redirect URL
-- state: The state from OpenID Connect Provider (OP) authorization redirect URL
+- code: The code from OpenID Connect Provider (OP) Authorization Redirect URL
+- state: The state from OpenID Connect Provider (OP) Authorization Redirect URL
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -693,7 +693,7 @@ print Dumper($logout->getResponseObject());
 #### RS Protect
 
 `UmaRsProtect` module is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
-The command will contain an API path, HTTP methods (POST,GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. To know more about uma_rpt_policies you can check this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
+The command will contain an API path, HTTP methods (POST,GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. To know more about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
 
 **Required parameters:**
 
