@@ -118,7 +118,7 @@ available for download from [maven repository](http://ox.gluu.org/maven/org/xdi/
 
 1. Make a folder called `oxd-server` (or whatever you like)
  
-2. Unzip the [zip distribution](http://ox.gluu.org/maven/org/xdi/oxd-server/3.0.1/oxd-server-3.0.1-distribution.zip)
+2. Unzip the [zip distribution](http://ox.gluu.org/maven/org/xdi/oxd-server/3.1.1.Final/oxd-server-3.1.1.Final-distribution.zip)
 in the above folder you just created. 
 
 3. Now configure oxd following the [configuration instructions](../configuration/index.md). 
@@ -129,9 +129,9 @@ in the above folder you just created.
 
 1. Make a folder called `oxd-server` (or whatever you like), and `cd` to this folder
  
-2. `$ wget http://ox.gluu.org/maven/org/xdi/oxd-server/3.0.1/oxd-server-3.0.1-distribution.zip`
+2. `$ wget http://ox.gluu.org/maven/org/xdi/oxd-server/3.1.1.Final/oxd-server-3.1.1.Final-distribution.zip`
 
-3. `$ unzip oxd-server-3.0.1-distribution.zip`
+3. `$ unzip oxd-server-3.1.1.Final-distribution.zip`
 
 4. Now configure oxd following the [configuration instructions](../configuration/index.md). 
 
@@ -142,7 +142,7 @@ in the above folder you just created.
 If you're a Java geek, you can build the oxd-server server using [Maven](http://maven.apache.org).
 
 The code is available in [Github](https://github.com/GluuFederation/oxd). A zip file can be 
-downloaded directly from [this link](https://ox.gluu.org/maven/org/xdi/oxd-server/3.1.0.Final/oxd-server-3.1.0.Final-distribution.zip). 
+downloaded directly from [this link](https://ox.gluu.org/maven/org/xdi/oxd-server/3.1.1.Final/oxd-server-3.1.1.Final-distribution.zip). 
 
 The following command can be run inside the oxd folder to run the build:
 
