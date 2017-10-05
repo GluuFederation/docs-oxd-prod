@@ -54,6 +54,11 @@ documentation and administrative guide.
 - [#61](https://github.com/GluuFederation/oxd/issues/61) Invalid setting throws generic error
 - [#86](https://github.com/GluuFederation/oxd/issues/86) Authorization_redirect_uri not being updated during update_site_registration command
 - [#81](https://github.com/GluuFederation/oxd/issues/81) Provided check for registration client url. If it is blank returned appropriate error code with verbose explanation.
-- [#84](https://github.com/GluuFederation/oxd/issues/84 ) Fix double logging messages which appears after using latest oxauth-client which is upgraded to log4j2
+- [#84](https://github.com/GluuFederation/oxd/issues/84) Fix double logging messages which appears after using latest oxauth-client which is upgraded to log4j2
 - [#83](https://github.com/GluuFederation/oxd/issues/83) `server_name` is mandatory parameter in `oxd-conf.json`.
 - [#78](https://github.com/GluuFederation/oxd/issues/78) Cannot register client scopes
+- [#71](https://github.com/GluuFederation/oxd/issues/71) Client session doesn't logout as client_logout_uri parameter is ignored in v3.0.1 
+
+
+### Deprecated Features
+- [#49](https://github.com/GluuFederation/oxd/issues/49) Deprecated - UMA 1.0.1 removed 
