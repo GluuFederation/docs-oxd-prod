@@ -40,20 +40,20 @@ documentation and administrative guide.
 ## What's new in version 3.1.1
 
 ### New Features
-- [#49](https://github.com/GluuFederation/oxd/issues/49)Introduced UMA 2 support
+- [#49](https://github.com/GluuFederation/oxd/issues/49) Introduced UMA 2 support
 - Introduced h2 as persistence for oxd data
-- [#89](https://github.com/GluuFederation/oxd/issues/89)Introduced redis as persistence for oxd data
+- [#89](https://github.com/GluuFederation/oxd/issues/89) Introduced redis as persistence for oxd data
     - Added support to different type of connection to redis: standalone (standalone redis server), sharded (client sharding), cluster (for redis cluster deployment)
-- [#87](https://github.com/GluuFederation/oxd/issues/87)Auto-upgrade functionality. If run oxd 3.1.1 on old oxd data (3.0, 2.4.4) it automatically migrates it into new storage (via `migration_source_folder_path` in `oxd-conf.json`).
-- [#29](https://github.com/GluuFederation/oxd/issues/29)Added ability to pass custom parameters in `get_authorization_url` command.
-- [#64](https://github.com/GluuFederation/oxd/issues/64)Added new `get_access_token_by_refresh_token` command
-- [#75](https://github.com/GluuFederation/oxd/issues/75)Introduced `oxd-https-extension` plugin which allows to work with `oxd-server` over HTTPS.
+- [#87](https://github.com/GluuFederation/oxd/issues/87) Auto-upgrade functionality. If run oxd 3.1.1 on old oxd data (3.0, 2.4.4) it automatically migrates it into new storage (via `migration_source_folder_path` in `oxd-conf.json`).
+- [#29](https://github.com/GluuFederation/oxd/issues/29) Added ability to pass custom parameters in `get_authorization_url` command.
+- [#64](https://github.com/GluuFederation/oxd/issues/64) Added new `get_access_token_by_refresh_token` command
+- [#75](https://github.com/GluuFederation/oxd/issues/75) Introduced `oxd-https-extension` plugin which allows to work with `oxd-server` over HTTPS.
 - Upgraded oxd 3.1.1 to oxauth 3.1.1
 
 ### Fixes
-- [#61](https://github.com/GluuFederation/oxd/issues/61)Invalid setting throws generic error
-- [#86](https://github.com/GluuFederation/oxd/issues/86)Authorization_redirect_uri not being updated during update_site_registration command
-- [#81](https://github.com/GluuFederation/oxd/issues/81)Provided check for registration client url. If it is blank returned appropriate error code with verbose explanation.
-- [#84](https://github.com/GluuFederation/oxd/issues/84 )Fix double logging messages which appears after using latest oxauth-client which is upgraded to log4j2
-- [#83](https://github.com/GluuFederation/oxd/issues/83)`server_name` is mandatory parameter in `oxd-conf.json`.
-- [#78](https://github.com/GluuFederation/oxd/issues/78)Cannot register client scopes
+- [#61](https://github.com/GluuFederation/oxd/issues/61) Invalid setting throws generic error
+- [#86](https://github.com/GluuFederation/oxd/issues/86) Authorization_redirect_uri not being updated during update_site_registration command
+- [#81](https://github.com/GluuFederation/oxd/issues/81) Provided check for registration client url. If it is blank returned appropriate error code with verbose explanation.
+- [#84](https://github.com/GluuFederation/oxd/issues/84 ) Fix double logging messages which appears after using latest oxauth-client which is upgraded to log4j2
+- [#83](https://github.com/GluuFederation/oxd/issues/83) `server_name` is mandatory parameter in `oxd-conf.json`.
+- [#78](https://github.com/GluuFederation/oxd/issues/78) Cannot register client scopes
