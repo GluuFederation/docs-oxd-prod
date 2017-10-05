@@ -16,7 +16,18 @@ markdown_extensions:
 pages:
 - Home: 'index.md'
 - Release Notes: 'release-notes/index.md'
-- License: 'license/index.md'
+- License: 
+    - 'License': 'license/index.md'
+    - Authentication:
+      - Signup: 'license/auth/signup/index.md'
+      - Login: 'license/auth/login/index.md'
+    - Account Dashboard: 'license/dashboard/index.md'
+    - Account Profile: 'license/profile/index.md'
+    - Payments and Credit Card Information:
+      - Card List: 'license/payments/dashboard/index.md'
+      - Add Card: 'license/payments/add/index.md'
+      - Card Management: 'license/payments/primary/index.md'
+    - Billing: 'license/billing/index.md'
 - 'Installation': 'install/index.md'
 - 'Configuration': 'configuration/index.md'
 - 'Log Configuration': 'logs/index.md'

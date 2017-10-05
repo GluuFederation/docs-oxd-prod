@@ -26,7 +26,7 @@ specific to this oxd library.
 To use the oxd Java library, you will need:
 
 - A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).    
-- An active installation of the [oxd server](../../oxd-server/install/index.md) running in the same server as the client application.      
+- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application.      
 - A Windows server or Windows installed machine / Linux server or Linux installed machine meeting system requirements.
 
 ### Install oxd-java from Maven

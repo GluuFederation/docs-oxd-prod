@@ -51,15 +51,15 @@ oxd-https-extension is an optional extension that enables apps to call oxd-serve
 
 ## Installation
 First, you need to install the oxd-server:    
-- [oxd-server installation](./install.md)
+- [oxd-server installation](./install/index.md)
 
 If you want to support application connections via https, next you need to install the https-extension:     
-- [oxd-https-extension installation](./oxd-https/install.md)
+- [oxd-https-extension installation](./oxd-https/install/index.md)
 
 ## oxd API
 The oxd server supports the OpenID Connect and UMA 2 profiles of OAuth 2.0. OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA can be used to manage what digital resources the user should have access to.    
 
-Learn more in the [oxd Server API section](./api.md)    
+Learn more in the [oxd Server API section](./api/index.md)    
 
 ## Libraries
 oxd client libraries provide simple, flexible, powerful access to the oxd OpenID Connect and UMA authentication and authorization APIs.     
