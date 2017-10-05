@@ -120,10 +120,10 @@ The oxd-server and oxd-https-extension provide the following methods for authent
 The oxd-server provides the following methods for performing access management with a UMA Authorization Server (AS):
 
 - Available UMA (User Managed Access) Endpoints  
-    - [UMA RS Protect](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-protect-resources) 
-    - [UMA RS Check Access](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-check-access) 
-    - [UMA RP Get RPT](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-rpt) 
-    - [UMA RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
+    - [RS Protect](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-protect-resources) 
+    - [RS Check Access](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-check-access) 
+    - [RP Get RPT](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-rpt) 
+    - [RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
 
 
 
@@ -235,7 +235,7 @@ Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret an
 - contacts: (Optional) User's e-mail ID
 - authorization_redirect_uri:  (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization.
 - post_logout_uri: (Optional) URL to which the RP is requesting the 
-End-User's User Agent be redirected to after a logout has been performed.
+end-user's user agent be redirected to after a logout has been performed.
 - connection_type_value: (Optional) 'oxd port number' for oxd-server type and 'oxd-https-extension URL' for oxd-https-extension  type
 - connection_type: (Optional) 'local' for oxd-server and 'web' for oxd-https-extension
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
@@ -432,7 +432,7 @@ result = true
 
 - rpt: Requesting Party Token
 - path: Path of the resource to be checked 
-- http_method: HTTP method (POST, GET and PUT)
+- http_method: HTTP methods (POST, GET and PUT)
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
