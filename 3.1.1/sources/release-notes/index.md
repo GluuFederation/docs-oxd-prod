@@ -34,7 +34,7 @@ The most common use cases for the Gluu Server include single sign-on (SSO), mobi
 Please visit the [oxd Documentation Page](http://www.gluu.org/docs/oxd) for the complete 
 documentation and administrative guide. 
 
-## Components included in Gluu oxd 3.1.1
+## Components included in oxd 3.1.1
 
 
 ## What's new in version 3.1.1
