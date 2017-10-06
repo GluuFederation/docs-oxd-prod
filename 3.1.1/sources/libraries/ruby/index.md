@@ -2,11 +2,11 @@
 
 ## Overview
 
-The following documentation demonstrates how to use the [oxd client software](http://oxd.gluu.org) Ruby library to send users from a Ruby application to an OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
+The following documentation demonstrates how to use the [oxd Client Software](http://oxd.gluu.org) Ruby library to send users from a Ruby application to an OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 ## Sample Project
 
-[Download a sample project](https://github.com/GluuFederation/oxd-ruby/archive/master.zip) specific to this oxd library.
+Download the [Sample Project](https://github.com/GluuFederation/oxd-ruby/archive/master.zip) specific to this oxd-ruby library.
 
 
 ### System Requirements
@@ -23,13 +23,14 @@ The following documentation demonstrates how to use the [oxd client software](ht
 ### Required Software
 To use the oxd Ruby library, you will need:
 
-- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).    
-- An active installation of the [oxd server](../../oxd-server/install/index.md) running in the same server as the client application.     
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
+- An active installation of the [oxd-server](../../oxd-server/install/index.md) running in the same server as the client application.
+- An active installation of the [oxd-https-extension](../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine meeting system requirements.
 
 ### Install oxd-ruby from RubyGems
 
-The Ruby Client is installed using RubyGems. Include following line in the Gemfile of the application using Oxd Ruby Library.
+The Ruby Client is installed using RubyGems. Include following line in the Gemfile of the application using the oxd-ruby library.
 
 ```
 gem 'oxd-ruby', '~> 0.1.6'
@@ -56,8 +57,8 @@ $ bundle install
   3. config.op_host 
   4. config.authorization_redirect_uri
 
-- Your client application must have a valid ssl cert, so the url includes: `https://`    
-- The client host name should be a valid `hostname`(FQDN), not localhost or an IP Address. You can configure the host name by adding the following entry in your host file.
+- Your client application must have a valid SSL certificate, so the URL includes: `https://`    
+- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
 
     **Linux**
 
@@ -104,9 +105,9 @@ $ bundle install
 
 
 
-## oxd Server Methods
+## Endpoints
 
-The oxd server provides the following six methods for authenticating users with an OpenID Connect Provider (OP):
+The oxd-server and oxd-https-extension provide the following methods for authenticating users with an OpenID Connect Provider (OP):
 
 - [Register Site](../../oxd-server/api/#register-site)    
 - [Update Site Registration](../../oxd-server/api/#update-site-registration)    
@@ -135,7 +136,14 @@ protected
 
 ### Register Site
 
-In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OP. During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration a unique identifier will be issued by the oxd server. If your OpenID Connect Provider does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `register_site` method as a parameter. The Register Site method is a one time task to configure a client in the oxd server and OP.
+In order to use an OpenID Connect Provider (OP) for login, 
+you need to register your client application at the OpenID Connect Provider (OP). 
+During registration oxd will dynamically register the OpenID Connect 
+client and save its configuration. Upon successful registration, a unique 
+identifier will be issued by the oxd-server. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a 
+ClientID and Client Secret which can be passed to the `register_site` method as a 
+parameter. The Register Site method is a one time task to configure a client in the 
+oxd server and OpenID Connect Provider (OP).
 
 **Request:**
 
@@ -147,7 +155,8 @@ end
 
 ### Update Site Registration
 
-The `update_site_registration` method can be used to update an existing client in the OP. Fields like Authorization redirect url, post logout url, scope, client secret and other fields, can be updated using this method.
+The `update_site_registration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
+Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields can be updated using this method.
 
 **Required parameters:**
 
@@ -171,7 +180,11 @@ end
 
 ### Get Authorization URL
 
-The `get_authorization_url` method returns the OpenID Connect Provider authentication URL to which the client application must redirect the user to authorize the release of personal data. The response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
+The `get_authorization_url` method returns the OpenID Connect Provider (OP) 
+Authentication URL to which the client application must redirect the user to 
+authorize the release of personal data. The Response URL includes state value, 
+which can be used to obtain tokens required for authentication. This state value is used 
+to maintain state between the request and the callback.
 
 **Request:**
 
@@ -194,7 +207,8 @@ end
 
 ### Get Tokens by Code
 
-Upon successful login, the login result will return code and state. `get_tokens_by_code` uses code and state to retrieve token which can be used to access user claims.
+Upon successful login, the login result will return code and state. `get_tokens_by_code` 
+uses code and state to retrieve token which can be used to access user claims.
 
 **Required parameters:**
 
@@ -235,7 +249,8 @@ end
 
 ### Get User Info
 
-Once the user has been authenticated by the OpenID Connect Provider, the `get_user_info` method returns Claims (Like First Name, Last Name, emailId, etc.) about the authenticated end user.
+Once the user has been authenticated by the OpenID Connect Provider (OP), 
+the `get_user_info` method returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
 
 **Required parameters:**
 
@@ -269,7 +284,8 @@ end
 
 ### Logout
 
-`get_logout_uri` method returns the OpenID Connect Provider logout url. Client application  uses this logout url to end the user session.
+`get_logout_uri` method returns the OpenID Connect Provider (OP) Logout URL. 
+Client application  uses this Logout URL to end the user session.
 
 **Required parameters:**
 
@@ -301,6 +317,5 @@ end
 
 ## Support
 
-Please report technical issues and suspected bugs on 
-our [support page](https://support.gluu.org/). You can use the same credentials 
-you created to register for your oxd license to sign in on Gluu support.
+Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
+

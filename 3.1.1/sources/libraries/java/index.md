@@ -2,15 +2,14 @@
 
 ## Overview
 
-The following documentation demonstrates how to use 
-the [oxd client software](http://oxd.gluu.org) Java library to send users from 
-a Java application to an OpenID Connect Provider (OP), like the 
-[Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
+The following documentation demonstrates how to use oxd's Python library to 
+send users from a Python application to an OpenID Connect Provider (OP), 
+like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 ## Sample Project
 
-[Download a sample project](https://github.com/GluuFederation/oxd-java/archive/master.zip) 
-specific to this oxd library.
+Download the [Sample Project](https://github.com/GluuFederation/oxd-java/archive/master.zip) 
+specific to this oxd-java library.
 
 ### System Requirements
 
@@ -23,22 +22,22 @@ specific to this oxd library.
 ## Prerequisites
 
 ### Required Software
-To use the oxd Java library, you will need:
+To use the oxd-java library, you will need:
 
-- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).    
-- An active installation of the [oxd server](../../oxd-server/install/index.md) running in the same server as the client application.      
-- A Windows server or Windows installed machine / Linux server or Linux installed machine meeting system requirements.
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
+- An active installation of the [oxd-server](../../install/index.md) running on the same server as the client application.
+- An active installation of the [oxd-https-extension](../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
+- A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 ### Install oxd-java from Maven
 
-Get oxd-java Jar files from [Maven repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
+Get oxd-java Jar files from [Maven Repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
 
 ### Configure the Client Application
 
 - There are no configuration files for oxd-java. Redirect URI and other information is set in the code.
-- Your client application must have a valid ssl cert, so the url includes: `https://`    
-- The client host name should be a valid `hostname`(FQDN), not localhost or an IP Address. 
-You can configure the host name by adding the following entry in your host file.
+- Your client application must have a valid SSL certificate, so the URL includes: `https://`    
+- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
 
     **Linux**
 
@@ -83,9 +82,9 @@ You can configure the host name by adding the following entry in your host file.
     </VirtualHost>
     ```
 
-## oxd Server Methods
+## Endpoints
 
-The oxd server provides the following six methods for authenticating users with an OpenID Connect Provider (OP):
+The oxd-server and oxd-https-extension provide the following methods for authenticating users with an OpenID Connect Provider (OP):
 
 - [Register Site](../../oxd-server/api/#register-site)    
 - [Update Site Registration](../../oxd-server/api/#update-site-registration)    
@@ -97,7 +96,7 @@ The oxd server provides the following six methods for authenticating users with 
 
 
 ## Sample code
-Below is a sample pom, for more of pom file, please refer to [snippet](https://ox.gluu.org/maven/org/xdi/oxd-client/3.1.0.Final/oxd-client-3.1.0.Final.pom)
+Below is a sample pom. To download the pom file please refer to this [Snippet](https://ox.gluu.org/maven/org/xdi/oxd-client/3.1.0.Final/oxd-client-3.1.0.Final.pom)
 
 ```
 <dependency>
@@ -109,7 +108,8 @@ Below is a sample pom, for more of pom file, please refer to [snippet](https://o
 
 ### Register Site
 
-In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OP. During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration a unique identifier will be issued by the oxd server. If your OpenID Connect Provider does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `send` method as a parameter. The Register Site method is a one time task to configure a client in the oxd server and OP.
+In order to use an OpenID Connect Provider (OP) for login, 
+you need to register your client application at the OpenID Connect Provider (OP). During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration, a unique identifier will be issued by the oxd-server. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a Client ID and Client Secret which can be passed to the `send` method as a parameter. The Register Site method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
 
 **Required parameters:**
 
@@ -158,7 +158,8 @@ In order to use an OpenID Connect Provider (OP) for login, you need to register 
 
 ### Update Site Registration
 
-The `send` method can be used to update an existing client in the OP. Fields like Authorization redirect url, post logout url, scope, client secret and other fields, can be updated using this method.
+The `send` method can be used to update an existing client in the OpenID Connect Provider (OP). 
+Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields can be updated using this method.
 
 **Required parameters:**
 
@@ -202,7 +203,11 @@ try {
 
 ### Get Authorization URL
 
-The `send` method returns the OpenID Connect Provider authentication URL to which the client application must redirect the user to authorize the release of personal data. The response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
+The `send` method returns the OpenID Connect Provider (OP) 
+Authentication URL to which the client application must redirect the user to 
+authorize the release of personal data. The Response URL includes state value, 
+which can be used to obtain tokens required for authentication. This state value is used 
+to maintain state between the request and the callback.
 
 **Required parameters:**
 
@@ -280,7 +285,7 @@ String idToken = resp.getIdToken();
 
 ### Get User Info
 
-Once the user has been authenticated by the OpenID Connect Provider, the `send` method returns Claims (Like First Name, Last Name, emailId, etc.) about the authenticated end user.
+Once the user has been authenticated by the OpenID Connect Provider (OP), the `send` method returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
 
 **Required parameters:**
 
@@ -330,7 +335,8 @@ try {
 
 ### Logout
 
-`send` method returns the OpenID Connect Provider logout url. Client application  uses this logout url to end the user session.
+`send` method returns the OpenID Connect Provider (OP) Logout URL. Client application uses this Logout URL to end the user session.
+
 
 **Required parameters:**
 
@@ -375,6 +381,5 @@ try {
 
 ## Support
 
-Please report technical issues and suspected bugs on 
-our [support page](https://support.gluu.org/). You can use the same 
-credentials you created to register for your oxd license to sign in on Gluu support.
+Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
+
