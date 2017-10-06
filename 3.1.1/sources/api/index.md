@@ -87,7 +87,7 @@ Request:
     "command":"register_site",
     "params": {
         "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED
-        "op_host":"https://ce-dev.gluu.org"                            <- OPTIONAL (But if missing, must be present in defaults)
+        "op_host":"https://<ophostname>"                               <- OPTIONAL (But if missing, must be present in defaults)
         "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
         "application_type": "web",                                     <- OPTIONAL
         "response_types": ["code"],                                    <- OPTIONAL
@@ -344,7 +344,7 @@ Request:
     "command":"setup_client",
     "params": {
         "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED
-        "op_host":"https://ce-dev.gluu.org"                            <- OPTIONAL (But if missing, must be present in defaults)
+        "op_host":"https://<ophostname>"                               <- OPTIONAL (But if missing, must be present in defaults)
         "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
         "application_type": "web",                                     <- OPTIONAL
         "response_types": ["code"],                                    <- OPTIONAL
@@ -395,7 +395,7 @@ Request:
     "params": {
         "client_id": "<client id>",            <- REQUIRED
         "client_secret": "<client secret>",    <- REQUIRED
-        "op_host":"https://ce-dev.gluu.org"    <- REQUIRED
+        "op_host":"https://<ophostname>"       <- REQUIRED
         "op_discovery_path":""                 <- OPTIONAL 
         "scope":[]                             <- OPTIONAL 
     }
