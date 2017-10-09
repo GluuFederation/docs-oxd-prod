@@ -29,7 +29,7 @@ Learn more about authentication flows in the
 you can think of the Authorization Code Flow as a three step process: 
 
  - Redirect person to the authorization URL and obtain a code
- - Use code to obtain tokens (access, id_token, refresh)
+ - Use code to obtain tokens (access_token, id_token and refresh_token)
  - Use access token to obtain user claims
 
 The other four oxd API's are:
@@ -53,7 +53,7 @@ In `oxd-https-extension` case before using above workflow it is required to obta
 
 It is required to setup client if `oxd-https-extension` is used. For `oxd-server` it is not required.
 
-Parameters for Setup Client are the same as for Register Site command. The command registers client for communication protection (the one that has to be used to obtain access token (via Get Client Token command) for further passing that access token as `protection_access_token` parameter to other commands.
+Parameters for Setup Client are the same as for Register Site command. The command registers the client for communication protection. This will be used to obtain an access token via the Get Client Token command.  The access token will be passed as a `protection_access_token` parameter to other commands.
 
 Request:
 
@@ -136,7 +136,7 @@ Response:
 
 #### Register Site
 
-First of all, the website must register itself with the oxd-server. If 
+The website must first register itself with the oxd-server. If 
 registration is successful, oxd will return an identifier for the 
 application, which must be presented in subsequent API calls. This
 is the `oxd_id`, not to be confused with the OpenID Connect Client ID.
@@ -149,21 +149,15 @@ All parameters to `register_site` are optional except the
 OpenID Connect Provider (OP) will redirect the person to after 
 successful authorization.
 
-`register_site` has many parameters, but you can ignore most of them!
-Default configuration values are taken from
-[conf/oxd-default-site-config.json](../conf/).
-Even most of these options may be blank, with one exception: if the 
-`op_host` is missing from the `register_site` command parameters, 
-it must be present in this file--we need to know which OpenID Connect Provider (OP) will be used! 
+`register_site` has many parameters but most can be ignored.  The one exception is the `op_host` field which
+states the OpenID Connect Provider (OP) that will be used (e.g. the [Gluu Server](https://www.gluu.org/) or Google). `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).
+The default configuration values are taken from
+[conf/oxd-default-site-config.json](../conf/). 
 
 The `register_site` command returns `oxd_id`. Several applications may 
 share an instance of oxd, and this identifier is used by oxd to 
 distinguish differences in configuration between them.
 
-`op_host` must point to a valid OpenID Connect Provider (OP) that supports 
-[client registration](http://openid.net/specs/openid-connect-registration-1_0.html), 
-for example, a [Gluu Server CE installation](https://gluu.org/docs/3.1.1/installation-guide/install/). 
-Sample: `"op_host":"https://idp.example.org"`
 
 Request:
 
@@ -470,7 +464,7 @@ If the "and" rule is preferred it can be achieved with an additional scope, for 
 
 `Resource2` scopes: `read_write` (and associate `read` and `write` policies with `read_write` scope)
 
-If access is not granted then unauthorized http code and registered ticket are returned, for example: 
+If access is not granted then unauthorized HTTP code and registered ticket are returned, for example: 
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -745,7 +739,7 @@ Success Response:
 }
 ```
 
-After being redirected to the Claims Gathering URL the user goes through the Claims Gathering Flow. If successful, the user is redirected back to `claims_redirect_uri` with a new ticket which should be provided with the next `uma_rp_get_rpt` call.
+After being redirected to the Claims Gathering URL the user goes through the claims gathering flow. If successful, the user is redirected back to `claims_redirect_uri` with a new ticket which should be provided with the next `uma_rp_get_rpt` call.
 
 Example of Response:
 
