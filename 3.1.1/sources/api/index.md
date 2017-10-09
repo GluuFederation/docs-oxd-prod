@@ -12,7 +12,7 @@ no previous session exists). If you are familiar with Google
 authentication, you've used OpenID Connect. 
 
 !!! Note
-    If you need an OpenID Connect Provider you can deploy the [Gluu Server](https://gluu.org/docs/2.4.4/installation-guide/install/). 
+    If you need an OpenID Connect Provider you can deploy the [Gluu Server](https://gluu.org/docs/3.1.1/installation-guide/install/). 
     The Gluu Server will enable your organization to centralize authentication and authorization decisions to enable Single Sign-On (SSO) and strong authentication for many applications. 
 
 ### Authentication Flow
@@ -162,7 +162,7 @@ distinguish differences in configuration between them.
 
 `op_host` must point to a valid OpenID Connect Provider (OP) that supports 
 [client registration](http://openid.net/specs/openid-connect-registration-1_0.html), 
-for example, a [Gluu Server CE installation](https://gluu.org/docs/2.4.4/installation-guide/install/). 
+for example, a [Gluu Server CE installation](https://gluu.org/docs/3.1.1/installation-guide/install/). 
 Sample: `"op_host":"https://idp.example.org"`
 
 Request:
