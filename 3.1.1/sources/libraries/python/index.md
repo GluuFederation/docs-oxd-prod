@@ -95,7 +95,7 @@ python demosite.py
     - Login URL: https://client.example.com:8080
     - UMA URL: https://client.example.com:8080/uma
 
-- The input values used during Setup Client are stored in a configuration file (demosite.cfg). Therefore, the configuration file needs to be writable by the client application.
+- The input values used during Setup Client are stored in the configuration file (demosite.cfg). Therefore, the configuration file needs to be writable by the client application.
 
 
 !!! Note: 
@@ -154,7 +154,7 @@ client and save its configuration. Upon successful setup, the oxd-server will as
 - client_name: (Optional) Client application name
 - client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
 - client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
+- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
 - client_frontchannel_logout_uris: (Optional) Client application Logout URL
 - client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
 - contacts: (Optional) Array of e-mail addresses of people responsible for this client
@@ -199,7 +199,7 @@ The `get_client_token` method is used to get a token which is sent as an input p
 - client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
 - client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 - op_host: URL of the OpenID Connect Provider (OP)
-- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank . But if it is https://client.example.com/oxauth/.well-known/openid-configurationthen path its oxauth
+- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank. But if it is https://client.example.com/oxauth/.well-known/openid-configurationthen path its oxauth
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 
 **Request:**
@@ -280,8 +280,8 @@ Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret an
 **Parameters:**
 
 - oxd_id: oxd ID from client registration
-- authorization_redirect_uri:  (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization.
-- post_logout_uri: (Optional) URL to which the RP is requesting the end user's user agent be redirected to after a logout has been performed.
+- authorization_redirect_uri: (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
+- post_logout_uri: (Optional) URL to which the RP is requesting the end user's user agent be redirected to after a logout has been performed
 - response_types: (Optional) Determines the authorization processing flow to be used
 - grant_types: (Optional) Grant types the client is restricting itself to using
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
@@ -290,7 +290,7 @@ Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret an
 - client_secret_expires_at: (Optional) Used to extend client lifetime (milliseconds since 1970)
 - client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
 - client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
+- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
 - client_frontchannel_logout_uris: (Optional) Client application Logout URL
 - client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
 - contacts: (Optional) Array of e-mail addresses of people responsible for this client
@@ -329,10 +329,10 @@ to maintain state between the request and the callback.
 **Parameters:**
 
 - oxd_id: oxd ID from client registration
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource.
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource
 - acr_values: (Optional) Custom authentication script from the Gluu server.  Required for extended authentication. 
 - prompt: (Optional) Values that specifies whether the Authorization Server prompts the end user for reauthentication and consent
-- custom_params: (Optional) custom parameters
+- custom_params: (Optional) Custom parameters
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -349,7 +349,7 @@ auth_url = https://client.example.com/authorize?response_type=code&client_id=s6B
 
 #### Get Tokens by Code
 
-Upon successful login, the login result will return code and state. `get_tokens_by_code` 
+Upon successful login, the login result will return code and state. `get_tokens_by_code` method 
 uses code and state to retrieve token which can be used to access user claims.
 
 **Parameters:**
@@ -382,7 +382,7 @@ The `get_access_token_by_refresh_token` method is used to get a new access token
 
 - oxd_id: oxd ID from client registration
 - refreshToken: Obtained from the get_tokens_by_code method
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource.
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -429,7 +429,7 @@ user = {given_name=["Jane"], family_name=["Doe"], email=["janedoe@example.com"],
 #### Logout
 
 `get_logout_uri` method returns the OpenID Connect Provider (OP) Logout URL. 
-Client application  uses this Logout URL to end the user session.
+Client application uses this Logout URL to end the user session.
 
 **Parameters:**
 
