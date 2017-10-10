@@ -130,7 +130,7 @@ client and save its configuration. Upon successful setup, the oxd-server will as
 - client_name: (Optional) Client application name
 - client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
 - client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
+- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
 - client_frontchannel_logout_uris: (Optional) Client application Logout URL
 - client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
 - contacts: (Optional) Array of e-mail addresses of people responsible for this client
@@ -254,7 +254,7 @@ oxd-server and OpenID Connect Provider (OP).
 - client_name: (Optional) Client application name
 - client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
 - client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
+- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
 - client_frontchannel_logout_uris: (Optional) Client application Logout URL
 - client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
 - contacts: (Optional) Array of e-mail addresses of people responsible for this Client
@@ -319,7 +319,7 @@ Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret an
 - client_secret_expires_at: (Optional) Used to extend client lifetime (milliseconds since 1970)
 - client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
 - client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
+- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
 - client_frontchannel_logout_uris: (Optional) Client application Logout URL
 - client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
 - contacts: (Optional) Array of e-mail addresses of people responsible for this client
