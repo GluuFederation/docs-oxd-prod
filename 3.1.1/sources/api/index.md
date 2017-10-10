@@ -403,7 +403,7 @@ Response:
 }
 ```
 
-#### Logout URI
+#### Get Logout URI
 
 Uses front channel logout--a page is returned with iFrames, each of 
 which contains the logout URL of the applications that have a session 
