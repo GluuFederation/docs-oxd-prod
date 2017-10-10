@@ -8,10 +8,10 @@ OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-serve
 
 ## Sample Project
 
-Download the [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip) specific to this oxd-perl library.
+[Download a sample project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip) specific to this oxd-perl library.
+
 
 ### System Requirements
-
 
 - Ubuntu / Debian / CentOS / RHEL / Windows 7 or higher / Windows Server 2008 or higher
 - Perl 5
@@ -286,18 +286,28 @@ ClientID and Client Secret which can be passed to the `OxdSetupClient` module as
 parameter. The Setup Client method is a one time task to configure a client in the 
 oxd-server and OpenID Connect Provider (OP).
 
-**Required parameters:**
+**Parameters:**
 
-- opHost: The URL of the OpenID Connect Provider (OP)
-- authorizationRedirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to
-after authorization.
-- client_name: (Optional) Client application name
+- authorizationRedirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
+- opHost: URL of the OpenID Connect Provider (OP)
 - postLogoutRedirectUrl: (Optional) URL to which the user is redirected to after successful logout
-- client_id: (Optional) Client ID from the OpenID Connect Provider (OP). Should be passed with the Client Secret. 
-- client_secret: (Optional) Client Secret from the OpenID Connect Provider (OP). Should be passed with the Client ID. 
-- clientFrontChannelLogoutUrl: (Optional)
-- grantType: (Optional)
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP).
+- application_type: (Optional) Kind of the application. The default, if omitted, is web. The defined values are native or web
+- responseType: (Optional) Determines the authorization processing flow to be used
+- grantType: (Optional) Grant Types that the Client is declaring that it will restrict itself to using
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
+- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server
+- client_name: (Optional) Client application name
+- client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
+- client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
+- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
+- clientFrontChannelLogoutUrl: (Optional) Client application Logout URL
+- client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
+- contacts: (Optional) Array of e-mail addresses of people responsible for this Client
+- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
+- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
+- claims_redirect_uri: (Optional)
 
 **Request:**
 
@@ -345,11 +355,13 @@ print Dumper($setup_client->getResponseObject());
 
 The `GetClientToken` module is used to get a token which is sent as input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
 
-**Required parameters:**
+**Parameters:**
 
-- opHost: OpenID Connect Provider
-- client_id: Client ID from the OpenID Connect Provider (OP). Should be passed with the Client Secret.
-- client_secret: Client Secret from the OpenID Connect Provider (OP). Should be passed with Client ID.
+- client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
+- client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
+- opHost: URL of the OpenID Connect Provider (OP)
+- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank . But if it is https://client.example.com/oxauth/.well-known/openid-configurationthen path its oxauth
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 
 **Request:**
 
@@ -393,16 +405,32 @@ The Register Site method is a one time task to configure a client in the oxd-ser
 !!! Note: 
     The `Register Site` endpoint is not required if client is registered using `Setup Client`
 
-**Required parameters:**
+**Parameters:**
 
+- authorizationRedirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
 - opHost: URL of the OpenID Connect Provider (OP)
-- authorizationRedirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to
-after authorization.
-- postLogoutRedirectUrl: (Optional) URL to which the user is redirected to after successful logout.
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by OP
-- protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
+- postLogoutRedirectUrl: (Optional) URL to which the user is redirected to after successful logout
+- application_type: (Optional) Kind of the application. The default, if omitted, is web. The defined values are native or web
+- response_types: (Optional) Determines the authorization processing flow to be used
+- grant_types: (Optional) Grant Types that the Client is declaring that it will restrict itself to using
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
+- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
+- client_name: (Optional) Client application name
+- client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
+- client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
+- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
+- clientFrontChannelLogoutUrl: (Optional) Client application Logout URL
+- client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
+- contacts: (Optional) Array of e-mail addresses of people responsible for this Client
+- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
+- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
+- claims_redirect_uri: (Optional)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
+
 ```perl
 my $register_site = new OxdRegister( );
 		
@@ -434,13 +462,26 @@ The `UpdateRegistration` module can be used to update an existing client in the 
 
 Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret, etc. can be updated using this method.
 
-**Required parameters:**
+**Parameters:**
 
 - oxd_id: oxd ID from client registration
-- authorization_redirect_uri: (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization.
-- post_logout_redirect_uri: (Optional) URL to which the RP is requesting the End-User's User Agent be redirected to after a logout has been performed.
-- grantType: 
-- protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
+- authorizationRedirectUrl:  (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization.
+- postLogoutRedirectUrl: (Optional) URL to which the RP is requesting the End-User's User Agent be redirected to after a logout has been performed.
+- responseType: (Optional) Determines the authorization processing flow to be used
+- grantType: (Optional) Grant Types that the Client is declaring that it will restrict itself to using
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
+- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
+- client_name: (Optional) Client application name
+- client_secret_expires_at: (Optional) Used to extend client lifetime (milliseconds since 1970)
+- client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
+- client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
+- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
+- clientFrontChannelLogoutUrl: (Optional) Client application Logout URL
+- client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
+- contacts: (Optional) Array of e-mail addresses of people responsible for this Client
+- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -450,7 +491,10 @@ my $update_site_registration = new UpdateRegistration();
 $update_site_registration->setRequestOxdId($oxd_id);
 $update_site_registration->setRequestAuthorizationRedirectUri($authorizationRedirectUrl);
 $update_site_registration->setRequestPostLogoutRedirectUri($postLogoutRedirectUrl);
+$update_site_registration->setRequestContacts([$contacts]);
 $update_site_registration->setRequestGrantTypes($grantType);
+$update_site_registration->setRequestResponseTypes($responseType);
+$update_site_registration->setRequestScope($scope);
 $update_site_registration->setRequestProtectionAccessToken($protection_access_token);
 $update_site_registration->request();
 
@@ -470,13 +514,14 @@ print Dumper($update_site_registration->getResponseObject());
 
 The `GetAuthorizationUrl` module returns the OpenID Connect Provider (OP) Authentication URL to which the client application must redirect the user to authorize the release of personal data. The response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
 
-**Required parameters:**
+**Parameters:**
 
 - oxd_id: oxd ID from client registration
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by OP.
-- acrValues: (Optional) Required for extened authenication. Custom Authentication script from Gluu server.
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource.
+- acrValues: (Optional) Required for extended authentication. Custom authentication script from Gluu server. 
+- prompt: (Optional) Values that specifies whether the Authorization Server prompts the End-User for reauthentication and consent
 - customParams: (Optional) custom parameters
-- protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -495,6 +540,7 @@ print Dumper($get_authorization_url->getResponseObject());
 ```
 
 **Response:**
+
 ```javascript
 {
     "status":"ok",
@@ -509,12 +555,12 @@ print Dumper($get_authorization_url->getResponseObject());
 
 Upon successful login, the login result will return code and state. `GetTokenByCode` module uses code and state to retrieve token which can be used to access user claims.
 
-**Required parameters:**
+**Parameters:**
 
 - oxd_id: oxd ID from client registration
 - code: The code from OpenID Connect Provider (OP) Authorization Redirect URL
 - state: The state from OpenID Connect Provider (OP) Authorization Redirect URL
-- protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -565,12 +611,12 @@ print Dumper($get_tokens_by_code->getResponseObject());
 
 The `GetAccessTokenByRefreshToken` module is used to get a new access token and a new refresh token by using the refresh token which is obtained from `GetTokensByCode` module.
 
-**Required parameters:**
+**Parameters:**
 
 - oxd_id: oxd ID from client registration
-- refresh_token: Generated from the GetTokensByCode module
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
+- refresh_token: Obtained from the get_tokens_by_code method
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource.
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -607,11 +653,11 @@ print Dumper($get_access_token_by_refresh_token->getResponseObject());
 
 Once the user has been authenticated by the OpenID Connect Provider (OP), the `GetUserInfo` module returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
 
-**Required parameters:**
+**Parameters:**
 
 - oxd_id: oxd ID from client registration
-- accessToken: accessToken from GetTokenByCode or GetAccessTokenbyRefreshToken
-- protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
+- accessToken: access_token from GetTokenByCode or GetAccessTokenbyRefreshToken
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -629,6 +675,7 @@ print Dumper($get_user_info->getResponseObject());
 ```
 
 **Response:**
+
 ```javascript
 {
     "status":"ok",
@@ -651,14 +698,14 @@ print Dumper($get_user_info->getResponseObject());
 
 `OxdLogout` module returns the OpenID Connect Provider (OP) Logout URL. Client application  uses this Logout URL to end the user session.
 
-**Required parameters:**
+**Parameters:**
 
 - oxd_id: oxd ID from client registration
-- id_token_hint: (Optional)
+- id_token_hint: (Optional) ID Token previously issued by the Authorization Server being passed as a hint about the End-User's current or past authenticated session with the Client
 - postLogoutRedirectUrl: (Optional) URL to which user is redirected to after successful logout
-- state: (Optional)
-- session_state: (Optional)
-- protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
+- state: (Optional) Value used to maintain state between the request and the callback
+- session_state: (Optional) JSON string that represents the End-User's login state at the OP
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -695,10 +742,11 @@ print Dumper($logout->getResponseObject());
 `UmaRsProtect` module is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
 The command will contain an API path, HTTP methods (POST,GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. To know more about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
 
-**Required parameters:**
+**Parameters:**
 
 - oxd_id: oxd ID from client registration
-- protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
+- resources: One or more protected resources that a resource server manages, abstractly, as a set. In authorization policy terminology, a resource set is the "object" being protected. 
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -730,13 +778,13 @@ print Dumper( $uma_rs_protect->getResponseObject() );
 
 `UmaRsCheckAccess` module used in a UMA Resource Server to check the access to the resource.
 
-**Required parameters:**
+**Parameters:**
 
 - oxd_id: oxd ID from client registration
 - rpt: Requesting Party Token
-- path: Path of the resource to be checked
+- path: Path of the resource to be checked 
 - http_method: HTTP methods (POST, GET and PUT)
-- protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -811,17 +859,17 @@ print Dumper($uma_rs_check_access->getResponseObject());
 
 The module `UmaRpGetRpt` is called in order to obtain the RPT (Requesting Party Token).
 
-**Required parameters:**
+**Parameters:**
 
 - oxd_id: oxd ID from client registration
-- ticket: Client Access Ticket generated by UmaRsCheckAccess module
+- ticket: Client Access Ticket generated by uma_rs_check_access method
 - claim_token: (Optional)
 - claim_token_format: (Optional)
 - pct: (Optional) Persisted Claims Token
-- rpt: (Optional) Requesting Party Token
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by OP
+- rpt: (Optional) Requesting Party Token. 
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 - state: (Optional) state that is returned from uma_rp_get_claims_gathering_url method
-- protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
 
@@ -902,11 +950,11 @@ print Dumper($uma_rp_get_rpt->getResponseObject());
 
 #### RP Get Claims Gathering URL 
 
-**Required parameters:**
+**Parameters:**
 
 - oxd_id: oxd ID from client registration
 - ticket: Client Access Ticket generated by UmaRsCheckAccess module
-- claims_redirect_Uri: 
+- claims_redirect_uri:
 - protection_access_token: Generated from GetClientToken module (Optional, required if oxd-https-extension is used)
 
 **Request:**
