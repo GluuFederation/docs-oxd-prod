@@ -90,6 +90,7 @@ python demosite.py
 ```
 
 - With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+
     - Setup Client URL: https://client.example.com:8080/setupclient
     - Login URL: https://client.example.com:8080
     - UMA URL: https://client.example.com:8080/uma
@@ -227,7 +228,7 @@ client and save its configuration. Upon successful registration, a unique
 identifier will be issued by the oxd-server. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a 
 ClientID and Client Secret which can be passed to the `register_site` method as a 
 parameter. The Register Site method is a one time task to configure a client in the 
-oxd server and OpenID Connect Provider (OP).
+oxd-server and OpenID Connect Provider (OP).
 
 !!! Note: 
     The `register_site` endpoint is not required if client is registered using `setup_client`
