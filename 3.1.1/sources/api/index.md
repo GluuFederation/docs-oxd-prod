@@ -182,6 +182,7 @@ Request:
         "contacts": ["foo_bar@spam.org"],                              <- OPTIONAL
         "ui_locales": [],                                              <- OPTIONAL
         "claims_locales": [],                                          <- OPTIONAL
+        "claims_redirect_uri": [],                                     <- OPTIONAL
         "client_id": "<client id of existing client>",                 <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
         "client_secret": "<client secret of existing client>",         <- OPTIONAL must be used together with client_secret.
         "protection_access_token":"<access token of the client>"       <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter        
