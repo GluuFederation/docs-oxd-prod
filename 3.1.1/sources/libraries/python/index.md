@@ -8,7 +8,7 @@ like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login.
 
 ## Sample Project
 
-[Download a Sample Project](https://github.com/GluuFederation/oxd-python/archive/3.1.1.zip) specific to this oxd-python library.
+Download a [Sample Project](https://github.com/GluuFederation/oxd-python/archive/3.1.1.zip) specific to this oxd-python library.
 
 ### System Requirements
 
@@ -24,9 +24,9 @@ like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login.
 ### Required Software
 To use the oxd-python library, you will need:
 
-- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
-- An active installation of the [oxd-server](../../install/index.md) running on the same server as the client application.
-- An active installation of the [oxd-https-extension](../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
+- An active installation of the [oxd-server](https://oxd.gluu.org/) running on the same server as the client application.
+- An active installation of the [oxd-https-extension](https://oxd.gluu.org/) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
@@ -114,7 +114,7 @@ The oxd-server and oxd-https-extension provide the following methods for authent
     - [Get Tokens by Code](https://gluu.org/docs/oxd/3.1.1/api/#get-tokens-id-access-by-code)
     - [Get Access Token by Refresh Token](https://gluu.org/docs/oxd/3.1.1/api/#get-access-token-by-refresh-token)    
     - [Get User Info](https://gluu.org/docs/oxd/3.1.1/api/#get-user-info)   
-    - [Get Logout URI](https://gluu.org/docs/oxd/3.1.1/api/#log-out-uri) 
+    - [Get Logout URI](https://gluu.org/docs/oxd/3.1.1/api/#get-logout-uri) 
 
 
 The oxd-server provides the following methods for performing access management with a UMA Authorization Server (AS):
@@ -143,24 +143,23 @@ client and save its configuration. Upon successful setup, the oxd-server will as
 - authorization_redirect_uri: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
 - op_host: URL of the OpenID Connect Provider (OP)
 - post_logout_uri: (Optional) URL to which the user is redirected to after successful logout
-- application_type: (Optional) Kind of the application. The default, if omitted, is web. The defined values are native or web
+- application_type: (Optional) Application type, the default values are native or web. The default, if omitted, is web.
 - response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant Types that the Client is declaring that it will restrict itself to using
+- grant_types: (Optional) Grant types that the client is declaring that it will restrict itself to using
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server
+- acr_values: (Optional) Custom authentication script from the Gluu server.  Required for extended authentication.
 - client_name: (Optional) Client application name
-- client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
-- client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
+- client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
+- client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
 - client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
 - client_frontchannel_logout_uris: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
-- contacts: (Optional) Array of e-mail addresses of people responsible for this Client
-- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
-- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
-- claims_redirect_uri: (Optional)
-
+- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
+- contacts: (Optional) Array of e-mail addresses of people responsible for this client
+- ui_locales: (Optional) End user's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- claims_locales: (Optional) End user's preferred languages and scripts for claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
+- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
+- claims_redirect_uri: (Optional) The URI to which the client wishes the authorization server to direct the requesting party’s user agent after completing its interaction
 - conn_type: 'local' for oxd-server and 'web' for oxd-https-extension
 - conn_type_value: 'oxd port number' for oxd-server type and ' oxd-https-extension URL' for  oxd-https-extension type
 
@@ -194,8 +193,8 @@ The `get_client_token` method is used to get a token which is sent as an input p
 
 **Parameters:**
 
-- client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
-- client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
+- client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
+- client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 - op_host: URL of the OpenID Connect Provider (OP)
 - op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank . But if it is https://client.example.com/oxauth/.well-known/openid-configurationthen path its oxauth
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
@@ -236,25 +235,24 @@ oxd server and OpenID Connect Provider (OP).
 - authorization_redirect_uri: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
 - op_host: URL of the OpenID Connect Provider (OP)
 - post_logout_uri: (Optional) URL to which the user is redirected to after successful logout
-- application_type: (Optional) Kind of the application. The default, if omitted, is web. The defined values are native or web
+- application_type: (Optional) Application type, the default values are native or web. The default, if omitted, is web.
 - response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant Types that the Client is declaring that it will restrict itself to using
+- grant_types: (Optional) Grant types the client is restricting itself to using
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 - acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
 - client_name: (Optional) Client application name
-- client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
-- client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
+- client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
+- client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
 - client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
 - client_frontchannel_logout_uris: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
-- contacts: (Optional) Array of e-mail addresses of people responsible for this Client
-- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
-- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
-- claims_redirect_uri: (Optional)
+- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
+- contacts: (Optional) Array of e-mail addresses of people responsible for this client
+- ui_locales: (Optional) End user's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- claims_locales: (Optional) End user's preferred languages and scripts for claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
+- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
+- claims_redirect_uri: (Optional) The URI to which the client wishes the authorization server to direct the requesting party’s user agent after completing its interaction
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-
 - conn_type: 'local' for oxd-server and 'web' for oxd-https-extension
 - conn_type_value: 'oxd port number' for oxd-server type and ' oxd-https-extension URL' for  oxd-https-extension type
 
@@ -280,23 +278,22 @@ Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret an
 
 - oxd_id: oxd ID from client registration
 - authorization_redirect_uri:  (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization.
-- post_logout_uri: (Optional) URL to which the RP is requesting the End-User's User Agent be redirected to after a logout has been performed.
+- post_logout_uri: (Optional) URL to which the RP is requesting the end user's user agent be redirected to after a logout has been performed.
 - response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant Types that the Client is declaring that it will restrict itself to using
+- grant_types: (Optional) Grant types the client is restricting itself to using
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
+- acr_values: (Optional) Custom authentication script from the Gluu server. Required for extended authentication.
 - client_name: (Optional) Client application name
 - client_secret_expires_at: (Optional) Used to extend client lifetime (milliseconds since 1970)
-- client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
-- client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
+- client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
+- client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
 - client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
 - client_frontchannel_logout_uris: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
-- contacts: (Optional) Array of e-mail addresses of people responsible for this Client
-- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
+- contacts: (Optional) Array of e-mail addresses of people responsible for this client
+- ui_locales: (Optional) End user's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- claims_locales: (Optional) End user's preferred languages and scripts for claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-
 - connection_type_value: 'oxd port number' for oxd-server type and 'oxd-https-extension URL' for oxd-https-extension  type
 - connection_type: 'local' for oxd-server and 'web' for oxd-https-extension
 
@@ -330,8 +327,8 @@ to maintain state between the request and the callback.
 
 - oxd_id: oxd ID from client registration
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource.
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server. 
-- prompt: (Optional) Values that specifies whether the Authorization Server prompts the End-User for reauthentication and consent
+- acr_values: (Optional) Custom authentication script from the Gluu server.  Required for extended authentication. 
+- prompt: (Optional) Values that specifies whether the Authorization Server prompts the end user for reauthentication and consent
 - custom_params: (Optional) custom parameters
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
@@ -434,10 +431,10 @@ Client application  uses this Logout URL to end the user session.
 **Parameters:**
 
 - oxd_id: oxd ID from client registration
-- id_token_hint: (Optional) ID Token previously issued by the Authorization Server being passed as a hint about the End-User's current or past authenticated session with the Client
+- id_token_hint: (Optional) ID Token previously issued by the Authorization Server being passed as a hint about the end user's current or past authenticated session with the client
 - post_logout_redirect_uri: (Optional) URL to which user is redirected to after successful logout
 - state: (Optional) Value used to maintain state between the request and the callback
-- session_state: (Optional) JSON string that represents the End-User's login state at the OP
+- session_state: (Optional) JSON string that represents the end user’s login state at the OpenID Connect Provider (OP)
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -549,7 +546,7 @@ result = oxc.uma_rs_check_access(rpt=str(rpt), path=path, http_method=http_metho
 }
 ```
 
-***Resource is not Protected:***
+***Resource is not Protected Response:***
 
 ```javascript
 {
@@ -569,12 +566,12 @@ The method uma_rp_get_rpt is called in order to obtain the RPT (Requesting Party
 
 - oxd_id: oxd ID from client registration
 - ticket: Client Access Ticket generated by uma_rs_check_access method
-- claim_token: (Optional)
-- claim_token_format: (Optional)
+- claim_token: (Optional) A package of claims provided by the client to the authorization server through claims pushing
+- claim_token_format: (Optional) A string containing directly pushed claim information in the indicated format. Must be base64url encoded unless otherwise specified.  
 - pct: (Optional) Persisted Claims Token
-- rpt: (Optional) Requesting Party Token. 
+- rpt: (Optional) Requesting Party Token
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- state: (Optional) state that is returned from uma_rp_get_claims_gathering_url method
+- state: (Optional) State that is returned from uma_rp_get_claims_gathering_url method
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -586,7 +583,7 @@ result = oxc.uma_rp_get_rpt(ticket=str(ticket), scope='Test_scope', protection_a
 **Response:**
 
 
-***Success Response***
+***Success Response:***
 
 ```javascript
  {
@@ -600,7 +597,7 @@ result = oxc.uma_rp_get_rpt(ticket=str(ticket), scope='Test_scope', protection_a
 }
 ```
 
-***Needs Info Error Response***
+***Needs Info Error Response:***
 
 ```javascript
 {
@@ -628,7 +625,7 @@ result = oxc.uma_rp_get_rpt(ticket=str(ticket), scope='Test_scope', protection_a
 }
 ```
 
-***Invalid Ticket Error Response***
+***Invalid Ticket Error Response:***
 
 ```javascript
  {
@@ -646,7 +643,7 @@ result = oxc.uma_rp_get_rpt(ticket=str(ticket), scope='Test_scope', protection_a
 
 - oxd_id: oxd ID from client registration
 - ticket: Client Access Ticket generated by uma_rs_check_access method
-- claims_redirect_uri: 
+- claims_redirect_uri: The URI to which the client wishes the authorization server to direct the requesting party’s user agent after completing its interaction
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
