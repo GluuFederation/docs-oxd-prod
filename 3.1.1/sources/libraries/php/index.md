@@ -2,14 +2,14 @@
 
 ## Overview
 The following documentation demonstrates 
-how to use the [oxd client software](http://oxd.gluu.org) PHP library to 
+how to use oxd's PHP library to 
 send users from a PHP application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 
 ## Sample Project
 
-[Download a sample project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.1.zip) specific to this oxd library.
+Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.1.zip) specific to this oxd-php library.
 
 ### System Requirements
 
@@ -22,16 +22,18 @@ like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login.
 ## Prerequisites
 
 ### Required Software
-To use the oxd PHP library, you will need:
+To use the oxd-php library, you will need:
 
-- A valid OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).    
-- An active installation of the [oxd server](../../install/index.md) running in the same server as the client application.
-- An active installation of the [oxd https extension](../../install/index.md) if client applications are on different server than oxd server.
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
+- An active installation of the [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/
+) running on the same server as the client application.
+- An active installation of the [oxd-https-extension](https://gluu.org/docs/oxd/3.1.1/install/
+) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 ### Configure the Client Application
 
-- Your client application must have a valid ssl cert, so the url includes: `https://`
+- Your client application must have a valid SSL certificate, so the URL includes: `https://`
 
 - Enable SSL by setting the valid certificate and key in your virtual host file:
 
@@ -53,8 +55,7 @@ To use the oxd PHP library, you will need:
 </VirtualHost>
 ```
     
-- The client host name should be a valid `hostname`(FQDN), not localhost or an IP Address. 
-You can configure the host name by adding the following entry in your host file.
+- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
 
     **Linux**
 
@@ -68,16 +69,16 @@ You can configure the host name by adding the following entry in your host file.
 
     `127.0.0.1  client.example.com`
 
-- Open the downloaded [sample project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.1.zip) and navigate to `client.example.com` directory inside the project.
+- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.1.zip) and navigate to `client.example.com` directory inside the project.
 
 
-- That's it!. Now navigate to following url to run Sample client application. Make sure oxd server is running. Setup client url can be used for registering Client in oxd server. Upon successful registration of the client application, oxd Id will be displayed in the UI. Then navigate to Login URL for authentication.
+- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
-    - setup_client url: https://client.example.com:5053/Settings.php
+    - Setup Client URL: https://client.example.com:5053/Settings.php
     - Login URL: https://client.example.com:5053/Login.php
     - UMA URL: https://client.example.com:5053/Uma.php
 
-- This oxd PHP library uses 2 configuration files (oxdId.json and oxdlibrary/oxd-rp-settings.json) to specify information needed by OpenID Connect dynamic client registration, and to save information that is returned, like the oxd_id, client_id, client_secret etc. So the config file needs to be writable by the Client application.
+- The oxd-php library uses two configuration files (oxdId.json and oxdlibrary/oxd-rp-settings.json) to specify information needed by the OpenID Connect dynamic client registration. In order to save the information that is returned (oxd_id, client_id, client_secret, etc.) the configuration files need to be writable by the client application.
 
 ## Endpoints
 
@@ -92,7 +93,7 @@ The oxd-server and oxd-https-extension provide the following methods for authent
     - [Get Tokens by Code](https://gluu.org/docs/oxd/3.1.1/api/#get-tokens-id-access-by-code)
     - [Get Access Token by Refresh Token](https://gluu.org/docs/oxd/3.1.1/api/#get-access-token-by-refresh-token)    
     - [Get User Info](https://gluu.org/docs/oxd/3.1.1/api/#get-user-info)   
-    - [Get Logout URI](https://gluu.org/docs/oxd/3.1.1/api/#log-out-uri) 
+    - [Get Logout URI](https://gluu.org/docs/oxd/3.1.1/api/#get-logout-uri) 
 
 
 The oxd-server provides the following methods for performing access management with a UMA Authorization Server (AS):
@@ -112,37 +113,32 @@ The oxd-server provides the following methods for performing access management w
 #### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
-you need to setup your client application at the OP. 
-During setup oxd will dynamically register the OpenID Connect 
-client and save its configuration. Upon successful setup a unique 
-identifier will be issued by the oxd server by assigning a specific oxd id. Along with oxd Id oxd server will also return client Id and client secret. This client Id and client secret can be used for `get_client_token` method. If your OpenID Connect Provider 
-does not support dynamic registration (like Google), you will need to obtain a 
-ClientID and Client Secret which can be passed to the `setup_client` method as a 
-parameter. The Setup Client method is a one time task to configure a client in the 
-oxd server and OP.
+you need to setup your client application at the OpenID Connect Provider (OP). 
+During setup, oxd will dynamically register the OpenID Connect 
+client and save its configuration. Upon successful setup, the oxd-server will assign a unique oxd ID, return a Client ID and Client Secret. This Client ID and Client Secret can be used for `get_client_token` method. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `setup_client` method as a parameter. The Setup Client method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
 
 **Parameters:**
 
 - authorization_redirect_uri: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
 - op_host: URL of the OpenID Connect Provider (OP)
 - post_logout_uri: (Optional) URL to which the user is redirected to after successful logout
-- application_type: (Optional) Kind of the application. The default, if omitted, is web. The defined values are native or web
+- application_type: (Optional) Application type, the default values are native or web. The default, if omitted, is web.
 - response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant Types that the Client is declaring that it will restrict itself to using
+- grant_types: (Optional) Grant types that the client is declaring that it will restrict itself to using
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server
+- acr_values: (Optional) Custom authentication script from the Gluu server.  Required for extended authentication.
 - client_name: (Optional) Client application name
-- client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
-- client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
+- client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
+- client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
 - client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
 - client_frontchannel_logout_uris: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
-- contacts: (Optional) Array of e-mail addresses of people responsible for this Client
-- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
-- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
-- claims_redirect_uri: (Optional)
+- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
+- contacts: (Optional) Array of e-mail addresses of people responsible for this client
+- ui_locales: (Optional) End user's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- claims_locales: (Optional) End user's preferred languages and scripts for claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
+- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
+- claims_redirect_uri: (Optional) The URI to which the client wishes the authorization server to direct the requesting party’s user agent after completing its interaction
 - oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
 - config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
@@ -187,19 +183,19 @@ $oxdObject->oxd_client_id = $register_site->getResponse_client_id();
 $oxdObject->oxd_client_secret = $register_site->getResponse_client_secret();
 ```
 
-### Get Client Token
+#### Get Client Token
 
 The `get_client_token` method is used to get a token which is sent as input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
 
 **Parameters:**
 
-- client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
-- client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
+- client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
+- client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 - op_host: URL of the OpenID Connect Provider (OP)
 - op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank . But if it is https://client.example.com/oxauth/.well-known/openid-configurationthen path its oxauth
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 **Request:**
 
@@ -234,19 +230,19 @@ $getClientAccessToken->getResponse_access_token();
 #### Register Site
 
 In order to use an OpenID Connect Provider (OP) for login, 
-you need to register your client application at the OP. 
+you need to register your client application at the OpenID Connect Provider (OP). 
 During registration oxd will dynamically register the OpenID Connect 
-client and save its configuration. Upon successful registration a unique 
-identifier will be issued by the oxd server. If your OpenID Connect Provider 
-does not support dynamic registration (like Google), you will need to obtain a 
+client and save its configuration. Upon successful registration, a unique 
+identifier will be issued by the oxd-server. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a 
 ClientID and Client Secret which can be passed to the `register_site` method as a 
 parameter. The Register Site method is a one time task to configure a client in the 
-oxd server and OP.
+oxd-server and OpenID Connect Provider (OP).
 
 !!!Note: 
 `register_site` endpoint is not required if client is registered using `setup_client`
 
 **Parameters:**
+
 - authorization_redirect_uri: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
 - op_host: URL of the OpenID Connect Provider (OP)
 - post_logout_uri: (Optional) URL to which the user is redirected to after successful logout
@@ -268,8 +264,8 @@ oxd server and OP.
 - client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
 - claims_redirect_uri: (Optional)
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 **Request:**
 
@@ -307,31 +303,31 @@ $oxdObject->oxd_id = $register_site->getResponseOxdId();
 
 #### Update Site Registration
 
-TThe `update_site_registration` method can be used to update an existing client in the OP. 
-Fields like Authorization redirect url, post logout url, scope, client secret and other fields, 
-can be updated using this method.
+The `update_site_registration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
+Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields can be updated using this method.
 
 **Parameters:**
+
 - oxd_id: oxd ID from client registration
 - authorization_redirect_uri:  (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization.
-- post_logout_uri: (Optional) URL to which the RP is requesting the End-User's User Agent be redirected to after a logout has been performed.
+- post_logout_uri: (Optional) URL to which the RP is requesting the end user's user agent be redirected to after a logout has been performed.
 - response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant Types that the Client is declaring that it will restrict itself to using
+- grant_types: (Optional) Grant types the client is restricting itself to using
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
+- acr_values: (Optional) Custom authentication script from the Gluu server. Required for extended authentication.
 - client_name: (Optional) Client application name
 - client_secret_expires_at: (Optional) Used to extend client lifetime (milliseconds since 1970)
-- client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
-- client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
+- client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
+- client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
 - client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
 - client_frontchannel_logout_uris: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
-- contacts: (Optional) Array of e-mail addresses of people responsible for this Client
-- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
+- contacts: (Optional) Array of e-mail addresses of people responsible for this client
+- ui_locales: (Optional) End user's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- claims_locales: (Optional) End user's preferred languages and scripts for claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 **Request:**
 
@@ -369,21 +365,22 @@ $update_site_registration->getResponseObject();
 
 #### Get Authorization URL
 
-The `get_authorization_url` method returns the OpenID Connect Provider 
-authentication URL to which the client application must redirect the user to 
-authorize the release of personal data. The response URL includes state value, 
-which can be used to obtain tokens required for authentication. This state value used 
+The `get_authorization_url` method returns the OpenID Connect Provider (OP) 
+Authentication URL to which the client application must redirect the user to 
+authorize the release of personal data. The Response URL includes state value, 
+which can be used to obtain tokens required for authentication. This state value is used 
 to maintain state between the request and the callback.
 
 **Parameters:**
+
 - oxd_id: oxd ID from client registration
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource.
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server. 
-- prompt: (Optional) Values that specifies whether the Authorization Server prompts the End-User for reauthentication and consent
+- acr_values: (Optional) Custom authentication script from the Gluu server.  Required for extended authentication. 
+- prompt: (Optional) Values that specifies whether the Authorization Server prompts the end user for reauthentication and consent
 - custom_params: (Optional) custom parameters
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 **Request:**
 
@@ -420,12 +417,13 @@ Upon successful login, the login result will return code and state. `get_tokens_
 uses code and state to retrieve token which can be used to access user claims.
 
 **Parameters:**
+
 - oxd_id: oxd ID from client registration
 - code: The code from OpenID Connect Provider (OP) Authorization Redirect URL
 - state: The state from OpenID Connect Provider (OP) Authorization Redirect URL
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 **Request:**
 
@@ -462,8 +460,8 @@ The `get_access_token_by_refresh_token` method is used to get a new access token
 - refreshToken: Obtained from the get_tokens_by_code method
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource.
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 
 **Request:**
@@ -487,16 +485,16 @@ $getAccessTokenFromRefreshToken->getResponseAccessToken();
 
 #### Get User Info
 
-Once the user has been authenticated by the OpenID Connect Provider, 
-the `get_user_info` method returns Claims (Like First Name, Last Name, emailId, etc.) 
-about the authenticated end user.
+Once the user has been authenticated by the OpenID Connect Provider (OP), 
+the `get_user_info` method returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
 
 **Parameters:**
+
 - oxd_id: oxd ID from client registration
 - access_token: access_token from GetTokenByCode or GetAccessTokenbyRefreshToken
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 **Request:**
 
@@ -522,18 +520,19 @@ $data = $get_user_info->getResponseClaims();
 
 #### Logout
 
-`get_logout_uri` method returns the OpenID Connect Provider logout url. 
-Client application  uses this logout url to end the user session.
+`get_logout_uri` method returns the OpenID Connect Provider (OP) Logout URL. 
+Client application  uses this Logout URL to end the user session.
 
 **Parameters:**
+
 - oxd_id: oxd ID from client registration
-- id_token_hint: (Optional) ID Token previously issued by the Authorization Server being passed as a hint about the End-User's current or past authenticated session with the Client
+- id_token_hint: (Optional) ID Token previously issued by the Authorization Server being passed as a hint about the end user's current or past authenticated session with the client
 - post_logout_redirect_uri: (Optional) URL to which user is redirected to after successful logout
 - state: (Optional) Value used to maintain state between the request and the callback
-- session_state: (Optional) JSON string that represents the End-User's login state at the OP
+- session_state: (Optional) JSON string that represents the end user’s login state at the OpenID Connect Provider (OP)
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 **Request:**
 
@@ -564,15 +563,16 @@ $data["logoutUri"] = $get_logout_uri->getResponseObject()->data->uri;
 
 #### RS Protect
 
-`uma_rs_protect` method is used for protecting resource by the Resource Server. Resource server need to construct the command which will protect the resource.
-The command will contain api path, http methods (POST,GET, PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy mapped, uma_rs_check_access method will always return access as granted. To know more about uma_rpt_policies you can check this [document]().
+`uma_rs_protect` method is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
+The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
 
 **Parameters:**
+
 - oxd_id: oxd ID from client registration
 - resources: One or more protected resources that a resource server manages, abstractly, as a set. In authorization policy terminology, a resource set is the "object" being protected. 
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 **Request:**
 
@@ -600,16 +600,17 @@ $uma_rs_protect->getResponseJSON();
 
 #### RS Check Access 
 
-`uma_rs_check_access` method used in a UMA Resource Server to check the access to the resource.
+`uma_rs_check_access` method is used in the UMA Resource Server to check the access to the resource.
 
 **Parameters:**
+
 - oxd_id: oxd ID from client registration
 - rpt: Requesting Party Token
 - path: Path of the resource to be checked 
 - http_method: HTTP methods (POST, GET and PUT)
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 **Request:**
 
@@ -643,7 +644,7 @@ $uma_rs_check_access->request();
 }
 ```
 
-***Access Denied with ticket response:***
+***Access Denied with Ticket Response:***
 
 ```javascript
 {
@@ -659,7 +660,7 @@ $uma_rs_check_access->request();
 }
 ```
 
-***Access Denied without ticket response:***
+***Access Denied without Ticket Response:***
 
 ```javascript
 {
@@ -670,7 +671,7 @@ $uma_rs_check_access->request();
 }
 ```
 
-***Resource is not protected***
+***Resource is not Protected Response:***
 
 ```javascript
 {
@@ -684,21 +685,21 @@ $uma_rs_check_access->request();
 
 #### RP Get RPT 
 
-The method uma_rp_get_rpt is called in order to obtain the RPT (Requesting Party Token).
+The method uma_rp_get_rpt is called in order to obtain the RPT (Requesting Party Token). 
 
 **Parameters:**
 
 - oxd_id: oxd ID from client registration
 - ticket: Client Access Ticket generated by uma_rs_check_access method
-- claim_token: (Optional)
-- claim_token_format: (Optional)
+- claim_token: (Optional) A package of claims provided by the client to the authorization server through claims pushing
+- claim_token_format: (Optional) A string containing directly pushed claim information in the indicated format. Must be base64url encoded unless otherwise specified.  
 - pct: (Optional) Persisted Claims Token
-- rpt: (Optional) Requesting Party Token. 
+- rpt: (Optional) Requesting Party Token
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- state: (Optional) state that is returned from uma_rp_get_claims_gathering_url method
+- state: (Optional) State that is returned from uma_rp_get_claims_gathering_url method
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 **Request:**
 
@@ -720,7 +721,7 @@ $uma_rp_get_rpt->request();
 **Response:**
 
 
-***Success Response***
+***Success Response:***
 
 ```javascript
  {
@@ -734,7 +735,7 @@ $uma_rp_get_rpt->request();
 }
 ```
 
-***Needs Info Error Response***
+***Needs Info Error Response:***
 
 ```javascript
 {
@@ -762,7 +763,7 @@ $uma_rp_get_rpt->request();
 }
 ```
 
-***Invalid ticket error Response***
+***Invalid Ticket Error Response:***
 
 ```javascript
  {
@@ -780,10 +781,10 @@ $uma_rp_get_rpt->request();
 
 - oxd_id: oxd ID from client registration
 - ticket: Client Access Ticket generated by uma_rs_check_access method
-- claims_redirect_uri: 
+- claims_redirect_uri: The URI to which the client wishes the authorization server to direct the requesting party’s user agent after completing its interaction
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
-- config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
+- oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
+- config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
 **Request:**
 
@@ -818,4 +819,4 @@ $uma_rp_get_claims_gathering_url->setRequest_claims_redirect_uri("https://client
 ```
 
 ## Support
-Please report technical issues and suspected bugs on our [support page](https://support.gluu.org/). You can use the same credentials you created to register for your oxd license to sign in on Gluu support.
+Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
