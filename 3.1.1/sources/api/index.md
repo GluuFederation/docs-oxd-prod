@@ -152,8 +152,8 @@ successful authorization.
 
 `register_site` has many parameters but most can be ignored.  The one exception is the `op_host` field which
 states the OpenID Connect Provider (OP) that will be used (e.g. the [Gluu Server](https://www.gluu.org/) or Google). `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).
-The default configuration values are taken from
-[conf/oxd-default-site-config.json](../conf/). 
+The default configuration values can be found here
+[config.json](https://gluu.org/docs/oxd/3.1.1/configuration/#oxd-confjson). 
 
 The `register_site` command returns `oxd_id`. Several applications may 
 share an instance of oxd, and this identifier is used by oxd to 
