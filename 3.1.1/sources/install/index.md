@@ -1,4 +1,4 @@
-# oxd-server Server Installation 
+# oxd-server Installation 
 
 ## Linux Packages
 

@@ -65,3 +65,4 @@ pages:
     - 'RoundCube': 'plugin/roundcube/index.md'
     - 'Shopify': 'plugin/shopify/index.md'
     - 'NextCloud': 'plugin/nextcloud/index.md'
+- 'Upgrade': 'upgrade/index.md'
