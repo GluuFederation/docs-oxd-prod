@@ -29,6 +29,7 @@ pages:
       - Card Management: 'license/payments/primary/index.md'
     - Billing: 'license/billing/index.md'
 - 'Installation': 'install/index.md'
+- 'Upgrade': 'upgrade/index.md'
 - 'Configuration': 'configuration/index.md'
 - 'Log Configuration': 'logs/index.md'
 - 'API': 'api/index.md'
@@ -65,4 +66,3 @@ pages:
     - 'RoundCube': 'plugin/roundcube/index.md'
     - 'Shopify': 'plugin/shopify/index.md'
     - 'NextCloud': 'plugin/nextcloud/index.md'
-- 'Upgrade': 'upgrade/index.md'
