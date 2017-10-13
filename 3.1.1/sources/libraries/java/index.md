@@ -2,13 +2,13 @@
 
 ## Overview
 
-The following documentation demonstrates how to use oxd's Python library to 
-send users from a Python application to an OpenID Connect Provider (OP), 
+The following documentation demonstrates how to use oxd's Java library to 
+send users from a Java application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 ## Sample Project
 
-Download the [Sample Project](https://github.com/GluuFederation/oxd-java/archive/master.zip) 
+Download a [Sample Project](https://github.com/GluuFederation/oxd-java/archive/master.zip) 
 specific to this oxd-java library.
 
 ### System Requirements
