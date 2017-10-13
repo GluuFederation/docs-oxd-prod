@@ -30,7 +30,7 @@ pages:
     - Billing: 'license/billing/index.md'
 - 'Installation': 'install/index.md'
 - 'Upgrade': 'upgrade/index.md'
-- 'Configuration': 'configuration/index.md'
+- 'Server Configuration': 'configuration/index.md'
 - 'Log Configuration': 'logs/index.md'
 - 'API': 'api/index.md'
 - oxd-https-extension:
