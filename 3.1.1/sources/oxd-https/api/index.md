@@ -6,7 +6,7 @@
 ```
 POST /setup-client
 {
-    "op_host" : "https://<idp-hostname>",
+    "op_host" : "https://<op-hostname>",
     "authorization_redirect_uri": "https://client.example.org/",
     "scope" : ["openid","profile","email","uma_protection","uma_authorization"],
     "grant_types":["authorization_code","client_credentials"]
@@ -19,11 +19,11 @@ POST /setup-client
     "status": "ok",
     "data": {
         "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-        "op_host": "https://<idp-hostname>",
+        "op_host": "https://<op-hostname>",
         "client_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.5F14.B387",
         "client_secret": "f436b936-03fc-433f-9772-53c2bc9e1c74",
         "client_registration_access_token": "d836df94-44b0-445a-848a-d43189839b17",
-        "client_registration_client_uri": "https://<idp-hostname>/oxauth/restv1/register?client_id=@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.5F14.B387",
+        "client_registration_client_uri": "https://<op-hostname>/oxauth/restv1/register?client_id=@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.5F14.B387",
         "client_id_issued_at": 1501854943,
         "client_secret_expires_at": 1501941343
     }
@@ -36,9 +36,9 @@ POST /setup-client
 ```
 POST /get-client-token
 {
-	"op_host" : "https://<idp-hostname>",
+	"op_host" : "https://<op-hostname>",
 	"scope" : ["openid","profile","email","uma_protection","uma_authorization"],
-	"op_host": "https://<idp-hostname>",
+	"op_host": "https://<op-hostname>",
 	"client_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.5F14.B387",
 	"client_secret": "f436b936-03fc-433f-9772-53c2bc9e1c74"
 }
@@ -64,7 +64,7 @@ POST /get-client-token
 POST /register-site
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-	"op_host" : "https://<idp-hostname>",
+	"op_host" : "https://<op-hostname>",
 	"authorization_redirect_uri": "https://client.example.org/",
 	"scope" : ["openid","profile","email","uma_protection","uma_authorization"],
 	"grant_types":["authorization_code","client_credentials"]
@@ -77,7 +77,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     "status": "ok",
     "data": {
         "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-        "op_host": "https://<idp-hostname>"
+        "op_host": "https://<op-hostname>"
     }
 }
 ```
@@ -123,7 +123,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
     "status": "ok",
     "data": {
-        "authorization_url": "https://<idp-hostname>/oxauth/restv1/authorize?response_type=code&client_id=@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!8A36.24E1.97DE.F4EF&redirect_uri=https://192.168.200.95/&scope=openid+profile+email+uma_protection+uma_authorization&state=473ot4nuqb4ubeokc139raur13&nonce=lbrdgorr974q66q6q9g454iccm"
+        "authorization_url": "https://<op-hostname>/oxauth/restv1/authorize?response_type=code&client_id=@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!8A36.24E1.97DE.F4EF&redirect_uri=https://192.168.200.95/&scope=openid+profile+email+uma_protection+uma_authorization&state=473ot4nuqb4ubeokc139raur13&nonce=lbrdgorr974q66q6q9g454iccm"
     }
 }
 ```
@@ -166,7 +166,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
                 "1501856672"
             ],
             "iss": [
-                "https://<idp-hostname>"
+                "https://<op-hostname>"
             ],
             "exp": [
                 "1501860330"
@@ -266,7 +266,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 *Non-normative example response*
 ```
 {
-  "uri": "https://<idp-hostname>/oxauth/seam/resource/restv1/oxauth/end_session?id_token_hint=eyJraWQiOiI1YmM2ZGM3MS0xYjA1LTQ5YzMtYWU3MC0zYTg4Y2ZiMjQwN2QiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NlLWRldi5nbHV1Lm9yZyIsImF1ZCI6IkAhNUE1OC5BRTBELkQzODMuMUU0NiEwMDAxIUUzOEIuN0RCRSEwMDA4IUE3MTkuOTU4QS41QjdGLkVBQkMiLCJleHAiOjE0OTAwMTk5MjEsImlhdCI6MTQ5MDAxNjMyMSwibm9uY2UiOiJkNGdsbmtndHAxYWlqZ3JnY3V2cGp1N2k3cCIsImF1dGhfdGltZSI6MTQ5MDAxNjI3MiwiYXRfaGFzaCI6Im1Xa2NXQzZ6NC1qN0ZNX0ctX0tYMWciLCJveFZhbGlkYXRpb25VUkkiOiJodHRwczovL2NlLWRldi5nbHV1Lm9yZy9veGF1dGgvb3BpZnJhbWUiLCJveE9wZW5JRENvbm5lY3RWZXJzaW9uIjoib3BlbmlkY29ubmVjdC0xLjAiLCJzdWIiOiJONHRLRncyLVpDWTVWN0FhQmdpMnNHRWdDR0t0Tlg2LS01M2FQbmZFYk5zIn0.PvCdzPnMwqPNUw1bzd8tvzpJqYu-P2iCTnELr85ZaJTG8_Fdj3EruLgUBa-emeum3j29cFgdjFPx6WplfCV1GnehOieXjDiAAE85fy-stxXwII3xrva5ZjG0FnTYnJLoRmy0BWMjFC2IdCoISJI9imcfvmQmlvNmU0EjLS02cJf3JAaqEaM-FJWdQv8end9-Sq2bcp6ME3voRjV30ps_7jcDdlM_hW3M_e3RdrXYCDifbl_1jaNip5tb6_bLpgTADDoLT3fTvACRN057e2GCkSYdxvVhIjfDsjnOhk5n3TDcWedriu99H8-sNXyI_aBr3HAXd37CsgmdfIJcgUNJJw"
+  "uri": "https://<op-hostname>/oxauth/seam/resource/restv1/oxauth/end_session?id_token_hint=eyJraWQiOiI1YmM2ZGM3MS0xYjA1LTQ5YzMtYWU3MC0zYTg4Y2ZiMjQwN2QiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NlLWRldi5nbHV1Lm9yZyIsImF1ZCI6IkAhNUE1OC5BRTBELkQzODMuMUU0NiEwMDAxIUUzOEIuN0RCRSEwMDA4IUE3MTkuOTU4QS41QjdGLkVBQkMiLCJleHAiOjE0OTAwMTk5MjEsImlhdCI6MTQ5MDAxNjMyMSwibm9uY2UiOiJkNGdsbmtndHAxYWlqZ3JnY3V2cGp1N2k3cCIsImF1dGhfdGltZSI6MTQ5MDAxNjI3MiwiYXRfaGFzaCI6Im1Xa2NXQzZ6NC1qN0ZNX0ctX0tYMWciLCJveFZhbGlkYXRpb25VUkkiOiJodHRwczovL2NlLWRldi5nbHV1Lm9yZy9veGF1dGgvb3BpZnJhbWUiLCJveE9wZW5JRENvbm5lY3RWZXJzaW9uIjoib3BlbmlkY29ubmVjdC0xLjAiLCJzdWIiOiJONHRLRncyLVpDWTVWN0FhQmdpMnNHRWdDR0t0Tlg2LS01M2FQbmZFYk5zIn0.PvCdzPnMwqPNUw1bzd8tvzpJqYu-P2iCTnELr85ZaJTG8_Fdj3EruLgUBa-emeum3j29cFgdjFPx6WplfCV1GnehOieXjDiAAE85fy-stxXwII3xrva5ZjG0FnTYnJLoRmy0BWMjFC2IdCoISJI9imcfvmQmlvNmU0EjLS02cJf3JAaqEaM-FJWdQv8end9-Sq2bcp6ME3voRjV30ps_7jcDdlM_hW3M_e3RdrXYCDifbl_1jaNip5tb6_bLpgTADDoLT3fTvACRN057e2GCkSYdxvVhIjfDsjnOhk5n3TDcWedriu99H8-sNXyI_aBr3HAXd37CsgmdfIJcgUNJJw"
 }
 ```
 
@@ -350,7 +350,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     "data": {
         "access": "denied",
         "ticket": "e986fd2b-de83-4947-a889-8f63c7c409c0",
-        "www-authenticate_header": "UMA realm=\"rs\",as_uri=\"https://<idp-hostname>\",error=\"insufficient_scope\",ticket=\"e986fd2b-de83-4947-a889-8f63c7c409c0\""
+        "www-authenticate_header": "UMA realm=\"rs\",as_uri=\"https://<op-hostname>\",error=\"insufficient_scope\",ticket=\"e986fd2b-de83-4947-a889-8f63c7c409c0\""
     }
 }
 ```
@@ -402,7 +402,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
     "status": "ok",
     "data": {
-        "url": "https://<idp-hostname>/oxauth/restv1/uma/gather_claims?client_id@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!4508.BF20.9B81.E904&ticket=fba00191-59ab-4ed6-ac99-a786a88a9f40&claims_redirect_uri=https://client.example.com/cb&state=d871gpie16np0f5kfv936sc33k",
+        "url": "https://<op-hostname>/oxauth/restv1/uma/gather_claims?client_id@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!4508.BF20.9B81.E904&ticket=fba00191-59ab-4ed6-ac99-a786a88a9f40&claims_redirect_uri=https://client.example.com/cb&state=d871gpie16np0f5kfv936sc33k",
         "state": "d871gpie16np0f5kfv936sc33k"
     }
 }
