@@ -6,7 +6,7 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 In these docs we use the [free open source Gluu Server](http://gluu.org/gluu-server) as the OP.
 
 !!! Note:
-    You can also refer to the [oxd python library](https://gluu.org/docs/oxd/libraries/python/) docs for more details on java classes.
+    You can also refer to the [oxd python library](https://gluu.org/docs/oxd/libraries/python/) docs for more details on python classes.
 
 ## Deployment <!-- Installation -->
 
@@ -20,7 +20,7 @@ a2enmod wsgi
 a2enmod ssl
 ```
 
-###Gluu Development Binaries
+### Gluu Development Binaries
 
 ```bash
 echo "deb http://repo.gluu.org/ubuntu/ trusty-devel main" > /etc/apt/sources.list.d/gluu-devel-repo.list
@@ -33,11 +33,11 @@ apt-get install gluu-oxd-server
 
 Edit the file `/opt/oxd-server/conf/oxd-conf.json`
 
-* Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://ce-dev.gluu.org"`
+- Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
 
 Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
 
-* Change the `response_types` line to `"response_types": ["code"]`
+- Change the `response_types` line to `"response_types": ["code"]`
 
 Start the oxd-server
 ```bash

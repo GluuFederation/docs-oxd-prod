@@ -3,7 +3,7 @@
 The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a Ruby on Rails app to an OpenID Connect Provider (OP) for login. You can send users to any standard OP for login, including Google. In these docs we use the [free open source Gluu Server](http://gluu.org/gluu-server) as the OP.
 
 !!! Note
-    You can also refer to the [oxd ruby library docs](../../libraries/python/) for more details on java classes.
+    You can also refer to the [oxd ruby library docs](../../libraries/ruby/) for more details on ruby classes.
 
 ## Deployment
 
@@ -58,14 +58,14 @@ Run this command in terminal to get list of installed ruby versions on your syst
 $ rvm list
 ```
 
-Using rvm you can install specific ruby version. E.g. for ruby-2.2.0 :
+Using rvm you can install specific ruby version. E.g. for ruby-2.3.0 :
 ```bash
-$ rvm install ruby-2.2.0
+$ rvm install ruby-2.3.0
 ```
 
-To change ruby version simply run this command. E.g. to switch to ruby-2.2.0 :
+To change ruby version simply run this command. E.g. to switch to ruby-2.3.0 :
 ```bash
-$ rvm use ruby-2.2.0
+$ rvm use ruby-2.3.0
 ```
 
 Rails is distributed as a Ruby gem and adding it to the local system is extremely simple:
@@ -171,4 +171,4 @@ Run :
 bundle install
 ```
 
-Now your rails app should work from http://oxd-rails.com
+Now your rails app should work from https://oxd-rails.com
