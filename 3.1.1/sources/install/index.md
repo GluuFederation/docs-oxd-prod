@@ -14,7 +14,7 @@ Now configure oxd-server following the [configuration instructions](../configura
 
 Then run the following command to start the oxd-server server:
 
-`# service gluu-oxd-server start`
+`# /etc/init.d/oxd-server start`
 
 
 ### Ubuntu 16.04 (xenial)
@@ -29,7 +29,7 @@ Now configure oxd following the [configuration instructions](../configuration/in
 
 Then run the following command to start the oxd server:
 
-`service gluu-oxd-server start`
+`/etc/init.d/oxd-server start`
 
 ### Debian 8 (Jessie)
 
@@ -43,7 +43,7 @@ Now configure oxd following the [configuration instructions](../configuration/in
 
 Then run the following command to start the oxd server:
 
-`service gluu-oxd-server start`
+`/etc/init.d/oxd-server start`
 
 ### CentOS 6
 
@@ -58,7 +58,7 @@ Now configure oxd following the [configuration instructions](../configuration/in
 
 Then run the following command to start the oxd server:
 
-`# service gluu-oxd-server start`
+`# /etc/init.d/oxd-server start`
 
 ### CentOS 7
 
@@ -73,7 +73,7 @@ Now configure oxd following the [configuration instructions](../configuration/in
 
 Then run the following command to start the oxd server:
 
-`# service gluu-oxd-server start`
+`# /etc/init.d/oxd-server start`
 
 ### RHEL 6
 
@@ -88,7 +88,7 @@ Now configure oxd following the [configuration instructions](../configuration/in
 
 Then run the following command to start the oxd server:
 
-`# service gluu-oxd-server start`
+`# /etc/init.d/oxd-server start`
 
 ### RHEL 7
 
@@ -103,7 +103,7 @@ Now configure oxd following the [configuration instructions](../configuration/in
 
 Then run the following command to start the oxd server:
 
-`service gluu-oxd-server start`
+`/etc/init.d/oxd-server start`
 
 ## Manual installation
 
