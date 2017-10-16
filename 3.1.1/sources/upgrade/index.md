@@ -1,23 +1,15 @@
-# oxd-server Upgrade
- 
-Previous versions of oxd-server (`3.0.1`, `2.4.4`) used json files for storing data. 
-In `3.1.1` version `oxd-server` has configurable storage (e.g. `h2`, `redis`). 
-If you have previous version of `oxd-server` and wish to move those data to `3.1.1` data you can activate auto-migration.
+## Overview
+
+The latest release of oxd-server `3.1.1` uses configurable data storage (`h2`, `redis`, etc.) to store data files. If you are using a previous versions of oxd-server (`3.0.1` or `2.4.4`) the json files will have to be transfered to the new database.  To simplify the data transfer process we have included auto-migration capability in oxd-server `3.1.1`.  
  
  
-## OpenID Connect data migration  
-`oxd-server` has built-in migration from older version of `oxd-server`. 
-To migrate old json files from previous versions please specify path to folder/directory that contains those json files
- in `migration_source_folder_path` property of `oxd-conf.json` file. 
- Those files will be read and imported one time (during restart `oxd-server` will not import them again). 
-Note, if you are under Windows OS don't forget to escape path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
+## OpenID Connect 
+To migrate json files from oxd-server (`3.0.1` or `2.4.4`) to oxd-server `3.1.1`, update the `oxd-conf.json` file by modifying the property `migration_source_folder_path`. The path should point to the folder/directory that contains the json files.  The files will be read and imported after you restart `oxd-server`. Data migration will only happen once and will not initiate for subsequent oxd-server restarts.  
 
+!!! Note: 
+    If you are using Windows OS don't forget to include the escape path separator (e.g. `C:\\OXD_OLD\\oxd-server\\conf`)
 
-## UMA Migration
+## UMA 
 
-`3.1.1` version supports UMA 2.0. In earlier version of `oxd-server` we had UMA `1.0.1`. 
-It means that auto-migration is not going to help here.  
-
-
- 
+Auto-migration between UMA `1.0.1` and UMA `2.0` is not supported because of major changes between specifications. To view the UMA `2.0` specifications follow this [link](https://docs.kantarainitiative.org/uma/ed/uma-core-2.0-01.html#without-rpt).
  
