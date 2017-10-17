@@ -1,19 +1,19 @@
 # oxd .Net
 
-The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a Node app to an OpenID Connect Provider (OP) for login. You can securely send users to any standard OP for login, including Google and the [free open source Gluu Server](http://gluu.org/gluu-server).
+The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a Node application to an OpenID Connect Provider (OP) for login. You can securely send users to any standard OpenID Connect Provider (OP) for login, including the [free open source Gluu Server](http://gluu.org/gluu-server) or Google.
 
 !!! Note
-    Refer to the [oxd csharp library docs](../../libraries/csharp/index.md) for more details on c# classes.
+    Refer to the [oxd-csharp library docs](../../libraries/csharp/index.md) for more details on c# classes.
 
 
-## Installation:
+## Installation Guides
 
-- [Github sources](https://github.com/GluuFederation/oxd-csharp)
+- [Github oxd-csharp](https://github.com/GluuFederation/oxd-csharp)
 - [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
-- [oxd Server](../install/)
+- [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/)
 
 
-## Configuring the oxd-server <!-- Configuration -->
+## Configuring oxd-server
 
 - Edit the file `<path to oxd-server>/conf/oxd-conf.json`
     
@@ -23,10 +23,7 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
     
     Change the `response_types` line to `"response_types": ["code"]`
 
-
-**Start oxd-server**
-
-To Start oxd-server, run the following commands in command window:
+- To start oxd-server, run the following commands:
 
 ```bash
 > cd <path to oxd-server directory>/bin
@@ -34,31 +31,28 @@ To Start oxd-server, run the following commands in command window:
 ```
 
 
-## Demosite deployment <!-- Sample -->
+## Demosite Deployment
 
 - Your client application must have a valid SSL certification, so the URL includes: `https://`    
-- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP Address. 
-You can configure the `hostname` by adding the following 
-entry in `C:\Windows\System32\drivers\etc\host` file:
-
-    `127.0.0.1  client.example.com`
-
+- The client hostname should be a valid `hostname` (FQDN), not a localhost or an IP Address. 
+- You can configure the `hostname` by adding `127.0.0.1  client.example.com` to the file  `C:\Windows\System32\drivers\etc\host`
 - Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd-csharp library in Visual Studio.
 
 
 - Enable SSL using the following instructions:
 
-    - Open Visual Studio in administrator mode.
-    - Open the Client application in Visual Studio.
-    - Go to Client Application Properties.
-    - Navigate to `Development Server` and set `SSL Enabled` to `True`.
+    - Open Visual Studio in administrator mode
+    - Open the client application in Visual Studio
+    - Go to client application properties
+    - Navigate to `Development Server` and set `SSL Enabled` to `True`
 
 - Change the `hostname` in the project using the following instructions:
 
-     - Make hidden folders visible in the windows explorer.(If already done then ignore it).
-     - Navigate to `vs/config` folder in the root of the project in the windows explorer.
-     - Open the `applicationhost.config` file.
+     - Make hidden folders visible in windows explorer
+     - Navigate to `vs/config` folder in the root of the project in windows explorer
+     - Open the `applicationhost.config` file
      - Add the following lines to `bindings` section of the project:
+     
 
 ```code
 <binding protocol="https" bindingInformation="*:portno:client.example.com" />
@@ -83,4 +77,4 @@ entry in `C:\Windows\System32\drivers\etc\host` file:
     - Login URL: https://client.example.com:portno
     - UMA URL: https://client.example.com:portno/uma
 
-- The input values used during Setup Client are stored in a configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the Client application.
+- The input values used during Setup Client are stored in a configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the client application.

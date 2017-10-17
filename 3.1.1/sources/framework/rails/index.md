@@ -1,28 +1,29 @@
 # oxd Ruby On Rails
 
-The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a Ruby on Rails app to an OpenID Connect Provider (OP) for login. You can send users to any standard OP for login, including Google. In these docs we use the [free open source Gluu Server](http://gluu.org/gluu-server) as the OP.
+The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a Ruby on Rails application to an OpenID Connect Provider (OP) for login. You can send users to any standard OpenID Connect Provider (OP) for login, including the [free open source Gluu Server](http://gluu.org/gluu-server) or Google. 
 
 !!! Note
-    You can also refer to the [oxd ruby library docs](../../libraries/ruby/) for more details on ruby classes.
+    You can also refer to the [oxd-ruby library docs](../../libraries/ruby/) for more details on ruby classes.
 
-## Deployment
+## Installation Guides
 
-### Prerequisites
+- [Github oxd-ruby](https://github.com/GluuFederation/oxd-ruby)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
+- [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/)
 
-Ubuntu 14.04 with some basic utilities listed below
+## Prerequisites
+
+Ubuntu 14.04 with some basic utilities listed below:
 
 ```bash
 $ sudo apt-get install apache2
 $ a2enmod ssl
 ```
 
-### Installing and configuring the oxd-server
-You can download the oxd-server and follow the installation instructions from 
-[here](../install/)
+## Demosite Deployment
 
-## Demosite deployment
+OpenID Connect only works with HTTPS connections. Enter the following to prepare the SSL certificates:
 
-OpenID Connect works only with HTTPS connections. So let us get the ssl certs ready.
 ```bash
 $ mkdir /etc/certs
 $ cd /etc/certs
@@ -33,37 +34,37 @@ $ openssl req -new -key demosite.key -out demosite.csr
 $ openssl x509 -req -days 365 -in demosite.csr -signkey demosite.key -out demosite.crt
 ```
 
-###Install RVM and Ruby on ubuntu
+## Install RVM and Ruby on Ubuntu
 
-Install mpapis public key first (might need gpg2) 
+Install mpapis public key (might need gpg2):
 
 ```bash
 $ sudo gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 ```
 
-Install RVM stable with ruby:
+Install RVM Stable with Ruby:
 
 ```bash
 $ sudo \curl -sSL https://get.rvm.io | bash -s stable --ruby
 $ cd /var/www/html
 ```
 
-Reload shell configuration & test
+Reload shell configuration and test:
 ```bash
 $ source ~/.rvm/scripts/rvm
 ```
 
-Run this command in terminal to get list of installed ruby versions on your system
+To get a list of all the Ruby versions installed on your system:
 ```bash
 $ rvm list
 ```
 
-Using rvm you can install specific ruby version. E.g. for ruby-2.3.0 :
+Using RVM you can install a specific Ruby version:
 ```bash
 $ rvm install ruby-2.3.0
 ```
 
-To change ruby version simply run this command. E.g. to switch to ruby-2.3.0 :
+To change Ruby version run this command:
 ```bash
 $ rvm use ruby-2.3.0
 ```
@@ -73,31 +74,32 @@ Rails is distributed as a Ruby gem and adding it to the local system is extremel
 $ gem install rails 
 ```
 
-For more help you can see rvm commands here :
-https://rvm.io/rvm/install
+!!! Note
+	For more help you can see RVM commands here : https://rvm.io/rvm/install
 
-###Phusion Passenger Setup 
+## Phusion Passenger Setup 
 
-Phusion Passenger (commonly shortened to Passenger or referred to as mod_passenger) is an application server and it is often used to power Ruby sites. Its code is distributed in form of a Ruby gem, which is then compiled on the target machine and installed into Apache as a module.
+Phusion Passenger (commonly shortened to Passenger or referred to as mod_passenger) is an application server and is often used to power Ruby sites. Its code is distributed in the form of a gem, which is then compiled on the target machine and installed into Apache as a module.
 
 First, the gem needs to be installed on the system:
 ```bash
 $ gem install passenger
 ```
 
-The environment is now ready for the compilation. The process takes a few minutes and it’s started by the following command:
+The environment is now ready for the compilation. Enter the following to start the process (the process may take a few minutes):
 ```bash
 $ passenger-install-apache2-module
 ```
 
-Note that this script will not install the module really. It will compile module’s binary and place it under gem’s path. The path will be printed on screen and it needs to be copy-pasted into Apache’s config file 
+!!! Note 
+	This script will not install the module. It compiles the module’s binary and places it in the gem’s path. The path will be printed on the screen and it needs to be copy-pasted into Apache’s config file. 
 
 The output will be similar to this one:
 ```
 LoadModule passenger_module /home/username/.rvm/gems/ruby-2.2.1/gems/passenger-5.0.28/buildout/apache2/mod_passenger.so
 ```
 
-Then in Apache's config file add these lines :
+Add these lines to Apache's config file:
 ```
 <IfModule mod_passenger.c>
  PassengerRoot /home/username/.rvm/gems/ruby-2.2.1/gems/passenger-5.0.28
@@ -105,12 +107,14 @@ Then in Apache's config file add these lines :
 </IfModule>
 ```
 
-In console :
+## Configuring oxd-server
+
+In console:
 ```bash
 $ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/oxd-ruby.conf
 $ sudo vi /etc/apache2/sites-available/oxd-ruby.conf
 ```
-Replace the content of oxd-ruby.conf file with following:
+Replace the content in the oxd-ruby.conf file with the following:
 ```
 <IfModule mod_ssl.c>
 	<VirtualHost *:443>
@@ -138,37 +142,36 @@ Replace the content of oxd-ruby.conf file with following:
 </IfModule>
 ```
 
-Then enable `oxd-rails.com` virtual host by running:
+Enable `oxd-rails.com` virtual host by running:
 ```bash
 $ sudo a2ensite oxd-ruby.conf 
 ```
 
-After that add domain name in virtual host file.
-In console:
+In the console, add the domain name to the virtual host file:
 ```bash
 $ sudo nano /etc/hosts
 ```
 
-Add these lines in virtual host file:
+Add these lines to the virtual host file:
 ```
 127.0.0.1 www.oxd-rails.com
 127.0.0.1 oxd-rails.com
 ```
 
-Reload the apache server
+Reload the Apache server:
 ```bash
 $ sudo service apache2 restart
 ```
-### Setting up and running demo app
+## Running the Demo Application
 
 Navigate to Rails app root:
 ```bash
 cd /var/www/html/oxdrails
 ```
 
-Run :
+Run:
 ```bash
 bundle install
 ```
 
-Now your rails app should work from https://oxd-rails.com
+Now your Rails application should work from https://oxd-rails.com
