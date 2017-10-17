@@ -5,13 +5,13 @@ Please install oxd package as described [here](https://gluu.org/docs/oxd/3.1.1/i
 After package is successfully installed please run `oxd-https-extension` with following command
 
 ```
-service oxd-https-extension start
+/etc/init.d/oxd-https-extension start
 ```
 
-To stop service
+To stop `oxd-https-extension` run
 
 ```
-service oxd-https-extension stop
+/etc/init.d/oxd-https-extension stop
 ```
 
 ## Manual installation
