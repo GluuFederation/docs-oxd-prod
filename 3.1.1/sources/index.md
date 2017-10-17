@@ -3,11 +3,13 @@
 ## Introduction
 oxd is a middleware service that simplifies the process of sending users from **server-side web applications** to a standard OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server), for login and/or enrollment.
 
+oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby, Perl, C#, and Go.
+
+### oxd server
 The oxd-server is designed to work as a standalone service daemon via sockets. By default, the oxd-server is restricted to `localhost`, which means oxd needs to be installed on each server hosting applications you want secured by your OpenID Connect Provider (OP). 
 
+### oxd-https-extension
 If you want web apps to connect to oxd via HTTPS, you can start the oxd-https-extension. This will enable you to host one central oxd service for all your web applications, resulting in less maintenance and easier upgrades. 
-
-oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby, Perl, C#, and Go.
 
 !!! Note
     If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.    
