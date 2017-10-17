@@ -28,7 +28,7 @@ pages:
       - Add Card: 'license/payments/add/index.md'
       - Card Management: 'license/payments/primary/index.md'
     - Billing: 'license/billing/index.md'
-- 'Installation': 'install/index.md'
+- 'Install': 'install/index.md'
 - 'Upgrade': 'upgrade/index.md'
 - 'Configuration': 'configuration/index.md'
 - 'Logs': 'logs/index.md'
