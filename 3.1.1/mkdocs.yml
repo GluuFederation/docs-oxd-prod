@@ -34,7 +34,7 @@ pages:
 - 'Log Configuration': 'logs/index.md'
 - 'API': 'api/index.md'
 - oxd-https-extension:
-  - 'Installation': 'oxd-https/install/index.md'
+  - 'Start': 'oxd-https/install/index.md'
   - 'Configuration': 'oxd-https/configuration/index.md'
   - 'Log configuration': 'oxd-https/logs/index.md'
   - 'API': 'oxd-https/api/index.md'
