@@ -1,14 +1,15 @@
-# oxd-https-extension Installation
+# oxd-https-extension installation
 
-Please install oxd package as described [here](https://gluu.org/docs/oxd/3.1.1/install/).
+## Start oxd-https-extension
+First make sure you have installed the oxd package as described [here](https://gluu.org/docs/oxd/3.1.1/install/).
 
-After package is successfully installed please run `oxd-https-extension` with following command
+After the package is successfully installed, start the `oxd-https-extension` service by executing the following command:
 
 ```
 /etc/init.d/oxd-https-extension start
 ```
 
-To stop `oxd-https-extension` run
+To stop the `oxd-https-extension`, run:
 
 ```
 /etc/init.d/oxd-https-extension stop
