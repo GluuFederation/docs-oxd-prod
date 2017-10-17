@@ -1,9 +1,14 @@
 # oxd 3.1.1 Documentation
 
+## Introduction
 oxd is a middleware service that simplifies and standardizes the process of integrating **server-side web applications** with a standard OpenID Connect Provider (OP) like the [Gluu Server](https://gluu.org/gluu-server).
 
-!!! Note
-    If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.    
+If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.    
+
+## License & Billing
+oxd is commercial software licensed by Gluu. The billing model is $0.33 per application per day (or roughly $10 per month per application). 
+
+To complete the oxd-server setup you will need a valid license. Get your license and a $50 credit on the [oxd website](https://oxd.gluu.org).
 
 ## Overview
 
@@ -12,11 +17,6 @@ The oxd-server is designed to work as a standalone service daemon via sockets. B
 With the oxd-https-extension installed, web apps can connect to oxd via HTTPS, enabling you to host one central oxd service for all your web applications. Using the oxd-https-extension will result in less maintenance and easier upgrades. 
 
 oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby, Perl, C#, and Go.
-
-### License & Billing
-oxd is commercial software licensed by Gluu. The billing model is $0.33 per application per day (or roughly $10 per month per application). 
-
-To complete the oxd-server setup you will need a valid license. Get your license and a $50 credit on the [oxd website](https://oxd.gluu.org). 
 
 ## How it Works
 
@@ -28,16 +28,13 @@ To complete the oxd-server setup you will need a valid license. Get your license
 
 4. Your web application enrolls the user and/or grants access to the protected resource.
 
-!!! Note
-    If you need an OpenID Connect Provider (OP) to authenticate users, you can download and deploy the free open source [Gluu Server](https://gluu.org/docs/ce/installation-guide/) or use Google. 
-
 ## Supported OpenID Providers (OP)
 oxd has been confirmed to work with the following OP's:
 
-- Gluu Server   
+- [Gluu Server]((https://gluu.org/docs/ce/installation-guide/))   
 - Google   
 
-If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org). 
+If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
 
 ## Technical Architecture
 
@@ -47,14 +44,16 @@ By default, oxd-server is restricted to `localhost`, which means its APIs can on
 ![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
 
 ### oxd-https-extension
-oxd-https-extension is an optional extension that enables apps to call oxd-server over the web using HTTPS. With the oxd-https-extension installed, you can have many applications use one oxd-server. 
+The oxd-https-extension enables apps to call your oxd-server over the web using HTTPS. The oxd-https-extension is included in the oxd package, and simply needs to be started if you would like to take advantage of its functionality. 
 
 ## Installation
-First, you need to install the oxd-server:    
+First, you need to install the oxd package:       
+
 - [oxd-server installation](./install/index.md)
 
-If you want to support application connections via HTTPS, next you need to install the https-extension:     
-- [oxd-https-extension installation](./oxd-https/install/index.md)
+If you want to support application connections via HTTPS, next you need to start the oxd-https-extension:     
+
+- [oxd-https-extension installation](./oxd-https/start/index.md)
 
 ## oxd API
 The oxd-server supports the OpenID Connect and UMA 2.0 profiles of OAuth 2.0. OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA can be used to manage what digital resources the user should have access to.    
@@ -62,7 +61,8 @@ The oxd-server supports the OpenID Connect and UMA 2.0 profiles of OAuth 2.0. Op
 Learn more in the [oxd Server API section](./api/index.md)    
 
 ## Libraries
-oxd client libraries provide simple, flexible, powerful access to the oxd OpenID Connect and UMA authentication and authorization APIs.     
+oxd client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs.   
+
 - [Python](./libraries/python/index.md)       
 - [Java](./libraries/java/index.md)       
 - [Php](./libraries/php/index.md)       
@@ -74,7 +74,8 @@ oxd client libraries provide simple, flexible, powerful access to the oxd OpenID
 
 ## Plugins
 
-Gluu currently publishes oxd plugins, modules, and extensions for the following open source applications (more coming!):      
+Gluu currently publishes oxd plugins, modules, and extensions for the following open source applications:    
+
 - [Wordpress](./plugin/wordpress/index.md)      
 - [Magento](./plugin/magento/index.md)       
 - [Drupal](./plugin/drupal/index.md)       
