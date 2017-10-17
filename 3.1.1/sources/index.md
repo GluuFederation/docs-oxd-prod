@@ -1,7 +1,7 @@
 # oxd 3.1.1 Documentation
 
 ## Introduction
-oxd is a middleware service that simplifies the process of sending users from **server-side web applications** to a standard OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server), for login and/or enrollment.
+oxd is middleware software that makes it easy to send users from **server-side web applications** to a standard OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server), for login and/or enrollment.
 
 oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby, Perl, C#, and Go.
 
