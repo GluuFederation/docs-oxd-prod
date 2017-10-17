@@ -8,7 +8,7 @@ oxd exposes a simple REST API and native libraries that wrap the API for Php, Ja
 !!! Note
     If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
 
-### oxd server
+### oxd-server
 The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`.
 
 ### oxd-https-extension
