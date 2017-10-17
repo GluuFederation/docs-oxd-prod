@@ -39,8 +39,11 @@ If you have successfully tested oxd against another OP, or for other OP related 
 ## Get Started
 
 Step 1: [Install the oxd package](./install/index.md);   
+
 Step 2: [Configure your oxd-server](./configuration/index.md);        
+
 Step 3: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
+
 Step 4: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login.  
 
 ## oxd API
