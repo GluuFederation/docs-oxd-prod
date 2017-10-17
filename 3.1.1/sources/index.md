@@ -29,7 +29,7 @@ oxd exposes a simple REST API and native libraries that wrap the API for Php, Ja
 4. Your web application enrolls the user and/or grants access to the protected resource.
 
 ## Supported OpenID Providers (OP)
-oxd has been confirmed to work with the following OP's:
+oxd has been confirmed to work with the following standard OP's:
 
 - [Gluu Server](https://gluu.org/docs/ce/installation-guide/)    
 - [Google](https://developers.google.com/identity/protocols/OpenIDConnect)   
