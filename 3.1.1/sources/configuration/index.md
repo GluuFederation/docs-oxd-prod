@@ -37,45 +37,45 @@ oxd-conf.json
 ```
 ### oxd-conf.json field descriptions
 
-- server_name: random name which will be used by License Server. It is good idea to put some sensible name here.
+- server_name: human readable name which will be used by the License Server to identify the server you are installing oxd on. It is good idea to put some sensible name here.
 
-- port: oxd socket port
+- port: oxd socket port.
 
-- localhost_only: flag to restrict communication
+- localhost_only: flag to restrict communication.
 
 - time_out_in_seconds: time out for oxd socket (measured in seconds). oxd closes sockets automatically after this period of time (stops listen commands). Zero means listen indefinitely.
 
-- use_client_authentication_for_pat: `true` if client authentication is required. If `false` than user authentication is performed which requires `user_id` and `user_secret` to be specified during the `register_site` command.
+- use_client_authentication_for_pat: `true` if client authentication is required. If `false` then user authentication requires `user_id` and `user_secret` to be specified during the `register_site` command.
 
-- trust_all_certs: `true` to trust all certificates, if `false` then `trust_store_path` must be specified to store with valid certificates
+- trust_all_certs: `true` to trust all certificates, if `false` then `trust_store_path` must be specified to store with valid certificates.
 
 - trust_store_path: Path to Java `.jks` trust store to be used for an SSL connection.
 
-- trust_store_password: password of trust store
+- trust_store_password: password of trust store.
 
 - license_id: Will be supplied when you [register for a license](https://oxd.gluu.org). 
 
-- public_key: Will be supplied when you [register for a license](https://oxd.gluu.org). It's very big--make sure you add it as one line with no spaces (if your mail client added line breaks).
+- public_key: Will be supplied when you [register for a license](https://oxd.gluu.org). It's very big--make sure to add the `public_key` as one line with no spaces.
 
 - public_password: Will be supplied when you [register for a license](https://oxd.gluu.org).
 
 - license_password: Will be supplied when you [register for a license](https://oxd.gluu.org).
 
-- support-google-logout: whether to support Google logout or not. Please use it only if you use Google as OP together with `oxd-server`.
+- support-google-logout: whether to support Google logout or not. Only use this if you are using Google as your OP.
 
-- state_expiration_in_minutes: expiration time of `state` parameter in seconds
+- state_expiration_in_minutes: expiration time of `state` parameter in seconds.
 
-- nonce_expiration_in_minutes: expiration time of `nonce` parameter in seconds
+- nonce_expiration_in_minutes: expiration time of `nonce` parameter in seconds.
 
 - public_op_key_cache_expiration_in_minutes: OP keys are put into cache after fetching. This value controls how long to keep it in cache (after expiration on first attempt keys are fetched again from OP).
 
-- protect_commands_with_access_token: if you use `oxd-server` standalone locally than this value can be `false`. If `oxd-https-extension` is used then this value MUST be `true` in order to protect communication between `oxd-https-extension` and client application (RP).
+- protect_commands_with_access_token: if you are only using the `oxd-server` this value can be `false`. If you are using the `oxd-https-extension`, then this value MUST be `true` in order to protect communication between `oxd-https-extension` and the client application (RP).
 
-- uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client: says to `oxd-server` whether automatically register `Glaims Gathering Endpoint` as `redirect_uri` for given client. It is useful for UMA 2 clients that wish to force authorization against Gluu Server (OP).
+- uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client: notifies the `oxd-server` whether to automatically register the `Claims Gathering Endpoint` as the `redirect_uri` for a given client. It is useful for UMA 2 clients that wish to force authorization against the Gluu Server.
 
-- migration_source_folder_path: `oxd-server` has built-in migration from older version of `oxd-server` (previously called `oxd-server`). To migrate old json files from previous versions please specify path to folder/directory that contains those json files in this property. Those files will be read and imported one time (during restart `oxd-server` will not import them again). Note, if you are under Windows OS don't forget to escape path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
+- migration_source_folder_path: `oxd-server` has built-in migration from older version of `oxd-server`. To migrate old json files from previous versions please specify path to folder/directory that contains those json files in this property. Those files will be read and imported one time (during restart `oxd-server` will not import them again). Note, if you are under Windows OS don't forget to escape path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
 
-- storage: Either `h2`, `redis`. If `redis` is set then `storage_configuration` must be specified with redis configuration details. 
+- storage: This value can either be `h2` or `redis`. If `redis` is set then `storage_configuration` must be specified with redis configuration details. 
 
 - storage_configuration: storage configuration details. Required if `redis` value is set for `storage` key.
 
@@ -89,7 +89,7 @@ Redis storage configuration sample:
 ```
 
 !!! Note
-    Need a license to start your oxd-server? Register on the [oxd website](https://oxd.gluu.org). 
+    If you need a license to start your oxd-server, you can register on the [oxd website](https://oxd.gluu.org). 
 
 ## oxd-default-site-config.json
 
