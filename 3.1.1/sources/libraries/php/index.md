@@ -1,6 +1,7 @@
 # oxd-php
 
 ## Overview
+
 The following documentation demonstrates 
 how to use oxd's PHP library to 
 send users from a PHP application to an OpenID Connect Provider (OP), 
@@ -11,17 +12,20 @@ like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login.
 
 Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.1.zip) specific to this oxd-php library.
 
+
 ### System Requirements
 
-- Ubuntu / Debian / CentOS / RHEL / Windows 7 or higher / Windows Server 2008 or higher
+- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - php 5.4 or higher
 - Apache 2.4 or higher
 - composer
 - oxd-php-library 3.1.1
 
+
 ## Prerequisites
 
 ### Required Software
+
 To use the oxd-php library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
@@ -31,13 +35,14 @@ To use the oxd-php library, you will need:
 ) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
+
 ### Configure the Client Application
 
 - Your client application must have a valid SSL certificate, so the URL includes: `https://`
 
 - Enable SSL by setting the valid certificate and key in your virtual host file:
 
-```apache
+```code
 <VirtualHost *:443>
     ServerAdmin postmaster@dummy-host.localhost
 	DocumentRoot "<path to client.example.com folder>"
@@ -74,11 +79,12 @@ To use the oxd-php library, you will need:
 
 - With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
-    - Setup Client URL: https://client.example.com:5053/Settings.php
-    - Login URL: https://client.example.com:5053/Login.php
-    - UMA URL: https://client.example.com:5053/Uma.php
+    - Setup Client URL: https://client.example.com/Settings.php
+    - Login URL: https://client.example.com/Login.php
+    - UMA URL: https://client.example.com/Uma.php
 
 - The oxd-php library uses two configuration files (oxdId.json and oxdlibrary/oxd-rp-settings.json) to specify information needed by the OpenID Connect dynamic client registration. In order to save the information that is returned (oxd_id, client_id, client_secret, etc.) the configuration files need to be writable by the client application.
+
 
 ## Endpoints
 
@@ -142,7 +148,6 @@ client and save its configuration. Upon successful setup, the oxd-server will as
 - oxd_host_port: (Optional) 'oxd port number' for oxd-server type (Required if oxd-server is used)
 - config: (Optional) 'oxd-https-extension config' for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
 
-
 **Request:**
 
 ```php
@@ -183,6 +188,7 @@ $oxdObject->oxd_client_id = $register_site->getResponse_client_id();
 $oxdObject->oxd_client_secret = $register_site->getResponse_client_secret();
 ```
 
+
 #### Get Client Token
 
 The `get_client_token` method is used to get a token which is sent as input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
@@ -192,7 +198,7 @@ The `get_client_token` method is used to get a token which is sent as input para
 - client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
 - client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 - op_host: URL of the OpenID Connect Provider (OP)
-- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank . But if it is https://client.example.com/oxauth/.well-known/openid-configurationthen path its oxauth
+- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank . But if it is https://client.example.com/oxauth/.well-known/openid-configuration then path is oxauth
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 - oxd_host_port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
 - config: (Optional) oxd-https-extension configuration for oxd-https-extension type. It is an array returned by "oxdlibrary/oxdHttpConfig.php" file (Required if oxd-https-extension is used)
@@ -227,6 +233,7 @@ $getClientAccessToken->request();
 $getClientAccessToken->getResponse_access_token();
 ```
 
+
 #### Register Site
 
 In order to use an OpenID Connect Provider (OP) for login, 
@@ -238,9 +245,9 @@ ClientID and Client Secret which can be passed to the `register_site` method as 
 parameter. The Register Site method is a one time task to configure a client in the 
 oxd-server and OpenID Connect Provider (OP).
 
-!!!Note: 
-`register_site` endpoint is not required if client is registered using `setup_client`
-
+!!! Note: 
+    The `register_site` endpoint is not required if client is registered using `setup_client`
+    
 **Parameters:**
 
 - authorization_redirect_uri: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
@@ -301,6 +308,7 @@ $register_site->request();
 $oxdObject->oxd_id = $register_site->getResponseOxdId();
 ```
 
+
 #### Update Site Registration
 
 The `update_site_registration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
@@ -357,11 +365,13 @@ $update_site_registration->setRequestClientTokenEndpointAuthMethod($request_clie
 $update_site_registration->setRequestClientRequestUris($request_client_request_uris);
 $update_site_registration->request($update_site_registration->getUrl());
 ```
+
 **Response:**
 
 ```php
 $update_site_registration->getResponseObject();
 ```
+
 
 #### Get Authorization URL
 
@@ -402,7 +412,6 @@ $get_authorization_url->setRequest_protection_access_token(getClientProtectionAc
 $get_authorization_url->setRequestAcrValues($request_acr_values);
 $get_authorization_url->setRequestPrompt($request_prompt);
 $get_authorization_url->request();
-
 ```
 
 **Response:**
@@ -410,6 +419,7 @@ $get_authorization_url->request();
 ```php
 $get_authorization_url->getResponseAuthorizationUrl();
 ```
+
 
 #### Get Tokens by Code
 
@@ -451,11 +461,14 @@ $data['refreshToken'] = $get_tokens_by_code->getResponseRefreshToken();
 $data['idToken'] = $get_tokens_by_code->getResponseIdToken();
 $data['idTokenClaims'] = $get_tokens_by_code->getResponseIdTokenClaims();
 ```
+
+
 #### Get Access Token by Refresh Token
 
 The `get_access_token_by_refresh_token` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `get_tokens_by_code` method.
 
 **Parameters:**
+
 - oxd_id: oxd ID from client registration
 - refreshToken: Obtained from the get_tokens_by_code method
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource.
@@ -482,6 +495,7 @@ $getAccessTokenFromRefreshToken->request();
 ```php
 $getAccessTokenFromRefreshToken->getResponseAccessToken();
 ```
+
 
 #### Get User Info
 
@@ -517,6 +531,7 @@ $get_user_info->request();
 ```php
 $data = $get_user_info->getResponseClaims();
 ```
+
 
 #### Logout
 
@@ -559,6 +574,7 @@ $get_logout_uri->request();
 $data["logoutUri"] = $get_logout_uri->getResponseObject()->data->uri;
 ```
 
+
 ### UMA (User Managed Access)
 
 #### RS Protect
@@ -597,6 +613,7 @@ $uma_rs_protect->request();
 ```php
 $uma_rs_protect->getResponseJSON();
 ```
+
 
 #### RS Check Access 
 
@@ -683,6 +700,7 @@ $uma_rs_check_access->request();
 }
 ```
 
+
 #### RP Get RPT 
 
 The method uma_rp_get_rpt is called in order to obtain the RPT (Requesting Party Token). 
@@ -719,7 +737,6 @@ $uma_rp_get_rpt->request();
 ```
 
 **Response:**
-
 
 ***Success Response:***
 
@@ -775,6 +792,7 @@ $uma_rp_get_rpt->request();
  }
 ```
 
+
 #### RP Get Claims Gathering URL 
 
 **Parameters:**
@@ -817,6 +835,7 @@ $uma_rp_get_claims_gathering_url->setRequest_claims_redirect_uri("https://client
     }
 }
 ```
+
 
 ## Support
 Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.

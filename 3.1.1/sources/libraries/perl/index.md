@@ -13,7 +13,7 @@ Download a [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3
 
 ### System Requirements
 
-- Ubuntu / Debian / CentOS / RHEL / Windows 7 or higher / Windows Server 2008 or higher
+- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - Perl 5
 - Apache 2.4.4 +
 - oxdperl 3.1.1
@@ -35,6 +35,7 @@ To use the oxd-perl library, you will need:
 ) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
+
 ### Install oxdperl from CPAN
 
 To install oxdperl from CPAN, run the following command in 
@@ -51,7 +52,6 @@ cpan > install CGI::Session
 cpan > install Net::SSLeay
 cpan > install IO::Socket::SSL
 ```
-
 
 
 ### Configure the Client Application
@@ -163,50 +163,50 @@ You can configure the hostname by adding the following entry in  `C:\Windows\Sys
 - Enable SSL by	adding the following lines to the virtual host file of Apache in the 
 location `C:/apache/conf/extra/httpd-vhosts.conf`:
 
-    ```apache
-    <VirtualHost *>
-        ServerName client.example.com
-        ServerAlias client.example.com
-        DocumentRoot "<apache web root directory>"
-    </VirtualHost>
+```
+<VirtualHost *>
+    ServerName client.example.com
+    ServerAlias client.example.com
+    DocumentRoot "<apache web root directory>"
+</VirtualHost>
 
-    <VirtualHost *:443>
-        DocumentRoot "<apache web root directory>"
-        ServerName client.example.com
-        SSLEngine on
-        SSLCertificateFile "<Path to ssl certificate file>"
-        SSLCertificateKeyFile "<Path to ssl certificate key file>"
-        <Directory "<apache web root directory>">
-            AllowOverride All
-            Order allow,deny
-            Allow from all
-        </Directory>
-    </VirtualHost>
-    ```
+<VirtualHost *:443>
+    DocumentRoot "<apache web root directory>"
+    ServerName client.example.com
+    SSLEngine on
+    SSLCertificateFile "<Path to ssl certificate file>"
+    SSLCertificateKeyFile "<Path to ssl certificate key file>"
+    <Directory "<apache web root directory>">
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+```
 
 - Download the [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip)
 
 - Configure Apache to treat the project directory as a script directory. In the following location, `C:\Program Files\Apache Group\Apache\conf\httpd.conf`, set the path to `httpd.conf` 
 
-    ```
-    ScriptAlias /cgi-bin/ "<path to CGI files>"
-    ```
+```
+ScriptAlias /cgi-bin/ "<path to CGI files>"
+```
 
 - To run CGI scripts and .pl extension anywhere in the domain, add the following line to `httpd.conf` file:
 
-    ```
-    AddHandler cgi-script .cgi .pl
-    ```
+```
+AddHandler cgi-script .cgi .pl
+```
 
 - In the `Directory` section of `httpd.conf` file, add the folowing CGI path:
 
-    ```code
-    <Directory "<path to CGI files>">
-        AllowOverride All
-        Options None
-        Require all granted
-    </Directory>
-    ```
+```
+<Directory "<path to CGI files>">
+    AllowOverride All
+    Options None
+    Require all granted
+</Directory>
+```
 
 - The first line of perl script contains `#!/usr/bin/perl`, replace it with the path of perl.exe `#!C:/program files/perl/bin/perl.exe` 
 
@@ -248,12 +248,12 @@ The oxd-server provides the following methods for performing access management w
     - [RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
 
 
+
 ## Sample Code
 
 ***index.cgi***
 
 Use the following code to assign the required parameter values from `oxd-settings.json` to the Perl client application. These values can be used as parameters for the oxd-server methods.
-
 
 ```perl
     $object = new OxdConfig();
@@ -275,6 +275,7 @@ Use the following code to assign the required parameter values from `oxd-setting
     my $client_secret = $object->getClientSecret();
 ```
 
+
 ### OpenID Connect
 
 #### Setup Client
@@ -283,7 +284,6 @@ In order to use an OpenID Connect Provider (OP) for login,
 you need to setup your client application at the OpenID Connect Provider (OP). 
 During setup, oxd will dynamically register the OpenID Connect 
 client and save its configuration. Upon successful setup, the oxd-server will assign a unique oxd ID, return a Client ID and Client Secret. This Client ID and Client Secret can be used for `GetClientToken` method. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `OxdSetupClient` method as a parameter. The Setup Client method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
-
 
 **Parameters:**
 
@@ -359,7 +359,7 @@ The `GetClientToken` method is used to get a token which is sent as an input par
 - client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
 - client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 - opHost: URL of the OpenID Connect Provider (OP)
-- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank. But if it is https://client.example.com/oxauth/.well-known/openid-configurationthen path its oxauth
+- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank. But if it is https://client.example.com/oxauth/.well-known/openid-configuration then path is oxauth
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 
 **Request:**
@@ -447,6 +447,7 @@ print Dumper($register_site->getResponseObject());
 ```
 
 **Response:**
+
 ```javascript
 {
     "status":"ok",
@@ -461,7 +462,6 @@ print Dumper($register_site->getResponseObject());
 
 The `UpdateRegistration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
 Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields can be updated using this method.
-
 
 **Parameters:**
 
@@ -556,7 +556,7 @@ print Dumper($get_authorization_url->getResponseObject());
 ```
 
 
-###  Get Tokens by Code
+####  Get Tokens by Code
 
 Upon successful login, the login result will return code and state. `GetTokenByCode` method uses code and state to retrieve token which can be used to access user claims.
 
@@ -740,6 +740,8 @@ print Dumper($logout->getResponseObject());
     }
 }
 ```
+
+
 ### UMA (User Managed Access)
 
 #### RS Protect
@@ -896,7 +898,6 @@ print Dumper($uma_rp_get_rpt->getResponseObject());
 ```
 
 **Response:**
-
 
 ***Success Response:***
 

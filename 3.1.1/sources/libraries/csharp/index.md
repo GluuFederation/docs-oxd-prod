@@ -1,22 +1,30 @@
 ﻿# oxd-csharp
+
+
 ## Overview
+
 The following documentation demonstrates how to use oxd's C# library to 
 send users from a C# application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
+
 ## Sample Project
+
 Download a [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd-csharp library.
+
 
 ### System Requirements
 
-- Microsoft Visual Studio 2008 or higher
+- Microsoft Visual Studio 2012 or higher
 - Windows Server 2008 or higher
 - Gluu.Oxd.OxdCSharp
 - .Net Framework 4.5 or higher
 
+
 ## Prerequisites
 
 ### Required Software
+
 To use the oxd-csharp library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
@@ -25,6 +33,7 @@ To use the oxd-csharp library, you will need:
 - An active installation of the [oxd-https-extension](https://gluu.org/docs/oxd/3.1.1/install/
 ) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
+
 
 ### Install the Gluu.Oxd.OxdCSharp NuGet Package
 
@@ -60,30 +69,28 @@ entry in `C:\Windows\System32\drivers\etc\host` file:
      - Open the `applicationhost.config` file.
      - Add the following lines to `bindings` section of the project:
 
-     ```xml
-     <binding protocol="https" bindingInformation="*:portno:client.example.com" />
-     <binding protocol="http" bindingInformation="*:portno:client.example.com" />
-     ```
-     - After adding the aforementioned lines the binding section will look like this:
+```code
+<binding protocol="https" bindingInformation="*:<portno>:client.example.com" />
+```
+- After adding the aforementioned lines the binding section will look like this:
      
-    ```xml
-     <site name="GluuDemoWebsite" id="2">
-                <application path="/" applicationPool="Clr4IntegratedAppPool">
-                    <virtualDirectory path="/" physicalPath="<path of the project>" />
-                </application>
-                <bindings>
-    <binding protocol="https" bindingInformation="*:portno:localhost" />
-                    <binding protocol="http" bindingInformation="*:portno:localhost" />
-                  <binding protocol="https" bindingInformation="*:portno:client.example.com" />
-<binding protocol="http" bindingInformation="*:portno:client.example.com" /></bindings>
-            </site>
+```code
+<site name="GluuDemoWebsite" id="2">
+    <application path="/" applicationPool="Clr4IntegratedAppPool">
+        <virtualDirectory path="/" physicalPath="<path of the project>" />
+    </application>
+    <bindings>
+        <binding protocol="https" bindingInformation="*:<portno>:client.example.com" />
+    </bindings>
+</site>
+```
       
       
 - With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
-    - Setup Client URL: https://client.example.com:port/setupClient
-    - Login URL: https://client.example.com:port
-    - UMA URL: https://client.example.com:port/uma
+    - Setup Client URL: https://client.example.com:44383/setupClient
+    - Login URL: https://client.example.com:44383
+    - UMA URL: https://client.example.com:44383/uma
 
 - The input values used during Setup Client are stored in the configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the client application.
 
@@ -113,6 +120,7 @@ The oxd-server provides the following methods for performing access management w
     - [RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
 
 
+
 ## Sample Code
 
 ### OpenID Connect
@@ -125,14 +133,13 @@ using oxdCSharp.CommandResponses;
 using oxdCSharp.CommandParameters;
 ```
 
+
 #### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to setup your client application at the OpenID Connect Provider (OP). 
 During setup, oxd will dynamically register the OpenID Connect 
 client and save its configuration. Upon successful setup, the oxd-server will assign a unique oxd ID, return a Client ID and Client Secret. This Client ID and Client Secret can be used for `GetClientToken` method. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `SetupClient` method as a parameter. The Setup Client method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
-
-
 
 **Parameters:**
 
@@ -160,10 +167,9 @@ client and save its configuration. Upon successful setup, the oxd-server will as
 - oxdport: The port of the oxd-server
 - oxdhttpsurl:(Optional) URL of the oxd-https-extension
 
-
 **Request:**
 
- **Setup Client using oxd-server**
+**Setup Client using oxd-server**
 
 ```csharp
 public ActionResult SetupClient(string oxdHost, int oxdPort,  string OpHost, string redirectUrl, string ClientId, string clientSecret)
@@ -237,23 +243,22 @@ public ActionResult SetupClient( string oxdhttpsurl, string OpHost, string redir
 }
 ```
 
+
 #### Get Client Token
 
 The `GetClientToken` method is used to get a token which is sent as input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
-
 
 **Parameters:**
 
 - ClientId: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
 - ClientSecret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 - OpHost: URL of the OpenID Connect Provider (OP)
-- opDiscoveryPath: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank. But if it is https://client.example.com/oxauth/.well-known/openid-configurationthen path its oxauth
+- opDiscoveryPath: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank. But if it is https://client.example.com/oxauth/.well-known/openid-configuration then path is oxauth
 - Scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 - OxdId:oxd ID from client registration
 - oxdHost: The IP address of the oxd-server
 - oxdport: The port of the oxd-server
 - oxdhttpsurl: (Optional) URL of the oxd-https-extension 
-
 
 **Request:**
 
@@ -316,6 +321,7 @@ public string GetProtectionAccessToken( string oxdhttpsurl, string OpHost, strin
 }
 ```
 
+
 #### Register Site
 
 In order to use an OpenID Connect Provider (OP) for login, 
@@ -327,6 +333,8 @@ ClientID and Client Secret which can be passed to the `RegisterSite` method as a
 parameter. The Register Site method is a one time task to configure a client in the 
 oxd-server and OpenID Connect Provider (OP).
 
+!!! Note: 
+    The `Register Site` endpoint is not required if client is registered using `Setup Client`
 
 **Parameters:**
 
@@ -381,6 +389,7 @@ public ActionResult RegisterClient(string oxdHost, int oxdPort, string OpHost, s
     return Json(new { oxdId = registerSiteResponse.Data.OxdId });
 }
 ```
+
 **Register Client using oxd-https-extension**
 
 ```csharp
@@ -417,6 +426,7 @@ public ActionResult RegisterClient(string oxdhttpsurl, string OpHost, string red
 }
 ```
 
+
 #### Update Site Registration
 
 The `UpdateSiteRegistration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
@@ -445,7 +455,6 @@ Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret an
 - oxdHost: The IP address of the oxd-server
 - oxdport: The port of the oxd-server
 - oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used)
-
 
 **Request:**
 
@@ -507,6 +516,7 @@ public ActionResult Update(string oxdhttpsurl, string oxdId, string postLogoutRe
     "status":"ok"
 }
 ```
+
 
 #### Get Authorization URL
 
@@ -580,6 +590,7 @@ public ActionResult GetAuthorizationURL(string oxdhttpsurl, string oxdId, dictio
 ```
 
 **Response:**
+
 ```javascript
 {
     "status":"ok",
@@ -588,6 +599,7 @@ public ActionResult GetAuthorizationURL(string oxdhttpsurl, string oxdId, dictio
     }
 }
 ```
+
 
 #### Get Tokens by Code
 
@@ -651,6 +663,7 @@ public ActionResult GetTokenByCode( string oxdhttpsurl, string oxdId, string aut
 ```
 
 **Response:**
+
 ```javascript
 {
     "status":"ok",
@@ -733,8 +746,6 @@ public ActionResult GetAccessTokenByRefreshToken(string oxdhttpsurl, string oxdI
 }
 ```
 
-
-
 **Response:**
 
 ```javascript
@@ -763,7 +774,6 @@ Once the user has been authenticated by the OpenID Connect Provider (OP), the `G
 - oxdport: The port of the oxd-server
 - oxdhttpsurl: URL of the oxd-https-extension (Optional, required if oxd-https-extension is used)
 - OpHost: URL of the OpenID Connect Provider (OP)
-
 
 **Request:**
 
@@ -819,7 +829,6 @@ public ActionResult GetUserInfo(string oxdhttpsurl, string oxdId, string accessT
 }
 ```
 
-
 **Response:**
 ```javascript
 {
@@ -838,10 +847,10 @@ public ActionResult GetUserInfo(string oxdhttpsurl, string oxdId, string accessT
 }
 ```
 
+
 #### Logout
 
 `GetLogoutURL` method returns the OpenID Connect Provider (OP) Logout URL. Client application uses this Logout URL to end the user session.
-
 
 **Parameters:**
 
@@ -880,7 +889,6 @@ public ActionResult GetLogoutUrl(string oxdHost, int oxdPort, string oxdId, stri
 }
 ```
 
-
 **Get Logout URI using oxd-https-extension**
 
 ```csharp
@@ -903,8 +911,8 @@ public ActionResult GetLogoutUrl(string oxdhttpsurl, string oxdId, string protec
 }
 ```
 
-
 **Response:**
+
 ```javascript
 {
     "status":"ok",
@@ -914,13 +922,17 @@ public ActionResult GetLogoutUrl(string oxdhttpsurl, string oxdId, string protec
 }
 ```
 
+
 ### UMA (User Managed Access)
+
 oxdCsharp UMA Namespaces
 ```csharp
 using oxdCSharp.UMA.Clients;
 using oxdCSharp.UMA.CommandParameters;
 using oxdCSharp.UMA.CommandResponses;
 ```
+
+
 #### RS Protect
 
 `ProtectResources` method is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
@@ -1027,6 +1039,7 @@ public ActionResult ProtectResources(string oxdhttpsurl, string oxdId, string pr
 }
 ```
 
+
 #### RS Check Access 
 
 `CheckAccess` method is used in the UMA Resource Server to check the access to the resource.
@@ -1045,7 +1058,6 @@ public ActionResult ProtectResources(string oxdhttpsurl, string oxdId, string pr
 **Request:**
 
 **Check Access using oxd-server**
-
 
 ```csharp
 public ActionResult CheckAccess(string oxdHost, int oxdPort,  string oxdId, string rpt, string protectionAccessToken)
@@ -1151,6 +1163,7 @@ public ActionResult CheckAccess( string oxdhttpsurl, string oxdId, string rpt, s
 }
 ```
 
+
 #### RP Get RPT 
 
 The method `GetRPT` is called in order to obtain the RPT (Requesting Party Token).
@@ -1224,11 +1237,7 @@ public ActionResult ObtainRpt(string oxdhttpsurl, string oxdId, string ticket, s
 }
 ```
 
-
-
-
 **Response:**
-
 
 ***Success Response:***
 
@@ -1283,6 +1292,7 @@ public ActionResult ObtainRpt(string oxdhttpsurl, string oxdId, string ticket, s
            }
  }
 ```
+
 
 #### RP Get Claims Gathering URL 
 

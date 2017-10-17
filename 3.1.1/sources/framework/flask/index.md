@@ -48,7 +48,7 @@ apt-get install gluu-oxd-server
 - To start oxd-server, run the following command:
 
 ```bash
-service gluu-oxd-server start
+/etc/init.d/oxd-server start
 ```
 
 ## Demosite Deployment

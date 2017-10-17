@@ -56,7 +56,6 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 
 ```code
 <binding protocol="https" bindingInformation="*:portno:client.example.com" />
-
 ```
 - After adding the aforementioned lines the binding section will look like this:
      
@@ -66,8 +65,7 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
         <virtualDirectory path="/" physicalPath="<path of the project>" />
     </application>
     <bindings>
-        <binding protocol="https" bindingInformation="*:portno:localhost" />
-        <binding protocol="https" bindingInformation="*:portno:client.example.com" />
+        <binding protocol="https" bindingInformation="*:<portno>:client.example.com" />
     </bindings>
 </site>
 ```

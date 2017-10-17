@@ -1,6 +1,7 @@
 # oxd-python
 
 ## Overview
+
 The following documentation demonstrates how to use oxd's Python library to 
 send users from a Python application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
@@ -22,6 +23,7 @@ Download a [Sample Project](https://github.com/GluuFederation/oxd-python/archive
 ## Prerequisites
 
 ### Required Software
+
 To use the oxd-python library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
@@ -81,7 +83,7 @@ app.run('127.0.0.1', debug=True, port=8080, ssl_context=('<path>/demosite.crt', 
 - Run the following command to install oxdpython library:
 
 ``` {.code }
-pip install oxdpython==3.1.1
+pip install oxdpython
 ```
 - Run the following command to run the sample client application:
    
@@ -91,7 +93,7 @@ python demosite.py
 
 - With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
-    - Setup Client URL: https://client.example.com:8080/setupclient
+    - Setup Client URL: https://client.example.com:8080/setupClient
     - Login URL: https://client.example.com:8080
     - UMA URL: https://client.example.com:8080/uma
 
@@ -175,6 +177,7 @@ oxc = Client(config)
 ```
 
 **Request:**
+
 ```python
 client_data = oxc.setup_client(op_host=str(op_host), authorization_redirect_uri=str(authorization_redirect_uri), conn_type=str(conn_type), conn_type_value=str(conn_type_value), client_name=str(client_name), post_logout_uri=str(post_logout_uri), client_id=str(client_id), client_secret=str(client_secret))
 oxd_id = client_data.oxd_id
@@ -190,6 +193,7 @@ client_id = @!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A125.EE21.F0E2.8C08
 client_secret = f8eb25a0-f69b-4e4f-8058-ba9cbe6bf7eb
 ```
 
+
 #### Get Client Token
 
 The `get_client_token` method is used to get a token which is sent as an input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
@@ -199,7 +203,7 @@ The `get_client_token` method is used to get a token which is sent as an input p
 - client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
 - client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 - op_host: URL of the OpenID Connect Provider (OP)
-- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank. But if it is https://client.example.com/oxauth/.well-known/openid-configurationthen path its oxauth
+- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank. But if it is https://client.example.com/oxauth/.well-known/openid-configuration then path is oxauth
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 
 **Request:**
@@ -218,6 +222,7 @@ response = {
         "refresh_token"=None
     }
 ```
+
 
 #### Register Site
 
@@ -272,6 +277,7 @@ oxd_id = client.register_site(protection_access_token=str(protection_access_toke
 oxd_id = 6F9619FF-8B86-D011-B42D-00CF4FC964FF
 ```
 
+
 #### Update Site Registration
 
 The `update_site_registration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
@@ -300,7 +306,6 @@ Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret an
 - connection_type_value: 'oxd port number' for oxd-server type and 'oxd-https-extension URL' for oxd-https-extension  type
 - connection_type: 'local' for oxd-server and 'web' for oxd-https-extension
 
-
 **Request:**
 
 ```python
@@ -312,11 +317,13 @@ conn_type = request.form['conn_type_radio']
 
 status = oxc.update_site_registration(client_name=str(client_name), authorization_redirect_uri=str(redirect_uri), post_logout_uri=str(post_logout_uri), connection_type_value=str(conn_type_value), connection_type=str(conn_type), protection_access_token=str(protection_access_token))
 ```
+
 **Response:**
 
 ```python
 status = ok
 ```
+
 
 #### Get Authorization URL
 
@@ -347,6 +354,7 @@ auth_url = oxc.get_authorization_url(custom_params=custom_params, protection_acc
 auth_url = https://client.example.com/authorize?response_type=code&client_id=s6BhdRkqt3&redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb&scope=openid%20profile&acr_values=duo&state=af0ifjsldkj&nonce=n-0S6_WzA2Mj&param2=value2&param1=value1
 ```
 
+
 #### Get Tokens by Code
 
 Upon successful login, the login result will return code and state. `get_tokens_by_code` method 
@@ -374,6 +382,8 @@ refreshToken = tokens.refresh_token
 accessToken = SlAV32hkKG
 refreshToken = aaAV32hkKG1
 ```
+
+
 #### Get Access Token by Refresh Token
 
 The `get_access_token_by_refresh_token` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `get_tokens_by_code` method.
@@ -400,6 +410,7 @@ accessToken = ALSAKLDDKN9787DYAH
 refreshToken = gh75UHGHHS88sd
 ```
 
+
 #### Get User Info
 
 Once the user has been authenticated by the OpenID Connect Provider (OP), 
@@ -425,6 +436,7 @@ userEmail = user.email[0]
 ```python
 user = {given_name=["Jane"], family_name=["Doe"], email=["janedoe@example.com"], sub=["248289761001"], name=["Jane Doe"] }
 ```
+
 
 #### Logout
 
@@ -453,6 +465,7 @@ return redirect(logout_url)
 ```python
 logout_url = https://<server>/end_session?id_token_hint=<id token>&state=<state>&post_logout_redirect_uri=<...>
 ```
+
 
 ### UMA (User Managed Access)
 
@@ -490,6 +503,7 @@ result = oxc.uma_rs_protect(resources=resources, protection_access_token=str(pro
 ```python
 result = true
 ```
+
 
 #### RS Check Access 
 
@@ -561,6 +575,7 @@ result = oxc.uma_rs_check_access(rpt=str(rpt), path=path, http_method=http_metho
 }
 ```
 
+
 #### RP Get RPT 
 
 The method uma_rp_get_rpt is called in order to obtain the RPT (Requesting Party Token). 
@@ -584,7 +599,6 @@ result = oxc.uma_rp_get_rpt(ticket=str(ticket), scope='Test_scope', protection_a
 ```
 
 **Response:**
-
 
 ***Success Response:***
 
@@ -640,6 +654,7 @@ result = oxc.uma_rp_get_rpt(ticket=str(ticket), scope='Test_scope', protection_a
  }
 ```
 
+
 #### RP Get Claims Gathering URL 
 
 **Parameters:**
@@ -670,6 +685,7 @@ result = oxc.uma_rp_get_claims_gathering_url(ticket=str(ticket), claims_redirect
     }
 }
 ```
+
 
 ## Support
 Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.

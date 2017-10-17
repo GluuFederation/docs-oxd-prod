@@ -20,19 +20,6 @@ $ sudo apt-get install apache2
 $ a2enmod ssl
 ```
 
-## Demosite Deployment
-
-OpenID Connect only works with HTTPS connections. Enter the following to prepare the SSL certificates:
-
-```bash
-$ mkdir /etc/certs
-$ cd /etc/certs
-$ openssl genrsa -des3 -out demosite.key 2048
-$ openssl rsa -in demosite.key -out demosite.key.insecure
-$ mv demosite.key.insecure demosite.key
-$ openssl req -new -key demosite.key -out demosite.csr
-$ openssl x509 -req -days 365 -in demosite.csr -signkey demosite.key -out demosite.crt
-```
 
 ## Install RVM and Ruby on Ubuntu
 
@@ -107,14 +94,29 @@ Add these lines to Apache's config file:
 </IfModule>
 ```
 
-## Configuring oxd-server
+## Demosite Deployment
 
-In console:
+OpenID Connect only works with HTTPS connections. Enter the following to prepare the SSL certificates:
+
+```bash
+$ mkdir /etc/certs
+$ cd /etc/certs
+$ openssl genrsa -des3 -out demosite.key 2048
+$ openssl rsa -in demosite.key -out demosite.key.insecure
+$ mv demosite.key.insecure demosite.key
+$ openssl req -new -key demosite.key -out demosite.csr
+$ openssl x509 -req -days 365 -in demosite.csr -signkey demosite.key -out demosite.crt
+```
+
+Create a virtual host of oxd-ruby, oxd-ruby.conf under /etc/apache2/sites-available/ file and add these lines:
+
 ```bash
 $ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/oxd-ruby.conf
 $ sudo vi /etc/apache2/sites-available/oxd-ruby.conf
 ```
+
 Replace the content in the oxd-ruby.conf file with the following:
+
 ```
 <IfModule mod_ssl.c>
 	<VirtualHost *:443>
@@ -162,6 +164,24 @@ Reload the Apache server:
 ```bash
 $ sudo service apache2 restart
 ```
+
+
+## Configuring oxd-server
+
+- Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
+
+    Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
+
+- Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
+
+    Change the `response_types` line to `"response_types": ["code"]`
+
+- To start oxd-server, run the following command:
+
+```bash
+/etc/init.d/oxd-server start
+```
+
 ## Running the Demo Application
 
 Navigate to Rails app root:
