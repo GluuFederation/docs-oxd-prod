@@ -30,13 +30,13 @@ pages:
     - Billing: 'license/billing/index.md'
 - 'Installation': 'install/index.md'
 - 'Upgrade': 'upgrade/index.md'
-- 'Server Configuration': 'configuration/index.md'
-- 'Log Configuration': 'logs/index.md'
+- 'Configuration': 'configuration/index.md'
+- 'Logs': 'logs/index.md'
 - 'API': 'api/index.md'
 - oxd-https-extension:
   - 'Start': 'oxd-https/start/index.md'
   - 'Configuration': 'oxd-https/configuration/index.md'
-  - 'Log configuration': 'oxd-https/logs/index.md'
+  - 'Logs': 'oxd-https/logs/index.md'
   - 'API': 'oxd-https/api/index.md'
 - Native Libraries:
     - 'Overview-oxd API Client Libraries': 'libraries/api-client-libraries.md'
