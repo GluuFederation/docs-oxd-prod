@@ -5,30 +5,27 @@ oxd is middleware software that makes it easy to send users from **server-side w
 
 oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby, Perl, C#, and Go.
 
+!!! Note
+    If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
+
 ### oxd server
 The oxd-server is designed to work as a standalone service daemon via sockets. By default, the oxd-server is restricted to `localhost`, which means oxd needs to be installed on each server hosting applications you want secured by your OpenID Connect Provider (OP). 
 
 ### oxd-https-extension
 If you want web apps to connect to oxd via HTTPS, you can start the oxd-https-extension. This will enable you to host one central oxd service for all your web applications, resulting in less maintenance and easier upgrades. 
 
-!!! Note
-    If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.    
-
-## License & Billing
-oxd is commercial software licensed by Gluu. The billing model is $0.33 per application per day (or roughly $10 per month per application). 
-
-To complete the oxd-server setup you will need a valid license. Get your license and a $50 credit on the [oxd website](https://oxd.gluu.org).
-
 ## Get Started
 
 Step 1: [Install the oxd package](./install/index.md);   
 
-Step 2: [Configure your oxd-server](./configuration/index.md);        
+Step 2*: [Configure your oxd-server](./configuration/index.md);           
 
 Step 3: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
 
 Step 4: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login.  
 
+*Note: you will need a valid license to configure oxd. Get your license and a $50 credit on the [oxd website](https://oxd.gluu.org).
+   
 ## Supported OpenID Providers (OP)
 oxd has been confirmed to work with the following standard OP's:
 
