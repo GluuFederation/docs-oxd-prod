@@ -9,10 +9,10 @@ oxd exposes a simple REST API and native libraries that wrap the API for Php, Ja
     If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
 
 ### oxd server
-The oxd-server is designed to work as a standalone service daemon via sockets. By default, the oxd-server is restricted to `localhost`, which means oxd needs to be installed on each server hosting applications you want secured by your OpenID Connect Provider (OP). 
+The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`.
 
 ### oxd-https-extension
-If you want web apps to connect to oxd via HTTPS, you can start the oxd-https-extension. This will enable you to host one central oxd service for all your web applications, resulting in less maintenance and easier upgrades. 
+If you want web apps to connect to your oxd server via HTTPS, you can use the oxd-https-extension. The extension is included in the oxd packages (it simply needs to be started) and will enable you to host one central oxd service for all your web applications. 
 
 ## Get Started
 
