@@ -48,9 +48,9 @@ If you are using the `oxd-https-extension`, before using the above workflow you 
 
 #### Setup Client
 
-It is required to setup client if `oxd-https-extension` is used. For `oxd-server` it is not required.
+If you are using the `oxd-https-extension`, you must setup the client. 
 
-Parameters for Setup Client are the same as for Register Site command. The command registers the client for communication protection. This will be used to obtain an access token via the Get Client Token command.  The access token will be passed as a `protection_access_token` parameter to other commands.
+The parameters for Setup Client are the same as for Register the Site command. The command registers the client for communication protection. This will be used to obtain an access token via the Get Client Token command.  The access token will be passed as a `protection_access_token` parameter to other commands.
 
 Request:
 
