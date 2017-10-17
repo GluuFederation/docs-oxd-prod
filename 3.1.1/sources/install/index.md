@@ -4,21 +4,21 @@ Please find Linux Packages below. After installation you can configure oxd-serve
 
 Then run the following command to start the `oxd-server`:
 
-`# /etc/init.d/oxd-server start`
+`/etc/init.d/oxd-server start`
 
 To stop the `oxd-server` run:
 
-`# /etc/init.d/oxd-server stop`
+`/etc/init.d/oxd-server stop`
 
 ## Linux Packages
 
 ### Ubuntu 14.04 (trusty)
 
 ```
-# echo "deb https://repo.gluu.org/ubuntu/ trusty main" > /etc/apt/sources.list.d/gluu-repo.list
-# curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
-# apt-get update
-# apt-get install oxd-server
+echo "deb https://repo.gluu.org/ubuntu/ trusty main" > /etc/apt/sources.list.d/gluu-repo.list
+curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
+apt-get update
+apt-get install oxd-server
 ```
 
 ### Ubuntu 16.04 (xenial)
@@ -42,31 +42,31 @@ apt-get install oxd-server
 ### CentOS 6
 
 ```
-# wget https://repo.gluu.org/centos/Gluu-centos6.repo -O /etc/yum.repos.d/Gluu.repo
-# wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-# rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-# yum clean all
-# yum install oxd-server
+wget https://repo.gluu.org/centos/Gluu-centos6.repo -O /etc/yum.repos.d/Gluu.repo
+wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
+yum clean all
+yum install oxd-server
 ```
 
 ### CentOS 7
 
 ```
-# wget https://repo.gluu.org/centos/Gluu-centos7.repo -O /etc/yum.repos.d/Gluu.repo
-# wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-# rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-# yum clean all
-# yum install oxd-server
+wget https://repo.gluu.org/centos/Gluu-centos7.repo -O /etc/yum.repos.d/Gluu.repo
+wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
+yum clean all
+yum install oxd-server
 ```
 
 ### RHEL 6
 
 ```
-# wget https://repo.gluu.org/rhel/Gluu-rhel6.repo -O /etc/yum.repos.d/Gluu.repo
-# wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-# rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-# yum clean all
-# yum install oxd-server
+wget https://repo.gluu.org/rhel/Gluu-rhel6.repo -O /etc/yum.repos.d/Gluu.repo
+wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
+yum clean all
+yum install oxd-server
 ```
 
 ### RHEL 7
