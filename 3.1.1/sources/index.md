@@ -80,14 +80,20 @@ If your organization needs guaranteed response times, private support, and prior
 **What is oxd?**       
 Under oxd we mean oxd-server and oxd-https-extension. oxd is a mediator: it provides API's that can be called by a web application that are easier than directly calling the API's of an OpenID Connect Provider (OP) or an UMA Authorization Server (AS).
 
-**What is oxd-server?**       
-oxd-server is a standalon service with socket connection. By default it's restricted to localhost only (by `localhost_only: true` configuration in `oxd-conf.json`). It's possible to turn off this restriction if set `localhost_only: false` in `oxd-conf.json`
+**How is oxd licensed, and how much does it cost?**        
+oxd is commercially licensed software by Gluu. After your initial $50 credit expires, you will be billed USD $0.33 per day for each application that leverages your oxd service. [Get your oxd license and $50 credit on the website](http://oxd.gluu.org).  
 
-**What is oxd-https-extension?**
+**What types of applications can use oxd?**        
+oxd only supports server-side web applications. If you need single sign-on (SSO) for single-page apps (SPAs) or native apps with your Gluu Server, please review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/).  
+
+**What is the oxd-server?**       
+oxd-server is a standalone service with socket connection. By default it's restricted to localhost only (by `localhost_only: true` configuration in `oxd-conf.json`). It's possible to turn off this restriction if set `localhost_only: false` in `oxd-conf.json`
+
+**What is the oxd-https-extension?**
 oxd-https-extension is a standalone RESTful Jetty based server which accepts HTTP calls and redirects them to `oxd-server`. In order to use `oxd-https-extension` oxd-server must be installed. 
 
 **Where do I deploy oxd-server?**    
-oxd-server is deployed on the same server as the web application(s) you want to protect. With the oxd-https-extension, oxd-server can be deployed on its own standalone server.
+By default, the oxd-server must be deployed on the same server as the web application(s) you want to protect. However, with the oxd-https-extension running, the oxd-server can be deployed on its own standalone server.
 
 **Why should I use oxd?**     
 oxd offers a few key improvements over the traditional model of embedding OAuth 2.0 code in your applications:
@@ -97,9 +103,6 @@ oxd offers a few key improvements over the traditional model of embedding OAuth 
 2. oxd is written, maintained, and supported by developers who specialize in application security. Because of the complexity of the standards--and the liability associated with poor implementations--it makes sense to rely on professionals who have read the specifications in their entirety and understand how to properly implement the protocols.     
 
 3. Centralization reduces costs. By using oxd across your IT infrastructure for application security (as opposed to a handful of homegrown and third party OAuth2 client implementations), the surface area for vulnerabilities, issue resolution, and support is significantly reduced. Plus you who have someone to call if something goes wrong!     
-
-**How is oxd licensed?**        
-oxd is commercially licensed. Each time you install oxd you will need to use your license. Active installations are billed $0.33 per day (roughly $10 USD per month per active installation). [Get your oxd license today](http://oxd.gluu.org).  
 
 **Which programming languages and frameworks does oxd have libraries for?**        
 Currently there are oxd libraries for the following languages and frameworks:    
