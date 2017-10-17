@@ -1,6 +1,17 @@
 # oxd-server Installation 
 
-Please find Linux Packages below. After installation you can configure oxd-server following the [configuration instructions](../configuration/index.md). 
+## System Requirements
+
+oxd needs to be deployed on a server or VM with the following **minimum** requirements. 
+
+|CPU Unit  |    RAM     |   Disk Space      | Processor Type |
+|----------|------------|-------------------|----------------|
+|       1  |    400MB     |   200MB            |  64 Bit        |
+
+
+## Linux Packages
+
+Find the proper linux package below. After installation you can configure oxd-server following the [configuration instructions](../configuration/index.md). 
 
 Then run the following command to start the `oxd-server`:
 
@@ -10,7 +21,6 @@ To stop the `oxd-server` run:
 
 `/etc/init.d/oxd-server stop`
 
-## Linux Packages
 
 ### Ubuntu 14.04 (trusty)
 
