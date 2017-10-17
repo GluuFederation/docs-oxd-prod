@@ -1,6 +1,6 @@
 # Logs
 
-Logs are written into the working directory in `oxd Server` by default. 
+Logs are written into the working directory in `oxd Server` by default on windows and to `/var/log/oxd-server.log` on unix (on unix location is set inside `oxd-server/conf/log4j.xml` file). 
 Custom log locations can be specified in `log4j.xml.` The file is 
 loaded using the `log4j.configuration` system property. The following 
 is an example for running the `oxd Server` with `log4j` with the file 
