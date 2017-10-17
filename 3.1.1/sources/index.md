@@ -14,7 +14,7 @@ To complete the oxd-server setup you will need a valid license. Get your license
 
 The oxd-server is designed to work as a standalone service daemon via sockets. By default, the oxd-server is restricted to `localhost`, which means oxd needs to be installed on each server hosting applications you want secured by your OpenID Connect Provider (OP). 
 
-With the oxd-https-extension installed, web apps can connect to oxd via HTTPS, enabling you to host one central oxd service for all your web applications. Using the oxd-https-extension will result in less maintenance and easier upgrades. 
+If you want web apps to connect to oxd via HTTPS, you can start the oxd-https-extension. This will enable you to host one central oxd service for all your web applications, resulting in less maintenance and easier upgrades. 
 
 oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby, Perl, C#, and Go.
 
@@ -36,24 +36,12 @@ oxd has been confirmed to work with the following standard OP's:
 
 If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
 
-## Technical Architecture
+## Get Started
 
-### oxd-server
-By default, oxd-server is restricted to `localhost`, which means its APIs can only be reached by services running locally on the server. oxd-server must be installed on each server that hosts a target application. 
-
-![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
-
-### oxd-https-extension
-The oxd-https-extension enables apps to call your oxd-server over the web using HTTPS. The oxd-https-extension is included in the oxd package, and simply needs to be started if you would like to take advantage of its functionality. 
-
-## Installation
-First, you need to install the oxd package:       
-
-- [oxd-server installation](./install/index.md)
-
-If you want to support application connections via HTTPS, next you need to start the oxd-https-extension:     
-
-- [oxd-https-extension installation](./oxd-https/start/index.md)
+Step 1: [Install the oxd package](./install/index.md);   
+Step 2: [Configure your oxd-server](./configuration/index.md);        
+Step 3: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
+Step 4: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login.  
 
 ## oxd API
 The oxd-server supports the OpenID Connect and UMA 2.0 profiles of OAuth 2.0. OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA can be used to manage what digital resources the user should have access to.    
