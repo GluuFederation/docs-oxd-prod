@@ -18,16 +18,6 @@ If you want web apps to connect to oxd via HTTPS, you can start the oxd-https-ex
 
 oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby, Perl, C#, and Go.
 
-## How it Works
-
-Step 1. User clicks login at your web app
-
-Step 2. Your web app uses oxd's REST API or one of its native libraries (Php, Java, Python, Node, Ruby, Perl, C#, and Go) to securely send the user to an OpenID Connect Provider (OP) for login.
-
-Step 3. oxd communicates with the OpenID Connect Provider (OP) and returns the user to your web app with verified information ("attributes" or "claims").
-
-Step 4. Your web application enrolls the user and/or grants access to the protected resource.
-
 ## Supported OpenID Providers (OP)
 oxd has been confirmed to work with the following standard OP's:
 
