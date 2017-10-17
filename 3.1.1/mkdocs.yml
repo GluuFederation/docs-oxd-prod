@@ -38,7 +38,7 @@ pages:
   - 'Configuration': 'oxd-https/configuration/index.md'
   - 'Logs': 'oxd-https/logs/index.md'
   - 'API': 'oxd-https/api/index.md'
-- Native Libraries:
+- Libraries:
     - 'Overview-oxd API Client Libraries': 'libraries/api-client-libraries.md'
     - Languages:
         - 'Python': 'libraries/python/index.md'
@@ -49,7 +49,7 @@ pages:
         - 'CSharp': 'libraries/csharp/index.md'
         - 'Perl': 'libraries/perl/index.md'
         - 'Go': 'libraries/golang/index.md'
-    - Framework:
+    - Frameworks:
         - 'Java Spring': 'framework/spring/index.md'
         - 'Java Play Framework': 'framework/play/index.md'
         - 'Ruby on Rails': 'framework/rails/index.md'
