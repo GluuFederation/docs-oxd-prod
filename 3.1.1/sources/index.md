@@ -31,8 +31,8 @@ oxd exposes a simple REST API and native libraries that wrap the API for Php, Ja
 ## Supported OpenID Providers (OP)
 oxd has been confirmed to work with the following OP's:
 
-- [Gluu Server]((https://gluu.org/docs/ce/installation-guide/))   
-- Google   
+- [Gluu Server](https://gluu.org/docs/ce/installation-guide/)    
+- [Google](https://developers.google.com/identity/protocols/OpenIDConnect)   
 
 If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
 
