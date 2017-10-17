@@ -14,7 +14,7 @@ oxd exposes a simple REST API and native libraries that wrap the API for Php, Ja
 The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`.
 
 ### oxd-https-extension
-If you want web apps to connect to your oxd server via HTTPS, you can use the oxd-https-extension. The extension is included in the oxd packages (it simply needs to be started) and will enable you to host one central oxd service for all your web applications. 
+If you want to connect applications to your oxd server over the web via HTTPS, you can use the oxd-https-extension. The extension is included in the standard oxd package (it simply needs to be started), and will enable you to host one central oxd service that can be leveraged by all your web applications. 
 
 ## Get Started
 
