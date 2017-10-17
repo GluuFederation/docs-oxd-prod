@@ -3,6 +3,8 @@
 ## Introduction
 oxd is middleware software that makes it easy to send users from **server-side web applications** to a standard OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server), for login and/or enrollment.
 
+In addition to OpenID Connect, oxd also implement the UMA 2.0 profile of OAuth 2.0, which enables claims-based authorization and multi-step consent, user-interactions and stepped-up authentication flows. 
+
 oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby, Perl, C#, and Go.
 
 !!! Note
@@ -35,7 +37,9 @@ oxd has been confirmed to work with the following standard OP's:
 If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
 
 ## oxd API
-The oxd-server supports the OpenID Connect and UMA 2.0 profiles of OAuth 2.0. OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA can be used to manage what digital resources the user should have access to.    
+The oxd-server implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
+
+OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA can be used to manage what digital resources, like web pages and APIs, the user (or client) should have access to.    
 
 Learn more in the [oxd Server API section](./api/index.md)    
 
