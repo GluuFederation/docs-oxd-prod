@@ -1,15 +1,14 @@
 # OpenID Connect & UMA Protocol Overview
 
-The oxd-server supports the OpenID Connect and UMA 2 profiles of OAuth 2.0. OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA 2 can be used to manage what digital resources the user should have access to.
+The oxd-server supports the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
+
+OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA 2.0 can be used to manage what digital resources the user should have access to.
 
 ## OpenID Connect Authentication
 
-OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. OpenID Connect is one of the most popular API's for an application to identify a person. Technically it is not an authentication protocol--
-it enables a person to authorize the release of information to 
-an application from a remote "identity provider". In the
-process of authorizing this release of information, the person is authenticated (if 
-no previous session exists). If you are familiar with Google 
-authentication, you've used OpenID Connect. 
+OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. OpenID Connect is one of the most popular API's for an application to identify a person. Technically it is not an authentication protocol--it enables a person to authorize the release of information to an application from a remote "identity provider". In the process of authorizing this release of information, the person is authenticated (if no previous session exists). 
+
+If you are familiar with Google authentication, you've used OpenID Connect. 
 
 !!! Note
     If you need an OpenID Connect Provider you can deploy the [Gluu Server](https://gluu.org/docs/3.1.1/installation-guide/install/). 
