@@ -1,5 +1,15 @@
 # oxd-server Installation 
 
+Please find Linux Packages below. After installation you can configure oxd-server following the [configuration instructions](../configuration/index.md). 
+
+Then run the following command to start the `oxd-server`:
+
+`# /etc/init.d/oxd-server start`
+
+To stop the `oxd-server` run:
+
+`# /etc/init.d/oxd-server stop`
+
 ## Linux Packages
 
 ### Ubuntu 14.04 (trusty)
@@ -10,12 +20,6 @@
 # apt-get update
 # apt-get install oxd-server
 ```
-Now configure oxd-server following the [configuration instructions](../configuration/index.md). 
-
-Then run the following command to start the oxd-server server:
-
-`# /etc/init.d/oxd-server start`
-
 
 ### Ubuntu 16.04 (xenial)
 
@@ -25,11 +29,6 @@ curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install oxd-server
 ```
-Now configure oxd following the [configuration instructions](../configuration/index.md). 
-
-Then run the following command to start the oxd server:
-
-`/etc/init.d/oxd-server start`
 
 ### Debian 8 (Jessie)
 
@@ -39,11 +38,6 @@ curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install oxd-server
 ```
-Now configure oxd following the [configuration instructions](../configuration/index.md). 
-
-Then run the following command to start the oxd server:
-
-`/etc/init.d/oxd-server start`
 
 ### CentOS 6
 
@@ -54,11 +48,6 @@ Then run the following command to start the oxd server:
 # yum clean all
 # yum install oxd-server
 ```
-Now configure oxd following the [configuration instructions](../configuration/index.md). 
-
-Then run the following command to start the oxd server:
-
-`# /etc/init.d/oxd-server start`
 
 ### CentOS 7
 
@@ -69,11 +58,6 @@ Then run the following command to start the oxd server:
 # yum clean all
 # yum install oxd-server
 ```
-Now configure oxd following the [configuration instructions](../configuration/index.md). 
-
-Then run the following command to start the oxd server:
-
-`# /etc/init.d/oxd-server start`
 
 ### RHEL 6
 
@@ -84,11 +68,6 @@ Then run the following command to start the oxd server:
 # yum clean all
 # yum install oxd-server
 ```
-Now configure oxd following the [configuration instructions](../configuration/index.md). 
-
-Then run the following command to start the oxd server:
-
-`# /etc/init.d/oxd-server start`
 
 ### RHEL 7
 
@@ -99,11 +78,6 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
 yum install oxd-server
 ```
-Now configure oxd following the [configuration instructions](../configuration/index.md). 
-
-Then run the following command to start the oxd server:
-
-`/etc/init.d/oxd-server start`
 
 ## Manual installation
 
