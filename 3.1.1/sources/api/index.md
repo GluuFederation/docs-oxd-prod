@@ -6,15 +6,12 @@ OpenID Connect can be used to send a user for authentication and gather identity
 
 ## OpenID Connect Authentication
 
-OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. OpenID Connect is one of the most popular API's for an application to identify a person. 
+OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. OpenID Connect is one of the most popular API's for an application to identify a person. If you are familiar with Google authentication, you've used OpenID Connect. 
 
 Technically OpenID Connect is not an authentication protocol--it enables a person to authorize the release of information to an application from a remote "identity provider". In the process of authorizing this release of information, the person is authenticated (if no previous session exists). 
 
-If you are familiar with Google authentication, you've used OpenID Connect. 
-
 !!! Note
-    If you need an OpenID Connect Provider you can deploy the [Gluu Server](https://gluu.org/docs/3.1.1/installation-guide/install/). 
-    The Gluu Server will enable your organization to centralize authentication and authorization decisions to enable Single Sign-On (SSO) and strong authentication for many applications. 
+    If you need an OpenID Connect Provider (OP) you can deploy the [Gluu Server](https://gluu.org/docs/3.1.1/installation-guide/install/). 
 
 ### Authentication Flow
 oxd uses the [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) 
