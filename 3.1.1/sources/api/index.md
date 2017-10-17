@@ -39,13 +39,12 @@ The other four oxd API's are:
  
 **IMPORTANT** : 
 
-In `oxd-https-extension` case before using above workflow it is required to obtain access token to secure interaction between client application and `oxd-https-extension`. 
+If you are using the `oxd-https-extension`, before using the above workflow you will need to obtain an access token to secure the interaction between the client application and the `oxd-https-extension`. 
 
  - Setup client (returns `client_id` and `client_secret`)
  - Get client token (pass `client_id` and `client_secret` to obtain `access_token`)
  
- Pass obtained access token as `protection_access_token` to all further calls to `oxd-https-extension`.
-
+ Pass the obtained access token as `protection_access_token` in all future calls to the `oxd-https-extension`.
 
 #### Setup Client
 
