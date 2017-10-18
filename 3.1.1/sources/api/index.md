@@ -1,19 +1,17 @@
 # OpenID Connect & UMA Protocol Overview
 
-The oxd-server supports the OpenID Connect and UMA 2 profiles of OAuth 2.0. OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA 2 can be used to manage what digital resources the user should have access to.
+The oxd-server supports the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
+
+OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA 2.0 can be used to manage what digital resources the user should have access to.
 
 ## OpenID Connect Authentication
 
-OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. OpenID Connect is one of the most popular API's for an application to identify a person. Technically it is not an authentication protocol--
-it enables a person to authorize the release of information to 
-an application from a remote "identity provider". In the
-process of authorizing this release of information, the person is authenticated (if 
-no previous session exists). If you are familiar with Google 
-authentication, you've used OpenID Connect. 
+OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. OpenID Connect is one of the most popular API's for an application to identify a person. If you are familiar with Google authentication, you've used OpenID Connect. 
+
+Technically OpenID Connect is not an authentication protocol--it enables a person to authorize the release of information to an application from a remote "identity provider". In the process of authorizing this release of information, the person is authenticated (if no previous session exists). 
 
 !!! Note
-    If you need an OpenID Connect Provider you can deploy the [Gluu Server](https://gluu.org/docs/3.1.1/installation-guide/install/). 
-    The Gluu Server will enable your organization to centralize authentication and authorization decisions to enable Single Sign-On (SSO) and strong authentication for many applications. 
+    If you need an OpenID Connect Provider (OP) you can deploy the [Gluu Server](https://gluu.org/docs/3.1.1/installation-guide/install/). 
 
 ### Authentication Flow
 oxd uses the [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) 
@@ -41,19 +39,18 @@ The other four oxd API's are:
  
 **IMPORTANT** : 
 
-In `oxd-https-extension` case before using above workflow it is required to obtain access token to secure interaction between client application and `oxd-https-extension`. 
+If you are using the `oxd-https-extension`, before using the above workflow you will need to obtain an access token to secure the interaction between the client application and the `oxd-https-extension`. 
 
  - Setup client (returns `client_id` and `client_secret`)
  - Get client token (pass `client_id` and `client_secret` to obtain `access_token`)
  
- Pass obtained access token as `protection_access_token` to all further calls to `oxd-https-extension`.
-
+ Pass the obtained access token as `protection_access_token` in all future calls to the `oxd-https-extension`.
 
 #### Setup Client
 
-It is required to setup client if `oxd-https-extension` is used. For `oxd-server` it is not required.
+If you are using the `oxd-https-extension`, you must setup the client. 
 
-Parameters for Setup Client are the same as for Register Site command. The command registers the client for communication protection. This will be used to obtain an access token via the Get Client Token command.  The access token will be passed as a `protection_access_token` parameter to other commands.
+The parameters for Setup Client are the same as for Register the Site command. The command registers the client for communication protection. This will be used to obtain an access token via the Get Client Token command.  The access token will be passed as a `protection_access_token` parameter to other commands.
 
 Request:
 
