@@ -28,16 +28,15 @@ To use the oxd-perl library, you will need:
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
-### Install oxd-perl
+## Install oxd-perl
 
-To install oxd-perl from CPAN, run the following command in 
-Linux terminal or Windows command window
+To install oxd-perl from CPAN, run the following command in Linux terminal or Windows command window:
 
 ``` {.code }
 cpan > install GLUU/oxdperl-0.02.tar.gz
 ```
 
-To install CGI::Session, Net::SSLeay and IO::Socket::SSL modules run the following commands in CPAN
+To install CGI::Session, Net::SSLeay and IO::Socket::SSL modules run the following commands in CPAN:
 
 ``` {.code }
 cpan > install CGI::Session
@@ -46,7 +45,7 @@ cpan > install IO::Socket::SSL
 ```
 
 
-### Configure the Client Application
+## Configure the Client Application
 
 Client application must have a valid SSL certificate, so the URL includes: `https://`    
 
