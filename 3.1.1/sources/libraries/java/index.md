@@ -6,22 +6,16 @@ The following documentation demonstrates how to use oxd's Java library to
 send users from a Java application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
-## Sample Project
-
 Download a [Sample Project](https://github.com/GluuFederation/oxd-java/archive/master.zip) 
 specific to this oxd-java library.
 
-### System Requirements
+## Software Requirements
 
 - Ubuntu / Debian / CentOS / RHEL / Windows 7 or higher / Windows Server 2008 or higher
 - Java 7 or higher
 - Apache 2.4.4 or higher
 - oxd-java 3.0.1
 
-
-## Prerequisites
-
-### Required Software
 To use the oxd-java library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
@@ -31,7 +25,7 @@ To use the oxd-java library, you will need:
 
 ### Install oxd-java from Maven
 
-Get oxd-java Jar files from [Maven Repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
+Get oxd-java JAR files from [Maven Repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
 
 ### Configure the Client Application
 
@@ -92,7 +86,6 @@ The oxd-server and oxd-https-extension provide the following methods for authent
 - [Get Tokens by Code](../../oxd-server/api/#get-tokens-id-access-by-code)    
 - [Get User Info](../../oxd-server/api/#get-user-info)   
 - [Get Logout URI](../../oxd-server/api/#log-out-uri) 
-
 
 
 ## Sample code
