@@ -24,7 +24,7 @@ To use the oxd-node library, you will need:
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
-### Install oxd-node via npm
+### Install oxd-node
 
 To install oxd-node via npm, run following commands in Linux terminal or 
 Windows command window
