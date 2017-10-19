@@ -48,12 +48,12 @@ cpan > install IO::Socket::SSL
 
 ### Configure the Client Application
 
-- Client application must have a valid SSL certificate, so the URL includes: `https://`    
+Client application must have a valid SSL certificate, so the URL includes: `https://`    
 
 
 #### Linux
 
-Install Perl on ubuntu
+Install Perl on ubuntu:
 ```bash
 $ sudo apt-get install perl
 $ sudo apt-get install libapache2-mod-perl2 
@@ -120,7 +120,7 @@ Enable `oxd-perl-example.conf` virtual host by running:
 $ sudo a2ensite oxd-perl-example.conf 
 ```
 
-Add domain name in the virtual host file. In console:
+Add domain name in the virtual host file:
 
 ```bash
 $ sudo nano /etc/hosts
@@ -147,12 +147,12 @@ cd /var/www/html/oxd-perl/example
 
 #### Windows
 
-- The client hostname should be a valid `hostname` (FQDN), not a localhost or an IP Address. 
+The client hostname should be a valid `hostname` (FQDN), not a localhost or an IP Address. 
 You can configure the hostname by adding the following entry in  `C:\Windows\System32\drivers\etc\hosts` file:
 
     `127.0.0.1  client.example.com`
     
-- Enable SSL by	adding the following lines to the virtual host file of Apache in the 
+Enable SSL by	adding the following lines to the virtual host file of Apache in the 
 location `C:/apache/conf/extra/httpd-vhosts.conf`:
 
 ```
@@ -176,21 +176,21 @@ location `C:/apache/conf/extra/httpd-vhosts.conf`:
 </VirtualHost>
 ```
 
-- Download the [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip)
+Download the [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip).
 
-- Configure Apache to treat the project directory as a script directory. In the following location, `C:\Program Files\Apache Group\Apache\conf\httpd.conf`, set the path to `httpd.conf` 
+Configure Apache to treat the project directory as a script directory. In the following location, `C:\Program Files\Apache Group\Apache\conf\httpd.conf`, set the path to `httpd.conf` 
 
 ```
 ScriptAlias /cgi-bin/ "<path to CGI files>"
 ```
 
-- To run CGI scripts and .pl extension anywhere in the domain, add the following line to `httpd.conf` file:
+To run CGI scripts and .pl extension anywhere in the domain, add the following line to `httpd.conf` file:
 
 ```
 AddHandler cgi-script .cgi .pl
 ```
 
-- In the `Directory` section of `httpd.conf` file, add the folowing CGI path:
+In the `Directory` section of `httpd.conf` file, add the folowing CGI path:
 
 ```
 <Directory "<path to CGI files>">
@@ -200,19 +200,19 @@ AddHandler cgi-script .cgi .pl
 </Directory>
 ```
 
-- The first line of perl script contains `#!/usr/bin/perl`, replace it with the path of perl.exe `#!C:/program files/perl/bin/perl.exe` 
+The first line of perl script contains `#!/usr/bin/perl`, replace it with the path of perl.exe `#!C:/program files/perl/bin/perl.exe` 
 
-- Restart the Apache server.
+Restart the Apache server.
 
-- Move oxdperl module from lib directory to the lib directory of the Perl installation (\perl\lib).
+Move oxdperl module from lib directory to the lib directory of the Perl installation (\perl\lib).
 
-- With the oxd-server and Apache Server running, navigate to the URL's below to run Sample Client Application. To register a client in the oxd-server use the Setup client URL. Upon successful registration of the client application, oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+With the oxd-server and Apache Server running, navigate to the URL's below to run Sample Client Application. To register a client in the oxd-server use the Setup client URL. Upon successful registration of the client application, oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
     - Setup Client URL: https://client.example.com:8090/cgi-bin/settings.cgi
     - Login URL: https://client.example.com:8090/cgi-bin/index.cgi
     - UMA URL: https://client.example.com:8090/cgi-bin/uma.cgi
 
-- The input values used during Setup Client are stored in the configuration file (oxd-settings.json).
+The input values used during Setup Client are stored in the configuration file (oxd-settings.json).
 
 
 ## Endpoints
