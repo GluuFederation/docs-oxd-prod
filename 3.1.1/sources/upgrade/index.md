@@ -5,6 +5,7 @@ If you are upgrading oxd-server to the latest version `3.1.1` we have included a
 
 ## OpenID Connect 
 Follow these simple steps to migrate your JSON files:
+
 - Open `oxd-conf.json` 
 - Modify `migration_source_folder_path` to point to the folder or directory that contains the JSON files
 
