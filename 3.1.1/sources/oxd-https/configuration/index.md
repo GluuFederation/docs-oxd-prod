@@ -1,6 +1,6 @@
 #oxd-https-extension Configuration
 
-`oxd-https-extension` uses `dropwizard` framework under the hood. To configure `oxd-https-extension`, edit the following parameters found in the `oxd-https.yml` file. 
+`oxd-https-extension` uses `dropwizard` framework. To configure `oxd-https-extension`, edit the following parameters found in the `oxd-https.yml` file. 
 
 **Parameters:**
 
