@@ -33,7 +33,7 @@ npm install oxd-node@3.1.2
 ```
 
 
-### Configure the Client Application
+## Configure the Client Application
 
 Your client application must have a valid SSL certificate, so the URL includes: `https://`
 
@@ -113,9 +113,7 @@ The oxd-server provides the following methods for performing access management w
 
 
 
-## Sample Code
-
-### OpenID Connect
+## Sample Code - OpenID Connect
 
 ### Setup Client
 
@@ -604,8 +602,7 @@ oxd.get_logout_uri(oxd.Request, function(response) {
 }
 ```
 
-
-### UMA (User Managed Access)
+## Sample Code - UMA
 
 ### RS Protect
 
