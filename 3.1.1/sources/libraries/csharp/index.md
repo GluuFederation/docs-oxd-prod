@@ -1,4 +1,4 @@
-﻿# oxd-csharp
+# oxd-csharp
 
 
 ## Overview
@@ -7,23 +7,14 @@ The following documentation demonstrates how to use oxd's C# library to
 send users from a C# application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
-
-## Sample Project
-
 Download a [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd-csharp library.
 
-
-### System Requirements
+## Software Requirements
 
 - Microsoft Visual Studio 2012 or higher
 - Windows Server 2008 or higher
 - Gluu.Oxd.OxdCSharp
 - .Net Framework 4.5 or higher
-
-
-## Prerequisites
-
-### Required Software
 
 To use the oxd-csharp library, you will need:
 
@@ -34,8 +25,7 @@ To use the oxd-csharp library, you will need:
 ) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
-
-### Install the Gluu.Oxd.OxdCSharp NuGet Package
+### Install oxd-csharp
 
 Use the NuGet Package Manager Console of Visual Studio
 `Tools` > `NuGet Package Manager` > `Package Manager Console` to 
@@ -58,8 +48,8 @@ entry in `C:\Windows\System32\drivers\etc\host` file:
 
 - Enable SSL using the following instructions:
 
-    - Open the Client application in Visual Studio.
-    - Go to Client Application Properties.
+    - Open the client application in Visual Studio.
+    - Go to client application properties.
     - Navigate to `Development Server` and set `SSL Enabled` to `True`.
 
 - Change the `hostname` in the project using the following instructions:
@@ -84,7 +74,6 @@ entry in `C:\Windows\System32\drivers\etc\host` file:
     </bindings>
 </site>
 ```
-      
       
 - With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
@@ -120,12 +109,11 @@ The oxd-server provides the following methods for performing access management w
     - [RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
 
 
-
 ## Sample Code
 
 ### OpenID Connect
 
-oxdCsharp OpenId Connect Namespaces
+oxdCsharp OpenID Connect Namespaces
 
 ```csharp
 using oxdCSharp.Clients;
@@ -134,7 +122,7 @@ using oxdCSharp.CommandParameters;
 ```
 
 
-#### Setup Client
+### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to setup your client application at the OpenID Connect Provider (OP). 
@@ -244,7 +232,7 @@ public ActionResult SetupClient( string oxdhttpsurl, string OpHost, string redir
 ```
 
 
-#### Get Client Token
+### Get Client Token
 
 The `GetClientToken` method is used to get a token which is sent as input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
 
@@ -322,7 +310,7 @@ public string GetProtectionAccessToken( string oxdhttpsurl, string OpHost, strin
 ```
 
 
-#### Register Site
+### Register Site
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to register your client application at the OpenID Connect Provider (OP). 
@@ -427,7 +415,7 @@ public ActionResult RegisterClient(string oxdhttpsurl, string OpHost, string red
 ```
 
 
-#### Update Site Registration
+### Update Site Registration
 
 The `UpdateSiteRegistration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
 Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields can be updated using this method.
@@ -518,7 +506,7 @@ public ActionResult Update(string oxdhttpsurl, string oxdId, string postLogoutRe
 ```
 
 
-#### Get Authorization URL
+### Get Authorization URL
 
 The `GetAuthorizationURL` method returns the OpenID Connect Provider (OP) 
 Authentication URL to which the client application must redirect the user to 
@@ -601,7 +589,7 @@ public ActionResult GetAuthorizationURL(string oxdhttpsurl, string oxdId, dictio
 ```
 
 
-#### Get Tokens by Code
+### Get Tokens by Code
 
 Upon successful login, the login result will return code and state. `GetTokensByCode` method uses code and state to retrieve token which can be used to access user claims.
 
@@ -686,7 +674,7 @@ public ActionResult GetTokenByCode( string oxdhttpsurl, string oxdId, string aut
 ```
 
 
-#### Get Access Token by Refresh Token
+### Get Access Token by Refresh Token
 
 The `GetAccessTokenByRefreshToken` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `GetTokensByCode` method.
 
@@ -761,7 +749,7 @@ public ActionResult GetAccessTokenByRefreshToken(string oxdhttpsurl, string oxdI
 ```
 
 
-#### Get User Info
+### Get User Info
 
 Once the user has been authenticated by the OpenID Connect Provider (OP), the `GetUserInfo` method returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
 
@@ -848,7 +836,7 @@ public ActionResult GetUserInfo(string oxdhttpsurl, string oxdId, string accessT
 ```
 
 
-#### Logout
+### Logout
 
 `GetLogoutURL` method returns the OpenID Connect Provider (OP) Logout URL. Client application uses this Logout URL to end the user session.
 
@@ -923,7 +911,7 @@ public ActionResult GetLogoutUrl(string oxdhttpsurl, string oxdId, string protec
 ```
 
 
-### UMA (User Managed Access)
+## UMA (User Managed Access)
 
 oxdCsharp UMA Namespaces
 ```csharp
@@ -933,7 +921,7 @@ using oxdCSharp.UMA.CommandResponses;
 ```
 
 
-#### RS Protect
+### RS Protect
 
 `ProtectResources` method is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
 The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
@@ -1040,7 +1028,7 @@ public ActionResult ProtectResources(string oxdhttpsurl, string oxdId, string pr
 ```
 
 
-#### RS Check Access 
+### RS Check Access 
 
 `CheckAccess` method is used in the UMA Resource Server to check the access to the resource.
 
@@ -1164,7 +1152,7 @@ public ActionResult CheckAccess( string oxdhttpsurl, string oxdId, string rpt, s
 ```
 
 
-#### RP Get RPT 
+### RP Get RPT 
 
 The method `GetRPT` is called in order to obtain the RPT (Requesting Party Token).
 
@@ -1294,7 +1282,7 @@ public ActionResult ObtainRpt(string oxdhttpsurl, string oxdId, string ticket, s
 ```
 
 
-#### RP Get Claims Gathering URL 
+### RP Get Claims Gathering URL 
 
 **Parameters:**
 
