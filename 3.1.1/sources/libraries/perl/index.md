@@ -49,8 +49,7 @@ cpan > install IO::Socket::SSL
 
 Client application must have a valid SSL certificate, so the URL includes: `https://`    
 
-
-#### Linux
+### Linux
 
 Install Perl on ubuntu:
 ```bash
@@ -144,7 +143,7 @@ Copy example folder from oxdPerl directory and placed on root folder
 cd /var/www/html/oxd-perl/example
 ```
 
-#### Windows
+### Windows
 
 The client hostname should be a valid `hostname` (FQDN), not a localhost or an IP Address. 
 You can configure the hostname by adding the following entry in  `C:\Windows\System32\drivers\etc\hosts` file:
@@ -239,7 +238,7 @@ The oxd-server provides the following methods for performing access management w
     - [RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
 
 
-## Sample Code
+## Sample Code - OpenID Connect
 
 ***index.cgi***
 
@@ -264,8 +263,6 @@ Use the following code to assign the required parameter values from `oxd-setting
     my $client_id = $object->getClientId();
     my $client_secret = $object->getClientSecret();
 ```
-
-### OpenID Connect
 
 ### Setup Client
 
@@ -731,7 +728,7 @@ print Dumper($logout->getResponseObject());
 ```
 
 
-### UMA (User Managed Access)
+## Sample Code - UMA
 
 ### RS Protect
 
