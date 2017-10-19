@@ -5,13 +5,10 @@ The following documentation demonstrates how to use oxd's Perl library to
 send users from a Perl application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
-
-## Sample Project
-
 Download a [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip) specific to this oxd-perl library.
 
 
-### System Requirements
+## Software Requirements
 
 - Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - Perl 5
@@ -20,11 +17,6 @@ Download a [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3
 - CGI::Session module
 - Net::SSLeay module
 - IO::Socket::SSL module
-
-
-## Prerequisites
-
-### Required Software
 
 To use the oxd-perl library, you will need:
 
@@ -36,9 +28,9 @@ To use the oxd-perl library, you will need:
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
-### Install oxdperl from CPAN
+### Install oxd-perl
 
-To install oxdperl from CPAN, run the following command in 
+To install oxd-perl from CPAN, run the following command in 
 Linux terminal or Windows command window
 
 ``` {.code }
@@ -248,7 +240,6 @@ The oxd-server provides the following methods for performing access management w
     - [RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
 
 
-
 ## Sample Code
 
 ***index.cgi***
@@ -275,10 +266,9 @@ Use the following code to assign the required parameter values from `oxd-setting
     my $client_secret = $object->getClientSecret();
 ```
 
-
 ### OpenID Connect
 
-#### Setup Client
+### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to setup your client application at the OpenID Connect Provider (OP). 
@@ -350,7 +340,7 @@ print Dumper($setup_client->getResponseObject());
 ```
 
 
-#### Get Client Token
+### Get Client Token
 
 The `GetClientToken` method is used to get a token which is sent as an input parameter for other methods when the `ProtectCommandsWithAccessToken` is enabled in oxd-server.
 
@@ -391,7 +381,7 @@ print Dumper($get_client_token->getResponseObject());
 ```
 
 
-#### Register Site
+### Register Site
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to register your client application at the OpenID Connect Provider (OP). 
@@ -458,7 +448,7 @@ print Dumper($register_site->getResponseObject());
 ```
 
 
-#### Update Site Registration
+### Update Site Registration
 
 The `UpdateRegistration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
 Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields can be updated using this method.
@@ -511,7 +501,7 @@ print Dumper($update_site_registration->getResponseObject());
 ```
 
 
-#### Get Authorization URL
+### Get Authorization URL
 
 The `GetAuthorizationUrl` method returns the OpenID Connect Provider (OP) 
 Authentication URL to which the client application must redirect the user to 
@@ -556,7 +546,7 @@ print Dumper($get_authorization_url->getResponseObject());
 ```
 
 
-####  Get Tokens by Code
+###  Get Tokens by Code
 
 Upon successful login, the login result will return code and state. `GetTokenByCode` method uses code and state to retrieve token which can be used to access user claims.
 
@@ -612,7 +602,7 @@ print Dumper($get_tokens_by_code->getResponseObject());
 ```
 
 
-#### Get Access Token by Refresh Token
+### Get Access Token by Refresh Token
 
 The `GetAccessTokenByRefreshToken` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `GetTokensByCode` method.
 
@@ -654,7 +644,7 @@ print Dumper($get_access_token_by_refresh_token->getResponseObject());
 ```
 
 
-#### Get User Info
+### Get User Info
 
 Once the user has been authenticated by the OpenID Connect Provider (OP), the `GetUserInfo` method returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
 
@@ -699,7 +689,7 @@ print Dumper($get_user_info->getResponseObject());
 ```
 
 
-#### Logout
+### Logout
 
 `OxdLogout` method returns the OpenID Connect Provider (OP) Logout URL. Client application uses this Logout URL to end the user session.
 
@@ -744,7 +734,7 @@ print Dumper($logout->getResponseObject());
 
 ### UMA (User Managed Access)
 
-#### RS Protect
+### RS Protect
 
 `UmaRsProtect` method is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
 The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
@@ -781,7 +771,7 @@ print Dumper( $uma_rs_protect->getResponseObject() );
 ```
 
 
-#### RS Check Access 
+### RS Check Access 
 
 `UmaRsCheckAccess` method used in the UMA Resource Server to check the access to the resource.
 
@@ -862,7 +852,7 @@ print Dumper($uma_rs_check_access->getResponseObject());
 ```
 
 
-#### RP Get RPT 
+### RP Get RPT 
 
 The method `UmaRpGetRpt` is called in order to obtain the RPT (Requesting Party Token).
 
@@ -954,7 +944,7 @@ print Dumper($uma_rp_get_rpt->getResponseObject());
 ```
 
 
-#### RP Get Claims Gathering URL 
+### RP Get Claims Gathering URL 
 
 **Parameters:**
 
