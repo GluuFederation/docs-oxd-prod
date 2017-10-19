@@ -39,7 +39,7 @@ pages:
   - 'Logs': 'oxd-https/logs/index.md'
   - 'API': 'oxd-https/api/index.md'
 - Libraries:
-    - 'Overview-oxd API Client Libraries': 'libraries/api-client-libraries.md'
+    - 'Overview': 'libraries/api-client-libraries.md'
     - Languages:
         - 'Python': 'libraries/python/index.md'
         - 'Java': 'libraries/java/index.md'
@@ -55,7 +55,7 @@ pages:
         - 'Ruby on Rails': 'framework/rails/index.md'
         - 'Python Flask': 'framework/flask/index.md'
         - 'Node/Express': 'framework/node/index.md'
-        - '.Net': 'framework/net/index.md'
+        - '.NET': 'framework/net/index.md'
 - Plugins:
     - 'Wordpress': 'plugin/wordpress/index.md'
     - 'Magento': 'plugin/magento/index.md'
