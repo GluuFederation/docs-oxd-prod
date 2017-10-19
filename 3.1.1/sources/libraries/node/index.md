@@ -24,10 +24,9 @@ To use the oxd-node library, you will need:
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
-### Install oxd-node
+## Install oxd-node
 
-To install oxd-node via npm, run following commands in Linux terminal or 
-Windows command window
+To install oxd-node via npm, run following commands in Linux terminal or Windows command window:
 
 ``` {.code }
 npm install oxd-node@3.1.2
@@ -36,9 +35,9 @@ npm install oxd-node@3.1.2
 
 ### Configure the Client Application
 
-- Your client application must have a valid SSL certificate, so the URL includes: `https://`
+Your client application must have a valid SSL certificate, so the URL includes: `https://`
 
-- Enable SSL by setting the valid certificate and key in your application "index.js" file:
+Enable SSL by setting the valid certificate and key in your application "index.js" file:
 
 ```javascript
 var options = {
@@ -48,8 +47,8 @@ var options = {
 
 ```
     
-- The client host name should be a valid `hostname`(FQDN), not localhost or an IP Address. 
-You can configure the host name by adding the following entry in your host file.
+The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP Address. 
+You can configure the hostname by adding the following entry in your host file:
 
     **Linux**
 
@@ -63,28 +62,29 @@ You can configure the host name by adding the following entry in your host file.
 
     `127.0.0.1  client.example.com`
 
-- To install dependencies for this application navigate to the "oxd-node-demo" folder in terminal(linux)/command prompt(windows) and run
+To install dependencies for this application navigate to the "oxd-node-demo" folder in terminal(linux)/command prompt(windows) and run:
 
 ```shell
 npm install
 ```
-- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-node/archive/3.1.1.zip) and navigate to `oxd-node-demo` directory inside the project.
+Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-node/archive/3.1.1.zip) and navigate to `oxd-node-demo` directory inside the project.
 
-- The port number for this application to run can be set in "properties.js" file, which you can use to run this application in any free port. By default the port number is set to "5053" which we will assume as the port number of this application for further parts of this documentation.
+The port number for this application to run can be set in "properties.js" file, which you can use to run this application in any free port. By default the port number is set to "5053" which we will assume as the port number of this application for further parts of this documentation.
 
+Run this project with "Node.js" with the following command from the same folder i.e. "oxd-node-demo":
 
-- Run this project with "Node.js" with the following command from the same folder i.e. "oxd-node-demo".
 ```shell
 node index.js
 ```
-- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+
+With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
     - Setup Client URL: https://client.example.com:5053/settings
     - Login URL: https://client.example.com:5053/login
     - UMA URL: https://client.example.com:5053/uma
 
 
-- This oxd Node.js library uses two configuration files (`settings.json` and `parameters.json`) to specify information needed by the OpenID Connect dynamic client registration. To save information that is returned (oxd_id, client_id, client_secret, etc.) the configuration file needs to be writable by the client application.
+This oxd Node.js library uses two configuration files (`settings.json` and `parameters.json`) to specify information needed by the OpenID Connect dynamic client registration. To save information that is returned (oxd_id, client_id, client_secret, etc.) the configuration file needs to be writable by the client application.
 
 
 ## Endpoints
