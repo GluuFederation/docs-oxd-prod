@@ -13,7 +13,7 @@ Written for client-application developers, the oxd client libraries provide simp
 
 ## Programming Frameworks
 
-- [spring](../framework/spring/index.md)
+- [Java Spring](../framework/spring/index.md)
 - [Java Play](../framework/play/)
 - [Rails](../framework/rails/)
 - [Flask](../framework/flask/)
