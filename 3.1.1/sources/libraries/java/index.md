@@ -23,15 +23,17 @@ To use the oxd-java library, you will need:
 - An active installation of the [oxd-https-extension](../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
-### Install oxd-java from Maven
+## Install oxd-java
 
 Get oxd-java JAR files from [Maven Repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
 
-### Configure the Client Application
+## Configure the Client Application
 
-- There are no configuration files for oxd-java. Redirect URI and other information is set in the code.
-- Your client application must have a valid SSL certificate, so the URL includes: `https://`    
-- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
+There are no configuration files for oxd-java. Redirect URI and other information is set in the code.
+
+Your client application must have a valid SSL certificate, so the URL includes: `https://`    
+
+The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
 
     **Linux**
 
@@ -45,7 +47,7 @@ Get oxd-java JAR files from [Maven Repo](http://ox.gluu.org/maven/org/xdi/oxd-ja
 
     `127.0.0.1  client.example.com`
     
-- Enable SSL by	adding the following lines on virtual host file of Apache in the location:
+Enable SSL by	adding the following lines on virtual host file of Apache in the location:
 
 	**Linux**
     
@@ -88,7 +90,8 @@ The oxd-server and oxd-https-extension provide the following methods for authent
 - [Get Logout URI](../../oxd-server/api/#log-out-uri) 
 
 
-## Sample code
+## Sample Code - OpenID Connect
+
 Below is a sample pom. To download the pom file please refer to this [Snippet](https://ox.gluu.org/maven/org/xdi/oxd-client/3.1.0.Final/oxd-client-3.1.0.Final.pom)
 
 ```
