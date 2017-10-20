@@ -89,3 +89,8 @@ service apache2 restart
 
 - If you are testing at a local server, add `client.example.com` to `/etc/hosts` to point to your
 IP instead of editing the URLs in the `demosite.cfg` file.
+
+- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+    - Setup Client URL: https://client.example.com:portno/setupClient
+    - Login URL: https://client.example.com:portno
+    - UMA URL: https://client.example.com:portno/uma

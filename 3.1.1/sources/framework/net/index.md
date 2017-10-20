@@ -13,6 +13,25 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 - [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/)
 
 
+## Prerequisites
+
+
+- Microsoft Visual Studio 2012 or higher
+- Windows Server 2008 or higher
+- Gluu.Oxd.OxdCSharp
+- .Net Framework 4.5 or higher
+
+To use the oxd-csharp library, you will need:
+
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
+- An active installation of the [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/
+) running on the same server as the client application.
+- An active installation of the [oxd-https-extension](https://gluu.org/docs/oxd/3.1.1/install/
+) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
+- A Windows server or Windows installed machine / Linux server or Linux installed machine.
+
+
+
 ## Configuring oxd-server
 
 - Edit the file `<path to oxd-server>/conf/oxd-conf.json`
@@ -71,8 +90,8 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 ```
       
 - With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
-    - Setup Client URL: https://client.example.com:portno/setupClient
-    - Login URL: https://client.example.com:portno
-    - UMA URL: https://client.example.com:portno/uma
+    - Setup Client URL: https://client.example.com:<portno>/Home/Setting
+    - Login URL: https://client.example.com:<portno>
+    - UMA URL: https://client.example.com:<portno>/Home/UMA
 
 - The input values used during Setup Client are stored in a configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the client application.

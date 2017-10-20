@@ -5,11 +5,13 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 !!! Note
     You can also refer to the [oxd-ruby library docs](../../libraries/ruby/) for more details on ruby classes.
 
+
 ## Installation Guides
 
 - [Github oxd-ruby](https://github.com/GluuFederation/oxd-ruby)
 - [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
 - [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/)
+
 
 ## Prerequisites
 
@@ -21,7 +23,7 @@ $ a2enmod ssl
 ```
 
 
-## Install RVM and Ruby on Ubuntu
+**Install RVM and Ruby on Ubuntu**
 
 Install mpapis public key (might need gpg2):
 
@@ -64,7 +66,7 @@ $ gem install rails
 !!! Note
 	For more help you can see RVM commands here : https://rvm.io/rvm/install
 
-## Phusion Passenger Setup 
+**Phusion Passenger Setup**
 
 Phusion Passenger (commonly shortened to Passenger or referred to as mod_passenger) is an application server and is often used to power Ruby sites. Its code is distributed in the form of a gem, which is then compiled on the target machine and installed into Apache as a module.
 
@@ -93,6 +95,24 @@ Add these lines to Apache's config file:
  PassengerDefaultRuby /home/username/.rvm/gems/ruby-2.2.1/wrappers/ruby
 </IfModule>
 ```
+
+
+## Configuring oxd-server
+
+- Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
+
+    Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
+
+- Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
+
+    Change the `response_types` line to `"response_types": ["code"]`
+
+- To start oxd-server, run the following command:
+
+```bash
+/etc/init.d/oxd-server start
+```
+
 
 ## Demosite Deployment
 
@@ -165,24 +185,7 @@ Reload the Apache server:
 $ sudo service apache2 restart
 ```
 
-
-## Configuring oxd-server
-
-- Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
-
-    Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
-
-- Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
-
-    Change the `response_types` line to `"response_types": ["code"]`
-
-- To start oxd-server, run the following command:
-
-```bash
-/etc/init.d/oxd-server start
-```
-
-## Running the Demo Application
+**Running the Demo Application**
 
 Navigate to Rails app root:
 ```bash
@@ -194,4 +197,8 @@ Run:
 bundle install
 ```
 
-Now your Rails application should work from https://oxd-rails.com
+- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+    - Setup Client URL: https://client.example.com:portno
+    - Login URL: https://client.example.com:portno
+    - UMA URL: https://client.example.com:portno/uma
+

@@ -77,9 +77,9 @@ After adding the aforementioned lines the binding section will look like this:
       
 With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
-    - Setup Client URL: https://client.example.com:44383/setupClient
-    - Login URL: https://client.example.com:44383
-    - UMA URL: https://client.example.com:44383/uma
+    - Setup Client URL: https://client.example.com:<portno>/Home/Setting
+    - Login URL: https://client.example.com:<portno>
+    - UMA URL: https://client.example.com:<portno>/Home/UMA
 
 The input values used during Setup Client are stored in the configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the client application.
 
