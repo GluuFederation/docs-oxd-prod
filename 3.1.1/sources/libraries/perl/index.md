@@ -5,13 +5,10 @@ The following documentation demonstrates how to use oxd's Perl library to
 send users from a Perl application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
-
-## Sample Project
-
 Download a [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip) specific to this oxd-perl library.
 
 
-### System Requirements
+## Software Requirements
 
 - Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - Perl 5
@@ -20,11 +17,6 @@ Download a [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3
 - CGI::Session module
 - Net::SSLeay module
 - IO::Socket::SSL module
-
-
-## Prerequisites
-
-### Required Software
 
 To use the oxd-perl library, you will need:
 
@@ -36,16 +28,15 @@ To use the oxd-perl library, you will need:
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
-### Install oxdperl from CPAN
+## Install oxd-perl
 
-To install oxdperl from CPAN, run the following command in 
-Linux terminal or Windows command window
+To install oxd-perl from CPAN, run the following command in Linux terminal or Windows command window:
 
 ``` {.code }
 cpan > install GLUU/oxdperl-0.02.tar.gz
 ```
 
-To install CGI::Session, Net::SSLeay and IO::Socket::SSL modules run the following commands in CPAN
+To install CGI::Session, Net::SSLeay and IO::Socket::SSL modules run the following commands in CPAN:
 
 ``` {.code }
 cpan > install CGI::Session
@@ -54,14 +45,13 @@ cpan > install IO::Socket::SSL
 ```
 
 
-### Configure the Client Application
+## Configure the Client Application
 
-- Client application must have a valid SSL certificate, so the URL includes: `https://`    
+Client application must have a valid SSL certificate, so the URL includes: `https://`    
 
+### Linux
 
-#### Linux
-
-Install Perl on ubuntu
+Install Perl on ubuntu:
 ```bash
 $ sudo apt-get install perl
 $ sudo apt-get install libapache2-mod-perl2 
@@ -128,7 +118,7 @@ Enable `oxd-perl-example.conf` virtual host by running:
 $ sudo a2ensite oxd-perl-example.conf 
 ```
 
-Add domain name in the virtual host file. In console:
+Add domain name in the virtual host file:
 
 ```bash
 $ sudo nano /etc/hosts
@@ -153,14 +143,14 @@ Copy example folder from oxdPerl directory and placed on root folder
 cd /var/www/html/oxd-perl/example
 ```
 
-#### Windows
+### Windows
 
-- The client hostname should be a valid `hostname` (FQDN), not a localhost or an IP Address. 
+The client hostname should be a valid `hostname` (FQDN), not a localhost or an IP Address. 
 You can configure the hostname by adding the following entry in  `C:\Windows\System32\drivers\etc\hosts` file:
 
     `127.0.0.1  client.example.com`
     
-- Enable SSL by	adding the following lines to the virtual host file of Apache in the 
+Enable SSL by	adding the following lines to the virtual host file of Apache in the 
 location `C:/apache/conf/extra/httpd-vhosts.conf`:
 
 ```
@@ -184,21 +174,21 @@ location `C:/apache/conf/extra/httpd-vhosts.conf`:
 </VirtualHost>
 ```
 
-- Download the [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip)
+Download the [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3.1.1.zip).
 
-- Configure Apache to treat the project directory as a script directory. In the following location, `C:\Program Files\Apache Group\Apache\conf\httpd.conf`, set the path to `httpd.conf` 
+Configure Apache to treat the project directory as a script directory. In the following location, `C:\Program Files\Apache Group\Apache\conf\httpd.conf`, set the path to `httpd.conf` 
 
 ```
 ScriptAlias /cgi-bin/ "<path to CGI files>"
 ```
 
-- To run CGI scripts and .pl extension anywhere in the domain, add the following line to `httpd.conf` file:
+To run CGI scripts and .pl extension anywhere in the domain, add the following line to `httpd.conf` file:
 
 ```
 AddHandler cgi-script .cgi .pl
 ```
 
-- In the `Directory` section of `httpd.conf` file, add the folowing CGI path:
+In the `Directory` section of `httpd.conf` file, add the folowing CGI path:
 
 ```
 <Directory "<path to CGI files>">
@@ -208,19 +198,19 @@ AddHandler cgi-script .cgi .pl
 </Directory>
 ```
 
-- The first line of perl script contains `#!/usr/bin/perl`, replace it with the path of perl.exe `#!C:/program files/perl/bin/perl.exe` 
+The first line of perl script contains `#!/usr/bin/perl`, replace it with the path of perl.exe `#!C:/program files/perl/bin/perl.exe` 
 
-- Restart the Apache server.
+Restart the Apache server.
 
-- Move oxdperl module from lib directory to the lib directory of the Perl installation (\perl\lib).
+Move oxdperl module from lib directory to the lib directory of the Perl installation (\perl\lib).
 
-- With the oxd-server and Apache Server running, navigate to the URL's below to run Sample Client Application. To register a client in the oxd-server use the Setup client URL. Upon successful registration of the client application, oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+With the oxd-server and Apache Server running, navigate to the URL's below to run Sample Client Application. To register a client in the oxd-server use the Setup client URL. Upon successful registration of the client application, oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
     - Setup Client URL: https://client.example.com:8090/cgi-bin/settings.cgi
     - Login URL: https://client.example.com:8090/cgi-bin/index.cgi
     - UMA URL: https://client.example.com:8090/cgi-bin/uma.cgi
 
-- The input values used during Setup Client are stored in the configuration file (oxd-settings.json).
+The input values used during Setup Client are stored in the configuration file (oxd-settings.json).
 
 
 ## Endpoints
@@ -248,8 +238,7 @@ The oxd-server provides the following methods for performing access management w
     - [RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
 
 
-
-## Sample Code
+## Sample Code - OpenID Connect
 
 ***index.cgi***
 
@@ -275,10 +264,7 @@ Use the following code to assign the required parameter values from `oxd-setting
     my $client_secret = $object->getClientSecret();
 ```
 
-
-### OpenID Connect
-
-#### Setup Client
+### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to setup your client application at the OpenID Connect Provider (OP). 
@@ -350,7 +336,7 @@ print Dumper($setup_client->getResponseObject());
 ```
 
 
-#### Get Client Token
+### Get Client Token
 
 The `GetClientToken` method is used to get a token which is sent as an input parameter for other methods when the `ProtectCommandsWithAccessToken` is enabled in oxd-server.
 
@@ -391,7 +377,7 @@ print Dumper($get_client_token->getResponseObject());
 ```
 
 
-#### Register Site
+### Register Site
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to register your client application at the OpenID Connect Provider (OP). 
@@ -458,7 +444,7 @@ print Dumper($register_site->getResponseObject());
 ```
 
 
-#### Update Site Registration
+### Update Site Registration
 
 The `UpdateRegistration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
 Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields can be updated using this method.
@@ -511,7 +497,7 @@ print Dumper($update_site_registration->getResponseObject());
 ```
 
 
-#### Get Authorization URL
+### Get Authorization URL
 
 The `GetAuthorizationUrl` method returns the OpenID Connect Provider (OP) 
 Authentication URL to which the client application must redirect the user to 
@@ -556,7 +542,7 @@ print Dumper($get_authorization_url->getResponseObject());
 ```
 
 
-####  Get Tokens by Code
+###  Get Tokens by Code
 
 Upon successful login, the login result will return code and state. `GetTokenByCode` method uses code and state to retrieve token which can be used to access user claims.
 
@@ -612,7 +598,7 @@ print Dumper($get_tokens_by_code->getResponseObject());
 ```
 
 
-#### Get Access Token by Refresh Token
+### Get Access Token by Refresh Token
 
 The `GetAccessTokenByRefreshToken` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `GetTokensByCode` method.
 
@@ -654,7 +640,7 @@ print Dumper($get_access_token_by_refresh_token->getResponseObject());
 ```
 
 
-#### Get User Info
+### Get User Info
 
 Once the user has been authenticated by the OpenID Connect Provider (OP), the `GetUserInfo` method returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
 
@@ -699,7 +685,7 @@ print Dumper($get_user_info->getResponseObject());
 ```
 
 
-#### Logout
+### Logout
 
 `OxdLogout` method returns the OpenID Connect Provider (OP) Logout URL. Client application uses this Logout URL to end the user session.
 
@@ -742,9 +728,9 @@ print Dumper($logout->getResponseObject());
 ```
 
 
-### UMA (User Managed Access)
+## Sample Code - UMA
 
-#### RS Protect
+### RS Protect
 
 `UmaRsProtect` method is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
 The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
@@ -781,7 +767,7 @@ print Dumper( $uma_rs_protect->getResponseObject() );
 ```
 
 
-#### RS Check Access 
+### RS Check Access 
 
 `UmaRsCheckAccess` method used in the UMA Resource Server to check the access to the resource.
 
@@ -862,7 +848,7 @@ print Dumper($uma_rs_check_access->getResponseObject());
 ```
 
 
-#### RP Get RPT 
+### RP Get RPT 
 
 The method `UmaRpGetRpt` is called in order to obtain the RPT (Requesting Party Token).
 
@@ -954,7 +940,7 @@ print Dumper($uma_rp_get_rpt->getResponseObject());
 ```
 
 
-#### RP Get Claims Gathering URL 
+### RP Get Claims Gathering URL 
 
 **Parameters:**
 

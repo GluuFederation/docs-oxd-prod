@@ -5,23 +5,14 @@ The following documentation demonstrates how to use oxd's Node.js library to
 send users from a Node.js application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
-
-## Sample Project
-
 Download a [Sample Project](https://github.com/GluuFederation/oxd-node/archive/3.1.1.zip) specific to this oxd-node library.
 
-
-### System Requirements
+## Software Requirements
 
 - Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - Node 6.11.0
 - npm 3.10.10
 - oxd-node 3.1.2
-
-
-## Prerequisites
-
-### Required Software
 
 To use the oxd-node library, you will need:
 
@@ -33,21 +24,20 @@ To use the oxd-node library, you will need:
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
-### Install oxd-node via npm
+## Install oxd-node
 
-To install oxd-node via npm, run following commands in Linux terminal or 
-Windows command window
+To install oxd-node via npm, run following commands in Linux terminal or Windows command window:
 
 ``` {.code }
 npm install oxd-node@3.1.2
 ```
 
 
-### Configure the Client Application
+## Configure the Client Application
 
-- Your client application must have a valid SSL certificate, so the URL includes: `https://`
+Your client application must have a valid SSL certificate, so the URL includes: `https://`
 
-- Enable SSL by setting the valid certificate and key in your application "index.js" file:
+Enable SSL by setting the valid certificate and key in your application "index.js" file:
 
 ```javascript
 var options = {
@@ -57,8 +47,8 @@ var options = {
 
 ```
     
-- The client host name should be a valid `hostname`(FQDN), not localhost or an IP Address. 
-You can configure the host name by adding the following entry in your host file.
+The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP Address. 
+You can configure the hostname by adding the following entry in your host file:
 
     **Linux**
 
@@ -72,28 +62,29 @@ You can configure the host name by adding the following entry in your host file.
 
     `127.0.0.1  client.example.com`
 
-- To install dependencies for this application navigate to the "oxd-node-demo" folder in terminal(linux)/command prompt(windows) and run
+To install dependencies for this application navigate to the "oxd-node-demo" folder in terminal(linux)/command prompt(windows) and run:
 
 ```shell
 npm install
 ```
-- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-node/archive/3.1.1.zip) and navigate to `oxd-node-demo` directory inside the project.
+Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-node/archive/3.1.1.zip) and navigate to `oxd-node-demo` directory inside the project.
 
-- The port number for this application to run can be set in "properties.js" file, which you can use to run this application in any free port. By default the port number is set to "5053" which we will assume as the port number of this application for further parts of this documentation.
+The port number for this application to run can be set in "properties.js" file, which you can use to run this application in any free port. By default the port number is set to "5053" which we will assume as the port number of this application for further parts of this documentation.
 
+Run this project with "Node.js" with the following command from the same folder i.e. "oxd-node-demo":
 
-- Run this project with "Node.js" with the following command from the same folder i.e. "oxd-node-demo".
 ```shell
 node index.js
 ```
-- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+
+With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
     - Setup Client URL: https://client.example.com:5053/settings
     - Login URL: https://client.example.com:5053/login
     - UMA URL: https://client.example.com:5053/uma
 
 
-- This oxd Node.js library uses two configuration files (`settings.json` and `parameters.json`) to specify information needed by the OpenID Connect dynamic client registration. To save information that is returned (oxd_id, client_id, client_secret, etc.) the configuration file needs to be writable by the client application.
+This oxd Node.js library uses two configuration files (`settings.json` and `parameters.json`) to specify information needed by the OpenID Connect dynamic client registration. To save information that is returned (oxd_id, client_id, client_secret, etc.) the configuration file needs to be writable by the client application.
 
 
 ## Endpoints
@@ -122,11 +113,9 @@ The oxd-server provides the following methods for performing access management w
 
 
 
-## Sample Code
+## Sample Code - OpenID Connect
 
-### OpenID Connect
-
-#### Setup Client
+### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to setup your client application at the OpenID Connect Provider (OP). 
@@ -194,7 +183,7 @@ oxd.setup_client(oxd.Request, function(response) {
 }
 ```
 
-#### Get Client Token
+### Get Client Token
 
 The `get_client_token` method is used to get a token which is sent as an input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
 
@@ -239,7 +228,7 @@ oxd.get_client_access_token(oxd.Request, function(access_token_response){
 ```
 
 
-#### Register Site
+### Register Site
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to register your client application at the OpenID Connect Provider (OP). 
@@ -309,7 +298,7 @@ oxd.register_site(oxd.Request, function(response) {
 ```
 
 
-#### Update Site Registration
+### Update Site Registration
 
 The `update_site_registration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
 Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields can be updated using this method.
@@ -368,7 +357,7 @@ Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret an
 ```
 
 
-#### Get Authorization URL
+### Get Authorization URL
 
 The `get_authorization_url` method returns the OpenID Connect Provider (OP) 
 Authentication URL to which the client application must redirect the user to 
@@ -418,7 +407,7 @@ oxd.get_authorization_url(oxd.Request, function(response) {
 ```
 
 
-#### Get Tokens by Code
+### Get Tokens by Code
 
 Upon successful login, the login result will return code and state. `get_tokens_by_code` method
 uses code and state to retrieve token which can be used to access user claims.
@@ -464,7 +453,7 @@ oxd.get_tokens_by_code(oxd.Request, function(response) {
 ```
 
 
-#### Get Access Token by Refresh Token
+### Get Access Token by Refresh Token
 
 The `get_access_token_by_refresh_token` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `get_tokens_by_code` method.
 
@@ -508,7 +497,7 @@ oxd.get_access_token_by_refresh_token(oxd.Request, function(access_token){
 ```
 
 
-#### Get User Info
+### Get User Info
 
 Once the user has been authenticated by the OpenID Connect Provider (OP), 
 the `get_user_info` method returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
@@ -572,7 +561,7 @@ oxd.get_user_info(oxd.Request, function(response) {
 ```
 
 
-#### Logout
+### Logout
 
 `get_logout_uri` method returns the OpenID Connect Provider (OP) Logout URL. 
 Client application uses this Logout URL to end the user session.
@@ -613,10 +602,9 @@ oxd.get_logout_uri(oxd.Request, function(response) {
 }
 ```
 
+## Sample Code - UMA
 
-### UMA (User Managed Access)
-
-#### RS Protect
+### RS Protect
 
 `uma_rs_protect` method is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
 The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
@@ -663,7 +651,7 @@ result = true
 ```
 
 
-#### RS Check Access 
+### RS Check Access 
 
 `uma_rs_check_access` method is used in the UMA Resource Server to check the access to the resource.
 
@@ -747,7 +735,7 @@ oxd.uma_rs_check_access(oxd.Request, function(response) {
 ```
 
 
-#### RP Get RPT 
+### RP Get RPT 
 
 The method uma_rp_get_rpt is called in order to obtain the RPT (Requesting Party Token). 
 
@@ -837,7 +825,7 @@ oxd.uma_rp_get_rpt(oxd.Request, function(response) {
 ```
 
 
-#### RP Get Claims Gathering URL 
+### RP Get Claims Gathering URL 
 
 **Parameters:**
 

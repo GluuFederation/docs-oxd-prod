@@ -1,8 +1,14 @@
 #oxd-https-extension Configuration
 
-`oxd-https-extension` is configured by `oxd-https.yml` file.
+`oxd-https-extension` uses `dropwizard` framework. To configure `oxd-https-extension`, edit the following parameters found in the `oxd-https.yml` file. 
 
-Example:
+**Parameters:**
+
+- oxdHost: oxd-server host
+- oxdPort: oxd-server port
+- server: HTTP server configuration parameters. For a complete list of server related parameters click [here](http://www.dropwizard.io/0.9.1/docs/manual/configuration.html).
+
+**Example:**
 
 ```
 oxdHost: localhost
@@ -52,8 +58,3 @@ logging:
       timeZone: UTC
       maxFileSize: 10MB
 ```
-
-* oxdHost - oxd-server host
-* oxdPort - oxd-server port
-* server - described HTTP server configuration. `oxd-https-extension` use `dropwizard` framework under the hood. Therefore all servers dropwizard configuration is available for `oxd-https-extension`. Please find complete list of server related parameters [here](http://www.dropwizard.io/0.9.1/docs/manual/configuration.html)
-* logging - logging is configured based on `dropwizard` logging configuration, please find details [here](http://www.dropwizard.io/0.9.1/docs/manual/configuration.html#logging)
