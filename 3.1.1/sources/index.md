@@ -93,7 +93,7 @@ oxd only supports server-side web applications. If you are using the Gluu Server
 oxd-server is a standalone service with socket connection. By default it's restricted to localhost (`localhost_only: true` configuration in `oxd-conf.json`). It's possible to turn off this restriction if you set `localhost_only: false` in `oxd-conf.json`.
 
 **What is the oxd-https-extension?**
-oxd-https-extension is a standalone RESTful Jetty based server which accepts HTTP calls and redirects them to the `oxd-server`. If this is a reirement, simply [start the oxd-https-extension](./oxd-https/start/index.md) after deploying and configuring your oxd-server. 
+oxd-https-extension is a RESTful Jetty based server which accepts HTTP calls and redirects them to the `oxd-server`. If you want to connect apps to your oxd server via HTTPS, you can simply [start the oxd-https-extension](./oxd-https/start/index.md) after deploying and configuring your oxd-server. 
 
 **Where do I deploy oxd-server?**    
 By default, the oxd-server must be deployed on the same server as the web application(s) you want to protect. However, with the oxd-https-extension running, you can deploy a central, robust oxd service on dedicated server(s).
