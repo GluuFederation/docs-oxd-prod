@@ -130,26 +130,25 @@ client and save its configuration. Upon successful setup, the oxd-server will as
 - redirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
 - opHost: URL of the OpenID Connect Provider (OP)
 - postLogoutRedirectUrl: (Optional) URL to which the user is redirected to after successful logout
-- application_type: (Optional) Kind of the application. The default, if omitted, is web. The defined values are native or web
+- application_type: (Optional) Kind of the application. The default, if omitted, is web. The defined values are native or web.
 - response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant Types that the Client is declaring that it will restrict itself to using
+- grant_types: (Optional) Grant Types that the client is declaring that it will restrict itself to using
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server
+- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
 - client_name: (Optional) Client application name
 - client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
 - client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
+- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
 - logoutUrl: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
-- contacts: (Optional) Array of e-mail addresses of people responsible for this Client
-- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
-- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
+- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating Pseudonymous Identifiers by the OpenID Connect Provider (OP)
+- contacts: (Optional) Array of e-mail addresses of people responsible for this client
+- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
+- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
+- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
+- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 - claims_redirect_uri: (Optional)
-
-- host: the URL of the oxd server
-- port: the port of the oxd server
+- host: the URL of the oxd-server
+- port: the port of the oxd-server
 
 
 **Request:**
@@ -208,14 +207,13 @@ The `send` method is used to get a token which is sent as an input parameter for
 
 **Parameters:**
 
-- client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
-- client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
+- client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
+- client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 - opHost: URL of the OpenID Connect Provider (OP)
-- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank . But if it is https://client.example.com/oxauth/.well-known/openid-configuration then path is oxauth
+- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank. But if it is https://client.example.com/oxauth/.well-known/openid-configuration then path is oxauth.
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-
-- host: the URL of the oxd server
-- port: the port of the oxd server
+- host: the URL of the oxd-server
+- port: the port of the oxd-server
 
 **Request:**
 
@@ -258,7 +256,7 @@ try {
 
 ### Register Site
 
-In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OP. During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration a unique identifier will be issued by the oxd server. If your OpenID Connect Provider does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `send` method as a parameter. The Register Site method is a one time task to configure a client in the oxd server and OP.
+In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OpenID Connect Provider (OP). During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration a unique identifier will be issued by the oxd-server. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `send` method as a parameter. The Register Site method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
 
 !!! Note: 
     The `Register Site` endpoint is not required if client is registered using `Setup Client`
@@ -268,27 +266,26 @@ In order to use an OpenID Connect Provider (OP) for login, you need to register 
 - redirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
 - opHost: URL of the OpenID Connect Provider (OP)
 - postLogoutRedirectUrl: (Optional) URL to which the user is redirected to after successful logout
-- application_type: (Optional) Kind of the application. The default, if omitted, is web. The defined values are native or web
+- application_type: (Optional) Kind of the application. The default, if omitted, is web. The defined values are native or web.
 - response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant Types that the Client is declaring that it will restrict itself to using
+- grant_types: (Optional) Grant Types that the client is declaring that it will restrict itself to using
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 - acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
 - client_name: (Optional) Client application name
 - client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
 - client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
+- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
 - logoutUrl: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
-- contacts: (Optional) Array of e-mail addresses of people responsible for this Client
-- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
+- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating Pseudonymous Identifiers by the OpenID Connect Provider (OP)
+- contacts: (Optional) Array of e-mail addresses of people responsible for this client
+- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
+- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
 - client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
-- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID
+- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
 - claims_redirect_uri: (Optional)
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-
-- host: the URL of the oxd server
-- port: the port of the oxd server
+- host: the URL of the oxd-server
+- port: the port of the oxd-server
 
 
 **Request:**
@@ -343,31 +340,30 @@ try {
 
 ### Update Site Registration
 
-The `send` method can be used to update an existing client in the OP. Fields like Authorization redirect url, post logout url, scope, client secret and other fields, can be updated using this method.
+The `send` method can be used to update an existing client in the OpenID Connect Provider (OP). Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields, can be updated using this method.
 
 **Parameters:**
 
 - oxdId: oxd ID from client registration
-- authorization_redirect_uri:  (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization.
-- post_logout_uri: (Optional) URL to which the RP is requesting the End-User's User Agent be redirected to after a logout has been performed.
+- authorization_redirect_uri:  (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
+- post_logout_uri: (Optional) URL to which the RP is requesting the End-User's User Agent be redirected to after a logout has been performed
 - response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant Types that the Client is declaring that it will restrict itself to using
+- grant_types: (Optional) Grant Types that the client is declaring that it will restrict itself to using
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 - acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
 - client_name: (Optional) Client application name
 - client_secret_expires_at: (Optional) Used to extend client lifetime (milliseconds since 1970)
-- client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
+- client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
 - client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
+- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
 - client_frontchannel_logout_uris: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP
-- contacts: (Optional) Array of e-mail addresses of people responsible for this Client
-- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- protection_access_token: (Optional) Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-
-- host: the URL of the oxd server
-- port: the port of the oxd server
+- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating Pseudonymous Identifiers by the OpenID Connect Provider (OP)
+- contacts: (Optional) Array of e-mail addresses of people responsible for this client
+- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
+- claims_locales: (Optional) End-User's preferred languages and scripts for claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
+- protection_access_token: (Optional) Generated from get_client_token method (Optional, required if oxd-https-extension is used).
+- host: the URL of the oxd-server
+- port: the port of the oxd-server
 
 **Request:**
 
@@ -405,19 +401,18 @@ try {
 
 ### Get Authorization URL
 
-The `send` method returns the OpenID Connect Provider authentication URL to which the client application must redirect the user to authorize the release of personal data. The response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
+The `send` method returns the OpenID Connect Provider (OP) Authentication URL to which the client application must redirect the user to authorize the release of personal data. The Response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
 
 **Parameters:**
 
 - oxdId: oxd ID from client registration
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource.
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server. 
-- prompt: (Optional) Values that specifies whether the Authorization Server prompts the End-User for reauthentication and consent
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource
+- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
+- prompt: (Optional) Values that specifies whether the Authorization Server prompts the end-user for re-authentication and consent
 - custom_params: (Optional) custom parameters
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-
-- host: the URL of the oxd server
-- port: the port of the oxd server
+- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used).
+- host: the URL of the oxd-server
+- port: the port of the oxd-server
 
 **Request:**
 
@@ -521,7 +516,7 @@ The `send` method is used to get a new access token and a new refresh token by u
 
 - oxdId: oxd ID from client registration
 - refreshToken: Obtained from the get_tokens_by_code method
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource.
+- scope: (Optional) A scope is an indication by the client that it wants to access some resource
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -558,16 +553,15 @@ return resp;
 
 ### Get User Info
 
-Once the user has been authenticated by the OpenID Connect Provider, the `send` method returns Claims (Like First Name, Last Name, emailId, etc.) about the authenticated end user.
+Once the user has been authenticated by the OpenID Connect Provider, the `send` method returns claims (First Name, Last Name, E-Mail, etc.) about the authenticated end-user.
 
 **Parameters:**
 
 - oxdId: oxd ID from client registration
 - access_token: access_token from GetTokenByCode or GetAccessTokenbyRefreshToken
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-
-- host: the URL of the oxd server 
-- port: the port of the oxd server 
+- host: the URL of the oxd-server 
+- port: the port of the oxd-server 
 
 **Request:**
 
@@ -611,19 +605,18 @@ try {
 
 ### Logout
 
-`send` method returns the OpenID Connect Provider logout url. Client application  uses this logout url to end the user session.
+`send` method returns the OpenID Connect Provider Logout URL. Client application uses this Logout URL to end the user session.
 
 **Parameters:**
 
 - oxdId: oxd ID from client registration
-- id_token_hint: (Optional) ID Token previously issued by the Authorization Server being passed as a hint about the End-User's current or past authenticated session with the Client
+- id_token_hint: (Optional) ID Token previously issued by the Authorization Server being passed as a hint about the end-user's current or past authenticated session with the client
 - postLogoutRedirectUrl: (Optional) URL to which user is redirected to after successful logout
 - state: (Optional) Value used to maintain state between the request and the callback
-- session_state: (Optional) JSON string that represents the End-User's login state at the OP
+- session_state: (Optional) JSON string that represents the end-user's login state at the OpenID Connect Provider (OP)
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-
-- host: the URL of the oxd server
-- port: the port of the oxd server
+- host: the URL of the oxd-server
+- port: the port of the oxd-server
 
 **Request:**
 
@@ -797,9 +790,8 @@ The method `send` is called in order to obtain the RPT (Requesting Party Token).
 - scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
 - state: (Optional) state that is returned from uma_rp_get_claims_gathering_url method
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-
-- host: the URL of the oxd server
-- port: the port of the oxd server
+- host: the URL of the oxd-server
+- port: the port of the oxd-server
 
 **Request:**
 
@@ -833,7 +825,7 @@ try {
 
 **Response:**
 
-***Success Response***
+***Success Response:***
 
 ```javascript
  {
@@ -847,7 +839,7 @@ try {
 }
 ```
 
-***Needs Info Error Response***
+***Needs Info Error Response:***
 
 ```javascript
 {
@@ -875,7 +867,7 @@ try {
 }
 ```
 
-***Invalid Ticket Error Response***
+***Invalid Ticket Error Response:***
 
 ```javascript
  {
@@ -894,7 +886,7 @@ try {
 
 - oxdId: oxd ID from client registration
 - ticket: Client Access Ticket generated by uma_rs_check_access method
-- claims_redirect_uri: 
+- claims_redirect_uri: The URI to which the client wishes the authorization server to direct the requesting party’s user agent after completing its interaction
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
