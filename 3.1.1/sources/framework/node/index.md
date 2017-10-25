@@ -1,10 +1,10 @@
-# oxd Node 
+# oxd-node 
 
-The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a Node app to an OpenID Connect Provider (OP) for login. You can send users to any standard OP for login, including Google. In these docs we use the [free open source Gluu Server](http://gluu.org/gluu-server) as the OP.
+The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a Node application to an OpenID Connect Provider (OP) for login. You can send users to any standard OpenID Connect Provider (OP) for login, including Google. In these docs we use the [free open source Gluu Server](http://gluu.org/gluu-server) as the OpenID Connect Provider (OP).
 
 
 !!! Note:
-    You can also refer to the [oxd-node library docs](https://gluu.org/docs/oxd/libraries/node/) for more details on node classes.
+    You can also refer to the oxd-node [library docs](https://gluu.org/docs/oxd/libraries/node/) for more details on node classes.
 
 
 ## Installation Guides
@@ -35,7 +35,7 @@ To use the oxd-node library, you will need:
 
 - Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
 
-    Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
+    Change the OP HOST name to your OpenID Connect Provider (OP) domain at the line `"op_host": "https://<idp-hostname>"`
 
 - Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
 
@@ -93,9 +93,9 @@ npm install
 ```
 Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-node/archive/3.1.1.zip) and navigate to `oxd-node-demo` directory inside the project.
 
-The port number for this application to run can be set in "properties.js" file, which you can use to run this application in any free port. By default the port number is set to "5053" which we will assume as the port number of this application for further parts of this documentation.
+The port number for this application to run can be set in "properties.js" file, which you can use to run this application in any free port. By default the port number is set to "5053" which we will assume is the port number of this application for this example.
 
-Run this project with "Node.js" with the following command from the same folder i.e. "oxd-node-demo":
+From the same folder (i.e. "oxd-node-demo"), run this project with "Node.js" with the following command:
 
 ```shell
 node index.js
