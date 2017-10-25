@@ -51,18 +51,18 @@ To use the oxd-go library, you will need:
 
     `127.0.0.1  client.example.com`
 
-- To start demo launch run.sh script which is present in the oxd-client-demo folder of the src directory.
-- To compile the demo app, run the following command in the command prompt
+- To start the demo, launch run.sh script, which is present in the oxd-client-demo folder of the src directory.
+- To compile the demo app, run the following command in the command prompt:
 ```
  cd <path to the project directory>
  go install oxd-client-demo
 ```
-- After compilation inorder to run the demo app in the browser, run the following command in the command prompt
+- In order to run the demo app in the browser, run the following command in the command prompt:
 
 ```
  .\bin\oxd-client-demo.exe
 ```
-- Now open a browser and type https://client.example.com:8080/,  which will open the home page of the demo app.
+- Open a browser and type https://client.example.com:8080/,  this will open the homepage of the demo app.
 
 - Enable SSL using the following instructions:
 
@@ -81,7 +81,7 @@ Linux:
   go run $GOROOT/src/crypto/tls/generate_cert.go -host="127.0.0.1"
 ```
 
-- Enable SSL by	adding the following lines on virtual host file of Apache in the location:
+- Enable SSL by	adding the following lines in the virtual host file of Apache in the location:
 
 	**Linux**
     
@@ -122,7 +122,7 @@ Linux:
     - src/oxd-client-demo - simple communication demo
     - src/oxd-client-test - unit tests for communication
 
-- The input values used during Setup Client are stored in a configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the Client application.    
+- The input values used during Setup Client are stored in a configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the client application.    
 
 
 ## Endpoints
