@@ -17,7 +17,7 @@ The oxd software package includes both the oxd-server and the oxd-https-extensio
 The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. 
 
 ### oxd-https-extension
-If you want to connect applications to your oxd server over the web via HTTPS, you can use the oxd-https-extension. The extension is included in the standard oxd package (it simply needs to be started), and will enable you to host one central oxd service that can be leveraged by all your web applications. 
+To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
 
 ## Get Started
 
