@@ -51,7 +51,7 @@ pages:
         - 'Go': 'libraries/golang/index.md'
     - Frameworks:
 #       - 'Java Spring': 'framework/spring/index.md'
-#       - 'Java Play Framework': 'framework/play/index.md'
+        - 'Java Play Framework': 'framework/play/index.md'
         - 'Ruby on Rails': 'framework/rails/index.md'
         - 'Python Flask': 'framework/flask/index.md'
         - 'Node/Express': 'framework/node/index.md'
