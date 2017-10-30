@@ -10,9 +10,11 @@ oxd needs to be deployed on a server or VM with the following **minimum** requir
 
 Java 8 is required.
 
-<!--- 
-## Linux Packages
 
+## Linux Packages
+We are still working on publishing the oxd 3.1.1 linux packages. They will be available shortly. We will notify our email lists when they are published.
+
+<!--- 
 Find the proper linux package below. After installation you can configure oxd-server following the [configuration instructions](../configuration/index.md). 
 
 Then run the following command to start the `oxd-server`:
