@@ -99,7 +99,7 @@ yum install oxd-server
 
 oxd is self-contained--you can just unzip the folder and run it. 
 
-Note: oxd requires Java version 1.8 or higher. 
+Note: **oxd requires Java version 1.8 or higher.**
 
 ### Windows
 
