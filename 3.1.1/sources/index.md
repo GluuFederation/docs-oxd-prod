@@ -1,9 +1,9 @@
 # oxd 3.1.1 Documentation
 
 ## Introduction
-oxd is middleware software that makes it easy to send users from **server-side web applications** to a standard OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server), for login and/or enrollment.
+oxd is middleware software that simplifies the process of sending users from **server-side web applications** to a standard OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server), for login and/or enrollment.
 
-In addition to OpenID Connect, oxd implements the User Managed Access ("UMA") 2.0 profile of OAuth 2.0 to enable claims-based authorization and multi-step consent, user-interactions and stepped-up authentication flows. 
+In addition to OpenID Connect, oxd supports the User Managed Access ("UMA") 2.0 profile of OAuth 2.0 to enable claims-based authorization and multi-step consent, user-interactions and stepped-up authentication flows. 
 
 oxd exposes a simple REST API and native libraries that wrap the API for Php, Java, Python, Node, Ruby, Perl, C#, and Go. 
 
@@ -72,6 +72,17 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [NextCloud](./plugin/nextcloud/index.md) 
 
 Gluu does its best to keep these plugins up to date but does not guarantee specific functionality. If you find a bug, or would like feature enhancements, we would be happy to discuss allocating a resource to work on the plugin on a time and materials basis. [Schedule a call](https://gluu.org/booking) with us to discuss the project scope and funding.
+
+## Pricing
+oxd 3.1.1 is priced $0.33 per application per day. Each time a new application leverages your oxd-server a record is added to your oxd dashboard. You will be charged for each day the application remains active.
+
+At the end of each month, usage fees are compiled and a billing summary is sent to all users associated with your account. 
+
+On the 7th day of the following month, the credit card associated with your account is charged for usage fees incurred during the previous month.
+
+New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.
+
+If you can not add a credit card, or would like to discuss volume discounts, [contact us for an oxd site license](https://gluu.org/contact). 
 
 ## Support
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
