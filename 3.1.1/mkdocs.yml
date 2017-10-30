@@ -18,7 +18,7 @@ pages:
 - Release Notes: 'release-notes/index.md'
 - Whats new in 3.1.x: '3.1.x-intro.md'
 - License: 
-    - 'License': 'license/index.md'
+#    - 'License': 'license/index.md'
     - Authentication:
       - Signup: 'license/auth/signup/index.md'
       - Login: 'license/auth/login/index.md'
