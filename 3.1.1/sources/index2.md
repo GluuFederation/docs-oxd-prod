@@ -84,17 +84,18 @@ If you have successfully tested oxd against another OP, or for other OP related 
 
 ## Pricing & Billing
 
-**oxd 3.1.1 is priced $0.33 per application per day:**
+oxd 3.1.1 costs **USD $0.33 per application per day**. All New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.  
+
+A few additional notes about pricing and billing: 
 
 - Each time a new application leverages your oxd-server a record is added to your oxd dashboard. You will be charged USD $0.33 each day the application remains active.    
 
 - At the end of each month, usage fees are compiled and a billing summary is sent to all users associated with your account.   
 
-- On the 7th day of each month, we will attempt to bill the credit card on file for usage fees incurred during the previous month.
+- On the 7th day of each month, we will attempt to bill the credit card on file for usage fees incurred during the previous month.  
 
-- New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.    
+- If you can not add a credit card, or would like to discuss volume discounts, [contact us for an oxd site license](https://gluu.org/contact). 
 
-- If you can not add a credit card, or would like to discuss volume discounts, [contact us for an oxd site license](https://gluu.org/contact).      
    
 ## Support
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
