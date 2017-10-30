@@ -3,7 +3,7 @@
 ## Introduction
 oxd is client software that simplifies the process of sending users from **server-side web applications** to your Gluu Server for registration, single sign-on (SSO), and access management policy enforcement. 
 
-oxd implements OpenID Connect and UMA, two profiles of OAuth 2.0 for federated identity and authorization, respectively. Learn more about the protocols in the oxd API docs. 
+oxd implements OpenID Connect and UMA, two profiles of OAuth 2.0 for federated identity and access management, respectively. Learn more about the protocols in the oxd API docs. 
 
 !!! Note
     If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
