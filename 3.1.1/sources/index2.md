@@ -1,12 +1,12 @@
 # oxd 3.1.1 Documentation
 
 ## Introduction
-oxd is client software that simplifies the process of implementing the OpenID Connect and UMA profiles of OAuth 2.0 in **server-side web applications**. 
+oxd is client software that simplifies the process of implementing OpenID Connect and UMA in **server-side web applications**. 
 
 Using oxd, you can securely send users from web apps to your Gluu Server OpenID Connect Provider (OP) and UMA Authorization Server (AS) for dynamic enrollment, single sign-on (SSO), and access management policy enforcement. 
 
 !!! Note
-    If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review recommended strategies in the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
+    If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review our recommended strategies in the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
     
 ## Components
 The oxd software package includes two components: 
@@ -68,7 +68,7 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 Gluu does its best to keep these plugins up to date but does not guarantee specific functionality. If you find a bug, or would like feature enhancements, we would be happy to discuss allocating a resource to work on the plugin on a time and materials basis. [Schedule a call](https://gluu.org/booking) with us to discuss the project scope and funding.
 
 ## Supported OpenID Providers (OP)
-oxd has been confirmed to work with the following standard OP's:
+oxd has been confirmed to work with the following standard OPs:
 
 - [Gluu Server](https://gluu.org/docs/ce/installation-guide/)    
 - [Google](https://developers.google.com/identity/protocols/OpenIDConnect)   
@@ -79,14 +79,14 @@ If you have successfully tested oxd against another OP, or for other OP related 
 
 **oxd 3.1.1 is priced $0.33 per application per day:**
 
-- Each time a new application leverages your oxd-server a record is added to your oxd dashboard. You will be charged for each day the application remains active.    
+- Each time a new application leverages your oxd-server a record is added to your oxd dashboard. You will be charged USD $0.33 each day the application remains active.    
 
 - At the end of each month, usage fees are compiled and a billing summary is sent to all users associated with your account.   
 
-- On the 7th day of the following month, the credit card associated with your account is charged for usage fees incurred during the previous month.    
+- On the 7th day of each month, we will attempt to bill the credit card on file for usage fees incurred during the previous month.
 
 - New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.    
- 
+
 - If you can not add a credit card, or would like to discuss volume discounts, [contact us for an oxd site license](https://gluu.org/contact).      
    
 ## Support
