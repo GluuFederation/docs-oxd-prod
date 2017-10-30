@@ -1,13 +1,22 @@
 # oxd 3.1.1 Documentation
 
 ## Introduction
-oxd is middleware software that simplifies the process of securing and integrating **server-side web applications** with your Gluu Server OpenID Connect Provider (OP) and UMA Authorization Server (AS) infrastructure. 
+oxd is client software that simplifies the process of sending users from **server-side web applications** to your Gluu Server for registration, single sign-on (SSO), and access management policy enforcement. 
 
-By leveraging oxd in your web applications, you can securely delegate user enrollment and sign-in (using OpenID Connect), and coarse-grain authorization policy enforcement (using UMA), to your Gluu Server. 
+oxd implements OpenID Connect and UMA, two profiles of OAuth 2.0 for federated identity and authorization, respectively. Learn more about the protocols in the oxd API docs. 
 
 !!! Note
     If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
     
+## Components
+The oxd software package includes two components: 
+
+### oxd-server
+The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. 
+
+### oxd-https-extension (optional)
+To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
+
 ## Get Started
 
 Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit;
@@ -20,14 +29,6 @@ Step 4: If you want to support application connections via HTTPS, [start the oxd
 
 Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login. 
 
-## Components
-The oxd software package includes two components: 
-
-### oxd-server
-The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. 
-
-### oxd-https-extension (optional)
-To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
 
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
