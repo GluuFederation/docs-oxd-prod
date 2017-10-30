@@ -32,7 +32,10 @@ oxd-conf.json
     "protect_commands_with_access_token":false,
     "uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client":true,
     "migration_source_folder_path":"",
-    "storage":"h2"
+    "storage":"h2",
+    "storage_configuration": {
+        "dbFileLocation":"/opt/oxd-server/bin/oxd_db"
+    }
 }
 ```
 ### oxd-conf.json field descriptions
@@ -86,6 +89,13 @@ Redis storage configuration sample:
     "host":"localhost",
     "port":6379
   }
+```
+
+H2 storage configuration sample:
+```json
+    "storage_configuration": {
+        "dbFileLocation":"/opt/oxd-server/bin/oxd_db"
+    }
 ```
 
 !!! Note
