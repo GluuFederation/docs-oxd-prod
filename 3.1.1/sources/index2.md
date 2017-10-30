@@ -33,7 +33,7 @@ To call the oxd-server via HTTPS, you will also need to start the oxd-https-exte
    
 
 ## API
-The oxd-server implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
+oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
 
 OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA can be used to manage what digital resources, like web pages and APIs, the user (or client) can access.    
 
