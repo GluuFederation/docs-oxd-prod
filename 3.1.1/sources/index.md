@@ -21,15 +21,15 @@ To call the oxd-server via HTTPS, you will also need to start the oxd-https-exte
 
 ## Get Started
 
-Step 1: [Install the oxd package](./install/index.md);   
+Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit;
 
-Step 2*: [Configure your oxd-server](./configuration/index.md);           
+Step 2: [Install](./install/index.md) the oxd package;   
 
-Step 3: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
+Step 3: [Configure](./configuration/index.md) your oxd-server and add your license keys;           
 
-Step 4: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login.  
+Step 4: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
 
-*Note: you will need a valid license to configure oxd. Get your license and a $50 credit on the [oxd website](https://oxd.gluu.org).
+Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login.  
    
 ## Supported OpenID Providers (OP)
 oxd has been confirmed to work with the following standard OP's:
