@@ -12,9 +12,9 @@ Using oxd, you can securely send users from web apps to your [Gluu Server OpenID
 
 Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit;
 
-Step 2: [Install](./install/index.md) the oxd-server on a server or VM;   
+Step 2: [Install](./install/index.md) oxd on a server or VM;   
 
-Step 3: [Configure](./configuration/index.md) your oxd-server and add your license keys;           
+Step 3: [Configure](./configuration/index.md) the oxd-server and add your license keys;           
 
 Step 4: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
 
