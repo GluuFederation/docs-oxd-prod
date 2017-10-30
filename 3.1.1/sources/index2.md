@@ -5,9 +5,6 @@ oxd is middleware software that simplifies the process of securing and integrati
 
 By leveraging oxd in your web applications, you can securely delegate user enrollment and sign-in (using OpenID Connect), and coarse-grain authorization policy enforcement (using UMA) to your Gluu Server. 
 
-!!! Note
-    If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
-
 The oxd software package includes two components: 
 
 ### oxd-server
@@ -15,6 +12,9 @@ The oxd-server is designed to work as a standalone service daemon via sockets. B
 
 ### oxd-https-extension (optional)
 To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
+
+!!! Note
+    If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
 
 ## Get Started
 
