@@ -10,6 +10,7 @@ oxd needs to be deployed on a server or VM with the following **minimum** requir
 
 Java 8 is required.
 
+<!--- 
 ## Linux Packages
 
 Find the proper linux package below. After installation you can configure oxd-server following the [configuration instructions](../configuration/index.md). 
@@ -89,6 +90,8 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
 yum install oxd-server
 ```
+
+--->
 
 ## Manual installation
 
