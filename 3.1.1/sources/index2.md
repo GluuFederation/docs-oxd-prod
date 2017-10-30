@@ -7,6 +7,18 @@ By leveraging oxd in your web applications, you can securely delegate user enrol
 
 !!! Note
     If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
+    
+## Get Started
+
+Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit;
+
+Step 2: [Install](./install/index.md) the oxd package;   
+
+Step 3: [Configure](./configuration/index.md) your oxd-server and add your license keys;           
+
+Step 4: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
+
+Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login. 
 
 ## Components
 The oxd software package includes two components: 
@@ -74,19 +86,7 @@ If you have successfully tested oxd against another OP, or for other OP related 
 
 - New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.    
  
-- If you can not add a credit card, or would like to discuss volume discounts, [contact us for an oxd site license](https://gluu.org/contact).     
-
-## Get Started
-
-Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit;
-
-Step 2: [Install](./install/index.md) the oxd package;   
-
-Step 3: [Configure](./configuration/index.md) your oxd-server and add your license keys;           
-
-Step 4: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
-
-Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login.  
+- If you can not add a credit card, or would like to discuss volume discounts, [contact us for an oxd site license](https://gluu.org/contact).      
    
 ## Support
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
