@@ -40,7 +40,7 @@ Learn more in the [oxd API section](./api/index.md) of the documentation.
 ### Native Libraries
 oxd client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs.   
 
-**Languages**:  
+**Languages**:       
 - [Python](./libraries/python/index.md)       
 - [Java](./libraries/java/index.md)       
 - [Php](./libraries/php/index.md)       
@@ -50,8 +50,13 @@ oxd client libraries provide simple and flexible access to the oxd OpenID Connec
 - [Perl](./libraries/perl/index.md)  
 - [Go](./libraries/go/index.md)  
 
-**Frameworks**:
-
+**Frameworks**:           
+- [Java Spring]     
+- [Java Play]     
+- [Ruby on Rails]    
+- [Python Flask]      
+- [Node/Express]     
+- [.Net]      
 
 
 ## Plugins
