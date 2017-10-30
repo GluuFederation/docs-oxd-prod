@@ -1,14 +1,21 @@
 # oxd 3.1.1 Documentation
 
 ## Introduction
-oxd is middleware software that simplifies the process of securing and integrating **server-side web applications** with a standard OpenID Connect Provider (OP) like the [Gluu Server](https://gluu.org/gluu-server).
+oxd is middleware software that simplifies the process of securing and integrating **server-side web applications** with your Gluu Server OpenID Connect Provider (OP) and UMA Authorization Server (AS) access management infrastructure. 
 
-In addition to OpenID Connect, oxd makes it easy to implement the User Managed Access ("UMA") 2.0 profile of OAuth 2.0 to enable claims-based authorization and multi-step consent, user-interactions, and stepped-up authentication flows. 
-
-Learn more about OpenID Connect and UMA in the [API docs](#api).
+By leveraging oxd in your web applications, you can securely delegate user enrollment, sign-in, and coarse-grain authorization policy enforcement to your Gluu Server. 
 
 !!! Note
     If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
+
+## Components
+The oxd software package includes two components: 
+
+### oxd-server
+The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. 
+
+### oxd-https-extension (optional)
+To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
 
 ## Get Started
 
@@ -21,15 +28,6 @@ Step 3: [Configure](./configuration/index.md) your oxd-server and add your licen
 Step 4: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
 
 Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login.  
-
-## Components
-The oxd software package includes both the oxd-server and the oxd-https-extension: 
-
-### oxd-server
-The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. 
-
-### oxd-https-extension
-To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
    
 
 ## API
@@ -76,9 +74,8 @@ If you have successfully tested oxd against another OP, or for other OP related 
 
 
 ## Pricing
-**oxd 3.1.1 is priced $0.33 per application per day.**
 
-A few important notes about pricing and billing:
+- **oxd 3.1.1 is priced $0.33 per application per day.**
 
 - Each time a new application leverages your oxd-server a record is added to your oxd dashboard. You will be charged for each day the application remains active.    
 
