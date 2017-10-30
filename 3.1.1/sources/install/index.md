@@ -12,7 +12,7 @@ Java 8 is required.
 
 
 ## Linux Packages
-We are still working on publishing linux packages for oxd 3.1.1. They will be available shortly. We will notify our email lists when they are published.
+We are finalizing linux packages for oxd 3.1.1. They will be available shortly. We will notify our email lists when they are published.
 
 <!--- 
 Find the proper linux package below. After installation you can configure oxd-server following the [configuration instructions](../configuration/index.md). 
