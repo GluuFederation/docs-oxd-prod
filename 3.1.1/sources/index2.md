@@ -12,7 +12,7 @@ By leveraging oxd in your web applications, you can securely delegate user enrol
 
 Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit;
 
-Step 2: [Install](./install/index.md) the oxd package;   
+Step 2: [Install](./install/index.md) the oxd-server on a server or VM;   
 
 Step 3: [Configure](./configuration/index.md) your oxd-server and add your license keys;           
 
