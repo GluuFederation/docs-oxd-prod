@@ -75,7 +75,7 @@ If you have successfully tested oxd against another OP, or for other OP related 
 
 ## Pricing & Billing
 
-- **oxd 3.1.1 is priced $0.33 per application per day.**
+**oxd 3.1.1 is priced $0.33 per application per day.**
 
 - Each time a new application leverages your oxd-server a record is added to your oxd dashboard. You will be charged for each day the application remains active.    
 
