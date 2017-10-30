@@ -8,26 +8,26 @@ Using oxd, you can securely send users from web apps to your [Gluu Server OpenID
 !!! Note
     If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review our recommended strategies in the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
 
+## Components   
+The oxd software package includes two components: 
+
+### oxd-server   
+The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. 
+
+### oxd-https-extension (optional)    
+To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
+
 ## Get Started
 
 Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit;
 
-Step 2: [Install](./install/index.md) oxd on a server or VM;   
+Step 2: [Install](./install/index.md) oxd on a server or VM (Note: if you plan on calling oxd over localhost, oxd will need to be installed on the same server as the application you want to protect. If you plan on using the `https-extension`, you can install oxd any any server or VM);   
 
 Step 3: [Configure](./configuration/index.md) the oxd-server and add your license keys;           
 
 Step 4: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
 
 Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your Gluu Server for authentication and authorization. 
-
-## Components
-The oxd software package includes two components: 
-
-### oxd-server
-The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. 
-
-### oxd-https-extension (optional)
-To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
 
 
 ## API
