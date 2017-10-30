@@ -22,7 +22,7 @@ Step 3: [Configure](./configuration/index.md) the oxd-server and add your licens
 
 Step 4: [Start](./oxd-https/start/index.md) the oxd-https-extension;
 
-Step 5: [Configure] the oxd-https-exntesion. 
+Step 5: [Configure](./oxd-https/configuration/index.md) the oxd-https-exntesion. 
 
 Step 6: Use the oxd API or one of the native libraries to securely send users from your apps to your Gluu Server for authentication and authorization. 
 
