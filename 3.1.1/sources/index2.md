@@ -8,7 +8,6 @@ By leveraging oxd in your web applications, you can securely delegate user enrol
 !!! Note
     If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
 
-## Components
 The oxd software package includes two components: 
 
 ### oxd-server
