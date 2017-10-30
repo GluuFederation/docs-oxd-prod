@@ -18,7 +18,7 @@ Step 3: [Configure](./configuration/index.md) your oxd-server and add your licen
 
 Step 4: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
 
-Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your Gluu Server for single sign-on and access management. 
+Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your Gluu Server for authentication and authorization 
 
 ## Components
 The oxd software package includes two components: 
