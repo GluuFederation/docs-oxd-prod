@@ -73,7 +73,7 @@ oxd has been confirmed to work with the following standard OP's:
 If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
 
 
-## Pricing
+## Pricing & Billing
 
 - **oxd 3.1.1 is priced $0.33 per application per day.**
 
