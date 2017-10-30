@@ -110,6 +110,13 @@ in the above folder you just created.
 
 4. Run `oxd-server/bin/oxd-start.bat`
 
+Note that under Windows you may need to change default h2 database location path, to something like
+```json
+ "storage_configuration": {
+    "dbFileLocation":"c:\\opt\\oxd-server\\bin\\oxd_db"
+  }
+```
+
 ### Unix
 
 1. Make a folder called `oxd-server` (or whatever you like), and `cd` to this folder
