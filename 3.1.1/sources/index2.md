@@ -7,15 +7,6 @@ Using oxd, web apps can securely send users to your Gluu Server OpenID Connect P
 
 !!! Note
     If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review our recommended strategies in the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
-    
-## Components
-The oxd software package includes two components: 
-
-### oxd-server
-The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. 
-
-### oxd-https-extension (optional)
-To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
 
 ## Get Started
 
@@ -29,6 +20,15 @@ Step 4: If you want to support application connections via HTTPS, [start the oxd
 
 Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your Gluu Server for single sign-on and access management. 
 
+## Components
+The oxd software package includes two components: 
+
+### oxd-server
+The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. 
+
+### oxd-https-extension (optional)
+To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
+
 
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
@@ -37,10 +37,10 @@ OpenID Connect can be used to send a user for authentication and gather identity
 
 Learn more in the [oxd API section](./api/index.md) of the documentation. 
 
-## Native Libraries
+### Native Libraries
 oxd client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs.   
 
-### Languages
+**Languages**:  
 - [Python](./libraries/python/index.md)       
 - [Java](./libraries/java/index.md)       
 - [Php](./libraries/php/index.md)       
@@ -50,7 +50,9 @@ oxd client libraries provide simple and flexible access to the oxd OpenID Connec
 - [Perl](./libraries/perl/index.md)  
 - [Go](./libraries/go/index.md)  
 
-### Frameworks
+**Frameworks**:
+
+
 
 ## Plugins
 
