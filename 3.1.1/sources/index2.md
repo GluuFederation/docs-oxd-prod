@@ -1,7 +1,7 @@
 # oxd 3.1.1 Documentation
 
 ## Introduction
-oxd is client software that simplifies the process of sending users from **server-side web applications** to your Gluu Server for registration, single sign-on (SSO), and access management policy enforcement. 
+oxd is client software that simplifies the process of sending users from **server-side web applications** to your Gluu Server for single sign-on (SSO) and access management. 
 
 oxd implements OpenID Connect and UMA, two profiles of OAuth 2.0 for federated identity and access management, respectively. Learn more about the protocols in the oxd API docs. 
 
