@@ -8,15 +8,6 @@ In addition to OpenID Connect, oxd supports the User Managed Access ("UMA") 2.0 
 !!! Note
     If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
 
-## Components
-The oxd software package includes both the oxd-server and the oxd-https-extension: 
-
-### oxd-server
-The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. 
-
-### oxd-https-extension
-To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
-
 ## Get Started
 
 Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit;
@@ -28,6 +19,15 @@ Step 3: [Configure](./configuration/index.md) your oxd-server and add your licen
 Step 4: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
 
 Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login.  
+
+## Components
+The oxd software package includes both the oxd-server and the oxd-https-extension: 
+
+### oxd-server
+The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. 
+
+### oxd-https-extension
+To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
    
 
 ## API
