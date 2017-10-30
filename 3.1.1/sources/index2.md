@@ -24,9 +24,10 @@ OpenID Connect can be used to send a user for authentication and gather identity
 
 Learn more in the [oxd API section](./api/index.md) of the documentation. 
 
-## Libraries
+## Native Libraries
 oxd client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs.   
 
+### Languages
 - [Python](./libraries/python/index.md)       
 - [Java](./libraries/java/index.md)       
 - [Php](./libraries/php/index.md)       
@@ -35,6 +36,8 @@ oxd client libraries provide simple and flexible access to the oxd OpenID Connec
 - [C#](./libraries/csharp/index.md)       
 - [Perl](./libraries/perl/index.md)  
 - [Go](./libraries/go/index.md)  
+
+### Frameworks
 
 ## Plugins
 
