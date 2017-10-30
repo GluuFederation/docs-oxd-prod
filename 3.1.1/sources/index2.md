@@ -17,19 +17,6 @@ The oxd-server is designed to work as a standalone service daemon via sockets. B
 ### oxd-https-extension (optional)
 To call the oxd-server via HTTPS, you will also need to start the oxd-https-extension. The extension gives you the ability to host a redundant, central oxd service for all your web applications. 
 
-## Get Started
-
-Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit;
-
-Step 2: [Install](./install/index.md) the oxd package;   
-
-Step 3: [Configure](./configuration/index.md) your oxd-server and add your license keys;           
-
-Step 4: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
-
-Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login.  
-   
-
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
 
@@ -72,7 +59,6 @@ oxd has been confirmed to work with the following standard OP's:
 
 If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
 
-
 ## Pricing & Billing
 
 **oxd 3.1.1 is priced $0.33 per application per day:**
@@ -87,10 +73,23 @@ If you have successfully tested oxd against another OP, or for other OP related 
  
 - If you can not add a credit card, or would like to discuss volume discounts, [contact us for an oxd site license](https://gluu.org/contact).     
 
+## Get Started
+
+Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit;
+
+Step 2: [Install](./install/index.md) the oxd package;   
+
+Step 3: [Configure](./configuration/index.md) your oxd-server and add your license keys;           
+
+Step 4: If you want to support application connections via HTTPS, [start the oxd-https-extension](./oxd-https/start/index.md);      
+
+Step 5: Use the oxd API or one of the native libraries to securely send users from your apps to your OP for enrollment and/or login.  
+   
 ## Support
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
 
-If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract. 
+If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract.  
+
 
 ## FAQ's
 
