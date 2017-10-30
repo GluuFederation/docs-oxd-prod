@@ -8,6 +8,7 @@ oxd needs to be deployed on a server or VM with the following **minimum** requir
 |----------|------------|-------------------|----------------|
 |       1  |    400MB     |   200MB            |  64 Bit        |
 
+Java 8 is required.
 
 ## Linux Packages
 
