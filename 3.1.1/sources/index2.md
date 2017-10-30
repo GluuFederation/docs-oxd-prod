@@ -1,9 +1,11 @@
 # oxd 3.1.1 Documentation
 
 ## Introduction
-oxd is middleware software that simplifies the process of sending users from **server-side web applications** to a standard OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server), for login and/or enrollment.
+oxd is middleware software that simplifies the process of securing and integrating **server-side web applications** with a standard OpenID Connect Provider (OP) like the [Gluu Server](https://gluu.org/gluu-server).
 
-In addition to OpenID Connect, oxd supports the User Managed Access ("UMA") 2.0 profile of OAuth 2.0 to enable claims-based authorization and multi-step consent, user-interactions and stepped-up authentication flows. 
+In addition to OpenID Connect, oxd makes it easy to implement the User Managed Access ("UMA") 2.0 profile of OAuth 2.0 in your web apps to enable claims-based authorization and multi-step consent, user-interactions, and stepped-up authentication flows. 
+
+Learn more about OpenID Connect and UMA in the [API docs](#api).
 
 !!! Note
     If you need to integrate other types of apps with your Gluu Server, like single-page apps (SPAs) or native apps, review the [SSO integration guide](https://gluu.org/docs/ce/integration/) in the Gluu Server documentation.
