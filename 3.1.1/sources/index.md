@@ -12,7 +12,7 @@ Using oxd, you can securely send users from web apps to your [Gluu Server OpenID
 
 The oxd software package includes the `oxd-server` and the `oxd-https-extension`. 
 
-The `oxd-server` is designed to work as a standalone service daemon via sockets. By default, applications must connect to the `oxd-server` via `localhost`. With the `oxd-https-extension` enabled, applications can also call your `oxd-server` over the web using HTTPS. 
+The `oxd-server` is designed to work as a standalone service daemon via sockets. By default, applications must connect to the `oxd-server` via `localhost`. With the `oxd-https-extension` enabled, applications can also call your `oxd-server` over the web using `HTTPS`. 
 
 To get started using oxd, follow these steps:
 
@@ -32,7 +32,7 @@ To get started using oxd, follow these steps:
     
 **Step 5**: [Install](./oxd-https/start/index.md) the `oxd-https-extension` (for manual installation only, skip if you installed oxd via Linux Package)
     
-**Step 6**: [Configure ](./oxd-https/configuration/index.md) the `oxd-https-exntesion` 
+**Step 6**: [Configure ](./oxd-https/configuration/index.md) the `oxd-https-extension` 
 
 **Step 7**: [Start](./oxd-https/start/index.md) the `oxd-https-extension`
 
@@ -59,12 +59,12 @@ oxd client libraries provide simple and flexible access to the oxd OpenID Connec
 - [Go](./libraries/go/index.md)     
  
 **Frameworks**:           
-- [Java Spring](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/spring/index.md)        
-- [Java Play](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/play/index.md)     
-- [Ruby on Rails](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/rails/index.md)      
-- [Python Flask](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/flask/index.md)        
-- [Node Express](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/node/index.md)       
-- [.Net](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/net/index.md)        
+- [Java Spring](./framework/spring/index.md)        
+- [Java Play](./framework/play/index.md)     
+- [Ruby on Rails](./framework/rails/index.md)      
+- [Python Flask](./framework/flask/index.md)        
+- [Node Express](./framework/node/index.md)       
+- [.Net](./framework/net/index.md)        
 
 
 ## Plugins
@@ -128,10 +128,10 @@ oxd only supports server-side web applications. If you are using the Gluu Server
 oxd-server is a standalone service with socket connection. By default it's restricted to localhost (`localhost_only: true` configuration in `oxd-conf.json`). It's possible to turn off this restriction if you set `localhost_only: false` in `oxd-conf.json`.
 
 **What is the oxd-https-extension?**
-oxd-https-extension is a RESTful Jetty based server which accepts HTTP calls and redirects them to the `oxd-server`. If you want to connect apps to your oxd server via HTTPS, you can simply [start the oxd-https-extension](./oxd-https/start/index.md) after deploying and configuring your oxd-server. 
+oxd-https-extension is a RESTful Jetty based server which accepts HTTP calls and redirects them to the `oxd-server`. If you want to connect apps to your oxd server via `HTTPS`, you can simply [start the oxd-https-extension](./oxd-https/start/index.md) after deploying and configuring your oxd-server. 
 
 **Where do I deploy oxd-server?**    
-By default, the oxd-server must be deployed on the same server as the web application(s) you want to protect. However, with the oxd-https-extension running, you can deploy a central, robust oxd service on dedicated server(s).
+By default, the oxd-server must be deployed on the same server as the web application(s) you want to protect. However, with the `oxd-https-extension` running, you can deploy a central, robust oxd service on dedicated server(s).
 
 **Why should I use oxd?**     
 oxd offers a few key improvements over the traditional model of embedding OAuth 2.0 code in your applications:
