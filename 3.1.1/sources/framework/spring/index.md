@@ -5,7 +5,7 @@ send users from a Spring application to an OpenID Connect Provider (OP),
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 !!! Note
-    You can also refer to the [oxd java library docs](../../libraries/java/) for more details on java classes.
+    You can also refer to the [oxd-java library docs](../../libraries/java/) for more details on java classes.
 
 
 ## Installation Guides
