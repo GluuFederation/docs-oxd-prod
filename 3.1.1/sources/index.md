@@ -10,7 +10,9 @@ Using oxd, you can securely send users from web apps to your [Gluu Server OpenID
 
 ## Get Started
 
-The oxd software package includes the `oxd-server` and the `oxd-https-extension`. The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. With the `oxd-https-extension` enabled, applications can also call your `oxd-server` over the web using HTTPS. 
+The oxd software package includes the `oxd-server` and the `oxd-https-extension`. 
+
+The oxd-server is designed to work as a standalone service daemon via sockets. By default, applications must connect to the oxd-server via `localhost`. With the `oxd-https-extension` enabled, applications can also call your `oxd-server` over the web using HTTPS. 
 
 To get started using oxd, follow these steps:
 
