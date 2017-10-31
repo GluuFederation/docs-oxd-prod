@@ -16,27 +16,27 @@ The `oxd-server` is designed to work as a standalone service daemon via sockets.
 
 To get started using oxd, follow these steps:
 
-Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit.
+**Step 1**: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit.
 
-Step 2: [Install](./install/index.md) oxd on a server or VM.
+**Step 2**: [Install](./install/index.md) oxd on a server or VM.
 
 !!! Note: 
     If you only plan on using the `oxd-server`, oxd will need to be installed on the same server(s) as the application(s) you want to secure. If you plan on enabling the `oxd-https-extension`, oxd can be installed on any server or VM with network access.
 
-Step 3: [Configure](./configuration/index.md) the `oxd-server` and add your license keys.           
+**Step 3**: [Configure](./configuration/index.md) the `oxd-server` and add your license keys.           
 
-Step 4: [Start](./install/index.md) the `oxd-server`.
+**Step 4**: [Start](./install/index.md) the `oxd-server`.
 
 !!! Note: 
     To use the RESTful `oxd-https-extension`, follow steps 5-7. Otherwise jump to step 8. 
     
-Step 5: [Install](./oxd-https/start/index.md) the `oxd-https-extension` (for manual installation only, skip if you installed oxd via Linux Package)
+**Step 5**: [Install](./oxd-https/start/index.md) the `oxd-https-extension` (for manual installation only, skip if you installed oxd via Linux Package)
     
-Step 6: [Configure ](./oxd-https/configuration/index.md) the `oxd-https-exntesion` 
+**Step 6**: [Configure ](./oxd-https/configuration/index.md) the `oxd-https-exntesion` 
 
-Step 7: [Start](./oxd-https/start/index.md) the `oxd-https-extension`
+**Step 7**: [Start](./oxd-https/start/index.md) the `oxd-https-extension`
 
-Step 8: Use the oxd API or one of the native libraries to securely send users from your apps to your Gluu Server for authentication and authorization. 
+**Step 8**: Use the oxd API or one of the native libraries to securely send users from your apps to your Gluu Server for authentication and authorization. 
 
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
