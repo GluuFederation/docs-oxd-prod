@@ -46,23 +46,23 @@ Learn more in the [oxd API section](./api/index.md) of the documentation.
 ### Native Libraries
 oxd client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs.   
 
-**Languages**:       
-- [Python](./libraries/python/index.md)       
-- [Java](./libraries/java/index.md)       
-- [Php](./libraries/php/index.md)       
-- [Node](./libraries/node/index.md)       
-- [Ruby](./libraries/ruby/index.md)       
-- [C#](./libraries/csharp/index.md)       
-- [Perl](./libraries/perl/index.md)  
-- [Go](./libraries/go/index.md)  
-
+**Languages**:        
+- [Python](./libraries/python/index.md)         
+- [Java](./libraries/java/index.md)         
+- [Php](./libraries/php/index.md)         
+- [Node](./libraries/node/index.md)          
+- [Ruby](./libraries/ruby/index.md)         
+- [C#](./libraries/csharp/index.md)           
+- [Perl](./libraries/perl/index.md)     
+- [Go](./libraries/go/index.md)     
+ 
 **Frameworks**:           
-- [Java Spring](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/spring/index.md)     
+- [Java Spring](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/spring/index.md)        
 - [Java Play](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/play/index.md)     
-- [Ruby on Rails](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/rails/index.md) 
-- [Python Flask](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/flask/index.md)      
-- [Node Express](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/node/index.md)     
-- [.Net](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/net/index.md)      
+- [Ruby on Rails](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/rails/index.md)      
+- [Python Flask](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/flask/index.md)        
+- [Node Express](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/node/index.md)       
+- [.Net](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/net/index.md)        
 
 
 ## Plugins
