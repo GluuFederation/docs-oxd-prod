@@ -107,11 +107,14 @@ Add these lines to Apache's config file:
 
     Change the `response_types` line to `"response_types": ["code"]`
 
+- Start oxd-server, as described [here](../install/index.md):
+<!--
 - To start oxd-server, run the following command:
 
 ```bash
 /etc/init.d/oxd-server start
 ```
+-->
 
 
 ## Demosite Deployment

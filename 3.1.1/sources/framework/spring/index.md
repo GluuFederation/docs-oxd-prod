@@ -30,7 +30,7 @@ To use the oxd-java library, you will need:
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
-## Configuring oxd-server
+## Configuring the oxd-server
 
 - Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
 

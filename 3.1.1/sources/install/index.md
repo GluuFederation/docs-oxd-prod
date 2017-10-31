@@ -8,9 +8,13 @@ oxd needs to be deployed on a server or VM with the following **minimum** requir
 |----------|------------|-------------------|----------------|
 |       1  |    400MB     |   200MB            |  64 Bit        |
 
+Note: **oxd requires Java version 1.8 or higher.**
+
 
 ## Linux Packages
+We are finalizing linux packages for oxd 3.1.1. We will notify our email lists when they are published.
 
+<!--- 
 Find the proper linux package below. After installation you can configure oxd-server following the [configuration instructions](../configuration/index.md). 
 
 Then run the following command to start the `oxd-server`:
@@ -89,14 +93,11 @@ yum clean all
 yum install oxd-server
 ```
 
+--->
+
 ## Manual installation
 
-If you don't want to use one of the Linux packages, oxd is pretty easy to install. It requires
-Java version 1.7 or higher. But otherwise it's self-contained, and you can just unzip the folder 
-and run it.
-
-It is not necessary to install oxd in Windows, it can be downloaded and run. The `oxd Server` is 
-available for download from [maven repository](http://ox.gluu.org/maven/org/xdi/oxd-server).
+oxd is self-contained--you can just unzip the folder and run it. 
 
 ### Windows
 
@@ -109,6 +110,13 @@ in the above folder you just created.
 
 4. Run `oxd-server/bin/oxd-start.bat`
 
+Note that under Windows you may need to change default h2 database location path, to something like
+```json
+ "storage_configuration": {
+    "dbFileLocation":"c:\\opt\\oxd-server\\bin\\oxd_db"
+  }
+```
+
 ### Unix
 
 1. Make a folder called `oxd-server` (or whatever you like), and `cd` to this folder
@@ -119,7 +127,7 @@ in the above folder you just created.
 
 4. Now configure oxd following the [configuration instructions](../configuration/index.md). 
 
-5. `$ nohup bin/oxd-start.sh &`
+5. `$ nohup bin/oxd-start.sh`
 
 ## Manual Build oxd-server Server
 
