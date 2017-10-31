@@ -14,19 +14,20 @@ The oxd software package includes the `oxd-server` and the `oxd-https-extension`
 
 To get started follow these steps (ignore steps 4 and 5 if you **do not** want to use the `oxd-https-extension`): 
 
-Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit;
+Step 1: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit
 
-Step 2*: [Install](./install/index.md) oxd on a server or VM ;   
+Step 2: [Install](./install/index.md) oxd on a server or VM
 
-Step 3: [Configure](./configuration/index.md) the `oxd-server` and add your license keys;           
+!!! Note: 
+    if you only plan on using the `oxd-server`, oxd will need to be installed on the same server(s) as the application(s) you want to secure. If you enable the `oxd-https-extension`, oxd can be installed on any any server or VM with network access.
 
-Step 4: [Start](./oxd-https/start/index.md) the `oxd-https-extension`;
+Step 3: [Configure](./configuration/index.md) the `oxd-server` and add your license keys           
 
-Step 5: [Configure](./oxd-https/configuration/index.md) the `oxd-https-exntesion`. 
+Step 4: [Start](./oxd-https/start/index.md) the `oxd-https-extension`
+
+Step 5: [Configure](./oxd-https/configuration/index.md) the `oxd-https-exntesion` 
 
 Step 6: Use the oxd API or one of the native libraries to securely send users from your apps to your Gluu Server for authentication and authorization. 
-
-*Note: if you only plan on using the `oxd-server`, oxd will need to be installed on the same server(s) as the application(s) you want to secure. If you enable the `oxd-https-extension`, oxd can be installed on any any server or VM with network access.
 
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
@@ -49,12 +50,12 @@ oxd client libraries provide simple and flexible access to the oxd OpenID Connec
 - [Go](./libraries/go/index.md)  
 
 **Frameworks**:           
-- [Java Spring]     
-- [Java Play]     
-- [Ruby on Rails]    
-- [Python Flask]      
-- [Node/Express]     
-- [.Net]      
+- [Java Spring](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/spring/index.md)     
+- [Java Play](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/play/index.md)     
+- [Ruby on Rails](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/rails/index.md) 
+- [Python Flask](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/flask/index.md)      
+- [Node Express](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/node/index.md)     
+- [.Net](https://github.com/GluuFederation/docs-oxd-prod/blob/3.1.1/3.1.1/sources/framework/net/index.md)      
 
 
 ## Plugins
