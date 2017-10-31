@@ -1,6 +1,6 @@
 ## Overview
 
-If you are upgrading oxd-server to the latest version `3.1.1` we have included an auto-migration script to easily transfer your data files.  oxd-server `3.1.1` now uses configurable data storage (`h2`, `redis`, etc.) opposed to JSON files.   
+If you are upgrading oxd-server to the latest version `3.1.1` we have included an auto-migration functionality to easily transfer your data files.  oxd-server `3.1.1` now uses configurable data storage (`h2`, `redis`, etc.) opposed to JSON files.   
 
 
 ## OpenID Connect 
