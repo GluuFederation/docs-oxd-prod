@@ -92,7 +92,7 @@ If you have successfully tested oxd against another OP, or for other OP related 
 
 oxd 3.1.1 costs **USD $0.33 per application per day**. New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.  
 
-A few additional notes about pricing and billing: 
+Additional notes about pricing and billing: 
 
 - Each time a new application leverages your oxd server, a record is added to your oxd dashboard. You will be charged USD $0.33 each day the application remains active.    
 
