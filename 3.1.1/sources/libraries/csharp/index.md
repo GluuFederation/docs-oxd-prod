@@ -47,16 +47,16 @@ Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-cshar
 
 Enable SSL using the following instructions:
 
-    - Open the client application in Visual Studio.
-    - Go to client application properties.
-    - Navigate to `Development Server` and set `SSL Enabled` to `True`.
+- Open the client application in Visual Studio.
+- Go to client application properties.
+- Navigate to `Development Server` and set `SSL Enabled` to `True`.
 
 Change the `hostname` in the project using the following instructions:
 
-     - Make hidden folders visible in the windows explorer. If this has already been done then ignore then skip this step.
-     - Navigate to `vs/config` folder in the root of the project in the windows explorer.
-     - Open the `applicationhost.config` file.
-     - Add the following lines to `bindings` section of the project:
+ - Make hidden folders visible in the windows explorer. If this has already been done then ignore then skip this step.
+ - Navigate to `vs/config` folder in the root of the project in the windows explorer.
+ - Open the `applicationhost.config` file.
+ - Add the following lines to `bindings` section of the project:
 
 ```code
 <binding protocol="https" bindingInformation="*:<portno>:client.example.com" />
@@ -77,9 +77,9 @@ After adding the aforementioned lines the binding section will look like this:
       
 With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
-    - Setup Client URL: https://client.example.com:<portno>/Home/Setting
-    - Login URL: https://client.example.com:<portno>
-    - UMA URL: https://client.example.com:<portno>/Home/UMA
+- Setup Client URL: https://client.example.com:<portno>/Home/Setting
+- Login URL: https://client.example.com:<portno>
+- UMA URL: https://client.example.com:<portno>/Home/UMA
 
 The input values used during Setup Client are stored in the configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the client application.
 
