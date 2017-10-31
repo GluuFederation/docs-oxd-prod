@@ -26,7 +26,7 @@ Step 3: [Configure](./configuration/index.md) the `oxd-server` and add your lice
 Step 4: [Start](./install/index.md) the `oxd-server`.
 
 !!! Note: 
-    To use the RESTful `oxd-https-extension`, follow steps 5 & 6. Otherwise jump to step 8. 
+    To use the RESTful `oxd-https-extension`, follow steps 5-7. Otherwise jump to step 8. 
     
 Step 5: [Install](./oxd-https/start/index.md) the `oxd-https-extension` (for manual installation only, skip if you installed oxd via Linux Package)
     
