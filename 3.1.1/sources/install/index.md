@@ -8,7 +8,7 @@ oxd needs to be deployed on a server or VM with the following **minimum** requir
 |----------|------------|-------------------|----------------|
 |       1  |    400MB     |   200MB            |  64 Bit        |
 
-Java 8 is required.
+Note: **oxd requires Java version 1.8 or higher.**
 
 
 ## Linux Packages
@@ -98,8 +98,6 @@ yum install oxd-server
 ## Manual installation
 
 oxd is self-contained--you can just unzip the folder and run it. 
-
-Note: **oxd requires Java version 1.8 or higher.**
 
 ### Windows
 
