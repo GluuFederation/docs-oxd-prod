@@ -148,7 +148,7 @@ Currently there are oxd libraries for the following languages and frameworks:
 - Java Play
 - Ruby on Rails
 - Python Flask
-- Node/Express
+- Node Express
 - .Net
 
 **How do I get SSO across several websites?**                
