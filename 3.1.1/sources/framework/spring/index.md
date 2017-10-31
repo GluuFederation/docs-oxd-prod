@@ -1,7 +1,7 @@
-# oxd-spring
+# oxd Java Spring
 
 The following documentation demonstrates how to use oxd's Spring framework to 
-send users from a Java Spring application to an OpenID Connect Provider (OP), 
+send users from a Spring application to an OpenID Connect Provider (OP), 
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 !!! Note
