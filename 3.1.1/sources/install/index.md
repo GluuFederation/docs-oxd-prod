@@ -13,20 +13,20 @@ Note: **oxd requires Java version 1.8 or higher.**
 
 ## Linux Packages
 
-When you install oxd via one of the linux packages, you get both the `oxd-server` and the `oxd-https-extension`. The instructions below will provide steps to start the `oxd-server`. If you want to enable the `oxd-https-extension` to enable RESTful calls to your `oxd-server` over the web, follow the instructions for [starting the `oxd-https-extension`](./oxd-https/start/index.md). 
+The oxd Linux packages provide an easy way to install the `oxd-server` and the `oxd-https-extension`. Follow the steps below to get started:
 
 Step 1: Find the proper linux package below.    
 
-Step 2: After installation, [configure](../configuration/index.md) your oxd-server and add your license keys.     
+Step 2: After installation, [configure](../configuration/index.md) your oxd-server and add your license keys. If you need to obtain a license, [register on the oxd website](https://oxd.gluu.org).      
 
 Step 3: Run the following command to start your `oxd-server`:         
 
 `/etc/init.d/oxd-server start`
 
-Step 4: If you need to stop the `oxd-server`, run the following command:      
+!!! Note
+    If you need to stop your `oxd-server`at any point, you can run the following command: `/etc/init.d/oxd-server stop` 
 
-`/etc/init.d/oxd-server stop`
-
+Step 4: To support RESTful (https) calls to your `oxd-server`, you can now move on to the [oxd-https-extension docs](./oxd-https/start/index.md). 
 
 ### Ubuntu 14.04 (trusty)
 
