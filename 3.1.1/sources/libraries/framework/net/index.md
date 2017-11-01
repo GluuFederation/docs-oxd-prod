@@ -1,6 +1,6 @@
 # oxd .NET
 
-The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a .NET application to an OpenID Connect Provider (OP) for login. You can securely send users to any standard OpenID Connect Provider (OP) for login, including the [free open source Gluu Server](http://gluu.org/gluu-server) or Google.
+Use oxd's .Net library to send users from a .Net application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
 !!! Note
     Refer to the [oxd-csharp library docs](../../languages/csharp/index.md) for more details on c# classes.
