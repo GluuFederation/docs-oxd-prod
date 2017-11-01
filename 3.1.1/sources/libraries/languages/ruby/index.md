@@ -1,4 +1,4 @@
-﻿# oxd-ruby
+# oxd-ruby
 
 ## Overview
 
