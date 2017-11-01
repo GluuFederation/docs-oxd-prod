@@ -2,9 +2,7 @@
 
 ## Overview
 
-The following documentation demonstrates how to use oxd's Go library to 
-send users from a Go application to an OpenID Connect Provider (OP), 
-like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login.
+Use oxd's Golang library to send users from a Golang application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
 
 ## Sample Project
