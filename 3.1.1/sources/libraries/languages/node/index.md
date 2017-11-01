@@ -1,9 +1,7 @@
 # oxd-node
 
 ## Overview
-The following documentation demonstrates how to use oxd's Node.js library to 
-send users from a Node.js application to an OpenID Connect Provider (OP), 
-like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
+Use oxd's Node library to send users from a Node application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
 Download a [Sample Project](https://github.com/GluuFederation/oxd-node/archive/3.1.1.zip) specific to this oxd-node library.
 
