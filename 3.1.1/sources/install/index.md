@@ -12,16 +12,18 @@ Note: **oxd requires Java version 1.8 or higher.**
 
 
 ## Linux Packages
-We are finalizing linux packages for oxd 3.1.1. We will notify our email lists when they are published.
 
-<!--- 
-Find the proper linux package below. After installation you can configure oxd-server following the [configuration instructions](../configuration/index.md). 
+When you install oxd via one of the linux packages, you get both the `oxd-server` and the `oxd-https-extension`. The instructions below will provide steps to start the `oxd-server`. If you want to enable the `oxd-https-extension` to enable RESTful calls to your `oxd-server` over the web, follow the instructions for [starting the `oxd-https-extension`](./oxd-https/start/index.md). 
 
-Then run the following command to start the `oxd-server`:
+Step 1: Find the proper linux package below.    
+
+Step 2: After installation, [configure](../configuration/index.md) your oxd-server and add your license keys.     
+
+Step 3: Run the following command to start your `oxd-server`:         
 
 `/etc/init.d/oxd-server start`
 
-To stop the `oxd-server` run:
+Step 4: If you need to stop the `oxd-server`, run the following command:      
 
 `/etc/init.d/oxd-server stop`
 
@@ -93,7 +95,6 @@ yum clean all
 yum install oxd-server
 ```
 
---->
 
 ## Manual installation
 
