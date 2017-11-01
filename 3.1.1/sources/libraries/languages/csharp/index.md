@@ -3,9 +3,7 @@
 
 ## Overview
 
-The following documentation demonstrates how to use oxd's C# library to 
-send users from a C# application to an OpenID Connect Provider (OP), 
-like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
+Use oxd's C# library to send users from a C# application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
 Download a [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd-csharp library.
 
