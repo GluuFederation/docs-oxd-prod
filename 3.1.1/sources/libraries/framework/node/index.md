@@ -1,6 +1,6 @@
 # oxd Node Express
 
-The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a Node Express application to an OpenID Connect Provider (OP) for login. You can send users to any standard OpenID Connect Provider (OP) for login, including Google. In these docs we use the [free open source Gluu Server](http://gluu.org/gluu-server) as the OpenID Connect Provider (OP).
+Use oxd's Node Express library to send users from an Express application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
 
 !!! Note:
