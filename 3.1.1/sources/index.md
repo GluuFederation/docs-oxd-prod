@@ -59,8 +59,10 @@ oxd client libraries provide simple and flexible access to the oxd OpenID Connec
 - [Go](./libraries/languages/golang/index.md)     
  
 **Frameworks**:           
-- [Java Spring](./libraries/framework/spring/index.md)        
-- [Java Play](./libraries/framework/play/index.md)     
+- [Java Spring](./libraries/framework/spring/index.md)  
+     <!--      
+    - [Java Play](./libraries/framework/play/index.md)    
+     --> 
 - [Ruby on Rails](./libraries/framework/rails/index.md)      
 - [Python Flask](./libraries/framework/flask/index.md)        
 - [Node Express](./libraries/framework/node/index.md)       
