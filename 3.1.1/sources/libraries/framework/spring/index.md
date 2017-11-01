@@ -1,6 +1,6 @@
 # oxd Java Spring
 
-Use oxd's Java Spring framework library to send users from a Java Spring application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement.  
+Use oxd's Java Spring library to send users from a Spring application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement.  
 
 !!! Note
     You can also refer to the [oxd-java library docs](../languages/java/) for more details on java classes.
