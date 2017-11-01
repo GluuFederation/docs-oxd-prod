@@ -3,14 +3,14 @@
 The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a .NET application to an OpenID Connect Provider (OP) for login. You can securely send users to any standard OpenID Connect Provider (OP) for login, including the [free open source Gluu Server](http://gluu.org/gluu-server) or Google.
 
 !!! Note
-    Refer to the [oxd-csharp library docs](../../libraries/csharp/index.md) for more details on c# classes.
+    Refer to the [oxd-csharp library docs](../../languages/csharp/index.md) for more details on c# classes.
 
 
 ## Installation Guides
 
 - [Github oxd-csharp](https://github.com/GluuFederation/oxd-csharp)
 - [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
-- [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/)
+- [oxd-server](../../../install/index.md)
 
 
 ## Prerequisites
@@ -24,10 +24,8 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 To use the oxd-csharp library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
-- An active installation of the [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/
-) running on the same server as the client application.
-- An active installation of the [oxd-https-extension](https://gluu.org/docs/oxd/3.1.1/install/
-) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
+- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
+- An active installation of the [oxd-https-extension](../../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 

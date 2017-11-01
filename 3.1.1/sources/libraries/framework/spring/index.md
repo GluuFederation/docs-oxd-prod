@@ -5,14 +5,14 @@ send users from a Spring application to an OpenID Connect Provider (OP),
 like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
 
 !!! Note
-    You can also refer to the [oxd-java library docs](../../libraries/java/) for more details on java classes.
+    You can also refer to the [oxd-java library docs](../languages/java/) for more details on java classes.
 
 
 ## Installation Guides
 
 - [Github oxd-node](https://github.com/GluuFederation/oxd-node)
 - [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
-- [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/)
+- [oxd-server](../../../install/index.md)
 
 
 ## Prerequisites
@@ -25,8 +25,8 @@ like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login.
 To use the oxd-java library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
-- An active installation of the [oxd-server](../../install/index.md) running in the same server as the client application.
-- An active installation of the [oxd-https-extension](../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.   
+- An active installation of the [oxd-server](../../../install/index.md) running in the same server as the client application.
+- An active installation of the [oxd-https-extension](../../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.   
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 

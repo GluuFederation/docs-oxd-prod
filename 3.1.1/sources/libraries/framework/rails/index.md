@@ -3,14 +3,14 @@
 The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a Ruby on Rails application to an OpenID Connect Provider (OP) for login. You can send users to any standard OpenID Connect Provider (OP) for login, including the [free open source Gluu Server](http://gluu.org/gluu-server) or Google. 
 
 !!! Note
-    You can also refer to the [oxd-ruby library docs](../../libraries/ruby/) for more details on ruby classes.
+    You can also refer to the [oxd-ruby library docs](../../languages//ruby/index.md) for more details on ruby classes.
 
 
 ## Installation Guides
 
 - [Github oxd-ruby](https://github.com/GluuFederation/oxd-ruby)
 - [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
-- [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/)
+- [oxd-server](../../../install/index.md)
 
 
 ## Prerequisites
@@ -107,7 +107,7 @@ Add these lines to Apache's config file:
 
     Change the `response_types` line to `"response_types": ["code"]`
 
-- Start oxd-server, as described [here](../install/index.md):
+- Start oxd-server, as described [here](../../../install/index.md):
 <!--
 - To start oxd-server, run the following command:
 

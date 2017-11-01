@@ -4,14 +4,14 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 
 
 !!! Note:
-    You can also refer to the [oxd-node library docs](https://gluu.org/docs/oxd/libraries/node/) for more details on node classes.
+    You can also refer to the [oxd-node library docs](../../languages/node/index.md) for more details on node classes.
 
 
 ## Installation Guides
 
 - [Github oxd-node](https://github.com/GluuFederation/oxd-node)
 - [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
-- [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/)
+- [oxd-server](../../../install/index.md)
 
 
 ## Prerequisites
@@ -24,10 +24,8 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 To use the oxd-node library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
-- An active installation of the [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/
-) running on the same server as the client application.
-- An active installation of the [oxd-https-extension](https://gluu.org/docs/oxd/3.1.1/install/
-) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
+- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
+- An active installation of the [oxd-https-extension](../../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
@@ -41,7 +39,7 @@ To use the oxd-node library, you will need:
 
     Change the `response_types` line to `"response_types": ["code"]`
 
-- Start oxd-server, as described [here](../install/index.md):
+- Start oxd-server, as described [here](../../../install/index.md):
 <!--
 - To start oxd-server, run the following command:
 

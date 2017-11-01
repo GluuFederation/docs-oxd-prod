@@ -21,8 +21,8 @@ specific to this oxd-java library.
 To use the oxd-java library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
-- An active installation of the [oxd-server](../../install/index.md) running in the same server as the client application.
-- An active installation of the [oxd-https-extension](../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.   
+- An active installation of the [oxd-server](../../../install/index.md) running in the same server as the client application.
+- An active installation of the [oxd-https-extension](../../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.   
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 ## Install oxd-java

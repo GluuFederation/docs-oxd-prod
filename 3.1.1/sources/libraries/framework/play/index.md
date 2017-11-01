@@ -3,7 +3,7 @@
 The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a Java Play app to an OpenID Connect Provider (OP) for login. You can securely send users to any standard OP for login, including Google and the [free open source Gluu Server](http://gluu.org/gluu-server).
 
 !!! Note
-    You can also refer to the [oxd-java library](../../libraries/java/) docs for more details on java classes.
+    You can also refer to the [oxd-java library](../../languages/java/index.md) docs for more details on java classes.
     
 ## Installation
 

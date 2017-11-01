@@ -49,22 +49,22 @@ Learn more in the [oxd API section](./api/index.md) of the documentation.
 oxd client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs.   
 
 **Languages**:        
-- [Python](./libraries/python/index.md)         
-- [Java](./libraries/java/index.md)         
-- [Php](./libraries/php/index.md)         
-- [Node](./libraries/node/index.md)          
-- [Ruby](./libraries/ruby/index.md)         
-- [C#](./libraries/csharp/index.md)           
-- [Perl](./libraries/perl/index.md)     
-- [Go](./libraries/go/index.md)     
+- [Python](./libraries/languages/python/index.md)         
+- [Java](./libraries/languages/java/index.md)         
+- [Php](./libraries/languages/php/index.md)         
+- [Node](./libraries/languages/node/index.md)          
+- [Ruby](./libraries/languages/ruby/index.md)         
+- [C#](./libraries/languages/csharp/index.md)           
+- [Perl](./libraries/languages/perl/index.md)     
+- [Go](./libraries/languages/golang/index.md)     
  
 **Frameworks**:           
-- [Java Spring](./framework/spring/index.md)        
-- [Java Play](./framework/play/index.md)     
-- [Ruby on Rails](./framework/rails/index.md)      
-- [Python Flask](./framework/flask/index.md)        
-- [Node Express](./framework/node/index.md)       
-- [.Net](./framework/net/index.md)        
+- [Java Spring](./libraries/framework/spring/index.md)        
+- [Java Play](./libraries/framework/play/index.md)     
+- [Ruby on Rails](./libraries/framework/rails/index.md)      
+- [Python Flask](./libraries/framework/flask/index.md)        
+- [Node Express](./libraries/framework/node/index.md)       
+- [.Net](./libraries/framework/net/index.md)        
 
 
 ## Plugins

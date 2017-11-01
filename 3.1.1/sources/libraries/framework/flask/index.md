@@ -7,13 +7,13 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 
 
 !!! Note:
-    You can also refer to the [oxd-python library docs](https://gluu.org/docs/oxd/libraries/python/) for more details on python classes.
+    You can also refer to the [oxd-python library docs](../../languages/python/index.md) for more details on python classes.
 
 ## Installation Guides
 
 - [Github oxd-python](https://github.com/GluuFederation/oxd-python)
 - [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
-- [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/)
+- [oxd-server](../../../install/index.md)
 
 
 ## Prerequisites
@@ -44,7 +44,7 @@ apt-get install gluu-oxd-server
 - Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
 
     Change the `response_types` line to `"response_types": ["code"]`
-- Start oxd-server, as described [here](../install/index.md):
+- Start oxd-server, as described [here](../../../install/index.md):
 <!--
 - To start oxd-server, run the following command:
 
