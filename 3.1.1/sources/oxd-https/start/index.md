@@ -4,7 +4,7 @@ The `oxd-https-extension` is a RESTful Jetty based server which accepts HTTP cal
 ## Start oxd-https-extension
 First make sure you have installed the oxd package as described [here](https://gluu.org/docs/oxd/3.1.1/install/).
 
-After the package is successfully installed, start the `oxd-https-extension` service by executing the following command:
+After the oxd package is successfully installed, and your `oxd-server` has been configured and started, you can start the `oxd-https-extension` service by executing the following command:
 
 ```
 /etc/init.d/oxd-https-extension start
