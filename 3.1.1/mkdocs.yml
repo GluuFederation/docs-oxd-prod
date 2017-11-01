@@ -40,7 +40,7 @@ pages:
         - 'Go': 'libraries/languages/golang/index.md'
     - Frameworks:
         - 'Java Spring': 'libraries/framework/spring/index.md'
-        - 'Java Play Framework': 'libraries/framework/play/index.md'
+ #       - 'Java Play Framework': 'libraries/framework/play/index.md'
         - 'Ruby on Rails': 'libraries/framework/rails/index.md'
         - 'Python Flask': 'libraries/framework/flask/index.md'
         - 'Node/Express': 'libraries/framework/node/index.md'
