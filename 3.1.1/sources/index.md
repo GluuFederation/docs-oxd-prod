@@ -21,7 +21,7 @@ Follow these steps to get started:
 **Step 2**: [Install](./install/index.md) oxd on a server or VM.
 
 !!! Note: 
-    If you only plan on using the `oxd-server` install oxd on the same server(s) as the application(s) you want to secure. If you plan on using the `oxd-https-extension` you can install oxd on any server or VM with network access.
+    By default the `oxd-server` needs to be installed on the same server(s) as the application(s) you want to secure. If you plan on using the `oxd-https-extension` oxd can be installed on any server or VM with network access.
 
 **Step 3**: [Configure](./configuration/index.md) the `oxd-server` and add your license keys.           
 
