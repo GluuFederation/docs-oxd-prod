@@ -27,10 +27,8 @@ Download a [Sample Project](https://github.com/GluuFederation/oxd-ruby/archive/v
 To use the oxd-ruby library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
-- An active installation of the [oxd-server](https://gluu.org/docs/oxd/3.1.1/install/
-) running on the same server as the client application.
-- An active installation of the [oxd-https-extension](https://gluu.org/docs/oxd/3.1.1/install/
-) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
+- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
+- An active installation of the [oxd-https-extension](../../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 

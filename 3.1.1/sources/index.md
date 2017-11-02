@@ -57,7 +57,7 @@ oxd native client libraries provide simple and flexible access to the oxd OpenID
 - [Python](./libraries/languages/python/index.md)         
 - [Java](./libraries/languages/java/index.md)         
 - [Php](./libraries/languages/php/index.md)         
-- [Node](./libraries/languages/node/index.md)          
+- [Node](./libraries/languages/express/index.md)          
 - [Ruby](./libraries/languages/ruby/index.md)         
 - [C#](./libraries/languages/csharp/index.md)           
 - [Perl](./libraries/languages/perl/index.md)     
@@ -68,7 +68,7 @@ oxd native client libraries provide simple and flexible access to the oxd OpenID
 - [Java Spring](./libraries/framework/spring/index.md)  
 - [Ruby on Rails](./libraries/framework/rails/index.md)      
 - [Python Flask](./libraries/framework/flask/index.md)        
-- [Node Express](./libraries/framework/node/index.md)       
+- [Node Express](./libraries/framework/express/index.md)       
 - [.Net](./libraries/framework/net/index.md)        
 
 

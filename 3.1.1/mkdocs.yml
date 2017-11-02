@@ -33,7 +33,7 @@ pages:
         - 'Python': 'libraries/languages/python/index.md'
         - 'Java': 'libraries/languages/java/index.md'
         - 'PHP':  'libraries/languages/php/index.md'
-        - 'Node': 'libraries/languages/node/index.md'
+        - 'Node': 'libraries/languages/express/index.md'
         - 'Ruby': 'libraries/languages/ruby/index.md'
         - 'CSharp': 'libraries/languages/csharp/index.md'
         - 'Perl': 'libraries/languages/perl/index.md'
@@ -43,7 +43,7 @@ pages:
  #       - 'Java Play Framework': 'libraries/framework/play/index.md'
         - 'Ruby on Rails': 'libraries/framework/rails/index.md'
         - 'Python Flask': 'libraries/framework/flask/index.md'
-        - 'Node/Express': 'libraries/framework/node/index.md'
+        - 'Node/Express': 'libraries/framework/express/index.md'
         - '.NET': 'libraries/framework/net/index.md'
 - Plugins:
     - 'Wordpress': 'plugin/wordpress/index.md'
