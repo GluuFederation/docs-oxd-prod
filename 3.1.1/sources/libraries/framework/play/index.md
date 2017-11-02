@@ -1,4 +1,4 @@
-# oxd Java Play
+# oxd-java-play
 
 Use oxd's Java Play library to send users from a Play application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
