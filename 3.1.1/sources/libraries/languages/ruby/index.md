@@ -10,19 +10,15 @@ Use oxd's Ruby library to send users from a Ruby application to your Gluu Server
 Download a [Sample Project](https://github.com/GluuFederation/oxd-ruby/archive/v3.1.1.zip) specific to this oxd-ruby library.
 
 
-### System Requirements
+### Software Requirements
+
+System Requirements:
 
 - Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - Ruby 2.2
 - Rails
 - Passenger
 - Apache 2.4.4 or higher
-- oxd-ruby
-
-
-## Prerequisites
-
-### Required Software
 
 To use the oxd-ruby library, you will need:
 
