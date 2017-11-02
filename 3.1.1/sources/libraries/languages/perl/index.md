@@ -8,10 +8,11 @@ Download a [Sample Project](https://github.com/GluuFederation/oxd-perl/archive/3
 
 ## Software Requirements
 
+System Requirements:
+
 - Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - Perl 5
 - Apache 2.4.4 +
-- oxdperl 3.1.1
 - CGI::Session module
 - Net::SSLeay module
 - IO::Socket::SSL module
