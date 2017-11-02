@@ -13,19 +13,19 @@ Use oxd's .Net library to send users from a .Net application to your Gluu Server
 - [oxd-server](../../../install/index.md)
 
 
-## Prerequisites
+## Software Requirements
 
+System Requirements:
 
 - Microsoft Visual Studio 2012 or higher
 - Windows Server 2008 or higher
-- Gluu.Oxd.OxdCSharp
 - .Net Framework 4.5 or higher
 
 To use the oxd-csharp library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
 - An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
-- An active installation of the [oxd-https-extension](../../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
