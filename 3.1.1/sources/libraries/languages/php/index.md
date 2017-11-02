@@ -10,18 +10,14 @@ Use oxd's PHP library to send users from a PHP application to your Gluu Server O
 Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.1.zip) specific to this oxd-php library.
 
 
-### System Requirements
+### Software Requirements
+
+System Requirements:
 
 - Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - php 5.4 or higher
 - Apache 2.4 or higher
 - composer
-- oxd-php-library 3.1.1
-
-
-## Prerequisites
-
-### Required Software
 
 To use the oxd-php library, you will need:
 
