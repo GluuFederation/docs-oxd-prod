@@ -9,10 +9,11 @@ Download a [Sample Project](https://github.com/GluuFederation/oxd-node/archive/3
 
 ## Software Requirements
 
+System Requirements:
+
 - Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - Node 6.11.0
 - npm 3.10.10
-- oxd-node 3.1.2
 
 To use the oxd-node library, you will need:
 
