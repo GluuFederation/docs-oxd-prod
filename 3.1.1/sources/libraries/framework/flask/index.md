@@ -1,4 +1,4 @@
-# oxd Python Flask
+# oxd-python-flask
 
 Use oxd's Python Flask library to send users from a Flask application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
