@@ -20,7 +20,7 @@ To use the oxd-perl library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
 - An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
-- An active installation of the [oxd-https-extension](../../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)).
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
