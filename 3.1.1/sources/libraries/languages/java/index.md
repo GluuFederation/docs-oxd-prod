@@ -7,7 +7,9 @@ Use oxd's Java library to send users from a Java application to your Gluu Server
 Download a [Sample Project](https://github.com/GluuFederation/oxd/archive/version_3.1.1.zip) 
 specific to this oxd-java library.
 
-## Software Requirements
+## Software Requirements 
+
+System Requirements:
 
 - Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - Java 1.8 or higher
