@@ -1,4 +1,4 @@
-# oxd .NET
+# oxd-.net
 
 Use oxd's .Net library to send users from a .Net application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
