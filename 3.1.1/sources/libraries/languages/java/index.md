@@ -14,7 +14,6 @@ System Requirements:
 - Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - Java 1.8 or higher
 - Apache 2.4.4 or higher
-- oxd-java 3.1.1
 
 To use the oxd-java library, you will need:
 
