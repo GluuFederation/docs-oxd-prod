@@ -33,6 +33,14 @@ apt-get update
 apt-get install gluu-oxd-server
 ```
 
+To use the oxd-node library, you will need:
+
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
+- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).
+- A Windows server or Windows installed machine / Linux server or Linux installed machine.
+
+
 ## Configuring oxd-server
 
 - Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
