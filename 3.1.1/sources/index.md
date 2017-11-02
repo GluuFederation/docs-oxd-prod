@@ -41,12 +41,14 @@ Follow these steps to get started:
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
 
-OpenID Connect can be used to send a user for authentication and gather identity information about the user. UMA can be used to manage which people (or software clients) can access which digital resources, like web pages and APIs.    
+- The [oxd OpenID Connect APIs](./api/index.md#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information about the user. 
+
+- The [oxd UMA APIs](./api/index.md#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access management policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs.   
 
 Learn more in the [oxd API section](./api/index.md) of the documentation. 
 
 ### Native Libraries
-oxd client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs.   
+oxd native client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs. 
 
 **Languages**:        
 
@@ -93,6 +95,14 @@ oxd has been confirmed to work with the following standard OPs:
 - [Google](https://developers.google.com/identity/protocols/OpenIDConnect)   
 
 If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
+
+## Supported UMA Authorization Servers (AS)
+
+oxd has been confirmed to work with the following standard UMA Authorization Servers (AS):
+
+- [Gluu Server](https://gluu.org/docs/ce/installation-guide/)  
+
+If you have successfully tested oxd against another AS, or for other AS related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
 
 ## Pricing & Billing
 
