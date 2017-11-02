@@ -13,18 +13,19 @@ Use oxd's Java Spring library to send users from a Spring application to your Gl
 - [oxd-server](../../../install/index.md)
 
 
-## Prerequisites
+## Software Requirements
+
+System Requirements:
 
 - Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - Java 7 or higher
 - Apache 2.4.4 or higher
-- oxd-client 3.1.1
 
 To use the oxd-java library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
 - An active installation of the [oxd-server](../../../install/index.md) running in the same server as the client application.
-- An active installation of the [oxd-https-extension](../../../install/index.md) if oxd-https-extension connection is used. In this case, client applications can be on different servers but will be able to access oxd-https-extension.   
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).  
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
