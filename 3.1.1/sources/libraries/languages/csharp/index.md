@@ -9,9 +9,10 @@ Download a [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive
 
 ## Software Requirements
 
+System Requirements:
+
 - Microsoft Visual Studio 2012 or higher
 - Windows Server 2008 or higher
-- Gluu.Oxd.OxdCSharp
 - .Net Framework 4.5 or higher
 
 To use the oxd-csharp library, you will need:
