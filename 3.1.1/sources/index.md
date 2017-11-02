@@ -47,6 +47,8 @@ oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-
 
 Learn more in the [oxd API section](./api/index.md) of the documentation. 
 
+See supported OpenID Connect Providers and UMA Authorization Servers [below](#supported-openid-providers-op). 
+
 ### Native Libraries
 oxd native client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs. 
 
