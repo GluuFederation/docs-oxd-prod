@@ -51,19 +51,12 @@ oxd client libraries provide simple and flexible access to the oxd OpenID Connec
 **Languages**:        
 
 - [Python](./libraries/languages/python/index.md)         
-
 - [Java](./libraries/languages/java/index.md)         
-
 - [Php](./libraries/languages/php/index.md)         
-
 - [Node](./libraries/languages/node/index.md)          
-
 - [Ruby](./libraries/languages/ruby/index.md)         
-
 - [C#](./libraries/languages/csharp/index.md)           
-
 - [Perl](./libraries/languages/perl/index.md)     
-
 - [Go](./libraries/languages/golang/index.md)     
  
 **Frameworks**:           
@@ -72,13 +65,9 @@ oxd client libraries provide simple and flexible access to the oxd OpenID Connec
      <!--      
     - [Java Play](./libraries/framework/play/index.md)    
      --> 
-
 - [Ruby on Rails](./libraries/framework/rails/index.md)      
-
 - [Python Flask](./libraries/framework/flask/index.md)        
-
 - [Node Express](./libraries/framework/node/index.md)       
-
 - [.Net](./libraries/framework/net/index.md)        
 
 
