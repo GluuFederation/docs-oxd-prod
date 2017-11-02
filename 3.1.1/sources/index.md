@@ -109,7 +109,7 @@ oxd 3.1.1 costs **USD $0.33 per application per day**. New accounts include a $5
 
 Additional notes about pricing and billing: 
 
-- Each time a new application leverages your oxd server, a record is added to your oxd dashboard. You will be charged USD $0.33 each day the application remains active.    
+- Each time a new application connects to your `oxd-server`, a record is created and you will be charged USD $0.33 each day the application remains active.  
 
 - At the end of each month usage fees are compiled and a billing summary is sent to all users associated with your account.   
 
