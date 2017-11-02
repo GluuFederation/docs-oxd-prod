@@ -9,18 +9,14 @@ Use oxd's Python library to send users from a Python application to your Gluu Se
 
 Download a [Sample Project](https://github.com/GluuFederation/oxd-python/archive/3.1.1.zip) specific to this oxd-python library.
 
-### System Requirements
+### Software Requirements
+
+System Requirements:
 
 - Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
 - Python 2.7
 - Flask
-- oxdpython
 - Flask-SSLify
-
-
-## Prerequisites
-
-### Required Software
 
 To use the oxd-python library, you will need:
 
