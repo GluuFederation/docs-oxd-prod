@@ -32,15 +32,17 @@ To use the oxd-csharp library, you will need:
 
 ## Configuring oxd-server
 
-- Edit the file `<path to oxd-server>/conf/oxd-conf.json`
-    
+- Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
+
+    Update the following fields `"server_name"`, `"license_id"`, `"public_key"` and `"public_password"`
+
+- Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
+
     Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
 
-- Edit the file `<path to oxd-server>/conf/oxd-default-site-config.json`
-    
     Change the `response_types` line to `"response_types": ["code"]`
 
-- To start oxd-server, run the following commands:
+- To start oxd-server, run the following command or [click here](../../../install/index.md) for more detailed instructions:
 
 ```bash
 > cd <path to oxd-server directory>/bin
