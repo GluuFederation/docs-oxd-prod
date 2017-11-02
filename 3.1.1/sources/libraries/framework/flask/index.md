@@ -33,7 +33,7 @@ apt-get update
 apt-get install gluu-oxd-server
 ```
 
-To use the oxd-node library, you will need:
+To use the oxd-python library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
 - An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
