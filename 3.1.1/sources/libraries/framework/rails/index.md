@@ -13,7 +13,9 @@ Use oxd's Ruby on Rails library to send users from a Rails application to your G
 - [oxd-server](../../../install/index.md)
 
 
-## Prerequisites
+## Software Requirements
+
+System Requirements:
 
 Ubuntu 14.04 with some basic utilities listed below:
 
@@ -95,6 +97,13 @@ Add these lines to Apache's config file:
  PassengerDefaultRuby /home/username/.rvm/gems/ruby-2.2.1/wrappers/ruby
 </IfModule>
 ```
+
+To use the oxd-ruby library, you will need:
+
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
+- An active installation of the [oxd-server](../../../install/index.md). 
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).
+- A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
 
 ## Configuring oxd-server
