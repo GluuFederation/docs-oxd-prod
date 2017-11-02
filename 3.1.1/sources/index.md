@@ -97,7 +97,7 @@ If you have successfully tested oxd against another OP, or for other OP related 
 
 ## Supported UMA Authorization Servers (AS)
 
-oxd has been confirmed to work with the following standard UMA Authorization Servers (AS):
+oxd has been confirmed to work with the following standard UMA 2.0 Authorization Servers (AS):
 
 - [Gluu Server](https://gluu.org/docs/ce/installation-guide/)  
 
