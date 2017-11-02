@@ -16,7 +16,7 @@ The oxd software package includes the `oxd-server` and the `oxd-https-extension`
 
 Follow these steps to get started:
 
-**Step 1**: [Sign up](https://oxd.gluu.org) on the oxd website to obtain your oxd license and $50 credit.
+**Step 1**: [Sign up](https://oxd.gluu.org/account/register/) on the oxd website to obtain your oxd license and $50 credit.
 
 **Step 2**: [Install](./install/index.md) oxd on a server or VM.
 
