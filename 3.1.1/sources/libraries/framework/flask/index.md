@@ -12,7 +12,9 @@ Use oxd's Python Flask library to send users from a Flask application to your Gl
 - [oxd-server](../../../install/index.md)
 
 
-## Prerequisites
+## Software Requirements
+
+System Requirements:
 
 Ubuntu 14.04 with some basic utilities listed below:
 
