@@ -16,13 +16,13 @@ Technically OpenID Connect is not an authentication protocol--it enables a perso
     If you need an OpenID Connect Provider (OP) you can deploy the [Gluu Server](https://gluu.org/docs/3.1.1/installation-guide/install/). 
 
 ### Authentication Flow
-oxd uses the [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) 
-for authentication. Future versions of oxd may support the Hybrid Flow. 
-Implicit Flow is not supported because it is intended for JavaScript client-side 
-applications where the client does not authenticate.
+oxd supports the OpenID Connect [Hybrid Flow](http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) and [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) for authentication. 
 
-Learn more about authentication flows in the 
-[OpenID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html). 
+Learn more about authentication flows in the [OpenID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html). 
+
+!!! Note
+    Implicit Flow is not supported because it is intended for JavaScript client-side applications where the client does not authenticate. 
+
 
 ### oxd OpenID Connect APIs
 `oxd-server` provides seven API's for OpenID Connect authentication. In general,
