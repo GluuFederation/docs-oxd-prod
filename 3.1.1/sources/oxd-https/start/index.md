@@ -16,6 +16,7 @@ To stop the `oxd-https-extension`, run:
 /etc/init.d/oxd-https-extension stop
 ```
 
+After you have started `oxd-https-extension`, move on to [configuration](../configuration/index.md).  
 
 ## Manual installation
 
@@ -26,7 +27,7 @@ Install `oxd-server` manually as described [here](https://gluu.org/docs/oxd/3.1.
 Install `oxd-https-extension` following these steps:
 
 * Download `oxd-https-extension` jar file from [maven repo](http://ox.gluu.org/maven/org/xdi/oxd-https-extension/3.1.1.Final/)
-* Configure the server in `oxd-https.yml` file in the same directory. Configuration explained [here](https://gluu.org/docs/oxd/3.1.1/oxd-https/configuration/)
+* Configure the server in `oxd-https.yml` file in the same directory. Configuration explained [here](../configuration/index.md)
 * Make sure `oxd-https.keystore` file exists and properly referenced in `oxd-https.yml` file.
 * Run application with following command
 
