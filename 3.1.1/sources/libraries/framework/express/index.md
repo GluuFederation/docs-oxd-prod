@@ -4,7 +4,7 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 
 
 !!! Note:
-    You can also refer to the [oxd-node library docs](../../languages/express/index.md) for more details on node classes.
+    You can also refer to the [oxd-node library docs](../../languages/node/index.md) for more details on node classes.
 
 
 ## Installation Guides
