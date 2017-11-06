@@ -6,7 +6,7 @@ oxd is client software that simplifies the process of implementing OpenID Connec
 Using oxd, you can securely send users from web apps to your [Gluu Server OpenID Connect Provider (OP) and UMA Authorization Server (AS)](https://gluu.org/docs/ce) for dynamic enrollment, single sign-on (SSO), and access management policy enforcement. 
 
 !!! Warning 
-    oxd 3.1.1 includes significant changes from previous versions. If you have previous oxd installations, please review [what's new in 3.1.x](./3.1.x-intro.md). 
+    oxd 3.1.1 includes functional and billing changes from previous versions. If you have older oxd installations, please review [what's new in 3.1.x](./3.1.x-intro.md) before proceeding with upgrades or new installations of oxd 3.1.1. 
 
 !!! Note
     oxd only works with server-side web apps. If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
