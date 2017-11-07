@@ -1,7 +1,7 @@
 # oxd 3.1.1 Documentation
 
 ## Introduction
-oxd is client software that simplifies the process of implementing OpenID Connect and UMA in **server-side web applications**. 
+oxd is client software that simplifies the process of implementing OpenID Connect and UMA in server-side web applications. 
 
 Using oxd, you can securely send users from web apps to your [Gluu Server](https://gluu.org/docs/ce) OpenID Connect Provider (OP) and UMA Authorization Server (AS) for dynamic enrollment, single sign-on (SSO), and access management policy enforcement. 
 
