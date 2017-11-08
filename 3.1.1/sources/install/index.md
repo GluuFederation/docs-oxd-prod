@@ -102,7 +102,7 @@ yum install oxd-server
 The oxd-server is a self-contained program. You can just unzip the folder and run it. 
 
 !!! Note 
-    If you perform manual installation and **also want to support RESTful calls to your `oxd-server`**, after following the instructions below you will need to [install the `oxd-https-extension`](../oxd-https/start/index.md#manual-installation). 
+    To **support RESTful calls to your `oxd-server`**, after you complete manual installation below proceed to the [`oxd-https-extension` installation docs](../oxd-https/start/index.md#manual-installation). 
 
 ### Windows
 
