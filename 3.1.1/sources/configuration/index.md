@@ -74,7 +74,7 @@ oxd-conf.json
 
 - **protect_commands_with_access_token**: if you are only using the `oxd-server` this value can be `false`. If you are using the `oxd-https-extension`, then this value MUST be `true` in order to protect communication between `oxd-https-extension` and the client application (RP).
 
-- **uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client**: notifies the `oxd-server` whether to automatically register the `Claims Gathering Endpoint` as the `redirect_uri` for a given client. It is useful for UMA 2 clients that wish to force authorization against the Gluu Server.
+- **uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client**: notifies the `oxd-server` whether to automatically register the `Claims Gathering Endpoint` as the `claims_redirect_uri` for a given client. It is useful for UMA 2 clients that wish to force authorization against the Gluu Server. If you wish to provide own `claims_redirect_uri` then please set this property to `false`.
 
 - **migration_source_folder_path**: `oxd-server` has built-in migration from older version of `oxd-server`. To migrate old json files from previous versions please specify path to folder/directory that contains those json files in this property. Those files will be read and imported one time (during restart `oxd-server` will not import them again). Note, if you are under Windows OS don't forget to escape path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
 
