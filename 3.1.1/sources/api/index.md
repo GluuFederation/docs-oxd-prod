@@ -8,21 +8,16 @@ oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-
 
 ## OpenID Connect Authentication
 
-OpenID Connect is a simple identity layer on top of the OAuth 2.0 protocol. OpenID Connect is one of the most popular API's for an application to identify a person. If you are familiar with Google authentication, you've used OpenID Connect. 
+OpenID Connect is a simple identity layer on top of OAuth 2.0. 
 
 Technically OpenID Connect is not an authentication protocol--it enables a person to authorize the release of information to an application from a remote "identity provider". In the process of authorizing this release of information, the person is authenticated (if no previous session exists). 
 
-!!! Note
-    If you need an OpenID Connect Provider (OP) you can deploy the [Gluu Server](https://gluu.org/docs/3.1.1/installation-guide/install/). 
+oxd has been tested and confirmed to work with the [Google OP](https://developers.google.com/identity/protocols/OpenIDConnect) and the [Gluu OP](https://gluu.org/docs/ce/admin-guide/openid-connect/). 
 
 ### Authentication Flow
 oxd supports the OpenID Connect [Hybrid Flow](http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) and [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) for authentication. 
 
 Learn more about authentication flows in the [OpenID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html). 
-
-!!! Note
-    Implicit Flow is not supported because it is intended for JavaScript client-side applications where the client does not authenticate. 
-
 
 ### oxd OpenID Connect APIs
 `oxd-server` provides seven API's for OpenID Connect authentication. In general,
@@ -443,7 +438,7 @@ Response:
 
 
 ## UMA 2 Authorization 
-UMA 2 is a profile of OAuth 2.0 that defines RESTful, JSON-based, standardized flows and constructs for coordinating the protection of any API or web resource. oxd makes it easy to secure applications with UMA 2 so that access management decisions--like who should be able to access which resources, using which devices, from which networks, etc.--can be delegated to your Gluu Server. 
+UMA 2 is a profile of OAuth 2.0 that defines RESTful, JSON-based, standardized flows and constructs for coordinating the protection of APIs and web resources. Using oxd, your application can delegate access management decisions, like who can access which resources, from what devices, to a central UMA Authorization Server (AS) like the [Gluu AS](https://gluu.org/docs/ce/admin-guide/uma/). 
 
 ### UMA 2 Resource Server API's
 
