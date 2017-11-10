@@ -10,7 +10,7 @@ oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-
 
 OpenID Connect is a simple identity layer on top of OAuth 2.0. 
 
-Technically OpenID Connect is not an authentication protocol--it enables a person to authorize the release of information to an application from a remote "identity provider". In the process of authorizing this release of information, the person is authenticated (if no previous session exists). 
+Technically OpenID Connect is not an authentication protocol--it enables a person to authorize the release of personal information from an "identity provider" (like Google) to a separate application. In the process of authorizing the release of information, the person is authenticated (if no previous session exists). 
 
 oxd has been tested and confirmed to work with the [Google OP](https://developers.google.com/identity/protocols/OpenIDConnect) and the [Gluu OP](https://gluu.org/docs/ce/admin-guide/openid-connect/). 
 
