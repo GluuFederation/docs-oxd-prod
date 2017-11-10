@@ -48,9 +48,9 @@ oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-
 
 - The [oxd UMA APIs](./api/index.md#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access management policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs.   
 
-Learn more in the [oxd API section](./api/index.md) of the documentation. 
+View supported OpenID Connect Providers and UMA Authorization Servers [below](#supported-openid-providers-op). 
 
-See supported OpenID Connect Providers and UMA Authorization Servers [below](#supported-openid-providers-op). 
+Learn more in the [oxd API section](./api/index.md) of the documentation. 
 
 ## Native Libraries
 oxd native client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs. 
