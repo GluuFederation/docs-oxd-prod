@@ -129,29 +129,21 @@ Response:
 
 #### Register Site
 
-The website must first register itself with the oxd-server. If 
-registration is successful, oxd will return an identifier for the 
-application, which must be presented in subsequent API calls. This
-is the `oxd_id`, not to be confused with the OpenID Connect Client ID.
+The client must first register itself with the `oxd-server`. 
 
-During the registration operation, oxd will dynamically register an 
-OpenID Connect client and save its configuration.
+If registration is successful, oxd will return an identifier for the application which must be presented in subsequent API calls. This is the `oxd_id` (not to be confused with the OpenID Connect Client ID). 
 
-All parameters to `register_site` are optional except the 
-`authorization_redirect_uri`. This is the URL on your website that the 
-OpenID Connect Provider (OP) will redirect the person to after 
-successful authorization.
+During the registration operation, oxd will dynamically register an OpenID Connect client and save its configuration.
 
-`register_site` has many optional parameters. The only required parameter is the `op_host` field, which
-states the OpenID Connect Provider (OP) that will be used to authenticate users (e.g. the [Gluu Server](https://www.gluu.org/) or Google). 
+`register_site` has many optional parameters. The only required parameter is the  `authorization_redirect_uri`. This is where the user will be redirected after successful authorization at the OpenID Connect Provider (OP).
 
-!!! Note
-    `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).
+The `op_host` parameter is also important. This is the URL at the OP where users will be sent for authentication.
 
 The default configuration values can be found here [config.json](https://gluu.org/docs/oxd/3.1.1/configuration/#oxd-confjson). 
 
-The `register_site` command returns an `oxd_id`. Several applications may share an instance of oxd, and this identifier is used by oxd to identify each client.
-
+!!! Note
+    `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).
+    
 Request:
 
 ```json
