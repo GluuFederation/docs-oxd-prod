@@ -319,7 +319,7 @@ Response:
 
 #### Get Access Token by Refresh Token
 
-Gets Access Token by Refresh Token.
+A Refresh Token can be used to obtain a renewed Access Token. 
 
 Request:
 
