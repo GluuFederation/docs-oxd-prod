@@ -4,7 +4,7 @@ oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-
 
 - The [oxd OpenID Connect APIs](#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user. 
 
-- The [oxd UMA APIs](#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access management policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs.      
+- The [oxd UMA APIs](#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs.      
 
 ## OpenID Connect Authentication
 
@@ -131,15 +131,13 @@ Response:
 
 The client must first register itself with the `oxd-server`. 
 
-If registration is successful, oxd will return an identifier for the application which must be presented in subsequent API calls. This is the `oxd_id` (not to be confused with the OpenID Connect Client ID). 
+If registration is successful, oxd will dynamically register an OpenID Connect client and return an identifier for the application which must be presented in subsequent API calls. This is the `oxd_id` (not to be confused with the OpenID Connect Client ID). 
 
-During the registration operation, oxd will dynamically register an OpenID Connect client and save its configuration.
+`register_site` has many optional parameters. 
 
-`register_site` has many optional parameters. The only required parameter is the  `authorization_redirect_uri`. This is where the user will be redirected after successful authorization at the OpenID Connect Provider (OP).
+The only required parameter is the  `authorization_redirect_uri`. This is where the user will be redirected after successful authorization at the OpenID Connect Provider (OP).
 
-The `op_host` parameter is also important. This is the URL at the OP where users will be sent for authentication.
-
-The default configuration values can be found here [config.json](https://gluu.org/docs/oxd/3.1.1/configuration/#oxd-confjson). 
+The `op_host` parameter is optional, but it must be specified in either the [default configuration file](../configuration/#oxd-confjson) or the API call. This is the URL at the OP where users will be sent for authentication. 
 
 !!! Note
     `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).
