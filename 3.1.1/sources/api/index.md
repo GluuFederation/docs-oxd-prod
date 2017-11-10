@@ -4,15 +4,13 @@ oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-
 
 - The [oxd OpenID Connect APIs](#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user. 
 
-- The [oxd UMA APIs](#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access management policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs. 
+- The [oxd UMA APIs](#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access management policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs.      
 
 ## OpenID Connect Authentication
 
 OpenID Connect is a simple identity layer on top of OAuth 2.0. 
 
-Technically OpenID Connect is not an authentication protocol--it enables a person to authorize the release of personal information from an "identity provider" (like Google) to a separate application. In the process of authorizing the release of information, the person is authenticated (if no previous session exists). 
-
-oxd has been tested and confirmed to work with the [Google OP](https://developers.google.com/identity/protocols/OpenIDConnect) and the [Gluu OP](https://gluu.org/docs/ce/admin-guide/openid-connect/). 
+Technically OpenID Connect is not an authentication protocol--it enables a person to authorize the release of personal information from an "identity provider" to a separate application. In the process of authorizing the release of information, the person is authenticated (if no previous session exists).  
 
 ### Authentication Flow
 oxd supports the OpenID Connect [Hybrid Flow](http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) and [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) for authentication. 
