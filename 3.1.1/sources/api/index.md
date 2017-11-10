@@ -142,15 +142,15 @@ All parameters to `register_site` are optional except the
 OpenID Connect Provider (OP) will redirect the person to after 
 successful authorization.
 
-`register_site` has many parameters but most can be ignored.  The one exception is the `op_host` field which
-states the OpenID Connect Provider (OP) that will be used (e.g. the [Gluu Server](https://www.gluu.org/) or Google). `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).
-The default configuration values can be found here
-[config.json](https://gluu.org/docs/oxd/3.1.1/configuration/#oxd-confjson). 
+`register_site` has many optional parameters. The only required parameter is the `op_host` field, which
+states the OpenID Connect Provider (OP) that will be used to authenticate users (e.g. the [Gluu Server](https://www.gluu.org/) or Google). 
 
-The `register_site` command returns `oxd_id`. Several applications may 
-share an instance of oxd, and this identifier is used by oxd to 
-distinguish differences in configuration between them.
+!!! Note
+    `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).
 
+The default configuration values can be found here [config.json](https://gluu.org/docs/oxd/3.1.1/configuration/#oxd-confjson). 
+
+The `register_site` command returns an `oxd_id`. Several applications may share an instance of oxd, and this identifier is used by oxd to identify each client.
 
 Request:
 
@@ -196,7 +196,7 @@ Response:
 
 #### Update Site Registration
 
-API used to update a current registration.
+If something changes in a pre-registered client, you can use this API to update your client in the OP.
 
 Request:
 
@@ -237,9 +237,8 @@ Response:
 
 #### Get Authorization URL
 
-Returns the URL at the OpenID Connect Provider (OP) to which your application 
-must redirect the person to authorize the release of personal data (and
-perhaps be authenticated in the process if no previous session exists).
+Returns the URL at the OpenID Connect Provider (OP) to which your application must redirect the person to authorize the release of personal data (and perhaps be authenticated in the process if no previous session exists).
+
 The response from the OpenID Connect Provider (OP) will include the code and state values, which should be used to subsequently obtain tokens.
 
 Request:
@@ -278,9 +277,7 @@ Response:
 }
 ```
 
-After redirecting to the above URL, the OpenID Connect Provider (OP) will return a 
-response that looks like this to the URL your application registered as 
-the redirect URI (parse out the code and state):
+After redirecting to the above URL, the OpenID Connect Provider (OP) will return a response to the URL your application registered as the redirect URI (parse out the code and state). It will look like this:
 
 ```
 HTTP/1.1 302 Found
@@ -362,8 +359,7 @@ Response:
 
 #### Get User Info
 
-Use the access token from the step above to retrieve a JSON object 
-with the user claims.
+Use the access token from the step above to retrieve a JSON object with the user claims.
 
 Request:
 
@@ -399,13 +395,10 @@ Response:
 
 #### Get Logout URI
 
-Uses front channel logout--a page is returned with iFrames, each of 
-which contains the logout URL of the applications that have a session 
-in that browser. These iFrames should be loaded automatically--enabling 
-each application to get a notification of logout, and to hopefully clean 
-up any cookies in the person's browser. If the person blocks 
-[third-party cookies](https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie)
-in their browser, logout will not work.
+Uses front-channel logout. A page is returned with iFrames, each of which contains the logout URL of the applications that have a session in that browser. 
+
+These iFrames should be loaded automatically, enabling each application to get a notification of logout, and to hopefully clean 
+up any cookies in the person's browser. If the person blocks [third-party cookies](https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie) in their browser, front-channel logout will not work.
 
 Request:
 
@@ -436,29 +429,30 @@ Response:
 
 
 ## UMA 2 Authorization 
-UMA 2 is a profile of OAuth 2.0 that defines RESTful, JSON-based, standardized flows and constructs for coordinating the protection of APIs and web resources. Using oxd, your application can delegate access management decisions, like who can access which resources, from what devices, to a central UMA Authorization Server (AS) like the [Gluu AS](https://gluu.org/docs/ce/admin-guide/uma/). 
+UMA 2 is a profile of OAuth 2.0 that defines RESTful, JSON-based, standardized flows and constructs for coordinating the protection of APIs and web resources. 
+
+Using oxd, your application can delegate access management decisions, like who can access which resources, from what devices, to a central UMA Authorization Server (AS) like the [Gluu AS](https://gluu.org/docs/ce/admin-guide/uma/). 
 
 ### UMA 2 Resource Server API's
 
-A client, acting as an [OAuth2 Resource Server](https://tools.ietf.org/html/rfc6749#section-1.1),
-MUST:
+Your client, acting as an [OAuth2 Resource Server](https://tools.ietf.org/html/rfc6749#section-1.1), MUST:
 
 - Register a protected resource (with the `uma_rs_protect` command)
-- Intercept the HTTP call (before the actual REST resource call) and check whether it's allowed to proceed or should be rejected according to the `uma_rs_check_access` command response:
-    - Allow access: if the response from `uma_rs_check_access` is `allowed` or `not_protected` an error is returned.
+- Intercept the HTTP call (before the actual REST resource call) and check the `uma_rs_check_access` command response to determine whether the requester is allowed to proceed or should be rejected:
+    - Allow access: if the response from `uma_rs_check_access` is `allowed` or `not_protected`, an error is returned.
     - If `uma_rs_check_access` returns `denied` then return back HTTP response.
     
-The `uma_rs_check_access` operation checks access using the "or" rule when looking for scopes.
+The `uma_rs_check_access` operation checks access using the "or" rule when evaluating scopes.
 
-For example, a resource like `/photo` protected with scopes `read`, `all` (by `uma_rs_protect` command) assumes that if either of the two scopes is present then access is granted (this follows the "or" rule).
+For example, a resource like `/photo` protected with scopes `read`, `all` (by `uma_rs_protect` command) assumes that if either `read` or `all` is present access is granted.
 
-If the "and" rule is preferred it can be achieved with an additional scope, for example:
+If the "and" rule is preferred it can be achieved by adding an additional scope, for example:
 
-`Resource1` scopes: `read`, `write`.
+`Resource1` scopes: `read`, `write` (follors the "or" rule).
 
-`Resource2` scopes: `read_write` (and associate `read` and `write` policies with `read_write` scope)
+`Resource2` scopes: `read_write` (and associate `read` *and* `write` policies with the `read_write` scope)
 
-If access is not granted then unauthorized HTTP code and registered ticket are returned, for example: 
+If access is not granted then an unauthorized HTTP code and registered ticket are returned, for example: 
 
 ```http
 HTTP/1.1 401 Unauthorized
