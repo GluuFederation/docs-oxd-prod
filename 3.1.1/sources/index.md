@@ -1,9 +1,17 @@
 # oxd 3.1.1 Documentation
 
 ## Introduction
-oxd is client software that simplifies the process of implementing OpenID Connect and UMA in server-side web applications. 
+oxd exposes simple, static APIs that can be called by your web applications to faciliate user authentication and authorization at an external identity provider like the [Gluu Server](https://gluu.org/docs/ce).
 
-Using oxd, you can securely send users from web apps to your [Gluu Server](https://gluu.org/docs/ce) for single sign-on (SSO), strong authentication, and access management policy enforcement. 
+oxd offers maintenance, security, and implementation advantages over traditional models of adding OAuth 2.0 to web apps, including:
+
+- oxd can be deployed in a matter of minutes, sparing developers the trouble of learning the ins and outs of OAuth 2.0 and bootstrapping each new implementation;     
+
+- If/when new OAuth 2.0 vulnerabilities are discovered, oxd is the only component that needs to be updated. The oxd APIs remain the same, so you never have to change and regression test your applications;        
+
+- Using oxd centralizes and reduces your organizations surface area for security vulnerabilities, issue resolution, and support.   
+
+- oxd is written, maintained, and supported by developers who specialize in OAuth 2.0 and application security.  
 
 !!! Warning 
     oxd 3.1.1 includes functional and billing changes from previous versions. If you have older installations, review [what's new in 3.1.x](./3.1.x-intro.md) before proceeding with upgrades or new installations of oxd 3.1.1. 
