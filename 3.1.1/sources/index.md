@@ -7,7 +7,7 @@ oxd offers maintenance, security, and implementation advantages over traditional
 
 - oxd can be deployed in a matter of minutes, sparing developers the trouble of learning the ins and outs of OAuth 2.0 and bootstrapping each new implementation;     
 
-- If/when new OAuth 2.0 vulnerabilities are discovered, oxd is the only component that needs to be updated. The oxd APIs remain the same, so you never have to change and regression test your applications;        
+- If/when new OAuth 2.0 vulnerabilities are discovered, oxd is the only component that needs to be updated. The oxd APIs remain the same, so you never have to change and regression test your applications;       
 
 - Using oxd centralizes and reduces your organizations surface area for security vulnerabilities, issue resolution, and support.   
 
