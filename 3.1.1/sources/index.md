@@ -23,7 +23,7 @@ oxd offers maintenance, security, and implementation advantages over traditional
 
 The oxd software package includes the `oxd-server` and the `oxd-https-extension`. 
 
-`oxd-server` is designed to work as a standalone service daemon via sockets. By default, applications must connect to `oxd-server` via `localhost`. With `oxd-https-extension` enabled, applications can make RESTful calls to your `oxd-server` over the web via `HTTPS`. 
+`oxd-server` is designed to work as a standalone service daemon via sockets. By default, applications call the `oxd-server` APIs via `localhost`. With `oxd-https-extension` enabled, applications can make RESTful calls to your `oxd-server` APIs over the web via `HTTPS`. 
 
 Follow these steps to get started:
 
