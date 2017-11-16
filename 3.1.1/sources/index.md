@@ -21,7 +21,7 @@ oxd offers long-term maintenance and security advantages over manual OAuth 2.0 i
 
 The oxd software package includes the `oxd-server` and the `oxd-https-extension`. 
 
-`oxd-server` is designed to work as a standalone service daemon via sockets. By default, calls to the `oxd-server` APIs must come via `localhost`. Optionally, if you want to make RESTful calls over the web to the `oxd-server` APIs, after installation you can enable the `oxd-https-extension`. 
+`oxd-server` is designed to work as a standalone service daemon via sockets. By default, calls to the `oxd-server` APIs must come via `localhost`. Optionally, if you want to make RESTful calls over the web to `oxd-server`, after installation you can enable the `oxd-https-extension`. 
 
 Follow these steps to get started:
 
