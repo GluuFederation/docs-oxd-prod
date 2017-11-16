@@ -1,7 +1,14 @@
 ## Overview
 
-If you are upgrading oxd-server to the latest version `3.1.1` we have included an auto-migration functionality to easily transfer your data files.  oxd-server `3.1.1` now uses configurable data storage (`h2`, `redis`, etc.) opposed to JSON files.   
+If you are upgrading `oxd-server` to the latest version `3.1.1` we have included auto-migration functionality to easily transfer your data files. `oxd-server 3.1.1` now uses configurable data storage (`h2`, `redis`, etc.) instead of JSON files.   
 
+## Legacy Compatibility
+Before moving forward with an upgrade to oxd 3.1.1, review the following legacy compatibility notes:
+
+- UMA 2.0: Only supported in oxd 3.1.1 and Gluu Server 3.1.1;      
+- UMA 1.0.1: Not supported in oxd 3.1.1 or Gluu Server 3.1.1;    
+- OpenID Connect: Supported in all versions of oxd and Gluu Server;      
+- Pricing: If you upgrade existing oxd installations to oxd 3.1.1, the new per application billing model described above will take effect. This could have an impact on your monthly bill.     
 
 ## OpenID Connect 
 Follow these simple steps to migrate your JSON files:
