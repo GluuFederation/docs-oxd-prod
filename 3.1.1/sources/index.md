@@ -5,11 +5,11 @@ oxd exposes simple, static APIs that web application developers can use to secur
 
 oxd offers long-term maintenance and security advantages over manual OAuth 2.0 implementations:
 
-- oxd standardizes good security across apps of all languages, and an ever-rotating group of code contributors;
+- oxd standardizes and ensures good security across web apps of all languages and an ever-rotating group of code contributors;
 
 - When new OAuth 2.0 features are available, or vulnerabilities are discovered, oxd is the *only* component that needs to be updated. The oxd APIs remain the same, so you never have to change and regression test applications;       
 
-- oxd is written, maintained, and supported by developers who specialize in OAuth 2.0 and application security.  
+- oxd is written, maintained, and supported by OAuth 2.0 and application security experts.  
 
 !!! Warning 
     oxd 3.1.1 includes functional and billing changes from previous versions. If you have older installations, review [what's new in 3.1.x](./3.1.x-intro.md) before proceeding with upgrades or new installations of oxd 3.1.1. 
