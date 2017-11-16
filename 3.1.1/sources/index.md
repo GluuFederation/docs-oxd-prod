@@ -45,7 +45,7 @@ Follow these steps to get started:
 
 **Step 7**: [Start](./oxd-https/start/index.md) the `oxd-https-extension`
 
-**Step 8**: Use the [oxd API](./api/index.md) or one of the [native libraries](./libraries/api-client-libraries.md) to securely send users from your apps to your Gluu Server for authentication and authorization. 
+**Step 8**: Use the [oxd API](#api) or one of the [native libraries](#native-libraries) to securely send users from your apps to your Gluu Server for authentication and authorization. 
 
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
@@ -166,22 +166,7 @@ oxd offers a few key improvements over the traditional model of embedding OAuth 
 3. Centralization reduces costs. By using oxd across your IT infrastructure for application security (as opposed to a handful of homegrown and third party OAuth2 client implementations), the surface area for vulnerabilities, issue resolution, and support is significantly reduced. Plus you who have someone to call if something goes wrong!     
 
 **Which programming languages and frameworks does oxd have libraries for?**        
-Currently there are oxd libraries for the following languages and frameworks:    
-
-- Python
-- Java
-- Php  
-- Node
-- Ruby    
-- C#     
-- Perl
-- Go
-- Java Spring
-- Java Play
-- Ruby on Rails
-- Python Flask
-- Node Express
-- .Net
+There are oxd libraries for many popular programming languages and frameworks. [See above](#native-libraries). 
 
 **How do I get SSO across several websites?**                
 You’ll need two things:     
