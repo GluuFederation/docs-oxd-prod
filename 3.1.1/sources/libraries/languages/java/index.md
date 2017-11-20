@@ -7,102 +7,6 @@ Use oxd's Java library to send users from a Java application to your Gluu Server
 Download a [Sample Project](https://github.com/GluuFederation/oxd/archive/version_3.1.1.zip) 
 specific to this oxd-java library.
 
-## Software Requirements 
-
-System Requirements:
-
-- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
-- Java 1.8 or higher
-- Apache 2.4.4 or higher
-
-To use the oxd-java library, you will need:
-
-- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
-- An active installation of the [oxd-server](../../../install/index.md). 
-- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).
-- A Windows server or Windows installed machine / Linux server or Linux installed machine.
-
-## Install oxd-java
-
-Get oxd-java JAR files from [Maven Repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
-
-## Configure the Client Application
-
-There are no configuration files for oxd-java. Redirect URI and other information is set in the code.
-
-Your client application must have a valid SSL certificate, so the URL includes: `https://`    
-
-The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
-
-    **Linux**
-
-    Host file location `/etc/host` :
-
-    `127.0.0.1  client.example.com`  
-        
-    **Windows**
-
-    Host file location `C:\Windows\System32\drivers\etc\host` :
-
-    `127.0.0.1  client.example.com`
-    
-Enable SSL by	adding the following lines on virtual host file of Apache in the location:
-
-	**Linux**
-    
-    `/etc/apache2/sites-available/000-default.conf`
-    
-    **Windows**
-    
-    `C:/apache/conf/extra/httpd-vhosts.conf`
-
-```
-<VirtualHost *>
-    ServerName client.example.com
-    ServerAlias client.example.com
-    DocumentRoot "<apache web root directory>"
-</VirtualHost>
-
-<VirtualHost *:443>
-    DocumentRoot "<apache web root directory>"
-    ServerName client.example.com
-    SSLEngine on
-    SSLCertificateFile "<Path to your ssl certificate file>"
-    SSLCertificateKeyFile "<Path to your ssl certificate key file>"
-    <Directory "<apache web root directory>">
-        AllowOverride All
-        Order allow,deny
-        Allow from all
-    </Directory>
-</VirtualHost>
-```
-
-
-## Endpoints
-
-The oxd-server and oxd-https-extension provide the following methods for authenticating users with an OpenID Connect Provider (OP):
-
-- Available OpenID Connect Endpoints
-    - [Setup Client](https://gluu.org/docs/oxd/3.1.1/api/#setup-client)  
-    - [Get Client Token](https://gluu.org/docs/oxd/3.1.1/api/#get-client-token)
-    - [Register Site](https://gluu.org/docs/oxd/3.1.1/api/#register-site) 
-    - [Update Site Registration](https://gluu.org/docs/oxd/3.1.1/api/#update-site-registration)
-    - [Get Authorization URL](https://gluu.org/docs/oxd/3.1.1/api/#get-authorization-url)   
-    - [Get Tokens by Code](https://gluu.org/docs/oxd/3.1.1/api/#get-tokens-id-access-by-code)
-    - [Get Access Token by Refresh Token](https://gluu.org/docs/oxd/3.1.1/api/#get-access-token-by-refresh-token)    
-    - [Get User Info](https://gluu.org/docs/oxd/3.1.1/api/#get-user-info)   
-    - [Get Logout URI](https://gluu.org/docs/oxd/3.1.1/api/#log-out-uri) 
-
-
-The oxd-server provides the following methods for performing access management with a UMA Authorization Server (AS):
-
-- Available UMA (User Managed Access) Endpoints  
-    - [RS Protect](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-protect-resources) 
-    - [RS Check Access](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-check-access) 
-    - [RP Get RPT](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-rpt) 
-    - [RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
-
-
 ## Sample Code - OpenID Connect
 
 Below is a sample pom. To download the pom file please refer to this [Snippet](https://ox.gluu.org/maven/org/xdi/oxd-client/3.1.0.Final/oxd-client-3.1.0.Final.pom)
@@ -932,6 +836,75 @@ try {
 }
 ```
 
+## Software Requirements 
+
+System Requirements:
+
+- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
+- Java 1.8 or higher
+- Apache 2.4.4 or higher
+
+To use the oxd-java library, you will need:
+
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
+- An active installation of the [oxd-server](../../../install/index.md). 
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).
+- A Windows server or Windows installed machine / Linux server or Linux installed machine.
+
+## Install oxd-java
+
+Get oxd-java JAR files from [Maven Repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
+
+## Configure the Client Application
+
+There are no configuration files for oxd-java. Redirect URI and other information is set in the code.
+
+Your client application must have a valid SSL certificate, so the URL includes: `https://`    
+
+The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
+
+    **Linux**
+
+    Host file location `/etc/host` :
+
+    `127.0.0.1  client.example.com`  
+        
+    **Windows**
+
+    Host file location `C:\Windows\System32\drivers\etc\host` :
+
+    `127.0.0.1  client.example.com`
+    
+Enable SSL by	adding the following lines on virtual host file of Apache in the location:
+
+	**Linux**
+    
+    `/etc/apache2/sites-available/000-default.conf`
+    
+    **Windows**
+    
+    `C:/apache/conf/extra/httpd-vhosts.conf`
+
+```
+<VirtualHost *>
+    ServerName client.example.com
+    ServerAlias client.example.com
+    DocumentRoot "<apache web root directory>"
+</VirtualHost>
+
+<VirtualHost *:443>
+    DocumentRoot "<apache web root directory>"
+    ServerName client.example.com
+    SSLEngine on
+    SSLCertificateFile "<Path to your ssl certificate file>"
+    SSLCertificateKeyFile "<Path to your ssl certificate key file>"
+    <Directory "<apache web root directory>">
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+</VirtualHost>
+```
 
 ## Support
 
