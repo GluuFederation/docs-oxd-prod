@@ -7,7 +7,9 @@ Use oxd's Java library to send users from a Java application to your Gluu Server
 Download a [Sample Project](https://github.com/GluuFederation/oxd/archive/version_3.1.1.zip) 
 specific to this oxd-java library.
 
-## Sample Code - OpenID Connect
+## Sample Code 
+
+### OpenID Connect
 
 Below is a sample pom. To download the pom file please refer to this [Snippet](https://ox.gluu.org/maven/org/xdi/oxd-client/3.1.0.Final/oxd-client-3.1.0.Final.pom)
 
@@ -19,7 +21,7 @@ Below is a sample pom. To download the pom file please refer to this [Snippet](h
 </dependency>
 ```
 
-### Setup Client
+#### Setup Client
 
 In order to use an OpenID Connect Provider (OP) for login, 
 you need to setup your client application at the OpenID Connect Provider (OP). 
@@ -102,7 +104,7 @@ try {
 ```
 
 
-### Get Client Token
+#### Get Client Token
 
 The `send` method is used to get a token which is sent as an input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
 
@@ -155,7 +157,7 @@ try {
 ```
 
 
-### Register Site
+#### Register Site
 
 In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OpenID Connect Provider (OP). During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration a unique identifier will be issued by the oxd-server. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `send` method as a parameter. The Register Site method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
 
@@ -239,7 +241,7 @@ try {
 ```
 
 
-### Update Site Registration
+#### Update Site Registration
 
 The `send` method can be used to update an existing client in the OpenID Connect Provider (OP). Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields, can be updated using this method.
 
@@ -300,7 +302,7 @@ try {
 ```
 
 
-### Get Authorization URL
+#### Get Authorization URL
 
 The `send` method returns the OpenID Connect Provider (OP) Authentication URL to which the client application must redirect the user to authorize the release of personal data. The Response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
 
@@ -350,7 +352,7 @@ try {
 ```
 
 
-### Get Tokens by Code
+#### Get Tokens by Code
 
 Upon successful login, the login result will return code and state. `send` uses code and state to retrieve token which can be used to access user claims.
 
@@ -409,7 +411,7 @@ return resp;
 ```
 
 
-### Get Access Token by Refresh Token
+#### Get Access Token by Refresh Token
 
 The `send` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `get_tokens_by_code` method.
 
@@ -452,7 +454,7 @@ return resp;
 ```
 
 
-### Get User Info
+#### Get User Info
 
 Once the user has been authenticated by the OpenID Connect Provider, the `send` method returns claims (First Name, Last Name, E-Mail, etc.) about the authenticated end-user.
 
@@ -504,7 +506,7 @@ try {
 ```
 
 
-### Logout
+#### Logout
 
 `send` method returns the OpenID Connect Provider Logout URL. Client application uses this Logout URL to end the user session.
 
@@ -557,9 +559,9 @@ try {
 ```
 
 
-## Sample Code - UMA
+### UMA
 
-### RS Protect
+#### RS Protect
 
 `send` method is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
 The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
@@ -593,7 +595,7 @@ return resp;
 ```
 
 
-### RS Check Access 
+#### RS Check Access 
 
 `send` method is used in the UMA Resource Server to check the access to the resource.
 
@@ -676,7 +678,7 @@ return response;
 ```
 
 
-### RP Get RPT 
+#### RP Get RPT 
 
 The method `send` is called in order to obtain the RPT (Requesting Party Token). 
 
@@ -781,7 +783,7 @@ try {
 ```
 
 
-### RP Get Claims Gathering URL 
+#### RP Get Claims Gathering URL 
 
 **Parameters:**
 
@@ -836,7 +838,8 @@ try {
 }
 ```
 
-## Software Requirements 
+## Sample App
+### Software Requirements 
 
 System Requirements:
 
@@ -851,11 +854,11 @@ To use the oxd-java library, you will need:
 - If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
-## Install oxd-java
+### Install oxd-java
 
 Get oxd-java JAR files from [Maven Repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
 
-## Configure the Client Application
+### Configure the Client Application
 
 There are no configuration files for oxd-java. Redirect URI and other information is set in the code.
 
