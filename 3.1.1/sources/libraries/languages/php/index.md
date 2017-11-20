@@ -4,106 +4,6 @@
 
 Use oxd's PHP library to send users from a PHP application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
-
-## Sample Project
-
-Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.1.zip) specific to this oxd-php library.
-
-
-### Software Requirements
-
-System Requirements:
-
-- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
-- php 5.4 or higher
-- Apache 2.4 or higher
-- composer
-
-To use the oxd-php library, you will need:
-
-- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
-- An active installation of the [oxd-server](../../../install/index.md
-) running on the same server as the client application.
-- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)).
-- A Windows server or Windows installed machine / Linux server or Linux installed machine.
-
-
-### Configure the Client Application
-
-- Your client application must have a valid SSL certificate, so the URL includes: `https://`
-
-- Enable SSL by setting the valid certificate and key in your virtual host file:
-
-```code
-<VirtualHost *:443>
-    ServerAdmin postmaster@dummy-host.localhost
-	DocumentRoot "<path to client.example.com folder>"
-    ServerName client.example.com
-    ServerAlias www.client.example.com
-	ServerAlias gluuwordpress.com
-    SSLEngine on
-    SSLCertificateFile "<certificate file name>.crt"	
-    SSLCertificateKeyFile "<key file name>.key"
-		<Directory "<path to client.example.com folder>" >
-            AllowOverride All
-            Order allow,deny
-            Allow from all
-        </Directory> 
-</VirtualHost>
-```
-    
-- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
-
-    **Linux**
-
-    Host file location `/etc/host` :
-
-    `127.0.0.1  client.example.com`  
-        
-    **Windows**
-
-    Host file location `C:\Windows\System32\drivers\etc\host` :
-
-    `127.0.0.1  client.example.com`
-
-- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.1.zip) and navigate to `client.example.com` directory inside the project.
-
-
-- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
-
-    - Setup Client URL: https://client.example.com/Settings.php
-    - Login URL: https://client.example.com/Login.php
-    - UMA URL: https://client.example.com/Uma.php
-
-- The oxd-php library uses two configuration files (oxdId.json and oxdlibrary/oxd-rp-settings.json) to specify information needed by the OpenID Connect dynamic client registration. In order to save the information that is returned (oxd_id, client_id, client_secret, etc.) the configuration files need to be writable by the client application.
-
-
-## Endpoints
-
-The oxd-server and oxd-https-extension provide the following methods for authenticating users with an OpenID Connect Provider (OP):
-
-- Available OpenID Connect Endpoints
-    - [Setup Client](https://gluu.org/docs/oxd/3.1.1/api/#setup-client)  
-    - [Get Client Token](https://gluu.org/docs/oxd/3.1.1/api/#get-client-token)
-    - [Register Site](https://gluu.org/docs/oxd/3.1.1/api/#register-site) 
-    - [Update Site Registration](https://gluu.org/docs/oxd/3.1.1/api/#update-site-registration)
-    - [Get Authorization URL](https://gluu.org/docs/oxd/3.1.1/api/#get-authorization-url)   
-    - [Get Tokens by Code](https://gluu.org/docs/oxd/3.1.1/api/#get-tokens-id-access-by-code)
-    - [Get Access Token by Refresh Token](https://gluu.org/docs/oxd/3.1.1/api/#get-access-token-by-refresh-token)    
-    - [Get User Info](https://gluu.org/docs/oxd/3.1.1/api/#get-user-info)   
-    - [Get Logout URI](https://gluu.org/docs/oxd/3.1.1/api/#get-logout-uri) 
-
-
-The oxd-server provides the following methods for performing access management with a UMA Authorization Server (AS):
-
-- Available UMA (User Managed Access) Endpoints  
-    - [RS Protect](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-protect-resources) 
-    - [RS Check Access](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-check-access) 
-    - [RP Get RPT](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-rpt) 
-    - [RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
-
-
-
 ## Sample Code
 
 ### OpenID Connect
@@ -828,6 +728,77 @@ $uma_rp_get_claims_gathering_url->setRequest_claims_redirect_uri("https://client
 }
 ```
 
+## Sample Project
+
+Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.1.zip) specific to this oxd-php library.
+
+
+### Software Requirements
+
+System Requirements:
+
+- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
+- php 5.4 or higher
+- Apache 2.4 or higher
+- composer
+
+To use the oxd-php library, you will need:
+
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
+- An active installation of the [oxd-server](../../../install/index.md
+) running on the same server as the client application.
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)).
+- A Windows server or Windows installed machine / Linux server or Linux installed machine.
+
+
+### Configure the Client Application
+
+- Your client application must have a valid SSL certificate, so the URL includes: `https://`
+
+- Enable SSL by setting the valid certificate and key in your virtual host file:
+
+```code
+<VirtualHost *:443>
+    ServerAdmin postmaster@dummy-host.localhost
+	DocumentRoot "<path to client.example.com folder>"
+    ServerName client.example.com
+    ServerAlias www.client.example.com
+	ServerAlias gluuwordpress.com
+    SSLEngine on
+    SSLCertificateFile "<certificate file name>.crt"	
+    SSLCertificateKeyFile "<key file name>.key"
+		<Directory "<path to client.example.com folder>" >
+            AllowOverride All
+            Order allow,deny
+            Allow from all
+        </Directory> 
+</VirtualHost>
+```
+    
+- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
+
+    **Linux**
+
+    Host file location `/etc/host` :
+
+    `127.0.0.1  client.example.com`  
+        
+    **Windows**
+
+    Host file location `C:\Windows\System32\drivers\etc\host` :
+
+    `127.0.0.1  client.example.com`
+
+- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.1.zip) and navigate to `client.example.com` directory inside the project.
+
+
+- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+
+    - Setup Client URL: https://client.example.com/Settings.php
+    - Login URL: https://client.example.com/Login.php
+    - UMA URL: https://client.example.com/Uma.php
+
+- The oxd-php library uses two configuration files (oxdId.json and oxdlibrary/oxd-rp-settings.json) to specify information needed by the OpenID Connect dynamic client registration. In order to save the information that is returned (oxd_id, client_id, client_secret, etc.) the configuration files need to be writable by the client application.
 
 ## Support
 Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
