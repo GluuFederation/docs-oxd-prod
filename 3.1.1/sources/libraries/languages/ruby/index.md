@@ -2,132 +2,7 @@
 
 ## Overview
 
-Use oxd's Ruby library to send users from a Ruby application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
-
-
-## Sample Project
-
-Download a [Sample Project](https://github.com/GluuFederation/oxd-ruby/archive/v3.1.1.zip) specific to this oxd-ruby library.
-
-
-### Software Requirements
-
-System Requirements:
-
-- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
-- Ruby 2.2
-- Rails
-- Passenger
-- Apache 2.4.4 or higher
-
-To use the oxd-ruby library, you will need:
-
-- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
-- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
-- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)).
-- A Windows server or Windows installed machine / Linux server or Linux installed machine.
-
-
-### Install oxd-ruby from RubyGems
-
-The Ruby Client is installed using RubyGems. Include following line in the Gemfile of the application using the oxd-ruby library.
-
-```
-gem 'oxd-ruby', '~> 0.1.9'
-```
-
-Run the bundle command after to install the `oxd-ruby` plugin.
-
-```
-$ bundle install
-```
-
-
-### Configure the Client Application
-
-- The configurations must be generated first using the following command.
-```
-$ rails generate oxd:config
-```
-
-  This command will install the `oxd_config.rb` initializer file in the `config/initializers` directory which contains all the global configuration options for the ruby plugin. The following configurations must be set before the plugin can be used.
-
-  1. config.oxd_host_ip
-  2. config.oxd_host_port
-  3. config.op_host 
-  4. config.authorization_redirect_uri
-
-- Your client application must have a valid SSL certificate, so the URL includes: `https://`    
-- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
-
-    **Linux**
-
-    Host file location `/etc/host` :
-
-    `127.0.0.1  client.example.com`  
-    
-    **Windows**
-
-    Host file location `C:\Windows\System32\drivers\etc\host` :
-
-    `127.0.0.1  client.example.com`
-    
-- Enable SSL by	adding the following lines on virtual host file of Apache in the location:
-
-	**Linux**
-    
-    `/etc/apache2/sites-available/000-default.conf`
-    
-    **Windows**
-    
-    `C:/apache/conf/extra/httpd-vhosts.conf`
-
-```
-<VirtualHost *>
-    ServerName client.example.com
-    ServerAlias client.example.com
-    DocumentRoot "<apache web root directory>"
-</VirtualHost>
-
-<VirtualHost *:443>
-    DocumentRoot "<apache web root directory>"
-    ServerName client.example.com
-    SSLEngine on
-    SSLCertificateFile "<Path to your ssl certificate file>"
-    SSLCertificateKeyFile "<Path to your ssl certificate key file>"
-    <Directory "<apache web root directory>">
-    AllowOverride All
-    Order allow,deny
-    Allow from all
-    </Directory>
-</VirtualHost>
-```
-
-
-## Endpoints
-
-The oxd-server and oxd-https-extension provide the following methods for authenticating users with an OpenID Connect Provider (OP):
-
-- Available OpenID Connect Endpoints
-    - [Setup Client](https://gluu.org/docs/oxd/3.1.1/api/#setup-client)  
-    - [Get Client Token](https://gluu.org/docs/oxd/3.1.1/api/#get-client-token)
-    - [Register Site](https://gluu.org/docs/oxd/3.1.1/api/#register-site) 
-    - [Update Site Registration](https://gluu.org/docs/oxd/3.1.1/api/#update-site-registration)
-    - [Get Authorization URL](https://gluu.org/docs/oxd/3.1.1/api/#get-authorization-url)   
-    - [Get Tokens by Code](https://gluu.org/docs/oxd/3.1.1/api/#get-tokens-id-access-by-code)
-    - [Get Access Token by Refresh Token](https://gluu.org/docs/oxd/3.1.1/api/#get-access-token-by-refresh-token)    
-    - [Get User Info](https://gluu.org/docs/oxd/3.1.1/api/#get-user-info)   
-    - [Get Logout URI](https://gluu.org/docs/oxd/3.1.1/api/#get-logout-uri) 
-
-
-The oxd-server provides the following methods for performing access management with a UMA Authorization Server (AS):
-
-- Available UMA (User Managed Access) Endpoints  
-    - [RS Protect](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-protect-resources) 
-    - [RS Check Access](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-check-access) 
-    - [RP Get RPT](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-rpt) 
-    - [RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
-
+Use oxd's Ruby library to send users from a Ruby application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement.  
 
 ## Sample code
 
@@ -144,7 +19,6 @@ protected
         @oxd_command = Oxd::ClientOxdCommands.new
     end
 ```
-
 
 ### OpenID Connect
 
@@ -760,6 +634,103 @@ end
         "state":"af0ifjsldkj" 
     }
 }
+```
+## Sample Project
+
+Download a [Sample Project](https://github.com/GluuFederation/oxd-ruby/archive/v3.1.1.zip) specific to this oxd-ruby library.
+
+
+### Software Requirements
+
+System Requirements:
+
+- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
+- Ruby 2.2
+- Rails
+- Passenger
+- Apache 2.4.4 or higher
+
+To use the oxd-ruby library, you will need:
+
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
+- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)).
+- A Windows server or Windows installed machine / Linux server or Linux installed machine.
+
+
+### Install oxd-ruby from RubyGems
+
+The Ruby Client is installed using RubyGems. Include following line in the Gemfile of the application using the oxd-ruby library.
+
+```
+gem 'oxd-ruby', '~> 0.1.9'
+```
+
+Run the bundle command after to install the `oxd-ruby` plugin.
+
+```
+$ bundle install
+```
+
+
+### Configure the Client Application
+
+- The configurations must be generated first using the following command.
+```
+$ rails generate oxd:config
+```
+
+  This command will install the `oxd_config.rb` initializer file in the `config/initializers` directory which contains all the global configuration options for the ruby plugin. The following configurations must be set before the plugin can be used.
+
+  1. config.oxd_host_ip
+  2. config.oxd_host_port
+  3. config.op_host 
+  4. config.authorization_redirect_uri
+
+- Your client application must have a valid SSL certificate, so the URL includes: `https://`    
+- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
+
+    **Linux**
+
+    Host file location `/etc/host` :
+
+    `127.0.0.1  client.example.com`  
+    
+    **Windows**
+
+    Host file location `C:\Windows\System32\drivers\etc\host` :
+
+    `127.0.0.1  client.example.com`
+    
+- Enable SSL by	adding the following lines on virtual host file of Apache in the location:
+
+	**Linux**
+    
+    `/etc/apache2/sites-available/000-default.conf`
+    
+    **Windows**
+    
+    `C:/apache/conf/extra/httpd-vhosts.conf`
+
+```
+<VirtualHost *>
+    ServerName client.example.com
+    ServerAlias client.example.com
+    DocumentRoot "<apache web root directory>"
+</VirtualHost>
+
+<VirtualHost *:443>
+    DocumentRoot "<apache web root directory>"
+    ServerName client.example.com
+    SSLEngine on
+    SSLCertificateFile "<Path to your ssl certificate file>"
+    SSLCertificateKeyFile "<Path to your ssl certificate key file>"
+    <Directory "<apache web root directory>">
+    AllowOverride All
+    Order allow,deny
+    Allow from all
+    </Directory>
+</VirtualHost>
 ```
 
 
