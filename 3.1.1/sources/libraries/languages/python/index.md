@@ -4,136 +4,15 @@
 
 Use oxd's Python library to send users from a Python application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
-
-## Sample Project
-
-Download a [Sample Project](https://github.com/GluuFederation/oxd-python/archive/3.1.1.zip) specific to this oxd-python library.
-
-### Software Requirements
-
-System Requirements:
-
-- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
-- Python 2.7
-- Flask
-- Flask-SSLify
-
-To use the oxd-python library, you will need:
-
-- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
-- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
-- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)).
-- A Windows server or Windows installed machine / Linux server or Linux installed machine.
-
-
-### Install oxdpython via pip
-
-To install oxdpython via pip, run the following commands in the Linux terminal or Windows command window:
-
-``` {.code }
-pip install oxdpython
-```
-
-To install Flask-SSLify via pip, run the following commands in the Linux terminal or Windows command window:
-
-``` {.code }
-pip install Flask-SSLify
-```
-
-
-### Configure the Client Application
-
-- Client application must have a valid SSL certificate, so the URL includes: `https://`    
-
-    
-- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
-
-    **Linux**
-
-    Host file location `/etc/host` :
-
-    `127.0.0.1  client.example.com`  
-        
-    **Windows**
-
-    Host file location `C:\Windows\System32\drivers\etc\host` :
-
-    `127.0.0.1  client.example.com`
-
-- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-python/archive/3.1.1.zip) and navigate to the `demosite` directory inside the project.
-
-- Enable SSL by	setting the valid certificate and key in your application startup file (demosite.py):
-
-```{.code}
-from flask_sslify import SSLify
-
-app = Flask(__name__)
-sslify = SSLify(app)
-
-app.run('127.0.0.1', debug=True, port=8080, ssl_context=('<path>/demosite.crt', '<path>/demosite.key'))
-```
-- Run the following command to install oxdpython library:
-
-``` {.code }
-pip install oxdpython
-```
-- Run the following command to run the sample client application:
-   
-``` {.code }
-python demosite.py
-```
-
-- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
-
-    - Setup Client URL: https://client.example.com:8080/setupClient
-    - Login URL: https://client.example.com:8080
-    - UMA URL: https://client.example.com:8080/uma
-
-- The input values used during Setup Client are stored in the configuration file (demosite.cfg). Therefore, the configuration file needs to be writable by the client application.
-
-
-!!! Note: 
-    The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/3.1.1/sample.cfg)
-    file contains detailed documentation about the configuration values.
-
-
-
-## Endpoints
-
-The oxd-server and oxd-https-extension provide the following methods for authenticating users with an OpenID Connect Provider (OP):
-
-- Available OpenID Connect Endpoints
-    - [Setup Client](https://gluu.org/docs/oxd/3.1.1/api/#setup-client)  
-    - [Get Client Token](https://gluu.org/docs/oxd/3.1.1/api/#get-client-token)
-    - [Register Site](https://gluu.org/docs/oxd/3.1.1/api/#register-site) 
-    - [Update Site Registration](https://gluu.org/docs/oxd/3.1.1/api/#update-site-registration)
-    - [Get Authorization URL](https://gluu.org/docs/oxd/3.1.1/api/#get-authorization-url)   
-    - [Get Tokens by Code](https://gluu.org/docs/oxd/3.1.1/api/#get-tokens-id-access-by-code)
-    - [Get Access Token by Refresh Token](https://gluu.org/docs/oxd/3.1.1/api/#get-access-token-by-refresh-token)    
-    - [Get User Info](https://gluu.org/docs/oxd/3.1.1/api/#get-user-info)   
-    - [Get Logout URI](https://gluu.org/docs/oxd/3.1.1/api/#get-logout-uri) 
-
-
-The oxd-server provides the following methods for performing access management with a UMA Authorization Server (AS):
-
-- Available UMA (User Managed Access) Endpoints  
-    - [RS Protect](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-protect-resources) 
-    - [RS Check Access](https://gluu.org/docs/oxd/3.1.1/api/#uma-rs-check-access) 
-    - [RP Get RPT](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-rpt) 
-    - [RP Get Claims Gathering URL](https://gluu.org/docs/oxd/3.1.1/api/#uma-rp-get-claims-gathering-url) 
-
-
-
 ## Sample Code
 
 ### OpenID Connect
 
 #### Setup Client
 
-In order to use an OpenID Connect Provider (OP) for login, 
-you need to setup your client application at the OpenID Connect Provider (OP). 
-During setup, oxd will dynamically register the OpenID Connect 
-client and save its configuration. Upon successful setup, the oxd-server will assign a unique oxd ID, return a Client ID and Client Secret. This Client ID and Client Secret can be used for `get_client_token` method. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `setup_client` method as a parameter. The Setup Client method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
+In order to use an OpenID Connect Provider (OP) for login, you need to setup your client application at the OP. During setup, oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful setup, the `oxd-server` will assign a unique oxd ID, return a Client ID and Client Secret. This Client ID and Client Secret can be used for `get_client_token` method. 
+
+If your OP does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `setup_client` method as a parameter. The Setup Client method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
 
 **Parameters:**
 
@@ -677,6 +556,98 @@ result = oxc.uma_rp_get_claims_gathering_url(ticket=str(ticket), claims_redirect
     }
 }
 ```
+
+## Sample Project
+
+Download a [Sample Project](https://github.com/GluuFederation/oxd-python/archive/3.1.1.zip) specific to this oxd-python library.
+
+### Software Requirements
+
+System Requirements:
+
+- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
+- Python 2.7
+- Flask
+- Flask-SSLify
+
+To use the oxd-python library, you will need:
+
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
+- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)).
+- A Windows server or Windows installed machine / Linux server or Linux installed machine.
+
+
+### Install oxdpython via pip
+
+To install oxdpython via pip, run the following commands in the Linux terminal or Windows command window:
+
+``` {.code }
+pip install oxdpython
+```
+
+To install Flask-SSLify via pip, run the following commands in the Linux terminal or Windows command window:
+
+``` {.code }
+pip install Flask-SSLify
+```
+
+
+### Configure the Client Application
+
+- Client application must have a valid SSL certificate, so the URL includes: `https://`    
+
+    
+- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
+
+    **Linux**
+
+    Host file location `/etc/host` :
+
+    `127.0.0.1  client.example.com`  
+        
+    **Windows**
+
+    Host file location `C:\Windows\System32\drivers\etc\host` :
+
+    `127.0.0.1  client.example.com`
+
+- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-python/archive/3.1.1.zip) and navigate to the `demosite` directory inside the project.
+
+- Enable SSL by	setting the valid certificate and key in your application startup file (demosite.py):
+
+```{.code}
+from flask_sslify import SSLify
+
+app = Flask(__name__)
+sslify = SSLify(app)
+
+app.run('127.0.0.1', debug=True, port=8080, ssl_context=('<path>/demosite.crt', '<path>/demosite.key'))
+```
+- Run the following command to install oxdpython library:
+
+``` {.code }
+pip install oxdpython
+```
+- Run the following command to run the sample client application:
+   
+``` {.code }
+python demosite.py
+```
+
+- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+
+    - Setup Client URL: https://client.example.com:8080/setupClient
+    - Login URL: https://client.example.com:8080
+    - UMA URL: https://client.example.com:8080/uma
+
+- The input values used during Setup Client are stored in the configuration file (demosite.cfg). Therefore, the configuration file needs to be writable by the client application.
+
+
+!!! Note: 
+    The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/3.1.1/sample.cfg)
+    file contains detailed documentation about the configuration values.
+
 
 
 ## Support
