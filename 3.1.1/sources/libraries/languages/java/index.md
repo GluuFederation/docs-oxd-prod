@@ -838,7 +838,7 @@ try {
 }
 ```
 
-## Sample App
+## Sample Project
 ### Software Requirements 
 
 System Requirements:
@@ -860,11 +860,11 @@ Get oxd-java JAR files from [Maven Repo](http://ox.gluu.org/maven/org/xdi/oxd-ja
 
 ### Configure the Client Application
 
-There are no configuration files for oxd-java. Redirect URI and other information is set in the code.
+- There are no configuration files for oxd-java. Redirect URI and other information is set in the code.
 
-Your client application must have a valid SSL certificate, so the URL includes: `https://`    
+- Your client application must have a valid SSL certificate, so the URL includes: `https://`    
 
-The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
+- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
 
     **Linux**
 
@@ -878,7 +878,7 @@ The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP
 
     `127.0.0.1  client.example.com`
     
-Enable SSL by	adding the following lines on virtual host file of Apache in the location:
+- Enable SSL by	adding the following lines on virtual host file of Apache in the location:
 
 	**Linux**
     
