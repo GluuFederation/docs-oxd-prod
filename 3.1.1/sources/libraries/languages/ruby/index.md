@@ -660,13 +660,13 @@ To use the oxd-ruby library, you will need:
 
 ### Install oxd-ruby from RubyGems
 
-The Ruby Client is installed using RubyGems. Include following line in the Gemfile of the application using the oxd-ruby library.
+- The Ruby Client is installed using RubyGems. Include following line in the Gemfile of the application using the oxd-ruby library.
 
 ```
 gem 'oxd-ruby', '~> 0.1.9'
 ```
 
-Run the bundle command after to install the `oxd-ruby` plugin.
+- Run the bundle command after to install the `oxd-ruby` plugin.
 
 ```
 $ bundle install
@@ -680,7 +680,7 @@ $ bundle install
 $ rails generate oxd:config
 ```
 
-  This command will install the `oxd_config.rb` initializer file in the `config/initializers` directory which contains all the global configuration options for the ruby plugin. The following configurations must be set before the plugin can be used.
+- This command will install the `oxd_config.rb` initializer file in the `config/initializers` directory which contains all the global configuration options for the ruby plugin. The following configurations must be set before the plugin can be used.
 
   1. config.oxd_host_ip
   2. config.oxd_host_port
