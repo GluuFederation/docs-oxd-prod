@@ -1286,33 +1286,33 @@ install the Gluu.Oxd.OxdCSharp package, by running the following command:
 
 ### Configure the Client Application
 
-Your client application must have a valid SSL certificate, so the URL includes: `https://`    
+- Your client application must have a valid SSL certificate, so the URL includes: `https://`    
 
-The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP Address. 
+- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP Address. 
 You can configure the `hostname` by adding the following entry in `C:\Windows\System32\drivers\etc\host` file:
 
     `127.0.0.1  client.example.com`
 
-Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd-csharp library in Visual Studio.
+- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd-csharp library in Visual Studio.
 
-Enable SSL using the following instructions:
+- Enable SSL using the following instructions:
 
-- Open the client application in Visual Studio.
-- Go to client application properties.
-- Navigate to `Development Server` and set `SSL Enabled` to `True`.
+    - Open the client application in Visual Studio.
+    - Go to client application properties.
+    - Navigate to `Development Server` and set `SSL Enabled` to `True`.
 
-Change the `hostname` in the project using the following instructions:
+- Change the `hostname` in the project using the following instructions:
 
- - Make hidden folders visible in the windows explorer. If this has already been done then ignore then skip this step.
- - Navigate to `vs/config` folder in the root of the project in the windows explorer.
- - Open the `applicationhost.config` file.
- - Add the following lines to `bindings` section of the project:
+     - Make hidden folders visible in the windows explorer. If this has already been done then ignore then skip this step.
+     - Navigate to `vs/config` folder in the root of the project in the windows explorer.
+     - Open the `applicationhost.config` file.
+     - Add the following lines to `bindings` section of the project:
 
 ```code
 <binding protocol="https" bindingInformation="*:<portno>:client.example.com" />
 ```
 
-After adding the aforementioned lines the binding section will look like this:
+- After adding the aforementioned lines the binding section will look like this:
      
 ```code
 <site name="GluuDemoWebsite" id="2">
@@ -1325,13 +1325,13 @@ After adding the aforementioned lines the binding section will look like this:
 </site>
 ```
       
-With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
-- Setup Client URL: https://client.example.com:<portno>/Home/Setting
-- Login URL: https://client.example.com:<portno>
-- UMA URL: https://client.example.com:<portno>/Home/UMA
+    - Setup Client URL: https://client.example.com:<portno>/Home/Setting
+    - Login URL: https://client.example.com:<portno>
+    - UMA URL: https://client.example.com:<portno>/Home/UMA
 
-The input values used during Setup Client are stored in the configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the client application.
+- The input values used during Setup Client are stored in the configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the client application.
 
 
 ## Support
