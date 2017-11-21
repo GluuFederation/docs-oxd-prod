@@ -1034,13 +1034,14 @@ To use the oxd-go library, you will need:
     - Open command prompt and navigate to the GO Workspace directory like `C:\projects\Go`.
     - You have to generate public/private key pair (params: key and cert) in the project directory.
     - To generate public/private key pair, run the following command:
-
- Windows:
+    
+    **Windows**
 
   ```
   go run %GOROOT%/src/crypto/tls/generate_cert.go -host="127.0.0.1"
   ```
-Linux:
+  
+  **Linux**
 
 ```
   go run $GOROOT/src/crypto/tls/generate_cert.go -host="127.0.0.1"
@@ -1052,7 +1053,7 @@ Linux:
     
     `/etc/apache2/sites-available/000-default.conf`
     
-    **Windows**
+	**Windows**
     
     `C:/apache/conf/extra/httpd-vhosts.conf`
 
