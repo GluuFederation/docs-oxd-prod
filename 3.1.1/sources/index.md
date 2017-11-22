@@ -95,7 +95,7 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [Roundcube](./plugin/roundcube/index.md)  
 - [NextCloud](./plugin/nextcloud/index.md) 
 
-Gluu does its best to keep these plugins up to date but does not guarantee specific functionality. If you find a bug, or would like feature enhancements, we would be happy to discuss allocating a resource to work on the plugin on a time and materials basis. [Schedule a call](https://gluu.org/booking) with us to discuss the project scope and funding.
+Gluu does not guarantee specific functionality in the oxd plugins. If you find a bug, or would like feature enhancements, we would be happy to discuss plugin development on a time and materials basis. [Schedule a call](https://gluu.org/booking) with us to discuss the project scope and funding.
 
 ## Supported OpenID Providers (OP)
 oxd has been confirmed to work with the following standard OPs:
