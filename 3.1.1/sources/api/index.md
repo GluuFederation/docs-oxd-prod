@@ -431,7 +431,8 @@ Your client, acting as an [OAuth2 Resource Server](https://tools.ietf.org/html/r
 - Intercept the HTTP call (before the actual REST resource call) and check the `uma_rs_check_access` command response to determine whether the requester is allowed to proceed or should be rejected:
     - Allow access: if the response from `uma_rs_check_access` is `allowed` or `not_protected`, an error is returned.
     - If `uma_rs_check_access` returns `denied` then return back HTTP response.
-    
+- client must have `client_credenitals` grant type. It's required for correct PAT obtaining.    
+        
 The `uma_rs_check_access` operation checks access using the "or" rule when evaluating scopes.
 
 For example, a resource like `/photo` protected with scopes `read`, `all` (by `uma_rs_protect` command) assumes that if either `read` or `all` is present access is granted.
