@@ -65,15 +65,15 @@ Request:
         "client_jwks_uri": "",                                         <- OPTIONAL
         "client_token_endpoint_auth_method": "",                       <- OPTIONAL
         "client_request_uris": [],                                     <- OPTIONAL
-        "client_logout_uris": [],                                      <- OPTIONAL
+        "client_frontchannel_logout_uris": [],                                      <- OPTIONAL
         "client_sector_identifier_uri": [],                            <- OPTIONAL
         "contacts": ["foo_bar@spam.org"],                              <- OPTIONAL
         "ui_locales": [],                                              <- OPTIONAL
         "claims_locales": [],                                          <- OPTIONAL
         "claims_redirect_uri": [],                                     <- OPTIONAL
         "client_id": "<client id of existing client>",                 <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
-        "client_secret": "<client secret of existing client>",         <- OPTIONAL must be used together with client_secret.
-        "protection_access_token":"<access token of the client>"       <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter        
+        "client_secret": "<client secret of existing client>"         <- OPTIONAL must be used together with client_secret.
+             
     }
 }
 ```
@@ -160,7 +160,7 @@ Request:
         "client_jwks_uri": "",                                         <- OPTIONAL
         "client_token_endpoint_auth_method": "",                       <- OPTIONAL
         "client_request_uris": [],                                     <- OPTIONAL
-        "client_logout_uris": [],                                      <- OPTIONAL
+        "client_frontchannel_logout_uris": [],                                      <- OPTIONAL
         "client_sector_identifier_uri": [],                            <- OPTIONAL
         "contacts": ["foo_bar@spam.org"],                              <- OPTIONAL
         "ui_locales": [],                                              <- OPTIONAL
@@ -197,7 +197,7 @@ Request:
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",              <- REQUIRED
         "authorization_redirect_uri": "https://client.example.org/cb",<- OPTIONAL 
         "post_logout_redirect_uri": "https://client.example.org/cb",  <- OPTIONAL 
-        "client_logout_uris":["https://client.example.org/logout"],   <- OPTIONAL
+        "client_frontchannel_logout_uris":["https://client.example.org/logout"],   <- OPTIONAL
         "response_type":["code"],                                     <- OPTIONAL
         "grant_types":[],                                             <- OPTIONAL
         "scope": ["opeind", "profile"],                               <- OPTIONAL
@@ -207,7 +207,6 @@ Request:
         "client_jwks_uri": "",                                        <- OPTIONAL
         "client_token_endpoint_auth_method": "",                      <- OPTIONAL
         "client_request_uris":[],                                     <- OPTIONAL
-        "client_logout_uris":[],                                      <- OPTIONAL
         "client_sector_identifier_uri":"",                            <- OPTIONAL
         "contacts":["foo_bar@spam.org"],                              <- OPTIONAL
         "ui_locales":[],                                              <- OPTIONAL
