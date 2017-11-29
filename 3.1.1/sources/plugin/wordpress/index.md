@@ -54,6 +54,8 @@ A short description of each field follows:
 
 4. Click `Register` to continue.
 
+NB: If you get blank page after clicking on `Register` button, then check the apache error log file in `/var/log/apache2/` directory. Most often the error is about `utf8_encode() function`. Just install the `php{php_version}.0.xml` plugin from the command line and restart apache. For example if your are using php7 the command will be:``$ sudo apt-get install php7.0.xml``
+
 If your OpenID Provider supports dynamic registration no additional steps are required. 
 
 If your OpenID Connect Provider does not support dynamic registration (like Google), after clicking register two additional fields will be exposed where you need to enter your `client_id` and `client_secret`. Both values need to be obtained from the OP. To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
