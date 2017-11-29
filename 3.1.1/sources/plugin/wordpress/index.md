@@ -55,7 +55,7 @@ A short description of each field follows:
 4. Click `Register` to continue.
 
 !!! Note
-    If you get a blank page after clicking `Register`, check the apache error log file in `/var/log/apache2/`. Most likely the error is about `utf8_encode() function`. If so, install the `php{php_version}.0.xml` plugin from the command line and restart apache. For example if your are using php7 the command will be:``$ sudo apt-get install php7.0.xml``
+    If you get a blank page after clicking `Register`, check the apache error log file in `/var/log/apache2/`. Most likely the error is about `utf8_encode() function`. If so, install the `php{php_version}.0.xml` plugin from the command line and restart apache. For example if you are using php7, the command will be:``$ sudo apt-get install php7.0.xml``
 
 If your OpenID Provider supports dynamic registration no additional steps are required. 
 
