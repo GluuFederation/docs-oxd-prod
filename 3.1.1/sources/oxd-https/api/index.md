@@ -90,7 +90,6 @@ POST /update-site
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
 	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-    "protection_access_token":"bc9aa58a-5ff7-484e-9d25-b34c0d9343d5",
 	"scope" : ["openid","profile","email","uma_protection","uma_authorization"]
 }
 ```
@@ -113,7 +112,6 @@ POST /get-authorization-url
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
 	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-    "protection_access_token":"3747f4d6-5dcc-4b30-924f-dba996f10395",
 	"scope" : ["openid","profile","email","uma_protection","uma_authorization"]
 }
 ```
@@ -137,7 +135,6 @@ POST /get-tokens-by-code
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
 	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-    "protection_access_token":"3747f4d6-5dcc-4b30-924f-dba996f10395",
 	"code" : "0b9f1518-15aa-47b2-9477-d4c607447e18",
 	"state" :"6q1ec90hn6ui4ipigv91hrbodj"
 }
@@ -193,7 +190,6 @@ POST /get-user-info
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
     "oxd_id" : "bcad760f-91ba-46e1-a020-05e4281d91b6",
-    "protection_access_token":"3747f4d6-5dcc-4b30-924f-dba996f10395",
     "access_token" :"88bba7f5-961c-4b71-8053-9ab35f1ad395"
 }
 ```
@@ -258,8 +254,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 POST /get-logout-uri
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-    "oxd_id" : "bcad760f-91ba-46e1-a020-05e4281d91b6",
-    "protection_access_token":"eef0236a-1d14-4a91-a830-8d771a2ebba3"
+    "oxd_id" : "bcad760f-91ba-46e1-a020-05e4281d91b6"
 }
 ```
 
@@ -275,9 +270,9 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 *Non-normative example request*
 ```
 POST /get-access-token-by-refresh-token
+Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
     "oxd_id" : "bcad760f-91ba-46e1-a020-05e4281d91b6",
-    "protection_access_token": "b75434ff-f465-4b70-92e4-b7ba6b6c58f2"
     "refresh_token":"33d7988e-6ffb-4fe5-8c2a-0e158691d446", //refresh_token from get_tokens_by_code command
     "scope" : ["openid","profile","email","uma_protection"]
 }
@@ -304,7 +299,6 @@ POST /uma-rs-protect
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
 	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-    "protection_access_token": "b75434ff-f465-4b70-92e4-b7ba6b6c58f2",
 	"resources": [{
 		"path": "/scim",
 		"conditions": [{
@@ -336,7 +330,6 @@ POST /uma-rs-check-access
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
 	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-    "protection_access_token": "b75434ff-f465-4b70-92e4-b7ba6b6c58f2",
 	"rpt":"",
 	"path":"/scim",
 	"http_method" : "GET"
@@ -364,8 +357,7 @@ POST /uma-rp-get-rpt
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
 	"oxd_id":"bcad760f-91ba-46e1-a020-05e4281d91b6",
-	"ticket": "e986fd2b-de83-4947-a889-8f63c7c409c0",
-    "protection_access_token": "b75434ff-f465-4b70-92e4-b7ba6b6c58f2"
+	"ticket": "e986fd2b-de83-4947-a889-8f63c7c409c0"
 }
 ```
 
@@ -391,8 +383,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
 	"oxd_id":"bcad760f-91ba-46e1-a020-05e4281d91b6",
 	"ticket": "fba00191-59ab-4ed6-ac99-a786a88a9f40",
-	"claims_redirect_uri":"https://client.example.com/cb",
-	"protection_access_token": "b75434ff-f465-4b70-92e4-b7ba6b6c58f2"
+	"claims_redirect_uri":"https://client.example.com/cb"
 }
 
 ```
