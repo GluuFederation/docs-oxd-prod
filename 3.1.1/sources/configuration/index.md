@@ -2,13 +2,13 @@
 
 oxd configuration consists of two files :
 
-- `conf/oxd-conf.json` is the general configuration file for oxd, including where you add your license. If you have not yet obtained a license, you can [register on the website for free](https://oxd.gluu.org). 
+- `/opt/oxd-server/conf/oxd-conf.json` is the general configuration file for oxd, including where you add your license. If you have not yet obtained a license, you can [register on the website for free](https://oxd.gluu.org). 
 
-- `conf/oxd-default-site-config.json` is the fallback configuration file for the OpenID Connect `Register Site` command. Learn more on the [oxd API page](../api/index.md#register-site).
+- `/opt/oxd-server/conf/oxd-default-site-config.json` is the fallback configuration file for the OpenID Connect `Register Site` command. Learn more on the [oxd API page](../api/index.md#register-site).
 
 ## oxd-conf.json
 
-The contents of the `oxd-conf.json` file is as follows:
+The contents of the `/opt/oxd-server/conf/oxd-conf.json` file is as follows:
 
 ```
 oxd-conf.json
@@ -103,7 +103,7 @@ H2 storage configuration sample:
 
 ## oxd-default-site-config.json
 
-The contents of the `oxd-default-site-config.json` file is as follows:
+The contents of the `/opt/oxd-server/conf/oxd-default-site-config.json` file is as follows:
 
 
 ```json
