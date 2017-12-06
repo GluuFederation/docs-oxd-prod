@@ -146,3 +146,17 @@ The following command can be run inside the oxd folder to run the build:
 ```
   $ mvn clean package
 ```
+## oxd-server Un-Install Procedure
+
+### Ubuntu 14.04 (trusty)/Ubuntu 16.04 (xenial)/Debian 8 (Jessie)
+
+
+```
+$ sudo apt-get remove oxd-server
+```
+
+### CentOS 6/CentOS 7/RHEL 6/RHEL 7
+
+```
+# yum remove oxd-server
+```
