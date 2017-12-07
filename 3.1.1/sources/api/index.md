@@ -36,7 +36,7 @@ The other four oxd API's are:
 
 If you are using the `oxd-https-extension`, before using the above workflow you will need to obtain an access token to secure the interaction between your client and the `oxd-https-extension`. You can follow the two steps below. 
 
- - [Setup client](#setup-client) (returns `client_id` and `client_secret`)
+ - [Setup client](#setup-client) (returns `client_id` and `client_secret`. Make sure `uma_protection` scope is present in request)
  - [Get client token](#get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`)
  
  Pass the obtained access token as `protection_access_token` in all future calls to the `oxd-https-extension`.
@@ -45,7 +45,7 @@ If you are using the `oxd-https-extension`, before using the above workflow you 
 
 If you are using the `oxd-https-extension`, you must setup the client. 
 
-The parameters for Setup Client are the same as for Register the Site command. The command registers the client for communication protection. This will be used to obtain an access token via the Get Client Token command.  The access token will be passed as a `protection_access_token` parameter to other commands.
+The parameters for Setup Client are the same as for Register the Site command. The command registers the client for communication protection. This will be used to obtain an access token via the Get Client Token command.  The access token will be passed as a `protection_access_token` parameter to other commands. `uma_protection` scope has to be present in request to `setup_client` command.
 
 Request:
 
