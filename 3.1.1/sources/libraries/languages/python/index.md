@@ -1,20 +1,16 @@
-# oxd-python
-
-## Overview
-
-Use oxd's Python library to send users from a Python application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
 ## Installation
 
 ### Prerequisites
 
 * Python 2.7
+* Gluu oxd server - [Installation docs](https://gluu.org/docs/oxd/install/)
 
 ### Library
 
 * *Install from Pip* - `pip install oxdpython`
 
-* *Source from Github* -  Download the zip of the oxD Python Library from [here](https://github.com/GluuFederation/oxd-python/) and unzip to your location of choice
+* *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-python/archive/master.zip) the zip of the oxd Python library and run the setup script:
 
 ```
 cd oxdpython-version
@@ -24,20 +20,17 @@ python setup.py install
 #### Important Links
 
 * [oxd docs](https://gluu.org/docs/oxd)
-* oxd-python [API docs](https://rawgit.com/GluuFederation/oxd-python/master/docs/html/index.html) for in-depth information about the various functions and their parameters.
+* oxd-python [API docs](https://rawgit.com/GluuFederation/oxd-python/master/docs/html/index.html) for the auto-generated pydocs, which includes more in-depth information about the various functions and parameters.
 * See the code of a [sample Flask app](https://github.com/GluuFederation/oxd-python/blob/master/examples/flask_app) built using oxd-python.
-* Browse the source code is hosted in Github [here](https://github.com/GluuFederation/oxd-python).
+* Browse the oxd-python [source code on Github](https://github.com/GluuFederation/oxd-python).
 
 ## Configuration
 
-This library uses a configuration file to specify information needed
-by OpenID Connect for dynamic client registration, and to save information 
-that is returned, like the client id. So the config file needs to be 
-*writable by the app*.
+oxd-python uses a configuration file to specify information needed to configure your OpenID Connect client. If OpenID dynamic client registration is used, the config file needs to be *writable by the app*, because oxd will save the client id and client secret to this file.
 
-oxd can be deployed either as oxd-server communicating via sockets, or with a oxd-https-extension communicating over HTTP.
-oxd-python can be configured to work with both oxd-server and oxd-https-extension with just a flag in the configuration and **no difference** in code.
-The minimal config required to get a site working with oxd are given below:
+oxd-python can communicate with the oxd server via sockets or HTTPS. There is **no difference** in code--just toggle the `https_extension` configuration property. Sockets are used when the oxd server is running locally.
+
+Below are minimal configuration examples for sockets and https transport. The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/master/sample.cfg) file contains a full list of configuration parameters and sample values. 
 
 **Configuration for oxd-server via sockets:**
 
@@ -61,12 +54,9 @@ https_extension = true
 authorization_redirect_uri=https://your.site.org/callback
 ```
 
-**Note:** The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/master/sample.cfg)
-file contains the full list of the parameters and their detailed documentation.
-
 ## Sample Code
 
-#### Initialization
+### Initialization
 
 ```python
 from oxdpython import Client
@@ -76,7 +66,7 @@ client = Client(config)
 
 ```
 
-#### Setup site
+### Setup site
 
 This step is necessary only for sites using oxd-https-extension. The sites using
 oxd-server via sockets can skip `setup_site()` and directly register the app using
@@ -86,7 +76,7 @@ oxd-server via sockets can skip `setup_site()` and directly register the app usi
 client.setup_client()
 ```
 
-#### Get Client Token
+### Get Client Token
 
 After setting up site, the client should get a protection token. This token will
 be cached by oxd-python as `protection_access_token` in the config file and passed
@@ -96,7 +86,7 @@ on to the https extension as an `Authentication` header for each request.
 client_token = client.get_client_token()
 ```
 
-#### Website Registration
+### Website Registration
 
 ```python
 client.register_site()
@@ -105,13 +95,13 @@ client.register_site()
 **Note:** `register_site()` can be skipped as any `get_authorization_url()`
 automatically registers the site.
 
-#### Get Authorization URL
+### Get Authorization URL
 
 ```python
 auth_url = client.get_authorization_url()
 ```
 
-#### Get User Tokens
+### Get User Tokens
 
 ```python
 # code = parse_callback_url_querystring()  # Refer your web framework
@@ -119,7 +109,7 @@ auth_url = client.get_authorization_url()
 tokens = client.get_tokens_by_code(code, state)
 ```
 
-#### Get User Claims
+### Get User Claims
 
 ```python
 claims = client.get_user_info(tokens['access_token'])
@@ -128,14 +118,14 @@ print claims['username']
 print claims['website']
 ```
 
-#### Logout
+### Logout
 
 ```python
 # redirect the user to this URL for logout
 logout_uri = client.get_logout_uri()
 ```
 
-#### Update Site
+### Update Site
 
 ```python
 client.config.set('client', 'post_logout_uri', 'https://client.example.org/post_logout')
@@ -147,7 +137,7 @@ client.config.set('client', 'scope', scopes)
 client.update_site_registration()
 ```
 
-#### UMA RS Protect
+### UMA RS Protect
 
 ```python
 # define the resource
@@ -162,7 +152,7 @@ resources = [{"path": "/photo",
 result = client.uma_rs_protect(resources)
 ```
 
-#### UMA RS Check Access
+### UMA RS Check Access
 
 ```python
 rpt = 'lsjdfa-sfas234s'
@@ -172,14 +162,14 @@ http_method = 'GET'
 response = client.uma_rs_check_access(rpt, path, http_method)
 ```
 
-#### UMA RP Get RPT
+### UMA RP Get RPT
 
 ```python
 ticket = 'ticket obtained by app after user authorization'
 rpt = client.uma_rp_get_rpt(ticket)
 ```
 
-#### UMA RP Get Claims Gathering URL 
+### UMA RP Get Claims Gathering URL 
 
 ```python
 ticket = 'ticket obtained by app after user authorization'
@@ -190,21 +180,16 @@ claims_url = client.uma_rp_get_claims_gathering_url(ticket)
 
 oxd-python contains extensive tests for quality assurance. 
 
-* **Unit Tests** can be found in `tests` [directory](https://github.com/GluuFederation/oxd-python/tree/master/tests) and can be run using PyTest.
+* **Unit Tests** can be found in `tests` directory and can be run using PyTest.
 
 ```bash
-# from oxd-python directory
 pytest tests
 ```
 
 * **Integration Tests** need a OpenID provider and oxd-server to be setup before
-  running and can be found in the `examples/e2e_tests` [directory](https://github.com/GluuFederation/oxd-python/tree/master/examples/e2e_tests).
+  running and can be found in the `examples/e2e_tests` directory.
  
  
 ## Examples
  
-The [examples directory](https://github.com/GluuFederation/oxd-python/tree/master/examples) of the Github Repo contains apps and scripts written using oxd-python for OpenID Connect.
-
-
-## Support
-Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
+The `examples` directory contains apps and scripts written using oxd-python for OpenID Connect.
