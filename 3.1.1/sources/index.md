@@ -73,11 +73,7 @@ oxd native client libraries provide simple and flexible access to the oxd OpenID
 - [Php](./libraries/languages/php/index.md)         
 - [Node](./libraries/languages/node/index.md)          
 - [C#](./libraries/languages/csharp/index.md)           
-<!---     
-- [Ruby](./libraries/languages/ruby/index.md) 
-- [Perl](./libraries/languages/perl/index.md)     
-- [Go](./libraries/languages/go/index.md)     
- --->  
+
  
 **Frameworks**:           
 
