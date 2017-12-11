@@ -34,6 +34,7 @@ Step 4: To support RESTful (https) calls to your `oxd-server`, you can now move 
 ```
 echo "deb https://repo.gluu.org/ubuntu/ trusty main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
+add-apt-repository ppa:openjdk-r/ppa
 apt-get update
 apt-get install oxd-server
 ```
