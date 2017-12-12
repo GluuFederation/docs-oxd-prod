@@ -184,7 +184,7 @@ Response:
 }
 ```
 
-#### Update Site Registration
+#### Update Site 
 
 If something changes in a pre-registered client, you can use this API to update your client in the OP.
 
@@ -192,7 +192,7 @@ Request:
 
 ```json
 {
-    "command":"update_site_registration",
+    "command":"update_site",
     "params": {
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",              <- REQUIRED
         "authorization_redirect_uri": "https://client.example.org/cb",<- OPTIONAL 
