@@ -506,6 +506,83 @@ Request:
 }
 ```
 
+Request with `scope_expression`. `scope_expression` is Gluu invented extension which allows to put JsonLogic expression instead of single list of scopes. Please read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.2/admin-guide/uma-expression.md).
+```
+{
+  "command": "uma_rs_protect",
+  "params": {
+    "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF",  <-REQUIRED
+    "resources": [  <-  REQUIRED as parameter here we have protection json that describes resources on RS
+      {
+        "path": "/photo",
+        "conditions": [
+          {
+            "httpMethods": [
+              "GET"
+            ],
+            "scope_expression": {
+              "rule": {
+                "and": [
+                  {
+                    "or": [
+                      {
+                        "var": 0
+                      },
+                      {
+                        "var": 1
+                      }
+                    ]
+                  },
+                  {
+                    "var": 2
+                  }
+                ]
+              },
+              "data": [
+                "http://photoz.example.com/dev/actions/all",
+                "http://photoz.example.com/dev/actions/add",
+                "http://photoz.example.com/dev/actions/internalClient"
+              ]
+            }
+          },
+          {
+            "httpMethods": [
+              "PUT",
+              "POST"
+            ],
+            "scope_expression": {
+              "rule": {
+                "and": [
+                  {
+                    "or": [
+                      {
+                        "var": 0
+                      },
+                      {
+                        "var": 1
+                      }
+                    ]
+                  },
+                  {
+                    "var": 2
+                  }
+                ]
+              },
+              "data": [
+                "http://photoz.example.com/dev/actions/all",
+                "http://photoz.example.com/dev/actions/add",
+                "http://photoz.example.com/dev/actions/internalClient"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "protection_access_token": "<access token of the client>"   <-OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter   
+  }
+}
+```
+
 Response:
 
 ```json
