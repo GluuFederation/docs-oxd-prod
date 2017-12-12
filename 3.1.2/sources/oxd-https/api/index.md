@@ -104,6 +104,27 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
+### Remove Site
+
+*Non-normative example request*
+```
+POST /remove-site
+Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
+{
+	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6"
+}
+```
+
+*Non-normative example response*
+```
+{
+    "status": "ok",
+    "data": {
+        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6"
+    }
+}
+```
+
 ### Get Authorization Url
 
 *Non-normative example request*

@@ -224,6 +224,30 @@ Response:
 }
 ```
 
+#### Remove Site 
+
+Request:
+
+```json
+{
+    "command":"remove_site",
+    "params": {
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF"              <- REQUIRED       
+    }
+}
+```
+
+Response:
+
+```json
+{
+    "status":"ok",
+    "data": {
+        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6"
+    }
+}
+```
+
 #### Get Authorization URL
 
 Returns the URL at the OpenID Connect Provider (OP) to which your application must redirect the person to authorize the release of personal data (and perhaps be authenticated in the process if no previous session exists).
