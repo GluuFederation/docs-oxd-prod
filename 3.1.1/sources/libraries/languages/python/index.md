@@ -96,7 +96,8 @@ client_token = client.get_client_token()
 client.register_site()
 ```
 
-**Note:** `register_site()` can be skipped as any `get_authorization_url()`
+!!! Note 
+    `register_site()` can be skipped since any request to the `get_authorization_url()`
 automatically registers the site.
 
 ### Get Authorization URL
