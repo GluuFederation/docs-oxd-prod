@@ -34,7 +34,7 @@ oxd-python can communicate with the oxd server via sockets or HTTPS. There is **
 Below are minimal configuration examples for sockets and https transport. The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/master/sample.cfg) file contains a full list of configuration parameters and sample values. 
 
 !!! Note
-    The client hostname should be a valid hostname(FQDN), not a localhost or an IP Address
+    The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address
 
 **Configuration for oxd-server via sockets:**
 
