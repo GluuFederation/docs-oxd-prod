@@ -5,14 +5,11 @@ oxd exposes simple, static APIs that web application developers can use to facil
 
 oxd offers long-term maintenance and security advantages over manual OAuth 2.0 implementations:
 
-- oxd standardizes OAuth 2.0 security implementations across web apps of all languages and an ever-rotating group of code contributors;
+- oxd standardizes OAuth 2.0 security across web apps of all languages and an ever-rotating group of code contributors;
 
-- When new OAuth 2.0 features are available, or vulnerabilities are discovered, oxd is the *only* component that needs to be updated. The oxd APIs remain the same, so you never have to change and regression test applications;       
+- When new OAuth 2.0 features are available, or vulnerabilities are discovered, oxd is the *only* component that needs to be updated. The oxd APIs remain the same so applications never need to be changed or regression tested;       
 
 - oxd is written, maintained, and supported by OAuth 2.0 security experts.  
-
-!!! Warning 
-    oxd 3.1.2 includes functional and billing changes from previous versions. If you have older installations, review [what's new in 3.1.x](./3.1.x-intro.md) before proceeding with upgrades or new installations of oxd 3.1.2. 
 
 !!! Note
     oxd only works with server-side web apps. If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
@@ -69,11 +66,7 @@ oxd native client libraries provide simple and flexible access to the oxd OpenID
 - [Php](./libraries/languages/php/index.md)         
 - [Node](./libraries/languages/node/index.md)          
 - [C#](./libraries/languages/csharp/index.md)           
-<!---     
-- [Ruby](./libraries/languages/ruby/index.md) 
-- [Perl](./libraries/languages/perl/index.md)     
-- [Go](./libraries/languages/go/index.md)     
- --->  
+
  
 **Frameworks**:           
 
@@ -97,7 +90,7 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [Roundcube](./plugin/roundcube/index.md)  
 - [NextCloud](./plugin/nextcloud/index.md) 
 
-Gluu does not guarantee specific functionality in the oxd plugins. If you find a bug, or would like feature enhancements, we would be happy to discuss plugin development on a time and materials basis. [Schedule a call](https://gluu.org/booking) with us to discuss the project scope and funding.
+Gluu does not guarantee specific functionality in oxd plugins. If you find a bug or need feature enhancements, we are happy to discuss development on a time and materials basis. Send an email to [sales@gluu.org](mailto:sales@gluu.org). 
 
 ## Supported OpenID Providers (OP)
 oxd has been confirmed to work with the following standard OPs:
@@ -117,7 +110,7 @@ If you have successfully tested oxd against another AS, or for other AS related 
 
 ## Pricing & Billing
 
-oxd 3.1.2 costs **USD $0.33 per application per day**. New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.  
+oxd costs **USD $0.33 per application ("client") per day**. New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.  
 
 Additional notes about pricing and billing: 
 
