@@ -8,7 +8,7 @@ Use oxd's Java Spring library to send users from a Spring application to your Gl
 
 ## Installation Guides
 
-- [Github oxd-node](https://github.com/GluuFederation/oxd-node)
+- [oxd-spring](https://github.com/GluuFederation/oxd-spring)
 - [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 

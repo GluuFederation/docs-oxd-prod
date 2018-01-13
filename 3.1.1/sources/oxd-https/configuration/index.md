@@ -18,16 +18,12 @@ oxdPort: 8099
 
 server:
   applicationConnectors:
-    - type: http
-      port: 8080
     - type: https
       port: 8443
       keyStorePath: oxd-https.keystore
       keyStorePassword: example
       validateCerts: false
   adminConnectors:
-    - type: http
-      port: 8081
     - type: https
       port: 8444
       keyStorePath: oxd-https.keystore

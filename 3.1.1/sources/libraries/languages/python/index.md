@@ -5,6 +5,7 @@
 
 * Python 2.7
 * Gluu oxd server - [Installation docs](https://gluu.org/docs/oxd/install/)
+* SSL certificate for the application
 
 ### Library
 
@@ -31,6 +32,9 @@ oxd-python uses a configuration file to specify information needed to configure 
 oxd-python can communicate with the oxd server via sockets or HTTPS. There is **no difference** in code--just toggle the `https_extension` configuration property. Sockets are used when the oxd server is running locally.
 
 Below are minimal configuration examples for sockets and https transport. The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/master/sample.cfg) file contains a full list of configuration parameters and sample values. 
+
+!!! Note
+    The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address
 
 **Configuration for oxd-server via sockets:**
 
@@ -66,10 +70,10 @@ client = Client(config)
 
 ```
 
-### Setup site
+### Setup Client
 
 This step is necessary only for sites using oxd-https-extension. The sites using
-oxd-server via sockets can skip `setup_site()` and directly register the app using
+oxd-server via sockets can skip `setup_client()` and directly register the app using
 `register_site()`
 
 ```python
@@ -86,13 +90,14 @@ on to the https extension as an `Authentication` header for each request.
 client_token = client.get_client_token()
 ```
 
-### Website Registration
+### Register Site
 
 ```python
 client.register_site()
 ```
 
-**Note:** `register_site()` can be skipped as any `get_authorization_url()`
+!!! Note 
+    `register_site()` can be skipped since any request to the `get_authorization_url()`
 automatically registers the site.
 
 ### Get Authorization URL
@@ -101,7 +106,7 @@ automatically registers the site.
 auth_url = client.get_authorization_url()
 ```
 
-### Get User Tokens
+### Get Tokens By Code
 
 ```python
 # code = parse_callback_url_querystring()  # Refer your web framework
@@ -109,7 +114,7 @@ auth_url = client.get_authorization_url()
 tokens = client.get_tokens_by_code(code, state)
 ```
 
-### Get User Claims
+### Get User Info
 
 ```python
 claims = client.get_user_info(tokens['access_token'])
@@ -118,7 +123,7 @@ print claims['username']
 print claims['website']
 ```
 
-### Logout
+### Get Logout URI
 
 ```python
 # redirect the user to this URL for logout
@@ -193,3 +198,7 @@ pytest tests
 ## Examples
  
 The `examples` directory contains apps and scripts written using oxd-python for OpenID Connect.
+
+## Support
+
+Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
