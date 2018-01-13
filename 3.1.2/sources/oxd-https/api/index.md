@@ -314,6 +314,8 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 ### UMA RS Protect Resources
 
+It's important to have single http method mentioned only one time within given path in JSON otherwise operation will fail.
+
 *Non-normative example request*
 ```
 POST /uma-rs-protect
@@ -331,6 +333,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 }
 ```
+
 
 Request with `scope_expression`. `scope_expression` is Gluu invented extension which allows to put JsonLogic expression instead of single list of scopes. Please read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.2/admin-guide/uma.md).
 ```json
