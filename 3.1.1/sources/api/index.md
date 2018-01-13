@@ -460,6 +460,8 @@ Warning: 199 - "UMA Authorization Server Unreachable"
 
 #### UMA RS Protect Resources
 
+It's important to keep http method unique within given path.
+
 Request:
 
 ```json
