@@ -49,7 +49,7 @@ The parameters for Setup Client are the same as for Register the Site command. T
 
 Request:
 
-```json
+```language-json
 {
     "command":"setup_client",
     "params": {
@@ -80,7 +80,7 @@ Request:
 
 Response:
 
-```json
+```language-json
 {
     "status":"ok",
     "data":{
@@ -100,7 +100,7 @@ Response:
 
 Request:
 
-```json
+```language-json
 {
     "command":"get_client_token",
     "params": {
@@ -115,7 +115,7 @@ Request:
 
 Response:
 
-```json
+```language-json
 {
     "status":"ok",
     "data":{
@@ -144,7 +144,7 @@ The `op_host` parameter is optional, but it must be specified in either the [def
     
 Request:
 
-```json
+```language-json
 {
     "command":"register_site",
     "params": {
@@ -177,7 +177,7 @@ Request:
 
 Response:
 
-```json
+```language-json
 {
     "status":"ok",
     "data":{
@@ -192,7 +192,7 @@ If something changes in a pre-registered client, you can use this API to update 
 
 Request:
 
-```json
+```language-json
 {
     "command":"update_site",
     "params": {
@@ -220,7 +220,7 @@ Request:
 
 Response:
 
-```json
+```language-json
 {
     "status":"ok"
 }
@@ -230,7 +230,7 @@ Response:
 
 Request:
 
-```json
+```language-json
 {
     "command":"remove_site",
     "params": {
@@ -241,7 +241,7 @@ Request:
 
 Response:
 
-```json
+```language-json
 {
     "status":"ok",
     "data": {
@@ -258,7 +258,7 @@ The response from the OpenID Connect Provider (OP) will include the code and sta
 
 Request:
 
-```json
+```language-json
 {
     "command":"get_authorization_url",
     "params": {
@@ -277,7 +277,7 @@ Request:
 
 Response:
 
-```json
+```language-json
 {
     "status":"ok",
     "data":{
@@ -294,7 +294,7 @@ Response:
 
 After redirecting to the above URL, the OpenID Connect Provider (OP) will return a response to the URL your application registered as the redirect URI (parse out the code and state). It will look like this:
 
-```
+```language-http
 HTTP/1.1 302 Found
 Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=af0ifjsldkj&scopes=openid%20profile
 ```
@@ -305,7 +305,7 @@ Use the code and state obtained in the previous step to call this API to retriev
 
 Request:
 
-```json
+```language-json
 {
     "command":"get_tokens_by_code",
     "params": {
@@ -319,7 +319,7 @@ Request:
 
 Response:
 
-```
+```language-json
 {
     "status":"ok",
     "data":{
@@ -346,7 +346,7 @@ A Refresh Token can be used to obtain a renewed Access Token.
 
 Request:
 
-```json
+```language-json
 {
     "command":"get_access_token_by_refresh_token",
     "params": {
@@ -360,7 +360,7 @@ Request:
 
 Response:
 
-```
+```language-json
 {
     "status":"ok",
     "data":{
@@ -378,7 +378,7 @@ Use the access token from the step above to retrieve a JSON object with the user
 
 Request:
 
-```json
+```language-json
 {
     "command":"get_user_info",
     "params": {
@@ -391,7 +391,7 @@ Request:
 
 Response:
 
-```json
+```language-json
 {
     "status":"ok",
     "data":{
@@ -417,7 +417,7 @@ up any cookies in the person's browser. If the person blocks [third-party cookie
 
 Request:
 
-```json
+```language-json
 {
     "command":"get_logout_uri",
     "params": {
@@ -433,7 +433,7 @@ Request:
 
 Response:
 
-```json
+```language-json
 {
     "status":"ok",
     "data":{
@@ -470,7 +470,7 @@ If the "and" rule is preferred it can be achieved by adding an additional scope,
 
 If access is not granted then an unauthorized HTTP code and registered ticket are returned, for example: 
 
-```http
+```language-http
 HTTP/1.1 401 Unauthorized
 WWW-Authenticate: UMA realm="example",
       as_uri="https://as.example.com",
@@ -479,7 +479,7 @@ WWW-Authenticate: UMA realm="example",
 
 The `uma_rs_check_access` returns `denied` then returns back an HTTP response:
 
-```http
+```language-http
 HTTP/1.1 403 Forbidden
 Warning: 199 - "UMA Authorization Server Unreachable"
 ```
@@ -488,7 +488,7 @@ Warning: 199 - "UMA Authorization Server Unreachable"
 
 Request:
 
-```json
+```language-json
 {
     "command":"uma_rs_protect",
     "params": {
@@ -533,7 +533,7 @@ Request:
 ```
 
 Request with `scope_expression`. `scope_expression` is Gluu invented extension which allows to put JsonLogic expression instead of single list of scopes. Please read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.2/admin-guide/uma.md).
-```
+```language-json
 {
   "command": "uma_rs_protect",
   "params": {
@@ -611,7 +611,7 @@ Request with `scope_expression`. `scope_expression` is Gluu invented extension w
 
 Response:
 
-```json
+```language-json
 {
     "status":"ok"
 }
@@ -621,7 +621,7 @@ Response:
 
 Request:
 
-```json
+```language-json
 {
     "command":"uma_rs_check_access",
     "params": {
@@ -635,14 +635,14 @@ Request:
 ```
 
 Sample of RP Request:
-```
+```language-http
 GET /users/alice/album/photo HTTP/1.1
 Authorization: Bearer vF9dft4qmT
 Host: photoz.example.com
 ```
 
 Parameters:
-```
+```language-yaml
 rpt: 'vF9dft4qmT'
 path: /users/alice/album/photo
 http_method: GET
@@ -650,7 +650,7 @@ http_method: GET
 
 Access Granted Response:
 
-```json
+```language-json
 {
     "status":"ok",
     "data":{
@@ -661,7 +661,7 @@ Access Granted Response:
 
 Access Denied with Ticket Response:
 
-```json
+```language-json
 {
     "status":"ok",
     "data":{
@@ -677,7 +677,7 @@ Access Denied with Ticket Response:
 
 Access Denied without Ticket Response:
 
-```json
+```language-json
 {
     "status":"ok",
     "data":{
@@ -687,7 +687,7 @@ Access Denied without Ticket Response:
 ```
 
 Resource is not Protected Error Response:
-```json
+```language-json
 {
     "status":"error",
     "data":{
@@ -705,7 +705,7 @@ If your application is calling UMA 2 protected resources, use these API's to obt
 
 Request:
 
-```json
+```language-json
 {
     "command":"uma_rp_get_rpt",
     "params": {
@@ -713,18 +713,18 @@ Request:
          "ticket": "016f84e8-f9b9-11e0-bd6f-0021cc6004de",  <- REQUIRED
          "claim_token": "eyj0f9b9...",                      <- OPTIONAL
          "claim_token_format": "http://openid.net/specs/openid-connect-core-1_0.html#IDToken",
-         "pct": "c2F2ZWRjb25zZW50",                         <- OPTIONAL                                                      
+         "pct": "c2F2ZWRjb25zZW50",                         <- OPTIONAL
          "rpt": "SSJHBSUSSJHVhjsgvhsgvshgsv",               <- OPTIONAL
          "scope":["read"],                                  <- OPTIONAL,
          "state": "af0ifjsldkj",                            <- OPTIONAL state that is returned from uma_rp_get_claims_gathering_url command
-         "protection_access_token": "ejt3425"               <- OPTIONAL, required if oxd-https-extension is used          
+         "protection_access_token": "ejt3425"               <- OPTIONAL, required if oxd-https-extension is used
     }
 }
 ```
 
 Success Response:
 
-```json
+```language-json
 {
      "status":"ok",
      "data":{
@@ -737,7 +737,7 @@ Success Response:
 ```
 
 Needs Info Error Response:
-```json
+```language-json
 {
      "status":"error",
      "data":{
@@ -765,7 +765,7 @@ Needs Info Error Response:
 
 
 Invalid Ticket Error Response:
-```json
+```language-json
 {
     "status":"error",
     "data":{
@@ -776,7 +776,7 @@ Invalid Ticket Error Response:
 ```
 
 Internal oxd-server Error Response:
-```json
+```language-json
 {
     "status":"error",
     "data":{
@@ -792,7 +792,7 @@ Internal oxd-server Error Response:
 
 Request:
 
-```json
+```language-json
 {
     "command":"uma_rp_get_claims_gathering_url",
     "params": {
@@ -806,7 +806,7 @@ Request:
 
 Success Response:
 
-```json
+```language-json
 {
     "status":"ok",
     "data":{
