@@ -18,8 +18,9 @@ POST /setup-client
 {
     "status": "ok",
     "data": {
-        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
+        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",        <-- DEPRECATED : additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases.
         "op_host": "https://<op-hostname>",
+        "setup_client_oxd_id": "<setup client oxd_id>",          <-- oxdId of the setup client used to obtain access token
         "client_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.5F14.B387",
         "client_secret": "f436b936-03fc-433f-9772-53c2bc9e1c74",
         "client_registration_access_token": "d836df94-44b0-445a-848a-d43189839b17",
@@ -53,6 +54,43 @@ POST /get-client-token
         "access_token": "b75434ff-f465-4b70-92e4-b7ba6b6c58f2",
         "expires_in": 299,
         "refresh_token": null
+    }
+}
+```
+
+### Introspect Access Token
+
+Request:
+
+```language-json
+{
+    "command":"introspect-access-token",
+    "params": {
+        "oxd_id": "<oxd id>",                <- REQUIRED
+        "access_token": "<access_token>"     <- REQUIRED
+    }
+}
+```
+
+Response:
+
+```language-json
+{
+    "status":"ok",
+    "data":{
+        "active": true,
+        "client_id": "l238j323ds-23ij4",
+        "username": "John Black",
+        "scopes": ["read", "write"],
+        "token_type":"bearer"
+        "sub": "jblack",
+        "aud": "l238j323ds-23ij4",
+        "iss": "https://as.gluu.org/",
+        "exp": 1419356238,
+        "iat": 1419350238,
+        "acr_values": ["basic","duo"],
+        "extension_field": "twenty-seven",
+        ...
     }
 }
 ```
@@ -493,6 +531,43 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     "data": {
         "url": "https://<op-hostname>/oxauth/restv1/uma/gather_claims?client_id@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!4508.BF20.9B81.E904&ticket=fba00191-59ab-4ed6-ac99-a786a88a9f40&claims_redirect_uri=https://client.example.com/cb&state=d871gpie16np0f5kfv936sc33k",
         "state": "d871gpie16np0f5kfv936sc33k"
+    }
+}
+```
+
+### UMA Introspect RPT
+
+Request:
+
+```language-json
+{
+    "command":"introspect-rpt",
+    "params": {
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <- REQUIRED
+        "rpt": "016f84e8-f9b9-11e0-bd6f-0021cc6004de"            <- REQUIRED
+    }
+}
+```
+
+Success Response:
+
+```language-json
+{
+    "status":"ok",
+    "data":{
+        "active":true,
+        "exp":1256953732,
+        "iat":1256912345,
+        "permissions":[  
+            {  
+                "resource_id":"112210f47de98100",
+                "resource_scopes":[  
+                    "view",
+                    "http://photoz.example.com/dev/actions/print"
+                ],
+                "exp":1256953732
+            }
+        ]
     }
 }
 ```

@@ -84,8 +84,9 @@ Response:
 {
     "status":"ok",
     "data":{
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <-- DEPRECATED : additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases. 
         "op_host": "<op host>",
+        "setup_client_oxd_id": "<setup client oxd_id>",          <-- oxdId of the setup client used to obtain access token
         "client_id":"<client id>"
         "client_secret":"<client secret>"
         "client_registration_access_token":"<Client registration access token>"
@@ -123,6 +124,43 @@ Response:
         "expires_in": 399,
         "refresh_token": "fr459f",
         "scope": "openid"
+    }
+}
+```
+
+#### Introspect Access Token
+
+Request:
+
+```language-json
+{
+    "command":"introspect_access_token",
+    "params": {
+        "oxd_id": "<oxd id>",                <- REQUIRED
+        "access_token": "<access_token>"     <- REQUIRED
+    }
+}
+```
+
+Response:
+
+```language-json
+{
+    "status":"ok",
+    "data":{
+        "active": true,
+        "client_id": "l238j323ds-23ij4",
+        "username": "John Black",
+        "scopes": ["read", "write"],
+        "token_type":"bearer"
+        "sub": "jblack",
+        "aud": "l238j323ds-23ij4",
+        "iss": "https://as.gluu.org/",
+        "exp": 1419356238,
+        "iat": 1419350238,
+        "acr_values": ["basic","duo"],
+        "extension_field": "twenty-seven",
+        ...
     }
 }
 ```
@@ -826,6 +864,43 @@ Example of Response:
 
 ```
 https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
+```
+
+#### UMA Introspect RPT
+
+Request:
+
+```language-json
+{
+    "command":"introspect_rpt",
+    "params": {
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <- REQUIRED
+        "rpt": "016f84e8-f9b9-11e0-bd6f-0021cc6004de"            <- REQUIRED
+    }
+}
+```
+
+Success Response:
+
+```language-json
+{
+    "status":"ok",
+    "data":{
+        "active":true,
+        "exp":1256953732,
+        "iat":1256912345,
+        "permissions":[  
+            {  
+                "resource_id":"112210f47de98100",
+                "resource_scopes":[  
+                    "view",
+                    "http://photoz.example.com/dev/actions/print"
+                ],
+                "exp":1256953732
+            }
+        ]
+    }
+}
 ```
 
 ## References
