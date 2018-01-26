@@ -735,6 +735,44 @@ Resource is not Protected Error Response:
 }
 ```
 
+#### UMA 2 Introspect RPT
+
+Request:
+
+```language-json
+{
+    "command":"introspect_rpt",
+    "params": {
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <- REQUIRED
+        "rpt": "016f84e8-f9b9-11e0-bd6f-0021cc6004de"            <- REQUIRED
+    }
+}
+```
+
+Success Response:
+
+```language-json
+{
+    "status":"ok",
+    "data":{
+        "active":true,
+        "exp":1256953732,
+        "iat":1256912345,
+        "permissions":[  
+            {  
+                "resource_id":"112210f47de98100",
+                "resource_scopes":[  
+                    "view",
+                    "http://photoz.example.com/dev/actions/print"
+                ],
+                "exp":1256953732
+            }
+        ]
+    }
+}
+```
+
+
 ### UMA 2 Client API's
 
 If your application is calling UMA 2 protected resources, use these API's to obtain an RPT token.
@@ -864,43 +902,6 @@ Example of Response:
 
 ```
 https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
-```
-
-#### UMA Introspect RPT
-
-Request:
-
-```language-json
-{
-    "command":"introspect_rpt",
-    "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <- REQUIRED
-        "rpt": "016f84e8-f9b9-11e0-bd6f-0021cc6004de"            <- REQUIRED
-    }
-}
-```
-
-Success Response:
-
-```language-json
-{
-    "status":"ok",
-    "data":{
-        "active":true,
-        "exp":1256953732,
-        "iat":1256912345,
-        "permissions":[  
-            {  
-                "resource_id":"112210f47de98100",
-                "resource_scopes":[  
-                    "view",
-                    "http://photoz.example.com/dev/actions/print"
-                ],
-                "exp":1256953732
-            }
-        ]
-    }
-}
 ```
 
 ## References

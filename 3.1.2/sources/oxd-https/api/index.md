@@ -3,7 +3,7 @@
 ### Setup Client
 
 *Non-normative example request*
-```
+```language-json
 POST /setup-client
 {
     "op_host" : "https://<op-hostname>",
@@ -14,7 +14,7 @@ POST /setup-client
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
     "status": "ok",
     "data": {
@@ -34,7 +34,7 @@ POST /setup-client
 ### Get Client Token
 
 *Non-normative example request*
-```
+```language-json
 POST /get-client-token
 {
 	"op_host" : "https://<op-hostname>",
@@ -46,7 +46,7 @@ POST /get-client-token
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
     "status": "ok",
     "data": {
@@ -98,7 +98,7 @@ Response:
 ### Register Site
 
 *Non-normative example request*
-```
+```language-json
 POST /register-site
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
@@ -110,7 +110,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
     "status": "ok",
     "data": {
@@ -123,7 +123,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ### Update Site
 
 *Non-normative example request*
-```
+```language-json
 POST /update-site
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
@@ -133,7 +133,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
     "status": "ok",
     "data": {
@@ -145,7 +145,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ### Remove Site
 
 *Non-normative example request*
-```
+```language-json
 POST /remove-site
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
@@ -154,7 +154,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
     "status": "ok",
     "data": {
@@ -166,7 +166,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ### Get Authorization Url
 
 *Non-normative example request*
-```
+```language-json
 POST /get-authorization-url
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
@@ -176,7 +176,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
     "status": "ok",
     "data": {
@@ -189,7 +189,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 *Non-normative example request*
 Use the code and state obtained in the previous step to call this API to retrieve tokens.
-```
+```language-json
 POST /get-tokens-by-code
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
@@ -200,7 +200,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
     "status": "ok",
     "data": {
@@ -244,7 +244,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ### Get User Info
 
 *Non-normative example request*
-```
+```language-json
 POST /get-user-info
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
@@ -254,7 +254,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
   "claims": {
     "sub": [
@@ -309,7 +309,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ### Logout URL
 
 *Non-normative example request*
-```
+```language-json
 POST /get-logout-uri
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
@@ -318,7 +318,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
   "uri": "https://<op-hostname>/oxauth/seam/resource/restv1/oxauth/end_session?id_token_hint=eyJraWQiOiI1YmM2ZGM3MS0xYjA1LTQ5YzMtYWU3MC0zYTg4Y2ZiMjQwN2QiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NlLWRldi5nbHV1Lm9yZyIsImF1ZCI6IkAhNUE1OC5BRTBELkQzODMuMUU0NiEwMDAxIUUzOEIuN0RCRSEwMDA4IUE3MTkuOTU4QS41QjdGLkVBQkMiLCJleHAiOjE0OTAwMTk5MjEsImlhdCI6MTQ5MDAxNjMyMSwibm9uY2UiOiJkNGdsbmtndHAxYWlqZ3JnY3V2cGp1N2k3cCIsImF1dGhfdGltZSI6MTQ5MDAxNjI3MiwiYXRfaGFzaCI6Im1Xa2NXQzZ6NC1qN0ZNX0ctX0tYMWciLCJveFZhbGlkYXRpb25VUkkiOiJodHRwczovL2NlLWRldi5nbHV1Lm9yZy9veGF1dGgvb3BpZnJhbWUiLCJveE9wZW5JRENvbm5lY3RWZXJzaW9uIjoib3BlbmlkY29ubmVjdC0xLjAiLCJzdWIiOiJONHRLRncyLVpDWTVWN0FhQmdpMnNHRWdDR0t0Tlg2LS01M2FQbmZFYk5zIn0.PvCdzPnMwqPNUw1bzd8tvzpJqYu-P2iCTnELr85ZaJTG8_Fdj3EruLgUBa-emeum3j29cFgdjFPx6WplfCV1GnehOieXjDiAAE85fy-stxXwII3xrva5ZjG0FnTYnJLoRmy0BWMjFC2IdCoISJI9imcfvmQmlvNmU0EjLS02cJf3JAaqEaM-FJWdQv8end9-Sq2bcp6ME3voRjV30ps_7jcDdlM_hW3M_e3RdrXYCDifbl_1jaNip5tb6_bLpgTADDoLT3fTvACRN057e2GCkSYdxvVhIjfDsjnOhk5n3TDcWedriu99H8-sNXyI_aBr3HAXd37CsgmdfIJcgUNJJw"
 }
@@ -327,7 +327,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ### Get Access Token By Refresh Token
 
 *Non-normative example request*
-```
+```language-json
 POST /get-access-token-by-refresh-token
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
@@ -338,7 +338,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
     "status": "ok",
     "data": {
@@ -355,7 +355,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 It's important to have single http method mentioned only one time within given path in JSON otherwise operation will fail.
 
 *Non-normative example request*
-```
+```language-json
 POST /uma-rs-protect
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
@@ -374,7 +374,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 
 Request with `scope_expression`. `scope_expression` is Gluu invented extension which allows to put JsonLogic expression instead of single list of scopes. Please read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.2/admin-guide/uma.md).
-```json
+```language-json
 {
     "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF",  <-REQUIRED
     "resources": [  <-  REQUIRED as parameter here we have protection json that describes resources on RS
@@ -448,7 +448,7 @@ Request with `scope_expression`. `scope_expression` is Gluu invented extension w
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
     "status": "ok",
     "data": {
@@ -461,7 +461,7 @@ Request with `scope_expression`. `scope_expression` is Gluu invented extension w
 ### UMA RS Check Access
 
 *Non-normative example request*
-```
+```language-json
 POST /uma-rs-check-access
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
@@ -473,64 +473,13 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
     "status": "ok",
     "data": {
         "access": "denied",
         "ticket": "e986fd2b-de83-4947-a889-8f63c7c409c0",
         "www-authenticate_header": "UMA realm=\"rs\",as_uri=\"https://<op-hostname>\",error=\"insufficient_scope\",ticket=\"e986fd2b-de83-4947-a889-8f63c7c409c0\""
-    }
-}
-```
-
-
-### UMA RP - Get RPT
-
-*Non-normative example request*
-```
-POST /uma-rp-get-rpt
-Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
-{
-	"oxd_id":"bcad760f-91ba-46e1-a020-05e4281d91b6",
-	"ticket": "e986fd2b-de83-4947-a889-8f63c7c409c0"
-}
-```
-
-*Non-normative example response*
-```
-{
-    "status": "ok",
-    "data": {
-        "pct": "4f44136f-797d-4b70-aa4a-a4d5f96dad7c_86BA.DB48.64EE.52E2.1E48.828A.C4E6.7C82",
-        "updated": false,
-        "access_token": "656b0f54-bf05-4ec8-aa95-b81b7c9bfb7a_1649.62A5.396A.3D67.B24F.74E9.2254.E4EF",
-        "token_type": "Bearer"
-    }
-}
-```
-
-### UMA RP Get Claims Gathering Url
-
-*Non-normative example request*
-```
-POST /uma-rp-get-claims-gathering-url
-Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
-{
-	"oxd_id":"bcad760f-91ba-46e1-a020-05e4281d91b6",
-	"ticket": "fba00191-59ab-4ed6-ac99-a786a88a9f40",
-	"claims_redirect_uri":"https://client.example.com/cb"
-}
-
-```
-
-*Non-normative example response*
-```
-{
-    "status": "ok",
-    "data": {
-        "url": "https://<op-hostname>/oxauth/restv1/uma/gather_claims?client_id@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!4508.BF20.9B81.E904&ticket=fba00191-59ab-4ed6-ac99-a786a88a9f40&claims_redirect_uri=https://client.example.com/cb&state=d871gpie16np0f5kfv936sc33k",
-        "state": "d871gpie16np0f5kfv936sc33k"
     }
 }
 ```
@@ -568,6 +517,55 @@ Success Response:
                 "exp":1256953732
             }
         ]
+    }
+}
+```
+
+### UMA RP - Get RPT
+
+*Non-normative example request*
+```language-json
+POST /uma-rp-get-rpt
+Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
+{
+	"oxd_id":"bcad760f-91ba-46e1-a020-05e4281d91b6",
+	"ticket": "e986fd2b-de83-4947-a889-8f63c7c409c0"
+}
+```
+
+*Non-normative example response*
+```language-json
+{
+    "status": "ok",
+    "data": {
+        "pct": "4f44136f-797d-4b70-aa4a-a4d5f96dad7c_86BA.DB48.64EE.52E2.1E48.828A.C4E6.7C82",
+        "updated": false,
+        "access_token": "656b0f54-bf05-4ec8-aa95-b81b7c9bfb7a_1649.62A5.396A.3D67.B24F.74E9.2254.E4EF",
+        "token_type": "Bearer"
+    }
+}
+```
+
+### UMA RP Get Claims Gathering Url
+
+*Non-normative example request*
+```language-json
+POST /uma-rp-get-claims-gathering-url
+Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
+{
+	"oxd_id":"bcad760f-91ba-46e1-a020-05e4281d91b6",
+	"ticket": "fba00191-59ab-4ed6-ac99-a786a88a9f40",
+	"claims_redirect_uri":"https://client.example.com/cb"
+}
+```
+
+*Non-normative example response*
+```language-json
+{
+    "status": "ok",
+    "data": {
+        "url": "https://<op-hostname>/oxauth/restv1/uma/gather_claims?client_id@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!4508.BF20.9B81.E904&ticket=fba00191-59ab-4ed6-ac99-a786a88a9f40&claims_redirect_uri=https://client.example.com/cb&state=d871gpie16np0f5kfv936sc33k",
+        "state": "d871gpie16np0f5kfv936sc33k"
     }
 }
 ```
