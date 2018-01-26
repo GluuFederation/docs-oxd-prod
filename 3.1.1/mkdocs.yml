@@ -18,15 +18,15 @@ pages:
 - Release Notes: 'release-notes/index.md'
 - Whats new in 3.1.x: '3.1.x-intro.md'
 - 'Install': 'install/index.md'
-- 'Upgrade': 'upgrade/index.md'
-- 'Configuration': 'configuration/index.md'
-- 'Logs': 'logs/index.md'
-- 'API': 'api/index.md'
 - oxd-https-extension:
   - 'Start': 'oxd-https/start/index.md'
   - 'Configuration': 'oxd-https/configuration/index.md'
   - 'Logs': 'oxd-https/logs/index.md'
   - 'API': 'oxd-https/api/index.md'
+- 'Upgrade': 'upgrade/index.md'
+- 'Configuration': 'configuration/index.md'
+- 'Logs': 'logs/index.md'
+- 'API': 'api/index.md'
 - Libraries:
     - 'Overview': 'libraries/api-client-libraries.md'
     - Languages:
