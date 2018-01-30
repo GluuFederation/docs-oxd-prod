@@ -2,561 +2,175 @@
 
 ## Overview
 
-Use oxd's Java library to send users from a Java application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
+Use oxd Java library to:
 
-Download a [Sample Project](https://github.com/GluuFederation/oxd/archive/version_3.1.1.zip) 
-specific to this oxd-java library.
+* Easily implement user authentication with an OpenID Connect Provider (OP) following the steps of the [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#Authentication) in your Java web app
 
-## Sample Code 
+* Obtain identity information about the authenticated user
 
-### OpenID Connect
+* Perform log out of the OP
 
-Below is a sample pom. To download the pom file please refer to this [Snippet](https://ox.gluu.org/maven/org/xdi/oxd-client/3.1.0.Final/oxd-client-3.1.0.Final.pom)
+* Implement protection of web resources enabling a resource server and a client to support the [UMA 2.0](https://docs.kantarainitiative.org/uma/ed/oauth-uma-grant-2.0-04.html) workflow in conjuction with a UMA 2.0 compliant server (such as Gluu Server)
+ 
+## Sample Project
+
+In [this repo](https://github.com/GluuFederation/oxd-java-sample) you can find a Java web project that showcases how to integrate the library and illustrates the step-by-step process of OpenId Authentication.
+
+Check the [readme](https://github.com/GluuFederation/oxd-java-sample/blob/master/README.md) and learn how easy it's to get it up and running.
+
+## Operations summary and sample code 
+
+In this section, code snippets that exemplify the authentication steps of OpenID Connect are presented. They resemble the operations listed in the [API page](https://gluu.org/docs/oxd/api/) using Java idiom, of course. Use the hints given in the API page to determine which parameters are required for every operation and learn more about the operations intent.
+
+### Requisites
+
+In your Maven project add the following dependency to your `pom.xml`:
 
 ```
 <dependency>
   <artifactId>oxd-client</artifactId>
   <groupId>org.xdi</groupId>
-  <version>3.1.1.Final</version>
+  <version>3.1.2.Final</version>
 </dependency>
 ```
 
+### OpenID Connect
+
 #### Setup Client
 
-In order to use an OpenID Connect Provider (OP) for login, 
-you need to setup your client application at the OpenID Connect Provider (OP). 
-During setup, oxd will dynamically register the OpenID Connect 
-client and save its configuration. Upon successful setup, the oxd-server will assign a unique oxd ID, return a Client ID and Client Secret. This Client ID and Client Secret can be used for `get_client_token` method. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `send` method as a parameter. The Setup Client method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
+!!! Note: Use this operation only when communication with oxd is established via https.
 
-**Parameters:**
+The purpose of Setup Client is similar to that of [Register Site](#register-site): registering a new OpenID Client at your OP and retrieving an "**oxd_id**" (an identifier that must be passed when calling the rest of operations except (Get Client Token)[#get-client-token]).
 
-- redirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
-- opHost: URL of the OpenID Connect Provider (OP)
-- postLogoutRedirectUrl: (Optional) URL to which the user is redirected to after successful logout
-- application_type: (Optional) Kind of the application. The default, if omitted, is web. The defined values are native or web.
-- response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant Types that the client is declaring that it will restrict itself to using
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
-- client_name: (Optional) Client application name
-- client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
-- client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
-- logoutUrl: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating Pseudonymous Identifiers by the OpenID Connect Provider (OP)
-- contacts: (Optional) Array of e-mail addresses of people responsible for this client
-- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
-- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
-- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
-- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
-- claims_redirect_uri: (Optional)
-- host: the URL of the oxd-server
-- port: the port of the oxd-server
+Setup Client additionally returns a **client_id** and a **client_secret**. These two pieces of data are needed when calling the [Get Client Token](#get-client-token) operation.
 
+If your OP does not support dynamic registration (e.g. Google), you will need to obtain a **client_id** and a **client_secret** yourself and supply those
+as parameters of this operation. This will make oxd skip the attempt to register a new client.
 
-**Request:**
+To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#setup-client) and the "Client Metadata" section of [OpenID Connect Dynamic Client Registration 1.0](http://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
 
-```java
-CommandClient client = null;
-try {
-    client = new CommandClient(host, port);
+A working example can be found at sample project: See method `doRegistrationHttps` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
-    SetupClientResponse resp = setupClient(client, opHost, redirectUrl, postLogoutRedirectUrl, logoutUrl);
-    assertResponse(resp);
-
-    final SetupClientParams commandParams = new SetupClientParams();
-    commandParams.setOpHost(opHost);
-    commandParams.setAuthorizationRedirectUri(redirectUrl);
-    commandParams.setPostLogoutRedirectUri(postLogoutRedirectUrl);
-    commandParams.setClientFrontchannelLogoutUri(Lists.newArrayList(logoutUrl));
-    commandParams.setRedirectUris(Arrays.asList(redirectUrl));
-    commandParams.setAcrValues(new ArrayList<String>());
-    commandParams.setScope(Lists.newArrayList("openid", "profile"));
-    commandParams.setGrantType(Lists.newArrayList("authorization_code"));
-    commandParams.setResponseTypes(Lists.newArrayList("code"));
-
-    final Command command = new Command(CommandType.SETUP_CLIENT);
-    command.setParamsObject(commandParams);
-
-    resp = client.send(command).dataAsResponse(SetupClientResponse.class);
-    assertResponse(resp);
-} finally {
-    CommandClient.closeQuietly(client);
-}
-```
-
-**Response:**
-
-```javascript
-{
-  "status": "ok",
-  "data": {
-    "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF",
-    "op_host": "https://ce-dev3-gluu.org",
-    "client_id": "@!E64E.B7E6.3AC4.6CB9!0001!C05E.F402!0008!98F7.EB7B.6213.6527",
-    "client_secret": "173d55ff-5a4f-429c-b50d-7899b616912a",
-    "client_registration_access_token": "f8975472-240a-4395-b96d-6ef492f50b9e",
-    "client_registration_client_uri": "https://iam310.centroxy.com/oxauth/restv1/register?client_id=@!E64E.B7E6.3AC4.6CB9!0001!C05E.F402!0008!98F7.EB7B.6213.6527",
-    "client_id_issued_at": 1504353408,
-    "client_secret_expires_at": 1504439808
-  }
-}
-```
+Recall that Setup Client is a one-time task.
 
 
 #### Get Client Token
 
-The `send` method is used to get a token which is sent as an input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
+!!! Note: Use this operation only when communication with oxd is established via https.
 
-**Parameters:**
+When you use the oxd https extension, all operations of the API (except Setup Client) must be protected by an access token. Get Client Token allows you to obtain such "protection API token" very easily: Just provide the **client_id** and **client_secret** you obtained in the call to [Setup Client](#setup-client).
 
-- client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
-- client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
-- opHost: URL of the OpenID Connect Provider (OP)
-- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank. But if it is https://client.example.com/oxauth/.well-known/openid-configuration then path is oxauth.
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- host: the URL of the oxd-server
-- port: the port of the oxd-server
+Besides a token this operation will give you additional information such as an expiration period in seconds. Once the expiration time has elapsed the access token is no longer valid and you should request a new one by using this very operation, or by a call to [Get Access Token by Refresh Token](#get-access-token-by-refresh-token).
 
-**Request:**
+To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-client-token).
 
-```java
-CommandClient client = null;
-try {
-    client = new CommandClient(host, port);
-
-    SetupClientResponse setup = SetupClientTest.setupClient(client, opHost, redirectUrl, postLogoutRedirectUrl, logoutUrl);
-
-    final GetClientTokenParams params = new GetClientTokenParams();
-    params.setOpHost(opHost);
-    params.setScope(Lists.newArrayList("openid"));
-    params.setClientId(setup.getClientId());
-    params.setClientSecret(setup.getClientSecret());
-
-    GetClientTokenResponse resp = client.send(new Command(CommandType.GET_CLIENT_TOKEN).setParamsObject(params)).dataAsResponse(GetClientTokenResponse.class);
-
-    assertNotNull(resp);
-    notEmpty(resp.getAccessToken());
-} finally {
-    CommandClient.closeQuietly(client);
-}
-```
-
-**Response:**
-
-```javascript
-{
-  "status": "ok",
-  "data": {
-    "scope": "openid",
-    "access_token": "e88b9739-ab60-4170-ac53-ad5dfb2a1d8d",
-    "expires_in": 299,
-    "refresh_token": null
-  }
-}
-```
+A working example can be found at sample project: See method `getPath` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java). There, for simplicity a new PAT is requested every time an operation is called (the expiration time is not being used).
 
 
 #### Register Site
 
-In order to use an OpenID Connect Provider (OP) for login, you need to register your client application at the OpenID Connect Provider (OP). During registration oxd will dynamically register the OpenID Connect client and save its configuration. Upon successful registration a unique identifier will be issued by the oxd-server. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `send` method as a parameter. The Register Site method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
+!!! Note: You can obviate this operation if already using [Setup Client](#setup-client)
 
-!!! Note: 
-    The `Register Site` endpoint is not required if client is registered using `Setup Client`
+Think of this operation as a means to introduce your website (app) to oxd. It returns an identifier that must be passed when calling any of API operations (except for the two listed above). This is the so-called "**oxd_id**".
 
-**Parameters:**
+This operation will attempt to register a new OpenID Client at your OP. Recall that if your OP does not support dynamic registration (e.g. Google), you have to obtain a **client_id** and a **client_secret** yourself and supply those as parameters of this operation. This will make oxd skip the client registration.
 
-- redirectUrl: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
-- opHost: URL of the OpenID Connect Provider (OP)
-- postLogoutRedirectUrl: (Optional) URL to which the user is redirected to after successful logout
-- application_type: (Optional) Kind of the application. The default, if omitted, is web. The defined values are native or web.
-- response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant Types that the client is declaring that it will restrict itself to using
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
-- client_name: (Optional) Client application name
-- client_jwks_uri: (Optional) URL for the Client's JSON Web Key Set (JWKS) document
-- client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
-- logoutUrl: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating Pseudonymous Identifiers by the OpenID Connect Provider (OP)
-- contacts: (Optional) Array of e-mail addresses of people responsible for this client
-- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
-- claims_locales: (Optional) End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
-- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret
-- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
-- claims_redirect_uri: (Optional)
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- host: the URL of the oxd-server
-- port: the port of the oxd-server
+To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#setup-client) and the "Client Metadata" section of [OpenID Connect Dynamic Client Registration 1.0](http://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
 
+Worth to mention is the `authorization_redirect_uri`, a URL where the OP will redirect the user's browser after successful authentication.
 
-**Request:**
+A working example can be found at sample project: See method `doRegistrationSocket` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
-```java
-CommandClient client = null;
-try {
-    client = new CommandClient(host, port);
-
-    //final SetupClientResponse setupClient = SetupClientTest.setupClient(client, opHost, redirectUrl);
-
-    RegisterSiteResponse resp = registerSite(client, opHost, redirectUrl, postLogoutRedirectUrl, logoutUrl);
-    assertNotNull(resp);
-
-    notEmpty(resp.getOxdId());
-
-    final RegisterSiteParams commandParams = new RegisterSiteParams();
-    //commandParams.setProtectionAccessToken(setupClient.getClientRegistrationAccessToken());
-    commandParams.setOpHost(opHost);
-    commandParams.setAuthorizationRedirectUri(redirectUrl);
-    commandParams.setPostLogoutRedirectUri(postLogoutRedirectUrl);
-    commandParams.setClientFrontchannelLogoutUri(Lists.newArrayList(logoutUrl));
-    commandParams.setRedirectUris(Lists.newArrayList(redirectUrl));
-    commandParams.setAcrValues(new ArrayList<String>());
-    commandParams.setScope(Lists.newArrayList("openid", "profile"));
-    commandParams.setGrantType(Lists.newArrayList("authorization_code"));
-    commandParams.setResponseTypes(Lists.newArrayList("code"));
-
-    final Command command = new Command(CommandType.REGISTER_SITE);
-    command.setParamsObject(commandParams);
-
-    resp = client.send(command).dataAsResponse(RegisterSiteResponse.class);
-    assertNotNull(resp);
-    assertNotNull(resp.getOxdId());
-    oxdId = resp.getOxdId();
-} finally {
-    CommandClient.closeQuietly(client);
-}
-```
-
-**Response:**
-
-```javascript
-{
-    "status":"ok",
-    "data":{
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF"
-    }
-}
-```
+Recall that Register Site is a one-time task.
 
 
 #### Update Site Registration
 
-The `send` method can be used to update an existing client in the OpenID Connect Provider (OP). Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields, can be updated using this method.
+This operation is aimed at updating a current registration. The parameters are equivalent to those of [Register Site](#register-site) in addition to **oxd_id**.
 
-**Parameters:**
+To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#update-site-registration)
 
-- oxdId: oxd ID from client registration
-- authorization_redirect_uri:  (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
-- post_logout_uri: (Optional) URL to which the RP is requesting the End-User's User Agent be redirected to after a logout has been performed
-- response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant Types that the client is declaring that it will restrict itself to using
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
-- client_name: (Optional) Client application name
-- client_secret_expires_at: (Optional) Used to extend client lifetime (milliseconds since 1970)
-- client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
-- client_token_endpoint_auth_method: (Optional) Requested Client Authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
-- client_frontchannel_logout_uris: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating Pseudonymous Identifiers by the OpenID Connect Provider (OP)
-- contacts: (Optional) Array of e-mail addresses of people responsible for this client
-- ui_locales: (Optional) End-User's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
-- claims_locales: (Optional) End-User's preferred languages and scripts for claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference.
-- protection_access_token: (Optional) Generated from get_client_token method (Optional, required if oxd-https-extension is used).
-- host: the URL of the oxd-server
-- port: the port of the oxd-server
+A typical use case is that of extending the lifetime of a client: When using dynamic registration in Gluu Server, the client is created with an expiration time (around one day by default). If your application is a long-running one, you may like to set a value further in the future. Here is an example of how to do so:
 
-**Request:**
-
-```java
-CommandClient client = null;
-try {
-     client = new CommandClient(host, port);
-
-     Calendar calendar = Calendar.getInstance();
-     calendar.add(Calendar.DAY_OF_YEAR, 1);
-
-     final UpdateSiteParams commandParams = new UpdateSiteParams();
-     commandParams.setOxdId(oxdId);
-     commandParams.setClientSecretExpiresAt(calendar.getTime());
-     commandParams.setScope(Lists.newArrayList("profile"));
-
-     final Command command = new Command(CommandType.UPDATE_SITE);
-     command.setParamsObject(commandParams);
-
-     UpdateSiteResponse resp = client.send(command).dataAsResponse(UpdateSiteResponse.class);
-     assertNotNull(resp);
-} finally {
-     CommandClient.closeQuietly(client);
-}
 ```
+//client should be a global variable (host and port are those of oxd-server)
+CommandClient client=new CommandClient(host, port);
 
-**Response:**
+GregorianCalendar cal=new GregorianCalendar();
+cal.add(Calendar.YEAR, 1);
 
-```javascript
-{
-    "status":"ok"
-}
-```
+UpdateSiteParams cmdParams = new UpdateSiteParams();
+cmdParams.setOxdId(oxdId);
+cmdParams.setClientSecretExpiresAt(new Date(cal.getTimeInMillis()));
+
+Command command = new Command(CommandType.UPDATE_SITE).setParamsObject(cmdParams);
+UpdateSiteResponse resp = client.send(command).dataAsResponse(UpdateSiteResponse.class);
+
+boolean updated = resp!=null;
+```        
 
 
 #### Get Authorization URL
 
-The `send` method returns the OpenID Connect Provider (OP) Authentication URL to which the client application must redirect the user to authorize the release of personal data. The Response URL includes state value, which can be used to obtain tokens required for authentication. This state value used to maintain state between the request and the callback.
+This operation returns a URL to which your application must redirect the user's browser to start the authentication process at the OP.
 
-**Parameters:**
+To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#get-authorization-url)
 
-- oxdId: oxd ID from client registration
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
-- prompt: (Optional) Values that specifies whether the Authorization Server prompts the end-user for re-authentication and consent
-- custom_params: (Optional) custom parameters
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used).
-- host: the URL of the oxd-server
-- port: the port of the oxd-server
-
-**Request:**
-
-```java
-CommandClient client = null;
-try {
-    client = new CommandClient(host, port);
-
-    final RegisterSiteResponse site = RegisterSiteTest.registerSite(client, opHost, redirectUrl);
-
-    final GetAuthorizationUrlParams commandParams = new GetAuthorizationUrlParams();
-    commandParams.setOxdId(site.getOxdId());
-
-    final Command command = new Command(CommandType.GET_AUTHORIZATION_URL);
-    command.setParamsObject(commandParams);
-
-    final GetAuthorizationUrlResponse resp = client.send(command).dataAsResponse(GetAuthorizationUrlResponse.class);
-    assertNotNull(resp);
-    notEmpty(resp.getAuthorizationUrl());
-} finally {
-    CommandClient.closeQuietly(client);
-}
-```
-
-**Response:**
-
-```javascript
-{
-    "status":"ok",
-    "data":{
-        "authorization_url":"https://client.example.com/authorize?response_type=code&client_id=s6BhdRkqt3&redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb&scope=openid%20profile&acr_values=duo&state=af0ifjsldkj&nonce=n-0S6_WzA2Mj"
-    }
-}
-```
+A working example can be found at sample project: See method `getAuthzUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
 
 #### Get Tokens by Code
 
-Upon successful login, the login result will return code and state. `send` uses code and state to retrieve token which can be used to access user claims.
+After authentication, the OP sends the user's browser back to the `redirect_uri` page with a couple of query parameters in the URL: `code` and `state`. Use those to issue a call to this API operation.
 
-**Parameters:**
+As a response you will get an access token (not to confuse with the token of [Get Client Token](#get-client-token) operation), as well as an ID Token. The former token is used to call [Get User Info](#get-user-info) operation while the latter when calling [Get Logout URI](#get-logout-uri).
 
-- oxdId: oxd ID from client registration
-- code: The code from OpenID Connect Provider (OP) Authorization Redirect URL
-- state: The state from OpenID Connect Provider (OP) Authorization Redirect URL
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-
-**Request:**
-
-```java
-final String state = CoreUtils.secureRandomString();
-
-String code = codeRequest(client, site.getOxdId(), userId, userSecret, state, nonce);
-
-notEmpty(code);
-
-final GetTokensByCodeParams commandParams = new GetTokensByCodeParams();
-commandParams.setOxdId(site.getOxdId());
-commandParams.setCode(code);
-commandParams.setState(state);
-
-final Command command = new Command(CommandType.GET_TOKENS_BY_CODE).setParamsObject(commandParams);
-
-final GetTokensByCodeResponse resp = client.send(command).dataAsResponse(GetTokensByCodeResponse.class);
-assertNotNull(resp);
-notEmpty(resp.getAccessToken());
-notEmpty(resp.getIdToken());
-notEmpty(resp.getRefreshToken());
-return resp;
-```
-
-**Response:**
-
-```javascript
-{
-    "status":"ok",
-    "data":{
-        "access_token":"SlAV32hkKG",
-        "expires_in":3600,
-        "refresh_token":"aaAV32hkKG1"
-        "id_token":"eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso",
-        "id_token_claims": {
-             "iss": "https://client.example.com",
-             "sub": "24400320",
-             "aud": "s6BhdRkqt3",
-             "nonce": "n-0S6_WzA2Mj",
-             "exp": 1311281970,
-             "iat": 1311280970,
-             "at_hash": "MTIzNDU2Nzg5MDEyMzQ1Ng"
-        }
-    }
-}
-```
+A working example can be found at sample project: See method `GetTokensByCodeResponse` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
 
 #### Get Access Token by Refresh Token
 
-The `send` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `get_tokens_by_code` method.
+The access token obtained at [Get Tokens by Code](#get-tokens-by-code) has an expiration time too. If your application has the need to obtain a fresher access token, this operation is useful. Simply provide the `refresh_token` you received when the call to Get Tokens by Code was made.
 
-**Parameters:**
+To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-access-token-by-refresh-token).
 
-- oxdId: oxd ID from client registration
-- refreshToken: Obtained from the get_tokens_by_code method
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
+Here is an example on the usage of this operation using standard oxd-server (not https):
 
-**Request:**
-
-```java
-String oxdId = setup.getOxdId();
-final GetAccessTokenByRefreshTokenParams commandParams = new GetAccessTokenByRefreshTokenParams();
-commandParams.setOxdId(oxdId);
-commandParams.setScope(Lists.newArrayList("openid"));
-commandParams.setRefreshToken(resp.getRefreshToken());
- 
-GetAccessTokensByRefreshTokenResponse resp = client.send(new Command(CommandType.GET_ACCESS_TOKEN_BY_REFRESH_TOKEN).setParamsObject(commandParams)).dataAsResponse(GetAccessTokensByRefreshTokenResponse.class);
- 
-assertNotNull(resp);
-notEmpty(resp.getAccessToken());
-notEmpty(resp.getRefreshToken());
-return resp;
 ```
+//client should be a global variable (host and port are those of oxd-server)
+CommandClient client=new CommandClient(host, port);
 
-**Response:**
+GetAccessTokenByRefreshTokenParams cmdParams = new GetAccessTokenByRefreshTokenParams();
+cmdParams.setOxdId(oxd_id);
+cmdParams.setScope(Collections.singletonList("openid"));
+cmdParams.setRefreshToken(refresh_token);
 
-```javascript
-{
-  "status": "ok",
-  "data": {
-    "scope": "openid",
-    "access_token": "35bedaf4-88e3-4d64-86b9-e59eb0ebde75",
-    "expires_in": 299,
-    "refresh_token": "f687fb69-aa77-4a1e-a730-55f296ffa074"
-  }
-}
+Command command = new Command(CommandType.GET_ACCESS_TOKEN_BY_REFRESH_TOKEN).setParamsObject(commandParams)
+GetAccessTokensByRefreshTokenResponse resp = client.send(command).dataAsResponse(GetAccessTokensByRefreshTokenResponse.class);
+ 
+String accessToken=resp.getAccessToken();
+String newRefreshToken=resp.getRefreshToken();
 ```
 
 
 #### Get User Info
 
-Once the user has been authenticated by the OpenID Connect Provider, the `send` method returns claims (First Name, Last Name, E-Mail, etc.) about the authenticated end-user.
+Use this operation to obtain user claims (e.g. first name, last name, e-mail, etc.) about the authenticated end-user. 
 
-**Parameters:**
+To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-user-info).
 
-- oxdId: oxd ID from client registration
-- access_token: access_token from GetTokenByCode or GetAccessTokenbyRefreshToken
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- host: the URL of the oxd-server 
-- port: the port of the oxd-server 
+The set of claims in the response depends on the access privileges associated to the access token provided. This has to do with the scopes passed in [Site Registration](#register-site) API operation.
 
-**Request:**
-
-```java
-CommandClient client = null;
-try {
-    client = new CommandClient(host, port);
-
-    final RegisterSiteResponse site = RegisterSiteTest.registerSite(client, opHost, redirectUrl);
-    final GetTokensByCodeResponse tokens = requestTokens(client, site, userId, userSecret);
-
-    GetUserInfoParams params = new GetUserInfoParams();
-    params.setOxdId(oxdId);
-    params.setAccessToken(tokens.getAccessToken());//accessToken
-
-    final GetUserInfoResponse resp = client.send(new Command(CommandType.GET_USER_INFO).setParamsObject(params)).dataAsResponse(GetUserInfoResponse.class);
-} finally {
-    CommandClient.closeQuietly(client);
-}
-```
-
-**Response:**
-
-```javascript
-{
-    "status":"ok",
-    "data":{
-        "claims":{
-            "sub": ["248289761001"],
-            "name": ["Jane Doe"],
-            "given_name": ["Jane"],
-            "family_name": ["Doe"],
-            "preferred_username": ["j.doe"],
-            "email": ["janedoe@example.com"],
-            "picture": ["http://example.com/janedoe/me.jpg"]
-        }
-    }
-}
-```
+A working example can be found at sample project: See method `getUserInfo` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
 
-#### Logout
+#### Get Logout URI
 
-`send` method returns the OpenID Connect Provider Logout URL. Client application uses this Logout URL to end the user session.
+Use this method if you have intention to log out the user of the OP. This will return a URL where you can redirect the user's browser to initiate the logout process.
 
-**Parameters:**
+To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-logout-uri).
 
-- oxdId: oxd ID from client registration
-- id_token_hint: (Optional) ID Token previously issued by the Authorization Server being passed as a hint about the end-user's current or past authenticated session with the client
-- postLogoutRedirectUrl: (Optional) URL to which user is redirected to after successful logout
-- state: (Optional) Value used to maintain state between the request and the callback
-- session_state: (Optional) JSON string that represents the end-user's login state at the OpenID Connect Provider (OP)
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- host: the URL of the oxd-server
-- port: the port of the oxd-server
-
-**Request:**
-
-```java
-CommandClient client = null;
-try {
-    client = new CommandClient(host, port);
-
-    final RegisterSiteResponse site = RegisterSiteTest.registerSite(client, opHost, redirectUrl, postLogoutRedirectUrl, "");
-
-    final GetLogoutUrlParams commandParams = new GetLogoutUrlParams();
-    commandParams.setOxdId(site.getOxdId());
-    commandParams.setIdTokenHint("dummy_token");
-    commandParams.setPostLogoutRedirectUri(postLogoutRedirectUrl);
-    commandParams.setState(UUID.randomUUID().toString());
-    commandParams.setSessionState(UUID.randomUUID().toString()); // here must be real session instead of dummy UUID
-
-    final Command command = new Command(CommandType.GET_LOGOUT_URI).setParamsObject(commandParams);
-
-    final LogoutResponse resp = client.send(command).dataAsResponse(LogoutResponse.class);
-    assertNotNull(resp);
-    assertTrue(resp.getUri().contains(URLEncoder.encode(postLogoutRedirectUrl, "UTF-8")));
-} finally {
-    CommandClient.closeQuietly(client);
-}
-```
-
-**Response:**
-
-```javascript
-{
-    "status":"ok",
-    "data":{
-        "uri":"https://<server>/end_session?id_token_hint=<id token>&state=<state>&post_logout_redirect_uri=<...>"
-    }
-}
-```
+A working example can be found at sample project: See method `getLogoutUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
 
 ### UMA
@@ -836,77 +450,6 @@ try {
         "state":"af0ifjsldkj" 
     }
 }
-```
-
-## Sample Project
-### Software Requirements 
-
-System Requirements:
-
-- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
-- Java 1.8 or higher
-- Apache 2.4.4 or higher
-
-To use the oxd-java library, you will need:
-
-- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
-- An active installation of the [oxd-server](../../../install/index.md). 
-- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).
-- A Windows server or Windows installed machine / Linux server or Linux installed machine.
-
-### Install oxd-java
-
-Get oxd-java JAR files from [Maven Repo](http://ox.gluu.org/maven/org/xdi/oxd-java/)
-
-### Configure the Client Application
-
-- There are no configuration files for oxd-java. Redirect URI and other information is set in the code.
-
-- Your client application must have a valid SSL certificate, so the URL includes: `https://`    
-
-- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
-
-    **Linux**
-
-    Host file location `/etc/host` :
-
-    `127.0.0.1  client.example.com`  
-        
-    **Windows**
-
-    Host file location `C:\Windows\System32\drivers\etc\host` :
-
-    `127.0.0.1  client.example.com`
-    
-- Enable SSL by	adding the following lines on virtual host file of Apache in the location:
-
-	**Linux**
-    
-    `/etc/apache2/sites-available/000-default.conf`
-    
-    **Windows**
-    
-    `C:/apache/conf/extra/httpd-vhosts.conf`
-
-```
-<VirtualHost *>
-    ServerName client.example.com
-    ServerAlias client.example.com
-    DocumentRoot "<apache web root directory>"
-</VirtualHost>
-
-<VirtualHost *:443>
-    DocumentRoot "<apache web root directory>"
-    ServerName client.example.com
-    SSLEngine on
-    SSLCertificateFile "<Path to your ssl certificate file>"
-    SSLCertificateKeyFile "<Path to your ssl certificate key file>"
-    <Directory "<apache web root directory>">
-        AllowOverride All
-        Order allow,deny
-        Allow from all
-    </Directory>
-</VirtualHost>
 ```
 
 ## Support
