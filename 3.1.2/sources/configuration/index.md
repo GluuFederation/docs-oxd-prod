@@ -21,6 +21,9 @@ oxd-conf.json
     "trust_all_certs":true,
     "trust_store_path":"",
     "trust_store_password":"",
+    "crypt_provider_key_store_path":"",
+    "crypt_provider_key_store_password":"",
+    "crypt_provider_dn_name":"",
     "license_id":"",
     "public_key":"",
     "public_password":"",
@@ -55,6 +58,12 @@ oxd-conf.json
 - **trust_store_path**: Path to Java `.jks` trust store to be used for an SSL connection.
 
 - **trust_store_password**: password of trust store.
+
+- **crypt_provider_key_store_path** : crypt provider key store path
+  
+- **crypt_provider_key_store_password** : crypt provider key store password
+ 
+- **crypt_provider_dn_name** : crypt provider dn name
 
 - **license_id**: Will be supplied when you [register for a license](https://oxd.gluu.org). 
 
