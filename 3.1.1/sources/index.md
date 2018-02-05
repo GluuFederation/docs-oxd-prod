@@ -3,7 +3,7 @@
 ## Introduction
 oxd exposes simple, static APIs that web application developers can use to facilitate user authentication and authorization with an external OAuth 2.0 identity provider like the [Gluu Server](https://gluu.org/docs/ce).
 
-oxd offers long-term maintenance and security advantages over manual OAuth 2.0 implementations:
+oxd offers long-term maintenance and security advantages over custom OAuth 2.0 implementations:
 
 - oxd standardizes OAuth 2.0 security implementations across web apps of all languages and an ever-rotating group of code contributors;
 
