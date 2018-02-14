@@ -47,11 +47,12 @@ pages:
         - '.NET': 'libraries/framework/net/index.md'
 - Plugins:
     - 'Wordpress': 'plugin/wordpress/index.md'
-    - 'Magento': 'plugin/magento/index.md'
     - 'Drupal': 'plugin/drupal/index.md'
-    - 'OpenCart': 'plugin/opencart/index.md'
     - 'SugarCRM': 'plugin/sugarcrm/index.md'
     - 'SuiteCRM': 'plugin/suitecrm/index.md'
     - 'RoundCube': 'plugin/roundcube/index.md'
-    - 'Shopify': 'plugin/shopify/index.md'
     - 'NextCloud': 'plugin/nextcloud/index.md'
+    - 'Magento': 'plugin/magento/index.md'
+    - 'OpenCart': 'plugin/opencart/index.md'
+    - 'Shopify': 'plugin/shopify/index.md'
+    
