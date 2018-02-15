@@ -293,6 +293,8 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 ### UMA RS Protect Resources
 
+It's important to keep http method unique within given path.
+
 *Non-normative example request*
 ```
 POST /uma-rs-protect
