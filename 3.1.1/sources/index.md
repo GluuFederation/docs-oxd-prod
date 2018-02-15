@@ -25,13 +25,13 @@ oxd 3.1.1 has been confirmed to work with the following standard OpenID Provider
 - [Gluu Server 3.1.2](https://gluu.org/docs/ce/3.1.2)   
 - [Google](https://developers.google.com/identity/protocols/OpenIDConnect)       
 
-If you have successfully tested oxd against another standard OP, or for other OP related requests, please email [sales@gluu.org](mailto:sales@gluu.org).  
 
 ### UMA Authorization Servers (AS)
 - [Gluu Server 3.1.1](https://gluu.org/docs/ce/3.1.1)  
 - [Gluu Server 3.1.2](https://gluu.org/docs/ce/3.1.2)  
 
-If you have successfully tested oxd against another AS, or for other AS related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
+!!! Note
+    If you have successfully tested oxd against another OP or AS, please email details to [sales@gluu.org](mailto:sales@gluu.org).  
 
 ## Get Started
 
