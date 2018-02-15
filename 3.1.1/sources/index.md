@@ -5,21 +5,34 @@ oxd exposes simple, static APIs that web application developers can use to facil
 
 oxd offers long-term maintenance and security advantages over custom OAuth 2.0 implementations:
 
-- oxd standardizes OAuth 2.0 security implementations across web apps of all languages and an ever-rotating group of code contributors;
-
-- When new OAuth 2.0 features are available, or vulnerabilities are discovered, oxd is the *only* component that needs to be updated. The oxd APIs remain the same, so you never have to change and regression test applications;       
-
-- oxd is written, maintained, and supported by OAuth 2.0 security experts.  
-
+- oxd standardizes OAuth 2.0 security implementations across web apps of all languages and an ever-rotating group of code contributors;    
+- When new OAuth 2.0 features are available, or vulnerabilities are discovered, oxd is the *only* component that needs to be updated. The oxd APIs remain the same, so you never have to change and regression test applications;         
+- oxd is written, maintained, and supported by OAuth 2.0 security experts.   
        
 ![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
        
-
 !!! Warning 
     oxd 3.1.1 includes functional and billing changes from previous versions. If you have older installations, review [what's new in 3.1.x](./3.1.x-intro.md) before proceeding with upgrades or new installations of oxd 3.1.1. 
 
 !!! Note
-    oxd only works with server-side web apps. If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
+    oxd *only* works with server-side web apps. If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
+
+## Compatibility
+### OpenID Providers (OP)
+oxd has been confirmed to work with the following standard OPs:
+
+- [Gluu Server](https://gluu.org/docs/ce/installation-guide/): When using oxd with the Gluu Server, the major versions should always be aligned for compatibility, e.g. oxd 3.1.x should always be used with Gluu 3.1.x.
+- [Google](https://developers.google.com/identity/protocols/OpenIDConnect)   
+
+If you have successfully tested oxd against another standard OP, or for other OP related requests, please email [sales@gluu.org](mailto:sales@gluu.org).  
+
+### UMA Authorization Servers (AS)
+
+oxd has been confirmed to work with the following standard UMA 2.0 Authorization Servers (AS):
+
+- [Gluu Server](https://gluu.org/docs/ce/installation-guide/)  
+
+If you have successfully tested oxd against another AS, or for other AS related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
 
 ## Get Started
 
@@ -98,22 +111,6 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [NextCloud](./plugin/nextcloud/index.md) 
 
 Gluu does not guarantee specific functionality in the oxd plugins. If you find a bug, or would like feature enhancements, we would be happy to discuss plugin development on a time and materials basis. [Schedule a call](https://gluu.org/booking) with us to discuss the project scope and funding.
-
-## Supported OpenID Providers (OP)
-oxd has been confirmed to work with the following standard OPs:
-
-- [Gluu Server](https://gluu.org/docs/ce/installation-guide/)    
-- [Google](https://developers.google.com/identity/protocols/OpenIDConnect)   
-
-If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
-
-## Supported UMA Authorization Servers (AS)
-
-oxd has been confirmed to work with the following standard UMA 2.0 Authorization Servers (AS):
-
-- [Gluu Server](https://gluu.org/docs/ce/installation-guide/)  
-
-If you have successfully tested oxd against another AS, or for other AS related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
 
 ## Pricing & Billing
 
