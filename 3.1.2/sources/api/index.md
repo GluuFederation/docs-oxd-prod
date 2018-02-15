@@ -524,6 +524,8 @@ Warning: 199 - "UMA Authorization Server Unreachable"
 
 #### UMA RS Protect Resources
 
+It's important to have single http method mentioned only one time within given path in JSON otherwise operation will fail.
+
 Request:
 
 ```language-json
