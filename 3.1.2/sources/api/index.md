@@ -261,6 +261,9 @@ Response:
 ```language-json
 {
     "status":"ok"
+    "data": {
+        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6"
+    }
 }
 ```
 
@@ -654,6 +657,9 @@ Response:
 ```language-json
 {
     "status":"ok"
+    "data": {
+        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6"
+    }
 }
 ```
 
@@ -790,7 +796,7 @@ Request:
          "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",   <- REQUIRED
          "ticket": "016f84e8-f9b9-11e0-bd6f-0021cc6004de",  <- REQUIRED
          "claim_token": "eyj0f9b9...",                      <- OPTIONAL
-         "claim_token_format": "http://openid.net/specs/openid-connect-core-1_0.html#IDToken",
+         "claim_token_format": "http://openid.net/specs/openid-connect-core-1_0.html#IDToken",  <- OPTIONAL but required if claims_token is specified
          "pct": "c2F2ZWRjb25zZW50",                         <- OPTIONAL
          "rpt": "SSJHBSUSSJHVhjsgvhsgvshgsv",               <- OPTIONAL
          "scope":["read"],                                  <- OPTIONAL,
