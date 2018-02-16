@@ -6,10 +6,26 @@
 ```
 POST /setup-client
 {
-    "op_host" : "https://<op-hostname>",
-    "authorization_redirect_uri": "https://client.example.org/",
-    "scope" : ["openid","profile","email","uma_protection","uma_authorization"],
-    "grant_types":["authorization_code","client_credentials"]
+    "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED
+    "op_host":"https://<ophostname>"                               <- OPTIONAL (But if missing, must be present in defaults)
+    "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
+    "application_type": "web",                                     <- OPTIONAL
+    "response_types": ["code"],                                    <- OPTIONAL
+    "grant_types": ["authorization_code", "client_credentials"],   <- OPTIONAL 
+    "scope": ["openid"],                                           <- OPTIONAL
+    "acr_values": ["basic"],                                       <- OPTIONAL
+    "client_name": "",                                             <- OPTIONAL (But if missing, oxd will generate its own non-human readable name)
+    "client_jwks_uri": "",                                         <- OPTIONAL
+    "client_token_endpoint_auth_method": "",                       <- OPTIONAL
+    "client_request_uris": [],                                     <- OPTIONAL
+    "client_frontchannel_logout_uris": [],                         <- OPTIONAL
+    "client_sector_identifier_uri": [],                            <- OPTIONAL
+    "contacts": ["foo_bar@spam.org"],                              <- OPTIONAL
+    "ui_locales": [],                                              <- OPTIONAL
+    "claims_locales": [],                                          <- OPTIONAL
+    "claims_redirect_uri": [],                                     <- OPTIONAL
+    "client_id": "<client id of existing client>",                 <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
+    "client_secret": "<client secret of existing client>"          <- OPTIONAL must be used together with client_secret.
 }
 ```
 
@@ -18,7 +34,7 @@ POST /setup-client
 {
     "status": "ok",
     "data": {
-        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
+        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",        <-- DEPRECATED : additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases.
         "op_host": "https://<op-hostname>",
         "client_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.5F14.B387",
         "client_secret": "f436b936-03fc-433f-9772-53c2bc9e1c74",
@@ -36,11 +52,11 @@ POST /setup-client
 ```
 POST /get-client-token
 {
-	"op_host" : "https://<op-hostname>",
-	"scope" : ["openid","profile","email","uma_protection","uma_authorization"],
-	"op_host": "https://<op-hostname>",
-	"client_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.5F14.B387",
-	"client_secret": "f436b936-03fc-433f-9772-53c2bc9e1c74"
+	"op_host" : "https://<op-hostname>",                                          <- REQUIRED
+	"op_discovery_path":""                                                        <- OPTIONAL
+	"scope" : ["openid","profile","email","uma_protection"],                      <- OPTIONAL 
+	"client_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.5F14.B387", <- REQUIRED
+	"client_secret": "f436b936-03fc-433f-9772-53c2bc9e1c74"                       <- REQUIRED
 }
 ```
 
@@ -64,10 +80,29 @@ POST /get-client-token
 POST /register-site
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-	"op_host" : "https://<op-hostname>",
-	"authorization_redirect_uri": "https://client.example.org/",
-	"scope" : ["openid","profile","email","uma_protection","uma_authorization"],
-	"grant_types":["authorization_code","client_credentials"]
+    "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED
+    "op_host":"https://<ophostname>"                               <- OPTIONAL (But if missing, must be present in defaults)
+    "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
+    "application_type": "web",                                     <- OPTIONAL
+    "response_types": ["code"],                                    <- OPTIONAL
+    "grant_types": ["authorization_code"],                         <- OPTIONAL 
+    "scope": ["openid"],                                           <- OPTIONAL
+    "acr_values": ["basic"],                                       <- OPTIONAL
+    "client_name": "",                                             <- OPTIONAL (But if missing, oxd will generate its own non-human readable name)
+    "client_jwks_uri": "",                                         <- OPTIONAL
+    "client_token_endpoint_auth_method": "",                       <- OPTIONAL
+    "client_request_uris": [],                                     <- OPTIONAL
+    "client_frontchannel_logout_uris": [],                         <- OPTIONAL
+    "client_sector_identifier_uri": [],                            <- OPTIONAL
+    "contacts": ["foo_bar@spam.org"],                              <- OPTIONAL
+    "ui_locales": [],                                              <- OPTIONAL
+    "claims_locales": [],                                          <- OPTIONAL
+    "claims_redirect_uri": [],                                     <- OPTIONAL
+    "client_id": "<client id of existing client>",                 <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
+    "client_secret": "<client secret of existing client>",         <- OPTIONAL must be used together with client_secret.
+    "client_registration_access_token":"<access token of existing client>", <- OPTIONAL must be used together with client_id/client_secret
+    "client_registration_client_uri":"<uri of existing client>",   <- OPTIONAL must be used together with client_id/client_secret
+    "protection_access_token":"<access token of the client>"       <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter        
 }
 ```
 
@@ -89,20 +124,30 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 POST /update-site
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-	"scope" : ["openid","profile","email","uma_protection","uma_authorization"]
+    "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",                <- REQUIRED
+    "authorization_redirect_uri": "https://client.example.org/cb",  <- OPTIONAL 
+    "post_logout_redirect_uri": "https://client.example.org/cb",    <- OPTIONAL 
+    "client_frontchannel_logout_uris":["https://client.example.org/logout"],   <- OPTIONAL
+    "response_type":["code"],                                       <- OPTIONAL
+    "grant_types":[],                                               <- OPTIONAL
+    "scope": ["opeind", "profile"],                                 <- OPTIONAL
+    "acr_values": ["duo"],                                          <- OPTIONAL
+    "client_name": "",                                              <- OPTIONAL
+    "client_secret_expires_at":1335205592410,                       <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
+    "client_jwks_uri": "",                                          <- OPTIONAL
+    "client_token_endpoint_auth_method": "",                        <- OPTIONAL
+    "client_request_uris":[],                                       <- OPTIONAL
+    "client_sector_identifier_uri":"",                              <- OPTIONAL
+    "contacts":["foo_bar@spam.org"],                                <- OPTIONAL
+    "ui_locales":[],                                                <- OPTIONAL
+    "claims_locales":[],                                            <- OPTIONAL
+    "protection_access_token":"<access token of the client>"        <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
 }
 ```
 
 *Non-normative example response*
 ```
-{
-    "status": "ok",
-    "data": {
-        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6"
-    }
-}
-```
+
 
 ### Get Authorization Url
 
@@ -111,8 +156,14 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 POST /get-authorization-url
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-	"scope" : ["openid","profile","email","uma_protection","uma_authorization"]
+    "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF", <- REQUIRED, obtained after registration
+    "scope": ["openid"],                              <- OPTIONAL, may be skipped (by default takes scopes that was registered during register_site command)
+    "acr_values": ["duo"],                            <- OPTIONAL, may be skipped (default is basic)
+    "prompt": "login",                                <- OPTIONAL, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
+    "custom_parameters": {                            <- OPTIONAL, custom parameters
+        "param1":"value1",
+        "param2":"value2"
+    }
 }
 ```
 
@@ -134,9 +185,9 @@ Use the code and state obtained in the previous step to call this API to retriev
 POST /get-tokens-by-code
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-	"code" : "0b9f1518-15aa-47b2-9477-d4c607447e18",
-	"state" :"6q1ec90hn6ui4ipigv91hrbodj"
+	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",  <- REQUIRED
+	"code" : "0b9f1518-15aa-47b2-9477-d4c607447e18",   <- REQUIRED
+	"state" :"6q1ec90hn6ui4ipigv91hrbodj"              <- REQUIRED
 }
 ```
 
@@ -189,8 +240,8 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 POST /get-user-info
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-    "oxd_id" : "bcad760f-91ba-46e1-a020-05e4281d91b6",
-    "access_token" :"88bba7f5-961c-4b71-8053-9ab35f1ad395"
+    "oxd_id" : "bcad760f-91ba-46e1-a020-05e4281d91b6",       <- REQUIRED
+    "access_token" :"88bba7f5-961c-4b71-8053-9ab35f1ad395"   <- REQUIRED
 }
 ```
 
@@ -254,7 +305,11 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 POST /get-logout-uri
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-    "oxd_id" : "bcad760f-91ba-46e1-a020-05e4281d91b6"
+    "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",                       <-- REQUIRED
+    "id_token_hint": "eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso", <- OPTIONAL (oxd server will use last used ID Token)
+    "post_logout_redirect_uri": "<post logout redirect uri here>",         <- OPTIONAL
+    "state": "<site state>",                                               <- OPTIONAL
+    "session_state": "<session state>",                                    <- OPTIONAL
 }
 ```
 
@@ -272,9 +327,9 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 POST /get-access-token-by-refresh-token
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-    "oxd_id" : "bcad760f-91ba-46e1-a020-05e4281d91b6",
-    "refresh_token":"33d7988e-6ffb-4fe5-8c2a-0e158691d446", //refresh_token from get_tokens_by_code command
-    "scope" : ["openid","profile","email","uma_protection"]
+    "oxd_id" : "bcad760f-91ba-46e1-a020-05e4281d91b6",       <-- REQUIRED
+    "refresh_token":"33d7988e-6ffb-4fe5-8c2a-0e158691d446",  <-- REQUIRED, refresh_token from get_tokens_by_code command
+    "scope" : ["openid","profile","email","uma_protection"]  <-- OPTIONAL, If not specified should grant access with scope provided in previous request
 }
 ```
 
@@ -293,15 +348,15 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 ### UMA RS Protect Resources
 
-It's important to keep http method unique within given path.
+It's important to have single http method mentioned only one time within given path in JSON otherwise operation will fail.
 
 *Non-normative example request*
-```
+```language-json
 POST /uma-rs-protect
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-	"resources": [{
+	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",  <- REQUIRED
+	"resources": [{                                    <- REQUIRED as parameter here we have protection json that describes resources on RS
 		"path": "/scim",
 		"conditions": [{
 			"httpMethods": ["GET"],
@@ -309,7 +364,6 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 			"ticketScopes": ["https://example.com/identity/seam/resource/restv1/scim/vas1"]
 		}]
 	}]
-
 }
 ```
 
@@ -331,15 +385,25 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 POST /uma-rs-check-access
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",
-	"rpt":"",
-	"path":"/scim",
-	"http_method" : "GET"
+	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6", <- REQUIRED
+	"rpt":"",                                         <- REQUIRED RPT or blank value if absent (not send by RP)
+	"path":"/scim",                                   <- REQUIRED Path of resource (e.g. http://rs.com/phones), /phones should be passed
+	"http_method" : "GET"                             <- REQUIRED Http method of RP request (GET, POST, PUT, DELETE)
 }
 ```
 
-*Non-normative example response*
+*Non-normative Access Granted example response*
 ```
+{
+    "status":"ok",
+    "data":{
+        "access":"granted"
+    }
+}
+```
+
+*Non-normative Access Denied example response*
+```language-json
 {
     "status": "ok",
     "data": {
@@ -358,13 +422,20 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 POST /uma-rp-get-rpt
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-	"oxd_id":"bcad760f-91ba-46e1-a020-05e4281d91b6",
-	"ticket": "e986fd2b-de83-4947-a889-8f63c7c409c0"
+    "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",   <- REQUIRED
+    "ticket": "016f84e8-f9b9-11e0-bd6f-0021cc6004de",  <- REQUIRED
+    "claim_token": "eyj0f9b9...",                      <- OPTIONAL
+    "claim_token_format": "http://openid.net/specs/openid-connect-core-1_0.html#IDToken", <- OPTIONAL but required if claims_token is specified
+    "pct": "c2F2ZWRjb25zZW50",                         <- OPTIONAL
+    "rpt": "SSJHBSUSSJHVhjsgvhsgvshgsv",               <- OPTIONAL
+    "scope":["read"],                                  <- OPTIONAL,
+    "state": "af0ifjsldkj",                            <- OPTIONAL state that is returned from uma_rp_get_claims_gathering_url command
+    "protection_access_token": "ejt3425"               <- OPTIONAL, required if oxd-https-extension is used
 }
 ```
 
 *Non-normative example response*
-```
+```language-json
 {
     "status": "ok",
     "data": {
@@ -379,19 +450,18 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ### UMA RP Get Claims Gathering Url
 
 *Non-normative example request*
-```
+```language-json
 POST /uma-rp-get-claims-gathering-url
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-	"oxd_id":"bcad760f-91ba-46e1-a020-05e4281d91b6",
-	"ticket": "fba00191-59ab-4ed6-ac99-a786a88a9f40",
-	"claims_redirect_uri":"https://client.example.com/cb"
+	"oxd_id":"bcad760f-91ba-46e1-a020-05e4281d91b6",       <- REQUIRED
+	"ticket": "fba00191-59ab-4ed6-ac99-a786a88a9f40",      <- REQUIRED
+	"claims_redirect_uri":"https://client.example.com/cb"  <- REQUIRED
 }
-
 ```
 
-*Non-normative example response*
-```
+*Non-normative Success example response*
+```language-json
 {
     "status": "ok",
     "data": {
@@ -400,3 +470,17 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     }
 }
 ```
+
+After being redirected to the Claims Gathering URL the user goes through the claims gathering flow. If successful, the user is redirected back to `claims_redirect_uri` with a new ticket which should be provided with the next `uma_rp_get_rpt` call.
+
+Example of Response:
+
+```
+https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
+```
+
+## References
+
+- [UMA 2.0 Grant for OAuth 2.0 Authorization Specification](https://docs.kantarainitiative.org/uma/ed/oauth-uma-grant-2.0-06.html)
+- [Federated Authorization for UMA 2.0 Specification](https://docs.kantarainitiative.org/uma/ed/oauth-uma-federated-authz-2.0-07.html)
+- [Java Resteasy HTTP interceptor of uma-rs](https://github.com/GluuFederation/uma-rs/blob/master/uma-rs-resteasy/src/main/java/org/xdi/oxd/rs/protect/resteasy/RptPreProcessInterceptor.java)
