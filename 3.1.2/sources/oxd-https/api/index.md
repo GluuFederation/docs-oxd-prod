@@ -533,13 +533,14 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 *Non-normative Access Granted example response*
-
+```language-json
 {
     "status":"ok",
     "data":{
         "access":"granted"
     }
 }
+```
 
 *Non-normative Access Denied example response*
 ```language-json
