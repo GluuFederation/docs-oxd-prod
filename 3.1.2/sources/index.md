@@ -59,7 +59,7 @@ Follow these steps to get started:
 
 **Step 7**: [Start](./oxd-https/start/index.md) the `oxd-https-extension`
 
-**Step 8**: Use the [oxd API](#api) or one of the [native libraries](#native-libraries) to securely send users from your apps to your Gluu Server for authentication and authorization. 
+**Step 8**: Use the [oxd API](#api) or one of the [native libraries](#native-libraries) to send users to your OP for authentication and authorization. 
 
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
@@ -68,13 +68,10 @@ oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-
 
 - The [oxd UMA APIs](./api/index.md#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access management policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs.   
 
-Learn more in the [oxd API section](./api/index.md) of the documentation. 
-
-!!! Note
-    View supported OpenID Connect Providers and UMA Authorization Servers [below](#supported-openid-providers-op). 
+Learn more in the [oxd API section](./api/index.md) of the documentation.  
 
 ## Native Libraries
-oxd native client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs. 
+oxd native client libraries provide simple and flexible access to the oxd APIs. 
 
 **Languages**:        
 
@@ -107,7 +104,7 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [Roundcube](./plugin/roundcube/index.md)  
 - [NextCloud](./plugin/nextcloud/index.md) 
 
-Gluu does not guarantee specific functionality in oxd plugins. If you find a bug or need feature enhancements, we are happy to discuss development on a time and materials basis. Send an email to [sales@gluu.org](mailto:sales@gluu.org). 
+Gluu does not guarantee specific functionality in oxd plugins. If you find a bug or need feature enhancements, just open a ticket on [Gluu support](https://support.gluu.org).  
 
 ## Pricing & Billing
 
