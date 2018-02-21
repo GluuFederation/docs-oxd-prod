@@ -17,6 +17,22 @@ oxd offers long-term maintenance and security advantages over manual OAuth 2.0 i
 !!! Note
     oxd is built for server-side web apps. If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
 
+## Compatibility
+oxd 3.1.1 has been confirmed to work with the following standard OpenID Providers (OP) and UMA Authorization Servers (AS):
+
+### OpenID Providers (OP)
+- [Gluu Server 3.1.1](https://gluu.org/docs/ce/3.1.1)
+- [Gluu Server 3.1.2](https://gluu.org/docs/ce/3.1.2)   
+- [Google](https://developers.google.com/identity/protocols/OpenIDConnect)       
+
+
+### UMA Authorization Servers (AS)
+- [Gluu Server 3.1.1](https://gluu.org/docs/ce/3.1.1)  
+- [Gluu Server 3.1.2](https://gluu.org/docs/ce/3.1.2)  
+
+!!! Note
+    If you have successfully tested oxd against another OP or AS, please email details to [sales@gluu.org](mailto:sales@gluu.org).
+
 ## Get Started
 
 The oxd software package includes the `oxd-server` and the `oxd-https-extension`. 
@@ -95,22 +111,6 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 
 Gluu does not guarantee specific functionality in oxd plugins. If you find a bug or need feature enhancements, we are happy to discuss development on a time and materials basis. Send an email to [sales@gluu.org](mailto:sales@gluu.org). 
 
-## Supported OpenID Providers (OP)
-oxd has been confirmed to work with the following standard OPs:
-
-- [Gluu Server](https://gluu.org/docs/ce/installation-guide/)    
-- [Google](https://developers.google.com/identity/protocols/OpenIDConnect)   
-
-If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
-
-## Supported UMA Authorization Servers (AS)
-
-oxd has been confirmed to work with the following standard UMA 2.0 Authorization Servers (AS):
-
-- [Gluu Server](https://gluu.org/docs/ce/installation-guide/)  
-
-If you have successfully tested oxd against another AS, or for other AS related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
-
 ## Pricing & Billing
 
 oxd costs **USD $0.33 per application ("client") per day**. New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.  
@@ -135,7 +135,6 @@ Additional notes about pricing and billing:
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
 
 If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract.  
-
 
 ## FAQ's
 
