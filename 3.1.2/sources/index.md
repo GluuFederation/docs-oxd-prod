@@ -21,14 +21,12 @@ oxd offers long-term maintenance and security advantages over manual OAuth 2.0 i
 oxd 3.1.1 has been confirmed to work with the following standard OpenID Providers (OP) and UMA Authorization Servers (AS):
 
 ### OpenID Providers (OP)
-- [Gluu Server 3.1.1](https://gluu.org/docs/ce/3.1.1)
-- [Gluu Server 3.1.2](https://gluu.org/docs/ce/3.1.2)   
+- Gluu Server [3.1.1](https://gluu.org/docs/ce/3.1.1), [3.1.2](https://gluu.org/docs/ce/3.1.2)  
 - [Google](https://developers.google.com/identity/protocols/OpenIDConnect)       
 
 
 ### UMA Authorization Servers (AS)
-- [Gluu Server 3.1.1](https://gluu.org/docs/ce/3.1.1)  
-- [Gluu Server 3.1.2](https://gluu.org/docs/ce/3.1.2)  
+- Gluu Server [3.1.1](https://gluu.org/docs/ce/3.1.1), [3.1.2](https://gluu.org/docs/ce/3.1.2) 
 
 !!! Note
     If you have successfully tested oxd against another OP or AS, please email details to [sales@gluu.org](mailto:sales@gluu.org).
