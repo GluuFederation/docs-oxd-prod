@@ -11,8 +11,11 @@ oxd offers long-term maintenance and security advantages over manual OAuth 2.0 i
 
 - oxd is written, maintained, and supported by OAuth 2.0 security experts.  
 
+![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
+
+
 !!! Note
-    oxd only works with server-side web apps. If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
+    oxd is built for server-side web apps. If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
 
 ## Get Started
 
