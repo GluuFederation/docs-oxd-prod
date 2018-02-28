@@ -134,7 +134,7 @@ If you are using a Gluu Server as your OP, you will need to configure Gluu to re
 
 2. Find the `email` scope and click on it. 
 
-3. Set the `Allow for dynamic registration` scope field to `True`.
+3. Set the `Allow for dynamic registration` field to `True`.
 
 4. If `Email` is not already added to the `Claims` field, click the `Add Claim`, search for email, and add it. 
 
