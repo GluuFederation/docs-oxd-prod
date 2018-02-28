@@ -17,7 +17,7 @@ oxd offers long-term maintenance and security advantages over manual OAuth 2.0 i
 ![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
 
 ## Compatibility
-oxd 3.1.1 has been confirmed to work with the following standard OpenID Providers (OP) and UMA Authorization Servers (AS):
+oxd 3.1.2 has been confirmed to work with the following standard OpenID Providers (OP) and UMA Authorization Servers (AS):
 
 ### OpenID Providers (OP)
 - Gluu Server [3.1.1](https://gluu.org/docs/ce/3.1.1), [3.1.2](https://gluu.org/docs/ce/3.1.2)  
