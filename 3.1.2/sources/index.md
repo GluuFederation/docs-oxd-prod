@@ -1,18 +1,34 @@
 # oxd 3.1.2 Documentation
 
 ## Introduction
-oxd exposes simple, static APIs web application developers can use to facilitate user authentication and authorization with an external OAuth 2.0 identity provider (IDP) like the [Gluu Server](https://gluu.org/docs/ce).
+oxd exposes simple, static APIs web application developers can use to facilitate user authentication and authorization with an external OAuth 2.0 identity provider (IDP), like the [Gluu Server](https://gluu.org/docs/ce).
 
 oxd offers long-term maintenance and security advantages over manual OAuth 2.0 implementations:
 
-- **oxd standardizes OAuth 2.0 security** across web apps of all languages and an ever-rotating group of code contributors;
+- oxd standardizes OAuth 2.0 security across web apps of all languages and an ever-rotating group of code contributors;
 
-- When new OAuth 2.0 features are available, or vulnerabilities are discovered, oxd is the *only* component that needs to be updated. The oxd APIs remain the same so **applications never need to be changed or regression tested**;       
+- When new OAuth 2.0 features are available, or vulnerabilities are discovered, oxd is the *only* component that needs to be updated. The oxd APIs remain the same so applications never need to be changed or regression tested;       
 
-- oxd is written, maintained, and supported by **OAuth 2.0 security experts**.  
+- oxd is written, maintained, and supported by OAuth 2.0 security experts.  
 
 !!! Note
-    oxd only works with server-side web apps. If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
+    oxd is built for server-side web apps. Learn how to integrate single-page apps (SPAs), native apps, and/or SaaS apps with Gluu in the [SSO integration guide](https://gluu.org/docs/ce/integration/). 
+
+![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
+
+## Compatibility
+oxd 3.1.2 has been confirmed to work with the following standard OpenID Providers (OP) and UMA Authorization Servers (AS):
+
+### OpenID Providers (OP)
+- Gluu Server [3.1.1](https://gluu.org/docs/ce/3.1.1), [3.1.2](https://gluu.org/docs/ce/3.1.2)  
+- [Google](https://developers.google.com/identity/protocols/OpenIDConnect)       
+
+
+### UMA Authorization Servers (AS)
+- Gluu Server [3.1.1](https://gluu.org/docs/ce/3.1.1), [3.1.2](https://gluu.org/docs/ce/3.1.2) 
+
+!!! Note
+    If you have successfully tested oxd against another OP or AS, please email details to [sales@gluu.org](mailto:sales@gluu.org).
 
 ## Get Started
 
@@ -42,7 +58,7 @@ Follow these steps to get started:
 
 **Step 7**: [Start](./oxd-https/start/index.md) the `oxd-https-extension`
 
-**Step 8**: Use the [oxd API](#api) or one of the [native libraries](#native-libraries) to securely send users from your apps to your Gluu Server for authentication and authorization. 
+**Step 8**: Use the [oxd API](#api) or one of the [native libraries](#native-libraries) to send users to your OP for authentication and authorization. 
 
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
@@ -51,13 +67,10 @@ oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-
 
 - The [oxd UMA APIs](./api/index.md#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access management policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs.   
 
-Learn more in the [oxd API section](./api/index.md) of the documentation. 
-
-!!! Note
-    View supported OpenID Connect Providers and UMA Authorization Servers [below](#supported-openid-providers-op). 
+Learn more in the [oxd API section](./api/index.md) of the documentation.  
 
 ## Native Libraries
-oxd native client libraries provide simple and flexible access to the oxd OpenID Connect and UMA authentication and authorization APIs. 
+oxd native client libraries provide simple and flexible access to the oxd APIs. 
 
 **Languages**:        
 
@@ -90,23 +103,7 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [Roundcube](./plugin/roundcube/index.md)  
 - [NextCloud](./plugin/nextcloud/index.md) 
 
-Gluu does not guarantee specific functionality in oxd plugins. If you find a bug or need feature enhancements, we are happy to discuss development on a time and materials basis. Send an email to [sales@gluu.org](mailto:sales@gluu.org). 
-
-## Supported OpenID Providers (OP)
-oxd has been confirmed to work with the following standard OPs:
-
-- [Gluu Server](https://gluu.org/docs/ce/installation-guide/)    
-- [Google](https://developers.google.com/identity/protocols/OpenIDConnect)   
-
-If you have successfully tested oxd against another OP, or for other OP related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
-
-## Supported UMA Authorization Servers (AS)
-
-oxd has been confirmed to work with the following standard UMA 2.0 Authorization Servers (AS):
-
-- [Gluu Server](https://gluu.org/docs/ce/installation-guide/)  
-
-If you have successfully tested oxd against another AS, or for other AS related requests, please email us at [sales@gluu.org](mailto:sales@gluu.org).  
+Gluu does not guarantee specific functionality in oxd plugins. If you find a bug or need feature enhancements, just open a ticket on [Gluu support](https://support.gluu.org).  
 
 ## Pricing & Billing
 
@@ -132,7 +129,6 @@ Additional notes about pricing and billing:
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
 
 If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract.  
-
 
 ## FAQ's
 

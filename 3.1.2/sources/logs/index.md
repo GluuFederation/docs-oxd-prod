@@ -1,13 +1,13 @@
 # Logs
 
-Logs are written into the working directory in `oxd Server` by default on windows and to `/var/log/oxd-server.log` on unix (on unix location is set inside `oxd-server/conf/log4j.xml` file). 
+Logs are written to `/var/log/oxd-server.log` (location is set inside `oxd-server/conf/log4j.xml` file). 
 Custom log locations can be specified in `log4j.xml.` The file is 
 loaded using the `log4j.configuration` system property. The following 
 is an example for running the `oxd Server` with `log4j` with the file 
-located in `C:\tmp\test\log4j.xml`.
+located in `/var/log/oxd-server.log`.
 
 ```
-# java -cp resteasy-jaxrs-2.3.4.Final.jar;oxd-server-3.1.1-SNAPSHOT-jar-with-dependencies.jar org.xdi.oxd.server.ServerLauncher -Doxd.server.config=C:\tmp\oxd.json -Dlog4j.configuration=C:\tmp\test\log4j.xml
+# java -cp resteasy-jaxrs-2.3.4.Final.jar;oxd-server-3.1.1-SNAPSHOT-jar-with-dependencies.jar org.xdi.oxd.server.ServerLauncher -Doxd.server.config=/etc/oxd.json -Dlog4j.configuration=oxd-server/conf/log4j.xml
 ```
 
 The following is an example of `log4j.xml` file:
@@ -25,7 +25,7 @@ The following is an example of `log4j.xml` file:
     </appender>
  
     <appender name="FILE" class="org.apache.log4j.DailyRollingFileAppender">
-        <param name="File" value="C:\\tmp\\test\\oxd-server.log"/>
+        <param name="File" value="/var/log/oxd-server.log"/>
         <param name="DatePattern" value="'.'yyyy-MM-dd"/>
         <param name="BufferSize" value="1000"/>
         <layout class="org.apache.log4j.PatternLayout">
