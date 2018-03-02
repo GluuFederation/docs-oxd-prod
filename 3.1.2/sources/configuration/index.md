@@ -2,13 +2,13 @@
 
 oxd configuration consists of two files :
 
-- `/opt/oxd-server/conf/oxd-conf.json` is the general configuration file for oxd, including where you add your license. If you have not yet obtained a license, you can [register on the website for free](https://oxd.gluu.org). 
+- `/etc/oxd/oxd-server/oxd-conf.json` is the general configuration file for oxd, including where you add your license. If you have not yet obtained a license, you can [register on the website for free](https://oxd.gluu.org). 
 
-- `/opt/oxd-server/conf/oxd-default-site-config.json` is the fallback configuration file for the OpenID Connect `Register Site` command. Learn more on the [oxd API page](../api/index.md#register-site).
+- `/etc/oxd/oxd-server/oxd-default-site-config.json` is the fallback configuration file for the OpenID Connect `Register Site` command. Learn more on the [oxd API page](../api/index.md#register-site).
 
 ## oxd-conf.json
 
-The contents of the `/opt/oxd-server/conf/oxd-conf.json` file is as follows:
+The contents of the `/etc/oxd/oxd-server/oxd-conf.json` file is as follows:
 
 ```
 oxd-conf.json
@@ -37,7 +37,7 @@ oxd-conf.json
     "migration_source_folder_path":"",
     "storage":"h2",
     "storage_configuration": {
-        "dbFileLocation":"/opt/oxd-server/bin/oxd_db"
+        "dbFileLocation":"/opt/oxd-server/data/oxd_db"
     }
 }
 ```
@@ -103,7 +103,7 @@ Redis storage configuration sample:
 H2 storage configuration sample:
 ```json
     "storage_configuration": {
-        "dbFileLocation":"/opt/oxd-server/bin/oxd_db"
+        "dbFileLocation":"/opt/oxd-server/data/oxd_db"
     }
 ```
 
@@ -112,7 +112,7 @@ H2 storage configuration sample:
 
 ## oxd-default-site-config.json
 
-The contents of the `/opt/oxd-server/conf/oxd-default-site-config.json` file is as follows:
+The contents of the `/etc/oxd/oxd-server/oxd-default-site-config.json` file is as follows:
 
 
 ```json
