@@ -15,7 +15,7 @@ oxd offers long-term maintenance and security advantages over custom OAuth 2.0 i
     oxd 3.1.1 includes functional and billing changes from previous versions. If you have older installations, review [what's new in 3.1.x](./3.1.x-intro.md) before proceeding with upgrades or new installations of oxd 3.1.1. 
 
 !!! Note
-    oxd *only* works with server-side web apps. If you need to integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
+    oxd *only* works with server-side web apps. To integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
 
 ## Compatibility
 oxd 3.1.1 has been confirmed to work with the following standard OpenID Providers (OP) and UMA Authorization Servers (AS):
