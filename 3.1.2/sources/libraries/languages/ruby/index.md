@@ -864,29 +864,42 @@ end
     `C:/apache/conf/extra/httpd-vhosts.conf`
 
 ```
-<IfModule mod_ssl.c>
-  <VirtualHost *:443>
-    ServerAdmin webmaster@localhost
+<VirtualHost *:80>
     ServerName client.example.com
-    DocumentRoot "<path to your sample app>"
-
-    LogLevel info ssl:warn
+    ServerAlias client.example.com
+    #ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/oxd-ruby-demo-app/public
+    PassengerRuby "<path to installed ruby-2.4.0>"
+    RailsEnv development
     ErrorLog ${APACHE_LOG_DIR}/error.log
     CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-    #   SSL Engine Switch:
-    #   Enable/Disable SSL for this virtual host.
-    SSLEngine on
-    SSLCertificateFile  "<Path to your ssl certificate file>"
-    SSLCertificateKeyFile "<Path to your ssl certificate key file>"
-
-    <Directory "<path to your sample app>">
-      AllowOverride All
-      Options Indexes FollowSymLinks
-      Order allow,deny
-      Allow from all
+    <Directory "/var/www/oxd-ruby-demo-app/public">
+        Options FollowSymLinks
+        Require all granted
     </Directory>
-  </VirtualHost>
+</VirtualHost>
+<IfModule mod_ssl.c>
+    <VirtualHost *:443>
+        ServerName client.example.com
+        ServerAlias client.example.com
+        DocumentRoot /var/www/oxd-ruby-demo-app/public
+        PassengerRuby "<path to installed ruby-2.4.0>"
+        RailsEnv development
+
+        LogLevel info ssl:warn
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+        #   SSL Engine Switch:
+        #   Enable/Disable SSL for this virtual host.
+        SSLEngine on
+        SSLCertificateFile  "<Path to your ssl certificate file>"
+        SSLCertificateKeyFile "<Path to your ssl certificate key file>"
+        <Directory "/var/www/oxd-ruby-demo-app/public">
+                Options FollowSymLinks
+                Require all granted
+        </Directory>
+    </VirtualHost>
 </IfModule>
 ```
 
