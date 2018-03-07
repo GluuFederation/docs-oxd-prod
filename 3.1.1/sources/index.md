@@ -1,13 +1,14 @@
 # oxd 3.1.1 Documentation
 
 ## Introduction
+
 oxd exposes simple, static APIs web developers can use to facilitate user authentication and authorization against an external OAuth 2.0 identity provider (IDP) like the [Gluu Server](https://gluu.org/docs/ce).
 
 oxd offers long-term maintenance and security advantages over custom OAuth 2.0 implementations:
 
-- oxd centralizes and standardizes OAuth 2.0 across web apps of all languages, and an ever-rotating group of code contributors;    
-- When new OAuth 2.0 features are available, or vulnerabilities are discovered, oxd is the *only* component that needs to be updated. oxd APIs remain the same, so applications never have to be changed and regression tested;         
-- oxd is written, maintained, and supported by OAuth 2.0 security experts.   
+- oxd centralizes and standardizes OAuth 2.0 across web apps of all languages, and an ever-rotating group of code contributors 
+- When new OAuth 2.0 features are available or vulnerabilities are discovered, oxd is the _only_ component that needs to be updated. oxd APIs remain the same, so applications never have to be changed and regression tested         
+- oxd is written, maintained and supported by OAuth 2.0 security experts   
        
 ![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
        
@@ -15,18 +16,21 @@ oxd offers long-term maintenance and security advantages over custom OAuth 2.0 i
     oxd 3.1.1 includes functional and billing changes from previous versions. If you have older installations, review [what's new in 3.1.x](./3.1.x-intro.md) before proceeding with upgrades or new installations of oxd 3.1.1. 
 
 !!! Note
-    oxd *only* works with server-side web apps. To integrate single-page apps (SPAs), native apps, and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
+    oxd _only_ works with server-side web apps. To integrate single-page apps (SPAs), native apps and/or SaaS apps with your Gluu Server, review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/). 
 
 ## Compatibility
+
 oxd 3.1.1 has been confirmed to work with the following standard OpenID Providers (OP) and UMA Authorization Servers (AS):
 
 ### OpenID Providers (OP)
+
 - [Gluu Server 3.1.1](https://gluu.org/docs/ce/3.1.1)
 - [Gluu Server 3.1.2](https://gluu.org/docs/ce/3.1.2)   
 - [Google](https://developers.google.com/identity/protocols/OpenIDConnect)       
 
 
 ### UMA Authorization Servers (AS)
+
 - [Gluu Server 3.1.1](https://gluu.org/docs/ce/3.1.1)  
 - [Gluu Server 3.1.2](https://gluu.org/docs/ce/3.1.2)  
 
@@ -41,34 +45,35 @@ The oxd software package includes the `oxd-server` and the `oxd-https-extension`
 
 Follow these steps to get started:
 
-**Step 1**: [Sign up](https://oxd.gluu.org/account/register/) on the oxd website to obtain your oxd license and $50 credit.
+**Step 1**: [Sign up](https://oxd.gluu.org/account/register/) on the oxd website to obtain your oxd license and $50 credit
 
-**Step 2**: [Install](./install/index.md) oxd on a server or VM.
+**Step 2**: [Install](./install/index.md) oxd on a server or VM
 
 !!! Note: 
     By default `oxd-server` needs to be installed on the same server(s) as the app(s) you are securing. If you enable `oxd-https-extension` (steps 5-7), oxd can be installed on any server or VM with network access.
 
-**Step 3**: [Configure](./configuration/index.md) the `oxd-server` and add your license keys.           
+**Step 3**: [Configure](./configuration/index.md) the `oxd-server` and add your license keys           
 
-**Step 4**: [Start](./install/index.md) the `oxd-server`.
+**Step 4**: [Start](./install/index.md) the `oxd-server`
 
 !!! Note: 
     To use the RESTful `oxd-https-extension`, follow steps 5-7. Otherwise jump to step 8. 
     
 **Step 5**: [Install](./oxd-https/start/index.md) the `oxd-https-extension` (for manual installation only, skip if you installed oxd via Linux Package)
     
-**Step 6**: [Configure ](./oxd-https/configuration/index.md) the `oxd-https-extension` 
+**Step 6**: [Configure](./oxd-https/configuration/index.md) the `oxd-https-extension` 
 
 **Step 7**: [Start](./oxd-https/start/index.md) the `oxd-https-extension`
 
-**Step 8**: Use the [oxd API](#api) or one of the [native libraries](#native-libraries) to securely send users from your apps to your Gluu Server for authentication and authorization. 
+**Step 8**: Use the [oxd API](#api) or one of the [native libraries](#native-libraries) to securely send users from your apps to your Gluu Server for authentication and authorization 
 
 ## API
+
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
 
-- The [oxd OpenID Connect APIs](./api/index.md#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user. 
+- The [oxd OpenID Connect APIs](./api/index.md#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user 
 
-- The [oxd UMA APIs](./api/index.md#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access management policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs.   
+- The [oxd UMA APIs](./api/index.md#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access management policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs   
 
 Learn more in the [oxd API section](./api/index.md) of the documentation. 
 
@@ -109,7 +114,7 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [Roundcube](./plugin/roundcube/index.md)  
 - [NextCloud](./plugin/nextcloud/index.md) 
 
-Gluu does not guarantee specific functionality in the oxd plugins. If you find a bug, or would like feature enhancements, we would be happy to discuss plugin development on a time and materials basis. [Schedule a call](https://gluu.org/booking) with us to discuss the project scope and funding.
+Gluu does not guarantee specific functionality in the oxd plugins. If you find a bug or would like feature enhancements, we would be happy to discuss plugin development on a time and materials basis. [Schedule a call](https://gluu.org/booking) with us to discuss the project scope and funding.
 
 ## Pricing & Billing
 
@@ -117,36 +122,35 @@ oxd 3.1.1 costs **USD $0.33 per application per day**. New accounts include a $5
 
 Additional notes about pricing and billing: 
 
-- Each time a new application connects to your `oxd-server`, a record is created and you will be charged USD $0.33 each day the application remains active.  
+- Each time a new application connects to your `oxd-server`, a record is created and you will be charged USD $0.33 each day the application remains active  
 
-- At the end of each month usage fees are compiled and a billing summary is sent to all users associated with your account.   
+- At the end of each month usage fees are compiled and a billing summary is sent to all users associated with your account   
 
-- On the 7th day of each month we will attempt to bill your credit card for usage fees incurred during the previous month.
+- On the 7th day of each month we will attempt to bill your credit card for usage fees incurred during the previous month
 
-- If the transaction is declined, or there is no credit card on file, your oxd installation(s) will be deactivated and the sign-in process will stop working for applications that leverage your inactive oxd server.  
+- If the transaction is declined or there is no credit card on file, your oxd installation(s) will be deactivated and the sign-in process will stop working for applications that leverage your inactive oxd server  
 
-- If you can not add a credit card, or would like to discuss volume discounts, [contact us for an oxd site license](https://gluu.org/contact). 
+- If you can not add a credit card, or would like to discuss volume discounts, [contact us for an oxd site license](https://gluu.org/contact) 
 
 !!! Note
     Do you want to use oxd with an open source project? Gluu is happy to provide free oxd licenses to qualified open source projects. Send an email to [sales@gluu.org](mailto:sales@gluu.org). 
-
    
 ## Support
+
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can login to the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
 
 If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract.  
 
-
-## FAQ's
+## FAQs
 
 **What is oxd?**       
-oxd is a mediator: it provides API's that can be called by a web application that are easier than directly calling the API's of an OpenID Connect Provider (OP) or an UMA Authorization Server (AS).
+oxd is a mediator: it provides APIs that can be called by a web application that are easier than directly calling the APIs of an OpenID Connect Provider (OP) or an UMA Authorization Server (AS).
 
 **How is oxd licensed, and how much does it cost?**        
 oxd is commercially licensed software. To start the oxd server you will need a valid license, which you can [obtain for free by registering on the oxd website](https://oxd.gluu.org). For each application that leverages your oxd service, you will be charged USD $0.33 per day. So for example, if you have 10 applications leveraging your oxd server, you will be charged USD $3.30 per day. Usage fees are accumulated daily and billed at the end of each month. If you need a site license for oxd, [schedule a call](https://gluu.org/booking).
  
 **What types of applications can use oxd?**        
-oxd only supports server-side web applications. If you are using the Gluu Server as your OP and need single sign-on (SSO) to single-page apps (SPAs), native apps, or SaaS apps, please review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/).  
+oxd only supports server-side web applications. If you are using the Gluu Server as your OP and need single sign-on (SSO) to single-page apps (SPAs), native apps or SaaS apps, please review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/).  
 
 **What is the oxd-server?**       
 oxd-server is a standalone service with socket connection. By default it's restricted to localhost (`localhost_only: true` configuration in `oxd-conf.json`). It's possible to turn off this restriction if you set `localhost_only: false` in `oxd-conf.json`.
@@ -160,11 +164,11 @@ By default, the oxd-server must be deployed on the same server as the web applic
 **Why should I use oxd?**     
 oxd offers a few key improvements over the traditional model of embedding OAuth 2.0 code in your applications:
 
-1. If new vulnerabilities are discovered in OAuth2/OpenID Connect, oxd is the only component that needs to be updated. The oxd APIs remain the same, so you don't have to change and regression test your applications.     
+1. If new vulnerabilities are discovered in OAuth2 / OpenID Connect, oxd is the only component that needs to be updated. The oxd APIs remain the same, so you don't have to change and regression test your applications     
 
-2. oxd is written, maintained, and supported by developers who specialize in application security. Because of the complexity of the standards--and the liability associated with poor implementations--it makes sense to rely on professionals who have read the specifications in their entirety and understand how to properly implement the protocols.     
+1. oxd is written, maintained, and supported by developers who specialize in application security. Because of the complexity of the standards--and the liability associated with poor implementations--it makes sense to rely on professionals who have read the specifications in their entirety and understand how to properly implement the protocols     
 
-3. Centralization reduces costs. By using oxd across your IT infrastructure for application security (as opposed to a handful of homegrown and third party OAuth2 client implementations), the surface area for vulnerabilities, issue resolution, and support is significantly reduced. Plus you who have someone to call if something goes wrong!     
+1. Centralization reduces costs. By using oxd across your IT infrastructure for application security (as opposed to a handful of homegrown and third party OAuth2 client implementations), the surface area for vulnerabilities, issue resolution, and support is significantly reduced. Plus you who have someone to call if something goes wrong!     
 
 **Which programming languages and frameworks does oxd have libraries for?**        
 There are oxd libraries for many popular programming languages and frameworks. [See above](#native-libraries). 
@@ -174,7 +178,7 @@ You’ll need two things:
 
 1. A central OpenID Connect Provider (OP) that holds the passwords and user information  
 
-2. Websites that use the OpenID Connect protocol to authenticate users
+1. Websites that use the OpenID Connect protocol to authenticate users
 
 An easy way to accomplish the first--install and configure the [free open source Gluu Server](http://gluu.org/docs/deployment) using the Linux packages for CentOS, Ubuntu, Debian or Red Hat. Or you can also utilize Google as your OpenID Connect Provider (OP). The second is accomplished by calling the oxd APIs in your applications to send users to the OP for login. 
 
