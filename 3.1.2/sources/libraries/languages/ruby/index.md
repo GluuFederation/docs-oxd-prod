@@ -6,10 +6,6 @@
 * Gluu oxd server - [Installation docs](https://gluu.org/docs/oxd/install/)
 * SSL certificate for the application
 
-- Rails
-- Passenger
-- Apache 2.4.4 or higher
-
 ### Library
 
 To install gem, add this line to your application's Gemfile:
