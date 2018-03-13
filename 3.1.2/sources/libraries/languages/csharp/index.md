@@ -1139,7 +1139,7 @@ oxdCsharp UMA Namespaces
 > }
 > ```
 
-**_Needs Info Error Response:_**
+**_Needs Information Error Response:_**
 
 > ```javascript
 > {
