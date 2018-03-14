@@ -48,7 +48,9 @@ documentation and administrative guide.
 - [#29](https://github.com/GluuFederation/oxd/issues/29) Added ability to pass custom parameters in `get_authorization_url` command.
 - [#64](https://github.com/GluuFederation/oxd/issues/64) Added new `get_access_token_by_refresh_token` command
 - [#75](https://github.com/GluuFederation/oxd/issues/75) Introduced `oxd-https-extension` plugin which allows to work with `oxd-server` over HTTPS.
-- Upgraded oxd 3.1.2 to oxauth 3.1.2
+- [#154](https://github.com/GluuFederation/oxd/issues/154) Added `client_id` to `introspect_rpt` command.
+- [#156](https://github.com/GluuFederation/oxd/issues/156) Add introspection back compatibility with oxauth server earlier then 3.1.x.
+- Upgraded oxd 3.1.2 to oxauth 3.1.2 client
 
 ### Fixes
 - [#61](https://github.com/GluuFederation/oxd/issues/61) Invalid setting throws generic error
