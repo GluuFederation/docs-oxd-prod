@@ -9,7 +9,7 @@ Use oxd's .Net library to send users from a .Net application to your Gluu Server
 ## Installation Guides
 
 - [Github oxd-csharp](https://github.com/GluuFederation/oxd-csharp)
-- [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.2/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 
 
@@ -34,7 +34,7 @@ To use the oxd-csharp library, you will need:
 
 - Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
 
-    Update the following fields `"server_name"`, `"license_id"`, `"public_key"` and `"public_password"`
+    Update the following fields `"server_name"`, `"license_id"`, `"public_key"`, `"public_password"` and `"license_password"`
 
 - Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
 
@@ -55,7 +55,7 @@ To use the oxd-csharp library, you will need:
 - Your client application must have a valid SSL certification, so the URL includes: `https://`    
 - The client hostname should be a valid `hostname` (FQDN), not a localhost or an IP Address. 
 - You can configure the `hostname` by adding `127.0.0.1  client.example.com` to the file  `C:\Windows\System32\drivers\etc\host`
-- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.1.zip) specific to this oxd-csharp library in Visual Studio.
+- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-csharp/archive/3.1.2.zip) specific to this oxd-csharp library in Visual Studio.
 
 
 - Enable SSL using the following instructions:
@@ -81,17 +81,31 @@ To use the oxd-csharp library, you will need:
 ```code
 <site name="GluuDemoWebsite" id="2">
     <application path="/" applicationPool="Clr4IntegratedAppPool">
-        <virtualDirectory path="/" physicalPath="<path of the project>" />
+        <virtualDirectory path="/" physicalPath="<path of the project>\GluuDemoWebsite" />
     </application>
     <bindings>
-        <binding protocol="https" bindingInformation="*:<portno>:client.example.com" />
+        <binding protocol="https" bindingInformation="*:portno:client.example.com" />
+    </bindings>
+</site>
+<site name="UMAExample" id="3">
+    <application path="/" applicationPool="Clr4IntegratedAppPool">
+        <virtualDirectory path="/" physicalPath="<path of the project>\UMAExample" />
+    </application>
+    <bindings>
+        <binding protocol="https" bindingInformation="*:portno2:client.example.com" />
     </bindings>
 </site>
 ```
       
 - With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
-    - Setup Client URL: https://client.example.com:<portno>/Home/Setting
-    - Login URL: https://client.example.com:<portno>
-    - UMA URL: https://client.example.com:<portno>/Home/UMA
 
-- The input values used during Setup Client are stored in a configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the client application.
+    - Setup Client URL: https://client.example.com:portno/Home/Setting
+    - Login URL: https://client.example.com:portno
+    
+- The GluuDemoWebsite project works as Authorization server.
+    - UMA Authorization URL: https://client.example.com:portno/Home/UMA
+    
+- The UMAExample project works as Resource project.
+	- Setting and Protect Resource URL: https://client.example.com:portno2/UMA/Setting
+	
+- The input values used during Setup Client are stored in the configuration file (oxd_config.json). Therefore, the configuration file needs to be writable by the client application.
