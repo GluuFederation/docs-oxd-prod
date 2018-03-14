@@ -2,13 +2,13 @@
 
 `oxd-https-extension` uses `dropwizard` framework. 
 
-To configure `oxd-https-extension`, edit the following parameters found in the `oxd-https.yml` file. 
+To configure `oxd-https-extension`, edit the following parameters, found in the `oxd-https.yml` file: 
 
 ## Parameters
 
 - oxdHost: oxd-server host
 - oxdPort: oxd-server port
-- server: HTTP server configuration parameters. For a complete list of server related parameters click [here](http://www.dropwizard.io/0.9.1/docs/manual/configuration.html).
+- server: HTTP server configuration parameters. For a complete list of server related parameters click [here](http://www.dropwizard.io/0.9.1/docs/manual/configuration.html)
 
 ## Example
 
