@@ -21,9 +21,9 @@ python setup.py install
 ### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- oxd-python [API docs](https://rawgit.com/GluuFederation/oxd-python/3.1.2/docs/html/index.html) for the auto-generated pydocs, which includes more in-depth information about the various functions and parameters.
-- See the code of a [sample Flask app](https://github.com/GluuFederation/oxd-python/blob/3.1.2/examples/flask_app) built using oxd-python.
-- Browse the oxd-python [source code on Github](https://github.com/GluuFederation/oxd-python).
+- oxd-python [API docs](https://rawgit.com/GluuFederation/oxd-python/3.1.2/docs/html/index.html) for the auto-generated pydocs, which includes more in-depth information about the various functions and parameters
+- See the code of a [sample Flask app](https://github.com/GluuFederation/oxd-python/blob/3.1.2/examples/flask_app) built using oxd-python
+- Browse the oxd-python [source code on Github](https://github.com/GluuFederation/oxd-python)
 
 ## Configuration
 
@@ -31,10 +31,10 @@ oxd-python uses a configuration file to specify information needed to configure 
 
 oxd-python can communicate with the oxd server via sockets or HTTPS. There is **no difference** in code--just toggle the `https_extension` configuration property. Sockets are used when the oxd server is running locally.
 
-Below are minimal configuration examples for sockets and https transport. The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/3.1.2/sample.cfg) file contains a full list of configuration parameters and sample values. 
+Below are minimal configuration examples for sockets and HTTPS transport. The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/3.1.2/sample.cfg) file contains a full list of configuration parameters and sample values. 
 
 !!! Note
-    The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address
+    The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address.
 
 **Configuration for oxd-server via sockets:**
 
@@ -105,13 +105,12 @@ client.register_site()
 !!! Note 
     `register_site()` can be skipped since any request to the `get_authorization_url()` automatically registers the site.
 
-
 ### Update Site
 
 ```python
 client.config.set('client', 'post_logout_uri', 'https://client.example.org/post_logout')
 
-# ensure lists are converted to comma sperated string
+# ensure lists are converted to comma separated string
 scopes = ','.join(['openid','profile','uma_protection'])
 client.config.set('client', 'scope', scopes)
 
@@ -176,7 +175,7 @@ resources = [{"path": "/photo",
 result = client.uma_rs_protect(resources)
 ```
 
-***RS Protect with scope_expression***
+**RS Protect with scope_expression**
 
 ```python
 resources = [{
@@ -246,15 +245,14 @@ claims_url = client.uma_rp_get_claims_gathering_url(ticket)
 
 oxd-python contains extensive tests for quality assurance. 
 
-- **Unit Tests** can be found in `tests` directory and can be run using PyTest.
+- **Unit Tests** can be found in `tests` directory and can be run using PyTest
 
 ```bash
 pytest tests
 ```
 
 - **Integration Tests** need a OpenID provider and oxd-server to be setup before
-  running and can be found in the `examples/e2e_tests` directory.
- 
+  running and can be found in the `examples/e2e_tests` directory
  
 ## Examples
  
