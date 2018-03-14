@@ -7,14 +7,14 @@
 POST /setup-client
 {
     "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED
-    "op_host":"https://<ophostname>"                               <- OPTIONAL (But if missing, must be present in defaults)
+    "op_host":"https://<ophostname>"                               <- OPTIONAL (If missing, must be present in defaults)
     "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
     "application_type": "web",                                     <- OPTIONAL
     "response_types": ["code"],                                    <- OPTIONAL
     "grant_types": ["authorization_code", "client_credentials"],   <- OPTIONAL 
     "scope": ["openid"],                                           <- OPTIONAL
     "acr_values": ["basic"],                                       <- OPTIONAL
-    "client_name": "",                                             <- OPTIONAL (But if missing, oxd will generate its own non-human readable name)
+    "client_name": "",                                             <- OPTIONAL (If missing, oxd will generate its own non-human readable name)
     "client_jwks_uri": "",                                         <- OPTIONAL
     "client_token_endpoint_auth_method": "",                       <- OPTIONAL
     "client_request_uris": [],                                     <- OPTIONAL
@@ -24,8 +24,8 @@ POST /setup-client
     "ui_locales": [],                                              <- OPTIONAL
     "claims_locales": [],                                          <- OPTIONAL
     "claims_redirect_uri": [],                                     <- OPTIONAL
-    "client_id": "<client id of existing client>",                 <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
-    "client_secret": "<client secret of existing client>"          <- OPTIONAL must be used together with client_secret.
+    "client_id": "<client id of existing client>",                 <- OPTIONAL - ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
+    "client_secret": "<client secret of existing client>"          <- OPTIONAL - must be used together with client_secret
 }
 ```
 
@@ -34,8 +34,8 @@ POST /setup-client
 {
     "status": "ok",
     "data": {
-        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",        <-- DEPRECATED : additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases.
-        "client_id_of_oxd_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.AAA4", <-- DEPRECATED : additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases.
+        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",        <-- DEPRECATED - additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases.
+        "client_id_of_oxd_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.AAA4", <-- DEPRECATED - additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases.
         "op_host": "https://<op-hostname>",
         "setup_client_oxd_id": "<setup client oxd_id>",          <-- oxdId of the setup client used to obtain access token
         "client_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.5F14.B387",
@@ -137,11 +137,11 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     "ui_locales": [],                                              <- OPTIONAL
     "claims_locales": [],                                          <- OPTIONAL
     "claims_redirect_uri": [],                                     <- OPTIONAL
-    "client_id": "<client id of existing client>",                 <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
-    "client_secret": "<client secret of existing client>",         <- OPTIONAL must be used together with client_secret.
-    "client_registration_access_token":"<access token of existing client>", <- OPTIONAL must be used together with client_id/client_secret
-    "client_registration_client_uri":"<uri of existing client>",   <- OPTIONAL must be used together with client_id/client_secret
-    "protection_access_token":"<access token of the client>"       <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter        
+    "client_id": "<client id of existing client>",                 <- OPTIONAL - Ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
+    "client_secret": "<client secret of existing client>",         <- OPTIONAL - must be used together with client_secret.
+    "client_registration_access_token":"<access token of existing client>", <- OPTIONAL - must be used together with client_id/client_secret
+    "client_registration_client_uri":"<uri of existing client>",   <- OPTIONAL - must be used together with client_id/client_secret
+    "protection_access_token":"<access token of the client>"       <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter        
 }
 ```
 
@@ -172,7 +172,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     "scope": ["opeind", "profile"],                                 <- OPTIONAL
     "acr_values": ["duo"],                                          <- OPTIONAL
     "client_name": "",                                              <- OPTIONAL
-    "client_secret_expires_at":1335205592410,                       <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
+    "client_secret_expires_at":1335205592410,                       <- OPTIONAL - can be used to extends client lifetime (milliseconds since 1970)
     "client_jwks_uri": "",                                          <- OPTIONAL
     "client_token_endpoint_auth_method": "",                        <- OPTIONAL
     "client_request_uris":[],                                       <- OPTIONAL
@@ -180,7 +180,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     "contacts":["foo_bar@spam.org"],                                <- OPTIONAL
     "ui_locales":[],                                                <- OPTIONAL
     "claims_locales":[],                                            <- OPTIONAL
-    "protection_access_token":"<access token of the client>"        <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
+    "protection_access_token":"<access token of the client>"        <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
 }
 ```
 
@@ -222,11 +222,11 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 POST /get-authorization-url
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-    "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF", <- REQUIRED, obtained after registration
-    "scope": ["openid"],                              <- OPTIONAL, may be skipped (by default takes scopes that was registered during register_site command)
-    "acr_values": ["duo"],                            <- OPTIONAL, may be skipped (default is basic)
-    "prompt": "login",                                <- OPTIONAL, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
-    "custom_parameters": {                            <- OPTIONAL, custom parameters
+    "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF", <- REQUIRED - obtained after registration
+    "scope": ["openid"],                              <- OPTIONAL - by default takes scopes that was registered during register_site command
+    "acr_values": ["duo"],                            <- OPTIONAL - default is basic
+    "prompt": "login",                                <- OPTIONAL - skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
+    "custom_parameters": {                            <- OPTIONAL
         "param1":"value1",
         "param2":"value2"
     }
@@ -372,7 +372,7 @@ POST /get-logout-uri
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
     "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",                       <-- REQUIRED
-    "id_token_hint": "eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso", <- OPTIONAL (oxd server will use last used ID Token)
+    "id_token_hint": "eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso", <- OPTIONAL - oxd server will use last used ID Token
     "post_logout_redirect_uri": "<post logout redirect uri here>",         <- OPTIONAL
     "state": "<site state>",                                               <- OPTIONAL
     "session_state": "<session state>",                                    <- OPTIONAL
@@ -394,8 +394,8 @@ POST /get-access-token-by-refresh-token
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
     "oxd_id" : "bcad760f-91ba-46e1-a020-05e4281d91b6",       <-- REQUIRED
-    "refresh_token":"33d7988e-6ffb-4fe5-8c2a-0e158691d446",  <-- REQUIRED, refresh_token from get_tokens_by_code command
-    "scope" : ["openid","profile","email","uma_protection"]  <-- OPTIONAL, If not specified should grant access with scope provided in previous request
+    "refresh_token":"33d7988e-6ffb-4fe5-8c2a-0e158691d446",  <-- REQUIRED - refresh_token from get_tokens_by_code command
+    "scope" : ["openid","profile","email","uma_protection"]  <-- OPTIONAL - If not specified. should grant access with scope provided in previous request
 }
 ```
 
@@ -414,7 +414,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 ### UMA RS Protect Resources
 
-It's important to have single http method mentioned only one time within given path in JSON otherwise operation will fail.
+It's important to have a single HTTP method, mentioned only once within a given path in JSON, otherwise, the operation will fail.
 
 *Non-normative example request*
 ```language-json
@@ -422,7 +422,7 @@ POST /uma-rs-protect
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
 	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",  <- REQUIRED
-	"resources": [{                                    <- REQUIRED as parameter here we have protection json that describes resources on RS
+	"resources": [{                                    <- REQUIRED
 		"path": "/scim",
 		"conditions": [{
 			"httpMethods": ["GET"],
@@ -434,11 +434,11 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 
-Request with `scope_expression`. `scope_expression` is Gluu invented extension which allows to put JsonLogic expression instead of single list of scopes. Please read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.2/admin-guide/uma.md).
+Request with `scope_expression`. `scope_expression` is a Gluu-invented extension which allows a JsonLogic expression instead of a single list of scopes. Please read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.2/admin-guide/uma.md).
 ```language-json
 {
     "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF",  <- REQUIRED
-    "resources": [                                     <- REQUIRED as parameter here we have protection json that describes resources on RS
+    "resources": [                                     <- REQUIRED
       {
         "path": "/photo",
         "conditions": [
@@ -527,9 +527,9 @@ POST /uma-rs-check-access
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
 	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6", <- REQUIRED
-	"rpt":"",                                         <- REQUIRED RPT or blank value if absent (not send by RP)
-	"path":"/scim",                                   <- REQUIRED Path of resource (e.g. http://rs.com/phones), /phones should be passed
-	"http_method" : "GET"                             <- REQUIRED Http method of RP request (GET, POST, PUT, DELETE)
+	"rpt":"",                                         <- REQUIRED - RPT or blank value if not sent by RP
+	"path":"/scim",                                   <- REQUIRED - Path of resource (e.g. http://rs.com/phones), /phones should be passed
+	"http_method" : "GET"                             <- REQUIRED - HTTP method of RP request (GET, POST, PUT, DELETE)
 }
 ```
 
@@ -607,7 +607,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     "rpt": "SSJHBSUSSJHVhjsgvhsgvshgsv",               <- OPTIONAL
     "scope":["read"],                                  <- OPTIONAL,
     "state": "af0ifjsldkj",                            <- OPTIONAL state that is returned from uma_rp_get_claims_gathering_url command
-    "protection_access_token": "ejt3425"               <- OPTIONAL, required if oxd-https-extension is used
+    "protection_access_token": "ejt3425"               <- OPTIONAL, but REQUIRED if oxd-https-extension is used
 }
 ```
 
@@ -648,7 +648,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-After being redirected to the Claims Gathering URL the user goes through the claims gathering flow. If successful, the user is redirected back to `claims_redirect_uri` with a new ticket which should be provided with the next `uma_rp_get_rpt` call.
+After being redirected to the Claims Gathering URL, the user goes through the claims gathering flow. If successful, the user is redirected back to `claims_redirect_uri` with a new ticket which should be provided with the next `uma_rp_get_rpt` call.
 
 Example of Response:
 
