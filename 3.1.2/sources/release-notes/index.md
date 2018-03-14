@@ -41,7 +41,7 @@ documentation and administrative guide.
 
 ### New Features
 
-- [#145](https://github.com/GluuFederation/oxd/issues/145) oxd 3.1.2 is compatible only with oxauth 3.1.2 and later. Need workaround for it and make it compatible with earlier version.
+- [#145](https://github.com/GluuFederation/oxd/issues/145) Backwards compatibility
 
 - [#144](https://github.com/GluuFederation/oxd/issues/144) get-client-token command does not support private_key_jwt authentication method
 
