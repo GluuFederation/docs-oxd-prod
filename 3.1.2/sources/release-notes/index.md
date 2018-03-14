@@ -43,11 +43,11 @@ documentation and administrative guide.
 
 - [#145](https://github.com/GluuFederation/oxd/issues/145) Backwards compatibility
 
-- [#144](https://github.com/GluuFederation/oxd/issues/144) get-client-token command does not support private_key_jwt authentication method
+- [#144](https://github.com/GluuFederation/oxd/issues/144) `get-client-token` command now supports `private_key_jwt` authentication method
 
-- [#143](https://github.com/GluuFederation/oxd/issues/143) added token introspection command
+- [#143](https://github.com/GluuFederation/oxd/issues/143) new token introspection command
 
-- [#156](https://github.com/GluuFederation/oxd/issues/156) Provide back compatiblity for RPT introspection (same as for OAuth introspection)
+- [#156](https://github.com/GluuFederation/oxd/issues/156) RPT introspection is now backwards compatible (same as for OAuth introspection)
 
 - [#154](https://github.com/GluuFederation/oxd/issues/154) add client_id to RPT introspection (oxd-server, oxd-https-extension and java client)
 
