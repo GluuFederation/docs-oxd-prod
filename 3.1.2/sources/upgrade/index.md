@@ -5,8 +5,8 @@ If you are upgrading `oxd-server` to the latest version, we have included auto-m
 ## Legacy Compatibility
 Before moving forward with an upgrade to oxd 3.1.2, review the following legacy compatibility notes:
 
-- UMA 2.0: Only supported in oxd 3.1.2 and Gluu Server 3.1.2      
-- UMA 1.0.1: Not supported in oxd 3.1.2 or Gluu Server 3.1.2    
+- UMA 2.0: Supported in oxd 3.1.2 and Gluu Server 3.1.2      
+- UMA 1.0.1: **Not** supported in oxd 3.1.2 or Gluu Server 3.1.2    
 - OpenID Connect: Supported in all versions of oxd and Gluu Server      
 - Pricing: If you upgrade existing oxd installations to oxd 3.1.2, the new per application billing model described above will take effect. This could have an impact on your monthly bill     
 
