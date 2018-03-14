@@ -4,7 +4,7 @@ Written for client-application developers, the oxd client libraries provide simp
 ## Programming Languages
 - [Python](./languages/python/index.md)
 - [Java](./languages/java/index.md)
-- [Php](./languages/php/index.md)
+- [PHP](./languages/php/index.md)
 - [Express](./languages/node/index.md)
 - [Ruby](./languages/ruby/index.md)
 - [C#](./languages/csharp/index.md)
