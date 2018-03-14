@@ -84,7 +84,8 @@ Response:
 {
     "status":"ok",
     "data":{
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <-- DEPRECATED : additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases. 
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <-- DEPRECATED : additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases.
+        "client_id_of_oxd_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.AAA4", <-- DEPRECATED : additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases.
         "op_host": "<op host>",
         "setup_client_oxd_id": "<setup client oxd_id>",          <-- oxdId of the setup client used to obtain access token
         "client_id":"<client id>"
