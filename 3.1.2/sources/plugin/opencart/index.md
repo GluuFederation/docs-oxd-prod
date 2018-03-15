@@ -74,7 +74,7 @@ If your OpenID Provider supports dynamic registration no additional steps are re
 If your OpenID Connect Provider does not support dynamic registration (like Google), 
 after clicking register two additional fields will be exposed where you need to enter 
 your `client_id` and `client_secret`. Both values need to be obtained from the OP. To generate 
-your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
+your `client_id` and `client_secret` use the redirect URI: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
 !!! Note
     If you are using a Gluu server as your OpenID Provider, 
@@ -88,7 +88,7 @@ In the enrollment and access management section of the plugin configuration page
 - You have three options for new user registrations: 
 
    - Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, 
-any user with an account in the OP will be able to dyanmically register for an account on your OpenCart site;
+any user with an account in the OP will be able to dynamically register for an account on your OpenCart site;
 
    - Only register and allow ongoing access to users with one or more of the following roles in the OP: 
 Using this option you can limit registration to users that have a specified role in the OP, 
