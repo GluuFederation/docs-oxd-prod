@@ -2,15 +2,13 @@
 
 The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 client software, [oxd](http://oxd.gluu.org), to send users from a Node Express application to an OpenID Connect Provider (OP) for login. You can send users to any standard OpenID Connect Provider (OP) for login, including Google. In these docs we use the [free open source Gluu Server](http://gluu.org/gluu-server) as the OpenID Connect Provider (OP).
 
-
 !!! Note:
     You can also refer to the [oxd-node library docs](../../languages/node/index.md) for more details on node classes.
-
 
 ## Installation Guides
 
 - [Github oxd-node](https://github.com/GluuFederation/oxd-node)
-- [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.2/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 
 
@@ -24,23 +22,23 @@ System Requirements:
 
 To use the oxd-node library, you will need:
 
-- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
-- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
-- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).
-- A Windows server or Windows installed machine / Linux server or Linux installed machine.
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google    
+- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)
+- A Windows server or Windows installed machine / Linux server or Linux installed machine
 
 
 ## Configuring oxd-server
 
 - Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
 
-    Update the following fields `"server_name"`, `"license_id"`, `"public_key"` and `"public_password"`
+    - Update the following fields `"server_name"`, `"license_id"`, `"public_key"` and `"public_password"`
 
 - Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
 
-    Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
+    - Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
 
-    Change the `response_types` line to `"response_types": ["code"]`
+    - Change the `response_types` line to `"response_types": ["code"]`
 
 - To start oxd-server, run the following command or [click here](../../../install/index.md) for more detailed instructions:
 
@@ -106,6 +104,5 @@ With the oxd-server running, navigate to the URL's below to run the sample clien
     - Setup Client URL: https://client.example.com:5053/settings
     - Login URL: https://client.example.com:5053/login
     - UMA URL: https://client.example.com:5053/uma
-
 
 This oxd Node.js library uses two configuration files (`settings.json` and `parameters.json`) to specify information needed by the OpenID Connect dynamic client registration. To save information that is returned (oxd_id, client_id, client_secret, etc.) the configuration file needs to be writable by the client application.
