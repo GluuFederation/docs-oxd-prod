@@ -16,9 +16,9 @@ OpenCart site, standard OP (like Google or a Gluu Server) and an active oxd serv
 
 - This plugin is compatible with OpenCart Versions : 2.0.0.0 - 2.3.0.0
 
-- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google.
+- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google
 
-- You will need a valid license to start the oxd server. You can get a license and a $50 credit by signing up on the [oxd website](https://oxd.gluu.org).
+- You will need a valid license to start the oxd server. You can get a license and a $50 credit by signing up on the [oxd website](https://oxd.gluu.org)
 
 ## Plugin Installation
 
@@ -29,13 +29,13 @@ or from [OpenCart marketplace](http://www.opencart.com/index.php?route=extension
 
 ### Upload the Plugin
 
-1. Unzip the downloaded plugin file in your OpenCart site root directory.
+1. Unzip the downloaded plugin file in your OpenCart site root directory
 
-2. Log in to OpenCart Admin console 
+1. Log in to OpenCart Admin console 
 
-3. Navigate to `Extensions` > `Modules` on the list find `OpenID Connect Single Sign-On (SSO) Extension by Gluu` 
+1. Navigate to `Extensions` > `Modules` on the list find `OpenID Connect Single Sign-On (SSO) Extension by Gluu` 
 
-4. Click on `Install` button, and wait for the process to complete and to display success message on the 
+1. Click on `Install` button, and wait for the process to complete and to display success message on the 
 top of the page.
    
     ![Manager](../../img/plugin/0.png) 
@@ -58,16 +58,16 @@ A short description of each field follows:
 
 1. URI of the OpenID Provider: Insert the URI of the OpenID Connect Provider here. 
 If you are using Google as your OP, this will simply be `https://accounts.google.com`. 
-If you are using another OP it will be something like `https://idp.example.com`. 
+If you are using another OP it will be something like `https://idp.example.com` 
 
 2. Custom URI after logout: Provide a URL for a landing page to redirect users after logout of the OpenCart site, 
 for instance `https://example.com/thank-you`. If you don't have a preferred logout page we recommend simply 
 entering your website homepage URL. If you leave this field blank the user will see the default logout page 
-presented by OpenCart. 
+presented by OpenCart
 
-3. oxd port: Enter the oxd-server port, which you can find in your `oxd-server/conf/oxd-conf.json` file.
+3. oxd port: Enter the oxd-server port, which you can find in your `oxd-server/conf/oxd-conf.json` file
 
-4. Click `Register` to continue.
+4. Click `Register` to continue
 
 If your OpenID Provider supports dynamic registration no additional steps are required. 
 
@@ -85,53 +85,46 @@ your `client_id` and `client_secret` use the redirect uri: `https://{site-base-u
 #### Enrollment and Access Management
 In the enrollment and access management section of the plugin configuration page you can decide, (1), how new user registrations will be handled, and, (2), what role new users will receive upon registration.
 
-1. You have three options for new user registrations: 
+- You have three options for new user registrations: 
 
-- Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, 
+   - Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, 
 any user with an account in the OP will be able to dyanmically register for an account on your OpenCart site;
 
-- Only register and allow ongoing access to users with one or more of the following roles in the OP: 
+   - Only register and allow ongoing access to users with one or more of the following roles in the OP: 
 Using this option you can limit registration to users that have a specified role in the OP, 
 for instance `OpenCart`. Each time the user authenticates they will need to have this scope 
 present in order to be approved for access (i.e. if you remove this scope from the users profile 
-in the OP, the user would be denied access);
+in the OP, the user would be denied access). This is not configurable in all OP's. It is configurable if you are using a Gluu Server.    [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role 
 
-!!! Note 
-    This is not configurable in all OP's. It is configurable if you are using a Gluu Server. 
-    [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role.  
-
-- Disable automatic registration: If you choose to disable automatic registration, 
+   - Disable automatic registration: If you choose to disable automatic registration, 
 you will need to manually add a user in OpenCart for each person that needs access. 
-Make sure that when you add the user in OpenCart, you use the same email they have registered in the OP. 
+Make sure that when you add the user in OpenCart, you use the same email they have registered in the OP
 
-2. New User Default Role: Use this field to specify which role new users are assigned upon registration. 
+- New User Default Role: Use this field to specify which role new users are assigned upon registration. 
 If you have automatic registration set to disabled, you will have the opportunity to specify the users 
-role during manual account creation. 
+role during manual account creation
 
 ##### Role Based Enrollment
 In order to implement role based enrollment, you will need to make changes in both the plugin and the Gluu Server. 
 
 **Perform the following in the Plugin:**     
 
-1. In the Enrollment and Access Management section, choose the option: `Only register and allow ongoing...`;   
-2. Add a name for the role want to use to enforce access (e.g. `OpenCart` or `website`);     
-3. Save the configuration.
-4. Navigate to the OpenID Connect Configuration tab;  
-5. In the User Scopes section, check the box for `permission`;
-6. Save your settings.
+1. In the Enrollment and Access Management section, choose the option: `Only register and allow ongoing...`   
+1. Add a name for the role want to use to enforce access (e.g. `OpenCart` or `website`)     
+1. Save the configuration
+1. Navigate to the OpenID Connect Configuration tab  
+1. In the User Scopes section, check the box for `permission`
+1. Save your settings
 
 **Perform the following in your Gluu Server:**    
 
-1. Navigate to your Gluu Server admin GUI ("oxTrust"); 
-2. Click the `Users` tab in the left hand navigation menu; 
-3. Select `Manage People`;  
-4. Find the person(s) who should have access;   
-5. Click their user entry;   
-6. Add the `User Permission` attribute to the person and specify the same value as in the plugin. 
-For instance, if in the plugin you specify that enrollment should be limited to users
-with role = `OpenCart`, then you should also have `User Permission` = `OpenCart` in the user entry. 
-[See a screenshot example](../../img/plugin/opencart-ss.png);
-7. Update the user record. 
+1. Navigate to your Gluu Server admin GUI ("oxTrust") 
+1. Click the `Users` tab in the left hand navigation menu
+1. Select `Manage People`  
+1. Find the person(s) who should have access   
+1. Click their user entry   
+1. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you specify that enrollment should be limited to users with role = `OpenCart`, then you should also have `User Permission` = `OpenCart` in the user entry. [See a screenshot example](../../img/plugin/opencart-ss.png)
+1. Update the user record 
 
 Now only users with the role `OpenCart` in the Gluu Server will be able to gain access to your OpenCart site. 
 
@@ -149,21 +142,21 @@ If you are using a Gluu server as your OpenID Provider, you can view available s
 #### Authentication
 In the authentication settings, you have two options:
 
-1. Bypass the local OpenCart login page and send users straight to the OP for authentication: 
+- Bypass the local OpenCart login page and send users straight to the OP for authentication: 
 If you would like to bypass OpenCart's default login page and send users straight to the OP, 
 check this box (**recommended**). When this option is left unchecked users will see the following 
 screen when trying to login: 
 
 ![upload](../../img/plugin/opencart4.png) 
 
-2. Select ACR: `acr` is an OpenID Connect specific value that enables applications to request a 
+- Select ACR: `acr` is an OpenID Connect specific value that enables applications to request a 
 specific type of authentication from the OP, e.g. SMS based two factor authentication, or FIDO U2F tokens. 
 If you are using Google as your OP, you will have to accept their default authentication mechanism. 
 If you are using a Gluu Sever, you will be able to request any supported form of authentication. 
 To view the OP's supported ACR values, navigate to your OpenID Provider configuration page, 
 `https://<hostname>/.well-known/openid-configuration` and find `acr_values`. In the `Select acr` 
 field you can choose your preferred authentication mechanism. If `Select acr` is `none`, users will be 
-sent to pass the OP's default authentication mechanism.
+sent to pass the OP's default authentication mechanism
 
 ## OP Configuration
 
@@ -172,19 +165,19 @@ sent to pass the OP's default authentication mechanism.
 If you are using a Gluu Server as your OP, you will need to configure Gluu to release the email claim. 
 You can do so by following the below steps:
 
-1. Log in to your Gluu Server dashboard ("oxTrust") and navigate to `OpenID Connect` > `Scopes`. 
+1. Log in to your Gluu Server dashboard ("oxTrust") and navigate to `OpenID Connect` > `Scopes` 
 
-2. Find the `email` scope and click on it. 
+2. Find the `email` scope and click on it 
 
-3. Set the default scope field to `True`.
+3. Set the default scope field to `True`
 
-4. If `Email` is not already added to the `Claims` field, click the `Add Claim`, search for email, and add it. 
+4. If `Email` is not already added to the `Claims` field, click the `Add Claim`, search for email, and add it 
 
 ![image](../../img/plugin/emailScope1.png)
 
 ![image](../../img/plugin/emailScopeInner1.png)
 
-5. Now navigate to `Configuration` > `Attributes` and make sure that the `Email` attribute is set to `Active`. If it is not, click on the `email` attribute and scroll down to the `Status` field where you can change the value to Active. Click update. 
+5. Now navigate to `Configuration` > `Attributes` and make sure that the `Email` attribute is set to `Active`. If it is not, click on the `email` attribute and scroll down to the `Status` field where you can change the value to Active. Click update 
 
 ![image](../../img/plugin/emailInAttribute1.png)
 
