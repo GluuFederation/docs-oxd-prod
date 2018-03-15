@@ -2,9 +2,9 @@
 
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
 
-- The [oxd OpenID Connect APIs](#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user. 
+- The [oxd OpenID Connect APIs](#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user 
 
-- The [oxd UMA APIs](#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs.      
+- The [oxd UMA APIs](#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs      
 
 ## OpenID Connect Authentication
 
@@ -18,14 +18,14 @@ oxd supports the OpenID Connect [Hybrid Flow](http://openid.net/specs/openid-con
 Learn more about authentication flows in the [OpenID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html). 
 
 ### oxd OpenID Connect APIs
-`oxd-server` provides seven API's for OpenID Connect authentication. In general,
+`oxd-server` provides seven APIs for OpenID Connect authentication. In general,
 you can think of the Authorization Code Flow as a three step process: 
 
- - Redirect person to the authorization URL and obtain a code
- - Use code to obtain tokens (access_token, id_token and refresh_token)
- - Use access token to obtain user claims
+ 1. Redirect person to the authorization URL and obtain a code
+ 1. Use code to obtain tokens (access_token, id_token and refresh_token)
+ 1. Use access token to obtain user claims
 
-The other four oxd API's are:
+The other four oxd APIs are:
  
  - Register site (called once--the first time your application uses oxd)
  - Update site registration (not used often)
@@ -41,7 +41,7 @@ If you are using the `oxd-https-extension`, before using the above workflow you 
  
  Pass the obtained access token as `protection_access_token` in all future calls to the `oxd-https-extension`.
 
-#### Setup Client
+#### Set Up Client
 
 If you are using the `oxd-https-extension`, you must setup the client. 
 
@@ -304,15 +304,15 @@ Request:
 {
     "command":"get_authorization_url",
     "params": {
-        "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF", <- required, obtained after registration
-        "scope": ["openid"],                              <- optional, may be skipped (by default takes scopes that was registered during register_site command)
-        "acr_values": ["duo"],                            <- optional, may be skipped (default is basic)
-        "prompt": "login",                                <- optional, skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
-        "custom_parameters": {                            <- optional, custom parameters
+        "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF", <- REQUIRED - obtained after registration
+        "scope": ["openid"],                              <- OPTIONAL - default takes scopes that was registered during register_site command)
+        "acr_values": ["duo"],                            <- OPTIONAL - default is basic
+        "prompt": "login",                                <- OPTIONAL - skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
+        "custom_parameters": {                            <- OPTIONAL
             "param1":"value1",
             "param2":"value2"
         },
-        "protection_access_token":"<access token of the client>" <- optional for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
+        "protection_access_token":"<access token of the client>" <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
     }
 }
 ```
@@ -528,7 +528,7 @@ Warning: 199 - "UMA Authorization Server Unreachable"
 
 #### UMA RS Protect Resources
 
-It's important to have single http method mentioned only one time within given path in JSON otherwise operation will fail.
+It's important to have a single HTTP method mentioned only one time within a given path in JSON, otherwise the operation will fail.
 
 Request:
 
@@ -537,7 +537,7 @@ Request:
     "command":"uma_rs_protect",
     "params": {
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",   <- REQUIRED
-        "resources":[        <-  REQUIRED as parameter here we have protection json that describes resources on RS
+        "resources":[        <-  REQUIRED
             {
                 "path":"/photo",
                 "conditions":[
@@ -571,18 +571,18 @@ Request:
                 ]
             }
         ],
-        "protection_access_token":"<access token of the client>"      <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
+        "protection_access_token":"<access token of the client>"      <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
     }
 }
 ```
 
-Request with `scope_expression`. `scope_expression` is Gluu invented extension which allows to put JsonLogic expression instead of single list of scopes. Please read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.2/admin-guide/uma.md).
+Request with `scope_expression`. `scope_expression` is a Gluu-invented extension that allows a JsonLogic expression instead of a single list of scopes. Read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.2/admin-guide/uma.md).
 ```language-json
 {
   "command": "uma_rs_protect",
   "params": {
     "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF",  <-REQUIRED
-    "resources": [  <-  REQUIRED as parameter here we have protection json that describes resources on RS
+    "resources": [  <-  REQUIRED
       {
         "path": "/photo",
         "conditions": [
@@ -648,7 +648,7 @@ Request with `scope_expression`. `scope_expression` is Gluu invented extension w
         ]
       }
     ],
-    "protection_access_token": "<access token of the client>"   <-OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter   
+    "protection_access_token": "<access token of the client>"   <-OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter   
   }
 }
 ```
@@ -673,9 +673,9 @@ Request:
     "command":"uma_rs_check_access",
     "params": {
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
-        "rpt":"eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso",    <-- REQUIRED RPT or blank value if absent (not send by RP)
-        "path":"<path of resource>",                                   <-- REQUIRED Path of resource (e.g. http://rs.com/phones), /phones should be passed
-        "http_method":"<http method of RP request>",                   <-- REQUIRED Http method of RP request (GET, POST, PUT, DELETE)
+        "rpt":"eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso",    <-- REQUIRED - RPT or blank value if not sent by RP
+        "path":"<path of resource>",                                   <-- REQUIRED - Resource Path (e.g. http://rs.com/phones), /phones should be passed
+        "http_method":"<http method of RP request>",                   <-- REQUIRED - HTTP method of RP request (GET, POST, PUT, DELETE)
         "protection_access_token":"<access token of the client>"       <-- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
     }
 }
@@ -784,7 +784,7 @@ Success Response:
 
 ### UMA 2 Client API's
 
-If your application is calling UMA 2 protected resources, use these API's to obtain an RPT token.
+If your application is calling UMA 2 protected resources, use these APIs to obtain an RPT token.
 
 #### UMA RP - Get RPT
 
@@ -797,12 +797,12 @@ Request:
          "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",   <- REQUIRED
          "ticket": "016f84e8-f9b9-11e0-bd6f-0021cc6004de",  <- REQUIRED
          "claim_token": "eyj0f9b9...",                      <- OPTIONAL
-         "claim_token_format": "http://openid.net/specs/openid-connect-core-1_0.html#IDToken",  <- OPTIONAL but required if claims_token is specified
+         "claim_token_format": "http://openid.net/specs/openid-connect-core-1_0.html#IDToken",  <- OPTIONAL, but REQUIRED if claims_token is specified
          "pct": "c2F2ZWRjb25zZW50",                         <- OPTIONAL
          "rpt": "SSJHBSUSSJHVhjsgvhsgvshgsv",               <- OPTIONAL
-         "scope":["read"],                                  <- OPTIONAL,
+         "scope":["read"],                                  <- OPTIONAL
          "state": "af0ifjsldkj",                            <- OPTIONAL state that is returned from uma_rp_get_claims_gathering_url command
-         "protection_access_token": "ejt3425"               <- OPTIONAL, required if oxd-https-extension is used
+         "protection_access_token": "ejt3425"               <- OPTIONAL, but REQUIRED if oxd-https-extension is used
     }
 }
 ```
@@ -848,7 +848,6 @@ Needs Info Error Response:
 }
 ```
 
-
 Invalid Ticket Error Response:
 ```language-json
 {
@@ -884,7 +883,7 @@ Request:
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <- REQUIRED
         "ticket": "016f84e8-f9b9-11e0-bd6f-0021cc6004de",        <- REQUIRED
         "claims_redirect_uri":"https://client.example.com/cb",   <- REQUIRED
-        "protection_access_token": "ejt3425"                     <- OPTIONAL, required if oxd-https-extension is used
+        "protection_access_token": "ejt3425"                     <- OPTIONAL, but REQUIRED if oxd-https-extension is used
     }
 }
 ```
@@ -905,7 +904,7 @@ Success Response:
 }
 ```
 
-After being redirected to the Claims Gathering URL the user goes through the claims gathering flow. If successful, the user is redirected back to `claims_redirect_uri` with a new ticket which should be provided with the next `uma_rp_get_rpt` call.
+After being redirected to the Claims Gathering URL, the user goes through the claims gathering flow. If successful, the user is redirected back to `claims_redirect_uri` with a new ticket which should be provided with the next `uma_rp_get_rpt` call.
 
 Example of Response:
 
