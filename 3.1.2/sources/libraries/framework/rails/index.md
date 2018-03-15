@@ -3,13 +3,12 @@
 Use oxd's Ruby on Rails library to send users from a Rails application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
 !!! Note
-    You can also refer to the [oxd-ruby library docs](../../languages//ruby/index.md) for more details on ruby classes.
-
+    You can also refer to the [oxd-ruby library docs](../../languages/ruby/index.md) for more details on ruby classes.
 
 ## Installation Guides
 
 - [Github oxd-ruby](https://github.com/GluuFederation/oxd-ruby)
-- [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.2/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 
 
@@ -23,7 +22,6 @@ Ubuntu 14.04 with some basic utilities listed below:
 $ sudo apt-get install apache2
 $ a2enmod ssl
 ```
-
 
 **Install RVM and Ruby on Ubuntu**
 
@@ -52,12 +50,12 @@ $ rvm list
 
 Using RVM you can install a specific Ruby version:
 ```bash
-$ rvm install ruby-2.3.0
+$ rvm install ruby-2.4.0
 ```
 
 To change Ruby version run this command:
 ```bash
-$ rvm use ruby-2.3.0
+$ rvm use ruby-2.4.0
 ```
 
 Rails is distributed as a Ruby gem and adding it to the local system is extremely simple:
@@ -87,20 +85,20 @@ $ passenger-install-apache2-module
 
 The output will be similar to this one:
 ```
-LoadModule passenger_module /home/username/.rvm/gems/ruby-2.2.1/gems/passenger-5.0.28/buildout/apache2/mod_passenger.so
+LoadModule passenger_module /home/username/.rvm/gems/ruby-2.4.0/gems/passenger-5.2.1/buildout/apache2/mod_passenger.so
 ```
 
 Add these lines to Apache's config file:
 ```
 <IfModule mod_passenger.c>
- PassengerRoot /home/username/.rvm/gems/ruby-2.2.1/gems/passenger-5.0.28
- PassengerDefaultRuby /home/username/.rvm/gems/ruby-2.2.1/wrappers/ruby
+ PassengerRoot /home/username/.rvm/gems/ruby-2.4.0/gems/passenger-5.2.1
+ PassengerDefaultRuby /home/username/.rvm/gems/ruby-2.4.0/wrappers/ruby
 </IfModule>
 ```
 
 To use the oxd-ruby library, you will need:
 
-- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.    
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.
 - An active installation of the [oxd-server](../../../install/index.md). 
 - If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
@@ -110,7 +108,7 @@ To use the oxd-ruby library, you will need:
 
 - Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
 
-    Update the following fields `"server_name"`, `"license_id"`, `"public_key"` and `"public_password"`
+    Update the following fields `"server_name"`, `"license_id"`, `"public_key"`, `"public_password"` and `"license_password"`
 
 - Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
 
@@ -126,6 +124,13 @@ To use the oxd-ruby library, you will need:
 
 ## Demosite Deployment
 
+Get the source code for demosite:
+
+```bash
+cd /var/www/html
+git clone https://github.com/GluuFederation/oxd-ruby-demo-app
+```
+
 OpenID Connect only works with HTTPS connections. Enter the following to prepare the SSL certificates:
 
 ```bash
@@ -138,7 +143,8 @@ $ openssl req -new -key demosite.key -out demosite.csr
 $ openssl x509 -req -days 365 -in demosite.csr -signkey demosite.key -out demosite.crt
 ```
 
-Create a virtual host of oxd-ruby, oxd-ruby.conf under /etc/apache2/sites-available/ file and add these lines:
+Create a virtual host of oxd-ruby:
+To create a virtual host for oxd-ruby-demo-app, create a oxd-ruby.conf file under /etc/apache2/sites-available/ with following commands:
 
 ```bash
 $ sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/oxd-ruby.conf
@@ -152,7 +158,7 @@ Replace the content in the oxd-ruby.conf file with the following:
 	<VirtualHost *:443>
 		ServerAdmin webmaster@localhost
 		ServerName oxd-rails.com
-		DocumentRoot /var/www/html/oxdrails
+		DocumentRoot /var/www/html/oxd-ruby-demo-app/public
 
 		LogLevel info ssl:warn
 		ErrorLog ${APACHE_LOG_DIR}/error.log
@@ -164,9 +170,9 @@ Replace the content in the oxd-ruby.conf file with the following:
 		SSLCertificateFile	/etc/certs/demosite.crt
 		SSLCertificateKeyFile /etc/certs/demosite.key
 
-		<Directory /var/www/html/oxdrails>
+		<Directory /var/www/html/oxd-ruby-demo-app/public>
 			AllowOverride All
-            		Options Indexes FollowSymLinks
+            Options Indexes FollowSymLinks
 			Order allow,deny
 			Allow from all
 		</Directory>
@@ -199,7 +205,7 @@ $ sudo service apache2 restart
 
 Navigate to Rails app root:
 ```bash
-cd /var/www/html/oxdrails
+cd /var/www/html/oxd-ruby-demo-app
 ```
 
 Run:
@@ -207,8 +213,6 @@ Run:
 bundle install
 ```
 
-- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
-    - Setup Client URL: https://client.example.com:portno
-    - Login URL: https://client.example.com:portno
-    - UMA URL: https://client.example.com:portno/uma
+- Change the `oxd-ruby` configuration in `oxd-ruby-demo-app/config/initializers/oxd_config.rb` file.
 
+- With the `oxd-server` running, navigate to the `https://oxd-rails.com` to run the sample client application. `oxd-ruby-demo-app` contains a nice UI with buttons and template code to walk you through the authentication flow with each `oxd-ruby` command. To register a client in the oxd-server use the `"Setup Client"` button. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, use the `"Login with OpenId"` button to navigate to the Login URL for authentication.
