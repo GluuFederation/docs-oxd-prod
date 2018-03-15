@@ -4,19 +4,19 @@
 
 Use oxd Java library to:
 
-* Easily implement user authentication with an OpenID Connect Provider (OP) following the steps of the [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#Authentication) in your Java web app
+- Easily implement user authentication with an OpenID Connect Provider (OP) following the steps of the [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#Authentication) in your Java web app
 
-* Obtain identity information about the authenticated user
+- Obtain identity information about the authenticated user
 
-* Perform log out of the OP
+- Perform log out of the OP
 
-* Implement protection of web resources enabling a resource server and a client to support the [UMA 2.0](https://docs.kantarainitiative.org/uma/ed/oauth-uma-grant-2.0-04.html) workflow in conjuction with a UMA 2.0 compliant server (such as Gluu Server)
+- Implement protection of web resources enabling a resource server and a client to support the [UMA 2.0](https://docs.kantarainitiative.org/uma/ed/oauth-uma-grant-2.0-04.html) workflow in conjuction with a UMA 2.0 compliant server (such as Gluu Server)
  
 ## Sample Project
 
-In [this repo](https://github.com/GluuFederation/oxd-java-sample) you can find a Java web project that showcases how to integrate the library and illustrates the step-by-step process of OpenId Authentication.
+In [this repo](https://github.com/GluuFederation/oxd-java-sample), you can find a Java web project that showcases how to integrate the library and illustrates the step-by-step process of OpenId Authentication.
 
-Check the [readme](https://github.com/GluuFederation/oxd-java-sample/blob/master/README.md) and learn how easy it's to get it up and running.
+Check the [readme](https://github.com/GluuFederation/oxd-java-sample/blob/master/README.md) and learn how easy it is to get it up and running.
 
 ## Operations summary and sample code 
 
@@ -62,19 +62,18 @@ Recall that Setup Client is a one-time task.
 
 When you use the oxd https extension, all operations of the API (except Setup Client) must be protected by an access token. Get Client Token allows you to obtain such "protection API token" very easily: Just provide the **client_id** and **client_secret** you obtained in the call to [Setup Client](#setup-client).
 
-Besides a token this operation will give you additional information such as an expiration period in seconds. Once the expiration time has elapsed the access token is no longer valid and you should request a new one by using this very operation, or by a call to [Get Access Token by Refresh Token](#get-access-token-by-refresh-token).
+Besides a token this operation will give you additional information such as an expiration period in seconds. Once the expiration time has elapsed, the access token is no longer valid and you should request a new one by using this operation or by a call to [Get Access Token by Refresh Token](#get-access-token-by-refresh-token).
 
 To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-client-token).
 
 A working example can be found at sample project: See method `getPAT` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java). There, for simplicity a new PAT is requested every time an operation is called (the expiration time is not being used).
 
-
 #### Register Site
 
 !!! Note: 
-    You can obviate this operation if already used [Setup Client](#setup-client)
+    You can skip this operation if already used [Setup Client](#setup-client)
 
-Think of this operation as a means to introduce your website (app) to oxd. It returns an identifier that must be passed when calling any of API operations (except for the two listed above). This is the so-called "**oxd_id**".
+Think of this operation as a means to introduce your website (app) to oxd. It returns an identifier that must be passed when calling any API operation (except for the two listed above). This is called the "**oxd_id**".
 
 This operation will attempt to register a new OpenID Client at your OP. Remember that if your OP does not support dynamic registration (e.g. Google), you have to obtain a **client_id** and a **client_secret** yourself and supply those as parameters of this operation. This will make oxd skip the client registration.
 
@@ -110,32 +109,30 @@ UpdateSiteResponse resp = client.send(command).dataAsResponse(UpdateSiteResponse
 boolean updated = resp!=null;
 ```        
 
-
 #### Get Authorization URL
 
 This operation returns a URL to which your application must redirect the user's browser to start the authentication process at the OP.
 
 To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#get-authorization-url)
 
-A working example can be found at sample project: See method `getAuthzUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
+A working example can be found in the sample project: See method `getAuthzUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
 
 #### Get Tokens by Code
 
 After authentication, the OP sends the user's browser back to the `redirect_uri` page with a couple of query parameters in the URL: `code` and `state`. Use those to issue a call to this API operation.
 
-As a response you will get an access token (not to confuse with the token of [Get Client Token](#get-client-token) operation), as well as an ID Token. The former token is used to call [Get User Info](#get-user-info) operation while the latter when calling [Get Logout URI](#get-logout-uri).
+As a response, you will get an access token (not to be confused with the token of [Get Client Token](#get-client-token) operation), as well as an ID Token. The former token is used to call [Get User Info](#get-user-info) operation while the latter when calling [Get Logout URI](#get-logout-uri).
 
 A working example can be found at sample project: See method `GetTokensByCodeResponse` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
-
 #### Get Access Token by Refresh Token
 
-The access token obtained at [Get Tokens by Code](#get-tokens-by-code) has an expiration time too. If your application has the need to obtain a fresher access token, this operation is useful. Simply provide the `refresh_token` you received when the call to Get Tokens by Code was made.
+The access token obtained at [Get Tokens by Code](#get-tokens-by-code) has an expiration time too. If your application has the need to obtain a fresher access token, this operation is useful. Simply provide the `refresh_token` that you received when the call to Get Tokens by Code was made.
 
-To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-access-token-by-refresh-token).
+To learn more about the input and output of this operation, check the [API page](https://gluu.org/docs/oxd/api/#get-access-token-by-refresh-token).
 
-Here is an example on the usage of this operation using standard oxd-server (not https):
+Here is an example of the usage of this operation using standard oxd-server (not https):
 
 ```
 //client should be a global variable (host and port are those of oxd-server)
@@ -153,38 +150,35 @@ String newAccessToken=resp.getAccessToken();
 String newRefreshToken=resp.getRefreshToken();
 ```
 
-
 #### Get User Info
 
 Use this operation to obtain user claims (e.g. first name, last name, e-mail, etc.) about the authenticated end-user. 
 
-To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-user-info).
+To learn more about the input and output of this operation, check the [API page](https://gluu.org/docs/oxd/api/#get-user-info).
 
 The set of claims in the response depends on the access privileges associated to the access token provided. This has to do with the scopes passed in [Site Registration](#register-site) API operation.
 
 A working example can be found at sample project: See method `getUserInfo` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
-
 #### Get Logout URI
 
-Use this method if you have intention to log out the user of the OP. This will return a URL where you can redirect the user's browser to initiate the logout process.
+Use this method if you intend to log out the user of the OP. This will return a URL where you can redirect the user's browser to initiate the logout process.
 
 To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-logout-uri).
 
 A working example can be found at sample project: See method `getLogoutUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
-
 ### UMA
 
 #### RS Protect
 
-`send` method is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
+`send` method is used for protecting resources with the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
 The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
 
 **Parameters:**
 
 - oxdId: oxd ID from client registration
-- resources: One or more protected resources that a resource server manages, abstractly, as a set. In authorization policy terminology, a resource set is the "object" being protected. 
+- resources: One or more protected resources that a resource server manages, abstractly, as a set. In authorization policy terminology, a resource set is the "object" being protected 
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
 **Request:**
@@ -208,7 +202,6 @@ return resp;
     "status":"ok"
 }
 ```
-
 
 #### RS Check Access 
 
