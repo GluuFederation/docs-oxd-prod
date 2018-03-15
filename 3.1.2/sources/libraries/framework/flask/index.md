@@ -35,23 +35,23 @@ apt-get install oxd-server
 
 To use the oxd-python library, you will need:
 
-- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
-- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
-- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).
-- A Windows server or Windows installed machine / Linux server or Linux installed machine.
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google    
+- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)
+- A Windows server or Windows installed machine / Linux server or Linux installed machine
 
 
 ## Configuring oxd-server
 
 - Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
 
-    Update the following fields `"server_name"`, `"license_id"`, `"public_key"`, `"public_password"` and `"license_password"`
+    - Update the following fields `"server_name"`, `"license_id"`, `"public_key"`, `"public_password"` and `"license_password"`
 
 - Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
 
-    Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
+    - Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
 
-    Change the `response_types` line to `"response_types": ["code"]`
+    - Change the `response_types` line to `"response_types": ["code"]`
 
 - To start oxd-server, run the following command or [click here](../../../install/index.md) for more detailed instructions:
 
