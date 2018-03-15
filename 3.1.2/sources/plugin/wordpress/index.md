@@ -59,7 +59,7 @@ A short description of each field follows:
 
 If your OpenID Provider supports dynamic registration no additional steps are required. 
 
-If your OpenID Connect Provider does not support dynamic registration (like Google), after clicking register two additional fields will be exposed where you need to enter your `client_id` and `client_secret`. Both values need to be obtained from the OP. To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
+If your OpenID Connect Provider does not support dynamic registration (like Google), after clicking register two additional fields will be exposed where you need to enter your `client_id` and `client_secret`. Both values need to be obtained from the OP. To generate your `client_id` and `client_secret` use the redirect URI: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
 !!! Note
     If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your     Gluu Server, navigate to the `OpenID Connect` > `Clients` page. Search for your `oxd id`. If it's present in the OP, everything worked.
