@@ -139,7 +139,7 @@ If you are using a Gluu Server as your OP, you will need to configure Gluu to re
 
 ![image](../../img/plugin/emailScopeInner1.png)
 
-1. Now navigate to `Configuration` > `Attributes` and make sure that the `Email` attribute is set to `Active`. If it is not, click on the `email` attribute and scroll down to the `Status` field where you can change the value to Active. Click update 
+5. Now navigate to `Configuration` > `Attributes` and make sure that the `Email` attribute is set to `Active`. If it is not, click on the `email` attribute and scroll down to the `Status` field where you can change the value to Active. Click update 
 
 ![image](../../img/plugin/emailInAttribute1.png)
 
