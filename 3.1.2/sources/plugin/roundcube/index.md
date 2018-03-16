@@ -4,16 +4,16 @@
 
 Gluu's OpenID Connect Single Sign-On (SSO) Roundcube plugin will enable you to 
 authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can 
-[deploy the free open source Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/).  
+[deploy the free open source Gluu Server](https://gluu.org/docs/ce/3.1.2/installation-guide/install/).  
 
 ## Requirements
 In order to use the RoundCube plugin you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.
 
-* Compatibility : 0.6.0 <= 10.21 versions
+- Compatibility : 0.6.0 <= 10.21 versions
 
-* [Gluu Server Installation Guide](https://gluu.org/docs/ce/3.0.1/installation-guide/install/).
+- [Gluu Server Installation Guide](https://gluu.org/docs/ce/3.1.2/installation-guide/install/)
 
-* [oxd Server Installation Guide](https://oxd.gluu.org/docs/install/)
+- [oxd Server Installation Guide](https://oxd.gluu.org/docs/install/)
 
 
 ## Installation
@@ -36,16 +36,16 @@ $ composer install `composer require "gluufederation/roundcube_oxd_plugin": "3.0
 
 ### General
  
-In your RoundCube admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration  page:
+In your RoundCube admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration page:
 
 ![upload](https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/1.png) 
 
-1. Automatically login any user with an account in the OpenID Provider: By setting login to automatic, any user with an account in the OP will be able to dynamically login for an account in your Roundcube site. 
-2. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance `roundcube`. This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. 
-3. URI of the OpenID Provider: insert the URI of the OpenID Connect Provider.
-4. Custom URI after logout: custom URI after logout (for example "Thank you" page).
-5. oxd port: enter the oxd-server port (you can find this in the `oxd-server/conf/oxd-conf.json` file).
-6. Click `Register` to continue.
+1. Automatically login any user with an account in the OpenID Provider: By setting login to automatic, any user with an account in the OP will be able to dynamically login for an account in your Roundcube site 
+1. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance `roundcube`. This is not configurable in all OPs. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role 
+1. URI of the OpenID Provider: insert the URI of the OpenID Connect Provider
+1. Custom URI after logout: custom URI after logout (for example "Thank you" page)
+1. oxd port: enter the oxd-server port (you can find this in the `oxd-server/conf/oxd-conf.json` file)
+1. Click `Register` to continue
 
 If your OpenID Provider supports dynamic registration, no additional steps are required in the general tab and you can navigate to the [OpenID Connect Configuration](#openid-connect-configuration) tab. 
 
@@ -53,7 +53,7 @@ If your OpenID Connect Provider doesn't support dynamic registration, you will n
 
 ![upload](https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/2.png)  
 
-To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
+To generate your `client_id` and `client_secret` use the redirect URI: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
 !!!Note: 
     If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the OpenID Connect > Clients page. Search for your `oxd id`.
@@ -84,7 +84,7 @@ In the plugin interface you can enable, disable and delete scopes.
 
 ### Attention
 
-For doing login to your RoundCube site, it is very important that your OP supports `imapData` scope, which contains your imap connection climes (`imapHost`,`imapPort`,`imapUsername`,`imapPassword`).
+For logging into your RoundCube site, it is very important that your OP supports `imapData` scope, which contains your imap connection climes (`imapHost`,`imapPort`,`imapUsername`,`imapPassword`).
 This is not configurable in all OP's. It is configurable if you are using a Gluu Server.
 For example : `imapHost` = `ssl://imap.gmail.com` ; `imapPort` = `993` ; `imapUsername` = `username@gmail.com` ; `imapPassword` = `password` ; 
 
@@ -92,7 +92,7 @@ For example : `imapHost` = `ssl://imap.gmail.com` ; `imapPort` = `993` ; `imapUs
 
 ##### Bypass the local RoundCube login page and send users straight to the OP for authentication
 
-Check this box so that when users attempt to login they are sent straight to the OP, bypassing the local RoundCube login screen.
+Check this box so that when users attempt to log in, they are sent straight to the OP, bypassing the local RoundCube login screen.
 When it is not checked, it will give proof the following screen.   
 
 ![upload](https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/4.png) 
@@ -103,7 +103,5 @@ To signal which type of authentication should be used, an OpenID Connect client 
 
 Navigate to your OpenID Provider configuration webpage `https://OpenID-Provider/.well-known/openid-configuration` to see supported `acr_values`. In the `Select acr` section of the plugin page, choose the mechanism which you want for authentication. 
 
-Note: If the `Select acr` value is `none`, users will be sent to pass the OP's default authentication mechanism.
-
-
-
+!!!Note
+    If the `Select acr` value is `none`, users will be sent to pass the OP's default authentication mechanism.
