@@ -34,9 +34,9 @@ pages:
         - 'Java': 'libraries/languages/java/index.md'
         - 'PHP':  'libraries/languages/php/index.md'
         - 'Node': 'libraries/languages/node/index.md'
-        #- 'Ruby': 'libraries/languages/ruby/index.md'
+        - 'Ruby': 'libraries/languages/ruby/index.md'
         - 'CSharp': 'libraries/languages/csharp/index.md'
-        #- 'Perl': 'libraries/languages/perl/index.md'
+        - 'Perl': 'libraries/languages/perl/index.md'
         #- 'Go': 'libraries/languages/go/index.md'
     - Frameworks:
         - 'Java Spring': 'libraries/framework/spring/index.md'
