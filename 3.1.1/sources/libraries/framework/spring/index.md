@@ -6,10 +6,10 @@ Use oxd's Java Spring library to send users from a Spring application to your Gl
     You can also refer to the [oxd-java library docs](../languages/java/) for more details on java classes.
 
 
-## Installation Guides
+## Installation Guide
 
 - [oxd-spring](https://github.com/GluuFederation/oxd-spring)
-- [Gluu Server](https://gluu.org/docs/ce/3.1.1/installation-guide/install/)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.2/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 
 
@@ -52,13 +52,13 @@ To use the oxd-java library, you will need:
 
 **Install oxd-spring**
 
-Your client application must have a valid SSL certificate, so the URL includes: `https://`    
+Your client application must have a valid SSL certificate, so it should support https connection(  the URL application URL should be in the form : `https://yourApplicationName`    
 
 The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
 
 **Linux**
 
-Host file location `/etc/host` :
+Host file location `/etc/hosts` :
 
 `127.0.0.1  client.example.com`  
 
