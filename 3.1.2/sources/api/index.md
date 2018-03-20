@@ -110,7 +110,10 @@ Request:
         "client_secret": "<client secret>",    <- REQUIRED
         "op_host":"https://<ophostname>"       <- REQUIRED
         "op_discovery_path":""                 <- OPTIONAL 
-        "scope":[]                             <- OPTIONAL 
+        "scope":[],                            <- OPTIONAL 
+        "authentication_method":"",            <- OPTIONAL, if value is missed then basic authentication is used. Otherwise it's possible to set `private_key_jwt` value for Private Key authentication.
+        "algorithm":"",                        <- OPTIONAL but is required if authentication_method=private_key_jwt. Valid values are none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512
+        "key_id":""                            <- OPTIONAL but is required if authentication_method=private_key_jwt. It has to be valid key id from key store.
     }
 }
 ```

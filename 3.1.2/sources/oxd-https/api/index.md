@@ -58,7 +58,11 @@ POST /get-client-token
 	"op_discovery_path":""                                                        <- OPTIONAL
 	"scope" : ["openid","profile","email","uma_protection"],                      <- OPTIONAL 
 	"client_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.5F14.B387", <- REQUIRED
-	"client_secret": "f436b936-03fc-433f-9772-53c2bc9e1c74"                       <- REQUIRED
+	"client_secret": "f436b936-03fc-433f-9772-53c2bc9e1c74",                      <- REQUIRED
+	"authentication_method":"",            <- OPTIONAL, if value is missed then basic authentication is used. Otherwise it's possible to set `private_key_jwt` value for Private Key authentication.
+    "algorithm":"",                        <- OPTIONAL but is required if authentication_method=private_key_jwt. Valid values are none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512
+    "key_id":""                            <- OPTIONAL but is required if authentication_method=private_key_jwt. It has to be valid key id from key store.
+
 }
 ```
 
