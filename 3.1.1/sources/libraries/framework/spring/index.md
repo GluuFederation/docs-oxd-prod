@@ -52,7 +52,7 @@ To use the oxd-java library, you will need:
 
 **Install oxd-spring**
 
-Your client application must have a valid SSL certificate, so it should support https connection(  the URL application URL should be in the form : `https://yourApplicationName`    
+Your client application must have a valid SSL certificate, so it should support https connection(the application URL should be in the form : `https://yourApplicationName`)    
 
 The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address. You can configure the hostname by adding the following entry in the host file:
 
