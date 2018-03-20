@@ -1,62 +1,73 @@
-# oxd-node
+# Node
 
-## Overview
-The following documentation demonstrates how to use oxd's Node.js library to 
-send users from a Node.js application to an OpenID Connect Provider (OP), 
-like the [Gluu Server](https://gluu.org/gluu-server) or Google, for login. 
+## Installation
+
+### Prerequisites
+
+- Node >= 6.x.x and NPM >= 3.x.x
+- npm 3.10.10
+
+### Library
+
+- *Install oxd-node via npm* - `npm install oxd-node`
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-node/archive/3.1.2.zip)
+
+### Important Links
+
+- [oxd docs](https://gluu.org/docs/oxd)
+- See the code of a [sample node app](https://github.com/GluuFederation/oxd-node/tree/3.1.2/oxd-node-demo) built using oxd-node.
+- Browse the oxd-node [source code on Github](https://github.com/GluuFederation/oxd-node).
+
+
+## Configuration
+
+oxd-node can communicate with the oxd server via sockets or HTTPS. There is no difference in code--just toggle the https_extension configuration property. Sockets are used when the oxd server is running locally.
+
+!!! Note
+    The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address
+
+**Configuration for oxd-server via sockets:**
+
+```
+const config = {
+  https_extension: false,
+  host: 'localhost',
+  port: '8099'
+};
+
+const oxd = require('oxd-node')(config);
+```
+
+**Configuration for oxd-https-extension:**
+
+```
+const config = {
+  https_extension: true,
+  host: 'https://server.running.oxd-https-extension',
+};
+
+const oxd = require('oxd-node')(config);
+```
 
 ## Sample Code 
 
-### OpenID Connect
-
-#### Setup Client
-
-In order to use an OpenID Connect Provider (OP) for login, 
-you need to setup your client application at the OpenID Connect Provider (OP). 
-During setup, oxd will dynamically register the OpenID Connect 
-client and save its configuration. Upon successful setup, the oxd-server will assign a unique oxd ID, return a Client ID and Client Secret. This Client ID and Client Secret can be used for `get_client_token` method. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a ClientID and Client Secret which can be passed to the `setup_client` method as a parameter. The Setup Client method is a one time task to configure a client in the oxd-server and OpenID Connect Provider (OP).
-
-**Parameters:**
-
-- authorization_redirect_uri: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
-- op_host: URL of the OpenID Connect Provider (OP)
-- post_logout_uri: (Optional) URL to which the user is redirected to after successful logout
-- application_type: (Optional) Application type, the default values are native or web. The default, if omitted, is web.
-- response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant types that the client is declaring that it will restrict itself to using
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Custom authentication script from the Gluu server.  Required for extended authentication.
-- client_name: (Optional) Client application name
-- client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
-- client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
-- client_frontchannel_logout_uris: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
-- contacts: (Optional) Array of e-mail addresses of people responsible for this client
-- ui_locales: (Optional) End user's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- claims_locales: (Optional) End user's preferred languages and scripts for claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
-- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
-- claims_redirect_uri: (Optional) The URI to which the client wishes the authorization server to direct the requesting party’s user agent after completing its interaction
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### Setup Client
 
 ```javascript
-oxd.Request.authorization_redirect_uri = req.body.redirect_uri;
-oxd.Request.op_host = req.body.op_host;
-oxd.Request.client_frontchannel_logout_uris = req.body.post_logout_uri;
-oxd.Request.post_logout_redirect_uri = req.body.post_logout_uri;
-oxd.Request.port = req.body.oxd_local_value;
-oxd.Request.scopes = gluu_scopes;
-oxd.Request.client_name = req.body.client_name;
-if(req.body.conn_type == "web"){
-    oxd.Request.url = req.body.oxd_web_value+"/setup-client";
-}
-oxd.setup_client(oxd.Request, function(response) {
-    console.log(response);
-}
+oxd.setup_client({
+  op_host: 'https://<ophostname>',
+  authorization_redirect_uri: 'https://client.example.com/cb',
+  scope: ['openid', 'email', 'profile', 'uma_protection'],
+  grant_types: ['authorization_code'],
+  client_name: 'oxd_node_client'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+
+  console.log(response);
+});
 ```
 
 **Response:**
@@ -77,34 +88,23 @@ oxd.setup_client(oxd.Request, function(response) {
 }
 ```
 
-#### Get Client Token
 
-The `get_client_token` method is used to get a token which is sent as an input parameter for other methods when the `protect_commands_with_access_token` is enabled in oxd-server.
-
-**Parameters:**
-
-- client_id: Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
-- client_secret: Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
-- op_host: URL of the OpenID Connect Provider (OP)
-- op_discovery_path: (Optional) Path to discovery document. For example if it's https://client.example.com/.well-known/openid-configuration then path is blank. But if it is https://client.example.com/oxauth/.well-known/openid-configuration then path is oxauth
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-
-**Request:**
+### Get Client Token
 
 ```javascript
-oxd.Request.op_host = req.body.op_host;
-oxd.Request.client_id = obj.client_id;
-oxd.Request.client_secret = obj.client_secret;
-oxd.Request.port = req.body.oxd_local_value;
-if(req.body.conn_type == "web"){
-    var oxd.Request.url = req.body.oxd_web_value+"/get-client-token";
-}
-oxd.get_client_access_token(oxd.Request, function(access_token_response){
-    console.log(access_token_response);
-}
+oxd.get_client_token({
+  client_id: '<client id>',
+  client_secret: '<client secret>',
+  scope: ['openid', 'email', 'profile', 'uma_protection'],
+  protection_access_token:'<access token of the client>'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+
+  console.log(response);
+});
 ```
 
 **Response:**
@@ -122,62 +122,62 @@ oxd.get_client_access_token(oxd.Request, function(access_token_response){
 ```
 
 
-#### Register Site
-
-In order to use an OpenID Connect Provider (OP) for login, 
-you need to register your client application at the OpenID Connect Provider (OP). 
-During registration oxd will dynamically register the OpenID Connect 
-client and save its configuration. Upon successful registration, a unique 
-identifier will be issued by the oxd-server. If your OpenID Connect Provider (OP) does not support dynamic registration (like Google), you will need to obtain a 
-ClientID and Client Secret which can be passed to the `register_site` method as a 
-parameter. The Register Site method is a one time task to configure a client in the 
-oxd-server and OpenID Connect Provider (OP).
-
-!!!Note: 
-    The `register_site` endpoint is not required if client is registered using `setup_client`
-
-**Parameters:**
-
-- authorization_redirect_uri: URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
-- op_host: URL of the OpenID Connect Provider (OP)
-- post_logout_uri: (Optional) URL to which the user is redirected to after successful logout
-- application_type: (Optional) Application type, the default values are native or web. The default, if omitted, is web.
-- response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant types the client is restricting itself to using
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Required for extended authentication. Custom authentication script from Gluu server.
-- client_name: (Optional) Client application name
-- client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
-- client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OP
-- client_frontchannel_logout_uris: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
-- contacts: (Optional) Array of e-mail addresses of people responsible for this client
-- ui_locales: (Optional) End user's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- claims_locales: (Optional) End user's preferred languages and scripts for claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- client_id: (Optional) Client ID from OpenID Connect Provider (OP). Should be passed with the Client Secret.
-- client_secret: (Optional) Client Secret from OpenID Connect Provider (OP). Should be passed with the Client ID.
-- claims_redirect_uri: (Optional) The URI to which the client wishes the authorization server to direct the requesting party’s user agent after completing its interaction
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### Introspect Access Token
 
 ```javascript
-oxd.Request.authorization_redirect_uri = req.body.redirect_uri;
-oxd.Request.op_host = req.body.op_host;
-oxd.Request.client_frontchannel_logout_uris = req.body.post_logout_uri;
-oxd.Request.post_logout_redirect_uri = req.body.post_logout_uri;
-oxd.Request.port = req.body.oxd_local_value;
-oxd.Request.scopes = gluu_scopes;
-oxd.Request.client_name = req.body.client_name;
-if(req.body.conn_type == "web"){
-    oxd.Request.url = req.body.oxd_web_value+"/register-site";
+oxd.introspect_access_token({
+  oxd_id: '<oxd Id>',
+  access_token:'<access token of the client>' 
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+  console.log(response);
+});
+```
+
+**Response:**
+
+```javascript
+{
+  "status":"ok",
+  "data":{
+      "active": true,
+      "client_id": "l238j323ds-23ij4",
+      "username": "John Black",
+      "scopes": ["read", "write"],
+      "token_type":"bearer"
+      "sub": "jblack",
+      "aud": "l238j323ds-23ij4",
+      "iss": "https://as.gluu.org/",
+      "exp": 1419356238,
+      "iat": 1419350238,
+      "acr_values": ["basic","duo"],
+      "extension_field": "twenty-seven"
+  }
 }
-oxd.register_site(oxd.Request, function(response) {
-    console.log(response);
-}
+```
+
+
+### Register Site
+
+```javascript
+oxd.register_site({
+  op_host: 'https://<ophostname>',
+  authorization_redirect_uri: 'https://client.example.org/cb',
+  scope: ['openid', 'email', 'profile', 'uma_protection'],
+  grant_types: ['authorization_code'],
+  client_name: 'oxd_node_client',
+  protection_access_token:'<access token of the client>'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+
+  console.log(response);
+});
 ```
 
 **Response:**
@@ -192,51 +192,24 @@ oxd.register_site(oxd.Request, function(response) {
 ```
 
 
-#### Update Site Registration
-
-The `update_site_registration` method can be used to update an existing client in the OpenID Connect Provider (OP). 
-Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret and other fields can be updated using this method.
-
-**Parameters:**
-
-- oxd_id: oxd ID from client registration
-- authorization_redirect_uri:  (Optional) URL to which the OpenID Connect Provider (OP) is authorized to redirect the user to after authorization
-- post_logout_uri: (Optional) URL to which the RP is requesting the end user's user agent be redirected to after a logout has been performed
-- response_types: (Optional) Determines the authorization processing flow to be used
-- grant_types: (Optional) Grant types the client is restricting itself to using
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Custom authentication script from the Gluu server. Required for extended authentication.
-- client_name: (Optional) Client application name
-- client_secret_expires_at: (Optional) Used to extend client lifetime (milliseconds since 1970)
-- client_jwks_uri: (Optional) URL for the client's JSON Web Key Set (JWKS) document
-- client_token_endpoint_auth_method: (Optional) Requested client authentication method for the Token Endpoint
-- client_request_uris: (Optional) Array of request_uri values that are pre-registered by the RP for use at the OpenID Connect Provider (OP)
-- client_frontchannel_logout_uris: (Optional) Client application Logout URL
-- client_sector_identifier_uri: (Optional) URL using the HTTPS scheme to be used in calculating pseudonymous identifiers by the OpenID Connect Provider (OP)
-- contacts: (Optional) Array of e-mail addresses of people responsible for this client
-- ui_locales: (Optional) End user's preferred languages and scripts for the user interface, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- claims_locales: (Optional) End user's preferred languages and scripts for claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### Update Site
 
 ```javascript
-    oxd.Request.authorization_redirect_uri = req.body.redirect_uri;
-    oxd.Request.op_host = req.body.op_host;
-    oxd.Request.client_frontchannel_logout_uris = req.body.post_logout_uri;
-    oxd.Request.post_logout_redirect_uri = req.body.post_logout_uri;
-    oxd.Request.port = req.body.oxd_local_value;
-    oxd.Request.oxd_id = obj.oxd_id;
-    oxd.Request.client_name = req.body.client_name;
-    oxd.Request.protection_access_token = access_token_data.data.access_token;
-    if(req.body.conn_type == "web"){
-        oxd.Request.url = req.body.oxd_web_value+"/update-site";
-    }
-    oxd.update_site_registration(oxd.Request, function(response) {
-        console.log(response); 
-    });
+oxd.update_site({
+  op_host: 'https://gluu.local.org',
+  authorization_redirect_uri: 'https://client.example.com:1338',
+  scope: ['openid', 'email', 'profile', 'uma_protection'],
+  grant_types: ['authorization_code'],
+  client_name: 'oxd_node_client',
+  protection_access_token:'<access token of the client>'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+
+  console.log(response);
+});
 ```
 
 **Response:**
@@ -251,41 +224,47 @@ Fields like Authorization Redirect URL, Post Logout URL, Scope, Client Secret an
 ```
 
 
-#### Get Authorization URL
-
-The `get_authorization_url` method returns the OpenID Connect Provider (OP) 
-Authentication URL to which the client application must redirect the user to 
-authorize the release of personal data. The Response URL includes state value, 
-which can be used to obtain tokens required for authentication. This state value is used 
-to maintain state between the request and the callback.
-
-**Parameters:**
-
-- oxd_id: oxd ID from client registration
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- acr_values: (Optional) Custom authentication script from the Gluu server.  Required for extended authentication. 
-- prompt: (Optional) Values that specifies whether the Authorization Server prompts the end user for reauthentication and consent
-- custom_params: (Optional) Custom parameters
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### Remove Site
 
 ```javascript
-oxd.Request.oxd_id = obj.oxd_id;
-oxd.Request.port = obj.port;
-oxd.Request.scope=["openid","profile","email","uma_protection","uma_authorization"];
-oxd.Request.custom_parameters = {
-    param1 : "value1",
-    param2 : "value2"
-};
-oxd.Request.protection_access_token = access_token_data.data.access_token;
-if(obj.conn_type == "web"){
-    var url = parametersData.httpBaseUrl+"/get-authorization-url";
+oxd.remove_site({
+  oxd_id: '<oxd Id>',
+  protection_access_token:'<access token of the client>' 
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+  console.log(response);
+});
+```
+
+**Response:**
+
+```javascript
+{
+    "status":"ok",
+    "data": {
+        "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF"
+    }
 }
-oxd.get_authorization_url(oxd.Request, function(response) {
-    console.log(response); 
+```
+
+
+### Get Authorization URL
+
+```javascript
+oxd.get_authorization_url({
+  oxd_id: '<oxd Id>',
+  scope: ['openid', 'profile', 'email', 'uma_protection'],
+  protection_access_token:'<access token of the client>'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+
+  console.log(response);
 });
 ```
 
@@ -301,33 +280,21 @@ oxd.get_authorization_url(oxd.Request, function(response) {
 ```
 
 
-#### Get Tokens by Code
-
-Upon successful login, the login result will return code and state. `get_tokens_by_code` method
-uses code and state to retrieve token which can be used to access user claims.
-
-**Parameters:**
-
-- oxd_id: oxd ID from client registration
-- code: The code from OpenID Connect Provider (OP) Authorization Redirect URL
-- state: The state from OpenID Connect Provider (OP) Authorization Redirect URL
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### Get Tokens by Code
 
 ```javascript
-oxd.Request.oxd_id = obj.oxd_id;
-oxd.Request.port = obj.port;
-oxd.Request.code = url_parts.query.code;
-oxd.Request.state = url_parts.query.state;
-oxd.Request.protection_access_token = access_token_data.data.access_token;
-if(obj.conn_type == "web"){
-    var url = parametersData.httpBaseUrl+"/get-tokens-by-code";
-}
-oxd.get_tokens_by_code(oxd.Request, function(response) {
-    console.log(response);
+oxd.get_tokens_by_code({
+  oxd_id: '<oxd Id>',
+  code: '<code>',
+  state: '<state>',
+  protection_access_token:'<access token of the client>'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+
+  console.log(response);
 });
 ```
 
@@ -339,7 +306,7 @@ oxd.get_tokens_by_code(oxd.Request, function(response) {
    "data":{
       "access_token":"1fd5b6b4-ffe3-49e3-b979-c277eacc53e9",
       "expires_in":299,
-      "id_token":"eyJraWQiOiJjYTU3NmIzZC0zNjVmLTRjN2EtOGFmYi1lYzE4NTM1N2E2YWYiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2lhbTMxMC5jZW50cm94eS5jb20iLCJhdWQiOiJAITgxRjYuNkMyQS41RkNFLkM0MDghMDAwMSEyOEJBLkNBREYhMDAwOCE0NTU2LjFGNzMuMzdCNC41OEEzIiwiZXhwIjoxNTA2NTQyNTEzLCJpYXQiOjE1MDY1Mzg5MTMsIm5vbmNlIjoia3NscGE2NnVyaXBvY2JjbTg0MG82aTZ2bjIiLCJhdXRoX3RpbWUiOjE1MDY1Mzg5MDAsImF0X2hhc2giOiJFR3RFVTNsa3B6aVkxbENwWXVsVEZ3Iiwib3hPcGVuSURDb25uZWN0VmVyc2lvbiI6Im9wZW5pZGNvbm5lY3QtMS4wIiwic3ViIjoiM011MThmSzBfWk9LYjU2cFZVRHAwc1FFbHV3RTVqMXRwUGZ1MFBLMVlaRSJ9.o-FvttJmt5gNeSiqyQWio5r4_Gw20DAeNsWnlMQM03XPtRhZQ8Jd0a_8Y_vOZr5YolwsBJQOwkqAZZkDnHJT_utlMRYEZ_vP5AoGS_kwTHFH37g3S1xhc4HxmJiJGl0Rv3id6w5pJyxkiInKKSAJexWIlM_wGp8iWHfcQ4NU9NgdsHkPmpyMZHhdaqV_6MpPut9BqjWez8BQazY5oJ8WTE-nQ_bBhlS8RSzIES1UTbdYVZsizQ77lfrroybZTPQxdfl0a_iCLy4BjR_ih4V9dhsY6NK7sFh6WNArOjjIOTPdk3MStwnI19hJW5xDDsyRFs9YZ7X0kecPC87xw20ntg",
+      "id_token":"eyJraWQiO...kecPC87xw20ntg",
       "refresh_token":"1ffe5bf0-6cbc-44e9-a1a9-cfdb48f2a499",
       "id_token_claims":{}
    }
@@ -347,32 +314,21 @@ oxd.get_tokens_by_code(oxd.Request, function(response) {
 ```
 
 
-#### Get Access Token by Refresh Token
-
-The `get_access_token_by_refresh_token` method is used to get a new access token and a new refresh token by using the refresh token which is obtained from `get_tokens_by_code` method.
-
-**Parameters:**
-
-- oxd_id: oxd ID from client registration
-- refreshToken: Obtained from the get_tokens_by_code method
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### Get Access Token by Refresh Token
 
 ```javascript
-oxd.Request.oxd_id = obj.oxd_id;
-oxd.Request.port = obj.port;
-oxd.Request.refresh_token = response.data.refresh_token;
-oxd.Request.scope = oxd.Request.scope=["openid","profile","email","uma_protection","uma_authorization"];
-oxd.Request.protection_access_token = access_token_data.data.access_token;
-if(obj.conn_type == "web"){
-    oxd.Request.url = parametersData.httpBaseUrl+"/get-client-token";
-}
-oxd.get_access_token_by_refresh_token(oxd.Request, function(access_token){
-    console.log(response);
+oxd.get_access_token_by_refresh_token({
+  oxd_id: '<oxd Id>',
+  refresh_token: '<refresh token>',
+  scope: ['openid', 'profile'],
+  protection_access_token:'<access token of the client>'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+
+  console.log(response);
 });
 ```
 
@@ -390,32 +346,20 @@ oxd.get_access_token_by_refresh_token(oxd.Request, function(access_token){
 }
 ```
 
-
-#### Get User Info
-
-Once the user has been authenticated by the OpenID Connect Provider (OP), 
-the `get_user_info` method returns the claims (First Name, Last Name, E-Mail ID, etc.) about the authenticated end user.
-
-**Parameters:**
-
-- oxd_id: oxd ID from client registration
-- access_token: access_token from get_tokens_by_code or get_access_token_by_refresh_token
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### Get User Info
 
 ```javascript
-oxd.Request.oxd_id = obj.oxd_id;
-oxd.Request.port = obj.port;
-oxd.Request.access_token = access_token_data.data.access_token;
-oxd.Request.protection_access_token = access_token_data.data.access_token;
-if(obj.conn_type == "web"){
-    oxd.Request.url = parametersData.httpBaseUrl+"/get-user-info";
-}
-oxd.get_user_info(oxd.Request, function(response) {
-    console.log(response);
+oxd.get_user_info({
+  oxd_id: '<oxd Id>',
+  access_token: '<access token>',
+  protection_access_token:'<access token of the client>'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+
+  console.log(response);
 });
 ```
 
@@ -455,33 +399,19 @@ oxd.get_user_info(oxd.Request, function(response) {
 ```
 
 
-#### Logout
-
-`get_logout_uri` method returns the OpenID Connect Provider (OP) Logout URL. 
-Client application uses this Logout URL to end the user session.
-
-**Parameters:**
-
-- oxd_id: oxd ID from client registration
-- id_token_hint: (Optional) ID Token previously issued by the Authorization Server being passed as a hint about the end user's current or past authenticated session with the client
-- post_logout_redirect_uri: (Optional) URL to which user is redirected to after successful logout
-- state: (Optional) Value used to maintain state between the request and the callback
-- session_state: (Optional) JSON string that represents the end user’s login state at the OpenID Connect Provider (OP)
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### Get Logout URI
 
 ```javascript
-oxd.Request.oxd_id = obj.oxd_id;
-oxd.Request.port = obj.port;
-oxd.Request.protection_access_token = access_token_data.data.access_token;
-if(obj.conn_type == "web"){
-    oxd.Request.url = parametersData.httpBaseUrl+"/get-logout-uri";
-}
-oxd.get_logout_uri(oxd.Request, function(response) {
-    console.log(response);
+oxd.get_logout_uri({
+  oxd_id: '<oxd Id>',
+  protection_access_token:'<access token of the client>'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+
+  console.log(response);
 });
 ```
 
@@ -491,51 +421,93 @@ oxd.get_logout_uri(oxd.Request, function(response) {
 {  
    "status":"ok",
    "data":{  
-      "uri":"<op host name>/oxauth/restv1/end_session?id_token_hint=eyJraWQiOiJjYTU3NmIzZC0zNjVmLTRjN2EtOGFmYi1lYzE4NTM1N2E2YWYiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2lhbTMxMC5jZW50cm94eS5jb20iLCJhdWQiOiJAITgxRjYuNkMyQS41RkNFLkM0MDghMDAwMSEyOEJBLkNBREYhMDAwOCE0NTU2LjFGNzMuMzdCNC41OEEzIiwiZXhwIjoxNTA2NTQyNTEzLCJpYXQiOjE1MDY1Mzg5MTMsIm5vbmNlIjoia3NscGE2NnVyaXBvY2JjbTg0MG82aTZ2bjIiLCJhdXRoX3RpbWUiOjE1MDY1Mzg5MDAsImF0X2hhc2giOiJFR3RFVTNsa3B6aVkxbENwWXVsVEZ3Iiwib3hPcGVuSURDb25uZWN0VmVyc2lvbiI6Im9wZW5pZGNvbm5lY3QtMS4wIiwic3ViIjoiM011MThmSzBfWk9LYjU2cFZVRHAwc1FFbHV3RTVqMXRwUGZ1MFBLMVlaRSJ9.o-FvttJmt5gNeSiqyQWio5r4_Gw20DAeNsWnlMQM03XPtRhZQ8Jd0a_8Y_vOZr5YolwsBJQOwkqAZZkDnHJT_utlMRYEZ_vP5AoGS_kwTHFH37g3S1xhc4HxmJiJGl0Rv3id6w5pJyxkiInKKSAJexWIlM_wGp8iWHfcQ4NU9NgdsHkPmpyMZHhdaqV_6MpPut9BqjWez8BQazY5oJ8WTE-nQ_bBhlS8RSzIES1UTbdYVZsizQ77lfrroybZTPQxdfl0a_iCLy4BjR_ih4V9dhsY6NK7sFh6WNArOjjIOTPdk3MStwnI19hJW5xDDsyRFs9YZ7X0kecPC87xw20ntg"
+      "uri":"<op host name>/oxauth/restv1/end_session?id_token_hint=eyJraWQiO..87xw20ntg"
    }
 }
 ```
 
-### UMA
-
-#### RS Protect
-
-`uma_rs_protect` method is used for protecting resources by the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
-The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
-
-**Parameters:**
-
-- oxd_id: oxd ID from client registration
-- resources: One or more protected resources that a resource server manages, abstractly, as a set. In authorization policy terminology, a resource set is the "object" being protected. 
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### UMA RS Protect
 
 ```javascript
-oxd.Request.oxd_id = obj.oxd_id;
-oxd.Request.port = obj.port;
-var resources = [
-                    {
-                        path: "/photo",
-                        conditions: [
-                            {
-                                httpMethods:["GET"],
-                                scopes:["https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1"],
-                                ticketScopes:["https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1"]
-                            }
-                        ]
-                    }
-                ];
-oxd.Request.resources = resources;
-oxd.Request.protection_access_token = access_token_data.data.access_token;
-if(obj.conn_type == "web"){
-    oxd.Request.url = parametersData.httpBaseUrl+"/uma-rs-protect";
-}
-oxd.uma_rs_protect(oxd.Request, function(response) {
+oxd.uma_rs_protect({
+    oxd_id: '<oxd Id>',
+    protection_access_token:'<access token of the client>'
+    resources: [
+      {
+        path: '/photo',
+        conditions: [
+          {
+            httpMethods: [
+              'GET'
+            ],
+            scopes:["https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1"],
+            ticketScopes:["https://scim-test.gluu.org/identity/seam/resource/restv1/scim/vas1"]
+          }
+        ]
+      }
+    ]
+  },
+  (err, response) => {
+    if (err) {
+      console.log('Error : ', err);
+      return;
+    }
+
     console.log(response);
-});
+  });
+```
+
+**RS Protect with scope_expression:**
+
+```javascript
+oxd.uma_rs_protect({
+    oxd_id: '<oxd Id>',
+    protection_access_token:'<access token of the client>'
+    resources: [
+      {
+        path: '/photo',
+        conditions: [
+          {
+            httpMethods: [
+              'GET'
+            ],
+            scope_expression: {
+              rule: {
+                and: [
+                  {
+                    or: [
+                      {
+                        var: 0
+                      },
+                      {
+                        var: 1
+                      }
+                    ]
+                  },
+                  {
+                    var: 2
+                  }
+                ]
+              },
+              data: [
+                'http://photoz.example.com/dev/actions/all',
+                'http://photoz.example.com/dev/actions/add',
+                'http://photoz.example.com/dev/actions/internalClient'
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  },
+  (err, response) => {
+    if (err) {
+      console.log('Error : ', err);
+      return;
+    }
+
+    console.log(response);
+  });
 ```
 
 **Response:**
@@ -545,34 +517,21 @@ result = true
 ```
 
 
-#### RS Check Access 
-
-`uma_rs_check_access` method is used in the UMA Resource Server to check the access to the resource.
-
-**Parameters:**
-
-- oxd_id: oxd ID from client registration
-- rpt: Requesting Party Token
-- path: Path of the resource to be checked 
-- http_method: HTTP methods (POST, GET and PUT)
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### UMA RS Check Access 
 
 ```javascript
-oxd.Request.oxd_id = obj.oxd_id;
-oxd.Request.port = obj.port;
-oxd.Request.rpt = "";
-oxd.Request.http_method = "GET";
-oxd.Request.path = "/photo";
-oxd.Request.protection_access_token = access_token_data.data.access_token;
-if(obj.conn_type == "web"){
-    var oxd.Request.url = parametersData.httpBaseUrl+"/uma-rs-check-access";
-}
-oxd.uma_rs_check_access(oxd.Request, function(response) {
-    console.log(response);
+oxd.uma_rs_check_access({
+  oxd_id: '<oxd Id>',
+  rpt: '<RPT>',
+  path: '<path of resource>',
+  http_method: '<http method of RP request>',
+  protection_access_token:'<access token of the client>'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+  console.log(response);
 });
 ```
 
@@ -629,36 +588,58 @@ oxd.uma_rs_check_access(oxd.Request, function(response) {
 ```
 
 
-#### RP Get RPT 
-
-The method uma_rp_get_rpt is called in order to obtain the RPT (Requesting Party Token). 
-
-**Parameters:**
-
-- oxd_id: oxd ID from client registration
-- ticket: Client Access Ticket generated by uma_rs_check_access method
-- claim_token: (Optional) A package of claims provided by the client to the authorization server through claims pushing
-- claim_token_format: (Optional) A string containing directly pushed claim information in the indicated format. Must be base64url encoded unless otherwise specified.  
-- pct: (Optional) Persisted Claims Token
-- rpt: (Optional) Requesting Party Token
-- scope: (Optional) A scope is an indication by the client that it wants to access some resource provided by the OpenID Connect Provider (OP)
-- state: (Optional) State that is returned from uma_rp_get_claims_gathering_url method
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### UMA Introspect RPT
 
 ```javascript
-oxd.Request.oxd_id = obj.oxd_id;
-oxd.Request.port = obj.port;
-oxd.Request.ticket = "09f32169-de52-42fe-9796-59ba21637a64";
-oxd.Request.protection_access_token = access_token_data.data.access_token;
-if(obj.conn_type == "web"){
-    oxd.Request.url = parametersData.httpBaseUrl+"/uma-rp-get-rpt";
+oxd.introspect_rpt({
+  oxd_id: '<oxd Id>',
+  rpt:'<access token of the client>' 
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+  console.log(response);
+});
+```
+
+**Response:**
+
+```javascript
+{
+  "status":"ok",
+  "data":{
+      "active":true,
+      "exp":1256953732,
+      "iat":1256912345,
+      "permissions":[  
+          {  
+              "resource_id":"112210f47de98100",
+              "resource_scopes":[  
+                  "view",
+                  "http://photoz.example.com/dev/actions/print"
+              ],
+              "exp":1256953732
+          }
+      ]
+  }
 }
-oxd.uma_rp_get_rpt(oxd.Request, function(response) {
-    console.log(response);
+```
+
+
+### UMA RP Get RPT 
+
+```javascript
+oxd.uma_rp_get_rpt({
+  oxd_id: '<oxd Id>',
+  ticket: '<ticket>',
+  protection_access_token:'<access token of the client>'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+  console.log(response);
 });
 ```
 
@@ -719,30 +700,20 @@ oxd.uma_rp_get_rpt(oxd.Request, function(response) {
 ```
 
 
-#### RP Get Claims Gathering URL 
-
-**Parameters:**
-
-- oxd_id: oxd ID from client registration
-- ticket: Client Access Ticket generated by uma_rs_check_access method
-- claims_redirect_uri: The URI to which the client wishes the authorization server to direct the requesting party’s user agent after completing its interaction
-- protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
-- port: (Optional) oxd port number for oxd-server type (Required if oxd-server is used)
-- url: (Optional) oxd-https-extension URL for oxd-https-extension type (Required if oxd-https-extension is used)
-
-**Request:**
+### UMA RP Get Claims Gathering URL 
 
 ```javascript
-oxd.Request.oxd_id = obj.oxd_id;
-oxd.Request.port = obj.port;
-oxd.Request.ticket = "09f32169-de52-42fe-9796-59ba21637a64";
-oxd.Request.claims_redirect_uri = "https://client.example.com:5053/settings";
-oxd.Request.protection_access_token = access_token_data.data.access_token;
-if (obj.conn_type == "web") {
-    oxd.Request.url = parametersData.httpBaseUrl + "/uma-rp-get-claims-gathering-url";
-}
-oxd.uma_rp_get_claims_gathering_url(oxd.Request, function (response) {
-    console.log(response);
+oxd.uma_rp_get_claims_gathering_url({
+  oxd_id: '<oxd Id>',
+  ticket: '<ticket>',
+  claims_redirect_uri: 'https://client.example.com/cb',
+  protection_access_token:'<access token of the client>'
+}, (err, response) => {
+  if (err) {
+    console.log('Error : ', err);
+    return;
+  }
+  console.log(response);
 });
 ```
 
@@ -762,86 +733,18 @@ oxd.uma_rp_get_claims_gathering_url(oxd.Request, function (response) {
 }
 ```
 
-## Sample Project
-### Software Requirements
+## Tests
 
-System Requirements:
-
-- Ubuntu / Debian / CentOS / RHEL / Windows Server 2008 or higher
-- Node 6.11.0
-- npm 3.10.10
-
-To use the oxd-node library, you will need:
-
-- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
-- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
-- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)).
-- A Windows server or Windows installed machine / Linux server or Linux installed machine.
-
-
-### Install oxd-node
-
-To install oxd-node via npm, run following commands in Linux terminal or Windows command window:
-
-``` {.code }
-npm install oxd-node@3.1.2
-```
-
-
-### Configure the Client Application
-
-- Your client application must have a valid SSL certificate, so the URL includes: `https://`
-
-- Enable SSL by setting the valid certificate and key in your application "index.js" file:
-
-```javascript
-var options = {
-    key: fs.readFileSync(__dirname + '/<key file name>.pem'),
-    cert: fs.readFileSync(__dirname + '/<certificate file name>.pem')
-};
+oxd-node contains extensive tests for quality assurance
 
 ```
-    
-- The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP Address. 
-You can configure the hostname by adding the following entry in your host file:
-
-    **Linux**
-
-    Host file location `/etc/host` :
-
-    `127.0.0.1  client.example.com`  
-        
-    **Windows**
-
-    Host file location `C:\Windows\System32\drivers\etc\host` :
-
-    `127.0.0.1  client.example.com`
-
-- To install dependencies for this application navigate to the "oxd-node-demo" folder in terminal(linux)/command prompt(windows) and run:
-
-```shell
-npm install
-```
-- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-node/archive/3.1.1.zip) and navigate to `oxd-node-demo` directory inside the project.
-
-- The port number for this application to run can be set in "properties.js" file, which you can use to run this application in any free port. By default the port number is set to "5053" which we will assume as the port number of this application for further parts of this documentation.
-
-- Run this project with "Node.js" with the following command from the same folder i.e. "oxd-node-demo":
-
-```shell
-node index.js
+npm test
 ```
 
-- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+## Examples
 
-    - Setup Client URL: https://client.example.com:5053/settings
-    - Login URL: https://client.example.com:5053/login
-    - UMA URL: https://client.example.com:5053/uma
-
-
-- This oxd Node.js library uses two configuration files (`settings.json` and `parameters.json`) to specify information needed by the OpenID Connect dynamic client registration. To save information that is returned (oxd_id, client_id, client_secret, etc.) the configuration file needs to be writable by the client application.
-
+The `oxd-node-demo` directory contains apps and scripts written using oxd-node for OpenID Connect
 
 ## Support
-Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
 
+Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
