@@ -426,6 +426,7 @@ POST /uma-rs-protect
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
 	"oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6",  <- REQUIRED
+    "overwrite":false,                                 <- OPTIONAL oxd_id registers resource, if send uma_rs_protect second time with same oxd_id and overwrite=false then it will fail with error uma_protection_exists. overwrite=true means remove existing UMA Resource and register new based on JSON Document.
 	"resources": [{                                    <- REQUIRED
 		"path": "/scim",
 		"conditions": [{
