@@ -35,17 +35,17 @@ Below are minimal configuration examples for sockets and https transport. The [o
 
 **Configuration for oxd-server via sockets:**
 
- ```ini  
- "connection_type": "local",  
-  "oxd_host": "127.0.0.1",  
-  "oxd_host_port": 8099  
+ ```
+"connection_type": "local",  
+"oxd_host": "127.0.0.1",  
+"oxd_host_port": 8099  
  ```  
 
 **Configuration for oxd-https-extension:**
 
-```ini  
-  "connection_type": "web",  
-  "http_rest_url": "https://127.0.0.1:8443"  
+```
+"connection_type": "web",  
+"http_rest_url": "https://127.0.0.1:8443"  
 ```  
 
 ## Sample Code 

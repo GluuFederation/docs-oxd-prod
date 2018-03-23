@@ -16,22 +16,22 @@ in your project root:
 
 composer require "gluufederation/oxd-php-api": "3.1.2"
 
-- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-php-library/archive/v3.1.2.zip) the zip of the oxd PHP library.
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-php-library/archive/3.1.2.zip) the zip of the oxd PHP library.
 
-#### Important Links
+### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- oxd-php-library [API docs](https://rawgit.com/GluuFederation/oxd-php-library/v3.1.2/docs/html/index.html) for the auto-generated php docs, which includes more in-depth information about the various functions and parameters.(https://rawgit.com/GluuFederation/oxd-php-library/3.1.2/docs/html/index.html)
+- oxd-php-library [API docs](https://rawgit.com/GluuFederation/oxd-php-library/3.1.2/docs/html/index.html) for the auto-generated php docs, which includes more in-depth information about the various functions and parameters
 - See the code of a [sample php app](https://github.com/GluuFederation/oxd-php-library/tree/3.1.2/client.example.com) built using oxd-php-library.
 - Browse the oxd-php-library [source code on Github](https://github.com/GluuFederation/oxd-php-library).
 
 ## Configuration 
 
 The oxd-php-library configuration file is located in 
-'oxd-rp-settings.json'. The values here are used during 
+[oxd-rp-settings.json](https://github.com/GluuFederation/oxd-php-library/blob/3.1.2/client.example.com/oxdlibrary/oxd-rp-settings.json). The values here are used during 
 registration. For a full list of supported
 oxd configuration parameters, see the 
-[oxd documentation](https://gluu.org/docs/oxd/protocol/)
+[oxd documentation](https://gluu.org/docs/oxd/api/)
 
 !!! Note: 
     The client hostname should be a valid `hostname`(FQDN), not a localhost or an IP address.
@@ -71,8 +71,8 @@ Below is a typical configuration data set for registration:
 **oxd-https-extension Configuration**
 
 The oxd-https-extenssion configuration file is located in 
-'oxdHttpConfig.php'. The values here are used during 
-the usage of all oxd protocols.For a full list of supported protocols, see the [oxd protocol](https://gluu.org/docs/oxd/protocol/) documentation.
+[oxdHttpConfig.php](https://github.com/GluuFederation/oxd-php-library/blob/3.1.2/client.example.com/oxdlibrary/oxdHttpConfig.php). The values here are used during 
+the usage of all oxd protocols.For a full list of supported commands, see the [oxd API](https://gluu.org/docs/oxd/api/) documentation.
 
 By passing this configuration into any oxd php library class constructor, we can enable oxd-https-extension to connect oxd through https.
 
