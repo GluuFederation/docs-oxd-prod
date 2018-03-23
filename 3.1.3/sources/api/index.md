@@ -586,6 +586,7 @@ Request with `scope_expression`. `scope_expression` is a Gluu-invented extension
   "command": "uma_rs_protect",
   "params": {
     "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF",  <-REQUIRED
+    "overwrite":false,                                 <- OPTIONAL oxd_id registers resource, if send uma_rs_protect second time with same oxd_id and overwrite=false then it will fail with error uma_protection_exists. overwrite=true means remove existing UMA Resource and register new based on JSON Document.
     "resources": [  <-  REQUIRED
       {
         "path": "/photo",
