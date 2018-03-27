@@ -87,7 +87,7 @@ oxd native client libraries provide simple and flexible access to the oxd APIs.
 
 ## Plugins
 
-Gluu currently publishes oxd plugins, modules, and extensions for the following open source applications:    
+Gluu publishes oxd plugins, modules, and extensions for a few popular open source applications:    
 
 - [Wordpress](./plugin/wordpress/index.md)      
 - [Magento](./plugin/magento/index.md)       
@@ -98,7 +98,7 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [Roundcube](./plugin/roundcube/index.md)  
 - [NextCloud](./plugin/nextcloud/index.md) 
 
-Gluu does not guarantee specific functionality in oxd plugins. If you find a bug or need feature enhancements, just open a ticket on [Gluu support](https://support.gluu.org).  
+Specific functionality is not guaranteed. If you spot a bug or need feature enhancements, open a ticket on [Gluu support](https://support.gluu.org).  
 
 ## Pricing & Billing
 
