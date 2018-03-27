@@ -32,23 +32,20 @@ oxd 3.1.2 has been confirmed to work with the following standard OpenID Provider
 
 The oxd software package includes the `oxd-server` and the `oxd-https-extension`. 
 
-`oxd-server` is designed to work as a standalone service daemon via sockets. By default, API calls to the `oxd-server` must come via `localhost`. Optionally, if you want to make RESTful calls over the web to `oxd-server`, after installation you can enable the `oxd-https-extension`. 
+`oxd-server` is designed to work as a standalone service daemon via sockets. By default, API calls to the `oxd-server` must come via `localhost`. Optionally, if you want to make RESTful calls to `oxd-server` over the web, after installation you can enable the `oxd-https-extension`. 
 
 Follow these steps to get started:
 
-**Step 1**: [Sign up](https://oxd.gluu.org/account/register/) on the oxd website to obtain your oxd license and $50 credit.
+**Step 1**: [Sign up](https://oxd.gluu.org/account/register/) to obtain your oxd license and $50 credit.
 
-**Step 2**: [Install](./install/index.md) oxd on a server or VM.
-
-!!! Note: 
-    By default `oxd-server` needs to be installed on the same server(s) as the app(s) you are securing. If you enable `oxd-https-extension` (steps 5-7), oxd can be installed on any server or VM with network access.
+**Step 2**: [Install](./install/index.md) oxd on the same server or VM as your application (or any machine if you plan to use the https extension)
 
 **Step 3**: [Configure](./configuration/index.md) the `oxd-server` and add your license keys.           
 
 **Step 4**: [Start](./install/index.md) the `oxd-server`.
 
 !!! Note: 
-    To use the RESTful `oxd-https-extension`, follow steps 5-7. Otherwise jump to step 8. 
+    To enable the `oxd-https-extension`, follow steps 5-7. Otherwise jump to step 8. 
     
 **Step 5**: [Install](./oxd-https/start/index.md) the `oxd-https-extension` (for manual installation only, skip if you installed oxd via Linux Package)
     
