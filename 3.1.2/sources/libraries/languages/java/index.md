@@ -1,5 +1,6 @@
 # oxd-java
 
+<!--
 ## Overview
 
 Use oxd Java library to:
@@ -11,20 +12,19 @@ Use oxd Java library to:
 - Perform log out of the OP
 
 - Implement protection of web resources enabling a resource server and a client to support the [UMA 2.0](https://docs.kantarainitiative.org/uma/ed/oauth-uma-grant-2.0-04.html) workflow in conjuction with a UMA 2.0 compliant server (such as Gluu Server)
- 
-## Sample Project
+-->
 
-In [this repo](https://github.com/GluuFederation/oxd-java-sample), you can find a Java web project that showcases how to integrate the library and illustrates the step-by-step process of OpenId Authentication.
+## Installation
 
-Check the [readme](https://github.com/GluuFederation/oxd-java-sample/blob/master/README.md) and learn how easy it is to get it up and running.
+### Prerequisites
 
-## Operations summary and sample code 
+- Java SE 1.7
+- Gluu oxd server - [Installation docs](https://gluu.org/docs/oxd/install/)
+- SSL certificate for the application
 
-In this section, code snippets that exemplify the authentication steps of OpenID Connect are presented. They resemble the operations listed in the [API page](https://gluu.org/docs/oxd/api/) using Java idiom, of course. Use the hints given in the API page to determine which parameters are required for every operation and learn more about the operations intent.
+### Library
 
-### Requisites
-
-In your Maven project add the following dependency to your `pom.xml`:
+To write apps that use oxd-java, just add the following dependency to your `pom.xml` (Maven project):
 
 ```
 <dependency>
@@ -34,9 +34,35 @@ In your Maven project add the following dependency to your `pom.xml`:
 </dependency>
 ```
 
-### OpenID Connect
+If you do not use a build tool, you will have to include the [jar file](https://ox.gluu.org/maven/org/xdi/oxd-client/3.1.2.Final/oxd-client-3.1.2.Final.jar) manually in your project, as well as a good number of jars it depends on.
 
-#### Setup Client
+### Important links
+
+- [oxd docs](https://gluu.org/docs/oxd)
+- oxd java sample webapp [repo](https://github.com/GluuFederation/oxd-java-sample)
+- Browse the [oxd-java](https://github.com/GluuFederation/oxd/tree/version_3.1.2/oxd-client) source code on github
+
+## Configuration 
+
+There are no configuration files for oxd-java. All parameters are set in your Java code.
+
+## Sample Code
+
+In [this repo](https://github.com/GluuFederation/oxd-java-sample), you can find a Java web project that showcases how to integrate the library and illustrates the step-by-step process of OpenId Authentication. Check the [readme](https://github.com/GluuFederation/oxd-java-sample/blob/master/README.md) and learn how to get it up and running. 
+
+Use the hints given in the [API page](https://gluu.org/docs/oxd/api/) to determine which parameters are required for every operation listed below and to learn more about the operations intent.
+
+<!--
+## Operations summary and sample code 
+
+In this section, code snippets that exemplify the authentication steps of OpenID Connect are presented. They resemble the operations listed in the [API page](https://gluu.org/docs/oxd/api/) using Java idiom, of course. 
+-->
+
+### Initialization
+
+There are no initialization steps for oxd-java.
+
+### Setup Client
 
 !!! Note: 
     Use this operation only when communication with oxd is established via https.
@@ -55,7 +81,7 @@ A working example can be found at sample project: See method `doRegistrationHttp
 Recall that Setup Client is a one-time task.
 
 
-#### Get Client Token
+### Get Client Token
 
 !!! Note:
     Use this operation only when communication with oxd is established via https.
@@ -68,7 +94,7 @@ To learn more about the input and output of this operation check the [API page](
 
 A working example can be found at sample project: See method `getPAT` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java). There, for simplicity a new PAT is requested every time an operation is called (the expiration time is not being used).
 
-#### Register Site
+### Register Site
 
 !!! Note: 
     You can skip this operation if already used [Setup Client](#setup-client)
@@ -84,7 +110,7 @@ A working example can be found at sample project: See method `doRegistrationSock
 Recall that Register Site is a one-time task.
 
 
-#### Update Site Registration
+### Update Site Registration
 
 This operation is aimed at updating a current registration. The parameters are equivalent to those of [Register Site](#register-site) in addition to **oxd_id**.
 
@@ -109,7 +135,7 @@ UpdateSiteResponse resp = client.send(command).dataAsResponse(UpdateSiteResponse
 boolean updated = resp!=null;
 ```        
 
-#### Get Authorization URL
+### Get Authorization URL
 
 This operation returns a URL to which your application must redirect the user's browser to start the authentication process at the OP.
 
@@ -118,7 +144,7 @@ To learn about the parameters supported by this operation check the [API page](h
 A working example can be found in the sample project: See method `getAuthzUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
 
-#### Get Tokens by Code
+### Get Tokens by Code
 
 After authentication, the OP sends the user's browser back to the `redirect_uri` page with a couple of query parameters in the URL: `code` and `state`. Use those to issue a call to this API operation.
 
@@ -126,7 +152,7 @@ As a response, you will get an access token (not to be confused with the token o
 
 A working example can be found at sample project: See method `GetTokensByCodeResponse` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
-#### Get Access Token by Refresh Token
+### Get Access Token by Refresh Token
 
 The access token obtained at [Get Tokens by Code](#get-tokens-by-code) has an expiration time too. If your application has the need to obtain a fresher access token, this operation is useful. Simply provide the `refresh_token` that you received when the call to Get Tokens by Code was made.
 
@@ -150,7 +176,7 @@ String newAccessToken=resp.getAccessToken();
 String newRefreshToken=resp.getRefreshToken();
 ```
 
-#### Get User Info
+### Get User Info
 
 Use this operation to obtain user claims (e.g. first name, last name, e-mail, etc.) about the authenticated end-user. 
 
@@ -160,7 +186,7 @@ The set of claims in the response depends on the access privileges associated to
 
 A working example can be found at sample project: See method `getUserInfo` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
-#### Get Logout URI
+### Get Logout URI
 
 Use this method if you intend to log out the user of the OP. This will return a URL where you can redirect the user's browser to initiate the logout process.
 
@@ -168,9 +194,7 @@ To learn more about the input and output of this operation check the [API page](
 
 A working example can be found at sample project: See method `getLogoutUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
-### UMA
-
-#### RS Protect
+### RS Protect
 
 `send` method is used for protecting resources with the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
 The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
@@ -203,7 +227,7 @@ return resp;
 }
 ```
 
-#### RS Check Access 
+### RS Check Access 
 
 `send` method is used in the UMA Resource Server to check the access to the resource.
 
@@ -286,7 +310,7 @@ return response;
 ```
 
 
-#### RP Get RPT 
+### RP Get RPT 
 
 The method `send` is called in order to obtain the RPT (Requesting Party Token). 
 
@@ -391,7 +415,7 @@ try {
 ```
 
 
-#### RP Get Claims Gathering URL 
+### RP Get Claims Gathering URL 
 
 **Parameters:**
 
@@ -445,6 +469,9 @@ try {
     }
 }
 ```
+
+## Tests
+The test suite for oxd-java can be found at the corresponding [test](https://github.com/GluuFederation/oxd/tree/version_3.1.2/oxd-client/src/test) directory in oxd github repo.
 
 ## Support
 
