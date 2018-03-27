@@ -11,7 +11,7 @@
 To install gem, add this line to your application's Gemfile:
 
 ```ruby
-gem 'oxd-ruby', '~> 1.0.1'
+gem 'oxd-ruby', '~> 1.0.2'
 ```
 
 Run bundle command to install it:
@@ -23,7 +23,7 @@ $ bundle install
 #### Important Links
 
 * [oxd docs](https://gluu.org/docs/oxd)
-* oxd-ruby [API docs](http://www.rubydoc.info/gems/oxd-ruby/1.0.1) for the auto-generated ruby docs, which includes more in-depth information about the various functions and parameters.
+* oxd-ruby [API docs](http://www.rubydoc.info/gems/oxd-ruby/1.0.2) for the auto-generated ruby docs, which includes more in-depth information about the various functions and parameters.
 * See the code of a [sample Rails app](https://github.com/GluuFederation/oxd-ruby-demo-app) built using oxd-ruby.
 * Browse the oxd-ruby [source code on Github](https://github.com/GluuFederation/oxd-ruby).
 
