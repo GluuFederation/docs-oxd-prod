@@ -42,7 +42,7 @@ Follow these steps to get started:
 
 **Step 3**: [Configure](./configuration/index.md) the `oxd-server` and add your license keys.           
 
-**Step 4**: [Start](./install/index.md) the `oxd-server`.
+**Step 4**: [Start](./install/index.md) the `oxd-server`, as described in the installation docs.
 
 !!! Note: 
     To enable the `oxd-https-extension`, follow steps 5-7. Otherwise jump to step 8. 
