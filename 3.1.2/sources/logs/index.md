@@ -1,16 +1,10 @@
 # Logs
 
 Logs are written to `/var/log/oxd-server/oxd-server.log` (location is set inside `/etc/oxd/oxd-server/log4j.xml` file). 
-Custom log locations can be specified in `log4j.xml.` The file is 
-loaded using the `log4j.configuration` system property. The following 
-is an example for running the `oxd Server` with `log4j` with the file 
-located in `/var/log/oxd-server/oxd-server.log`.
+Custom log locations can be specified in `log4j.xml`. 
 
-```
-# java -cp resteasy-jaxrs-2.3.4.Final.jar;oxd-server-3.1.2-SNAPSHOT-jar-with-dependencies.jar org.xdi.oxd.server.ServerLauncher -Doxd.server.config=/etc/oxd.json -Dlog4j.configuration=oxd-server/conf/log4j.xml
-```
-
-The following is an example of `log4j.xml` file:
+Example of `log4j.xml` file with the log file 
+located in `/var/log/oxd-server/oxd-server.log`:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
