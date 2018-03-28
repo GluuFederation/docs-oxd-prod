@@ -73,13 +73,13 @@ oxd native client libraries provide simple and flexible access to the oxd APIs.
 - [Java](./libraries/languages/java/index.md)         
 - [Php](./libraries/languages/php/index.md)         
 - [Node](./libraries/languages/node/index.md)          
+- [Ruby](./libraries/languages/ruby/index.md)      
 - [C#](./libraries/languages/csharp/index.md)           
 
  
 **Frameworks**:           
 
 - [Java Spring](./libraries/framework/spring/index.md)  
-- [Ruby on Rails](./libraries/framework/rails/index.md)      
 - [Python Flask](./libraries/framework/flask/index.md)        
 - [Node Express](./libraries/framework/express/index.md)       
 - [.Net](./libraries/framework/net/index.md)        
