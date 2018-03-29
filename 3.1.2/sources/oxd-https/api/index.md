@@ -7,7 +7,7 @@
 POST /setup-client
 {
     "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED
-    "op_host":"https://<ophostname>"                               <- OPTIONAL (If missing, must be present in defaults)
+    "op_host":"https://<ophostname>",                              <- OPTIONAL (If missing, must be present in defaults)
     "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
     "application_type": "web",                                     <- OPTIONAL
     "response_types": ["code"],                                    <- OPTIONAL
