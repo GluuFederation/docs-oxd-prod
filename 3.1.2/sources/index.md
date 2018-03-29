@@ -32,7 +32,7 @@ oxd 3.1.2 is compatible with the following standard OpenID Providers (OP) and UM
 
 The oxd software package includes the `oxd-server` and the `oxd-https-extension`. 
 
-`oxd-server` is designed to work as a standalone service daemon via sockets. By default, API calls to `oxd-server` must come via `localhost`. Optionally, after installation the `oxd-https-extension` can be enabled to support RESTful API calls over the web. 
+`oxd-server` is designed to work as a standalone service daemon via sockets. By default, API calls to `oxd-server` must come via `localhost`. Optionally, the `oxd-https-extension` can be enabled after installation to support RESTful API calls over the web. 
 
 Follow these steps to get started:
 
