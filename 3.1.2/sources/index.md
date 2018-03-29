@@ -5,7 +5,7 @@ oxd exposes simple, static APIs web application developers can use to securely i
 
 oxd offers operational and security benefits for developers and organizations:
 
-- oxd centralizes and standardizes quality OAuth 2.0 implementations across web applications. 
+- oxd centralizes and standardizes OAuth 2.0 implementations across web applications. 
 - When new OAuth 2.0 vulnerabilities are discovered, simply update oxd--applications **never** have to be changed or regression tested.   
 - oxd is written, maintained and supported by OAuth 2.0 security experts.   
 
