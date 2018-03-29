@@ -102,11 +102,11 @@ Specific functionality is not guaranteed. If you spot a bug or need feature enha
 
 ## Pricing & Billing
 
-oxd costs **USD $0.33 per application ("client") per day**. New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.  
+oxd costs **USD $0.33 per OAuth2 client per day**. New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.  
 
 Additional notes about pricing and billing: 
 
-- Each time a new application connects to your `oxd-server`, a record is created and you will be charged USD $0.33 each day the application remains active.  
+- Each time a new OAuth2 client connects to your `oxd-server`, a record is created and you will be charged USD $0.33 each day the application remains active.  
 
 - At the end of each month usage fees are compiled and a billing summary is sent to all users associated with your account.   
 
