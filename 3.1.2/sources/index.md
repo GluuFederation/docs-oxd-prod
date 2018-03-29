@@ -1,12 +1,12 @@
 # oxd 3.1.2 Documentation
 
 ## Introduction
-oxd exposes simple, static APIs to facilitate user authentication and authorization between web applications and OAuth 2.0 identity providers (IDP) like the [Gluu Server](https://gluu.org/docs/ce).
+oxd exposes simple, static APIs web developers can use to facilitate user authentication and authorization at an OAuth 2.0 identity provider (IDP) like the [Gluu Server](https://gluu.org/docs/ce).
 
 oxd offers long-term operational and security benefits for developers and organizations:
 
-- oxd centralizes and standardizes OAuth 2.0 across web apps of all languages, and an ever-rotating group of code contributors. 
-- When new OAuth 2.0 vulnerabilities are discovered, or features are available, oxd is the _only_ component that needs to be updated--applications **never** have to be changed and regression tested.         
+- oxd centralizes and standardizes OAuth 2.0 across applications. 
+- When new OAuth 2.0 vulnerabilities are discovered or features are available, simply update oxd--applications **never** have to be changed and regression tested.         
 - oxd is written, maintained and supported by OAuth 2.0 security experts.   
 
 ![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
@@ -15,7 +15,7 @@ oxd offers long-term operational and security benefits for developers and organi
     oxd is built for server-side web apps. Learn how to integrate single-page apps (SPAs), native apps, and/or SaaS apps with Gluu in the [SSO integration guide](https://gluu.org/docs/ce/integration/). 
 
 ## Compatibility
-oxd 3.1.2 has been confirmed to work with the following standard OpenID Providers (OP) and UMA Authorization Servers (AS):
+oxd 3.1.2 is compatible with the following standard OpenID Providers (OP) and UMA Authorization Servers (AS):
 
 ### OpenID Providers (OP)
 - Gluu Server [3.1.2](https://gluu.org/docs/ce/3.1.2) , [3.1.1](https://gluu.org/docs/ce/3.1.1)
