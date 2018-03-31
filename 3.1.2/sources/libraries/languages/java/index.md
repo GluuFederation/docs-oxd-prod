@@ -80,6 +80,20 @@ A working example can be found at sample project: See method `doRegistrationHttp
 
 Recall that Setup Client is a one-time task.
 
+```
+SetupClientParams cmdParams = new SetupClientParams();
+
+cmdParams.setOpHost("https://your.gluu-host.org");
+cmdParams.setAuthorizationRedirectUri("https://client.example.org/cb");
+cmdParams.setPostLogoutRedirectUri("https://client.example.org/cb");
+cmdParams.setAcrValues(Arrays.asList("auth_ldap_server"));
+cmdParams.setClientName("Sample client");
+cmdParams.setScope(Arrays.asList("openid, uma_protection"));
+cmdParams.setResponseTypes(Collections.singletonList("code"));
+cmdParams.setTrustedClient(true);
+
+SetupClientResponse setup = restResponse(cmdParams, "setup-client", null, SetupClientResponse.class);
+```
 
 ### Get Client Token
 
@@ -93,6 +107,18 @@ Besides a token this operation will give you additional information such as an e
 To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-client-token).
 
 A working example can be found at sample project: See method `getPAT` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java). There, for simplicity a new PAT is requested every time an operation is called (the expiration time is not being used).
+
+```
+GetClientTokenParams cmdParams = new GetClientTokenParams();
+
+cmdParams.setOpHost("https://your.gluu-host.org");
+cmdParams.setClientId("<client-id>");
+cmdParams.setClientSecret("<client-secret>");
+cmdParams.setScope(Arrays.asList("openid, uma_protection"));
+
+GetClientTokenResponse resp = restResponse(cmdParams, "get-client-token", null, GetClientTokenResponse.class);
+String token=resp.getAccessToken();
+```
 
 ### Register Site
 
@@ -109,6 +135,21 @@ A working example can be found at sample project: See method `doRegistrationSock
 
 Recall that Register Site is a one-time task.
 
+```
+RegisterSiteParams cmdParams = new RegisterSiteParams();
+
+cmdParams.setOpHost("https://your.gluu-host.org");
+cmdParams.setAuthorizationRedirectUri("https://client.example.org/cb");
+cmdParams.setPostLogoutRedirectUri("https://client.example.org/cb");
+cmdParams.setAcrValues(Arrays.asList("auth_ldap_server"));
+cmdParams.setClientName("Sample client");
+cmdParams.setScope(Arrays.asList("openid, uma_protection"));
+cmdParams.setResponseTypes(Collections.singletonList("code"));
+cmdParams.setTrustedClient(true);
+
+Command command = new Command(CommandType.REGISTER_SITE).setParamsObject(cmdParams);
+RegisterSiteResponse site = commandClient.send(command).dataAsResponse(RegisterSiteResponse.class);
+```
 
 ### Update Site Registration
 
@@ -126,13 +167,11 @@ GregorianCalendar cal=new GregorianCalendar();
 cal.add(Calendar.YEAR, 1);
 
 UpdateSiteParams cmdParams = new UpdateSiteParams();
-cmdParams.setOxdId(oxdId);
+cmdParams.setOxdId("<oxd-id>");
 cmdParams.setClientSecretExpiresAt(new Date(cal.getTimeInMillis()));
 
 Command command = new Command(CommandType.UPDATE_SITE).setParamsObject(cmdParams);
 UpdateSiteResponse resp = client.send(command).dataAsResponse(UpdateSiteResponse.class);
-
-boolean updated = resp!=null;
 ```        
 
 ### Get Authorization URL
@@ -143,6 +182,16 @@ To learn about the parameters supported by this operation check the [API page](h
 
 A working example can be found in the sample project: See method `getAuthzUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
+```
+GetAuthorizationUrlParams cmdParams = new GetAuthorizationUrlParams();
+
+cmdParams.setOxdId("<oxd-id>");
+cmdParams.setAcrValues(Arrays.asList("auth_ldap_server"));
+
+Command command = new Command(CommandType.GET_AUTHORIZATION_URL).setParamsObject(cmdParams);
+GetAuthorizationUrlResponse resp = commandClient.send(command).dataAsResponse(GetAuthorizationUrlResponse.class);
+return resp.getAuthorizationUrl();
+```
 
 ### Get Tokens by Code
 
@@ -151,6 +200,16 @@ After authentication, the OP sends the user's browser back to the `redirect_uri`
 As a response, you will get an access token (not to be confused with the token of [Get Client Token](#get-client-token) operation), as well as an ID Token. The former token is used to call [Get User Info](#get-user-info) operation while the latter when calling [Get Logout URI](#get-logout-uri).
 
 A working example can be found at sample project: See method `GetTokensByCodeResponse` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
+
+```
+GetTokensByCodeParams cmdParams = new GetTokensByCodeParams();
+cmdParams.setOxdId("<oxd-id>");
+cmdParams.setCode("<code>");
+cmdParams.setState("<state>");
+
+Command command = new Command(CommandType.GET_TOKENS_BY_CODE).setParamsObject(cmdParams);
+GetTokensByCodeResponse resp = commandClient.send(command).dataAsResponse(GetTokensByCodeResponse.class);
+```
 
 ### Get Access Token by Refresh Token
 
@@ -165,7 +224,7 @@ Here is an example of the usage of this operation using standard oxd-server (not
 CommandClient client=new CommandClient(host, port);
 
 GetAccessTokenByRefreshTokenParams cmdParams = new GetAccessTokenByRefreshTokenParams();
-cmdParams.setOxdId(oxd_id);
+cmdParams.setOxdId("<oxd-id>");
 cmdParams.setScope(Collections.singletonList("openid"));
 cmdParams.setRefreshToken(refresh_token);
 
@@ -186,6 +245,15 @@ The set of claims in the response depends on the access privileges associated to
 
 A working example can be found at sample project: See method `getUserInfo` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
+```
+GetUserInfoParams cmdParams = new GetUserInfoParams();
+cmdParams.setOxdId("<oxd-id>");
+cmdParams.setAccessToken("<access-token>");
+
+Command command = new Command(CommandType.GET_USER_INFO).setParamsObject(cmdParams);
+GetUserInfoResponse resp = commandClient.send(command).dataAsResponse(GetUserInfoResponse.class);
+```
+
 ### Get Logout URI
 
 Use this method if you intend to log out the user of the OP. This will return a URL where you can redirect the user's browser to initiate the logout process.
@@ -193,6 +261,16 @@ Use this method if you intend to log out the user of the OP. This will return a 
 To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-logout-uri).
 
 A working example can be found at sample project: See method `getLogoutUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
+
+```
+GetLogoutUrlParams cmdParams = new GetLogoutUrlParams();
+cmdParams.setOxdId("<oxd-id>");
+cmdParams.setPostLogoutRedirectUri("https://client.example.org/cb");
+cmdParams.setIdTokenHint("<idtoken-hint>");
+
+Command command = new Command(CommandType.GET_LOGOUT_URI).setParamsObject(cmdParams);
+LogoutResponse resp = commandClient.send(command).dataAsResponse(LogoutResponse.class);
+```
 
 ### RS Protect
 
