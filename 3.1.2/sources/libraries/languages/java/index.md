@@ -106,7 +106,7 @@ Besides a token this operation will give you additional information such as an e
 
 To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-client-token).
 
-A working example can be found at sample project: See method `getPAT` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java). There, for simplicity a new PAT is requested every time an operation is called (the expiration time is not being used).
+A working example can be found at sample project: See method `getPAT` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java). There, for simplicity a new PAT is requested every time an operation is called (expiration time not being used).
 
 ```
 GetClientTokenParams cmdParams = new GetClientTokenParams();
@@ -117,7 +117,7 @@ cmdParams.setClientSecret("<client-secret>");
 cmdParams.setScope(Arrays.asList("openid, uma_protection"));
 
 GetClientTokenResponse resp = restResponse(cmdParams, "get-client-token", null, GetClientTokenResponse.class);
-String token=resp.getAccessToken();
+String token = resp.getAccessToken();
 ```
 
 ### Register Site
@@ -161,9 +161,9 @@ A typical use case could be extending the lifetime of a client: When using dynam
 
 ```
 //client should be a global variable (host and port are those of oxd-server)
-CommandClient client=new CommandClient(host, port);
+CommandClient client = new CommandClient(host, port);
 
-GregorianCalendar cal=new GregorianCalendar();
+GregorianCalendar cal = new GregorianCalendar();
 cal.add(Calendar.YEAR, 1);
 
 UpdateSiteParams cmdParams = new UpdateSiteParams();
@@ -221,7 +221,7 @@ Here is an example of the usage of this operation using standard oxd-server (not
 
 ```
 //client should be a global variable (host and port are those of oxd-server)
-CommandClient client=new CommandClient(host, port);
+CommandClient client = new CommandClient(host, port);
 
 GetAccessTokenByRefreshTokenParams cmdParams = new GetAccessTokenByRefreshTokenParams();
 cmdParams.setOxdId("<oxd-id>");
@@ -231,8 +231,8 @@ cmdParams.setRefreshToken(refresh_token);
 Command command = new Command(CommandType.GET_ACCESS_TOKEN_BY_REFRESH_TOKEN).setParamsObject(commandParams)
 GetAccessTokensByRefreshTokenResponse resp = client.send(command).dataAsResponse(GetAccessTokensByRefreshTokenResponse.class);
  
-String newAccessToken=resp.getAccessToken();
-String newRefreshToken=resp.getRefreshToken();
+String newAccessToken = resp.getAccessToken();
+String newRefreshToken = resp.getRefreshToken();
 ```
 
 ### Get User Info
