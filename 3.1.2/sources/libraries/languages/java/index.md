@@ -86,9 +86,9 @@ SetupClientParams cmdParams = new SetupClientParams();
 cmdParams.setOpHost("https://your.gluu-host.org");
 cmdParams.setAuthorizationRedirectUri("https://client.example.org/cb");
 cmdParams.setPostLogoutRedirectUri("https://client.example.org/cb");
-cmdParams.setAcrValues(Arrays.asList("auth_ldap_server"));
+cmdParams.setAcrValues("auth_ldap_server");
 cmdParams.setClientName("Sample client");
-cmdParams.setScope(Arrays.asList("openid, uma_protection"));
+cmdParams.setScope("openid, uma_protection");
 cmdParams.setResponseTypes(Collections.singletonList("code"));
 cmdParams.setTrustedClient(true);
 
@@ -114,7 +114,7 @@ GetClientTokenParams cmdParams = new GetClientTokenParams();
 cmdParams.setOpHost("https://your.gluu-host.org");
 cmdParams.setClientId("<client-id>");
 cmdParams.setClientSecret("<client-secret>");
-cmdParams.setScope(Arrays.asList("openid, uma_protection"));
+cmdParams.setScope("openid, uma_protection");
 
 GetClientTokenResponse resp = restResponse(cmdParams, "get-client-token", null, GetClientTokenResponse.class);
 String token = resp.getAccessToken();
@@ -141,9 +141,9 @@ RegisterSiteParams cmdParams = new RegisterSiteParams();
 cmdParams.setOpHost("https://your.gluu-host.org");
 cmdParams.setAuthorizationRedirectUri("https://client.example.org/cb");
 cmdParams.setPostLogoutRedirectUri("https://client.example.org/cb");
-cmdParams.setAcrValues(Arrays.asList("auth_ldap_server"));
+cmdParams.setAcrValues("auth_ldap_server");
 cmdParams.setClientName("Sample client");
-cmdParams.setScope(Arrays.asList("openid, uma_protection"));
+cmdParams.setScope("openid, uma_protection");
 cmdParams.setResponseTypes(Collections.singletonList("code"));
 cmdParams.setTrustedClient(true);
 
@@ -186,7 +186,7 @@ A working example can be found in the sample project: See method `getAuthzUrl` i
 GetAuthorizationUrlParams cmdParams = new GetAuthorizationUrlParams();
 
 cmdParams.setOxdId("<oxd-id>");
-cmdParams.setAcrValues(Arrays.asList("auth_ldap_server"));
+cmdParams.setAcrValues("auth_ldap_server");
 
 Command command = new Command(CommandType.GET_AUTHORIZATION_URL).setParamsObject(cmdParams);
 GetAuthorizationUrlResponse resp = commandClient.send(command).dataAsResponse(GetAuthorizationUrlResponse.class);
@@ -225,7 +225,7 @@ CommandClient client = new CommandClient(host, port);
 
 GetAccessTokenByRefreshTokenParams cmdParams = new GetAccessTokenByRefreshTokenParams();
 cmdParams.setOxdId("<oxd-id>");
-cmdParams.setScope(Collections.singletonList("openid"));
+cmdParams.setScope("openid");
 cmdParams.setRefreshToken(refresh_token);
 
 Command command = new Command(CommandType.GET_ACCESS_TOKEN_BY_REFRESH_TOKEN).setParamsObject(commandParams)
