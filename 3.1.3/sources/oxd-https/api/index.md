@@ -564,12 +564,11 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 Request:
 
 ```language-json
+POST /introspect-rpt
+Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-    "command":"introspect-rpt",
-    "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <- REQUIRED
-        "rpt": "016f84e8-f9b9-11e0-bd6f-0021cc6004de"            <- REQUIRED
-    }
+   "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <- REQUIRED
+   "rpt": "016f84e8-f9b9-11e0-bd6f-0021cc6004de"            <- REQUIRED
 }
 ```
 
