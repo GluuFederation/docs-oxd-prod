@@ -2,7 +2,7 @@
 The `oxd-https-extension` is a RESTful, Jetty-based server which accepts `HTTPS` calls and redirects them to the `oxd-server`. If you want to connect apps to your oxd server via `HTTPS`, you can simply start the `oxd-https-extension` after deploying, configuring and starting your `oxd-server`.
 
 ## Start oxd-https-extension
-Install the oxd package as described [here](https://gluu.org/docs/oxd/3.1.1/install/).
+Install the oxd package as described [here](https://gluu.org/docs/oxd/3.1.2/install/).
 
 After the oxd package is successfully installed, and the `oxd-server` has been configured and started, start the `oxd-https-extension` service by executing the following command:
 

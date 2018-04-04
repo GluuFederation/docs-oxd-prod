@@ -74,10 +74,11 @@ oxd native client libraries provide simple and flexible access to the oxd APIs.
 
 - [Python](./libraries/languages/python/index.md)         
 - [Java](./libraries/languages/java/index.md)         
-- [Php](./libraries/languages/php/index.md)         
-- [Node](./libraries/languages/node/index.md)          
-- [C#](./libraries/languages/csharp/index.md)           
-
+- [PHP](./libraries/languages/php/index.md)         
+- [Node](./libraries/languages/node/index.md)    
+- [Ruby](./libraries/languages/ruby/index.md)      
+- [CSharp](./libraries/languages/csharp/index.md)           
+- [Perl](./libraries/languages/perl/index.md)      
  
 **Frameworks**:           
 
@@ -85,7 +86,7 @@ oxd native client libraries provide simple and flexible access to the oxd APIs.
 - [Ruby on Rails](./libraries/framework/rails/index.md)      
 - [Python Flask](./libraries/framework/flask/index.md)        
 - [Node Express](./libraries/framework/express/index.md)       
-- [.Net](./libraries/framework/net/index.md)        
+- [.NET](./libraries/framework/net/index.md)        
 
 
 ## Plugins
@@ -95,10 +96,11 @@ Gluu currently publishes oxd plugins, modules, and extensions for the following 
 - [Wordpress](./plugin/wordpress/index.md)      
 - [Magento](./plugin/magento/index.md)       
 - [Drupal](./plugin/drupal/index.md)       
-- [OpenCart](./plugin/opencart/index.md)       
-- [SuiteCRM](./plugin/suitecrm/index.md)       
+- [OpenCart](./plugin/opencart/index.md)     
 - [SugarCRM](./plugin/sugarcrm/index.md)       
+- [SuiteCRM](./plugin/suitecrm/index.md)       
 - [Roundcube](./plugin/roundcube/index.md)  
+- [Shopify](./plugin/shopify/index.md)  
 - [NextCloud](./plugin/nextcloud/index.md) 
 
 Gluu does not guarantee specific functionality in oxd plugins. If you find a bug or need feature enhancements, just open a ticket on [Gluu support](https://support.gluu.org).  

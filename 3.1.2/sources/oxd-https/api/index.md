@@ -2,7 +2,7 @@
 
 ### Setup Client
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /setup-client
 {
@@ -29,7 +29,7 @@ POST /setup-client
 }
 ```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
     "status": "ok",
@@ -50,7 +50,7 @@ POST /setup-client
 
 ### Get Client Token
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /get-client-token
 {
@@ -66,7 +66,7 @@ POST /get-client-token
 }
 ```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
     "status": "ok",
@@ -118,7 +118,7 @@ Response:
 
 ### Register Site
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /register-site
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
@@ -149,7 +149,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
     "status": "ok",
@@ -162,7 +162,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 ### Update Site
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /update-site
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
@@ -188,7 +188,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
     "status": "ok",
@@ -200,7 +200,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 ### Remove Site
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /remove-site
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
@@ -209,7 +209,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
     "status": "ok",
@@ -219,9 +219,9 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### Get Authorization Url
+### Get Authorization URL
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /get-authorization-url
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
@@ -237,7 +237,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
     "status": "ok",
@@ -249,7 +249,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 ### Get Tokens By Code
 
-*Non-normative example request*
+Non-normative example request:
 Use the code and state obtained in the previous step to call this API to retrieve tokens.
 ```language-json
 POST /get-tokens-by-code
@@ -261,7 +261,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
     "status": "ok",
@@ -305,7 +305,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 ### Get User Info
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /get-user-info
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
@@ -315,7 +315,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
   "claims": {
@@ -370,7 +370,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 ### Logout URL
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /get-logout-uri
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
@@ -383,7 +383,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
   "uri": "https://<op-hostname>/oxauth/seam/resource/restv1/oxauth/end_session?id_token_hint=eyJraWQiOiI1YmM2ZGM3MS0xYjA1LTQ5YzMtYWU3MC0zYTg4Y2ZiMjQwN2QiLCJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL2NlLWRldi5nbHV1Lm9yZyIsImF1ZCI6IkAhNUE1OC5BRTBELkQzODMuMUU0NiEwMDAxIUUzOEIuN0RCRSEwMDA4IUE3MTkuOTU4QS41QjdGLkVBQkMiLCJleHAiOjE0OTAwMTk5MjEsImlhdCI6MTQ5MDAxNjMyMSwibm9uY2UiOiJkNGdsbmtndHAxYWlqZ3JnY3V2cGp1N2k3cCIsImF1dGhfdGltZSI6MTQ5MDAxNjI3MiwiYXRfaGFzaCI6Im1Xa2NXQzZ6NC1qN0ZNX0ctX0tYMWciLCJveFZhbGlkYXRpb25VUkkiOiJodHRwczovL2NlLWRldi5nbHV1Lm9yZy9veGF1dGgvb3BpZnJhbWUiLCJveE9wZW5JRENvbm5lY3RWZXJzaW9uIjoib3BlbmlkY29ubmVjdC0xLjAiLCJzdWIiOiJONHRLRncyLVpDWTVWN0FhQmdpMnNHRWdDR0t0Tlg2LS01M2FQbmZFYk5zIn0.PvCdzPnMwqPNUw1bzd8tvzpJqYu-P2iCTnELr85ZaJTG8_Fdj3EruLgUBa-emeum3j29cFgdjFPx6WplfCV1GnehOieXjDiAAE85fy-stxXwII3xrva5ZjG0FnTYnJLoRmy0BWMjFC2IdCoISJI9imcfvmQmlvNmU0EjLS02cJf3JAaqEaM-FJWdQv8end9-Sq2bcp6ME3voRjV30ps_7jcDdlM_hW3M_e3RdrXYCDifbl_1jaNip5tb6_bLpgTADDoLT3fTvACRN057e2GCkSYdxvVhIjfDsjnOhk5n3TDcWedriu99H8-sNXyI_aBr3HAXd37CsgmdfIJcgUNJJw"
@@ -392,7 +392,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 ### Get Access Token By Refresh Token
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /get-access-token-by-refresh-token
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
@@ -403,7 +403,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
     "status": "ok",
@@ -420,7 +420,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 
 It's important to have a single HTTP method, mentioned only once within a given path in JSON, otherwise, the operation will fail.
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /uma-rs-protect
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
@@ -438,7 +438,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 
-Request with `scope_expression`. `scope_expression` is a Gluu-invented extension which allows a JsonLogic expression instead of a single list of scopes. Please read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.2/admin-guide/uma.md).
+Request with `scope_expression`. `scope_expression` is a Gluu-invented extension which allows a JsonLogic expression instead of a single list of scopes. Please read more about `scope_expression` [here](https://gluu.org/docs/ce/admin-guide/uma/).
 ```language-json
 {
     "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF",  <- REQUIRED
@@ -510,9 +510,8 @@ Request with `scope_expression`. `scope_expression` is a Gluu-invented extension
     ]
 }
 ```
-```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
     "status": "ok",
@@ -525,7 +524,7 @@ Request with `scope_expression`. `scope_expression` is a Gluu-invented extension
 
 ### UMA RS Check Access
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /uma-rs-check-access
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
@@ -537,7 +536,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative Access Granted example response*
+Non-normative Access Granted example response:
 ```language-json
 {
     "status":"ok",
@@ -547,7 +546,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative Access Denied example response*
+Non-normative Access Denied example response:
 ```language-json
 {
     "status": "ok",
@@ -598,7 +597,7 @@ Success Response:
 
 ### UMA RP - Get RPT
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /uma-rp-get-rpt
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
@@ -615,7 +614,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative example response*
+Non-normative example response:
 ```language-json
 {
     "status": "ok",
@@ -628,9 +627,9 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### UMA RP Get Claims Gathering Url
+### UMA RP Get Claims Gathering URL
 
-*Non-normative example request*
+Non-normative example request:
 ```language-json
 POST /uma-rp-get-claims-gathering-url
 Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
@@ -641,7 +640,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-*Non-normative Success example response*
+Non-normative Success example response:
 ```language-json
 {
     "status": "ok",

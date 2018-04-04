@@ -2,9 +2,9 @@
 
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
 
-- The [oxd OpenID Connect APIs](#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user 
+- The [oxd OpenID Connect API's](#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user 
 
-- The [oxd UMA APIs](#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs      
+- The [oxd UMA API's](#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs      
 
 ## OpenID Connect Authentication
 
@@ -17,35 +17,44 @@ oxd supports the OpenID Connect [Hybrid Flow](http://openid.net/specs/openid-con
 
 Learn more about authentication flows in the [OpenID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html). 
 
-### oxd OpenID Connect APIs
-`oxd-server` provides seven APIs for OpenID Connect authentication. In general,
-you can think of the Authorization Code Flow as a three step process: 
+### oxd OpenID Connect API's
+The `oxd-server` API's are used for setting up the client/application and OpenID Connect authentication.  
 
- 1. Redirect person to the authorization URL and obtain a code
- 1. Use code to obtain tokens (access_token, id_token and refresh_token)
- 1. Use access token to obtain user claims
+#### API's used to Setup the Client/Application
+ - Setup Client (only used for oxd-https-extension)
+ - Get Client Token (only used for oxd-https-extension)
+ - Register Site
+ - Update Site Registration
+ - Get Access Token by Refresh Token
+ - Get Logout URI
 
-The other four oxd APIs are:
- 
- - Register site (called once--the first time your application uses oxd)
- - Update site registration (not used often)
- - Logout
- - Get access token by refresh token
+#### API's used for OpenID Connect Authentication
+ - Get Authorization URL
+ - Get Tokens by Code
+ - Get User Info
  
 **IMPORTANT** : 
 
-If you are using the `oxd-https-extension`, before using the above workflow you will need to obtain an access token to secure the interaction between your client and the `oxd-https-extension`. You can follow the two steps below. 
+If you are using the `oxd-https-extension`, you will need to obtain an access token to secure the interaction between your client and the `oxd-https-extension`. You can follow the two steps below. 
 
- - [Setup client](#setup-client) (returns `client_id` and `client_secret`. Make sure `uma_protection` scope is present in request)
- - [Get client token](#get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`)
+ - [Setup Client](#setup-client) (returns `client_id` and `client_secret`. Make sure `uma_protection` scope is present in request)
+ - [Get Client Token](#get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`)
  
  Pass the obtained access token as `protection_access_token` in all future calls to the `oxd-https-extension`.
 
-#### Set Up Client
+#### Setup Client
 
-If you are using the `oxd-https-extension`, you must setup the client. 
+If you are using the oxd-https-extension, you must use Setup Client.
 
-The parameters for Setup Client are the same as for Register the Site command. The command registers the client for communication protection. This will be used to obtain an access token via the Get Client Token command.  The access token will be passed as a `protection_access_token` parameter to other commands. `uma_protection` scope has to be present in request to `setup_client` command.
+The parameters for Setup Client are the same as for Register the Site command. The command registers the client at your OpenID Connect Provider for communication protection.  Setup Client additionally returns a **client_id** and a **client_secret**. These will be needed when calling the [Get Client Token](#get-client-token) operation to obtain an access token.  The access token will be passed as a protection_access_token parameter to other commands. uma_protection scope has to be present in request to setup_client command.
+
+If your OpenID Connect Provider does not support dynamic registration (e.g. Google), you will need to obtain a **client_id** and a **client_secret** yourself and supply those as parameters of this operation. This will make oxd skip the attempt to register a new client.
+
+To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#setup-client) and the "Client Metadata" section of [OpenID Connect Dynamic Client Registration 1.0](http://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+
+A working example can be found at sample project: See method `doRegistrationHttps` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
+
+Recall that Setup Client is a one-time task.
 
 Request:
 
@@ -99,6 +108,17 @@ Response:
 ```
 
 #### Get Client Token
+
+!!! Note:
+    If you are using oxd-https-extension, you must use Get Client Token.
+
+When using oxd-https-extension, all API operations must be protected by an access token which is obtained using Get Client Token. Provide the **client_id** and **client_secret** you obtained in the call to [Setup Client](#setup-client).
+
+Besides an access token, this operation will give you additional information such as an expiration period in seconds. Once the expiration time has elapsed, the access token is no longer valid and you should request a new one by using this operation or by a call to [Get Access Token by Refresh Token](#get-access-token-by-refresh-token).
+
+To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-client-token).
+
+A working example can be found at sample project: See method `getPAT` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java). There, for simplicity a new PAT is requested every time an operation is called (the expiration time is not being used).
 
 Request:
 
@@ -171,18 +191,16 @@ Response:
 
 #### Register Site
 
-The client must first register itself with the `oxd-server`. 
+!!! Note: 
+    If you are using oxd-https-extension and used [Setup Client](#setup-client) you do not need to use Register Site.
 
-If registration is successful, oxd will dynamically register an OpenID Connect client and return an identifier for the application which must be presented in subsequent API calls. This is the `oxd_id` (not to be confused with the OpenID Connect Client ID). 
+Register Site is a one-time task used to introduce an application to the oxd-server and register a new OpenID Client with your OpenID Connect Provider. If your OP does not support dynamic registration (e.g. Google), you have to obtain a **client_id** and a **client_secret** yourself and supply those as parameters of this operation.
 
-`register_site` has many optional parameters. 
+Register Site returns the identifier "**oxd_id**" that must be passed when calling subsequent API operations.
 
-The only required parameter is the  `authorization_redirect_uri`. This is where the user will be redirected after successful authorization at the OpenID Connect Provider (OP).
+To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#setup-client) and the "Client Metadata" section of [OpenID Connect Dynamic Client Registration 1.0](http://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). Worth to mention is the `authorization_redirect_uri`, a URL where the OP will redirect the user's browser after successful authentication.
 
-The `op_host` parameter is optional, but it must be specified in either the [default configuration file](../configuration/#oxd-confjson) or the API call. This is the URL at the OP where users will be sent for authentication. 
-
-!!! Note
-    `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).
+A working example can be found at sample project: See method `doRegistrationSocket` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
     
 Request:
 
@@ -230,7 +248,11 @@ Response:
 
 #### Update Site 
 
-If something changes in a pre-registered client, you can use this API to update your client in the OP.
+The parameters used in Update Site are equivalent to those of [Register Site](#register-site) but the operation is used when the parameters of an existing client registration need to be updated. 
+
+To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#update-site-registration)
+
+A typical use case could be extending the lifetime of a client.  When using dynamic registration in Gluu Server, the client is created with an expiration time (approximately one day by default). If your application is a long-running one, you may like to set a value further in the future. Here is an example of how to do so:
 
 Request:
 
@@ -297,9 +319,13 @@ Response:
 
 #### Get Authorization URL
 
-Returns the URL at the OpenID Connect Provider (OP) to which your application must redirect the person to authorize the release of personal data (and perhaps be authenticated in the process if no previous session exists).
+Returns the URL at the OpenID Connect Provider to which your application must redirect the person to authorize the release of personal data (and perhaps be authenticated in the process if no previous session exists).
 
-The response from the OpenID Connect Provider (OP) will include the code and state values, which should be used to subsequently obtain tokens.
+The response from the OpenID Connect Provider will include the code and state values, which should be used to subsequently obtain tokens.
+
+To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#get-authorization-url)
+
+A working example can be found in the sample project: See method `getAuthzUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
 Request:
 
@@ -337,7 +363,7 @@ Response:
 }
 ```
 
-After redirecting to the above URL, the OpenID Connect Provider (OP) will return a response to the URL your application registered as the redirect URI (parse out the code and state). It will look like this:
+After redirecting to the above URL, the OpenID Connect Provider will return a response to the Authorization Redirect URI (parse out the code and state). It will look like this:
 
 ```language-http
 HTTP/1.1 302 Found
@@ -346,7 +372,12 @@ Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=af0ifj
 
 #### Get Tokens (ID & Access) by Code
 
-Use the code and state obtained in the previous step to call this API to retrieve tokens.
+After authentication, the OpenID Connect Provider sends the user's browser back to the `redirect_uri` page with a couple of query parameters in the URL: `code` and `state`. Use those to issue a call to this API operation.
+
+As a response, you will get an access token (not to be confused with the token of [Get Client Token](#get-client-token) operation), as well as an ID Token. The former token is used to call [Get User Info](#get-user-info) operation while the latter when calling [Get Logout URI](#get-logout-uri).
+
+A working example can be found at sample project: See method `GetTokensByCodeResponse` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
+
 
 Request:
 
@@ -387,7 +418,11 @@ Response:
 
 #### Get Access Token by Refresh Token
 
-A Refresh Token can be used to obtain a renewed Access Token. 
+The access token obtained at [Get Tokens by Code](#get-tokens-by-code) has an expiration time. If your application needs a new access token, simply provide the `refresh_token` that you received when the call to Get Tokens by Code was made.
+
+To learn more about the input and output of this operation, check the [API page](https://gluu.org/docs/oxd/api/#get-access-token-by-refresh-token).
+
+Here is an example of the usage of this operation using standard oxd-server (not https):
 
 Request:
 
@@ -419,7 +454,13 @@ Response:
 
 #### Get User Info
 
-Use the access token from the step above to retrieve a JSON object with the user claims.
+Use this operation with the access token to obtain user claims (e.g. first name, last name, e-mail, etc.) about the authenticated end-user. 
+
+To learn more about the input and output of this operation, check the [API page](https://gluu.org/docs/oxd/api/#get-user-info).
+
+The set of claims in the response depends on the access privileges associated to the access token provided. This has to do with the scopes passed in [Site Registration](#register-site) API operation.
+
+A working example can be found at sample project: See method `getUserInfo` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
 Request:
 
@@ -455,10 +496,13 @@ Response:
 
 #### Get Logout URI
 
-Uses front-channel logout. A page is returned with iFrames, each of which contains the logout URL of the applications that have a session in that browser. 
+Uses front-channel logout. A page is returned with iFrames, each of which contains the logout URL of the applications that have a session in that browser.
 
-These iFrames should be loaded automatically, enabling each application to get a notification of logout, and to hopefully clean 
-up any cookies in the person's browser. If the person blocks [third-party cookies](https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie) in their browser, front-channel logout will not work.
+These iFrames should be loaded automatically, enabling each application to get a notification of logout, and to hopefully clean up any cookies in the person's browser. If the person blocks third-party cookies in their browser, front-channel logout will not work.
+
+To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-logout-uri).
+
+A working example can be found at sample project: See method `getLogoutUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
 Request:
 
@@ -531,7 +575,8 @@ Warning: 199 - "UMA Authorization Server Unreachable"
 
 #### UMA RS Protect Resources
 
-It's important to have a single HTTP method mentioned only one time within a given path in JSON, otherwise the operation will fail.
+It's important to have a single HTTP method mentioned only one time within a given path in JSON, otherwise the operation will fail. `send` method is used for protecting resources with the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
+The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
 
 Request:
 
@@ -669,6 +714,8 @@ Response:
 
 #### UMA RS Check Access
 
+`send` method is used in the UMA Resource Server to check the access to the resource.
+
 Request:
 
 ```language-json
@@ -790,6 +837,8 @@ Success Response:
 If your application is calling UMA 2 protected resources, use these APIs to obtain an RPT token.
 
 #### UMA RP - Get RPT
+
+The method `send` is called in order to obtain the RPT (Requesting Party Token). 
 
 Request:
 
