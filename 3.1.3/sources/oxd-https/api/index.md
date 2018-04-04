@@ -144,8 +144,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     "client_id": "<client id of existing client>",                 <- OPTIONAL - Ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
     "client_secret": "<client secret of existing client>",         <- OPTIONAL - must be used together with client_secret.
     "client_registration_access_token":"<access token of existing client>", <- OPTIONAL - must be used together with client_id/client_secret
-    "client_registration_client_uri":"<uri of existing client>",   <- OPTIONAL - must be used together with client_id/client_secret
-    "protection_access_token":"<access token of the client>"       <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter        
+    "client_registration_client_uri":"<uri of existing client>"    <- OPTIONAL - must be used together with client_id/client_secret
 }
 ```
 
@@ -183,8 +182,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     "client_sector_identifier_uri":"",                              <- OPTIONAL
     "contacts":["foo_bar@spam.org"],                                <- OPTIONAL
     "ui_locales":[],                                                <- OPTIONAL
-    "claims_locales":[],                                            <- OPTIONAL
-    "protection_access_token":"<access token of the client>"        <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
+    "claims_locales":[]                                             <- OPTIONAL
 }
 ```
 
@@ -612,8 +610,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     "pct": "c2F2ZWRjb25zZW50",                         <- OPTIONAL
     "rpt": "SSJHBSUSSJHVhjsgvhsgvshgsv",               <- OPTIONAL
     "scope":["read"],                                  <- OPTIONAL,
-    "state": "af0ifjsldkj",                            <- OPTIONAL state that is returned from uma_rp_get_claims_gathering_url command
-    "protection_access_token": "ejt3425"               <- OPTIONAL, but REQUIRED if oxd-https-extension is used
+    "state": "af0ifjsldkj"                             <- OPTIONAL state that is returned from uma_rp_get_claims_gathering_url command
 }
 ```
 
