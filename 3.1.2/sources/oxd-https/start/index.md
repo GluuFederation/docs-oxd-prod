@@ -1,5 +1,5 @@
 # oxd-https-extension 
-The `oxd-https-extension` is a RESTful, Jetty-based server which accepts `HTTPS` calls and redirects them to the `oxd-server`. With the https-extension enabled, many apps across many servers can leverage one central oxd service.  
+The `oxd-https-extension` is a RESTful, Jetty-based server which accepts `HTTPS` calls and redirects them to the `oxd-server`. With the https extension enabled, many apps across many servers can leverage one central oxd service.  
 
 ## Start oxd-https-extension
 After the oxd package has been installed, and the `oxd-server` has been configured and started, start the `oxd-https-extension` service by executing the following command:
