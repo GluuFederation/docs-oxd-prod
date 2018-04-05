@@ -32,28 +32,21 @@ oxd 3.1.2 is compatible with the following standard OpenID Providers (OP) and UM
 
 The oxd software package includes the `oxd-server` and the `oxd-https-extension`. 
 
-`oxd-server` is designed to work as a standalone service daemon via sockets. By default, API calls to `oxd-server` must come via `localhost`. Optionally, the `oxd-https-extension` can be enabled after installation to support RESTful API calls over the web. 
+`oxd-server` is designed to work as a standalone service daemon via sockets. By default, API calls to `oxd-server` must come via `localhost`. The `oxd-https-extension` enables oxd to support RESTful calls over the web. 
 
 Follow these steps to get started:
 
-**Step 1**: [Sign up](https://oxd.gluu.org/account/register/) to obtain your oxd license and $50 credit.
+1. [Sign up](https://oxd.gluu.org/account/register/) to obtain your oxd license and $50 credit.
 
-**Step 2**: [Install](./install/index.md) oxd on the same server or VM as your application (or any machine if you plan to use the https extension)
+1. [Install](./install/index.md) oxd on the same server or VM as your application (or any machine if you plan to use the https extension)
 
-**Step 3**: [Configure](./configuration/index.md) the `oxd-server` and add your license keys.           
+1. [Configure](./configuration/index.md) the `oxd-server` and add your license keys.           
 
-**Step 4**: [Start](./install/index.md) the `oxd-server`, as described in the installation docs.
+1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs. 
 
-!!! Note: 
-    To enable the `oxd-https-extension`, follow steps 5-7. Otherwise jump to step 8. 
-    
-**Step 5**: [Install](./oxd-https/start/index.md) the `oxd-https-extension` (for manual installation only, skip if you installed oxd via Linux Package)
-    
-**Step 6**: [Configure ](./oxd-https/configuration/index.md) the `oxd-https-extension` 
+1. To support RESTful calls, [start and configure](./oxd-https/start.md) `oxd-https-extension`. Otherwise ignore this step. 
 
-**Step 7**: [Start](./oxd-https/start/index.md) the `oxd-https-extension`
-
-**Step 8**: Use the [oxd API](#api) or one of the [native libraries](#native-libraries) to send users to your OP for authentication and authorization. 
+1. In your app(s), call the [oxd API](#api) or one of the [native libraries](#native-libraries) to securely send users to the OP for authentication and authorization. 
 
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
