@@ -38,7 +38,7 @@ Follow these steps to get started:
 
 1. [Sign up](https://oxd.gluu.org/account/register/) to obtain your oxd license and $50 credit.
 
-1. [Install](./install/index.md) oxd on the same server or VM as your application (or any machine if you plan to use the https extension)
+1. [Install](./install/index.md) oxd on the same host as your application (or any host if enabling the https extension)
 
 1. [Configure](./configuration/index.md) the `oxd-server` and add your license keys.           
 
