@@ -43,11 +43,11 @@ To use the oxd-python library, you will need:
 
 ## Configuring oxd-server
 
-- Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
+- Edit the file `/etc/oxd/oxd-server/oxd-conf.json` 
 
     - Update the following fields `"server_name"`, `"license_id"`, `"public_key"`, `"public_password"` and `"license_password"`
 
-- Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
+- Edit the file `/etc/oxd/oxd-server/oxd-default-site-config.json`
 
     - Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
 
