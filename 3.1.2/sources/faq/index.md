@@ -8,12 +8,12 @@ It can happen if `code` lifetime in `oxauth` server is very small and `code` exp
 2018-04-05 14:30:32,530 ERROR [org.xdi.oxd.server.Processor] No response from operation. Command: Command{command=GET_TOKENS_BY_CODE, params={"code":"cc36672e-f8b9-4958-9a7c-3d83c99c4289","state":"us7d1v37cn1fcsd1c0156adr16","oxd_id":"055cec18-bd2e-4b29-ae38-7428d1d7c7fb","protection_access_token":"51ebfa51-d290-410e-bd37-abb3a0d8ab0c"}}
 ```
 
-To fix it please increase `authorizationCodeLifetime` oxauth configuration value as explained [here](https://gluu.org/docs/ce/3.1.3/admin-guide/oxtrust-ui/#oxauth-configuration).
+To fix it please increase `authorizationCodeLifetime` oxauth configuration value as explained [here](https://gluu.org/docs/ce/3.1.2/admin-guide/oxtrust-ui/#oxauth-configuration).
 
 ### `oxd-https-extension` does not work because of strange PROTECTION error.
 
 If you see in logs output as shown below then it means that `uma_protection` scope is disabled for dynamic registration on `oxauth` side.
-Please find `uma_protection` Connect scope property `Allow for dynamic registration` and make sure it is checked (set to true). More info about scopes [here](https://gluu.org/docs/ce/3.1.3/admin-guide/openid-connect/#scopes)
+Please find `uma_protection` Connect scope property `Allow for dynamic registration` and make sure it is checked (set to true). More info about scopes [here](https://gluu.org/docs/ce/3.1.2/admin-guide/openid-connect/#scopes)
  
 ```
 2018-04-04 20:03:24,855 ERROR [org.xdi.oxd.server.service.UmaTokenService] oxd requested scope PROTECTION but AS returned access_token without that scope, token scopes :openid
