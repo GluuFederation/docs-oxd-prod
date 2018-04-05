@@ -1,7 +1,7 @@
 # Frequently asked questions (FAQ)
 
 ## Technical FAQs
-### `get_tokens_by_code` command fails with `No response from operation.` error
+### `get_tokens_by_code` command fails with `No response from operation.`
 
 It can happen if `code` lifetime in `oxauth` server is very small and `code` expires before token can be obtained. So in logs you can see this:
 
@@ -12,7 +12,7 @@ It can happen if `code` lifetime in `oxauth` server is very small and `code` exp
 
 To fix it please increase `authorizationCodeLifetime` oxauth configuration value as explained [here](https://gluu.org/docs/ce/3.1.3/admin-guide/oxtrust-ui/#oxauth-configuration).
 
-### `oxd-https-extension` does not work because of strange PROTECTION error.
+### `oxd-https-extension` does not work because of PROTECTION error.
 
 If you see in logs output as shown below then it means that `uma_protection` scope is disabled for dynamic registration on `oxauth` side.
 Please find `uma_protection` Connect scope property `Allow for dynamic registration` and make sure it is checked (set to true). More info about scopes [here](https://gluu.org/docs/ce/3.1.3/admin-guide/openid-connect/#scopes)
