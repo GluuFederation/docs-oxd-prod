@@ -1,0 +1,25 @@
+# Frequently asked questions (FAQ)
+
+### `get_tokens_by_code` command fails with `No response from operation.` error
+
+It can happen if `code` lifetime in `oxauth` server is very small and `code` expires before token can be obtained. So in logs you can see this:
+```
+2018-04-05 14:30:32,530 ERROR [org.xdi.oxd.server.op.GetTokensByCodeOperation] Failed to get tokens because response code is: null
+2018-04-05 14:30:32,530 ERROR [org.xdi.oxd.server.Processor] No response from operation. Command: Command{command=GET_TOKENS_BY_CODE, params={"code":"cc36672e-f8b9-4958-9a7c-3d83c99c4289","state":"us7d1v37cn1fcsd1c0156adr16","oxd_id":"055cec18-bd2e-4b29-ae38-7428d1d7c7fb","protection_access_token":"51ebfa51-d290-410e-bd37-abb3a0d8ab0c"}}
+```
+
+To fix it please increase `authorizationCodeLifetime` oxauth configuration value as explained [here](https://gluu.org/docs/ce/3.1.3/admin-guide/oxtrust-ui/#oxauth-configuration).
+
+### `oxd-https-extension` does not work because of strange PROTECTION error.
+
+If you see in logs output as shown below then it means that `uma_protection` scope is disabled for dynamic registration on `oxauth` side.
+Please find `uma_protection` Connect scope property `Allow for dynamic registration` and make sure it is checked (set to true). More info about scopes [here](https://gluu.org/docs/ce/3.1.3/admin-guide/openid-connect/#scopes)
+ 
+```
+2018-04-04 20:03:24,855 ERROR [org.xdi.oxd.server.service.UmaTokenService] oxd requested scope PROTECTION but AS returned access_token without that scope, token scopes :openid
+2018-04-04 20:03:24,855 ERROR [org.xdi.oxd.server.service.UmaTokenService] Please check AS(oxauth) configuration and make sure UMA scope (uma_protection) is enabled.
+2018-04-04 20:03:24,855 TRACE [org.xdi.oxd.server.service.IntrospectionService] Exception during access token introspection.
+java.lang.RuntimeException: oxd requested scope PROTECTION but AS returned access_token without that scope, token scopes :openid
+	at org.xdi.oxd.server.service.UmaTokenService.obtainTokenWithClientCredentials(UmaTokenService.java:196)
+	at org.xdi.oxd.server.service.UmaTokenService.obtainToken(UmaTokenService.java:169)
+```
