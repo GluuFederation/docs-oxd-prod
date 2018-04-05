@@ -44,7 +44,7 @@ Follow these steps to get started:
 
 1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs. 
 
-1. To support RESTful calls, [start and configure](./oxd-https/start.md) `oxd-https-extension`. Otherwise ignore this step. 
+1. [Start and configure](./oxd-https/start.md) `oxd-https-extension` to support RESTful calls (**Optional**). 
 
 1. In your app(s), call the [oxd API](#api) or one of the [native libraries](#native-libraries) to securely send users to the OP for authentication and authorization. 
 
