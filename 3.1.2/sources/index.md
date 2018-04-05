@@ -116,54 +116,5 @@ Have questions or run into issues? Just open a ticket on the [Gluu support porta
 
 ## FAQ's
 
-**What is oxd?**       
-oxd is a mediator: it provides API's that can be called by a web application that are easier than directly calling the API's of an OpenID Connect Provider (OP) or an UMA Authorization Server (AS).
-
-**How is oxd licensed, and how much does it cost?**        
-oxd is commercially licensed software. To start the oxd server you will need a valid license, which you can [obtain for free by registering on the oxd website](https://oxd.gluu.org). For each application that leverages your oxd service, you will be charged USD $0.33 per day. So for example, if you have 10 applications leveraging your oxd server, you will be charged USD $3.30 per day. Usage fees are accumulated daily and billed at the end of each month. If you need a site license for oxd, [schedule a call](https://gluu.org/booking).
- 
-**What types of applications can use oxd?**        
-oxd only supports server-side web applications. If you are using the Gluu Server as your OP and need single sign-on (SSO) to single-page apps (SPAs), native apps, or SaaS apps, please review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/).  
-
-**What is the oxd-server?**       
-oxd-server is a standalone service with socket connection. By default it's restricted to localhost (`localhost_only: true` configuration in `oxd-conf.json`). It's possible to turn off this restriction if you set `localhost_only: false` in `oxd-conf.json`.
-
-**What is the oxd-https-extension?**       
-oxd-https-extension is a RESTful Jetty based server which accepts HTTP calls and redirects them to the `oxd-server`. If you want to connect apps to your oxd server via `HTTPS`, you can simply [start the oxd-https-extension](./oxd-https/start/index.md) after deploying and configuring your oxd-server. 
-
-**Where do I deploy oxd-server?**      
-By default, the oxd-server must be deployed on the same server as the web application(s) you want to protect. However, with the `oxd-https-extension` running, you can deploy a central, robust oxd service on dedicated server(s).
-
-**Why should I use oxd?**     
-oxd offers a few key improvements over the traditional model of embedding OAuth 2.0 code in your applications:
-
-1. If new vulnerabilities are discovered in OAuth2/OpenID Connect, oxd is the only component that needs to be updated. The oxd APIs remain the same, so you don't have to change and regression test your applications.     
-
-2. oxd is written, maintained, and supported by developers who specialize in application security. Because of the complexity of the standards--and the liability associated with poor implementations--it makes sense to rely on professionals who have read the specifications in their entirety and understand how to properly implement the protocols.     
-
-3. Centralization reduces costs. By using oxd across your IT infrastructure for application security (as opposed to a handful of homegrown and third party OAuth2 client implementations), the surface area for vulnerabilities, issue resolution, and support is significantly reduced. Plus you who have someone to call if something goes wrong!     
-
-**Which programming languages and frameworks does oxd have libraries for?**        
-There are oxd libraries for many popular programming languages and frameworks. [See above](#native-libraries). 
-
-**How do I get SSO across several websites?**                
-You’ll need two things:     
-
-1. A central OpenID Connect Provider (OP) that holds the passwords and user information  
-
-2. Websites that use the OpenID Connect protocol to authenticate users
-
-An easy way to accomplish the first--install and configure the [free open source Gluu Server](http://gluu.org/docs/deployment) using the Linux packages for CentOS, Ubuntu, Debian or Red Hat. Or you can also utilize Google as your OpenID Connect Provider (OP). The second is accomplished by calling the oxd APIs in your applications to send users to the OP for login. 
-
-**Can I use oxd plugins for social login?**    
-oxd simply makes it easy to send users to an OpenID Connect Provider (OP) for login. If you want to offer users the option to use social login, that needs to be implemented at the OP. If you are using the Gluu Server as your OP, you can use [Passport.js](https://gluu.org/docs/ce/authn-guide/passport/) to configure and support social login. 
-
-**Can I use oxd for two-factor authentication (2FA)?**    
-Again, since oxd simply makes it easy to send users to an OpenID Connect Provider (OP) for login, two-factor authentication needs to be enforced at the OP. If you are using the Gluu Server as your OP, there are several built in two-factor authentication mechanisms. Learn more in the [Gluu Server authentication guide](https://gluu.org/docs/ce/3.1.2/authn-guide/intro/).
-
-**Can I use Google or Microsoft Azure Active Directory as my OpenID Connect Provider?**    
-We have tested and confirmed oxd to work with Google as an OP. Microsoft's OP implementation is not totally standard though, and therefore may require changes or updates to oxd to work. 
-
-**Can I purchase support for the Gluu Server or oxd?**    
-Yes, for information on paid support, [visit our website](http://gluu.org/pricing).
+Visit our [FAQ page](./faq/index.md) to review frequently asked questions. 
 
