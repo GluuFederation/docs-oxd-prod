@@ -34,14 +34,14 @@ oxd is a mediator: it provides API's that can be called by a web application tha
 ### How is oxd licensed, and how much does it cost?       
 oxd is commercially licensed software. To start the oxd server a valid license is needed, which can be [obtained by registering on the oxd website](https://oxd.gluu.org). Each application (OAuth 2.0 client) that leverages the oxd service is billed USD $0.33 per day. Usage fees are accumulated daily and charged at the end of each month. If your organization needs annual billing, [schedule a call with us](https://gluu.org/booking).
  
-## What types of applications can use oxd?       
+### What types of applications can use oxd?       
 Server-side web applications. 
 
-## Where should oxd be deployed?      
+### Where should oxd be deployed?      
 By default, oxd-server must be deployed on the same host as the target web application(s). With the `oxd-https-extension` enabled, applications can call oxd over the web, enabling a central oxd service for many applications. 
 
-## Can I use oxd for two-factor authentication (2FA)?**    
+### Can I use oxd for two-factor authentication (2FA)?**    
 No. 2FA is implemented at the OP, not the client.  
 
-## What are the support options?    
+### What are the support options?    
 Gluu offers community support and VIP support. Anyone can register and enlist community support on the [Gluu support portal](https://support.gluu.org). For guaranteed responses and priority support, learn more about [VIP support](https://gluu.org/pricing). 
