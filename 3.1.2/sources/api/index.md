@@ -21,12 +21,14 @@ Learn more about authentication flows in the [OpenID Connect spec](http://openid
 The `oxd-server` API's are used for setting up the client/application and OpenID Connect authentication.  
 
 #### API's used to Setup the Client/Application
- - Setup Client (only used for oxd-https-extension)
- - Get Client Token (only used for oxd-https-extension)
+ - Setup Client* 
+ - Get Client Token* 
  - Register Site
  - Update Site Registration
  - Get Access Token by Refresh Token
  - Get Logout URI
+
+* _only used by oxd-https-extension_
 
 #### API's used for OpenID Connect Authentication
  - Get Authorization URL
@@ -35,7 +37,7 @@ The `oxd-server` API's are used for setting up the client/application and OpenID
  
 **IMPORTANT** : 
 
-If you are using the `oxd-https-extension`, you will need to obtain an access token to secure the interaction between your client and the `oxd-https-extension`. You can follow the two steps below. 
+If the `oxd-https-extension` is in use, an access token needs to be obtained to secure the interaction between the client and the `oxd-https-extension`. Follow the two steps below: 
 
  - [Setup Client](#setup-client) (returns `client_id` and `client_secret`. Make sure `uma_protection` scope is present in request)
  - [Get Client Token](#get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`)
