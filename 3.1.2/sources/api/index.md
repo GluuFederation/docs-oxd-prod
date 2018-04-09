@@ -27,8 +27,8 @@ The `oxd-server` API's are used for setting up the client/application and OpenID
  - Update Site Registration
  - Get Access Token by Refresh Token
  - Get Logout URI
-
-* _only used by oxd-https-extension_
+       
+<em>*</em> _only used by oxd-https-extension_
 
 #### API's used for OpenID Connect Authentication
  - Get Authorization URL
