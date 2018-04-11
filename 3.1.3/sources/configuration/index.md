@@ -38,7 +38,8 @@ oxd-conf.json
     "storage":"h2",
     "storage_configuration": {
         "dbFileLocation":"/opt/oxd-server/data/oxd_db"
-    }
+    },
+    "remove_expired_clients":true
 }
 ```
 ### oxd-conf.json Field Descriptions
@@ -86,6 +87,8 @@ oxd-conf.json
 - **uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client:** Notifies the `oxd-server` whether to automatically register the `Claims Gathering Endpoint` as the `claims_redirect_uri` for a given client. It is useful for UMA 2 clients that wish to force authorization against the Gluu Server. To provide custom `claims_redirect_uri`, set this property to `false`
 
 - **migration_source_folder_path:** `oxd-server` has built-in migration from older version of `oxd-server`. To migrate old json files from previous versions, specify path to folder/directory that contains those json files in this property. Those files will be read and imported once (during restart `oxd-server`, will not import them again). If using Windows OS, don't forget to escape path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
+
+- **remove_expired_clients:** whether remove expired clients or not. Possible values: `true`, `false`.
 
 - **storage:** This value can either be `h2` or `redis`. If `redis` is set then `storage_configuration` must be specified with redis configuration details
 
