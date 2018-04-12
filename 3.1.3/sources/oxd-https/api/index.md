@@ -1,8 +1,9 @@
 # oxd-https-extension API
 
+## Swagger UI
 Peruse the API documentation on [Swagger](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/GluuFederation/oxd/version_3.1.3/oxd-https-extension/src/main/resources/swagger.yaml). 
 
-### Setup Client
+## Setup Client
 
 *Non-normative example request*
 ```language-json
@@ -50,7 +51,7 @@ POST /setup-client
 }
 ```
 
-### Get Client Token
+## Get Client Token
 
 *Non-normative example request*
 ```language-json
@@ -81,7 +82,7 @@ POST /get-client-token
 }
 ```
 
-### Introspect Access Token
+## Introspect Access Token
 
 Request:
 
@@ -118,7 +119,7 @@ Response:
 }
 ```
 
-### Register Site
+## Register Site
 
 *Non-normative example request*
 ```language-json
@@ -161,7 +162,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### Update Site
+## Update Site
 
 *Non-normative example request*
 ```language-json
@@ -198,7 +199,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### Remove Site
+## Remove Site
 
 *Non-normative example request*
 ```language-json
@@ -219,7 +220,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### Get Authorization Url
+## Get Authorization Url
 
 *Non-normative example request*
 ```language-json
@@ -247,7 +248,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### Get Tokens By Code
+## Get Tokens By Code
 
 *Non-normative example request*
 Use the code and state obtained in the previous step to call this API to retrieve tokens.
@@ -303,7 +304,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### Get User Info
+## Get User Info
 
 *Non-normative example request*
 ```language-json
@@ -368,7 +369,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### Logout URL
+## Logout URL
 
 *Non-normative example request*
 ```language-json
@@ -390,7 +391,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### Get Access Token By Refresh Token
+## Get Access Token By Refresh Token
 
 *Non-normative example request*
 ```language-json
@@ -416,7 +417,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### UMA RS Protect Resources
+## UMA RS Protect Resources
 
 It's important to have a single HTTP method, mentioned only once within a given path in JSON, otherwise, the operation will fail.
 
@@ -525,7 +526,7 @@ Request with `scope_expression`. `scope_expression` is a Gluu-invented extension
 ```
 
 
-### UMA RS Check Access
+## UMA RS Check Access
 
 *Non-normative example request*
 ```language-json
@@ -561,7 +562,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### UMA Introspect RPT
+## UMA Introspect RPT
 
 Request:
 
@@ -597,7 +598,7 @@ Success Response:
 }
 ```
 
-### UMA RP - Get RPT
+## UMA RP - Get RPT
 
 *Non-normative example request*
 ```language-json
@@ -628,7 +629,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-### UMA RP Get Claims Gathering Url
+## UMA RP Get Claims Gathering Url
 
 *Non-normative example request*
 ```language-json
