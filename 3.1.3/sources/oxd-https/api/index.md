@@ -1,5 +1,7 @@
 # oxd-https-extension API
 
+[Swagger UI](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/GluuFederation/oxd/version_3.1.3/oxd-https-extension/src/main/resources/swagger.yaml) 
+
 ### Setup Client
 
 *Non-normative example request*
