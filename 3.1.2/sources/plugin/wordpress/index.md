@@ -147,5 +147,7 @@ If you are using a Gluu Server as your OP, you will need to configure Gluu to re
 
 To use Google as the OP, you will need to obtain a Client ID and Secret at Google. To generate your `client_id` and `client_secret` at Google use the redirect uri: `https://<hostname>/index.php?option=oxdOpenId`.
 
+Once you have a Client ID and Secret, navigate to the plugin interface in WordPress and enter `https://accounts.google.com` as the OP host. Add the other required values and click register. Upon submitting two new fields will be displayed where the Client ID and Secret can be entered. Add those values and submit the configuration. 
+
 ## Support
 Please report technical issues and suspected bugs on our [support page](https://support.gluu.org). If you do not already have an account on Gluu Support, you can login and create an account using the same credentials you created when you registered for your oxd license.
