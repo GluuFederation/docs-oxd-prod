@@ -117,7 +117,7 @@ Additional notes about pricing and billing:
 - To discuss annual billing and bulk discounts, [schedule a call](https://gluu.org/booking). 
    
 ## Support
-Have questions or run into issues? Just open a ticket on the [Gluu support portal](https://support.gluu.org). If your organization needs guaranteed response times, private support, and priority access to our team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing).  
+Have questions or run into issues? Just open a public issue on the [Gluu support portal](https://support.gluu.org). If your organization needs guaranteed response times, private support, and priority access to our team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing).  
 
 ## FAQ's
 
