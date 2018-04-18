@@ -5,11 +5,17 @@ oxd exposes simple, static APIs web application developers can use to securely i
 
 The oxd software package includes the `oxd-server` and the `oxd-https-extension`: 
 
-- `oxd-server` is designed to work as a standalone service daemon via sockets. API calls to `oxd-server` must come via `localhost`. 
-- `oxd-https-extension` is an optional component, that when enabled, allows web apps to call oxd APIs over the web. 
+### oxd-server
+`oxd-server` is designed to work as a standalone service daemon via sockets. By defafult, oxd must be installed on the same host as the web application it is securing. 
 
-![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png) 
+![oxd-local-architecture](./img/oxd-local.jpg) 
 
+### oxd-https-extension
+- `oxd-https-extension` is an optional component, that, when enabled, allows apps to call oxd APIs over the web. With the https extension enabled, many apps can leverage one central oxd service for OAuth 2.0 security. 
+
+![oxd-https-architecture](./img/oxd-https.jpg) 
+
+## Benefits
 oxd offers operational and security benefits for developers and organizations:
 
 - oxd centralizes and standardizes OAuth 2.0 implementations across web applications. 
