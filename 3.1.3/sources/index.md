@@ -112,7 +112,7 @@ Additional notes about pricing and billing:
 
 - If the transaction is declined, or there is no credit card on file, your oxd installation(s) will be deactivated and the sign-in process will stop working for applications that leverage your inactive oxd server.  
 
-[Get your oxd license](https://oxd.gluu.org). To discuss volume discounts and site licenses, [schedule a call](https://gluu.org/booking). 
+- To discuss volume discounts and site licenses, [schedule a call](https://gluu.org/booking). 
    
 
 !!! Note
