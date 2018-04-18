@@ -1,8 +1,8 @@
 # Configuration
 
-oxd configuration consists of two files :
+oxd configuration consists of two files:
 
-- `/etc/oxd/oxd-server/oxd-conf.json` is the general configuration file for oxd, including where you add your license. If you have not yet obtained a license, you can [register on the website for free](https://oxd.gluu.org)
+- `/etc/oxd/oxd-server/oxd-conf.json` is the general configuration file for oxd. 
 
 - `/etc/oxd/oxd-server/oxd-default-site-config.json` is the fallback configuration file for the OpenID Connect `Register Site` command. Learn more on the [oxd API page](../api/index.md#register-site)
 
