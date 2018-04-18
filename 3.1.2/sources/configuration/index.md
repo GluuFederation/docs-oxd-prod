@@ -41,7 +41,7 @@ oxd-conf.json
     }
 }
 ```
-### oxd-conf.json Field Descriptions
+### Field descriptions
 
 - **server_name:** human readable name which will be used by the License Server to identify the server you are installing oxd on. It is good idea to put some sensible name here
 
@@ -134,7 +134,7 @@ conf/oxd-default-site-config.json
 }
 ```
 
-### oxd-default-site-config.json field descriptions
+### Field descriptions
 
 - **op_host:** Must point to a valid 
 [Gluu Server CE installation](https://gluu.org/docs/ce/3.1.2/installation-guide/install/). (Sample : "op_host":"https://idp.example.org")
