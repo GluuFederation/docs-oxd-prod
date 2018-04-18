@@ -39,7 +39,7 @@ Follow these steps to get started:
 1. In your app(s), call the [oxd API](#api), one of the [native libraries](#native-libraries), or use existing [oxd plugins](#plugins) to securely send users to the OP for authentication and authorization. 
 
 ## Compatibility
-oxd 3.1.2 is compatible with the following standard OpenID Providers (OP) and UMA Authorization Servers (AS):
+oxd 3.1.2 has been tested against the following OAuth 2.0 servers:
 
 ### OpenID Providers (OP)
 - Gluu Server [3.1.2](https://gluu.org/docs/ce/3.1.2) , [3.1.1](https://gluu.org/docs/ce/3.1.1)
@@ -50,7 +50,7 @@ oxd 3.1.2 is compatible with the following standard OpenID Providers (OP) and UM
 - Gluu Server [3.1.2](https://gluu.org/docs/ce/3.1.2) , [3.1.1](https://gluu.org/docs/ce/3.1.1) 
 
 !!! Note
-    If you have successfully tested oxd against another OP or AS, please email details to [sales@gluu.org](mailto:sales@gluu.org).
+    If you have tested oxd against another OP or AS, please email details to [sales@gluu.org](mailto:sales@gluu.org).
 
 
 ## API
