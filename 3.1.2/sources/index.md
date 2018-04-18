@@ -1,18 +1,36 @@
 # oxd 3.1.2 Documentation
 
 ## Introduction
-oxd exposes simple, static APIs web application developers can use to securely implement user authentication and authorization with an OAuth 2.0 identity provider (IDP) like the [Gluu Server](https://gluu.org/docs/ce).
+oxd exposes simple, static APIs web application developers can use to securely implement user authentication and authorization against an OAuth 2.0 identity provider (IDP) like the [Gluu Server](https://gluu.org/docs/ce).
+
+The oxd software package includes the `oxd-server` and the `oxd-https-extension`: 
+
+- `oxd-server` is designed to work as a standalone service daemon via sockets. API calls to `oxd-server` must come via `localhost`. 
+- `oxd-https-extension` is an optional component, that when enabled, allows web apps to call oxd APIs over the web. 
+
+![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png) 
 
 oxd offers operational and security benefits for developers and organizations:
 
 - oxd centralizes and standardizes OAuth 2.0 implementations across web applications. 
-- When new OAuth 2.0 vulnerabilities are discovered, simply update oxd--applications **never** have to be changed or regression tested.   
+- When new OAuth 2.0 vulnerabilities are discovered, simply update the oxd package--applications **never** have to be changed or regression tested.   
 - oxd is written, maintained and supported by OAuth 2.0 security experts.   
 
-![oxd-technical-architecture](https://cloud.githubusercontent.com/assets/5271048/22804205/919112e8-eedd-11e6-85a7-60eab8f51585.png)
+## Get Started
 
-!!! Note
-    oxd is built for server-side web apps. Learn how to integrate single-page apps (SPAs), native apps, and/or SaaS apps with Gluu in the [SSO integration guide](https://gluu.org/docs/ce/integration/). 
+Follow these steps to get started:
+
+1. [Sign up](https://oxd.gluu.org/account/register/) to obtain your oxd license and $50 credit.
+
+1. [Install](./install/index.md) oxd on the same host as your application (or any host if enabling the https extension)
+
+1. [Configure](./configuration/index.md) the `oxd-server` and add your license keys.           
+
+1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs. 
+
+1. [Start and configure](./oxd-https/start.md) `oxd-https-extension` to support RESTful calls (**Optional**). 
+
+1. In your app(s), call the [oxd API](#api), one of the [native libraries](#native-libraries), or use existing [oxd plugins](#plugins) to securely send users to the OP for authentication and authorization. 
 
 ## Compatibility
 oxd 3.1.2 is compatible with the following standard OpenID Providers (OP) and UMA Authorization Servers (AS):
@@ -28,26 +46,6 @@ oxd 3.1.2 is compatible with the following standard OpenID Providers (OP) and UM
 !!! Note
     If you have successfully tested oxd against another OP or AS, please email details to [sales@gluu.org](mailto:sales@gluu.org).
 
-## Get Started
-
-The oxd software package includes the `oxd-server` and the `oxd-https-extension`: 
-
-- `oxd-server` is designed to work as a standalone service daemon via sockets. By default, API calls to `oxd-server` must come via `localhost`. 
-- `oxd-https-extension` is optional, and enables applications to call oxd APIs over the web. 
-
-Follow these steps to get started:
-
-1. [Sign up](https://oxd.gluu.org/account/register/) to obtain your oxd license and $50 credit.
-
-1. [Install](./install/index.md) oxd on the same host as your application (or any host if enabling the https extension)
-
-1. [Configure](./configuration/index.md) the `oxd-server` and add your license keys.           
-
-1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs. 
-
-1. [Start and configure](./oxd-https/start.md) `oxd-https-extension` to support RESTful calls (**Optional**). 
-
-1. In your app(s), call the [oxd API](#api), one of the [native libraries](#native-libraries), or use existing [oxd plugins](#plugins) to securely send users to the OP for authentication and authorization. 
 
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
