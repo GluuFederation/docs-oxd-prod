@@ -100,6 +100,9 @@ Gluu publishes oxd plugins, modules, and extensions for the following open sourc
 
 Specific functionality is not guaranteed. If you spot a bug or need feature enhancements, open a ticket on [Gluu support](https://support.gluu.org).  
 
+## Source code
+The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
+
 ## Pricing & Billing
 
 oxd costs **USD $0.33 per OAuth2 client per day**. New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation. 
