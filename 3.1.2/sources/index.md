@@ -13,6 +13,7 @@ The oxd software package includes the `oxd-server` and the `oxd-https-extension`
 
 ![oxd-https-architecture](./img/oxd-https.jpg) 
 
+## Benefits
 oxd offers operational and security benefits for developers and organizations:
 
 - oxd centralizes and standardizes OAuth 2.0 implementations across web applications. 
