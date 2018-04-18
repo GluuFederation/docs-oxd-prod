@@ -11,7 +11,7 @@ The oxd software package includes the `oxd-server` and the `oxd-https-extension`
 ![oxd-local-architecture](./img/oxd-local.jpg) 
 
 ### oxd-https-extension
-- `oxd-https-extension` is an optional component, that, when enabled, allows apps to call oxd APIs over the web. The https extension makes it possible for many apps across many servers to leverage one central oxd service for OAuth 2.0 security. 
+`oxd-https-extension` is an optional component, that, when enabled, allows apps to call oxd APIs over the web. The https extension makes it possible for many apps across many servers to leverage one central oxd service for OAuth 2.0 security. 
 
 ![oxd-https-architecture](./img/oxd-https.jpg) 
 
