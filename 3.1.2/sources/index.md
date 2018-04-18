@@ -5,11 +5,11 @@ oxd exposes simple, static APIs web application developers can use to securely i
 
 The oxd software package includes the `oxd-server` and the `oxd-https-extension`: 
 
-- `oxd-server` is designed to work as a standalone service daemon via sockets. API calls to `oxd-server` must come via `localhost`.
+- `oxd-server` is designed to work as a standalone service daemon via sockets. API calls to oxd-server must come via localhost.
 
 ![oxd-local-architecture](./img/oxd-local.jpg) 
 
-- `oxd-https-extension` is an optional component, that when enabled, allows web apps to call oxd APIs over the web. 
+- `oxd-https-extension` is an optional component, that when enabled, allows apps to call oxd APIs over the web. 
 
 ![oxd-https-architecture](./img/oxd-https.jpg) 
 
