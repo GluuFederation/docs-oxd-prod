@@ -100,9 +100,11 @@ Gluu does not guarantee specific functionality in oxd plugins. If you find a bug
 
 oxd costs **USD $0.33 per application ("client") per day**. New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.  
 
+[Get your oxd license](https://oxd.gluu.org).
+
 Additional notes about pricing and billing: 
 
-- Each time a new application connects to your `oxd-server`, a record is created and you will be charged USD $0.33 each day the application remains active.  
+- Each time a new OAuth2 client connects to your `oxd-server`, a record is created and you will be charged USD $0.33 each day the application remains active.  
 
 - At the end of each month usage fees are compiled and a billing summary is sent to all users associated with your account.   
 
@@ -110,10 +112,13 @@ Additional notes about pricing and billing:
 
 - If the transaction is declined, or there is no credit card on file, your oxd installation(s) will be deactivated and the sign-in process will stop working for applications that leverage your inactive oxd server.  
 
-- If you can not add a credit card, or would like to discuss volume discounts, [contact us for an oxd site license](https://gluu.org/contact). 
+[Get your oxd license](https://oxd.gluu.org). To discuss volume discounts and site licenses, [schedule a call](https://gluu.org/booking). 
+   
 
 !!! Note
     Do you want to use oxd with an open source project? Gluu is happy to provide free oxd licenses to qualified open source projects. Send an email to [sales@gluu.org](mailto:sales@gluu.org). 
+
+
 
    
 ## Support
