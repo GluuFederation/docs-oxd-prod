@@ -10,7 +10,7 @@ The oxd software package includes the `oxd-server` and the `oxd-https-extension`
 
 ![oxd-local-architecture](./img/oxd-local.jpg) 
 
-### oxd-https-extension
+### https-extension
 `oxd-https-extension` is an **optional** component, that, when enabled, allows apps to call oxd APIs over the web. The HTTPS extension makes it possible for many apps across many servers to leverage one central oxd service for OAuth 2.0 security.
 
 ![oxd-https-architecture](./img/oxd-https.jpg) 
@@ -36,7 +36,8 @@ Follow these steps to get started:
 
 1. [Start and configure](./oxd-https/start.md) `oxd-https-extension` to support RESTful calls (**Optional**) 
 
-1. In your app(s), call the [oxd API](#api) directly, or use one of the [native libraries](#native-libraries) or existing [oxd plugins](#plugins) to securely send users to the central authentication server to sign in 
+1. In your app(s), call the [oxd API](#api) using one of the [native libraries](#native-libraries) or [oxd plugins](#plugins) to securely send users to the central authentication server for sign in. 
+
 
 ## Compatibility
 oxd 3.1.3 has been tested against the following OAuth 2.0 servers:
