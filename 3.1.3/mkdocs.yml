@@ -1,5 +1,5 @@
 site_name: oxd Docs
-site_description: Documenation for oxd OpenID Connect and UMA client software
+site_description: Documentation for oxd OpenID Connect and UMA client software
 site_favicon: 'favicon.ico'
 copyright: Copyright &copy; 2018, Gluu, Inc.
 docs_dir: sources 
