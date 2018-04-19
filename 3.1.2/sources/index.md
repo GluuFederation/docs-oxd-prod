@@ -38,7 +38,7 @@ Follow these steps to get started:
 
 1. [Start and configure](./oxd-https/start.md) `oxd-https-extension` to support RESTful calls (**Optional**). 
 
-1. In your app(s), call the [oxd API](#api) directly, or use one of the [native libraries](#native-libraries) or existing [oxd plugins](#plugins) to securely send users to the central authentication server for sign in. 
+1. In your app(s), call the [oxd API](#api) directly using one of the [native libraries](#native-libraries) or [oxd plugins](#plugins) to securely send users to the central authentication server for sign in. 
 
 ## Compatibility
 oxd 3.1.2 has been tested against the following OAuth 2.0 servers:
