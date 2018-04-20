@@ -103,7 +103,7 @@ The oxd source code is [available on GitHub](https://github.com/GluuFederation/o
 
 ## Pricing & Billing
 
-oxd costs **USD $0.33 per application ("client") per day**. New accounts include a $50 credit that is automatically applied to usage fees incurred during the first 60 days after account creation.  
+oxd costs **USD $0.33 per application ("OAuth 2.0 client") per day**. All new accounts include up to 10 clients free forever.   
 
 [Get your oxd license](https://oxd.gluu.org).
 
