@@ -19,7 +19,7 @@ The oxd software package includes the `oxd-server` and the `oxd-https-extension`
 oxd offers operational and security benefits for developers and organizations:
 
 - oxd centralizes and standardizes OAuth 2.0 implementations across web applications 
-- When new OAuth 2.0 vulnerabilities are discovered, simply update the oxd package--applications **never** have to be changed or regression tested   
+- When OAuth 2.0 vulnerabilities are discovered, simply update the oxd package--applications **never** have to be changed or regression tested   
 - oxd is written, maintained and supported by OAuth 2.0 security experts   
 
 ## Get Started
