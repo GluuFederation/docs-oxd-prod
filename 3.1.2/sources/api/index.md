@@ -545,8 +545,8 @@ Your client, acting as an [OAuth2 Resource Server](https://tools.ietf.org/html/r
 
 - Register a protected resource (with the `uma_rs_protect` command)
 - Intercept the HTTP call (before the actual REST resource call) and check the `uma_rs_check_access` command response to determine whether the requester is allowed to proceed or should be rejected:
-    - Allow access: if the response from `uma_rs_check_access` is `allowed` or `not_protected`, an error is returned.
-    - If `uma_rs_check_access` returns `denied` then return back HTTP response.
+    - Access granted: If the response from `uma_rs_check_access` is `allowed` or `not_protected` then the requested resource is served.
+    - Access denied: If the response from `uma_rs_check_access` is `denied` then a 401 HTTP response is returned, with `initial permission ticket` obtain from Authorisation Server(AS) as parameter.
 - client must have `client_credenitals` grant type. It's required for correct PAT obtaining.    
         
 The `uma_rs_check_access` operation checks access using the "or" rule when evaluating scopes.
