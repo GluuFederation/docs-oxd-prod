@@ -136,8 +136,8 @@ conf/oxd-default-site-config.json
 
 ### Field descriptions
 
-- **op_host:** Must point to a valid 
-[Gluu Server CE installation](https://gluu.org/docs/ce/3.1.2/installation-guide/install/). (Sample : "op_host":"https://idp.example.org")
+- **op_host:** Must point to a valid OpenID Connect Provider (OP), like  
+[Gluu Server CE](https://gluu.org/docs/ce/3.1.2/installation-guide/install/) or Google (e.g. `accounts.google.com`). (Sample : "op_host":"https://idp.example.org")
 
 - **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example if it is `https://example.com/.well-known/openid-configuration` then path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then path is `oxauth`  
 
