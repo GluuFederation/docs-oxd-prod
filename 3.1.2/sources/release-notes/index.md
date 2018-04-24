@@ -1,43 +1,4 @@
-# Notice
-
-This document, also known as the Gluu Release Note, 
-relates to the Gluu Release versioned 3.1.2 The work is licensed under “The MIT License” 
-allowing the use, copy, modify, merge, publish, distribute, sub-license and sale without 
-limitation and liability. This document extends only to the aforementioned release version 
-in the heading.
-
-UNLESS IT HAS BEEN EXPRESSLY AGREED UPON BY ANY WRITTEN AGREEMENT BEFOREHAND, 
-THE WORK/RELEASE IS PROVIDED “AS IS”, WITHOUT ANY WARRANTY OR GUARANTEE OF ANY KIND 
-EXPRESS OR IMPLIED. UNDER NO CIRCUMSTANCE, THE AUTHOR, OR GLUU SHALL BE LIABLE FOR ANY 
-CLAIMS OR DAMAGES CAUSED DIRECTLY OR INDIRECTLY TO ANY PROPERTY OR LIFE WHILE INSTALLING 
-OR USING THE RELEASE.
-
-## Overview
-
-## Purpose
-
-The document is released with the Version 3.1.2 of the Gluu Software. 
-The purpose of this document is to provide the changes made/new features included in this 
-release of the Gluu Software. The list is not exhaustive and there might be some omission 
-of negligible issues, but the noteworthy features, enhancements and fixes are covered. 
-
-## Background
-
-The Gluu Server is a free open source identity and access management (IAM) platform. 
-The Gluu Server is a container distribution composed of software written by Gluu and incorporated 
-from other open source projects. 
-
-The most common use cases for the Gluu Server include single sign-on (SSO), mobile authentication, API access management, two-factor authentication, customer identity and access management (CIAM) and identity federation.
-
-## Documentation
-
-Please visit the [oxd Documentation Page](https://gluu.org/docs/oxd/3.1.2/) for the complete 
-documentation and administrative guide. 
-
-## Components included in oxd 3.1.2
-
-
-## What's new in version 3.1.2
+## What's New in Version 3.1.2
 
 ### New Features
 
