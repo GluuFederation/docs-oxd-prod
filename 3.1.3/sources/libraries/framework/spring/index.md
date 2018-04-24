@@ -3,13 +3,13 @@
 Use oxd's Java Spring library to send users from a Spring application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication and access management policy enforcement.  
 
 !!! Note
-    You can also refer to the [oxd-java library docs](../languages/java/) for more details on java classes.
+    You can also refer to the [oxd-java library docs](../languages/java/) for more details on Java classes.
 
 
 ## Installation Guides
 
 - [Github oxd-node](https://github.com/GluuFederation/oxd-node)
-- [Gluu Server](https://gluu.org/docs/ce/3.1.2/installation-guide/install/)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 
 
