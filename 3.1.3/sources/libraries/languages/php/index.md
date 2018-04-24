@@ -16,7 +16,7 @@ in your project root:
 
 composer requires "gluufederation/oxd-php-api": "3.1.3"
 
-- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-php-library/archive/v3.1.3.zip) the zip of the oxd PHP library.
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-php-library/archive/v3.1.2.zip) the zip of the oxd PHP library.
 
 #### Important Links
 
