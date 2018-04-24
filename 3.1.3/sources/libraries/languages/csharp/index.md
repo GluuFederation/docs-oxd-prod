@@ -13,13 +13,13 @@
 
 `PM> Install-Package Gluu.Oxd.OxdCSharp`
 
-- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-csharp/archive/3.1.2.zip) the zip of the oxd CSharp library
+- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-csharp/archive/3.1.3.zip) the zip of the oxd CSharp library
 
 ### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- oxd-csharp [API docs](https://rawgit.com/GluuFederation/oxd-csharp/3.1.2/docs/html/index.html) for the auto-generated csharp docs, which includes more in-depth information about the various functions and parameters
-- See the code of a [sample .Net app](https://github.com/GluuFederation/oxd-csharp/tree/3.1.2/GluuDemoWebsite) built using oxd-csharp
+- oxd-csharp [API docs](https://rawgit.com/GluuFederation/oxd-csharp/3.1.3/docs/html/index.html) for the auto-generated Csharp docs, which includes more in-depth information about the various functions and parameters
+- See the code of a [sample .Net app](https://github.com/GluuFederation/oxd-csharp/tree/3.1.3/GluuDemoWebsite) built using oxd-csharp
 - Browse the oxd-csharp [source code on Github](https://github.com/GluuFederation/oxd-csharp)
 
 ## Configuration
@@ -28,7 +28,7 @@ oxd-csharp uses a configuration file to specify information needed to configure 
 
 oxd-csharp can communicate with the oxd server via sockets or HTTPS.
 
-Below are minimal configuration examples for sockets and https transport. The [oxd_config.json](https://github.com/GluuFederation/oxd-csharp/blob/3.1.2/GluuDemoWebsite/oxd_config.json) file contains a full list of configuration parameters and sample values. 
+Below are minimal configuration examples for sockets and https transport. The [oxd_config.json](https://github.com/GluuFederation/oxd-csharp/blob/3.1.3/GluuDemoWebsite/oxd_config.json) file contains a full list of configuration parameters and sample values. 
 
 !!! Note
     The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address
@@ -1244,7 +1244,7 @@ public ActionResult GetClaimsGatheringUrl( string oxdHttpsUrl, string oxdId, str
 
 ## Example
 
-- The `GluuDemoWebsite` directory contains apps and scripts written using oxd-csharp for OpenID Connect and UM RP Client
+- The `GluuDemoWebsite` directory contains apps and scripts written using oxd-Csharp for OpenID Connect and UM RP Client
 - The `UMAExample` directory contains apps and scripts for UMA RS server
 
 
