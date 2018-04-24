@@ -19,8 +19,8 @@
 ### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- oxd-perl [API docs](https://rawgit.com/GluuFederation/oxd-perl/3.1.2/docs/html/index.html) for the auto-generated perl docs, which includes more in-depth information about the various functions and parameters
-- See the code of a [sample perl app](https://github.com/GluuFederation/oxd-perl/tree/3.1.2/OxdPerlModule/example) built using oxd-perl
+- oxd-perl [API docs](https://rawgit.com/GluuFederation/oxd-perl/3.1.3/docs/html/index.html) for the auto-generated perl docs, which includes more in-depth information about the various functions and parameters
+- See the code of a [sample perl app](https://github.com/GluuFederation/oxd-perl/tree/3.1.3/OxdPerlModule/example) built using oxd-perl
 - Browse the oxd-perl [source code on Github](https://github.com/GluuFederation/oxd-perl)
 
 
