@@ -220,7 +220,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-## Get Authorization Url
+## Get Authorization URL
 
 *Non-normative example request*
 ```language-json
@@ -629,7 +629,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 }
 ```
 
-## UMA RP Get Claims Gathering Url
+## UMA RP Get Claims Gathering URL
 
 *Non-normative example request*
 ```language-json
