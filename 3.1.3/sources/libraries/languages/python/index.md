@@ -11,7 +11,7 @@
 
 - *Install from Pip* - `pip install oxdpython`
 
-- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-python/archive/3.1.2.zip) the zip of the oxd Python library and run the setup script:
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-python/archive/3.1.3.zip) the zip of the oxd Python library and run the setup script:
 
 ```
 cd oxdpython-version
@@ -21,17 +21,17 @@ python setup.py install
 ### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- oxd-python [API docs](https://rawgit.com/GluuFederation/oxd-python/3.1.2/docs/html/index.html) for the auto-generated pydocs, which includes more in-depth information about the various functions and parameters
-- See the code of a [sample Flask app](https://github.com/GluuFederation/oxd-python/blob/3.1.2/examples/flask_app) built using oxd-python
+- oxd-python [API docs](https://rawgit.com/GluuFederation/oxd-python/3.1.3/docs/html/index.html) for the auto-generated pydocs, which includes more in-depth information about the various functions and parameters
+- See the code of a [sample Flask app](https://github.com/GluuFederation/oxd-python/blob/3.1.3/examples/flask_app) built using oxd-python
 - Browse the oxd-python [source code on Github](https://github.com/GluuFederation/oxd-python)
 
 ## Configuration
 
-oxd-python uses a configuration file to specify information needed to configure your OpenID Connect client. If OpenID dynamic client registration is used, the config file needs to be *writable by the app*, because oxd will save the client id and client secret to this file.
+oxd-python uses a configuration file to specify information needed to configure your OpenID Connect client. If OpenID dynamic client registration is used, the config file needs to be *writable by the app*, because oxd will save the client ID and client secret to this file.
 
 oxd-python can communicate with the oxd server via sockets or HTTPS. There is **no difference** in code--just toggle the `https_extension` configuration property. Sockets are used when the oxd server is running locally.
 
-Below are minimal configuration examples for sockets and HTTPS transport. The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/3.1.2/sample.cfg) file contains a full list of configuration parameters and sample values. 
+Below are minimal configuration examples for sockets and HTTPS transport. The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/3.1.3/sample.cfg) file contains a full list of configuration parameters and sample values. 
 
 !!! Note
     The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address.
@@ -82,9 +82,9 @@ client.setup_client()
 
 ### Get Client Token
 
-After setting up site, the client should get a protection token. This token will
+After setting up the site, the client should get a protection token. This token will
 be cached by oxd-python as `protection_access_token` in the config file and passed
-on to the https extension as an `Authentication` header for each request.
+on to the HTTPS extension as an `Authentication` header for each request.
 
 ```python
 client_token = client.get_client_token()
