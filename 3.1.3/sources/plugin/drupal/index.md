@@ -16,7 +16,7 @@ to have a drupal site, standard OP (like Google or a Gluu Server) and the oxd se
 
 - This plugin is compatible with Drupal versions: 7.x
 
-- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google
+- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/). Otherwise we recommend using Google
 
 - You will need a valid license to start the oxd server. You can get a license and a $50 credit by signing up on the [oxd website](https://oxd.gluu.org)
 
@@ -57,7 +57,7 @@ Click the link to navigate to the General configuration page.
 ### General
 
 #### Server Settings
-In the server settings section of the plugin configuration page you will need to enter information about your OP, your oxd server and where you want to redirect users after logout. 
+In the server settings section of the plugin configuration page, you will need to enter information about your OP, your oxd server and where you want to redirect users after logout. 
 
 A short description of each field follows:
 
@@ -74,7 +74,7 @@ If your OpenID Provider supports dynamic registration no additional steps are re
 If your OpenID Connect Provider does not support dynamic registration (like Google), after clicking register two additional fields will be exposed where you need to enter your `client_id` and `client_secret`. Both values need to be obtained from the OP. To generate your `client_id` and `client_secret` use the redirect uri: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
 !!! Note
-    If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the `OpenID Connect` > `Clients` page. Search for your `oxd id`. If it's present in the OP, everything worked.
+    If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into your Gluu Server, navigate to the `OpenID Connect` > `Clients` page. Search for your `oxd id`. If it's present in the OP, everything worked.
 
 #### Enrollment and Access Management
 In the enrollment and access management section of the plugin configuration page you can decide, (1), how new user registrations will be handled, and (2), what role new users will receive upon registration.
