@@ -19,7 +19,7 @@ Learn more about authentication flows in the [OpenID Connect spec](http://openid
 
 ### oxd OpenID Connect APIs
 `oxd-server` provides seven APIs for OpenID Connect authentication. In general,
-you can think of the Authorization Code Flow as a three step process: 
+you can think of the Authorization Code Flow as a three-step process: 
 
  1. Redirect person to the authorization URL and obtain a code
  1. Use code to obtain tokens (access_token, id_token and refresh_token)
@@ -45,7 +45,7 @@ If you are using the `oxd-https-extension`, before using the above workflow you 
 
 If you are using the `oxd-https-extension`, you must setup the client. 
 
-The parameters for Setup Client are the same as for Register the Site command. The command registers the client for communication protection. This will be used to obtain an access token via the Get Client Token command.  The access token will be passed as a `protection_access_token` parameter to other commands. `uma_protection` scope has to be present in request to `setup_client` command.
+The parameters for Setup Client are the same as for the Register the Site command. The command registers the client for communication protection. This will be used to obtain an access token via the Get Client Token command.  The access token will be passed as a `protection_access_token` parameter to other commands. `uma_protection` scope has to be present in request to `setup_client` command.
 
 Request:
 
@@ -455,10 +455,9 @@ Response:
 
 #### Get Logout URI
 
-Uses front-channel logout. A page is returned with iFrames, each of which contains the logout URL of the applications that have a session in that browser. 
+The `get_logout_uri` command uses front-channel logout. A page is returned with iFrames, each of which contains the logout URL of the applications that have a session in that browser. 
 
-These iFrames should be loaded automatically, enabling each application to get a notification of logout, and to hopefully clean 
-up any cookies in the person's browser. If the person blocks [third-party cookies](https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie) in their browser, front-channel logout will not work.
+These iFrames should be loaded automatically, enabling each application to get a notification of logout, and to hopefully clean up any cookies in the person's browser. If the person blocks [third-party cookies](https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie) in their browser, front-channel logout will not work.
 
 Request:
 
@@ -580,7 +579,7 @@ Request:
 }
 ```
 
-Request with `scope_expression`. `scope_expression` is a Gluu-invented extension that allows a JsonLogic expression instead of a single list of scopes. Read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.2/admin-guide/uma.md).
+Request with `scope_expression`. `scope_expression` is a Gluu-invented extension that allows a JsonLogic expression instead of a single list of scopes. Read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.3/admin-guide/uma.md).
 ```language-json
 {
   "command": "uma_rs_protect",
@@ -787,7 +786,7 @@ Success Response:
 ```
 
 
-### UMA 2 Client API's
+### UMA 2 Client APIs
 
 If your application is calling UMA 2 protected resources, use these APIs to obtain an RPT token.
 
