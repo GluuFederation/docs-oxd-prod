@@ -34,7 +34,7 @@ Follow these steps to get started:
 
 1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs 
 
-1. [Start and configure](./oxd-https/start.md) `oxd-https-extension` to support RESTful calls (**Optional**) 
+1. [Start and configure](./oxd-https/start/index.md) `oxd-https-extension` to support RESTful calls (**Optional**) 
 
 1. In your app(s), call the [oxd API](#api) using one of the [native libraries](#native-libraries) or [oxd plugins](#plugins) to securely send users to the central authentication server for sign in. 
 
@@ -69,7 +69,7 @@ oxd native client libraries provide simple and flexible access to the oxd APIs.
 
 - [Python](./libraries/languages/python/index.md)         
 - [Java](./libraries/languages/java/index.md)         
-- [Php](./libraries/languages/php/index.md)         
+- [PHP](./libraries/languages/php/index.md)         
 - [Node](./libraries/languages/node/index.md)          
 - [C#](./libraries/languages/csharp/index.md)           
 
@@ -166,7 +166,7 @@ You’ll need two things:
 
 2. Websites that use the OpenID Connect protocol to authenticate users
 
-An easy way to accomplish the first--install and configure the [free open source Gluu Server](http://gluu.org/docs/deployment) using the Linux packages for CentOS, Ubuntu, Debian or Red Hat. Or you can also utilize Google as your OpenID Connect Provider (OP). The second is accomplished by calling the oxd APIs in your applications to send users to the OP for login. 
+An easy way to accomplish the first--install and configure the [free open source Gluu Server](http://gluu.org/docs/ce) using the Linux packages for CentOS, Ubuntu, Debian or Red Hat. Or you can also utilize Google as your OpenID Connect Provider (OP). The second is accomplished by calling the oxd APIs in your applications to send users to the OP for login. 
 
 **Can I use oxd plugins for social login?**    
 oxd simply makes it easy to send users to an OpenID Connect Provider (OP) for login. If you want to offer users the option to use social login, that needs to be implemented at the OP. If you are using the Gluu Server as your OP, you can use [Passport.js](https://gluu.org/docs/ce/authn-guide/passport/) to configure and support social login. 
