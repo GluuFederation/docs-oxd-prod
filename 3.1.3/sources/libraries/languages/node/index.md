@@ -10,7 +10,7 @@
 ### Library
 
 - *Install oxd-node via npm* - `npm install oxd-node`
-- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-node/archive/3.1.3.zip)
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-node/archive/3.1.2.zip)
 
 ### Important Links
 
