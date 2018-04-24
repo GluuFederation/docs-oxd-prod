@@ -13,7 +13,7 @@
 
 `PM> Install-Package Gluu.Oxd.OxdCSharp`
 
-- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-csharp/archive/3.1.3.zip) the zip of the oxd CSharp library
+- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-csharp/archive/3.1.2.zip) the zip of the oxd CSharp library
 
 ### Important Links
 
