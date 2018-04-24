@@ -11,7 +11,7 @@
 
 - *Install from Pip* - `pip install oxdpython`
 
-- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-python/archive/3.1.3.zip) the zip of the oxd Python library and run the setup script:
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-python/archive/3.1.2.zip) the zip of the oxd Python library and run the setup script:
 
 ```
 cd oxdpython-version
