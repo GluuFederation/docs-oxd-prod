@@ -125,15 +125,15 @@ Note that under Windows, you may need to change the default h2 database location
 
 1. Make a folder called `oxd-server` (or whatever you like), and `cd` to this folder
  
-1. `$ wget http://ox.gluu.org/maven/org/xdi/oxd-server/3.1.3.Final/oxd-server-3.1.3.Final-distribution.zip`
+2. `$ wget http://ox.gluu.org/maven/org/xdi/oxd-server/3.1.3.Final/oxd-server-3.1.3.Final-distribution.zip`
 
-1. `$ unzip oxd-server-3.1.3.Final-distribution.zip`
+3. `$ unzip oxd-server-3.1.3.Final-distribution.zip`
 
-1. Now configure oxd following the [configuration instructions](../configuration/index.md). 
+4. Now configure oxd following the [configuration instructions](../configuration/index.md). 
 
-1. `$ chmod +x bin/oxd-start.sh`
+5. `$ chmod +x bin/oxd-start.sh`
 
-1. `$ nohup bin/oxd-start.sh`
+6. `$ nohup bin/oxd-start.sh`
 
 ## Manual Build oxd-server Server
 
