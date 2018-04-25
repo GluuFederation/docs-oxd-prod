@@ -21,7 +21,7 @@ Composer requires "gluufederation/oxd-php-api": "3.1.3"
 #### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- oxd-php-library [API docs](https://rawgit.com/GluuFederation/oxd-php-library/3.1.3/docs/html/index.html) for the auto-generated php docs, which includes more in-depth information about the various functions and parameters.(https://rawgit.com/GluuFederation/oxd-php-library/3.1.3/docs/html/index.html)
+- oxd-php-library [API docs](https://rawgit.com/GluuFederation/oxd-php-library/3.1.3/docs/html/index.html) for the auto-generated php docs, which includes more in-depth information about the various functions and parameters.
 - See the code of a [sample php app](https://github.com/GluuFederation/oxd-php-library/tree/3.1.3/client.example.com) built using oxd-php-library.
 - Browse the oxd-php-library [source code on Github](https://github.com/GluuFederation/oxd-php-library).
 
