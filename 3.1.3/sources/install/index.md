@@ -131,6 +131,8 @@ Note that under Windows, you may need to change the default h2 database location
 
 4. Now configure oxd following the [configuration instructions](../configuration/index.md). 
 
+6. `$ chmod +x bin/oxd-start.sh`
+
 5. `$ nohup bin/oxd-start.sh`
 
 ## Manual Build oxd-server Server
