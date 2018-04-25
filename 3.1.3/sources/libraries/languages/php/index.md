@@ -16,7 +16,7 @@ in your project root:
 
 Composer requires "gluufederation/oxd-php-api": "3.1.3"
 
-- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-php-library/archive/v3.1.2.zip) the zip of the oxd PHP library.
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-php-library/archive/v3.1.3.zip) the zip of the oxd PHP library.
 
 #### Important Links
 
@@ -808,7 +808,7 @@ $uma_rp_get_claims_gathering_url->request();
 
 ## Sample Project
 
-Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.2.zip) specific to this oxd-php library.
+Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.3.zip) specific to this oxd-php library.
 
 
 ### Software Requirements
