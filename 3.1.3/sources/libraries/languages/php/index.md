@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-- php 5.6 or higher
+- PHP 5.6 or higher
 - Apache server 2.4 or higher
 - Gluu oxd server - [Installation docs](https://gluu.org/docs/oxd/install/)
 
@@ -14,7 +14,7 @@
 you do not already have it installed. To install oxd-php-api via Composer, execute the following command 
 in your project root:
 
-composer requires "gluufederation/oxd-php-api": "3.1.3"
+Composer requires "gluufederation/oxd-php-api": "3.1.3"
 
 - *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-php-library/archive/v3.1.2.zip) the zip of the oxd PHP library.
 
@@ -808,7 +808,7 @@ $uma_rp_get_claims_gathering_url->request();
 
 ## Sample Project
 
-Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.3.zip) specific to this oxd-php library.
+Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.2.zip) specific to this oxd-php library.
 
 
 ### Software Requirements
@@ -869,7 +869,7 @@ To use the oxd-php library, you will need:
 - Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.3.zip) and navigate to `client.example.com` directory inside the project.
 
 
-- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+- With the oxd-server running, navigate to the URLs below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
     - Setup Client URL: https://client.example.com/Settings.php
     - Login URL: https://client.example.com/Login.php
