@@ -13,7 +13,7 @@
 
 `PM> Install-Package Gluu.Oxd.OxdCSharp`
 
-- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-csharp/archive/3.1.2.zip) the zip of the oxd CSharp library
+- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-csharp/archive/3.1.3.zip) the zip of the oxd CSharp library
 
 ### Important Links
 
@@ -35,18 +35,18 @@ Below are minimal configuration examples for sockets and https transport. The [o
 
 **Configuration for oxd-server via sockets:**
 
- ```ini  
- "connection_type": "local",  
-  "oxd_host": "127.0.0.1",  
-  "oxd_host_port": 8099  
- ```  
+```
+"connection_type": "local",  
+"oxd_host": "127.0.0.1",  
+"oxd_host_port": 8099  
+```  
 
 **Configuration for oxd-https-extension:**
 
-```ini  
-  "connection_type": "web",  
-  "http_rest_url": "https://127.0.0.1:8443"  
-```  
+```
+"connection_type": "web",  
+"http_rest_url": "https://127.0.0.1:8443"  
+```
 
 ## Sample Code 
 
@@ -750,7 +750,8 @@ public ActionResult ProtectResources(string oxdHost, int oxdPort, string oxdId)
     //prepare input params for Protect Resource  
     var protectParams = new UmaRsProtectParams()  
     {  
-        OxdId = oxdId,  
+        OxdId = oxdId,
+        Overwrite = true,
         ProtectResources = new List<ProtectResource>  
         {  
             new ProtectResource  
@@ -783,7 +784,8 @@ public ActionResult ProtectResources(string oxdHost, int oxdPort, string oxd_id)
     {  
         var protectParams = new UmaRsProtectParams()  
         {  
-            OxdId = oxd_id,  
+            OxdId = oxd_id,
+            Overwrite = true,
             ProtectResources = new List<ProtectResource>  
             {  
                 new ProtectResource  
@@ -822,7 +824,8 @@ public ActionResult ProtectResources(string oxdHttpsUrl, string oxdId, string pr
     //prepare input params for Protect Resource  
     var protectParams = new UmaRsProtectParams()  
     {  
-        OxdId = oxdId,  
+        OxdId = oxdId,
+        Overwrite = true,
         ProtectResources = new List<ProtectResource>  
         {  
             new ProtectResource  
@@ -856,7 +859,8 @@ public ActionResult ProtectResources(string oxdHttpsUrl, string oxd_id, string p
     {  
         var protectParams = new UmaRsProtectParams()  
         {  
-            OxdId = oxd_id,  
+            OxdId = oxd_id,
+            Overwrite = true,
             ProtectResources = new List<ProtectResource>  
             {  
                 new ProtectResource  

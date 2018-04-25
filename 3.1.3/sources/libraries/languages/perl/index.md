@@ -13,8 +13,8 @@
 
 ### Library
 
-- _Install from CPAN_ - `CPAN> install GLUU/oxdperl-0.03.tar.gz`
-- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-perl/archive/3.1.2.zip) the zip of the oxd Perl library
+- _Install from CPAN_ - `CPAN> install GLUU/oxdperl-0.04.tar.gz`
+- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-perl/archive/3.1.3.zip) the zip of the oxd Perl library
 
 ### Important Links
 
@@ -31,7 +31,7 @@ oxd-perl uses a configuration file to specify information needed to configure th
 
 oxd-perl can communicate with the oxd server via sockets or HTTPS.
 
-Below are minimal configuration examples for sockets and https transport. The [oxd-settings.json](https://github.com/GluuFederation/oxd-perl/blob/3.1.2/OxdPerlModule/example/oxd-settings.json) file contains a full list of configuration parameters and sample values. 
+Below are minimal configuration examples for sockets and https transport. The [oxd-settings.json](https://github.com/GluuFederation/oxd-perl/blob/3.1.3/OxdPerlModule/example/oxd-settings.json) file contains a full list of configuration parameters and sample values. 
 
 !!! Note
     The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address
@@ -407,6 +407,7 @@ print Dumper($logout->getResponseObject());
 my $uma_rs_protect = new UmaRsProtect();
 
 $uma_rs_protect->setRequestOxdId($oxd_id);
+$uma_rs_protect->setOverwrite(true);
 $uma_rs_protect->addConditionForPath(["GET"],["https://photoz.example.com/dev/actions/view"], ["https://photoz.example.com/dev/actions/view"]);
 $uma_rs_protect->addConditionForPath(["POST"],[ "https://photoz.example.com/dev/actions/add"],[ "https://photoz.example.com/dev/actions/add"]);
 $uma_rs_protect->addConditionForPath(["DELETE"],["https://photoz.example.com/dev/actions/remove"], ["https://photoz.example.com/dev/actions/remove"]);
@@ -422,6 +423,7 @@ print Dumper( $uma_rs_protect->getResponseObject() );
 ```perl
 my $uma_rs_protect = new UmaRsProtect();
 $uma_rs_protect->setRequestOxdId($oxdId);
+$uma_rs_protect->setOverwrite(true);
 
 %rule = ('and' => [{'or' => [{'var' => 0},{'var' => 1}]},{'var' => 2}]);
 $data = ["http://photoz.example.com/dev/actions/all", "http://photoz.example.com/dev/actions/add", "http://photoz.example.com/dev/actions/internalClient"];

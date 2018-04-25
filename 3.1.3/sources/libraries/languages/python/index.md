@@ -11,7 +11,7 @@
 
 - *Install from Pip* - `pip install oxdpython`
 
-- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-python/archive/3.1.2.zip) the zip of the oxd Python library and run the setup script:
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-python/archive/3.1.3.zip) the zip of the oxd Python library and run the setup script:
 
 ```
 cd oxdpython-version
@@ -172,7 +172,7 @@ resources = [{"path": "/photo",
                  }]
             }]
 
-result = client.uma_rs_protect(resources)
+result = client.uma_rs_protect(resources=resources, overwrite=True)
 ```
 
 **RS Protect with scope_expression**
@@ -207,7 +207,7 @@ resources = [{
 	}]
 }]
 
-result = client.uma_rs_protect(resources)
+result = client.uma_rs_protect(resources=resources, overwrite=True)
 ```
 
 
