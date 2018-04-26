@@ -17,7 +17,7 @@ to have a SuiteCRM site, standard OP (like Google or a Gluu Server) and the oxd 
 - This plugin is compatible with SuiteCRM versions: 6.5 - 7.6
 
 - If you want to stand up your own OP server, you can deploy the 
-free open source [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). 
+free open source [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/). 
 Otherwise we recommend using Google
 
 - You will need a valid license to start the oxd server. You can get a license and a $50 credit 
@@ -95,7 +95,7 @@ In the enrollment and access management section of the plugin configuration page
 
   - Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to dynamically register for an account on your SuiteCRM site
 
-  - Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users that have a specified role in the OP, for instance `SuiteCRM`. Each time the user authenticates they will need to have this scope present in order to be approved for access (i.e. if you remove this scope from the users profile in the OP, the user would be denied access). This is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role  
+  - Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option, you can limit registration to users that have a specified role in the OP, for instance `SuiteCRM`. Each time the user authenticates they will need to have this scope present in order to be approved for access (i.e. if you remove this scope from the users profile in the OP, the user would be denied access). This is not configurable in all OPs. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role  
 
   - Disable automatic registration: If you choose to disable automatic registration, you will need to manually add a user in SuiteCRM for each person that needs access. Make sure that when you add the user in SuiteCRM, you use the same email they have registered in the OP 
 
@@ -148,7 +148,7 @@ In the authentication settings, you have two options:
 - Select ACR: `acr` is an OpenID Connect specific value that enables applications to request a 
   specific type of authentication from the OP, e.g. SMS based two factor authentication, or FIDO U2F tokens. 
   If you are using Google as your OP, you will have to accept their default authentication mechanism. 
-  If you are using a Gluu Sever, you will be able to request any supported form of authentication. 
+  If you are using a Gluu Server, you will be able to request any supported form of authentication. 
   To view the OP's supported ACR values, navigate to your OpenID Provider configuration page, `https://<hostname>/.well-known/openid-configuration` and find `acr_values`. In the `Select acr` field you can choose your preferred authentication mechanism. If `Select acr` is `none`, users will be sent to pass the OPs default authentication mechanism.
 
 ## OP Configuration
@@ -178,4 +178,4 @@ If you are using a Gluu Server as your OP, you will need to configure Gluu to re
 To use Google as the OP, you will need to obtain a Client ID and Secret at Google. To generate your `client_id` and `client_secret` at Google use the redirect URI: `https://<hostname>/index.php?option=oxdOpenId`.
 
 ## Support
-Please report technical issues and suspected bugs on our [support page](https://support.gluu.org). If you do not already have an account on Gluu Support, you can login and create an account using the same credentials you created when you registered for your oxd license.
+Please report technical issues and suspected bugs on our [support page](https://support.gluu.org). If you do not already have an account on Gluu Support, you can log in and create an account using the same credentials you created when you registered for your oxd license.
