@@ -8,7 +8,7 @@ If you don't already have an OP you can use Google or
 [deploy the free open source Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).  
 
 ## Requirements
-In order to use the Shopify App you will need a standard OP (like Google or a Gluu Server) and the oxd server.
+In order to use the Shopify App, you will need a standard OP (like Google or a Gluu Server) and the oxd server.
 
 * [Gluu Server Installation Guide](https://gluu.org/docs/ce/installation-guide/install/).
 
@@ -42,4 +42,4 @@ In your Shopify app store on the frontend login page, you see the button to logi
 
 ![General](../img/login.png) 
 
-Click on the login button with Gluu Server and iFrame will open and login to Gluu Server. It will automatically create an account on Shopify.
+Click on the login button with Gluu Server. iFrame will open and log into the Gluu Server. It will automatically create an account on Shopify.
