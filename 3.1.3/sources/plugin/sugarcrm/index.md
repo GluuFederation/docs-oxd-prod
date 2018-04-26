@@ -12,7 +12,7 @@ to have a SugarCRM site, standard OP (like Google or a Gluu Server) and the oxd 
 
 - This plugin is compatible with sugarCRM versions: 6.5 - 7.6
 
-- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google
+- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/). Otherwise we recommend using Google
 
 - You will need a valid license to start the oxd server. You can get a license and a $50 credit by signing up on the [oxd website](https://oxd.gluu.org)
 
@@ -22,7 +22,7 @@ to have a SugarCRM site, standard OP (like Google or a Gluu Server) and the oxd 
 You can download the plugin from the [Github source](https://github.com/GluuFederation/sugarcrm-oxd-module/blob/master/sugarcrm-oxd-module.zip?raw=true).
 
 ### Upload the Plugin
-1. Log in to your SugraCRM Admin Console
+1. Log in to your SugarCRM Admin Console
 
 2. Navigate to Admin and click on `Module loader` button
 
@@ -154,7 +154,7 @@ To view the OP's supported ACR values, navigate to your OpenID Provider configur
 
 If you are using a Gluu Server as your OP, you will need to configure Gluu to release the email claim. You can do so by following the below steps:
 
-1. Log in to your Gluu Server dashboard ("oxTrust") and navigate to `OpenID Connect` > `Scopes` 
+1. Log into your Gluu Server dashboard ("oxTrust") and navigate to `OpenID Connect` > `Scopes` 
 
 2. Find the `email` scope and click on it 
 
@@ -172,7 +172,7 @@ If you are using a Gluu Server as your OP, you will need to configure Gluu to re
 
 ### Google Configuration
 
-To use Google as the OP, you will need to obtain a Client ID and Secret at Google. To generate your `client_id` and `client_secret` at Google use the redirect uri: `https://<hostname>/index.php?option=oxdOpenId`.
+To use Google as the OP, you will need to obtain a Client ID and Secret at Google. To generate your `client_id` and `client_secret` at Google use the redirect URI: `https://<hostname>/index.php?option=oxdOpenId`.
 
 ## Support
-Please report technical issues and suspected bugs on our [support page](https://support.gluu.org). If you do not already have an account on Gluu Support, you can login and create an account using the same credentials you created when you registered for your oxd license.
+Please report technical issues and suspected bugs on our [support page](https://support.gluu.org). If you do not already have an account on Gluu Support, you can log in and create an account using the same credentials you created when you registered for your oxd license.
