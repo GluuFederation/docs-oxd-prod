@@ -36,7 +36,7 @@ Follow these steps to get started:
 
 1. [Start and configure](./oxd-https/start/index.md) `oxd-https-extension` to support RESTful calls (**Optional**) 
 
-1. In your app(s), call the [oxd API](#api) using one of the [native libraries](#native-libraries) or [oxd plugins](#plugins) to securely send users to the central authentication server for sign in. 
+1. In your app(s), call the [oxd API](#api) using one of the [native libraries](#native-libraries) or [oxd plugins](#plugins) to securely send users to the central authentication server for sign in 
 
 
 ## Compatibility
@@ -127,7 +127,7 @@ Gluu offers free community support for oxd on the [Gluu Support Portal](https://
 
 If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract.  
 
-## FAQ's
+## FAQ
 
 **What is oxd?**       
 oxd is a mediator: it provides APIs that can be called by a web application that are easier than directly calling the API's of an OpenID Connect Provider (OP) or an UMA Authorization Server (AS).
