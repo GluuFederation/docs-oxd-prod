@@ -1,16 +1,14 @@
 # oxd 3.1.3 Documentation
 
 ## Introduction
-oxd exposes simple, static APIs web application developers can use to securely implement user authentication and authorization against an OAuth 2.0 authorization server like the [Gluu Server](https://gluu.org/docs/ce).
-
-The oxd software package includes the `oxd-server` and the `oxd-https-extension`. 
+oxd exposes simple, static APIs web developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). The oxd software package includes the `oxd-server` and the `oxd-https-extension`. 
 
 ### oxd-server
 `oxd-server` is designed to work as a standalone service daemon via sockets. By default, oxd must be installed on the same host as the web application it is securing. 
 
 ![oxd-local-architecture](./img/oxd-local.jpg) 
 
-### https-extension
+### https-extension 
 `oxd-https-extension` is an **optional** component that, when enabled, allows apps to call oxd APIs over the web. The HTTPS extension makes it possible for many apps across many servers to leverage one central oxd service for OAuth 2.0 security.
 
 ![oxd-https-architecture](./img/oxd-https.jpg) 
