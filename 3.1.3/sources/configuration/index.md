@@ -139,7 +139,7 @@ conf/oxd-default-site-config.json
 
 ### oxd-default-site-config.json Field Descriptions
 
-- **op_host:** Provide the URL of your OpenID Provider (OP). (Example : "op_host":"https://idp.example.org")
+- **op_host:** Provide the URL of your OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`")
 
 - **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example if it is `https://example.com/.well-known/openid-configuration` then path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then path is `oxauth`  
 
