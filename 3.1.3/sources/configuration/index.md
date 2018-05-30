@@ -44,11 +44,11 @@ oxd-conf.json
 ```
 ### oxd-conf.json Field Descriptions
 
-- **server_name:** Give your oxd server a human-readable name that can be used by the License Server to identify your oxd server.
+- **server_name:** Give your oxd server a human-readable name that can be used by the License Server to identify your oxd server. (Example : "server_name":"Will's dev oxd-server")
 
-- **port:** oxd socket port
+- **port:** oxd socket port, by default it is 8099
 
-- **localhost_only:** flag to restrict communication
+- **localhost_only:** flag to restrict communication to localhost
 
 - **time_out_in_seconds:** timeout for oxd socket (measured in seconds). oxd closes sockets automatically after this period of time (stops listen commands). Zero means listen indefinitely
 
@@ -139,8 +139,7 @@ conf/oxd-default-site-config.json
 
 ### oxd-default-site-config.json Field Descriptions
 
-- **op_host:** Must point to a valid 
-[Gluu Server CE installation](https://gluu.org/docs/ce/3.1.3/installation-guide/install/). (Sample : "op_host":"https://idp.example.org")
+- **op_host:** Provide the URL of your OpenID Provider (OP). (Example : "op_host":"https://idp.example.org")
 
 - **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example if it is `https://example.com/.well-known/openid-configuration` then path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then path is `oxauth`  
 
