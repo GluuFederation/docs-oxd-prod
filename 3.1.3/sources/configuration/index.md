@@ -44,7 +44,7 @@ oxd-conf.json
 ```
 ### oxd-conf.json Field Descriptions
 
-- **server_name:** a human-readable name that will be used by the License Server to identify the server you are installing oxd on. It is good idea to put a sensible name here
+- **server_name:** Give your oxd server a human-readable name that can be used by the License Server to identify your oxd server.
 
 - **port:** oxd socket port
 
