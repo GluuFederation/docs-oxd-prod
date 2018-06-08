@@ -28,7 +28,7 @@ pages:
 - 'Logs': 'logs/index.md'
 - 'API': 'api/index.md'
 - Libraries:
-    - 'Overview': 'libraries/api-client-libraries.md'
+    - 'Overview': 'libraries/API-client-libraries.md'
     - Languages:
         - 'Python': 'libraries/languages/python/index.md'
         - 'Java': 'libraries/languages/java/index.md'
