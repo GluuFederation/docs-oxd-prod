@@ -19,7 +19,7 @@ When enabled, the https-extension enables secure communication to oxd APIs over 
 ## Benefits
 oxd offers operational and security benefits for developers and organizations:
 
-- oxd centralizes and standardizes OAuth 2.0 implementations across heterogenous application environments    
+- oxd centralizes and standardizes secure OAuth 2.0 implementations across heterogeneous web application environments    
 - When OAuth 2.0 vulnerabilities are discovered, simply update the oxd package--applications **never** have to be changed or regression tested    
 - oxd is written, maintained and supported by OAuth 2.0 security experts   
 
