@@ -103,25 +103,14 @@ Gluu does not guarantee specific functionality in oxd plugins. If you find a bug
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
 
 ## Pricing & Billing
+Pricing is based on the number of applications *actively* leveraging your oxd server to implement OAuth 2.0. The first 10 apps to use your oxd server are free, forever. 
 
-oxd costs **USD $0.33 per application ("OAuth 2.0 client") per day**. All new accounts include up to 10 clients free forever.   
+Additional applications are billed $10 per month, with one caveat: apps will only be billed if actively using your oxd server for five (5) consecutive days or more. For example, if you have already used your 10 Free Forever apps, and an 11th app is connected and active for longer than five (5) days in the month, your monthly bill would be USD $10.
 
-[Get your oxd license](https://oxd.gluu.org).
+On the 1st of each month we send a billing email summarizing your usage and any associated fees. On the 7th of each month we will attempt to bill your credit card, as applicable!
 
-Additional notes about pricing and billing: 
-
-- Each time a new OAuth2 client connects to your `oxd-server`, a record is created and you will be charged USD $0.33 each day the application remains active  
-
-- At the end of each month usage fees are compiled and a billing summary is sent to all users associated with your account   
-
-- On the 7th day of each month we will attempt to bill your credit card for usage fees incurred during the previous month
-
-- If the transaction is declined, or there is no credit card on file, your oxd installation(s) will be deactivated and the sign-in process will stop working for applications that leverage your inactive oxd server  
-
-- To discuss volume discounts and site licenses, [schedule a call](https://gluu.org/booking) 
-   
 !!! Note
-    Do you want to use oxd with an open source project? Gluu is happy to provide free oxd licenses to qualified open source projects. Send an email to [sales@gluu.org](mailto:sales@gluu.org). 
+    To discuss volume discounts and site licenses, [schedule a call](https://gluu.org/booking) 
    
 ## Support
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can log into the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
