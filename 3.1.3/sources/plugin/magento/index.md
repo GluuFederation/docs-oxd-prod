@@ -2,9 +2,9 @@
 
 ![image](../../img/plugin/magento.png)
 
-The oxd OpenID Connect single sign-on (SSO) plugin for magento enables you to use a standard 
+The oxd OpenID Connect single sign-on (SSO) plugin for Magento enables you to use a standard 
 OpenID Connect Provider (OP), like Google or the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/), 
-to authenticate and enroll users for a magento site. 
+to authenticate and enroll users for a Magento site. 
 
 ## Magento Demo Video
 
@@ -12,13 +12,13 @@ You can watch a video demo of the Magento plugin installation and configuration
 [here](https://youtu.be/2gXPMUsLOfU). In the video we use a Gluu Server as the OpenID Provider. 
 
 ## Requirements
-In order to use the Magento Extension you will need a Magento site,
+In order to use the Magento Extension, you will need a Magento site,
 standard OP (like Google or a Gluu Server) and an active oxd server.
 
 - This plugin is compatible with Magento versions: 1.5 - 1.9.2
 
 - If you prefer to have your own OP server, you can deploy the free open source 
-[Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google
+[Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/). Otherwise we recommend using Google
 
 - You will need a valid license to start the oxd server. You can get a license and a $50 credit by 
 signing up on the [oxd website](https://oxd.gluu.org)
@@ -33,7 +33,7 @@ or [Magento marketplace](https://www.magentocommerce.com/magento-connect/openid-
 ### Disable cache
 To Install Magento plugin, you have to disable cache in Magento Admin console
 
-1. Log in to Magento Admin Panel and in the menu click on `System` > `Cache Management`
+1. Log into Magento Admin Panel and in the menu click on `System` > `Cache Management`
 
     ![Management](../../img/plugin/mag0.png)
 
@@ -52,22 +52,22 @@ click on submit button
 
     ![upload](../../img/plugin/mag3.png)
 
-3. When the extension is successfully installed return to admin panel
+3. When the extension is successfully installed, return to the admin panel
 
     !!! Note:
-        Extension will be activated automatically.
+        The extension will be activated automatically.
 
-4. Log in to Magento Admin Panel and navigate to `OpenID Connect` > `Open extension page`
+4. Log into Magento Admin Panel and navigate to `OpenID Connect` > `Open extension page`
 
     ![GluuSSO](../../img/plugin/44.mag4.png)
 
 ## Plugin Configuration 
 
-In your Magento admin dashboard you should now see the OpenID Connect tab in the left-hand menu. 
+In your Magento admin dashboard, you should now see the OpenID Connect tab in the left-hand menu. 
 Click the link to navigate to the General configuration page.
 
 ### General
-In your Magento admin menu panel you should now see the OpenID Connect menu tab being displayed. 
+In your Magento admin menu panel, you should now see the OpenID Connect menu tab being displayed. 
 
 Click the link to navigate to the General configuration page:
 
@@ -114,7 +114,7 @@ In the enrollment and access management section of the plugin configuration page
 
   - Automatically register any user with an account in the OpenID Provider: By setting registration to automatic, any user with an account in the OP will be able to dynamically register for an account on your Magento site
 
-  - Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit registration to users that have a specified role in the OP, for instance `magento`. Note: this is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. Each time the user authenticates they will need to have this scope present in order to be approved for access (i.e. if you remove this scope from the users profile in the OP, the user would be denied access) 
+  - Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option, you can limit registration to users that have a specified role in the OP, for instance `magento`. Note: this is not configurable in all OP's. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role. Each time the user authenticates they will need to have this scope present in order to be approved for access (i.e. if you remove this scope from the users profile in the OP, the user would be denied access) 
 
   - Disable automatic registration: If you choose to disable automatic registration, you will need to manually add a user in magento for each person you want to have access. Make sure that when you add the user in magento, you use the same email that they have registered in the OP 
 

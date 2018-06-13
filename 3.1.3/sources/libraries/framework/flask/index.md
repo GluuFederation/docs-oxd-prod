@@ -8,7 +8,7 @@ Use oxd's Python Flask library to send users from a Flask application to your Gl
 ## Installation Guides
 
 - [Github oxd-python](https://github.com/GluuFederation/oxd-python)
-- [Gluu Server](https://gluu.org/docs/ce/3.1.2/installation-guide/install/)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 
 

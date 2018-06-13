@@ -2,13 +2,13 @@
 
 ## Overview
 
-Use oxd Java library to:
+Use the oxd Java library to:
 
 - Easily implement user authentication with an OpenID Connect Provider (OP) following the steps of the [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#Authentication) in your Java web app
 
 - Obtain identity information about the authenticated user
 
-- Perform log out of the OP
+- Log out of the OP
 
 - Implement protection of web resources enabling a resource server and a client to support the [UMA 2.0](https://docs.kantarainitiative.org/uma/ed/oauth-uma-grant-2.0-04.html) workflow in conjuction with a UMA 2.0 compliant server (such as Gluu Server)
  
@@ -20,11 +20,11 @@ Check the [readme](https://github.com/GluuFederation/oxd-java-sample/blob/master
 
 ## Operations summary and sample code 
 
-In this section, code snippets that exemplify the authentication steps of OpenID Connect are presented. They resemble the operations listed in the [API page](https://gluu.org/docs/oxd/api/) using Java idiom, of course. Use the hints given in the API page to determine which parameters are required for every operation and learn more about the operations intent.
+In this section, code snippets that exemplify the authentication steps of OpenID Connect are presented. They resemble the operations listed in the [API page](https://gluu.org/docs/oxd/api/) using Java. Use the hints given in the API page to determine which parameters are required for each operation and learn more about the operations intent.
 
 ### Requisites
 
-In your Maven project add the following dependency to your `pom.xml`:
+In your Maven project, add the following dependency to your `pom.xml`:
 
 ```
 <dependency>
@@ -39,39 +39,37 @@ In your Maven project add the following dependency to your `pom.xml`:
 #### Setup Client
 
 !!! Note: 
-    Use this operation only when communication with oxd is established via https.
+    Use this operation only when communication with oxd is established via HTTPS.
 
-The purpose of Setup Client is similar to that of [Register Site](#register-site): registering a new OpenID Client at your OP and retrieving an "**oxd_id**" (an identifier that must be passed when calling the rest of operations except [Get Client Token](#get-client-token)).
+The purpose of Setup Client is similar to that of [Register Site](#register-site), registering a new OpenID Client at your OP and retrieving an "**oxd_id**" (an identifier that must be passed when calling the rest of operations except [Get Client Token](#get-client-token)).
 
 Setup Client additionally returns a **client_id** and a **client_secret**. These two pieces of data are needed when calling the [Get Client Token](#get-client-token) operation.
 
-If your OP does not support dynamic registration (e.g. Google), you will need to obtain a **client_id** and a **client_secret** yourself and supply those
-as parameters of this operation. This will make oxd skip the attempt to register a new client.
+If your OP does not support dynamic registration (e.g. Google), you will need to obtain a **client_id** and a **client_secret** yourself and supply those as parameters of this operation. This will make oxd skip the attempt to register a new client.
 
-To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#setup-client) and the "Client Metadata" section of [OpenID Connect Dynamic Client Registration 1.0](http://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
+To learn about the parameters supported by this operation, check the [API page](https://gluu.org/docs/oxd/api/#setup-client) and the "Client Metadata" section of [OpenID Connect Dynamic Client Registration 1.0](http://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata).
 
-A working example can be found at sample project: See method `doRegistrationHttps` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
+A working example can be found in the sample project: See method `doRegistrationHttps` in the [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java) class.
 
 Recall that Setup Client is a one-time task.
-
 
 #### Get Client Token
 
 !!! Note:
-    Use this operation only when communication with oxd is established via https.
+    Use this operation only when communication with oxd is established via HTTPS.
 
-When you use the oxd https extension, all operations of the API (except Setup Client) must be protected by an access token. Get Client Token allows you to obtain such "protection API token" very easily: Just provide the **client_id** and **client_secret** you obtained in the call to [Setup Client](#setup-client).
+When you use the oxd HTTPS extension, all API operations (except Setup Client) must be protected by an access token. Get Client Token allows you to obtain such a "protection API token" very easily: Just provide the **client_id** and **client_secret** you obtained in the call to [Setup Client](#setup-client).
 
-Besides a token this operation will give you additional information such as an expiration period in seconds. Once the expiration time has elapsed, the access token is no longer valid and you should request a new one by using this operation or by a call to [Get Access Token by Refresh Token](#get-access-token-by-refresh-token).
+Besides a token, this operation will give you additional information such as an expiration period in seconds. Once the expiration time has elapsed, the access token is no longer valid and you should request a new one by using this operation or by a call to [Get Access Token by Refresh Token](#get-access-token-by-refresh-token).
 
 To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-client-token).
 
-A working example can be found at sample project: See method `getPAT` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java). There, for simplicity a new PAT is requested every time an operation is called (the expiration time is not being used).
+A working example can be found in the sample project: See method `getPAT` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java). There, for simplicity a new PAT is requested every time an operation is called (the expiration time is not being used).
 
 #### Register Site
 
 !!! Note: 
-    You can skip this operation if already used [Setup Client](#setup-client)
+    You can skip this operation if you already used [Setup Client](#setup-client)
 
 Think of this operation as a means to introduce your website (app) to oxd. It returns an identifier that must be passed when calling any API operation (except for the two listed above). This is called the "**oxd_id**".
 
@@ -79,16 +77,16 @@ This operation will attempt to register a new OpenID Client at your OP. Remember
 
 To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#setup-client) and the "Client Metadata" section of [OpenID Connect Dynamic Client Registration 1.0](http://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata). Worth to mention is the `authorization_redirect_uri`, a URL where the OP will redirect the user's browser after successful authentication.
 
-A working example can be found at sample project: See method `doRegistrationSocket` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
+A working example can be found in the sample project: See method `doRegistrationSocket` in the [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java) class.
 
 Recall that Register Site is a one-time task.
 
 
 #### Update Site Registration
 
-This operation is aimed at updating a current registration. The parameters are equivalent to those of [Register Site](#register-site) in addition to **oxd_id**.
+This operation is aimed at updating a current registration. The parameters are equivalent to those of [Register Site](#register-site), in addition to **oxd_id**.
 
-To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#update-site-registration)
+To learn about the parameters supported by this operation, check the [API page](https://gluu.org/docs/oxd/api/#update-site-registration)
 
 A typical use case could be extending the lifetime of a client: When using dynamic registration in Gluu Server, the client is created with an expiration time (around one day by default). If your application is a long-running one, you may like to set a value further in the future. Here is an example of how to do so:
 
@@ -113,7 +111,7 @@ boolean updated = resp!=null;
 
 This operation returns a URL to which your application must redirect the user's browser to start the authentication process at the OP.
 
-To learn about the parameters supported by this operation check the [API page](https://gluu.org/docs/oxd/api/#get-authorization-url)
+To learn about the parameters supported by this operation, check the [API page](https://gluu.org/docs/oxd/api/#get-authorization-url)
 
 A working example can be found in the sample project: See method `getAuthzUrl` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
@@ -128,11 +126,11 @@ A working example can be found at sample project: See method `GetTokensByCodeRes
 
 #### Get Access Token by Refresh Token
 
-The access token obtained at [Get Tokens by Code](#get-tokens-by-code) has an expiration time too. If your application has the need to obtain a fresher access token, this operation is useful. Simply provide the `refresh_token` that you received when the call to Get Tokens by Code was made.
+The access token obtained at [Get Tokens by Code](#get-tokens-by-code) has an expiration time, too. If your application has the need to obtain a fresher access token, this operation is useful. Simply provide the `refresh_token` that you received when the call to Get Tokens by Code was made.
 
 To learn more about the input and output of this operation, check the [API page](https://gluu.org/docs/oxd/api/#get-access-token-by-refresh-token).
 
-Here is an example of the usage of this operation using standard oxd-server (not https):
+Here is an example of the usage of this operation using the standard oxd-server (not https):
 
 ```
 //client should be a global variable (host and port are those of oxd-server)
@@ -158,11 +156,11 @@ To learn more about the input and output of this operation, check the [API page]
 
 The set of claims in the response depends on the access privileges associated to the access token provided. This has to do with the scopes passed in [Site Registration](#register-site) API operation.
 
-A working example can be found at sample project: See method `getUserInfo` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
+A working example can be found in the sample project: See method `getUserInfo` in class [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/master/src/main/java/org/xdi/oxd/sample/bean/OxdService.java).
 
 #### Get Logout URI
 
-Use this method if you intend to log out the user of the OP. This will return a URL where you can redirect the user's browser to initiate the logout process.
+Use this method if you intend to log the user out of the OP. This will return a URL where you can redirect the user's browser to initiate the logout process.
 
 To learn more about the input and output of this operation check the [API page](https://gluu.org/docs/oxd/api/#get-logout-uri).
 
@@ -173,11 +171,11 @@ A working example can be found at sample project: See method `getLogoutUrl` in c
 #### RS Protect
 
 `send` method is used for protecting resources with the Resource Server. The Resource Server is needed to construct the command which will protect the resource.
-The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.1/api/#uma-2-client-apis).
+The command will contain an API path, HTTP methods (POST, GET and PUT) and scopes. Scopes can be mapped with authorization policy (uma_rpt_policies). If no authorization policy is mapped, uma_rs_check_access method will always return access as granted. For more information about uma_rpt_policies you can reference this [document](https://gluu.org/docs/oxd/3.1.3/api/#uma-2-client-apis).
 
 **Parameters:**
 
-- oxdId: oxd ID from client registration
+- oxdID: oxd ID from client registration
 - resources: One or more protected resources that a resource server manages, abstractly, as a set. In authorization policy terminology, a resource set is the "object" being protected 
 - protection_access_token: Generated from get_client_token method (Optional, required if oxd-https-extension is used)
 
@@ -205,7 +203,7 @@ return resp;
 
 #### RS Check Access 
 
-`send` method is used in the UMA Resource Server to check the access to the resource.
+The `send` method is used in the UMA Resource Server to check the access to the resource.
 
 **Parameters:**
 

@@ -13,13 +13,13 @@
 
 `PM> Install-Package Gluu.Oxd.OxdCSharp`
 
-- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-csharp/archive/3.1.2.zip) the zip of the oxd CSharp library
+- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-csharp/archive/3.1.3.zip) the zip of the oxd CSharp library
 
 ### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- oxd-csharp [API docs](https://rawgit.com/GluuFederation/oxd-csharp/3.1.2/docs/html/index.html) for the auto-generated csharp docs, which includes more in-depth information about the various functions and parameters
-- See the code of a [sample .Net app](https://github.com/GluuFederation/oxd-csharp/tree/3.1.2/GluuDemoWebsite) built using oxd-csharp
+- oxd-Csharp [API docs](https://rawgit.com/GluuFederation/oxd-csharp/3.1.3/docs/html/index.html) for the auto-generated Csharp docs, which includes more in-depth information about the various functions and parameters
+- See the code of a [sample .Net app](https://github.com/GluuFederation/oxd-csharp/tree/3.1.3/GluuDemoWebsite) built using oxd-sharp
 - Browse the oxd-csharp [source code on Github](https://github.com/GluuFederation/oxd-csharp)
 
 ## Configuration
@@ -28,25 +28,25 @@ oxd-csharp uses a configuration file to specify information needed to configure 
 
 oxd-csharp can communicate with the oxd server via sockets or HTTPS.
 
-Below are minimal configuration examples for sockets and https transport. The [oxd_config.json](https://github.com/GluuFederation/oxd-csharp/blob/3.1.2/GluuDemoWebsite/oxd_config.json) file contains a full list of configuration parameters and sample values. 
+Below are minimal configuration examples for sockets and HTTPS transport. The [oxd_config.json](https://github.com/GluuFederation/oxd-csharp/blob/3.1.3/GluuDemoWebsite/oxd_config.json) file contains a full list of configuration parameters and sample values. 
 
 !!! Note
     The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address
 
 **Configuration for oxd-server via sockets:**
 
- ```ini  
- "connection_type": "local",  
-  "oxd_host": "127.0.0.1",  
-  "oxd_host_port": 8099  
- ```  
+```
+"connection_type": "local",  
+"oxd_host": "127.0.0.1",  
+"oxd_host_port": 8099  
+```  
 
 **Configuration for oxd-https-extension:**
 
-```ini  
-  "connection_type": "web",  
-  "http_rest_url": "https://127.0.0.1:8443"  
-```  
+```
+"connection_type": "web",  
+"http_rest_url": "https://127.0.0.1:8443"  
+```
 
 ## Sample Code 
 
@@ -750,7 +750,8 @@ public ActionResult ProtectResources(string oxdHost, int oxdPort, string oxdId)
     //prepare input params for Protect Resource  
     var protectParams = new UmaRsProtectParams()  
     {  
-        OxdId = oxdId,  
+        OxdId = oxdId,
+        Overwrite = true,
         ProtectResources = new List<ProtectResource>  
         {  
             new ProtectResource  
@@ -783,7 +784,8 @@ public ActionResult ProtectResources(string oxdHost, int oxdPort, string oxd_id)
     {  
         var protectParams = new UmaRsProtectParams()  
         {  
-            OxdId = oxd_id,  
+            OxdId = oxd_id,
+            Overwrite = true,
             ProtectResources = new List<ProtectResource>  
             {  
                 new ProtectResource  
@@ -822,7 +824,8 @@ public ActionResult ProtectResources(string oxdHttpsUrl, string oxdId, string pr
     //prepare input params for Protect Resource  
     var protectParams = new UmaRsProtectParams()  
     {  
-        OxdId = oxdId,  
+        OxdId = oxdId,
+        Overwrite = true,
         ProtectResources = new List<ProtectResource>  
         {  
             new ProtectResource  
@@ -856,7 +859,8 @@ public ActionResult ProtectResources(string oxdHttpsUrl, string oxd_id, string p
     {  
         var protectParams = new UmaRsProtectParams()  
         {  
-            OxdId = oxd_id,  
+            OxdId = oxd_id,
+            Overwrite = true,
             ProtectResources = new List<ProtectResource>  
             {  
                 new ProtectResource  
@@ -1244,7 +1248,7 @@ public ActionResult GetClaimsGatheringUrl( string oxdHttpsUrl, string oxdId, str
 
 ## Example
 
-- The `GluuDemoWebsite` directory contains apps and scripts written using oxd-csharp for OpenID Connect and UM RP Client
+- The `GluuDemoWebsite` directory contains apps and scripts written using oxd-Csharp for OpenID Connect and UM RP Client
 - The `UMAExample` directory contains apps and scripts for UMA RS server
 
 

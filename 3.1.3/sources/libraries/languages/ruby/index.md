@@ -8,7 +8,7 @@
 
 ### Library
 
-To install gem, add this line to your application's Gemfile:
+To install the gem, add this line to your application's Gemfile:
 
 ```ruby
 gem 'oxd-ruby', '~> 1.0.1'
@@ -29,13 +29,13 @@ $ bundle install
 
 ## Configuration
 
-oxd-ruby uses a configuration file to specify information needed to configure your OpenID Connect client. After you installed oxd-ruby, you need to run the generator command to generate the configuration file:
+oxd-Ruby uses a configuration file to specify information needed to configure your OpenID Connect client. After you installed oxd-Ruby, you need to run the generator command to generate the configuration file:
 
 ```bash
 $ rails generate oxd:config
 ```
 
-The generator will install `oxd_config.rb` initializer file in `config/initializers` directory which conatins all the global configuration options for oxd-ruby plguin. The generated configuration file looks like this:
+The generator will install `oxd_config.rb` initializer file in `config/initializers` directory which conatins all the global configuration options for oxd-Ruby plugin. The generated configuration file looks like this:
 
 ```ruby
 Oxd.configure do |config|
@@ -64,9 +64,9 @@ Oxd.configure do |config|
 end
 ```
 
-oxd-ruby can communicate with the oxd server via sockets or HTTPS. There is **no difference** in code--just toggle the `config.connection_type` configuration property from `local` to `web` when you need to use `oxd-https-extension`. Sockets are used when the oxd server is running locally.
+oxd-Ruby can communicate with the oxd server via sockets or HTTPS. There is **no difference** in code--just toggle the `config.connection_type` configuration property from `local` to `web` when you need to use `oxd-https-extension`. Sockets are used when the oxd server is running locally.
 
-Below are minimal configuration examples for sockets and https transport.
+Below are minimal configuration examples for sockets and HTTPS transport.
 
 !!! Note
     The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address
@@ -99,7 +99,7 @@ This step is necessary only for sites using oxd-https-extension. The sites using
 
 ### Get Client Token
 
-After setting up site, the client should get a protection token. This token will be cached by oxd-ruby as `protection_access_token` in the config file and passed on to the https extension as an `Authentication` header for each request.
+After setting up site, the client should get a protection token. This token will be cached by oxd-Ruby as `protection_access_token` in the config file and passed on to the HTTPS extension as an `Authentication` header for each request.
 
 ```ruby
 access_token = @oxd_command.get_client_token
@@ -176,7 +176,7 @@ condition1 = {
 response = @uma_command.uma_rs_protect # Register above resources with UMA RS
 ```
 
-Request with `scope_expression`. `scope_expression` is Gluu invented extension which allows to put JsonLogic expression instead of single list of scopes.
+Request with `scope_expression`. `scope_expression` is a Gluu-invented extension which can use JsonLogic expressions instead of a single list of scopes.
 
 ```ruby
 condition = {
@@ -241,7 +241,7 @@ oxd-ruby contains `rspec` tests for Behaviour Driven Development.
 rspec
 ```
 
-Make sure you have OpenID provider and oxd-server to be setup before running specs.
+Make sure you have set up OpenID provider and oxd-server before running specs.
 
 ## Support
 

@@ -15,7 +15,7 @@ Note: **oxd requires Java version 1.8**
 
 The oxd Linux packages provide an easy way to install the `oxd-server` and the `oxd-https-extension`. Follow the steps below to get started:
 
-Step 1: Find the proper linux package below.     
+Step 1: Find the proper Linux package below.     
 
 Step 2: After installation, [configure](../configuration/index.md) your oxd-server and add your license keys. If you need to obtain a license, [register on the oxd website](https://oxd.gluu.org).      
 
@@ -102,20 +102,19 @@ yum install oxd-server
 The oxd-server is a self-contained program. You can just unzip the folder and run it. 
 
 !!! Note 
-    To **support RESTful calls to your `oxd-server`**, after you complete manual installation below proceed to the [`oxd-https-extension` installation docs](../oxd-https/start/index.md#manual-installation). 
+    To **support RESTful calls to your `oxd-server`**, after you complete manual installation below, proceed to the [`oxd-https-extension` installation docs](../oxd-https/start/index.md#manual-installation). 
 
 ### Windows
 
 1. Make a folder called `oxd-server` (or whatever you like)
  
-2. Unzip the [zip distribution](http://ox.gluu.org/maven/org/xdi/oxd-server/3.1.2.Final/oxd-server-3.1.2.Final-distribution.zip)
-in the above folder you just created. 
+1. Unzip the [zip distribution](http://ox.gluu.org/maven/org/xdi/oxd-server/3.1.3.Final/oxd-server-3.1.3.Final-distribution.zip) in the above folder you just created. 
 
-3. Now configure oxd following the [configuration instructions](../configuration/index.md). 
+1. Now configure oxd following the [configuration instructions](../configuration/index.md). 
 
-4. Run `oxd-server/bin/oxd-start.bat`
+1. Run `oxd-server/bin/oxd-start.bat`
 
-Note that under Windows you may need to change default h2 database location path, to something like
+Note that under Windows, you may need to change the default h2 database location path, to something like
 ```json
  "storage_configuration": {
     "dbFileLocation":"c:\\opt\\oxd-server\\bin\\oxd_db"
@@ -126,27 +125,29 @@ Note that under Windows you may need to change default h2 database location path
 
 1. Make a folder called `oxd-server` (or whatever you like), and `cd` to this folder
  
-2. `$ wget http://ox.gluu.org/maven/org/xdi/oxd-server/3.1.2.Final/oxd-server-3.1.2.Final-distribution.zip`
+1. `$ wget http://ox.gluu.org/maven/org/xdi/oxd-server/3.1.3.Final/oxd-server-3.1.3.Final-distribution.zip`
 
-3. `$ unzip oxd-server-3.1.2.Final-distribution.zip`
+1. `$ unzip oxd-server-3.1.3.Final-distribution.zip`
 
-4. Now configure oxd following the [configuration instructions](../configuration/index.md). 
+1. Now configure oxd following the [configuration instructions](../configuration/index.md). 
 
-5. `$ nohup bin/oxd-start.sh`
+1. `$ chmod +x bin/oxd-start.sh`
+
+1. `$ nohup bin/oxd-start.sh`
 
 ## Manual Build oxd-server Server
 
 If you're a Java geek, you can build the oxd-server server using [Maven](http://maven.apache.org).
 
 The code is available in [Github](https://github.com/GluuFederation/oxd). A zip file can be 
-downloaded directly from [this link](https://ox.gluu.org/maven/org/xdi/oxd-server/3.1.2.Final/oxd-server-3.1.2.Final-distribution.zip). 
+downloaded directly from [this link](https://ox.gluu.org/maven/org/xdi/oxd-server/3.1.3.Final/oxd-server-3.1.3.Final-distribution.zip). 
 
 The following command can be run inside the oxd folder to run the build:
 
 ```
   $ mvn clean package
 ```
-## oxd-server Un-Install Procedure
+## oxd-server Uninstall Procedure
 
 ### Ubuntu 14.04 (trusty)/Ubuntu 16.04 (xenial)/Debian 8 (Jessie)
 

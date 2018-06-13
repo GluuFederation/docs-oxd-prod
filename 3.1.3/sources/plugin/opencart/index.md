@@ -16,7 +16,7 @@ OpenCart site, standard OP (like Google or a Gluu Server) and an active oxd serv
 
 - This plugin is compatible with OpenCart Versions : 2.0.0.0 - 2.3.0.0
 
-- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google
+- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/). Otherwise we recommend using Google
 
 - You will need a valid license to start the oxd server. You can get a license and a $50 credit by signing up on the [oxd website](https://oxd.gluu.org)
 
@@ -165,7 +165,7 @@ sent to pass the OP's default authentication mechanism
 If you are using a Gluu Server as your OP, you will need to configure Gluu to release the email claim. 
 You can do so by following the below steps:
 
-1. Log in to your Gluu Server dashboard ("oxTrust") and navigate to `OpenID Connect` > `Scopes` 
+1. Log into your Gluu Server dashboard ("oxTrust") and navigate to `OpenID Connect` > `Scopes` 
 
 2. Find the `email` scope and click on it 
 

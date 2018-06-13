@@ -8,7 +8,7 @@ oxd configuration consists of two files :
 
 ## oxd-conf.json
 
-The contents of the `/etc/oxd/oxd-server/oxd-conf.json` file is as follows:
+The contents of the `/etc/oxd/oxd-server/oxd-conf.json` file are as follows:
 
 ```
 oxd-conf.json
@@ -44,15 +44,15 @@ oxd-conf.json
 ```
 ### oxd-conf.json Field Descriptions
 
-- **server_name:** human readable name which will be used by the License Server to identify the server you are installing oxd on. It is good idea to put some sensible name here
+- **server_name:** Give your oxd server a human-readable name that can be used by the License Server to identify your oxd server. (Example : "server_name":"Will's dev oxd-server")
 
-- **port:** oxd socket port
+- **port:** oxd socket port, by default it is 8099
 
-- **localhost_only:** flag to restrict communication
+- **localhost_only:** flag to restrict communication to localhost
 
-- **time_out_in_seconds:** time out for oxd socket (measured in seconds). oxd closes sockets automatically after this period of time (stops listen commands). Zero means listen indefinitely
+- **time_out_in_seconds:** timeout for oxd socket (measured in seconds). oxd closes sockets automatically after this period of time (stops listen commands). Zero means listen indefinitely
 
-- **use_client_authentication_for_pat:** `true` if client authentication is required. If `false` then user authentication requires `user_id` and `user_secret` to be specified during the `register_site` command
+- **use_client_authentication_for_pat:** `true` if client authentication is required. If `false`, then user authentication requires `user_id` and `user_secret` to be specified during the `register_site` command
 
 - **trust_all_certs:** `true` to trust all certificates, if `false` then `trust_store_path` must be specified to store with valid certificates
 
@@ -137,10 +137,9 @@ conf/oxd-default-site-config.json
 }
 ```
 
-### oxd-default-site-config.json field descriptions
+### oxd-default-site-config.json Field Descriptions
 
-- **op_host:** Must point to a valid 
-[Gluu Server CE installation](https://gluu.org/docs/ce/3.1.2/installation-guide/install/). (Sample : "op_host":"https://idp.example.org")
+- **op_host:** Provide the URL of your OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`")
 
 - **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example if it is `https://example.com/.well-known/openid-configuration` then path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then path is `oxauth`  
 
@@ -154,7 +153,7 @@ conf/oxd-default-site-config.json
 
 - **grant_type:** JSON array containing a list of the OAuth 2.0 Grant Types that the Client is declaring that it will restrict itself to using
 
-- **acr_values:** Specified authentication method (basic, duo, u2f)
+- **acr_values:** Specified authentication method (basic, duo, U2F)
 
 - **scope:** JSON array containing a list of the scopes that the Client is declaring that it will restrict itself to using
 

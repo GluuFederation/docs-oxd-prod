@@ -16,7 +16,7 @@ a standard OP (like Google or a Gluu Server), and an active oxd server. Some add
 
 - This plugin is compatible with WordPress versions: 2.9 - 4.8
 
-- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.0.1/installation-guide/install/). Otherwise we recommend using Google 
+- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/). Otherwise we recommend using Google 
 
 - You will need a valid license to start the oxd server. You can get a license and a $50 credit by signing up on the [oxd website](https://oxd.gluu.org) 
 
@@ -42,7 +42,7 @@ Click the link to navigate to the General configuration page.
 ### General
 
 #### Server Settings
-In the server settings section of the plugin configuration page you will need to enter information about your OP, your oxd server, and where you want to redirect users after logout. 
+In the server settings section of the plugin configuration page, you will need to enter information about your OP, your oxd server, and where you want to redirect users after logout. 
 
 A short description of each field follows:
 
@@ -55,14 +55,14 @@ A short description of each field follows:
 1. Click `Register` to continue
 
 !!! Note
-    If you get a blank page after clicking `Register`, check the apache error log file in `/var/log/apache2/`. Most likely the error is about `utf8_encode() function`. If so, install the `php{php_version}.0.xml` plugin from the command line and restart apache. For example if you are using php7, the command will be:``$ sudo apt-get install php7.0.xml``
+    If you get a blank page after clicking `Register`, check the Apache error log file in `/var/log/apache2/`. Most likely the error is about `utf8_encode() function`. If so, install the `php{php_version}.0.xml` plugin from the command line and restart Apache. For example if you are using php7, the command will be:``$ sudo apt-get install php7.0.xml``
 
-If your OpenID Provider supports dynamic registration no additional steps are required. 
+If your OpenID Provider supports dynamic registration, no additional steps are required. 
 
 If your OpenID Connect Provider does not support dynamic registration (like Google), after clicking register two additional fields will be exposed where you need to enter your `client_id` and `client_secret`. Both values need to be obtained from the OP. To generate your `client_id` and `client_secret` use the redirect URI: `https://{site-base-url}/index.php?option=oxdOpenId`.
 
 !!! Note
-    If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your     Gluu Server, navigate to the `OpenID Connect` > `Clients` page. Search for your `oxd id`. If it's present in the OP, everything worked.
+    If you are using a Gluu server as your OpenID Provider, you can make sure everything is configured properly by logging into to your Gluu Server, navigate to the `OpenID Connect` > `Clients` page. Search for your `oxd id`. If it's present in the OP, everything worked.
 
 #### Enrollment and Access Management
 In the enrollment and access management section of the plugin configuration page you can decide, (1), how new user registrations will be handled, and, (2), what role new users will receive upon registration.
@@ -110,12 +110,12 @@ Scopes are groups of user attributes that are sent from the OP to the applicatio
 
 To view your OP's available scopes, open a web browser and navigate to `https://<hostname>/.well-known/openid-configuration`. For example, if you are using Google the the OP, you can see the available scopes in the [Google's OP configuration](https://accounts.google.com/.well-known/openid-configuration). 
 
-If you are using a Gluu server as your OpenID Provider, you can view available scopes by navigating to the OpenID Configuration page as described above, or within oxTrust by navigating to `OpenID Connect` > `Scopes`.
+If you are using a Gluu Server as your OpenID Provider, you can view available scopes by navigating to the OpenID Configuration page as described above, or within oxTrust by navigating to `OpenID Connect` > `Scopes`.
 
 #### Authentication
 In the authentication settings, you have two options:
 
-- Bypass the local WordPress login page and send users straight to the OP for authentication: If you would like to bypass WordPress's default login page and send users straight to the OP, check this box (**recommended**). When this option is left unchecked users will see the following screen when trying to login: 
+- Bypass the local WordPress login page and send users straight to the OP for authentication: If you would like to bypass WordPress's default login page and send users straight to the OP, check this box (**recommended**). When this option is left unchecked, users will see the following screen when trying to login: 
 
 ![upload](../../img/plugin/6.png) 
 
@@ -127,7 +127,7 @@ In the authentication settings, you have two options:
 
 If you are using a Gluu Server as your OP, you will need to configure Gluu to release the email claim. You can do so by following the below steps:
 
-1. Log in to your Gluu Server dashboard ("oxTrust") and navigate to `OpenID Connect` > `Scopes` 
+1. Log into your Gluu Server dashboard ("oxTrust") and navigate to `OpenID Connect` > `Scopes` 
 
 1. Find the `email` scope and click on it 
 

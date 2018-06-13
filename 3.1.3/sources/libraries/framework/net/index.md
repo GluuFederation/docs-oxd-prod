@@ -9,7 +9,7 @@ Use oxd's .Net library to send users from a .Net application to your Gluu Server
 ## Installation Guides
 
 - [Github oxd-csharp](https://github.com/GluuFederation/oxd-csharp)
-- [Gluu Server](https://gluu.org/docs/ce/3.1.2/installation-guide/install/)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 
 
@@ -27,8 +27,6 @@ To use the oxd-csharp library, you will need:
 - An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application
 - If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)
 - A Windows server or Windows installed machine / Linux server or Linux installed machine
-
-
 
 ## Configuring oxd-server
 

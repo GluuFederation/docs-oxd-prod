@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-- php 5.6 or higher
+- PHP 5.6 or higher
 - Apache server 2.4 or higher
 - Gluu oxd server - [Installation docs](https://gluu.org/docs/oxd/install/)
 
@@ -14,15 +14,15 @@
 you do not already have it installed. To install oxd-php-api via Composer, execute the following command 
 in your project root:
 
-composer require "gluufederation/oxd-php-api": "3.1.2"
+Composer requires "gluufederation/oxd-php-api": "3.1.3"
 
-- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-php-library/archive/v3.1.2.zip) the zip of the oxd PHP library.
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-php-library/archive/v3.1.3.zip) the zip of the oxd PHP library.
 
 #### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- oxd-php-library [API docs](https://rawgit.com/GluuFederation/oxd-php-library/v3.1.2/docs/html/index.html) for the auto-generated php docs, which includes more in-depth information about the various functions and parameters.(https://rawgit.com/GluuFederation/oxd-php-library/3.1.2/docs/html/index.html)
-- See the code of a [sample php app](https://github.com/GluuFederation/oxd-php-library/tree/3.1.2/client.example.com) built using oxd-php-library.
+- oxd-php-library [API docs](https://rawgit.com/GluuFederation/oxd-php-library/3.1.3/docs/html/index.html) for the auto-generated php docs, which includes more in-depth information about the various functions and parameters.
+- See the code of a [sample php app](https://github.com/GluuFederation/oxd-php-library/tree/3.1.3/client.example.com) built using oxd-php-library.
 - Browse the oxd-php-library [source code on Github](https://github.com/GluuFederation/oxd-php-library).
 
 ## Configuration 
@@ -70,11 +70,11 @@ Below is a typical configuration data set for registration:
 
 **oxd-https-extension Configuration**
 
-The oxd-https-extenssion configuration file is located in 
+The oxd-https-extension configuration file is located in 
 'oxdHttpConfig.php'. The values here are used during 
 the usage of all oxd protocols.For a full list of supported protocols, see the [oxd protocol](https://gluu.org/docs/oxd/protocol/) documentation.
 
-By passing this configuration into any oxd php library class constructor, we can enable oxd-https-extension to connect oxd through https.
+By passing this configuration into any oxd php library class constructor, we can enable oxd-https-extension to connect oxd through HTTPS.
 
 ``` {.code }
 return [
@@ -475,7 +475,7 @@ $get_user_info->request();
 ```
 
 
-### Get Logout Uri
+### Get Logout URI
 
 ```php
 require_once '<path to php oxd library>/Logout.php';
@@ -808,7 +808,7 @@ $uma_rp_get_claims_gathering_url->request();
 
 ## Sample Project
 
-Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.2.zip) specific to this oxd-php library.
+Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.3.zip) specific to this oxd-php library.
 
 
 ### Software Requirements
@@ -823,8 +823,7 @@ System Requirements:
 To use the oxd-php library, you will need:
 
 - A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/gluu-server) or Google.    
-- An active installation of the [oxd-server](../../../install/index.md
-) running on the same server as the client application.
+- An active installation of the [oxd-server](../../../install/index.md) running on the same server as the client application.
 - If you want to make RESTful (https) calls from your app to your `oxd-server`, you will need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)).
 - A Windows server or Windows installed machine / Linux server or Linux installed machine.
 
@@ -867,10 +866,10 @@ To use the oxd-php library, you will need:
 
     `127.0.0.1  client.example.com`
 
-- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.2.zip) and navigate to `client.example.com` directory inside the project.
+- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.3.zip) and navigate to `client.example.com` directory inside the project.
 
 
-- With the oxd-server running, navigate to the URL's below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
+- With the oxd-server running, navigate to the URLs below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
 
     - Setup Client URL: https://client.example.com/Settings.php
     - Login URL: https://client.example.com/Login.php

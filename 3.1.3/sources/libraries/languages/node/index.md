@@ -15,8 +15,8 @@
 ### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- See the code of a [sample node app](https://github.com/GluuFederation/oxd-node/tree/3.1.2/oxd-node-demo) built using oxd-node.
-- Browse the oxd-node [source code on Github](https://github.com/GluuFederation/oxd-node).
+- See the code of a [sample node app](https://github.com/GluuFederation/oxd-node/tree/3.1.3/oxd-node-demo) built using oxd-node
+- Browse the oxd-node [source code on Github](https://github.com/GluuFederation/oxd-node)
 
 
 ## Configuration
@@ -743,7 +743,7 @@ npm test
 
 ## Examples
 
-The `oxd-node-demo` directory contains apps and scripts written using oxd-node for OpenID Connect
+The `oxd-node-demo` directory contains apps and scripts written using oxd-node for OpenID Connect.
 
 ## Support
 

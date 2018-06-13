@@ -3,12 +3,12 @@
 Use oxd's Ruby on Rails library to send users from a Rails application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
 !!! Note
-    You can also refer to the [oxd-ruby library docs](../../languages/ruby/index.md) for more details on ruby classes.
+    You can also refer to the [oxd-Ruby library docs](../../languages/ruby/index.md) for more details on Ruby classes.
 
 ## Installation Guides
 
 - [Github oxd-ruby](https://github.com/GluuFederation/oxd-ruby)
-- [Gluu Server](https://gluu.org/docs/ce/3.1.2/installation-guide/install/)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 
 
@@ -58,7 +58,7 @@ To change Ruby version run this command:
 $ rvm use ruby-2.4.0
 ```
 
-Rails is distributed as a Ruby gem and adding it to the local system is extremely simple:
+Rails is distributed as a Ruby gem, and adding it to the local system is extremely simple:
 ```bash
 $ gem install rails 
 ```
@@ -98,23 +98,23 @@ Add these lines to Apache's config file:
 
 To use the oxd-ruby library, you will need:
 
-- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google.
-- An active installation of the [oxd-server](../../../install/index.md). 
-- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md).
-- A Windows server or Windows installed machine / Linux server or Linux installed machine.
+- A valid OpenID Connect Provider (OP), like the [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/) or Google
+- An active installation of the [oxd-server](../../../install/index.md) 
+- If you want to make RESTful (https) calls from your app to your `oxd-server`, you will also need an active installation of the [oxd-https-extension](../../../oxd-https/start/index.md)
+- A Windows server or Windows installed machine / Linux server or Linux installed machine
 
 
 ## Configuring oxd-server
 
 - Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
 
-    Update the following fields `"server_name"`, `"license_id"`, `"public_key"`, `"public_password"` and `"license_password"`
+    - Update the following fields `"server_name"`, `"license_id"`, `"public_key"`, `"public_password"` and `"license_password"`
 
 - Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
 
-    Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
+    - Change the OP HOST name to your OpenID Provider domain at the line `"op_host": "https://<idp-hostname>"`
 
-    Change the `response_types` line to `"response_types": ["code"]`
+    - Change the `response_types` line to `"response_types": ["code"]`
 
 - To start oxd-server, run the following command or [click here](../../../install/index.md) for more detailed instructions:
 
@@ -180,7 +180,7 @@ Replace the content in the oxd-ruby.conf file with the following:
 </IfModule>
 ```
 
-Enable `oxd-rails.com` virtual host by running:
+Enable the `oxd-rails.com` virtual host by running:
 ```bash
 $ sudo a2ensite oxd-ruby.conf 
 ```
@@ -203,7 +203,7 @@ $ sudo service apache2 restart
 
 **Running the Demo Application**
 
-Navigate to Rails app root:
+Navigate to the Rails app root:
 ```bash
 cd /var/www/html/oxd-ruby-demo-app
 ```

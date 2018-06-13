@@ -8,7 +8,7 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 ## Installation Guides
 
 - [Github oxd-node](https://github.com/GluuFederation/oxd-node)
-- [Gluu Server](https://gluu.org/docs/ce/3.1.2/installation-guide/install/)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 
 
@@ -84,7 +84,7 @@ Host file location `C:\Windows\System32\drivers\etc\host` :
 
 `127.0.0.1  client.example.com`
 
-To install dependencies for this application navigate to the "oxd-node-demo" folder in terminal(linux)/command prompt(windows) and run:
+To install dependencies for this application navigate to the "oxd-node-demo" folder in terminal(Linux)/command prompt(Windows) and run:
 
 ```shell
 npm install

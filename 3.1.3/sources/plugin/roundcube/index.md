@@ -4,14 +4,14 @@
 
 Gluu's OpenID Connect Single Sign-On (SSO) Roundcube plugin will enable you to 
 authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can 
-[deploy the free open source Gluu Server](https://gluu.org/docs/ce/3.1.2/installation-guide/install/).  
+[deploy the free open source Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/).  
 
 ## Requirements
 In order to use the RoundCube plugin you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.
 
 - Compatibility : 0.6.0 <= 10.21 versions
 
-- [Gluu Server Installation Guide](https://gluu.org/docs/ce/3.1.2/installation-guide/install/)
+- [Gluu Server Installation Guide](https://gluu.org/docs/ce/3.1.3/installation-guide/install/)
 
 - [oxd Server Installation Guide](https://oxd.gluu.org/docs/install/)
 
@@ -20,30 +20,29 @@ In order to use the RoundCube plugin you will need to have a standard OP (like G
  
 ### Download
 
-[Github source](https://github.com/GluuFederation/roundcube_oxd_plugin/archive/v3.0.1.zip).
+[Github source](https://github.com/GluuFederation/roundcube_oxd_plugin/archive/v3.1.3.zip).
 
 [Link to RoundCube repository](https://plugins.roundcube.net/packages/gluufederation/roundcube_oxd_plugin)
 
-To install RoundCube OpenID Connect Single Sign On (SSO) Plugin By Gluu via Composer, execute the following command 
+To install the RoundCube OpenID Connect Single Sign On (SSO) Plugin By Gluu via Composer, execute the following command 
 
 ```
-$ composer install `composer require "gluufederation/roundcube_oxd_plugin": "3.0.1"`
+$ composer install `composer require "gluufederation/roundcube_oxd_plugin": "3.1.3"`
 
 ```
-
 
 ## Configuration
 
 ### General
  
-In your RoundCube admin menu panel you should now see the OpenID Connect menu tab. Click the link to navigate to the General configuration page:
+In your RoundCube admin menu panel, you should see the OpenID Connect menu tab. Click the link to navigate to the General configuration page:
 
 ![upload](https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/1.png) 
 
-1. Automatically login any user with an account in the OpenID Provider: By setting login to automatic, any user with an account in the OP will be able to dynamically login for an account in your Roundcube site 
-1. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance `roundcube`. This is not configurable in all OPs. It is configurable if you are using a Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role 
+1. Automatically log in any user with an account in the OpenID Provider: By setting login to automatic, any user with an account in the OP will be able to dynamically log in for an account in your Roundcube site 
+1. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance `roundcube`. This is not configurable in all OPs, but is supported in the Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role 
 1. URI of the OpenID Provider: insert the URI of the OpenID Connect Provider
-1. Custom URI after logout: custom URI after logout (for example "Thank you" page)
+1. Custom URI after logout: custom URI after logout (for example, a "Thank you" page)
 1. oxd port: enter the oxd-server port (you can find this in the `oxd-server/conf/oxd-conf.json` file)
 1. Click `Register` to continue
 
@@ -60,7 +59,7 @@ To generate your `client_id` and `client_secret` use the redirect URI: `https://
 
 #### Enrollment and Access Management
 
-Navigate to your Gluu Server admin GUI. Click the `Users` tab in the left hand navigation menu. Select `Manage People`. Find the person(s) who should have access. Click their user entry. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you have limit enrollment to user(s) with role = `roundcube`, then you should also have `User Permission` = `roundcube` in the user entry. Update the user record, and now they are ready for enrollment at your Roundcube site. 
+Navigate to your Gluu Server admin GUI. Click the `Users` tab in the left hand navigation menu. Select `Manage People`. Find the user(s) who should have access. Click their user entry. Add the `User Permission` attribute to the person and specify the same value as in the plugin. For instance, if in the plugin you have limited enrollment to user(s) with role = `roundcube`, then you should also have `User Permission` = `roundcube` in the user entry. Update the user record, and now they are ready for enrollment at your Roundcube site. 
 
 ### OpenID Connect Configuration
 
@@ -72,12 +71,12 @@ Scopes are groups of user attributes that are sent from the OP to the applicatio
 
 To view your OP's available scopes, in a web browser navigate to `https://OpenID-Provider/.well-known/openid-configuration`.  
 
-If you are using a Gluu server as your OpenID Provider, 
+If you are using a Gluu Server as your OpenID Provider, 
 you can view all available scopes by navigating to the Scopes interface in Gluu CE Server Admin UI
 
 `OpenID Connect` > `Scopes`  
 
-In the plugin interface you can enable, disable and delete scopes. 
+In the plugin interface, you can enable, disable and delete scopes. 
 
 !!!Note: 
     If you have chosen to limit enrollment to users with specific roles in the OP, you will also need to request the `Permission` scope, as shown in the above screenshot. 
@@ -97,7 +96,7 @@ When it is not checked, it will give proof the following screen.
 
 ![upload](https://raw.githubusercontent.com/GluuFederation/roundcube_oxd_plugin/master/docu/4.png) 
 
-##### Select acr
+##### Select ACR
 
 To signal which type of authentication should be used, an OpenID Connect client may request a specific authentication context class reference value (a.k.a. "acr"). The authentication options available will depend on which types of mechanisms the OP has been configured to support. The Gluu Server supports the following authentication mechanisms out-of-the-box: username/password (basic), Duo Security, Super Gluu, and U2F tokens, like Yubikey.  
 
