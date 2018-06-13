@@ -5,6 +5,18 @@ Peruse the API documentation on [Swagger](http://petstore.swagger.io/?url=https:
 
 ## Setup Client
 
+If you are using the `oxd-https-extension`, you must setup the client. 
+
+The parameters for Setup Client are the same as for Register the Site command. 
+The command registers two clients:
+
+ - client 1 -  client for communication protection (called setup client). This will be used to obtain an access token via the Get Client Token command. The access token will be passed as a `protection_access_token` parameter to other commands. `uma_protection` scope has to be present in request to `setup_client` command. In response:
+    - setup_client_oxd_id - oxd_id of setup client
+    - client_id - client id of the setup client
+    - client_secret - client secret of the setup client   
+ - client 2 - it is regular client which can be used for all oxd operations. In response `oxd_id`. We are going to remove this second client registration since we have `register_site` command for this purpose.  
+
+
 *Non-normative example request*
 ```language-json
 POST /setup-client
