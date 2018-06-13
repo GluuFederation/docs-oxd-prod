@@ -20,6 +20,7 @@ POST /setup-client
     "client_name": "",                                             <- OPTIONAL (If missing, oxd will generate its own non-human readable name)
     "client_jwks_uri": "",                                         <- OPTIONAL
     "client_token_endpoint_auth_method": "",                       <- OPTIONAL
+    "client_token_endpoint_auth_signing_alg":"",                   <- OPTIONAL possible values: none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512
     "client_request_uris": [],                                     <- OPTIONAL
     "client_frontchannel_logout_uris": [],                         <- OPTIONAL
     "client_sector_identifier_uri": [],                            <- OPTIONAL
@@ -137,6 +138,7 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
     "client_name": "",                                             <- OPTIONAL (But if missing, oxd will generate its own non-human readable name)
     "client_jwks_uri": "",                                         <- OPTIONAL
     "client_token_endpoint_auth_method": "",                       <- OPTIONAL
+    "client_token_endpoint_auth_signing_alg":"",                   <- OPTIONAL possible values: none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512
     "client_request_uris": [],                                     <- OPTIONAL
     "client_frontchannel_logout_uris": [],                         <- OPTIONAL
     "client_sector_identifier_uri": [],                            <- OPTIONAL
