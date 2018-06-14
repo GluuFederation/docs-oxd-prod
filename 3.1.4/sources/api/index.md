@@ -68,7 +68,8 @@ Request:
         "grant_types": ["authorization_code"],                         <- OPTIONAL 
         "scope": ["openid"],                                           <- OPTIONAL
         "acr_values": ["basic"],                                       <- OPTIONAL
-        "client_name": "",                                             <- OPTIONAL (But if missing, oxd will generate its own non-human readable name)
+        "client_name": "",                                             <- OPTIONAL (name for normal client2 But if missing, oxd will generate its own non-human readable name)
+        "setup_client_name": "",                                       <- OPTIONAL setup client name (client1)
         "client_jwks_uri": "",                                         <- OPTIONAL
         "client_token_endpoint_auth_method": "",                       <- OPTIONAL
         "client_token_endpoint_auth_signing_alg":"",                   <- OPTIONAL possible values: none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512
