@@ -49,7 +49,7 @@ java.lang.RuntimeException: oxd requested scope PROTECTION but AS returned acces
 ### How can I view data inside oxd database manually without oxd-server? 
 
 By default oxd-server persists data inside H2 embedded database. On disk it should look as `oxd_db.mv.db` file.
-You can use any convenient database viewer to view/edit data inside the database. We recommand use browser based viewer H2:
+You can use any convenient database viewer to view/edit data inside the database. We recommend use browser based viewer H2:
 
  - Download http://www.h2database.com/html/download.html
  - Run it (in "Platform-Independent zip" case it is as simple as hit `h2.sh` or `h2.bat`)
