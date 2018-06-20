@@ -23,7 +23,7 @@ Gluu offers community support and VIP support. Anyone can register and enlist co
 ## Technical FAQs
 ### The `get_tokens_by_code` command fails with a `No response from operation` error
 
-It can happen if `code` lifetime in `oxauth` server is very small and `code` expires before token can be obtained. So in logs, you can see this:
+It can happen if the `code` lifetime in the `oxauth` server is very short and the `code` expires before the token can be obtained. So in logs, you can see this:
 
 ```
 2018-04-05 14:30:32,530 ERROR [org.xdi.oxd.server.op.GetTokensByCodeOperation] Failed to get tokens because response code is: null
@@ -34,7 +34,7 @@ To fix it, increase the `authorizationCodeLifetime` oxauth configuration value a
 
 ### `oxd-https-extension` does not work because of a PROTECTION error.
 
-If you see output in the logs similar to what is shown below, it means that the `uma_protection` scope is disabled for dynamic registration on the `oxauth` side.
+If you see an output in the logs similar to what is shown below, it means that the `uma_protection` scope is disabled for dynamic registration on the `oxauth` side.
 Find the `uma_protection` Connect scope property `Allow for dynamic registration`, and make sure it is checked (set to true). Find more information about scopes [here](https://gluu.org/docs/ce/3.1.3/admin-guide/openid-connect/#scopes)
  
 ```
@@ -46,24 +46,24 @@ java.lang.RuntimeException: oxd requested scope PROTECTION but AS returned acces
 	at org.xdi.oxd.server.service.UmaTokenService.obtainToken(UmaTokenService.java:169)
 ```
 
-### How can I view data inside oxd database manually without oxd-server? 
+### How can I view data inside an oxd database manually without an oxd-server? 
 
-By default oxd-server persists data inside H2 embedded database. On disk it should look as `oxd_db.mv.db` file.
-You can use any convenient database viewer to view/edit data inside the database. We recommend use browser based viewer H2:
+By default, an oxd-server persists data inside a H2 embedded database. On a disk it should be visible as a `oxd_db.mv.db` file.
+You can use any convenient database viewer to view/edit data inside the database. We recommend using a browser-based viewer, H2:
 
  - Download http://www.h2database.com/html/download.html
- - Run it (in "Platform-Independent zip" case it is as simple as hit `h2.sh` or `h2.bat`)
+ - Run it (in the "Platform-Independent zip" case it is as simple as hitting `h2.sh` or `h2.bat`)
  
- In browser you will see connection details, please specify details as in `oxd-conf.json` file. 
- If all is filled correctly on "Test Connection" you should see "Test successful" message as on screenshot below.
+ You will see connection details in the browser. Please specify the details as in `oxd-conf.json` file. 
+ If everything is filled in correctly, in "Test Connection" you should see a "Test successful" message as in the screenshot below:
  
  ![H2](../img/faq_h2_connection_details.png)
  
- After hitting "Connect" button you will be able to view/modify data manually. Please be careful to not corrupt data inside otherwise oxd-server will not be albe to operate in normal mode. 
+ After hitting the "Connect" button, you will be able to view/modify the data manually. Please be careful not to corrupt the data inside; otherwise the oxd-server will not be able to operate in its stable mode. 
  
 ### Client expires, how can I avoid it?
 
-`register_site` or `setup_client` commands generates client dynamically and thus those clients has lifetime set. Lifetime of the client is set on OP side.
-It is possible to extend lifetime by calling `update_site` command and set `client_secret_expires_at` to the date which you wish. This field accepts number of milliseconds since 1970. You can use to [https://currentmillis.com/](https://currentmillis.com/) to convert date to milliseconds. For example `Fri Jun 15 2018 12:28:28` is `1529065708906`.
-Note that `setup_client` creates 2 clients up to 3.2.0 oxd-server version, so if you need to extend lifetime of both clients you have to call `update_site` with `oxd_id` and `setup_client_oxd_id` which are returned as response from `setup_client` command. 
+The `register_site` and `setup_client` commands generate clients dynamically, thus setting the lifetimes of these clients. The lifetime of the client is set on the OP side.
+It is possible to extend a client's lifetime by calling the `update_site` command and set `client_secret_expires_at` to a chosen date. This field accepts the number of milliseconds since 1970. You can use [https://currentmillis.com/](https://currentmillis.com/) to convert this time to milliseconds. For example, `Fri Jun 15 2018 12:28:28` is `1529065708906`.
+Note that `setup_client` creates 2 clients up to 3.2.0 oxd-server version, so if you need to extend the lifetimes of both clients, call `update_site` with `oxd_id` and `setup_client_oxd_id` which are returned as the response from the `setup_client` command. 
 
