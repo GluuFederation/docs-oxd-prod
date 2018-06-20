@@ -67,5 +67,5 @@ The `register_site` and `setup_client` commands generate clients dynamically, th
 
 It is possible to extend a client's lifetime by calling the `update_site` command and set `client_secret_expires_at` to a chosen date. This field accepts the number of milliseconds since 1970. You can use [https://currentmillis.com/](https://currentmillis.com/) to convert this time to milliseconds. For example, `Fri Jun 15 2018 12:28:28` is `1529065708906`.
 
-Note that `setup_client` creates 2 clients up to 3.2.0 oxd-server version, so if you need to extend the lifetimes of both clients, call `update_site` with `oxd_id` and `setup_client_oxd_id` which are returned as the response from the `setup_client` command. 
+Note that `setup_client` creates 2 clients in oxd-server versions up to 3.2.0, so if you need to extend the lifetimes of both clients, call `update_site` with `oxd_id` and `setup_client_oxd_id` which are returned as the response from the `setup_client` command. 
 
