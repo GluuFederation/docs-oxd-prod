@@ -55,7 +55,7 @@ You can use any convenient database viewer to view/edit data inside the database
  - Run it (in the "Platform-Independent zip" case it is as simple as hitting `h2.sh` or `h2.bat`)
  
  You will see connection details in the browser. Please specify the details as in `oxd-conf.json` file. 
- If everything is filled in correctly, in "Test Connection" you should see a "Test successful" message as in the screenshot below:
+ If everything is filled in correctly, in "Test Connection" you should see a "Test successful" message like in the screenshot below:
  
  ![H2](../img/faq_h2_connection_details.png)
  
