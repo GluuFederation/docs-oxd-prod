@@ -61,7 +61,7 @@ You can use any convenient database viewer to view/edit data inside the database
  
  After hitting the "Connect" button, you will be able to view/modify the data manually. Please be careful not to corrupt the data inside; otherwise the oxd-server will not be able to operate in its stable mode. 
  
-### Client expires, how can I avoid it?
+### How can I avoid client expiration?
 
 The `register_site` and `setup_client` commands generate clients dynamically, thus setting the lifetimes of these clients. The lifetime of the client is set on the OP side.
 It is possible to extend a client's lifetime by calling the `update_site` command and set `client_secret_expires_at` to a chosen date. This field accepts the number of milliseconds since 1970. You can use [https://currentmillis.com/](https://currentmillis.com/) to convert this time to milliseconds. For example, `Fri Jun 15 2018 12:28:28` is `1529065708906`.
