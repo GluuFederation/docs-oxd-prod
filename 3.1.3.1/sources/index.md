@@ -1,4 +1,4 @@
-# oxd 3.1.3 Documentation
+# oxd 3.1.3.1 Documentation
 
 ## Introduction
 oxd exposes simple, static APIs for implementing user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). By externalizing OAuth 2.0 code in a Linux package, oxd makes it easier to ensure and maintain secure, standards-based authentication and authorization across web applications. 
@@ -41,7 +41,7 @@ Follow these steps to get started:
 
 
 ## Compatibility
-oxd 3.1.3 has been tested against the following OAuth 2.0 servers:
+oxd 3.1.3.1 has been tested against the following OAuth 2.0 servers:
 
 ### OpenID Providers (OP)
 - Gluu Server [3.1.3](https://gluu.org/docs/ce/3.1.3), [3.1.2](https://gluu.org/docs/ce/3.1.2), [3.1.1](https://gluu.org/docs/ce/3.1.1)
