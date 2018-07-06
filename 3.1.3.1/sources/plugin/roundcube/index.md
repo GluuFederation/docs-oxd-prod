@@ -219,6 +219,8 @@ Below table defines these claims:
 | imapUsername | For us, the imapusername is email id. We're using test@gluu.org and test1@gluu.org.|
 | imapPassword | The imap Password for the user. It can be different from the OpenID Provider password for the user.|
 
+!!!Note: 
+    Please note that all the attribute values are case sensitive.
 
 You can login to your OpenID Provider and see at: Configuration --> Attributes --> Show All Attributres. If these attributes do not exist or are not active, you can use below screen-shots as guidelines to create and register the attributes.
 
@@ -280,14 +282,11 @@ Similarly, add the attributes to other user test1@gluu.org. Below we see how the
 ![image](../../img/plugin/roundcube/roundcubeAAM.png)
 
 
-### General
+
+### Further Information
 
 1. Automatically log in any user with an account in the OpenID Provider: By setting login to automatic, any user with an account in the OP will be able to dynamically log in for an account in your Roundcube site 
 1. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance `roundcube`. This is not configurable in all OPs, but is supported in the Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role 
-1. URI of the OpenID Provider: insert the URI of the OpenID Connect Provider
-1. Custom URI after logout: custom URI after logout (for example, a "Thank you" page)
-1. oxd port: enter the oxd-server port (you can find this in the `oxd-server/conf/oxd-conf.json` file)
-1. Click `Register` to continue
 
 If your OpenID Provider supports dynamic registration, no additional steps are required in the general tab and you can navigate to the [OpenID Connect Configuration](#openid-connect-configuration) tab. 
 
