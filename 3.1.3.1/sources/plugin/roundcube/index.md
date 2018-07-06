@@ -18,7 +18,7 @@ In order to use the RoundCube plugin you will need to have a standard OP (like G
  
 ### Manual Installation
 
-To install the plugin manually, start by downloading the plugin from [Github source](https://github.com/GluuFederation/roundcube_oxd_plugin/archive/v3.1.1.zip). Right now, the manual installation is the best way to get the plugin working. The server we've used in our case is: https://roundcube.gluu.info with latest roundcube installed which is of version 1.3.6. In our case, the directory which serves roundcube looks like: 
+To install the plugin manually, start by downloading the plugin from [Github source](https://github.com/GluuFederation/roundcube_oxd_plugin/archive/v3.1.1.zip). Right now, the manual installation is the best way to get the plugin working. The server we've used in our case is: https://roundcube.domain.com with latest roundcube installed which is of version 1.3.6. In our case, the directory which serves roundcube looks like: 
 
 ```
 root@roundcube:~# ls -l /var/www/html/
@@ -175,7 +175,7 @@ After clicking on Settings, in your RoundCube admin menu, you should see the Ope
 
 ![image](../../img/plugin/roundcube/roundcubeAAA.png)
 
-Please note that, we've logged in with **test@gluu.org**, this is the first ever user who clicks on **OpenID Connect** link in left pane. So, it becomes admin user. This user will find **Register** button **Enabled** as is evident from below screen-shot.
+Please note that, we've logged in with **test@domain.com**, this is the first ever user who clicks on **OpenID Connect** link in left pane. So, it becomes admin user. This user will find **Register** button **Enabled** as is evident from below screen-shot.
 
 ![image](../../img/plugin/roundcube/roundcubeAAB.png)
 
@@ -183,10 +183,10 @@ For our test, we're using below information:
 
 | Resource       | Value   |
 |----------------|---------|
-| Users          | test@gluu.org(admin user) and test1@gluu.org(non-admin user)|
+| Users          | test@domain.com(admin user) and test1@domain.com(non-admin user)|
 | OpenID Connect | https://idp.domain.com |
 | OXD Server     | https://oxd-server.domain.com |
-| Logout URL     | https://roundcube.gluu.info/?_task=logout |
+| Logout URL     | https://roundcube.domain.com/?_task=logout |
 
 Above values are mandatory for making the client register to OpenID Provider.
 
@@ -216,7 +216,7 @@ Below table defines these claims:
 |--------------|---------------|
 | imapHost     | The name of imap service provider. We've used ssl://mail.domain.com. Since we intend to use 993 as imap port which supports ssl, so we're using ssl://. config.inc.php file of roundcube guides on more prefixes for imapHost. |
 | imapPort     | The port at which the imap server serves you requests. Our port is 993 which stands for imaps. |
-| imapUsername | For us, the imapusername is email id. We're using test@gluu.org and test1@gluu.org.|
+| imapUsername | For us, the imapusername is email id. We're using test@domain.com and test1@domain.com.|
 | imapPassword | The imap Password for the user. It can be different from the OpenID Provider password for the user.|
 
 !!!Note: 
@@ -273,11 +273,11 @@ Once all the four attributes are registered and are active, you can create new s
 
 #### Adding attributes to users
 
-Next for the two users, test@gluu.org and test1@gluu.org, add the newly created attributes(claims). Below screen-shot shows the available attributes which are created just now.
+Next for the two users, test@domain.com and test1@domain.com, add the newly created attributes(claims). Below screen-shot shows the available attributes which are created just now.
 
 ![image](../../img/plugin/roundcube/roundcubeAAL.png)
 
-Similarly, add the attributes to other user test1@gluu.org. Below we see how these attribute values look once we add these to the user profile test@gluu.org:
+Similarly, add the attributes to other user test1@domain.com. Below we see how these attribute values look once we add these to the user profile test@domain.com:
 
 ![image](../../img/plugin/roundcube/roundcubeAAM.png)
 
