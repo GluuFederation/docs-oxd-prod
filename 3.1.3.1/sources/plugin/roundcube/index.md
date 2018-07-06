@@ -184,8 +184,8 @@ For our test, we're using below information:
 | Resource       | Value   |
 |----------------|---------|
 | Users          | test@gluu.org(admin user) and test1@gluu.org(non-admin user)|
-| OpenID Connect | https://didp.gluu.org |
-| OXD Server     | https://oxd-server.gluu.org |
+| OpenID Connect | https://idp.domain.com |
+| OXD Server     | https://oxd-server.domain.com |
 | Logout URL     | https://roundcube.gluu.info/?_task=logout |
 
 Above values are mandatory for making the client register to OpenID Provider.
@@ -214,7 +214,7 @@ Below table defines these claims:
 
 | Claim        | Description   |
 |--------------|---------------|
-| imapHost     | The name of imap service provider. We've used ssl://webmail.gluu.org. Since we intend to use 993 as imap port which supports ssl, so we're using ssl://. config.inc.php file of roundcube guides on more prefixes for imapHost. |
+| imapHost     | The name of imap service provider. We've used ssl://mail.domain.com. Since we intend to use 993 as imap port which supports ssl, so we're using ssl://. config.inc.php file of roundcube guides on more prefixes for imapHost. |
 | imapPort     | The port at which the imap server serves you requests. Our port is 993 which stands for imaps. |
 | imapUsername | For us, the imapusername is email id. We're using test@gluu.org and test1@gluu.org.|
 | imapPassword | The imap Password for the user. It can be different from the OpenID Provider password for the user.|
