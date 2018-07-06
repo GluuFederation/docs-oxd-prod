@@ -164,9 +164,9 @@ $config['plugins'] = array('acl', 'archive', 'attachment_reminder', 'emoticons',
 This finishes, plugin installation process.
 
 
-## Configuration
+### Configuration
 
-### General
+#### Roundcube Plugin Configuration
  
 After clicking on Settings, in your RoundCube admin menu, you should see the OpenID Connect menu tab in the left pane towards the end. Click the link to navigate to the General configuration page. Please remember that only the admin users can register with the OpenID Provider(OP). For non-admin users, the registration is disabled. After installing the roundcube plugin, whichever user accesses the plugin first before configuration, becomes the admin user and can register the plugin to the OpenID provider. The other users can also be admin users and can carry out registration process.
 
@@ -191,6 +191,7 @@ For our test, we're using below information:
 Above values are mandatory for making the client register to OpenID Provider.
 
 Fill in the values from above table and click on **Register** for registring the client to OP. See how these values are filled as per screen-shot below:
+
 ![image](../../img/plugin/roundcube/roundcubeAAC.png)
 
 Once the client registers successfully, it's assigned **Client ID** and **oxd ID**. Some values have been blurred for security reasons. This screen confirms that the client registered successfully. Below screen-shot confirms this.
@@ -203,7 +204,10 @@ The **OpenID Connect Configuration** values are shown in below screen-shot. New 
 
 This part concludes the roundcube oxd plugin configuration side.
 
-Below we deal on the pre-requisites on OpenID Provider side. Four values aka **claims** are required for successful authentication to roundcube via oxd-service using OpenID Provider.
+
+#### Registring Claims(Attributes) in OpenID Provider
+
+Here we deal with the pre-requisites on OpenID Provider side. Four values aka **claims** are required for successful authentication to roundcube via oxd-service using OpenID Provider.
 These are: **imapHost**, **imapPort**, **imapUsername** and **imapPassword**.
 
 Below table defines these claims:
@@ -256,11 +260,16 @@ For imapPassword:
 
 ![image](../../img/plugin/roundcube/roundcubeAAJ.png)
 
+
+#### Adding claims to scope
+
 Once all the four attributes are registered and are active, you can create new scope named: **imapData** by going to **OpenID Connect** --> **Scopes** --> **Add Scope**. The name is exactly: **imapData**. After creating the scope, add the claims imapHost, imapPort, imapUsername, imapPassword to this newly created scope. Below screen-shot guides on this:
 
 ![image](../../img/plugin/roundcube/roundcubeAAK.png)
 
-Above part concludes the preparation of claims and scope.
+
+
+#### Adding attributes to users
 
 Next for the two users, test@gluu.org and test1@gluu.org, add the newly created attributes(claims). Below screen-shot shows the available attributes which are created just now.
 
@@ -271,6 +280,7 @@ Similarly, add the attributes to other user test1@gluu.org. Below we see how the
 ![image](../../img/plugin/roundcube/roundcubeAAM.png)
 
 
+### General
 
 1. Automatically log in any user with an account in the OpenID Provider: By setting login to automatic, any user with an account in the OP will be able to dynamically log in for an account in your Roundcube site 
 1. Only register and allow ongoing access to users with one or more of the following roles in the OP: Using this option you can limit login to users who have a specified role in the OP, for instance `roundcube`. This is not configurable in all OPs, but is supported in the Gluu Server. [Follow the instructions below](#role-based-enrollment) to limit access based on an OP role 
