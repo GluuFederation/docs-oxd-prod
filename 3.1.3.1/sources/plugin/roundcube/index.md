@@ -227,7 +227,7 @@ You can login to your OpenID Provider and see at: Configuration --> Attributes -
 You can not add these attributes unless these exist in ldap of your OpenID Provider. For confirmation, please see if the below output is part of your OP. Path should be more or less similar.
 
 ```
-root@didp:~# cat /opt/gluu-server-3.1.3/opt/opendj/config/schema/77-customAttributes.ldif 
+root@idp.domain.com:~# cat /opt/gluu-server-3.1.3/opt/opendj/config/schema/77-customAttributes.ldif 
 dn: cn=schema
 objectClass: top
 objectClass: ldapSubentry
@@ -242,7 +242,7 @@ attributeTypes: ( myCustomAttr1-oid NAME 'myCustomAttr1' EQUALITY caseIgnoreMatc
 attributeTypes: ( myCustomAttr2-oid NAME 'myCustomAttr2' EQUALITY caseIgnoreMatch SUBSTR caseIgnoreSubstringsMatch SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 X-ORIGIN 'Gluu - dynamic registration custom attribute' )
 objectClasses: ( 1.3.6.1.4.1.48710.1.4.101 NAME 'gluuCustomPerson' SUP top AUXILIARY MAY ( telephoneNumber $ mobile $ carLicense $ facsimileTelephoneNumber $ departmentNumber $ employeeType $ cn $ st $ manager $ street $ postOfficeBox $ employeeNumber $ preferredDeliveryMethod $ roomNumber $ secretary $ homePostalAddress $ l $ postalCode $ description $ title $ imapHost $ imapPort $ imapUsername $ imapPassword $ gluuPermission ) )
 objectClasses: ( oxAuthClientCustomAttributes-oid NAME 'oxAuthClientCustomAttributes' SUP top AUXILIARY MAY ( myCustomAttr1 $ myCustomAttr2 ) )
-root@didp:~# 
+root@idp.domain.com:~# 
 ```
 Once confirmed that above attributes exist in ldap, you can move forward for adding the attributes from OP GUI.
 
