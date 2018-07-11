@@ -69,3 +69,5 @@ It is possible to extend a client's lifetime by calling the `update_site` comman
 
 Note that `setup_client` creates 2 clients in oxd-server versions up to 3.2.0, so if you need to extend the lifetimes of both clients, call `update_site` with `oxd_id` and `setup_client_oxd_id` which are returned as the response from the `setup_client` command. 
 
+### How can I use oxd with AS that does not support UMA ?
+Please set `uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client` in `oxd-config.json` to fails otherwise you may get `no_uma_discovery_response` if UMA is not supported on AS side.  
