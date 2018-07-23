@@ -659,7 +659,7 @@ Request with `scope_expression`. `scope_expression` is a Gluu-invented extension
         ]
       }
     ],
-    "protection_access_token": "<access token of the client>"   <-OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter   
+    "protection_access_token": "<access token of the client>"   <-OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter. Validation is skipped only of protection_access_token is not null or blank. If it is provided validation is performed. 
   }
 }
 ```
