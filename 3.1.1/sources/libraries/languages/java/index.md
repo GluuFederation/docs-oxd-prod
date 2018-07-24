@@ -4,7 +4,7 @@
 
 Use oxd's Java library to send users from a Java application to your Gluu Server OpenID Connect Provider (OP) for dynamic enrollment, single sign-on (SSO), strong authentication, and access management policy enforcement. 
 
-Download a [Sample Project](https://github.com/GluuFederation/oxd/archive/version_3.1.1.zip) 
+Download a [Sample Project](https://github.com/GluuFederation/oxd-java-sample/archive/master.zip) 
 specific to this oxd-java library.
 
 ## Sample Code 
