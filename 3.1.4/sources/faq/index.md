@@ -70,3 +70,9 @@ Note that `setup_client` creates 2 clients up to 3.2.0 oxd-server version, so if
 ### How can I use oxd with AS that does not support UMA ?
 Please set `uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client` in `oxd-config.json` to fails otherwise you may get `no_uma_discovery_response` if UMA is not supported on AS side.  
 
+### I got `protection_access_token_insufficient_scope` error when calling oxd-https-extension. It perfectly worked in 3.1.3. What should I do ?
+In `3.1.4` we forced to have `oxd` scope associated with `protection_access_token`. If it is not present then oxd rejects calls. 
+ 
+  - Make sure you have `oxd` scope present on AS
+  - `oxd` scope is present during `/setup-client` command in `scope` field 
+  - `oxd` scope is presetn during `/get-client-token` command in `scope` field
