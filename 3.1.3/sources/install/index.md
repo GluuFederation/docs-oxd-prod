@@ -1,4 +1,5 @@
-# oxd-server Installation 
+# oxd Installation 
+Thank you for your interest in oxd! Below are instructions to install the software using one of the Linux packages. After installation head back to the oxd website to [get your free license](https://oxd.gluu.org), which is needed to start the server. 
 
 ## System Requirements
 
