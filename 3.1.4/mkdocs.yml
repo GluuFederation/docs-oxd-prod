@@ -24,7 +24,7 @@ pages:
 - 'API': 'api/index.md'
 - 'FAQ': 'faq/index.md'
 - oxd-https-extension:
-  - 'Start': 'oxd-https/start/index.md'
+  - 'Start ': 'oxd-https/start/index.md'
   - 'Configuration': 'oxd-https/configuration/index.md'
   - 'Logs': 'oxd-https/logs/index.md'
   - 'API': 'oxd-https/api/index.md'
