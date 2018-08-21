@@ -18,6 +18,7 @@ pages:
 - Release Notes: 'release-notes/index.md'
 - Whats new in 3.1.x: '3.1.x-intro.md'
 - 'Install': 'install/index.md'
+- 'Start': 'start/index.md'
 - 'Upgrade': 'upgrade/index.md'
 - 'Configuration': 'configuration/index.md'
 - 'Logs': 'logs/index.md'
