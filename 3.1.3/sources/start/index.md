@@ -1,4 +1,4 @@
-# oxd-server Service Operations
+# oxd Service Operations
 After installation oxd-server can be started. Install the oxd package as described [here](https://gluu.org/docs/oxd/3.1.3.1/install/).
 
 ## Start oxd-server
