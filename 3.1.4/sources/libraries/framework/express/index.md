@@ -8,7 +8,7 @@ The following documentation demonstrates how to use Gluu's commercial OAuth 2.0 
 ## Installation Guides
 
 - [Github oxd-node](https://github.com/GluuFederation/oxd-node)
-- [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.4/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 
 
