@@ -24,7 +24,7 @@ a standard OP (like Google or a Gluu Server), and an active oxd server. Some add
  
 ### Download the Plugin
 
-You can either download the plugin from the [Github source](https://github.com/GluuFederation/wordpress-oxd-plugin/archive/v2.4.4.zip) or the [WordPress marketplace](https://wordpress.org/plugins/openid-connect-sso-by-gluu/).
+You can either download the plugin from the [Github source](https://github.com/GluuFederation/wordpress-oxd-plugin/archive/v3.1.4.zip) or the [WordPress marketplace](https://wordpress.org/plugins/openid-connect-sso-by-gluu/).
 
 ### Upload the Plugin
 Navigate to the WP-admin portal of your WordPress site and open the plugin page, e.g. `https://{site-base-url}/wp-admin/plugin-install.php?tab=upload`. Upload the plugin and click the install now button.
