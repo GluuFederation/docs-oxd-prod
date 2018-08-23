@@ -9,7 +9,7 @@ Use oxd's .Net library to send users from a .Net application to your Gluu Server
 ## Installation Guides
 
 - [Github oxd-csharp](https://github.com/GluuFederation/oxd-csharp)
-- [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/)
+- [Gluu Server](https://gluu.org/docs/ce/3.1.4/installation-guide/install/)
 - [oxd-server](../../../install/index.md)
 
 
