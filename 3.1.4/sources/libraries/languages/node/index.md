@@ -10,12 +10,12 @@
 ### Library
 
 - *Install oxd-node via npm* - `npm install oxd-node`
-- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-node/archive/3.1.2.zip)
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-node/archive/3.1.4.zip)
 
 ### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- See the code of a [sample node app](https://github.com/GluuFederation/oxd-node/tree/3.1.3/oxd-node-demo) built using oxd-node
+- See the code of a [sample node app](https://github.com/GluuFederation/oxd-node/tree/3.1.4/oxd-node-demo) built using oxd-node
 - Browse the oxd-node [source code on Github](https://github.com/GluuFederation/oxd-node)
 
 
