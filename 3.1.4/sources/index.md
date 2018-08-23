@@ -1,4 +1,4 @@
-# oxd 3.1.3 Documentation
+# oxd 3.1.4 Documentation
 
 ## Introduction
 oxd exposes simple, static APIs for implementing user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). By externalizing OAuth 2.0 code in a Linux package, oxd makes it easier to ensure and maintain secure, standards-based authentication and authorization across web applications. 
@@ -41,15 +41,15 @@ Follow these steps to get started:
 
 
 ## Compatibility
-oxd 3.1.3 has been tested against the following OAuth 2.0 servers:
+oxd 3.1.4 has been tested against the following OAuth 2.0 servers:
 
 ### OpenID Providers (OP)
-- Gluu Server [3.1.3](https://gluu.org/docs/ce/3.1.3), [3.1.2](https://gluu.org/docs/ce/3.1.2), [3.1.1](https://gluu.org/docs/ce/3.1.1)
+- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4), Gluu Server [3.1.3](https://gluu.org/docs/ce/3.1.3), [3.1.2](https://gluu.org/docs/ce/3.1.2), [3.1.1](https://gluu.org/docs/ce/3.1.1)
 - [Google](https://developers.google.com/identity/protocols/OpenIDConnect)       
 
 
 ### UMA Authorization Servers (AS)
-- Gluu Server [3.1.3](https://gluu.org/docs/ce/3.1.3), [3.1.2](https://gluu.org/docs/ce/3.1.2), [3.1.1](https://gluu.org/docs/ce/3.1.1)
+- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4), Gluu Server [3.1.3](https://gluu.org/docs/ce/3.1.3), [3.1.2](https://gluu.org/docs/ce/3.1.2), [3.1.1](https://gluu.org/docs/ce/3.1.1)
 
 !!! Note
     If you have successfully tested oxd against another OP or AS, please email details to [sales@gluu.org](mailto:sales@gluu.org).
@@ -162,7 +162,7 @@ An easy way to accomplish the first--install and configure the [free open source
 oxd simply makes it easy to send users to an OpenID Connect Provider (OP) for login. If you want to offer users the option to use social login, that needs to be implemented at the OP. If you are using the Gluu Server as your OP, you can use [Passport.js](https://gluu.org/docs/ce/authn-guide/passport/) to configure and support social login. 
 
 **Can I use oxd for two-factor authentication (2FA)?**    
-Again, since oxd simply makes it easy to send users to an OpenID Connect Provider (OP) for login, two-factor authentication needs to be enforced at the OP. If you are using the Gluu Server as your OP, there are several built in two-factor authentication mechanisms. Learn more in the [Gluu Server authentication guide](https://gluu.org/docs/ce/3.1.3/authn-guide/intro/).
+Again, since oxd simply makes it easy to send users to an OpenID Connect Provider (OP) for login, two-factor authentication needs to be enforced at the OP. If you are using the Gluu Server as your OP, there are several built in two-factor authentication mechanisms. Learn more in the [Gluu Server authentication guide](https://gluu.org/docs/ce/3.1.4/authn-guide/intro/).
 
 **Can I use Google or Microsoft Azure Active Directory as my OpenID Connect Provider?**    
 We have tested and confirmed oxd to work with Google as an OP. Microsoft's OP implementation is not totally standard though, and therefore may require changes or updates to oxd to work. 
