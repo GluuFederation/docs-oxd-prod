@@ -11,7 +11,7 @@
 
 - *Install from Pip* - `pip install oxdpython`
 
-- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-python/archive/3.1.3.zip) the zip of the oxd Python library and run the setup script:
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-python/archive/3.1.4.zip) the zip of the oxd Python library and run the setup script:
 
 ```
 cd oxdpython-version
@@ -21,8 +21,8 @@ python setup.py install
 ### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- oxd-python [API docs](https://rawgit.com/GluuFederation/oxd-python/3.1.3/docs/html/index.html) for the auto-generated pydocs, which includes more in-depth information about the various functions and parameters
-- See the code of a [sample Flask app](https://github.com/GluuFederation/oxd-python/blob/3.1.3/examples/flask_app) built using oxd-python
+- oxd-python [API docs](https://rawgit.com/GluuFederation/oxd-python/3.1.4/docs/html/index.html) for the auto-generated pydocs, which includes more in-depth information about the various functions and parameters
+- See the code of a [sample Flask app](https://github.com/GluuFederation/oxd-python/blob/3.1.4/examples/flask_app) built using oxd-python
 - Browse the oxd-python [source code on Github](https://github.com/GluuFederation/oxd-python)
 
 ## Configuration
@@ -31,7 +31,7 @@ oxd-python uses a configuration file to specify information needed to configure 
 
 oxd-python can communicate with the oxd server via sockets or HTTPS. There is **no difference** in code--just toggle the `https_extension` configuration property. Sockets are used when the oxd server is running locally.
 
-Below are minimal configuration examples for sockets and HTTPS transport. The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/3.1.3/sample.cfg) file contains a full list of configuration parameters and sample values. 
+Below are minimal configuration examples for sockets and HTTPS transport. The [sample.cfg](https://github.com/GluuFederation/oxd-python/blob/3.1.4/sample.cfg) file contains a full list of configuration parameters and sample values. 
 
 !!! Note
     The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address.
