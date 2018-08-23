@@ -4,14 +4,14 @@
 
 Gluu's OpenID Connect Single Sign-On (SSO) Roundcube plugin will enable you to 
 authenticate users against any standard OpenID Connect Provider (OP). If you don't already have an OP you can 
-[deploy the free open source Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/).  
+[deploy the free open source Gluu Server](https://gluu.org/docs/ce/installation-guide/install/).  
 
 ## Requirements
 In order to use the RoundCube plugin you will need to have a standard OP (like Google or a Gluu Server) and the oxd server.
 
 - Compatibility : 0.6.0 <= 10.21 versions
 
-- [Gluu Server Installation Guide](https://gluu.org/docs/ce/3.1.3/installation-guide/install/)
+- [Gluu Server Installation Guide](https://gluu.org/docs/ce/installation-guide/install/)
 
 - [oxd Server Installation Guide](https://oxd.gluu.org/docs/install/)
 
@@ -20,14 +20,14 @@ In order to use the RoundCube plugin you will need to have a standard OP (like G
  
 ### Download
 
-[Github source](https://github.com/GluuFederation/roundcube_oxd_plugin/archive/v3.1.3.zip).
+[Github source](https://github.com/GluuFederation/roundcube_oxd_plugin/archive/v3.1.4.zip).
 
 [Link to RoundCube repository](https://plugins.roundcube.net/packages/gluufederation/roundcube_oxd_plugin)
 
 To install the RoundCube OpenID Connect Single Sign On (SSO) Plugin By Gluu via Composer, execute the following command 
 
 ```
-$ composer install `composer require "gluufederation/roundcube_oxd_plugin": "3.1.3"`
+$ composer install `composer require "gluufederation/roundcube_oxd_plugin": "3.1.4"`
 
 ```
 
