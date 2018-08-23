@@ -14,13 +14,13 @@
 ### Library
 
 - _Install from CPAN_ - `CPAN> install GLUU/oxdperl-0.04.tar.gz`
-- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-perl/archive/3.1.3.zip) the zip of the oxd Perl library
+- _Source from Github_ -   [Download](https://github.com/GluuFederation/oxd-perl/archive/3.1.4.zip) the zip of the oxd Perl library
 
 ### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- oxd-perl [API docs](https://rawgit.com/GluuFederation/oxd-perl/3.1.3/docs/html/index.html) for the auto-generated perl docs, which includes more in-depth information about the various functions and parameters
-- See the code of a [sample perl app](https://github.com/GluuFederation/oxd-perl/tree/3.1.3/OxdPerlModule/example) built using oxd-perl
+- oxd-perl [API docs](https://rawgit.com/GluuFederation/oxd-perl/3.1.4/docs/html/index.html) for the auto-generated perl docs, which includes more in-depth information about the various functions and parameters
+- See the code of a [sample perl app](https://github.com/GluuFederation/oxd-perl/tree/3.1.4/OxdPerlModule/example) built using oxd-perl
 - Browse the oxd-perl [source code on Github](https://github.com/GluuFederation/oxd-perl)
 
 
@@ -31,7 +31,7 @@ oxd-perl uses a configuration file to specify information needed to configure th
 
 oxd-perl can communicate with the oxd server via sockets or HTTPS.
 
-Below are minimal configuration examples for sockets and https transport. The [oxd-settings.json](https://github.com/GluuFederation/oxd-perl/blob/3.1.3/OxdPerlModule/example/oxd-settings.json) file contains a full list of configuration parameters and sample values. 
+Below are minimal configuration examples for sockets and https transport. The [oxd-settings.json](https://github.com/GluuFederation/oxd-perl/blob/3.1.4/OxdPerlModule/example/oxd-settings.json) file contains a full list of configuration parameters and sample values. 
 
 !!! Note
     The client hostname should be a valid hostname (FQDN), not a localhost or an IP Address
