@@ -14,15 +14,15 @@
 you do not already have it installed. To install oxd-php-api via Composer, execute the following command 
 in your project root:
 
-Composer requires "gluufederation/oxd-php-api": "3.1.3"
+Composer requires "gluufederation/oxd-php-api": "3.1.4"
 
-- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-php-library/archive/v3.1.3.zip) the zip of the oxd PHP library.
+- *Source from Github* -   [Download](https://github.com/GluuFederation/oxd-php-library/archive/v3.1.4.zip) the zip of the oxd PHP library.
 
 #### Important Links
 
 - [oxd docs](https://gluu.org/docs/oxd)
-- oxd-php-library [API docs](https://rawgit.com/GluuFederation/oxd-php-library/3.1.3/docs/html/index.html) for the auto-generated php docs, which includes more in-depth information about the various functions and parameters.
-- See the code of a [sample php app](https://github.com/GluuFederation/oxd-php-library/tree/3.1.3/client.example.com) built using oxd-php-library.
+- oxd-php-library [API docs](https://rawgit.com/GluuFederation/oxd-php-library/3.1.4/docs/html/index.html) for the auto-generated php docs, which includes more in-depth information about the various functions and parameters.
+- See the code of a [sample php app](https://github.com/GluuFederation/oxd-php-library/tree/3.1.4/client.example.com) built using oxd-php-library.
 - Browse the oxd-php-library [source code on Github](https://github.com/GluuFederation/oxd-php-library).
 
 ## Configuration 
@@ -808,7 +808,7 @@ $uma_rp_get_claims_gathering_url->request();
 
 ## Sample Project
 
-Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.3.zip) specific to this oxd-php library.
+Download a [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.4.zip) specific to this oxd-php library.
 
 
 ### Software Requirements
@@ -866,7 +866,7 @@ To use the oxd-php library, you will need:
 
     `127.0.0.1  client.example.com`
 
-- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.3.zip) and navigate to `client.example.com` directory inside the project.
+- Open the downloaded [Sample Project](https://github.com/GluuFederation/oxd-php-library/archive/3.1.4.zip) and navigate to `client.example.com` directory inside the project.
 
 
 - With the oxd-server running, navigate to the URLs below to run the sample client application. To register a client in the oxd-server use the Setup Client URL. Upon successful registration of the client application, an oxd ID will be displayed in the UI. Next, navigate to the Login URL for authentication.
