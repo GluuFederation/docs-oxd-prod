@@ -12,7 +12,7 @@ to have a SugarCRM site, standard OP (like Google or a Gluu Server) and the oxd 
 
 - This plugin is compatible with sugarCRM versions: 6.5 - 7.6
 
-- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.1.3/installation-guide/install/). Otherwise we recommend using Google
+- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.1.4/installation-guide/install/). Otherwise we recommend using Google
 
 - You will need a valid license to start the oxd server. You can get a license and a $50 credit by signing up on the [oxd website](https://oxd.gluu.org)
 
