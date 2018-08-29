@@ -4,4 +4,4 @@ The `oxd-https-extension` is a RESTful server that accepts `HTTPS` calls based o
 
 ## Limit access
 
-`oxd-https-extesion` is web server which handles all requests. Attacker can use such open server for own needs. Therefore it is recommended to protect it by putting `oxd-https-extension` in private network. As alternative it is possible to proxy requests via web server (e.g. Apache HTTP Server or nginx) and limit access via it. 
+`oxd-https-extesion` is web server which handles all requests. Attacker can use such open server for own needs or attack it (e.g. DDoS) . Therefore it is recommended to protect it by putting `oxd-https-extension` in private network. As alternative it is possible to proxy requests via web server (e.g. Apache HTTP Server or nginx) and limit access via it. 
