@@ -1,6 +1,6 @@
 # Security Considerations
 
-The `oxd-https-extension` is a RESTful server that accepts `HTTPS` calls based on `dropwizard` framework. Communication between `oxd-https-extension` and `oxd-server` is protection by `protection_access_token`.
+The `oxd-https-extension` is a RESTful server that accepts `HTTPS` calls based on `dropwizard` framework. Communication between `oxd-https-extension` and `oxd-server` is protected by `protection_access_token`.
 
 ## Limit access
 
