@@ -10,6 +10,7 @@ oxd needs to be deployed on a server or VM with the following **minimum** requir
 
 Note: **oxd requires Java version 1.8**
 
+It is highly recommended to use exactly same oxd version as CE. For example for CE 3.1.4 use oxd-server 3.1.4 and oxd-https-extension 3.1.4.
 
 ## Linux Packages
 

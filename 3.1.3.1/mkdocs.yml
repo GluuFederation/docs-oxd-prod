@@ -29,6 +29,7 @@ pages:
   - 'Configuration': 'oxd-https/configuration/index.md'
   - 'Logs': 'oxd-https/logs/index.md'
   - 'API': 'oxd-https/api/index.md'
+  - 'Security Considerations': 'oxd-https/security/index.md'
 - Libraries:
     - 'Overview': 'libraries/api-client-libraries.md'
     - Languages:
