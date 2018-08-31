@@ -24,7 +24,7 @@ a standard OP (like Google or a Gluu Server), and an active oxd server. Some add
  
 ### Download the Plugin
 
-You can either download the plugin from the [Github source](https://github.com/GluuFederation/wordpress-oxd-plugin/archive/v2.4.4.zip) or the [WordPress marketplace](https://wordpress.org/plugins/openid-connect-sso-by-gluu/).
+You can either download the plugin from the [Github source](https://github.com/GluuFederation/wordpress-oxd-plugin/archive/v3.1.4.zip) or the [WordPress marketplace](https://wordpress.org/plugins/openid-connect-sso-by-gluu/).
 
 ### Upload the Plugin
 Navigate to the WP-admin portal of your WordPress site and open the plugin page, e.g. `https://{site-base-url}/wp-admin/plugin-install.php?tab=upload`. Upload the plugin and click the install now button.
@@ -46,11 +46,13 @@ In the server settings section of the plugin configuration page, you will need t
 
 A short description of each field follows:
 
-1. URI of the OpenID Provider: Insert the URI of the OpenID Connect Provider here. If you are using Google as your OP, this will simply be `https://accounts.google.com`. If you are using another OP it will be something like `https://idp.example.com` 
+1. URI of the OpenID Provider: Insert the URI of the OpenID Connect Provider here. If you are using Google as your OP, this will simply be `https://accounts.google.com`. If you are using another OP, like your own Gluu Server, it will be the hostname, e.g.  `https://idp.example.com` 
 
-1. Custom URI after logout: Provide a URL for a landing page to redirect users after logout of the WP site, for instance `https://example.com/thank-you`. If you don't have a preferred logout page, we recommend simply entering your website homepage URL. If you leave this field blank the user will see the default logout page presented by WordPress 
+1. Custom URI after logout: Provide a URL for a landing page to redirect users after logout of the WP site, for instance `https://example.com/thank-you`. If you don't have a preferred logout page, we recommend simply entering your website homepage URL. If you leave this field blank the user will see the default logout page presented by WordPress
 
-1. oxd port: Enter the oxd-server port, which you can find in your `oxd-server/conf/oxd-conf.json` file
+1. Site Login URI:	Add your WordPress site login address, for instance: `https://mywebsite.com/wp-admin`
+
+1. oxd port / https: Enter either the oxd-server port. It will typically be `8443`. You can find your port in the `oxd-server/conf/oxd-conf.json` file. If you are using the `https-extension`, enter your address e.g. `https://oxd-server.mysite.com/8443`
 
 1. Click `Register` to continue
 
