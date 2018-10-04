@@ -15,6 +15,13 @@ It is highly recommended to use exactly same oxd version as CE. For example for 
 
 ## Linux Packages
 
+Before installation make sure that Java 8 is installed on your OS, please check it with
+```
+# java -version
+java version "1.8.0_181"
+```
+If above command confirms that java 8 is installed, you can go on with oxd installation.
+
 The oxd Linux packages provide an easy way to install the `oxd-server` and the `oxd-https-extension`. Follow the steps below to get started:
 
 Step 1: Find the proper Linux package below.     
