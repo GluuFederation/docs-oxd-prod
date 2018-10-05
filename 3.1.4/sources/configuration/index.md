@@ -13,7 +13,6 @@ The contents of the `/etc/oxd/oxd-server/oxd-conf.json` file are as follows:
 ```
 oxd-conf.json
 {
-    "server_name":"",
     "port":8099,
     "localhost_only":true,
     "time_out_in_seconds":0,
@@ -24,10 +23,6 @@ oxd-conf.json
     "crypt_provider_key_store_path":"",
     "crypt_provider_key_store_password":"",
     "crypt_provider_dn_name":"",
-    "license_id":"",
-    "public_key":"",
-    "public_password":"",
-    "license_password":"",
     "support-google-logout":true,
     "state_expiration_in_minutes":5,
     "nonce_expiration_in_minutes":5,
@@ -43,8 +38,6 @@ oxd-conf.json
 }
 ```
 ### oxd-conf.json Field Descriptions
-
-- **server_name:** Give your oxd server a human-readable name that can be used by the License Server to identify your oxd server. (Example : "server_name":"Will's dev oxd-server")
 
 - **port:** oxd socket port, by default it is 8099
 
@@ -65,14 +58,6 @@ oxd-conf.json
 - **crypt_provider_key_store_password:** Password to access the cryptologic service provider's key store
  
 - **crypt_provider_dn_name:** Cryptologic service provider's domain name
-
-- **license_id:** Will be supplied when you [register for a license](https://oxd.gluu.org) 
-
-- **public_key:** Will be supplied when you [register for a license](https://oxd.gluu.org). It's very big--make sure to add the `public_key` as one line with no spaces
-
-- **public_password:** Will be supplied when you [register for a license](https://oxd.gluu.org)
-
-- **license_password:** Will be supplied when you [register for a license](https://oxd.gluu.org)
 
 - **support-google-logout:** Choose whether to support Google logout or not. Only use this if you are using Google as your OP
 

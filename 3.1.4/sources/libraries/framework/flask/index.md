@@ -43,9 +43,7 @@ To use the oxd-python library, you will need:
 
 ## Configuring oxd-server
 
-- Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
-
-    - Update the following fields `"server_name"`, `"license_id"`, `"public_key"`, `"public_password"` and `"license_password"`
+- Edit the file `/opt/oxd-server/conf/oxd-conf.json` if needed
 
 - Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
 

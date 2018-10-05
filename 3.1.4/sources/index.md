@@ -27,11 +27,9 @@ oxd offers operational and security benefits for developers and organizations:
 
 Follow these steps to get started:
 
-1. [Sign up](https://oxd.gluu.org/account/register/) to obtain your oxd license and $50 credit
-
 1. [Install](./install/index.md) oxd on the same host as your application (or any host if enabling the HTTPS extension)
 
-1. [Configure](./configuration/index.md) the `oxd-server` and add your license keys           
+1. [Configure](./configuration/index.md) the `oxd-server`           
 
 1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs 
 
@@ -109,11 +107,8 @@ Additional applications are billed $10 per month, with one caveat: apps will onl
 
 On the 1st of each month we send a billing email summarizing your usage and any associated fees. On the 7th of each month we will attempt to bill your credit card, as applicable!
 
-!!! Note
-    To discuss volume discounts and site licenses, [schedule a call](https://gluu.org/booking) 
-   
 ## Support
-Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). You can log into the support site using the same credentials that you use to access the oxd license management app (and vice versa). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
+Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
 
 If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract.  
 
@@ -122,9 +117,6 @@ If your organization needs guaranteed response times, private support, and prior
 **What is oxd?**       
 oxd is a mediator: it provides APIs that can be called by a web application that are easier than directly calling the API's of an OpenID Connect Provider (OP) or an UMA Authorization Server (AS).
 
-**How is oxd licensed, and how much does it cost?**        
-oxd is commercially licensed software. To start the oxd server you will need a valid license, which you can [obtain for free by registering on the oxd website](https://oxd.gluu.org). For each application that leverages your oxd service, you will be charged USD $0.33 per day. So for example, if you have 10 applications leveraging your oxd server, you will be charged USD $3.30 per day. Usage fees are accumulated daily and billed at the end of each month. If you need a site license for oxd, [schedule a call](https://gluu.org/booking).
- 
 **What types of applications can use oxd?**        
 oxd only supports server-side web applications. If you are using the Gluu Server as your OP and need single sign-on (SSO) to single-page apps (SPAs), native apps, or SaaS apps, please review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/).  
 

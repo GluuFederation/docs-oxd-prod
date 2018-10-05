@@ -30,9 +30,7 @@ To use the oxd-java library, you will need:
 
 ## Configuring the oxd-server
 
-- Edit the file `/opt/oxd-server/conf/oxd-conf.json` 
-
-    - Update the following fields `"server_name"`, `"license_id"`, `"public_key"` and `"public_password"`
+- Edit the file `/opt/oxd-server/conf/oxd-conf.json` if needed 
 
 - Edit the file `/opt/oxd-server/conf/oxd-default-site-config.json`
 
