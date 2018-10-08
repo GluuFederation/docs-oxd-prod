@@ -30,12 +30,12 @@ Step 2: After installation, [configure](../configuration/index.md) your oxd-serv
 
 Step 3: Run the following command to start your `oxd-server`:             
  
-`/etc/init.d/oxd-server start`
+`/etc/init.d/oxd-server-3.1.4 start`
 
 Step 4: To support RESTful (https) calls to your `oxd-server`, you can now move on to the [oxd-https-extension docs](../oxd-https/start/index.md).      
 
 !!! Note
-    If you need to stop your `oxd-server`at any point, you can run the following command: `/etc/init.d/oxd-server stop` 
+    If you need to stop your `oxd-server`at any point, you can run the following command: `/etc/init.d/oxd-server-3.1.4 stop` 
 
 
 ### Ubuntu 14.04 (trusty)
@@ -44,7 +44,7 @@ Step 4: To support RESTful (https) calls to your `oxd-server`, you can now move 
 echo "deb https://repo.gluu.org/ubuntu/ trusty main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 apt-get update
-apt-get install oxd-server
+apt-get install oxd-server-3.1.4
 ```
 
 ### Ubuntu 16.04 (xenial)
@@ -53,7 +53,7 @@ apt-get install oxd-server
 echo "deb https://repo.gluu.org/ubuntu/ xenial main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 apt-get update
-apt-get install oxd-server
+apt-get install oxd-server-3.1.4
 ```
 
 ### Debian 8 (Jessie)
@@ -62,7 +62,7 @@ apt-get install oxd-server
 echo "deb https://repo.gluu.org/debian/ jessie main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -
 apt-get update
-apt-get install oxd-server
+apt-get install oxd-server-3.1.4
 ```
 
 ### CentOS 6
@@ -72,7 +72,7 @@ wget https://repo.gluu.org/centos/Gluu-centos6.repo -O /etc/yum.repos.d/Gluu.rep
 wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
-yum install oxd-server
+yum install oxd-server-3.1.4
 ```
 
 ### CentOS 7
@@ -82,7 +82,7 @@ wget https://repo.gluu.org/centos/Gluu-centos7.repo -O /etc/yum.repos.d/Gluu.rep
 wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
-yum install oxd-server
+yum install oxd-server-3.1.4
 ```
 
 ### RHEL 6
@@ -92,7 +92,7 @@ wget https://repo.gluu.org/rhel/Gluu-rhel6.repo -O /etc/yum.repos.d/Gluu.repo
 wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
-yum install oxd-server
+yum install oxd-server-3.1.4
 ```
 
 ### RHEL 7
@@ -102,7 +102,7 @@ wget https://repo.gluu.org/rhel/Gluu-rhel7.repo -O /etc/yum.repos.d/Gluu.repo
 wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
-yum install oxd-server
+yum install oxd-server-3.1.4
 ```
 
 
@@ -162,13 +162,13 @@ The following command can be run inside the oxd folder to run the build:
 
 
 ```
-$ sudo apt-get remove oxd-server
+$ sudo apt-get remove oxd-server-3.1.4
 ```
 
 ### CentOS 6/CentOS 7/RHEL 6/RHEL 7
 
 ```
-# yum remove oxd-server
+# yum remove oxd-server-3.1.4
 ```
 
 ## Utility scripts
