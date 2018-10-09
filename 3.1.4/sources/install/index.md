@@ -171,6 +171,9 @@ $ sudo apt-get remove oxd-server-3.1.4
 # yum remove oxd-server-3.1.4
 ```
 
+!!! Note
+    You must use `apt-get purge oxd-server-3.1.4` or `apt-get remove --purge oxd-server-3.1.4` to uninstall and remove all the folders and services of oxd server.
+
 ## Utility scripts
 
 ### View, delete entries inside oxd-server database with lsox.sh or lsox.bat scripts
