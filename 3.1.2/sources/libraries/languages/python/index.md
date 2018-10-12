@@ -53,7 +53,7 @@ authorization_redirect_uri=https://your.site.org/callback
 
 ```ini
 [oxd]
-host = https://server.running.oxd-https-extension/
+host = https://server.running.oxd-https-extension:8443/
 https_extension = true
 
 [client]
