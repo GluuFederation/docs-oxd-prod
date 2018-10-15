@@ -26,9 +26,9 @@ The oxd Linux packages provide an easy way to install the `oxd-server` and the `
 
 Step 1: Find the proper Linux package below.     
 
-Step 2: After installation, [configure](../configuration/index.md) your oxd-server and add your license keys. If you need to obtain a license, [register on the oxd website](https://oxd.gluu.org).      
+Step 2: After installation, [configure](../configuration/index.md) your oxd server.      
 
-Step 3: Run the following command to start your `oxd-server`:             
+Step 3: Run the following command to start your oxd server:             
  
 `/etc/init.d/oxd-server-3.1.4 start`
 
