@@ -1,7 +1,7 @@
 # oxd-https-extension API
 
 ## Swagger UI
-Peruse the API documentation on [Swagger](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/GluuFederation/oxd/version_3.1.3/oxd-https-extension/src/main/resources/swagger.yaml). 
+Peruse the API documentation on [Swagger](http://petstore.swagger.io/?url=https://raw.githubusercontent.com/GluuFederation/oxd/version_3.1.4/oxd-https-extension/src/main/resources/swagger.yaml). 
 
 ## Setup Client
 
@@ -455,7 +455,8 @@ Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 ```
 
 
-Request with `scope_expression`. `scope_expression` is a Gluu-invented extension which allows a JsonLogic expression instead of a single list of scopes. Please read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.2/admin-guide/uma.md).
+Request with `scope_expression`. `scope_expression` is a Gluu-invented extension which allows a JsonLogic expression instead of a single list of scopes. Please read more about `scope_expression` [here](https://gluu.org/docs/ce/admin-guide/uma.md).
+
 ```language-json
 {
     "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF",  <- REQUIRED
