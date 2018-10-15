@@ -4,9 +4,6 @@
 
 ### What is oxd?  
 oxd is a mediator: it provides APIs that can be called by a web application more easily than directly calling the APIs of an OpenID Connect Provider (OP) or an UMA Authorization Server (AS).
-
-### How is oxd licensed, and how much does it cost?       
-oxd is commercially licensed software. To start the oxd server, a valid license is needed, which can be [obtained by registering on the oxd website](https://oxd.gluu.org). Each application (OAuth 2.0 client) that leverages the oxd service is billed USD $0.33 per day. Usage fees are accumulated daily and charged at the end of each month. If your organization needs annual billing, [schedule a call with us](https://gluu.org/booking).
  
 ### What types of applications can use oxd?       
 Server-side web applications. 
@@ -30,12 +27,12 @@ It can happen if `code` lifetime in `oxauth` server is very small and `code` exp
 2018-04-05 14:30:32,530 ERROR [org.xdi.oxd.server.Processor] No response from operation. Command: Command{command=GET_TOKENS_BY_CODE, params={"code":"cc36672e-f8b9-4958-9a7c-3d83c99c4289","state":"us7d1v37cn1fcsd1c0156adr16","oxd_id":"055cec18-bd2e-4b29-ae38-7428d1d7c7fb","protection_access_token":"51ebfa51-d290-410e-bd37-abb3a0d8ab0c"}}
 ```
 
-To fix it, increase the `authorizationCodeLifetime` oxauth configuration value as explained [here](https://gluu.org/docs/ce/3.1.3/admin-guide/oxtrust-ui/#oxauth-configuration).
+To fix it, increase the `authorizationCodeLifetime` oxauth configuration value as explained [here](https://gluu.org/docs/ce/admin-guide/oxtrust-ui/#oxauth-configuration).
 
 ### `oxd-https-extension` does not work because of a PROTECTION error.
 
 If you see output in the logs similar to what is shown below, it means that the `uma_protection` scope is disabled for dynamic registration on the `oxauth` side.
-Find the `uma_protection` Connect scope property `Allow for dynamic registration`, and make sure it is checked (set to true). Find more information about scopes [here](https://gluu.org/docs/ce/3.1.3/admin-guide/openid-connect/#scopes)
+Find the `uma_protection` Connect scope property `Allow for dynamic registration`, and make sure it is checked (set to true). Find more information about scopes [here](https://gluu.org/docs/ce/admin-guide/openid-connect/#scopes)
  
 ```
 2018-04-04 20:03:24,855 ERROR [org.xdi.oxd.server.service.UmaTokenService] oxd requested scope PROTECTION but AS returned access_token without that scope, token scopes :openid
@@ -71,7 +68,7 @@ Note that `setup_client` creates 2 clients up to 3.2.0 oxd-server version, so if
 Please set `uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client` in `oxd-config.json` to fails otherwise you may get `no_uma_discovery_response` if UMA is not supported on AS side.  
 
 ### I got `protection_access_token_insufficient_scope` error when calling oxd-https-extension. It perfectly worked in 3.1.3. What should I do ?
-In `3.1.4` we forced to have `oxd` scope associated with `protection_access_token`. If it is not present then oxd rejects calls. 
+In `3.1.4` we forced users to have `oxd` scope associated with `protection_access_token`. If it is not present, then oxd rejects calls. 
  
   - Make sure you have `oxd` scope present on AS
   - `oxd` scope is present during `/setup-client` command in `scope` field 
