@@ -4,7 +4,7 @@
 oxd exposes simple, static APIs for implementing user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). By externalizing OAuth 2.0 code in a Linux package, oxd makes it easier to ensure and maintain secure, standards-based authentication and authorization across web applications. 
 
 ## Architecture 
-The oxd Linux package includes the core `oxd-server` and the optional `oxd-https-extension`. Web applications can leverage the oxd APIs via localhost with the oxd-server, or over the web with the https-extension. 
+The oxd Linux package includes the core `oxd-server` and the optional `oxd-https-extension`. Web applications can leverage the oxd APIs via localhost with the oxd-server or over the web with the https-extension. 
 
 ### oxd-server
 `oxd-server` is designed to work as a standalone service daemon via sockets. By default, oxd must be installed on the same host as the web application it is securing. 
@@ -100,13 +100,6 @@ Gluu does not guarantee specific functionality in oxd plugins. If you find a bug
 ## Source code
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
 
-## Pricing & Billing
-Pricing is based on the number of applications *actively* leveraging your oxd server to implement OAuth 2.0. The first 10 apps to use your oxd server are free, forever. 
-
-Additional applications are billed $10 per month, with one caveat: apps will only be billed if actively using your oxd server for five (5) consecutive days or more. For example, if you have already used your 10 Free Forever apps, and an 11th app is connected and active for longer than five (5) days in the month, your monthly bill would be USD $10.
-
-On the 1st of each month we send a billing email summarizing your usage and any associated fees. On the 7th of each month we will attempt to bill your credit card, as applicable!
-
 ## Support
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
 
@@ -115,7 +108,7 @@ If your organization needs guaranteed response times, private support, and prior
 ## FAQ
 
 **What is oxd?**       
-oxd is a mediator: it provides APIs that can be called by a web application that are easier than directly calling the API's of an OpenID Connect Provider (OP) or an UMA Authorization Server (AS).
+oxd is a mediator: it provides APIs that can be called by a web application that are easier than directly calling the APIs of an OpenID Connect Provider (OP) or an UMA Authorization Server (AS).
 
 **What types of applications can use oxd?**        
 oxd only supports server-side web applications. If you are using the Gluu Server as your OP and need single sign-on (SSO) to single-page apps (SPAs), native apps, or SaaS apps, please review the Gluu Server [SSO integration guide](https://gluu.org/docs/ce/integration/).  
