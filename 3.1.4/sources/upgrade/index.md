@@ -7,8 +7,7 @@ Before moving forward with an upgrade to oxd 3.1.4, review the following legacy 
 
 - UMA 2.0: Supported in oxd 3.1.4 and Gluu Server 3.1.4      
 - UMA 1.0.1: **Not** supported in oxd 3.1.4 or Gluu Server 3.1.4    
-- OpenID Connect: Supported in all versions of oxd and Gluu Server      
-- Pricing: If you upgrade existing oxd installations to oxd 3.1.4, the new per application billing model described above will take effect. This could have an impact on your monthly bill     
+- OpenID Connect: Supported in all versions of oxd and Gluu Server         
 
 ## OpenID Connect 
 Follow these simple steps to migrate your JSON files:
