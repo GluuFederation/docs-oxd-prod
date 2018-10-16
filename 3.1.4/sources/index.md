@@ -1,7 +1,7 @@
 # oxd 3.1.4 Documentation
 
 ## Introduction
-oxd exposes simple, static APIs for implementing user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). 
+oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). 
 
 !!! Note
     oxd 3.1.4 is available under the Apache2 open source license! [Learn more](./3.1.x-intro.md#whats-new)
