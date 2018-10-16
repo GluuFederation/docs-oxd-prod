@@ -254,7 +254,7 @@ Request:
         "client_frontchannel_logout_uris":["https://client.example.org/logout"],   <- OPTIONAL
         "response_type":["code"],                                     <- OPTIONAL
         "grant_types":[],                                             <- OPTIONAL
-        "scope": ["opeind", "profile"],                               <- OPTIONAL
+        "scope": ["openid", "profile"],                               <- OPTIONAL
         "acr_values": ["duo"],                                        <- OPTIONAL
         "client_name": "",                                            <- OPTIONAL
         "client_secret_expires_at":1335205592410,                     <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
@@ -518,11 +518,11 @@ For example, a resource like `/photo` protected with scopes `read`, `all` (by `u
 
 If the "and" rule is preferred it can be achieved by adding an additional scope, for example:
 
-`Resource1` scopes: `read`, `write` (follors the "or" rule).
+`Resource1` scopes: `read`, `write` (follows the "or" rule).
 
 `Resource2` scopes: `read_write` (and associate `read` *and* `write` policies with the `read_write` scope)
 
-If access is not granted then an unauthorized HTTP code and registered ticket are returned, for example: 
+If access is not granted, an unauthorized HTTP code and registered ticket are returned. For example: 
 
 ```language-http
 HTTP/1.1 401 Unauthorized
@@ -589,7 +589,7 @@ Request:
 }
 ```
 
-Request with `scope_expression`. `scope_expression` is a Gluu-invented extension that allows a JsonLogic expression instead of a single list of scopes. Read more about `scope_expression` [here](https://gluu.org/docs/ce/3.1.3/admin-guide/uma.md).
+Request with `scope_expression`. `scope_expression` is a Gluu-invented extension that allows a JsonLogic expression instead of a single list of scopes. Read more about `scope_expression` [here](https://gluu.org/docs/ce/admin-guide/uma).
 ```language-json
 {
   "command": "uma_rs_protect",
