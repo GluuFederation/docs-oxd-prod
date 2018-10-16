@@ -20,7 +20,7 @@ Gluu offers community support and VIP support. Anyone can register and enlist co
 ## Technical FAQs
 ### The `get_tokens_by_code` command fails with a `No response from operation` error
 
-It can happen if `code` lifetime in `oxauth` server is very small and `code` expires before token can be obtained. So in logs, you can see this:
+This can happen if the `code` lifetime in `oxauth` server is very small and the `code` expires before token can be obtained. So in the logs, you'll see something like this:
 
 ```
 2018-04-05 14:30:32,530 ERROR [org.xdi.oxd.server.op.GetTokensByCodeOperation] Failed to get tokens because response code is: null
@@ -45,24 +45,24 @@ java.lang.RuntimeException: oxd requested scope PROTECTION but AS returned acces
 
 ### How can I view data inside oxd database manually without oxd-server? 
 
-By default oxd-server persists data inside H2 embedded database. On disk it should look as `oxd_db.mv.db` file.
-You can use any convenient database viewer to view/edit data inside the database. We recommend use browser based viewer H2:
+By default, the oxd-server persists data inside H2 embedded database. On disk, it should look as `oxd_db.mv.db` file.
+You can use any convenient database viewer to view/edit data inside the database. We recommend to use the browser-based viewer H2:
 
  - Download http://www.h2database.com/html/download.html
  - Run it (in "Platform-Independent zip" case it is as simple as hit `h2.sh` or `h2.bat`)
  
- In browser you will see connection details, please specify details as in `oxd-conf.json` file. 
+ In the browser, you will see connection details, please specify details as in `oxd-conf.json` file. 
  If all is filled correctly on "Test Connection" you should see "Test successful" message as on screenshot below.
  
  ![H2](../img/faq_h2_connection_details.png)
  
- After hitting "Connect" button you will be able to view/modify data manually. Please be careful to not corrupt data inside otherwise oxd-server will not be albe to operate in normal mode. 
+ After hitting "Connect" button you will be able to view/modify data manually. Please be careful to not corrupt data inside otherwise oxd-server will not be able to operate in normal mode. 
  
 ### Client expires, how can I avoid it?
 
 `register_site` or `setup_client` commands generates client dynamically and thus those clients has lifetime set. Lifetime of the client is set on OP side.
 It is possible to extend lifetime by calling `update_site` command and set `client_secret_expires_at` to the date which you wish. This field accepts number of milliseconds since 1970. You can use to [https://currentmillis.com/](https://currentmillis.com/) to convert date to milliseconds. For example `Fri Jun 15 2018 12:28:28` is `1529065708906`.
-Note that `setup_client` creates 2 clients up to 3.2.0 oxd-server version, so if you need to extend lifetime of both clients you have to call `update_site` with `oxd_id` and `setup_client_oxd_id` which are returned as response from `setup_client` command.
+Note that `setup_client` creates 2 clients up to 3.2.0 oxd-server version, so if you need to extend lifetime of both clients you have to call `update_site` with `oxd_id` and `setup_client_oxd_id` which are returned as response from `setup_client` command.  
 
 ### How can I use oxd with AS that does not support UMA ?
 Please set `uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client` in `oxd-config.json` to fails otherwise you may get `no_uma_discovery_response` if UMA is not supported on AS side.  
