@@ -14,8 +14,10 @@ The command registers two clients:
     - setup_client_oxd_id - oxd_id of setup client
     - client_id - client id of the setup client
     - client_secret - client secret of the setup client   
- - client 2 - it is regular client which can be used for all oxd operations. In response `oxd_id`. We are going to remove this second client registration since we have `register_site` command for this purpose.  
+ - client 2 - it is a regular client which can be used for all oxd operations. In the response it is `oxd_id`. We are going to remove this second client registration since we have `register_site` command for this purpose.
 
+!!! Note
+    Remember to always use the obtained `access_token` in the Authorization header!
 
 *Non-normative example request*
 ```language-json

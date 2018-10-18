@@ -1,6 +1,6 @@
 #oxd-https-extension Logs
 
-`oxd-https-extension` uses the `dropwizard` framework. To configure the `oxd-https-extension` logging configuration, edit the `oxd-https.yml` file. For a complete list of available parameters, please reference the `dropwizard` documentation [here](http://www.dropwizard.io/0.9.1/docs/manual/configuration.html#logging).
+`oxd-https-extension` uses the `dropwizard` framework. To configure the `oxd-https-extension` logging configuration, edit the `oxd-https.yml` file. For a complete list of available parameters, please refer to the `dropwizard` documentation [here](http://www.dropwizard.io/0.9.1/docs/manual/configuration.html#logging).
 
 **Example:**
 

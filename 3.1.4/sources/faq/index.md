@@ -45,31 +45,31 @@ java.lang.RuntimeException: oxd requested scope PROTECTION but AS returned acces
 
 ### How can I view data inside oxd database manually without oxd-server? 
 
-By default, the oxd-server persists data inside H2 embedded database. On disk, it should look as `oxd_db.mv.db` file.
+By default, the oxd-server persists data inside H2 embedded database. On your disk, it should look like an `oxd_db.mv.db` file.
 You can use any convenient database viewer to view/edit data inside the database. We recommend to use the browser-based viewer H2:
 
  - Download http://www.h2database.com/html/download.html
- - Run it (in "Platform-Independent zip" case it is as simple as hit `h2.sh` or `h2.bat`)
+ - Run it (in "Platform-Independent zip" case it is as simple as hitting `h2.sh` or `h2.bat`)
  
- In the browser, you will see connection details, please specify details as in `oxd-conf.json` file. 
- If all is filled correctly on "Test Connection" you should see "Test successful" message as on screenshot below.
+ In the browser, you will see connection details; please specify details as in `oxd-conf.json` file.
+ If all is filled correctly, upon "Test Connection" you should see a "Test successful" message like in the screenshot below:
  
  ![H2](../img/faq_h2_connection_details.png)
  
- After hitting "Connect" button you will be able to view/modify data manually. Please be careful to not corrupt data inside otherwise oxd-server will not be able to operate in normal mode. 
+ After hitting the "Connect" button, you will be able to view/modify data manually. Please be careful not to corrupt the data inside. Otherwise, oxd-server will not be able to operate in its normal mode.
  
 ### Client expires, how can I avoid it?
 
-`register_site` or `setup_client` commands generates client dynamically and thus those clients has lifetime set. Lifetime of the client is set on OP side.
-It is possible to extend lifetime by calling `update_site` command and set `client_secret_expires_at` to the date which you wish. This field accepts number of milliseconds since 1970. You can use to [https://currentmillis.com/](https://currentmillis.com/) to convert date to milliseconds. For example `Fri Jun 15 2018 12:28:28` is `1529065708906`.
-Note that `setup_client` creates 2 clients up to 3.2.0 oxd-server version, so if you need to extend lifetime of both clients you have to call `update_site` with `oxd_id` and `setup_client_oxd_id` which are returned as response from `setup_client` command.  
+`register_site` or `setup_client` commands generate clients dynamically and thus those clients have their lifetime set. Lifetime of the client is set on the OP side.
+It is possible to extend the lifetime by calling the `update_site` command and set `client_secret_expires_at` to the date of your choosing. This field accepts any number of milliseconds since 1970. You can use [https://currentmillis.com/](https://currentmillis.com/) to convert the date to milliseconds. For example `Fri Jun 15 2018 12:28:28` is `1529065708906`.
+Note that `setup_client` creates 2 clients up to 3.2.0 oxd-server version, so if you need to extend the lifetime of both clients, you have to call `update_site` with `oxd_id` and `setup_client_oxd_id` which are returned as response from `setup_client` command.
 
 ### How can I use oxd with AS that does not support UMA ?
-Please set `uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client` in `oxd-config.json` to fails otherwise you may get `no_uma_discovery_response` if UMA is not supported on AS side.  
+Please set `uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client` in `oxd-config.json` to "fails." Otherwise, you may get `no_uma_discovery_response` if UMA is not supported on the AS side.
 
-### I got `protection_access_token_insufficient_scope` error when calling oxd-https-extension. It perfectly worked in 3.1.3. What should I do ?
-In `3.1.4` we forced users to have `oxd` scope associated with `protection_access_token`. If it is not present, then oxd rejects calls. 
+### I got a `protection_access_token_insufficient_scope` error when calling oxd-https-extension. It worked perfectly in 3.1.3. What should I do ?
+In `3.1.4` we have forced users to have the `oxd` scope associated with `protection_access_token`. If it is not present, then oxd rejects the calls.
  
-  - Make sure you have `oxd` scope present on AS
-  - `oxd` scope is present during `/setup-client` command in `scope` field 
-  - `oxd` scope is presetn during `/get-client-token` command in `scope` field
+  - Make sure you have the `oxd` scope present on AS
+  - the `oxd` scope is present during the `/setup-client` command in the `scope` field
+  - the `oxd` scope is present during the `/get-client-token` command in the `scope` field

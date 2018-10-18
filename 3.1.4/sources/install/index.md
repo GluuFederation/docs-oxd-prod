@@ -8,25 +8,26 @@ oxd needs to be deployed on a server or VM with the following **minimum** requir
 |----------|------------|-------------------|----------------|
 |       1  |    400MB     |   200MB            |  64 Bit        |
 
-Note: **oxd requires Java version 1.8**
+!!! Note
+    **oxd requires Java version 1.8**
 
 It is highly recommended to use exactly same oxd version as CE. For example for CE 3.1.4 use oxd-server 3.1.4 and oxd-https-extension 3.1.4.
 
 
 ## Linux Packages
 
-Before installation make sure that Java 8 is installed on your OS, please check it with
+Before the installation make sure that Java 8 is installed on your OS. Please check it with
 ```
 # java -version
 java version "1.8.0_181"
 ```
-If above command confirms that java 8 is installed, you can go on with oxd installation.
+If the above command confirms that Java 8 is installed, you can go on with the oxd installation.
 
 The oxd Linux packages provide an easy way to install the `oxd-server` and the `oxd-https-extension`. Follow the steps below to get started:
 
 Step 1: Find the proper Linux package below.     
 
-Step 2: After installation, [configure](../configuration/index.md) your oxd server.      
+Step 2: After the installation, [configure](../configuration/index.md) your oxd server.
 
 Step 3: Run the following command to start your oxd server:             
  
@@ -111,13 +112,13 @@ yum install oxd-server-3.1.4
 The oxd-server is a self-contained program. You can just unzip the folder and run it. 
 
 !!! Note 
-    To **support RESTful calls to your `oxd-server`**, after you complete manual installation below, proceed to the [`oxd-https-extension` installation docs](../oxd-https/start/index.md#manual-installation). 
+    To **support RESTful calls to your `oxd-server`**, after you complete the manual installation below, proceed to the [`oxd-https-extension` installation docs](../oxd-https/start/index.md#manual-installation).
 
 ### Windows
 
 1. Make a folder called `oxd-server` (or whatever you like)
  
-1. Unzip the [zip distribution](http://ox.gluu.org/maven/org/xdi/oxd-server/3.1.4.Final/oxd-server-3.1.4.Final-distribution.zip) in the above folder you just created. 
+1. Unzip the [zip distribution](http://ox.gluu.org/maven/org/xdi/oxd-server/3.1.4.Final/oxd-server-3.1.4.Final-distribution.zip) in the above folder you have just created.
 
 1. Now configure oxd following the [configuration instructions](../configuration/index.md). 
 
@@ -176,14 +177,14 @@ $ sudo apt-get remove oxd-server-3.1.4
 
 ## Utility scripts
 
-### View, delete entries inside oxd-server database with lsox.sh or lsox.bat scripts
+### View, delete entries inside the oxd-server database with lsox.sh or lsox.bat scripts
 
-There are three type of parameters which can be used by lsox.sh/lsox.bat files:
- - `-l` - list all oxd_ids inside oxd database
+There are three types of parameters which can be used by lsox.sh/lsox.bat files:
+ - `-l` - list all oxd_ids inside the oxd database
  - `-oxd_id <oxd_id>` - view JSON representation of the entity by oxd_id
  - `-d` - removes entity by oxd_id.
 
-Script is located in `/opt/oxd-server/bin/lsox.sh`. If hit script without parameters it show hint
+The script is located in `/opt/oxd-server/bin/lsox.sh`. If you hit the script without any parameters, it shows a hint:
 ```
 yuriy@yuriyz:~/oxd-server-distribution/bin$ sh lsox.sh
 BASEDIR=.
@@ -198,7 +199,7 @@ usage: utility-name
 
 ```
 
-Typical call looks as
+A typical call looks like this:
 ```
 yuriy@yuriyz:~/oxd-server-3.1.4-SNAPSHOT-distribution/bin$ sh oxd-show.sh -oxd_id d8cc6dea-4d66-4995-b6e1-da3a33722f2e
 BASEDIR=.

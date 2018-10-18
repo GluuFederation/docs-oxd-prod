@@ -20,16 +20,16 @@ After starting `oxd-https-extension`, move on to [configuration](../configuratio
 
 ## Manual Installation
 
-For manual installation `oxd-server` and `oxd-https-extension` have to be installed separately.
+For manual installation, `oxd-server` and `oxd-https-extension` have to be installed separately.
 
 Install `oxd-server` manually as described [here](https://gluu.org/docs/oxd/3.1.4/install/#manual-installation).
 
 Install `oxd-https-extension` following these steps:
 
-- Download `oxd-https-extension` jar file from [maven repo](http://ox.gluu.org/maven/org/xdi/oxd-https-extension/3.1.4.Final/)
-- Configure the server in `oxd-https.yml` file in the same directory. Configuration explained [here](../configuration/index.md)
-- Make sure `oxd-https.keystore` file exists and properly referenced in `oxd-https.yml` file.
-- Run the application with following command:
+- Download the `oxd-https-extension` jar file from [maven repo](http://ox.gluu.org/maven/org/xdi/oxd-https-extension/3.1.4.Final/)
+- Configure the server in the `oxd-https.yml` file in the same directory. Configuration explained [here](../configuration/index.md)
+- Make sure the `oxd-https.keystore` file exists and is properly referenced in the `oxd-https.yml` file.
+- Run the application with the following command:
 
 ```
 java -jar oxd-https-extension-3.1.4.Final.jar server oxd-https.yml

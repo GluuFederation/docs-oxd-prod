@@ -43,7 +43,7 @@ oxd-conf.json
 
 - **localhost_only:** flag to restrict communication to localhost
 
-- **time_out_in_seconds:** timeout for oxd socket (measured in seconds). oxd closes sockets automatically after this period of time (stops listen commands). Zero means listen indefinitely
+- **time_out_in_seconds:** timeout for the oxd socket (measured in seconds). oxd closes sockets automatically after this period of time (stops listen commands). Zero means listen indefinitely
 
 - **use_client_authentication_for_pat:** `true` if client authentication is required. If `false`, then user authentication requires `user_id` and `user_secret` to be specified during the `register_site` command
 

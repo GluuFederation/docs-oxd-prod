@@ -75,7 +75,7 @@ Now you can run the executable jar:
 java -jar target/oxd-spring-0.0.1-SNAPSHOT.jar
 ```
 
-Point browser to `https://client.example.com:8443/` and log into ce-dev3.gluu.org using test credentials: test_user/test_user_password 
+Point your browser to `https://client.example.com:8443/` and log into ce-dev3.gluu.org using test credentials: test_user/test_user_password
 
 !!!Note 
     oxd-server must run on _localhost_ and be bound to port: _8099_, otherwise you'll need to configure `oxd-spring/src/main/resources/application.properties` file.
@@ -83,12 +83,12 @@ Point browser to `https://client.example.com:8443/` and log into ce-dev3.gluu.or
 
 **Customize oxd-spring**
 
-To use your own server as an OpenID Provider you need to modify `oxd.server.op-host` property from `oxd-spring/src/main/resources/application.properties`, e.g:
+To use your own server as an OpenID Provider you need to modify the `oxd.server.op-host` property from `oxd-spring/src/main/resources/application.properties`, e.g:
 
 ```
 oxd.server.op-host=https://gluu.localhost.info
 ```
 
-Make sure the server already installed on your machine, or you can follow 
+Make sure the server is already installed on your machine, or you can follow
 [this](https://gluu.org/docs/ce/latest/installation-guide/install/) guide to install it.
 

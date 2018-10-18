@@ -21,9 +21,9 @@ Learn more about authentication flows in the [OpenID Connect spec](http://openid
 `oxd-server` provides seven APIs for OpenID Connect authentication. In general,
 you can think of the Authorization Code Flow as a three-step process: 
 
- 1. Redirect person to the authorization URL and obtain a code
- 1. Use code to obtain tokens (access_token, id_token and refresh_token)
- 1. Use access token to obtain user claims
+ 1. Redirect a person to the authorization URL and obtain a code
+ 1. Use the code to obtain tokens (access_token, id_token and refresh_token)
+ 1. Use the access token to obtain user claims
 
 The other four oxd APIs are:
  
@@ -36,7 +36,7 @@ The other four oxd APIs are:
 
 If you are using the `oxd-https-extension`, before using the above workflow you will need to obtain an access token to secure the interaction between your client and the `oxd-https-extension`. You can follow the two steps below. 
 
- - [Setup client](#setup-client) (returns `client_id` and `client_secret`. Make sure `uma_protection` scope is present in request)
+ - [Setup client](#setup-client) (returns `client_id` and `client_secret`. Make sure the `uma_protection` scope is present in the request)
  - [Get client token](#get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`)
  
  Pass the obtained access token as `protection_access_token` in all future calls to the `oxd-https-extension`.
@@ -48,11 +48,11 @@ If you are using the `oxd-https-extension`, you must setup the client.
 The parameters for Setup Client are the same as for Register the Site command. 
 The command registers two clients:
 
- - client 1 -  client for communication protection (called setup client). This will be used to obtain an access token via the Get Client Token command. The access token will be passed as a `protection_access_token` parameter to other commands. `uma_protection` scope has to be present in request to `setup_client` command. In response:
+ - client 1 -  client for communication protection (called setup client). This will be used to obtain an access token via the Get Client Token command. The access token will be passed as a `protection_access_token` parameter to other commands. `uma_protection` scope has to be present in the request to the `setup_client` command. In response:
     - setup_client_oxd_id - oxd_id of setup client
     - client_id - client id of the setup client
     - client_secret - client secret of the setup client   
- - client 2 - it is regular client which can be used for all oxd operations. In response `oxd_id`. We are going to remove this second client registration since we have `register_site` command for this purpose.  
+ - client 2 - it is a regular client which can be used for all oxd operations. In response `oxd_id`. We are going to remove this second client registration since we have the `register_site` command for this purpose.
 
 Request:
 
@@ -182,7 +182,7 @@ Response:
 
 The client must first register itself with the `oxd-server`. 
 
-If registration is successful, oxd will dynamically register an OpenID Connect client and return an identifier for the application which must be presented in subsequent API calls. This is the `oxd_id` (not to be confused with the OpenID Connect Client ID). 
+If the registration is successful, oxd will dynamically register an OpenID Connect client and return an identifier for the application which must be presented in subsequent API calls. This is the `oxd_id` (not to be confused with the OpenID Connect Client ID).
 
 `register_site` has many optional parameters. 
 
@@ -510,13 +510,13 @@ Your client, acting as an [OAuth2 Resource Server](https://tools.ietf.org/html/r
 - Intercept the HTTP call (before the actual REST resource call) and check the `uma_rs_check_access` command response to determine whether the requester is allowed to proceed or should be rejected:
     - Allow access: if the response from `uma_rs_check_access` is `allowed` or `not_protected`, an error is returned.
     - If `uma_rs_check_access` returns `denied` then return back HTTP response.
-- client must have `client_credenitals` grant type. It's required for correct PAT obtaining.    
+- client must have the `client_credentials` grant type. It's required for correct PAT obtaining.
         
 The `uma_rs_check_access` operation checks access using the "or" rule when evaluating scopes.
 
-For example, a resource like `/photo` protected with scopes `read`, `all` (by `uma_rs_protect` command) assumes that if either `read` or `all` is present access is granted.
+For example, a resource like `/photo` protected with scopes `read`, `all` (by `uma_rs_protect` command) assumes that if either `read` or `all` is present, access is granted.
 
-If the "and" rule is preferred it can be achieved by adding an additional scope, for example:
+If the "and" rule is preferred, it can be achieved by adding an additional scope, for example:
 
 `Resource1` scopes: `read`, `write` (follows the "or" rule).
 

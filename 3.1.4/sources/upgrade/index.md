@@ -1,6 +1,6 @@
 ## Overview
 
-If you are upgrading `oxd-server` to the latest version, we have included auto-migration functionality to easily transfer your data files. `oxd-server` now uses configurable data storage (`h2`, `redis`, etc.) instead of JSON files.   
+If you are upgrading `oxd-server` to the latest version, we have included auto-migration functionality to easily transfer your data files. `oxd-server` now uses configurable data storage (`h2`, `redis`, etc.) instead of JSON files.
 
 ## Legacy Compatibility
 Before moving forward with an upgrade to oxd 3.1.4, review the following legacy compatibility notes:
@@ -16,7 +16,7 @@ Follow these simple steps to migrate your JSON files:
 - Modify `migration_source_folder_path` to point to the folder or directory that contains the JSON files
 
 !!! Note: 
-    If you are using Windows OS don't forget to include the escape path separator (e.g. `C:\\OXD_OLD\\oxd-server\\conf`)
+    If you are using Windows OS, don't forget to include the escape path separator (e.g. `C:\\OXD_OLD\\oxd-server\\conf`)
 
 - Restart `oxd-server` to import the files
 - Data migration will only happen once and will not initiate for subsequent oxd-server restarts  
