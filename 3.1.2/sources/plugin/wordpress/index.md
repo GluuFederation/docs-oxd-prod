@@ -50,6 +50,8 @@ A short description of each field follows:
 
 1. Custom URI after logout: Provide a URL for a landing page to redirect users after logout of the WP site, for instance `https://example.com/thank-you`. If you don't have a preferred logout page, we recommend simply entering your website homepage URL. If you leave this field blank the user will see the default logout page presented by WordPress 
 
+1. Site Login URI: Provide the URL of your WP admin page, for instance: `https://example.com/wp-admin`.
+
 1. oxd port: Enter the oxd-server port, which you can find in your `oxd-server/conf/oxd-conf.json` file
 
 1. Click `Register` to continue
