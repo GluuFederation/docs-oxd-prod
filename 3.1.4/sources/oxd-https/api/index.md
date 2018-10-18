@@ -103,12 +103,11 @@ POST /get-client-token
 Request:
 
 ```language-json
+POST /introspect-access-token
+Authorization: Bearer b75434ff-f465-4b70-92e4-b7ba6b6c58f2
 {
-    "command":"introspect-access-token",
-    "params": {
-        "oxd_id": "<oxd id>",                <- REQUIRED
-        "access_token": "<access_token>"     <- REQUIRED
-    }
+    "oxd_id": "<oxd id>",                <- REQUIRED
+    "access_token": "<access_token>"     <- REQUIRED
 }
 ```
 
