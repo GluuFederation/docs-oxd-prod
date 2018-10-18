@@ -73,3 +73,7 @@ In `3.1.4` we have forced users to have the `oxd` scope associated with `protect
   - Make sure you have the `oxd` scope present on AS
   - the `oxd` scope is present during the `/setup-client` command in the `scope` field
   - the `oxd` scope is present during the `/get-client-token` command in the `scope` field
+
+### I got a `Failed to obtain PAT.` error in oxd-server.log. How can I solve it?
+
+During client registration (via `/setup-client` or `/register-site` commands) make sure that you have `client_credentials` as value of `grant_type`. Without it oxd will not be able to obtain UMA PAT because it is using client credentials for it (e.g. grant_type: [`client_credentials`, `authorization_code`]).
