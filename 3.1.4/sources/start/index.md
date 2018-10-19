@@ -4,22 +4,22 @@ After the installation, oxd-server can be started. Install the oxd package as de
 ## Start oxd-server
 
 ```
-/etc/init.d/oxd-server-3.1.4 start
+/etc/init.d/oxd-server start
 ```
 
 ## Stop oxd-server
 
 ```
-/etc/init.d/oxd-server-3.1.4 stop
+/etc/init.d/oxd-server stop
 ```
 
 ## Status oxd-server
 ```
-/etc/init.d/oxd-server-3.1.4 status
+/etc/init.d/oxd-server status
 ```
 
 ## Restart oxd-server
 ```
-/etc/init.d/oxd-server-3.1.4 restart
+/etc/init.d/oxd-server restart
 ```
 
