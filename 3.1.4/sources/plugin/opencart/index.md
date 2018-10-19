@@ -16,9 +16,7 @@ OpenCart site, standard OP (like Google or a Gluu Server) and an active oxd serv
 
 - This plugin is compatible with OpenCart Versions : 2.0.0.0 - 2.3.0.0
 
-- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/3.1.4/installation-guide/install/). Otherwise we recommend using Google
-
-- You will need a valid license to start the oxd server. You can get a license and a $50 credit by signing up on the [oxd website](https://oxd.gluu.org)
+- If you want to stand up your own OP server, you can deploy the free open source [Gluu Server](https://gluu.org/docs/ce/installation-guide/install/). Otherwise we recommend using Google
 
 ## Plugin Installation
 
@@ -186,4 +184,4 @@ You can do so by following the below steps:
 To use Google as the OP, you will need to obtain a Client ID and Secret at Google. To generate your `client_id` and `client_secret` at Google use the redirect uri: `https://<hostname>/index.php?option=oxdOpenId`.
 
 ## Support
-Please report technical issues and suspected bugs on our [support page](https://support.gluu.org). If you do not already have an account on Gluu Support, you can login and create an account using the same credentials you created when you registered for your oxd license.
+Please report technical issues and suspected bugs on our [support page](https://support.gluu.org).
