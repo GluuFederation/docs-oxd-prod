@@ -18,10 +18,8 @@ standard OP (like Google or a Gluu Server) and an active oxd server.
 - This plugin is compatible with Magento versions: 1.5 - 1.9.2
 
 - If you prefer to have your own OP server, you can deploy the free open source 
-[Gluu Server](https://gluu.org/docs/ce/3.1.4/installation-guide/install/). Otherwise we recommend using Google
+[Gluu Server](https://gluu.org/docs/ce/installation-guide/install/). Otherwise we recommend using Google
 
-- You will need a valid license to start the oxd server. You can get a license and a $50 credit by 
-signing up on the [oxd website](https://oxd.gluu.org)
 
 ## Plugin Installation
  
