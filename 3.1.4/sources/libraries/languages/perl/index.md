@@ -646,4 +646,4 @@ print Dumper($uma_rp_get_claims_gathering_url->getResponseObject());
 - The `OxdPerlModule/UMAExample` directory contains the app and scripts written using oxd-perl for UMA AS.
 
 ## Support
-Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
+Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/).
