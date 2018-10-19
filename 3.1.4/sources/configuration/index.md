@@ -39,13 +39,13 @@ oxd-conf.json
 ```
 ### oxd-conf.json Field Descriptions
 
-- **port:** oxd socket port, by default it is 8099
+- **port:** oxd socket port, set to 8099 by default
 
-- **localhost_only:** flag to restrict communication to localhost
+- **localhost_only:** enable this flag to restrict communication to localhost
 
-- **time_out_in_seconds:** timeout for the oxd socket (measured in seconds). oxd closes sockets automatically after this period of time (stops listen commands). Zero means listen indefinitely
+- **time_out_in_seconds:** oxd closes sockets automatically after this period of time (stops listen commands). Set it to zero, and oxd listens indefinitely
 
-- **use_client_authentication_for_pat:** `true` if client authentication is required. If `false`, then user authentication requires `user_id` and `user_secret` to be specified during the `register_site` command
+- **use_client_authentication_for_pat:** If set to `true`, client authentication is required. If `false`, user authentication requires `user_id` and `user_secret` to be specified during the `register_site` command
 
 - **trust_all_certs:** `true` to trust all certificates, if `false` then `trust_store_path` must be specified to store with valid certificates
 
@@ -71,9 +71,9 @@ oxd-conf.json
 
 - **uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client:** Notifies the `oxd-server` whether to automatically register the `Claims Gathering Endpoint` as the `claims_redirect_uri` for a given client. It is useful for UMA 2 clients that wish to force authorization against the Gluu Server. To provide custom `claims_redirect_uri`, set this property to `false`
 
-- **migration_source_folder_path:** `oxd-server` has built-in migration from older version of `oxd-server`. To migrate old JSON files from previous versions, specify path to folder/directory that contains those JSON files in this property. Those files will be read and imported once (during restart `oxd-server`, will not import them again). If using Windows OS, don't forget to escape path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
+- **migration_source_folder_path:** Migration from previous versions is built into the `oxd-server`. To migrate old JSON files from previous versions, specify path to folder/directory that contains those JSON files in this property. Those files will be read and imported once (during restart `oxd-server`, will not import them again). If using Windows OS, don't forget to escape path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
 
-- **remove_expired_clients:** whether remove expired clients or not. Possible values: `true`, `false`.
+- **remove_expired_clients:** set to true to remove expired clients.
 
 - **storage:** This value can either be `h2` or `redis`. If `redis` is set then `storage_configuration` must be specified with redis configuration details
 
@@ -123,9 +123,9 @@ conf/oxd-default-site-config.json
 
 - **op_host:** Provide the URL of your OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`")
 
-- **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example if it is `https://example.com/.well-known/openid-configuration` then path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then path is `oxauth`  
+- **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example, if it is `https://example.com/.well-known/openid-configuration` then path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then path is `oxauth`  
 
-- **authorization_redirect_uri:** URL that the OpenID Connect Provider (OP) will redirect the person to after  successful authentication
+- **authorization_redirect_uri:** URL that the OpenID Connect Provider (OP) will redirect the person to after successful authentication
 
 - **post_logout_redirect_uri:** URL to which the RP is requesting that the End-User's User Agent be redirected after a logout has been performed
 
@@ -135,7 +135,7 @@ conf/oxd-default-site-config.json
 
 - **grant_type:** JSON array containing a list of the OAuth 2.0 Grant Types that the Client is declaring that it will restrict itself to using
 
-- **acr_values:** Specified authentication method (basic, duo, U2F)
+- **acr_values:** Specified authentication method (basic, Duo, U2F)
 
 - **scope:** JSON array containing a list of the scopes that the Client is declaring that it will restrict itself to using
 
@@ -143,4 +143,4 @@ conf/oxd-default-site-config.json
 
 - **claims_locales:** End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
 
-- **contacts:** Array of e-mail addresses for people responsible for this Client
+- **contacts:** Array of e-mail addresses for people responsible for this client
