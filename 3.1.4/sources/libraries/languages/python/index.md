@@ -260,4 +260,4 @@ The `examples` directory contains apps and scripts written using oxd-python for 
 
 ## Support
 
-Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/). You can use the same credentials you created to register your oxd license to sign in on Gluu support.
+Please report technical issues and suspected bugs on our [Support Page](https://support.gluu.org/).
