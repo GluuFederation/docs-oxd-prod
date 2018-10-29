@@ -38,7 +38,7 @@ Follow these steps to get started:
 
 1. [Start and configure](./oxd-https/start/index.md) `oxd-https-extension` to support RESTful calls (**Optional**) 
 
-1. In your app(s), call the [oxd API](#api) using one of the [native libraries](#native-libraries) or [oxd plugins](#plugins) to securely send users to the central authentication server for sign in 
+1. In your app(s), call the [oxd API](#api) using one of the [native libraries](#native-libraries) to securely send users to the central authentication server for sign in 
 
 
 ## Compatibility
@@ -83,22 +83,6 @@ oxd native client libraries provide simple and flexible access to the oxd APIs.
 - [Python Flask](./libraries/framework/flask/index.md)        
 - [Node Express](./libraries/framework/express/index.md)       
 - [.Net](./libraries/framework/net/index.md)        
-
-
-## Plugins
-
-Gluu currently publishes oxd plugins, modules, and extensions for the following open source applications:    
-
-- [Wordpress](./plugin/wordpress/index.md)      
-- [Magento](./plugin/magento/index.md)       
-- [Drupal](./plugin/drupal/index.md)       
-- [OpenCart](./plugin/opencart/index.md)       
-- [SuiteCRM](./plugin/suitecrm/index.md)       
-- [SugarCRM](./plugin/sugarcrm/index.md)       
-- [Roundcube](./plugin/roundcube/index.md)  
-- [NextCloud](./plugin/nextcloud/index.md) 
-
-Gluu does not guarantee specific functionality in oxd plugins. If you find a bug or need feature enhancements, just open a ticket on [Gluu support](https://support.gluu.org).  
 
 ## Source code
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
