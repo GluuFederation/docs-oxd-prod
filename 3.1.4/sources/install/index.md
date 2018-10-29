@@ -66,6 +66,15 @@ apt-get update
 apt-get install oxd-server
 ```
 
+### Debian 9 (Stretch)
+
+```
+echo "deb https://repo.gluu.org/debian/ stretch-stable main" > /etc/apt/sources.list.d/gluu-repo.list
+curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -
+apt-get update
+apt-get install oxd-server
+```
+
 ### CentOS 6
 
 ```
