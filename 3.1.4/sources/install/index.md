@@ -36,7 +36,7 @@ Step 3: Run the following command to start your oxd server:
 Step 4: To support RESTful (https) calls to your `oxd-server`, you can now move on to the [oxd-https-extension docs](../oxd-https/start/index.md).      
 
 !!! Note
-    If you need to stop your `oxd-server`at any point, you can run the following command: `/etc/init.d/oxd-server-3.1.4 stop` 
+    If you need to stop your `oxd-server`at any point, you can run the following command: `/etc/init.d/oxd-server stop` 
 
 
 ### Ubuntu 14.04 (trusty)
@@ -60,7 +60,7 @@ apt-get install oxd-server
 ### Debian 8 (Jessie)
 
 ```
-echo "deb https://repo.gluu.org/debian/ jessie main" > /etc/apt/sources.list.d/gluu-repo.list
+echo "deb https://repo.gluu.org/debian/ stable main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install oxd-server
