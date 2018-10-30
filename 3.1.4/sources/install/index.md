@@ -115,6 +115,14 @@ yum clean all
 yum install oxd-server
 ```
 
+## Service Operations
+
+|Operation | Command|
+|------ |------ |
+|Start oxd server | `/etc/init.d/oxd-server start` |
+|Stop oxd server | `/etc/init.d/oxd-server stop` |
+|oxd server status | `/etc/init.d/oxd-server status`|
+|Restart oxd server | `/etc/init.d/oxd-server restart` |
 
 ## Manual installation
 
