@@ -3,11 +3,11 @@ site_description: Documentation for oxd OpenID Connect and UMA client software
 site_favicon: 'favicon.ico'
 copyright: Copyright &copy; 2018, Gluu, Inc.
 docs_dir: sources 
-repo_url: https://github.com/GluuFederation/docs-oxd-prod/tree/3.1.4/3.1.4
+repo_url: https://github.com/GluuFederation/docs-oxd-prod/tree/4.0.beta/docs
 #theme: readthedocs
 theme_dir: theme/material/
 extra:
-    version: '3.1.4'
+    version: '4.0.beta'
     logo: 'gluu.png'
 markdown_extensions:
 - admonition
@@ -18,7 +18,7 @@ pages:
 - Release Notes: 'release-notes/index.md'
 - Whats new in 3.1.x: '3.1.x-intro.md'
 - 'Install': 'install/index.md'
-- 'Start': 'start/index.md'
+- 'Getting Started': 'start/index.md'
 - 'Upgrade': 'upgrade/index.md'
 - 'Configuration': 'configuration/index.md'
 - 'Logs': 'logs/index.md'
