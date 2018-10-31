@@ -1,21 +1,16 @@
-# oxd 3.1.4 Documentation
+# oxd 4.0.beta Documentation
 
 ## Introduction
 oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). 
 
 !!! Note
-    oxd 3.1.4 is available under the Apache2 open source license! [Learn more](./3.1.x-intro.md#whats-new)
+    oxd 4.0.beta is available under the Apache2 open source license! [Learn more](./3.1.x-intro.md#whats-new)
 
 ## Architecture 
-The oxd Linux package includes the core `oxd-server` and the optional `oxd-https-extension`. Web applications can leverage the oxd APIs via localhost with the oxd-server or over the web with the https-extension. 
+The oxd Linux package includes the `oxd-server` which is simple REST application.
 
 ### oxd-server
-`oxd-server` is designed to work as a standalone service daemon via sockets. By default, oxd must be installed on the same host as the web application it is securing. 
-
-![oxd-local-architecture](./img/oxd-local.jpg) 
-
-### https-extension (optional)
-When enabled, the https-extension enables secure communication to oxd APIs over the web, making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
+`oxd-server` is designed to work over the web, making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
 
 ![oxd-https-architecture](./img/oxd-https.jpg) 
 
@@ -36,21 +31,19 @@ Follow these steps to get started:
 
 1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs 
 
-1. [Start and configure](./oxd-https/start/index.md) `oxd-https-extension` to support RESTful calls (**Optional**) 
-
 1. In your app(s), call the [oxd API](#api) using one of the [native libraries](#native-libraries) or [oxd plugins](#plugins) to securely send users to the central authentication server for sign in 
 
 
 ## Compatibility
-oxd 3.1.4 has been tested against the following OAuth 2.0 servers:
+oxd 4.0.beta has been tested against the following OAuth 2.0 servers:
 
 ### OpenID Providers (OP)
-- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4), Gluu Server [3.1.3](https://gluu.org/docs/ce/3.1.3), [3.1.2](https://gluu.org/docs/ce/3.1.2), [3.1.1](https://gluu.org/docs/ce/3.1.1)
+- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4)
 - [Google](https://developers.google.com/identity/protocols/OpenIDConnect)       
 
 
 ### UMA Authorization Servers (AS)
-- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4), Gluu Server [3.1.3](https://gluu.org/docs/ce/3.1.3), [3.1.2](https://gluu.org/docs/ce/3.1.2), [3.1.1](https://gluu.org/docs/ce/3.1.1)
+- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4)
 
 !!! Note
     If you have successfully tested oxd against another OP or AS, please email details to [sales@gluu.org](mailto:sales@gluu.org).
