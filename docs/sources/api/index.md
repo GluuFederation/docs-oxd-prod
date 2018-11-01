@@ -41,6 +41,46 @@ If you are using the `oxd-https-extension`, before using the above workflow you 
  
  Pass the obtained access token as `protection_access_token` in all future calls to the `oxd-https-extension`.
 
+
+
+<link rel="stylesheet" type="text/css" href="../../swagger/swagger-ui.css">
+
+<div id="swagger-ui"></div>
+
+<script src="../swagger/swagger-ui-bundle.js"></script>
+<script src="../swagger/swagger-ui-standalone-preset.js"></script>
+
+<script>
+
+const DisableTryItOutPlugin = function() {
+  return {
+    statePlugins: {
+      spec: {
+        wrapSelectors: {
+          allowTryItOutFor: () => () => false
+        }
+      }
+    }
+  }
+}
+
+window.onload = function() {
+  const ui = SwaggerUIBundle({
+    url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml",
+    dom_id: '#swagger-ui',
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIStandalonePreset
+    ],
+    plugins: [
+        DisableTryItOutPlugin
+    ]
+  })
+
+  window.ui = ui
+}
+</script>
+
 #### Set Up Client
 
 If you are using the `oxd-https-extension`, you must setup the client. 
