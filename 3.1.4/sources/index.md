@@ -88,9 +88,9 @@ oxd native client libraries provide simple and flexible access to the oxd APIs.
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
 
 ## Support
-Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
+Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). 
 
-If your organization needs guaranteed response times, private support, and priority access to our support and development team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). You can [schedule a meeting](https://gluu.org/booking) with us to discuss and move forward with purchasing a support contract.  
+If you need guaranteed response times, private support, and priority access to our team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). 
 
 ## FAQ
 
