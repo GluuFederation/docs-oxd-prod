@@ -24,7 +24,7 @@ To get started:
 
 1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs 
 
-1. Check [oxd API](#api) to understand how oxd works.
+1. Check [oxd API](./api/index.md) to understand how oxd works.
 
 ## Tutorial
 
