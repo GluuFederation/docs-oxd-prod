@@ -8,8 +8,15 @@ oxd is a mediator: it provides APIs that can be called by a web application more
 ### What types of applications can use oxd?       
 Server-side web applications. 
 
-### Where should oxd be deployed?      
-By default, oxd-server must be deployed on the same host as the target web application(s). With the `oxd-https-extension` enabled, applications can call oxd over the web, enabling a central oxd service for many applications. 
+### Why should I use oxd?     
+oxd offers a few key improvements over the traditional model of embedding OAuth 2.0 code in your applications:
+
+1. If new vulnerabilities are discovered in OAuth2/OpenID Connect, oxd is the only component that needs to be updated. The oxd APIs remain the same, so you don't have to change and regression test your applications     
+
+2. oxd is written, maintained, and supported by developers who specialize in application security. Because of the complexity of the standards--and the liability associated with poor implementations--it makes sense to rely on professionals who have read the specifications in their entirety and understand how to properly implement the protocols     
+
+3. Centralization reduces costs. By using oxd across your IT infrastructure for application security (as opposed to a handful of homegrown and third party OAuth2 client implementations), the surface area for vulnerabilities, issue resolution, and support is significantly reduced. Plus, you who have someone to call if something goes wrong!     
+
 
 ### Can I use oxd for two-factor authentication (2FA)?**    
 No. 2FA is implemented at the OP, not the client.  
@@ -17,8 +24,30 @@ No. 2FA is implemented at the OP, not the client.
 ### What are the support options?    
 Gluu offers community support and VIP support. Anyone can register and enlist community support on the [Gluu support portal](https://support.gluu.org). For guaranteed responses and priority support, learn more about [VIP support](https://gluu.org/pricing). 
 
+### How do I get SSO across several websites?                
+You’ll need two things:     
+
+1. A central OpenID Connect Provider (OP) that holds the passwords and user information  
+
+2. Websites that use the OpenID Connect protocol to authenticate users
+
+An easy way to accomplish the first--install and configure the [free open source Gluu Server](http://gluu.org/docs/ce) using the Linux packages for CentOS, Ubuntu, Debian or Red Hat. Or you can also utilize Google as your OpenID Connect Provider (OP). The second is accomplished by calling the oxd APIs in your applications to send users to the OP for login. 
+
+### Can I use oxd plugins for social login?   
+oxd simply makes it easy to send users to an OpenID Connect Provider (OP) for login. If you want to offer users the option to use social login, that needs to be implemented at the OP. If you are using the Gluu Server as your OP, you can use [Passport.js](https://gluu.org/docs/ce/authn-guide/passport/) to configure and support social login. 
+
+### Can I use oxd for two-factor authentication (2FA)?    
+Again, since oxd simply makes it easy to send users to an OpenID Connect Provider (OP) for login, two-factor authentication needs to be enforced at the OP. If you are using the Gluu Server as your OP, there are several built in two-factor authentication mechanisms. Learn more in the [Gluu Server authentication guide](https://gluu.org/docs/ce/3.1.4/authn-guide/intro/).
+
+### Can I use Google or Microsoft Azure Active Directory as my OpenID Connect Provider?    
+We have tested and confirmed oxd to work with Google as an OP. Microsoft's OP implementation is not totally standard though, and therefore may require changes or updates to oxd to work. 
+
+### Can I purchase support for the Gluu Server or oxd?
+Yes, for information on paid support, [visit our website](http://gluu.org/pricing).
+
 ## Technical FAQs
-### The `get_tokens_by_code` command fails with a `No response from operation` error
+
+### The `/get-tokens-by-code` command fails with a `No response from operation` error
 
 This can happen if the `code` lifetime in `oxauth` server is very small and the `code` expires before token can be obtained. So in the logs, you'll see something like this:
 
@@ -29,7 +58,7 @@ This can happen if the `code` lifetime in `oxauth` server is very small and the 
 
 To fix it, increase the `authorizationCodeLifetime` oxauth configuration value as explained [here](https://gluu.org/docs/ce/admin-guide/oxtrust-ui/#oxauth-configuration).
 
-### `oxd-https-extension` does not work because of a PROTECTION error.
+### `oxd-server` does not work because of a PROTECTION error.
 
 If you see output in the logs similar to what is shown below, it means that the `uma_protection` scope is disabled for dynamic registration on the `oxauth` side.
 Find the `uma_protection` Connect scope property `Allow for dynamic registration`, and make sure it is checked (set to true). Find more information about scopes [here](https://gluu.org/docs/ce/admin-guide/openid-connect/#scopes)
@@ -60,20 +89,18 @@ You can use any convenient database viewer to view/edit data inside the database
  
 ### Client expires, how can I avoid it?
 
-`register_site` or `setup_client` commands generate clients dynamically and thus those clients have their lifetime set. Lifetime of the client is set on the OP side.
-It is possible to extend the lifetime by calling the `update_site` command and set `client_secret_expires_at` to the date of your choosing. This field accepts any number of milliseconds since 1970. You can use [https://currentmillis.com/](https://currentmillis.com/) to convert the date to milliseconds. For example `Fri Jun 15 2018 12:28:28` is `1529065708906`.
-Note that `setup_client` creates 2 clients up to 3.2.0 oxd-server version, so if you need to extend the lifetime of both clients, you have to call `update_site` with `oxd_id` and `setup_client_oxd_id` which are returned as response from `setup_client` command.
+The only way to avoid client expiration is to change client life time on OP. Only OP controls client life time. 
 
 ### How can I use oxd with AS that does not support UMA ?
 Please set `uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client` in `oxd-config.json` to "fails." Otherwise, you may get `no_uma_discovery_response` if UMA is not supported on the AS side.
 
-### I got a `protection_access_token_insufficient_scope` error when calling oxd-https-extension. It worked perfectly in 3.1.3. What should I do ?
+### I got a `protection_access_token_insufficient_scope` error when calling oxd-server. It worked perfectly in 3.1.x. What should I do ?
 Since `3.1.4` we have forced users to have the `oxd` scope associated with `protection_access_token`. If it is not present, then oxd rejects the calls.
  
   - Make sure you have the `oxd` scope present on AS
-  - the `oxd` scope is present during the `/setup-client` command in the `scope` field
+  - the `oxd` scope is present during the `/register-site` command in the `scope` field
   - the `oxd` scope is present during the `/get-client-token` command in the `scope` field
 
 ### I got a `Failed to obtain PAT.` error in oxd-server.log. How can I solve it?
 
-During client registration (via `/setup-client` or `/register-site` commands) make sure that you have `client_credentials` as value of `grant_type`. Without it oxd will not be able to obtain UMA PAT because it is using client credentials for it (e.g. grant_type: [`client_credentials`, `authorization_code`]).
+During client registration (via `/register-site` command) make sure that you have `client_credentials` as value of `grant_type`. Without it oxd will not be able to obtain UMA PAT because it is using client credentials for it (e.g. grant_type: [`client_credentials`, `authorization_code`]).

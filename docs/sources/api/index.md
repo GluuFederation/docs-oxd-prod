@@ -34,13 +34,12 @@ The other four oxd APIs are:
  
 **IMPORTANT** : 
 
-If you are using the `oxd-https-extension`, before using the above workflow you will need to obtain an access token to secure the interaction between your client and the `oxd-https-extension`. You can follow the two steps below. 
+Before using the above workflow you will need to obtain an access token to secure the interaction with `oxd-server`. You can follow the two steps below. 
 
- - [Setup client](#setup-client) (returns `client_id` and `client_secret`. Make sure the `uma_protection` scope is present in the request)
+ - [Register site](#register-site) (returns `client_id` and `client_secret`. Make sure the `uma_protection` scope is present in the request)
  - [Get client token](#get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`)
  
- Pass the obtained access token as `protection_access_token` in all future calls to the `oxd-https-extension`.
-
+Pass the obtained access token in `Authorization: Bearer <access_token>` header in all future calls to the `oxd-server`.
 
 
 <link rel="stylesheet" type="text/css" href="../../swagger/swagger-ui.css">
@@ -68,6 +67,7 @@ window.onload = function() {
   const ui = SwaggerUIBundle({
     url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml",
     dom_id: '#swagger-ui',
+    docExpansion: 'full',
     presets: [
       SwaggerUIBundle.presets.apis,
       SwaggerUIStandalonePreset
@@ -81,142 +81,6 @@ window.onload = function() {
 }
 </script>
 
-#### Set Up Client
-
-If you are using the `oxd-https-extension`, you must setup the client. 
-
-The parameters for Setup Client are the same as for Register the Site command. 
-The command registers two clients:
-
- - client 1 -  client for communication protection (called setup client). This will be used to obtain an access token via the Get Client Token command. The access token will be passed as a `protection_access_token` parameter to other commands. `uma_protection` scope has to be present in the request to the `setup_client` command. In response:
-    - setup_client_oxd_id - oxd_id of setup client
-    - client_id - client id of the setup client
-    - client_secret - client secret of the setup client   
- - client 2 - it is a regular client which can be used for all oxd operations. In response `oxd_id`. We are going to remove this second client registration since we have the `register_site` command for this purpose.
-
-Request:
-
-```language-json
-{
-    "command":"setup_client",
-    "params": {
-        "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED
-        "op_host":"https://<ophostname>"                               <- OPTIONAL (But if missing, must be present in defaults)
-        "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
-        "application_type": "web",                                     <- OPTIONAL
-        "response_types": ["code"],                                    <- OPTIONAL
-        "grant_types": ["authorization_code"],                         <- OPTIONAL 
-        "scope": ["openid"],                                           <- OPTIONAL
-        "acr_values": ["basic"],                                       <- OPTIONAL
-        "client_name": "",                                             <- OPTIONAL (name for normal client2 But if missing, oxd will generate its own non-human readable name)
-        "setup_client_name": "",                                       <- OPTIONAL setup client name (client1)
-        "client_jwks_uri": "",                                         <- OPTIONAL
-        "client_token_endpoint_auth_method": "",                       <- OPTIONAL
-        "client_token_endpoint_auth_signing_alg":"",                   <- OPTIONAL possible values: none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512
-        "client_request_uris": [],                                     <- OPTIONAL
-        "client_frontchannel_logout_uris": [],                         <- OPTIONAL
-        "client_sector_identifier_uri": [],                            <- OPTIONAL
-        "contacts": ["foo_bar@spam.org"],                              <- OPTIONAL
-        "ui_locales": [],                                              <- OPTIONAL
-        "claims_locales": [],                                          <- OPTIONAL
-        "claims_redirect_uri": [],                                     <- OPTIONAL
-        "client_id": "<client id of existing client>",                 <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
-        "client_secret": "<client secret of existing client>"         <- OPTIONAL must be used together with client_secret.
-             
-    }
-}
-```
-
-Response:
-
-```language-json
-{
-    "status":"ok",
-    "data":{
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <-- DEPRECATED : additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases.
-        "client_id_of_oxd_id": "@!1736.179E.AA60.16B2!0001!8F7C.B9AB!0008!A2BB.9AE6.AAA4", <-- DEPRECATED : additional registered client oxdId which can be used for normal operations (same as returned by register_site command). It is going to be removed in future releases.
-        "op_host": "<op host>",
-        "setup_client_oxd_id": "<setup client oxd_id>",          <-- oxdId of the setup client used to obtain access token
-        "client_id":"<client id>"
-        "client_secret":"<client secret>"
-        "client_registration_access_token":"<Client registration access token>"
-        "client_registration_client_uri":"<URI of client registration>"
-        "client_id_issued_at":"<client_id issued at>"
-        "client_secret_expires_at":"<client_secret expires at>"
-    }
-}
-```
-
-#### Get Client Token
-
-Request:
-
-```language-json
-{
-    "command":"get_client_token",
-    "params": {
-        "client_id": "<client id>",            <- REQUIRED
-        "client_secret": "<client secret>",    <- REQUIRED
-        "op_host":"https://<ophostname>"       <- REQUIRED
-        "op_discovery_path":""                 <- OPTIONAL 
-        "scope":[],                            <- OPTIONAL 
-        "authentication_method":"",            <- OPTIONAL, if value is missed then basic authentication is used. Otherwise it's possible to set `private_key_jwt` value for Private Key authentication.
-        "algorithm":"",                        <- OPTIONAL but is required if authentication_method=private_key_jwt. Valid values are none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512
-        "key_id":""                            <- OPTIONAL but is required if authentication_method=private_key_jwt. It has to be valid key id from key store.
-    }
-}
-```
-
-Response:
-
-```language-json
-{
-    "status":"ok",
-    "data":{
-        "access_token":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
-        "expires_in": 399,
-        "refresh_token": "fr459f",
-        "scope": "openid"
-    }
-}
-```
-
-#### Introspect Access Token
-
-Request:
-
-```language-json
-{
-    "command":"introspect_access_token",
-    "params": {
-        "oxd_id": "<oxd id>",                <- REQUIRED
-        "access_token": "<access_token>"     <- REQUIRED
-    }
-}
-```
-
-Response:
-
-```language-json
-{
-    "status":"ok",
-    "data":{
-        "active": true,
-        "client_id": "l238j323ds-23ij4",
-        "username": "John Black",
-        "scopes": ["read", "write"],
-        "token_type":"bearer"
-        "sub": "jblack",
-        "aud": "l238j323ds-23ij4",
-        "iss": "https://as.gluu.org/",
-        "exp": 1419356238,
-        "iat": 1419350238,
-        "acr_values": ["basic","duo"],
-        "extension_field": "twenty-seven",
-        ...
-    }
-}
-```
 
 #### Register Site
 
@@ -233,159 +97,12 @@ The `op_host` parameter is optional, but it must be specified in either the [def
 !!! Note
     `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).
     
-Request:
-
-```language-json
-{
-    "command":"register_site",
-    "params": {
-        "authorization_redirect_uri": "https://client.example.org/cb", <- REQUIRED
-        "op_host":"https://<ophostname>"                               <- OPTIONAL (But if missing, must be present in defaults)
-        "post_logout_redirect_uri": "https://client.example.org/cb",   <- OPTIONAL 
-        "application_type": "web",                                     <- OPTIONAL
-        "response_types": ["code"],                                    <- OPTIONAL
-        "grant_types": ["authorization_code"],                         <- OPTIONAL 
-        "scope": ["openid"],                                           <- OPTIONAL
-        "acr_values": ["basic"],                                       <- OPTIONAL
-        "client_name": "",                                             <- OPTIONAL (But if missing, oxd will generate its own non-human readable name)
-        "client_jwks_uri": "",                                         <- OPTIONAL
-        "client_token_endpoint_auth_method": "",                       <- OPTIONAL
-        "client_token_endpoint_auth_signing_alg":"",                   <- OPTIONAL possible values: none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512
-        "client_request_uris": [],                                     <- OPTIONAL
-        "client_frontchannel_logout_uris": [],                                      <- OPTIONAL
-        "client_sector_identifier_uri": [],                            <- OPTIONAL
-        "contacts": ["foo_bar@spam.org"],                              <- OPTIONAL
-        "ui_locales": [],                                              <- OPTIONAL
-        "claims_locales": [],                                          <- OPTIONAL
-        "claims_redirect_uri": [],                                     <- OPTIONAL
-        "client_id": "<client id of existing client>",                 <- OPTIONAL ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
-        "client_secret": "<client secret of existing client>",         <- OPTIONAL must be used together with client_secret.
-        "client_registration_access_token":"<access token of existing client>", <- OPTIONAL must be used together with client_id/client_secret
-        "client_registration_client_uri":"<uri of existing client>",   <- OPTIONAL must be used together with client_id/client_secret
-        "protection_access_token":"<access token of the client>"       <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter        
-    }
-}
-```
-
-Response:
-
-```language-json
-{
-    "status":"ok",
-    "data":{
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF"
-    }
-}
-```
-
-#### Update Site 
-
-If something changes in a pre-registered client, you can use this API to update your client in the OP.
-
-Request:
-
-```language-json
-{
-    "command":"update_site",
-    "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",              <- REQUIRED
-        "authorization_redirect_uri": "https://client.example.org/cb",<- OPTIONAL 
-        "post_logout_redirect_uri": "https://client.example.org/cb",  <- OPTIONAL 
-        "client_frontchannel_logout_uris":["https://client.example.org/logout"],   <- OPTIONAL
-        "response_type":["code"],                                     <- OPTIONAL
-        "grant_types":[],                                             <- OPTIONAL
-        "scope": ["openid", "profile"],                               <- OPTIONAL
-        "acr_values": ["duo"],                                        <- OPTIONAL
-        "client_name": "",                                            <- OPTIONAL
-        "client_secret_expires_at":1335205592410,                     <- OPTIONAL can be used to extends client lifetime (milliseconds since 1970)
-        "client_jwks_uri": "",                                        <- OPTIONAL
-        "client_token_endpoint_auth_method": "",                      <- OPTIONAL
-        "client_request_uris":[],                                     <- OPTIONAL
-        "client_sector_identifier_uri":"",                            <- OPTIONAL
-        "contacts":["foo_bar@spam.org"],                              <- OPTIONAL
-        "ui_locales":[],                                              <- OPTIONAL
-        "claims_locales":[],                                          <- OPTIONAL
-        "protection_access_token":"<access token of the client>"      <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
-    }
-}
-```
-
-Response:
-
-```language-json
-{
-    "status":"ok"
-    "data": {
-        "oxd_id": "bcad760f-91ba-46e1-a020-05e4281d91b6"
-    }
-}
-```
-
-#### Remove Site 
-
-Request:
-
-```language-json
-{
-    "command":"remove_site",
-    "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF"              <- REQUIRED       
-    }
-}
-```
-
-Response:
-
-```language-json
-{
-    "status":"ok",
-    "data": {
-        "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF"
-    }
-}
-```
 
 #### Get Authorization URL
 
 Returns the URL at the OpenID Connect Provider (OP) to which your application must redirect the person to authorize the release of personal data (and perhaps be authenticated in the process if no previous session exists).
 
 The response from the OpenID Connect Provider (OP) will include the code and state values, which should be used to subsequently obtain tokens.
-
-Request:
-
-```language-json
-{
-    "command":"get_authorization_url",
-    "params": {
-        "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF", <- REQUIRED - obtained after registration
-        "scope": ["openid"],                              <- OPTIONAL - default takes scopes that was registered during register_site command)
-        "acr_values": ["duo"],                            <- OPTIONAL - default is basic
-        "prompt": "login",                                <- OPTIONAL - skipped if no value specified or missed. prompt=login is required if you want to force alter current user session (in case user is already logged in from site1 and site2 construsts authorization request and want to force alter current user session)
-        "custom_parameters": {                            <- OPTIONAL
-            "param1":"value1",
-            "param2":"value2"
-        },
-        "protection_access_token":"<access token of the client>" <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
-    }
-}
-```
-
-Response:
-
-```language-json
-{
-    "status":"ok",
-    "data":{
-        "authorization_url":"  https://server.example.com/authorize?response_type=code
-    &client_id=s6BhdRkqt3
-    &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
-    &scope=openid%20profile
-    &acr_values=duo
-    &state=af0ifjsldkj
-    &nonce=n-0S6_WzA2Mj"
-    }
-}
-```
 
 After redirecting to the above URL, the OpenID Connect Provider (OP) will return a response to the URL your application registered as the redirect URI (parse out the code and state). It will look like this:
 
@@ -398,143 +115,22 @@ Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=af0ifj
 
 Use the code and state obtained in the previous step to call this API to retrieve tokens.
 
-Request:
-
-```language-json
-{
-    "command":"get_tokens_by_code",
-    "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",          <- Required
-        "code":"I6IjIifX0",                                       <- Required, code from OP redirect url (see example above)
-        "state":"af0ifjsldkj",                                    <- Required
-        "protection_access_token":"<access token of the client>"  <- Optional for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
-    }
-}
-```
-
-Response:
-
-```language-json
-{
-    "status":"ok",
-    "data":{
-        "access_token":"SlAV32hkKG",
-        "expires_in":3600,
-        "refresh_token":"aaAV32hkKG1"
-        "id_token":"eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso",
-        "id_token_claims": {
-             "iss": "https://server.example.com",
-             "sub": "24400320",
-             "aud": "s6BhdRkqt3",
-             "nonce": "n-0S6_WzA2Mj",
-             "exp": 1311281970,
-             "iat": 1311280970,
-             "at_hash": "MTIzNDU2Nzg5MDEyMzQ1Ng"
-        }
-    }
-}
-```
 
 #### Get Access Token by Refresh Token
 
 A Refresh Token can be used to obtain a renewed Access Token. 
 
-Request:
-
-```language-json
-{
-    "command":"get_access_token_by_refresh_token",
-    "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",          <- Required
-        "refresh_token":"I6IjIifX0",                              <- Required, refresh_token from get_tokens_by_code command
-        "scope":["openid","profile"],                             <- Optional. If not specified should grant access with scope provided in previous request
-        "protection_access_token":"<access token of the client>"  <- Optional for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
-    }
-}
-```
-
-Response:
-
-```language-json
-{
-    "status":"ok",
-    "data":{
-        "access_token":"SlAV32hkKG",
-        "expires_in":3600,
-        "refresh_token":"aaAV32hkKG1"
-    }
-}
-```
 
 
 #### Get User Info
 
 Use the access token from the step above to retrieve a JSON object with the user claims.
 
-Request:
-
-```language-json
-{
-    "command":"get_user_info",
-    "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",               <- REQUIRED
-        "access_token":"SlAV32hkKG",                                   <- REQUIRED
-        "protection_access_token":"<access token of the client>"       <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
-    }
-}
-```
-
-Response:
-
-```language-json
-{
-    "status":"ok",
-    "data":{
-        "claims":{
-            "sub": ["248289761001"],
-            "name": ["Jane Doe"],
-            "given_name": ["Jane"],
-            "family_name": ["Doe"],
-            "preferred_username": ["j.doe"],
-            "email": ["janedoe@example.com"],
-            "picture": ["http://example.com/janedoe/me.jpg"]
-        }
-    }
-}
-```
-
 #### Get Logout URI
 
 The `get_logout_uri` command uses front-channel logout. A page is returned with iFrames, each of which contains the logout URL of the applications that have a session in that browser. 
 
 These iFrames should be loaded automatically, enabling each application to get a notification of logout, and to hopefully clean up any cookies in the person's browser. If the person blocks [third-party cookies](https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie) in their browser, front-channel logout will not work.
-
-Request:
-
-```language-json
-{
-    "command":"get_logout_uri",
-    "params": {
-        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
-        "id_token_hint": "eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso",<- OPTIONAL (oxd server will use last used ID Token)
-        "post_logout_redirect_uri": "<post logout redirect uri here>",        <- OPTIONAL
-        "state": "<site state>",                                              <- OPTIONAL
-        "session_state": "<session state>",                                   <- OPTIONAL
-        "protection_access_token":"<access token of the client>"              <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
-    }
-}
-```
-
-Response:
-
-```language-json
-{
-    "status":"ok",
-    "data":{
-        "uri":"https://<server>/end_session?id_token_hint=<id token>&state=<state>&post_logout_redirect_uri=<...>"
-    }
-}
-```
 
 
 ## UMA 2 Authorization 
@@ -623,8 +219,7 @@ Request:
                     }
                 ]
             }
-        ],
-        "protection_access_token":"<access token of the client>"      <- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
+        ]
     }
 }
 ```
@@ -701,8 +296,7 @@ Request with `scope_expression`. `scope_expression` is a Gluu-invented extension
           }
         ]
       }
-    ],
-    "protection_access_token": "<access token of the client>"   <-OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off / on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter   
+    ]
   }
 }
 ```
@@ -729,8 +323,7 @@ Request:
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
         "rpt":"eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso",    <-- REQUIRED - RPT or blank value if not sent by RP
         "path":"<path of resource>",                                   <-- REQUIRED - Resource Path (e.g. http://rs.com/phones), /phones should be passed
-        "http_method":"<http method of RP request>",                   <-- REQUIRED - HTTP method of RP request (GET, POST, PUT, DELETE)
-        "protection_access_token":"<access token of the client>"       <-- OPTIONAL for `oxd-server` but REQUIRED for `oxd-https-extension`. You can switch off/on protection by `oxd-server`'s `protect_commands_with_access_token` configuration parameter
+        "http_method":"<http method of RP request>"                    <-- REQUIRED - HTTP method of RP request (GET, POST, PUT, DELETE)
     }
 }
 ```
@@ -855,8 +448,7 @@ Request:
          "pct": "c2F2ZWRjb25zZW50",                         <- OPTIONAL
          "rpt": "SSJHBSUSSJHVhjsgvhsgvshgsv",               <- OPTIONAL
          "scope":["read"],                                  <- OPTIONAL
-         "state": "af0ifjsldkj",                            <- OPTIONAL state that is returned from uma_rp_get_claims_gathering_url command
-         "protection_access_token": "ejt3425"               <- OPTIONAL, but REQUIRED if oxd-https-extension is used
+         "state": "af0ifjsldkj"                             <- OPTIONAL state that is returned from uma_rp_get_claims_gathering_url command
     }
 }
 ```
@@ -936,8 +528,7 @@ Request:
     "params": {
         "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",         <- REQUIRED
         "ticket": "016f84e8-f9b9-11e0-bd6f-0021cc6004de",        <- REQUIRED
-        "claims_redirect_uri":"https://client.example.com/cb",   <- REQUIRED
-        "protection_access_token": "ejt3425"                     <- OPTIONAL, but REQUIRED if oxd-https-extension is used
+        "claims_redirect_uri":"https://client.example.com/cb"    <- REQUIRED
     }
 }
 ```

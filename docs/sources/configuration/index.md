@@ -1,49 +1,92 @@
-# Configuration
+# Configuration (oxd-server.yml)
 
-oxd configuration consists of two files :
+oxd configuration is located at `/opt/oxd-server/conf/oxd-server.yml`. It consists of three major parts:
 
-- `/etc/oxd/oxd-server/oxd-conf.json` is the general configuration file for oxd
+- `server configuration` - oxd specific configuration
+- `defaultSiteConfig` - fallback configuration values for the OpenID Connect `/register-site` command. Learn more on the [oxd API page](../api/index.md#register-site)
+- Everything else that is inside comes from dropwizard framework. For a complete list of server-related parameters, click [here](http://www.dropwizard.io/1.3.1/docs/manual/configuration.html)
 
-- `/etc/oxd/oxd-server/oxd-default-site-config.json` is the fallback configuration file for the OpenID Connect `Register Site` command. Learn more on the [oxd API page](../api/index.md#register-site)
+Here we will explain `server configuration` and `defaultSiteConfig`. Dropwizard configuration parameters can be checks in dropwizard [configuration documentation](http://www.dropwizard.io/1.3.1/docs/manual/configuration.html).
 
-## oxd-conf.json
+The content of the `/opt/oxd-server/conf/oxd-server.yml` file is as follows:
 
-The contents of the `/etc/oxd/oxd-server/oxd-conf.json` file are as follows:
+```yaml
+oxd-server.yml
+
+# server configuration
+use_client_authentication_for_pat: true
+trust_all_certs: true
+trust_store_path: ''
+trust_store_password: ''
+crypt_provider_key_store_path: ''
+crypt_provider_key_store_password: ''
+crypt_provider_dn_name: ''
+support-google-logout: true
+state_expiration_in_minutes: 5
+nonce_expiration_in_minutes: 5
+public_op_key_cache_expiration_in_minutes: 60
+protect_commands_with_access_token: true
+uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client: true
+migration_source_folder_path: ''
+storage: h2
+storage_configuration:
+  dbFileLocation: /opt/oxd-server/data/oxd_db
+
+# Dropwizard configurations
+# Connectors
+server:
+  applicationConnectors:
+    - type: https
+      port: 8443
+      keyStorePath: /opt/oxd-server/conf/oxd-server.keystore
+      keyStorePassword: example
+      validateCerts: false
+  adminConnectors:
+    - type: https
+      port: 8444
+      keyStorePath: /opt/oxd-server/conf/oxd-server.keystore
+      keyStorePassword: example
+      validateCerts: false
+
+# Logging settings.
+logging:
+
+  # The default level of all loggers. Can be OFF, ERROR, WARN, INFO, DEBUG, TRACE, or ALL.
+  level: INFO
+
+  # Logger-specific levels.
+  loggers:
+    org.gluu: TRACE
+    org.xdi: TRACE
+
+# Logback's Time Based Rolling Policy - archivedLogFilenamePattern: /tmp/application-%d{yyyy-MM-dd}.log.gz
+# Logback's Size and Time Based Rolling Policy -  archivedLogFilenamePattern: /tmp/application-%d{yyyy-MM-dd}-%i.log.gz
+# Logback's Fixed Window Rolling Policy -  archivedLogFilenamePattern: /tmp/application-%i.log.gz
+
+  appenders:
+    - type: console
+    - type: file
+      threshold: INFO
+      logFormat: "%-6level [%d{HH:mm:ss.SSS}] [%t] %logger{5} - %X{code} %msg %n"
+      currentLogFilename: /var/log/oxd-server/oxd-server.log
+      archivedLogFilenamePattern: /var/log/oxd-server/oxd-server-%d{yyyy-MM-dd}-%i.log.gz
+      archivedFileCount: 7
+      timeZone: UTC
+      maxFileSize: 10MB
+
+defaultSiteConfig:
+  op_host: ''
+  op_discovery_path: ''
+  response_types: ['code']
+  grant_type: ['authorization_code']
+  acr_values: ['']
+  scope: ['openid', 'profile', 'email']
+  ui_locales: ['en']
+  claims_locales: ['en']
+  contacts: []
 
 ```
-oxd-conf.json
-{
-    "port":8099,
-    "localhost_only":true,
-    "time_out_in_seconds":0,
-    "use_client_authentication_for_pat":true,
-    "trust_all_certs":true,
-    "trust_store_path":"",
-    "trust_store_password":"",
-    "crypt_provider_key_store_path":"",
-    "crypt_provider_key_store_password":"",
-    "crypt_provider_dn_name":"",
-    "support-google-logout":true,
-    "state_expiration_in_minutes":5,
-    "nonce_expiration_in_minutes":5,
-    "public_op_key_cache_expiration_in_minutes":60,
-    "protect_commands_with_access_token":false,
-    "uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client":true,
-    "migration_source_folder_path":"",
-    "storage":"h2",
-    "storage_configuration": {
-        "dbFileLocation":"/opt/oxd-server/data/oxd_db"
-    },
-    "remove_expired_clients":true
-}
-```
-### oxd-conf.json Field Descriptions
-
-- **port:** oxd socket port, set to 8099 by default
-
-- **localhost_only:** enable this flag to restrict communication to localhost
-
-- **time_out_in_seconds:** oxd closes sockets automatically after this period of time (stops listen commands). Set it to zero, and oxd listens indefinitely
+### Server configuration fields descriptions
 
 - **use_client_authentication_for_pat:** If set to `true`, client authentication is required. If `false`, user authentication requires `user_id` and `user_secret` to be specified during the `register_site` command
 
@@ -73,53 +116,27 @@ oxd-conf.json
 
 - **migration_source_folder_path:** Migration from previous versions is built into the `oxd-server`. To migrate old JSON files from previous versions, specify path to folder/directory that contains those JSON files in this property. Those files will be read and imported once (during restart `oxd-server`, will not import them again). If using Windows OS, don't forget to escape path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
 
-- **remove_expired_clients:** set to true to remove expired clients.
-
 - **storage:** This value can either be `h2` or `redis`. If `redis` is set then `storage_configuration` must be specified with redis configuration details
 
 - **storage_configuration:** Storage configuration details. Required if `redis` value is set for `storage` key
 
 Redis storage configuration sample:
 
-```json
-  "storage_configuration": {
-    "host":"localhost",
-    "port":6379
-  }
+```yaml
+  storage_configuration
+    host: localhost
+    port: 6379  
 ```
 
 H2 storage configuration sample:
 
-```json
-    "storage_configuration": {
-        "dbFileLocation":"/opt/oxd-server/data/oxd_db"
-    }
+```yaml
+    storage_configuration
+      dbFileLocation: /opt/oxd-server/data/oxd_db    
 ```
 
-## oxd-default-site-config.json
 
-The contents of the `/etc/oxd/oxd-server/oxd-default-site-config.json` file is as follows:
-
-```json
-conf/oxd-default-site-config.json
-{
-    "op_host":"",
-    "op_discovery_path":"",
-    "authorization_redirect_uri":"",
-    "post_logout_redirect_uri":"",
-    "redirect_uris":[""],
-    "response_types":["code"],
-    "grant_type":["authorization_code"],
-    "acr_values":[""],
-    "scope":["openid", "profile", "email"],
-    "ui_locales":["en"],
-    "claims_locales":["en"],
-    "client_jwks_uri":"",
-    "contacts":[]
-}
-```
-
-### oxd-default-site-config.json Field Descriptions
+### defaultSiteConfig Field Descriptions
 
 - **op_host:** Provide the URL of your OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`")
 

@@ -1,4 +1,4 @@
-# Gluu Oxd Server Tutorial
+# Gluu Oxd Server Tutorial (Python)
 
 In this tutorial I am going to explain how we can interact with Gluu oxd Server for SSO with the [authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) 
 using Python CGI and Apache, in the hopes that programmers of other languages will benefit.
@@ -15,8 +15,8 @@ to install your Gluu Server. In this tutorial I installed Gluu Server on host **
 Add a test user. I added user `test_user`
 
 ### Gluu oxd Server 4.0.beta
-To install Gluu oxd Server 4.0, follow 
-[these instructions](https://github.com/GluuFederation/oxd/wiki/oxd-4.0.beta). Gluu oxd Server will be installed on host **oxd.server.com**, but could be installed on the same server as the Gluu Server if needed, as there will be no port conflicts.
+To install Gluu oxd Server 4.0.0, follow 
+[these instructions](./install/index.md). Gluu oxd Server will be installed on host **oxd.server.com**, but could be installed on the same server as the Gluu Server if needed, as there will be no port conflicts.
 
 My **defaultSiteConfig** section of `oxd-server.yml` configuration is as follows:
 
@@ -73,7 +73,7 @@ Step | Explanation | Endpoint
 
 ## Creating Client and Registering Site to Oxd Server
 
-Before start working on oxd-server, we need two settings on Gluu Server
+Before start working on `oxd-server`, we need two settings on Gluu Server
 
 * Enable dynamic registration of clients: **Configuration->Manage Custom Script**, 
  click on **Client Registration** tab and and enable `client_registration` script, and
