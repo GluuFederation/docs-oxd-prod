@@ -68,6 +68,8 @@ window.onload = function() {
     url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml",
     dom_id: '#swagger-ui',
     docExpansion: 'full',
+    deepLinking: true,
+    defaultModelRendering: `model`
     presets: [
       SwaggerUIBundle.presets.apis,
       SwaggerUIStandalonePreset
