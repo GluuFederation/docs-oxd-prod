@@ -69,7 +69,7 @@ window.onload = function() {
     dom_id: '#swagger-ui',
     docExpansion: 'full',
     deepLinking: true,
-    defaultModelRendering: `model`
+    defaultModelRendering: `model`,
     presets: [
       SwaggerUIBundle.presets.apis,
       SwaggerUIStandalonePreset
