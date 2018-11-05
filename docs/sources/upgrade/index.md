@@ -23,3 +23,24 @@ Follow these simple steps to migrate your JSON files:
 
 ## UMA 
 Auto-migration between UMA `1.0.1` and UMA `2` is not supported because of major changes between specifications. To view the UMA `2` specifications follow this [link](https://docs.kantarainitiative.org/uma/ed/uma-core-2.0-01.html#without-rpt).
+
+## Using Upgrade Script
+
+Download upgrade script and yaml template:
+
+```
+# wget https://raw.githubusercontent.com/mbaser/gluu/master/oxd_upgrade/oxd-server.yml.temp
+# wget https://raw.githubusercontent.com/mbaser/gluu/master/oxd_upgrade/oxd_updater.py
+```
+
+Install python yaml module:
+
+```
+# pip install pyyaml
+```
+
+Run upgrade script:
+
+```
+# python oxd_updater.py
+```
