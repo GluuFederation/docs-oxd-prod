@@ -4,9 +4,9 @@ oxd configuration is located at `/opt/oxd-server/conf/oxd-server.yml`. It consis
 
 - `server configuration` - oxd specific configuration
 - `defaultSiteConfig` - fallback configuration values for the OpenID Connect `/register-site` command. Learn more on the [oxd API page](../api/index.md#register-site)
-- Everything else that is inside comes from dropwizard framework. For a complete list of server-related parameters, click [here](http://www.dropwizard.io/1.3.1/docs/manual/configuration.html)
+- Everything else that is inside comes from the Dropwizard framework. For a complete list of server-related parameters, click [here](http://www.dropwizard.io/1.3.1/docs/manual/configuration.html)
 
-Here we will explain `server configuration` and `defaultSiteConfig`. Dropwizard configuration parameters can be checks in dropwizard [configuration documentation](http://www.dropwizard.io/1.3.1/docs/manual/configuration.html).
+Here we will explain `server configuration` and `defaultSiteConfig`. Dropwizard configuration parameters can be checked in the Dropwizard [configuration documentation](http://www.dropwizard.io/1.3.1/docs/manual/configuration.html).
 
 The content of the `/opt/oxd-server/conf/oxd-server.yml` file is as follows:
 
@@ -92,7 +92,7 @@ defaultSiteConfig:
 
 - **trust_all_certs:** `true` to trust all certificates, if `false` then `trust_store_path` must be specified to store with valid certificates
 
-- **trust_store_path:** Path to Java `.jks` trust store to be used for an SSL connection
+- **trust_store_path:** Path to Java `.jks` trust store to be used for an SSL connections
 
 - **trust_store_password:** Password to access the trust store
 
@@ -114,11 +114,11 @@ defaultSiteConfig:
 
 - **uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client:** Notifies the `oxd-server` whether to automatically register the `Claims Gathering Endpoint` as the `claims_redirect_uri` for a given client. It is useful for UMA 2 clients that wish to force authorization against the Gluu Server. To provide custom `claims_redirect_uri`, set this property to `false`
 
-- **migration_source_folder_path:** Migration from previous versions is built into the `oxd-server`. To migrate old JSON files from previous versions, specify path to folder/directory that contains those JSON files in this property. Those files will be read and imported once (during restart `oxd-server`, will not import them again). If using Windows OS, don't forget to escape path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
+- **migration_source_folder_path:** Migration from previous versions is built into the `oxd-server`. To migrate old JSON files from previous versions, specify the path to folder/directory that contains those JSON files in this property. Those files will be read and imported once (during restart `oxd-server`, will not import them again). If using Windows OS, don't forget to escape the path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
 
-- **storage:** This value can either be `h2` or `redis`. If `redis` is set then `storage_configuration` must be specified with redis configuration details
+- **storage:** This value can either be `h2` or `redis`. If `redis` is set, then `storage_configuration` must be specified with redis configuration details
 
-- **storage_configuration:** Storage configuration details. Required if `redis` value is set for `storage` key
+- **storage_configuration:** Storage configuration details. Required if the `redis` value is set for the `storage` key
 
 Redis storage configuration sample:
 
@@ -140,9 +140,9 @@ H2 storage configuration sample:
 
 - **op_host:** Provide the URL of your OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`")
 
-- **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example, if it is `https://example.com/.well-known/openid-configuration` then path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then path is `oxauth`  
+- **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example, if it is `https://example.com/.well-known/openid-configuration` then the path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then the path is `oxauth`  
 
-- **authorization_redirect_uri:** URL that the OpenID Connect Provider (OP) will redirect the person to after successful authentication
+- **authorization_redirect_uri:** URL which the OpenID Connect Provider (OP) will redirect the person to after successful authentication
 
 - **post_logout_redirect_uri:** URL to which the RP is requesting that the End-User's User Agent be redirected after a logout has been performed
 
