@@ -520,22 +520,6 @@ https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
 ```
 
 <link rel="stylesheet" type="text/css" href="../../swagger/swagger-ui.css">
-<style>
-.swagger-ui .responses-table {
-    table-layout: fixed;
-    width: 100%;
-}
-
-.swagger-ui .model-box {
-    table-layout: fixed;
-    width: 100%;
-}
-
-.swagger-ui .prop {
-    table-layout: fixed;
-    width: 100%;
-}
-</style>
 
 <div id="swagger-ui"></div>
 
