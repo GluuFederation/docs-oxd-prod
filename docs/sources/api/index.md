@@ -42,7 +42,9 @@ Before using the above workflow you will need to obtain an access token to secur
 Pass the obtained access token in `Authorization: Bearer <access_token>` header in all future calls to the `oxd-server`.
 
 
-#### Register Site [API](#/developers/register-site)
+#### Register Site 
+
+[API Link](#operations-developers-register-site)
 
 The client must first register itself with the `oxd-server`. 
 
