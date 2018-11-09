@@ -69,6 +69,10 @@ function goToHash(){
 	}
 }
 
+function waitAndGoToHash() {
+	window.setTimeout(goToHash,3000);
+}
+
 window.onload = function() {
   const ui = SwaggerUIBundle({
     url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml",
@@ -83,7 +87,7 @@ window.onload = function() {
     plugins: [
         DisableTryItOutPlugin
     ],
-    onComplete: goToHash
+    onComplete: waitAndGoToHash
   })
 
   window.ui = ui
