@@ -63,6 +63,15 @@ const DisableTryItOutPlugin = function() {
   }
 }
 
+function goToHash(){
+	if(window.location.hash) {
+		$(window.location.hash).children().first().click()
+		$('#wrapper').animate({
+			scrollTop: $(window.location.hash).offset().top
+		}, 1000);
+	}
+}
+
 window.onload = function() {
   const ui = SwaggerUIBundle({
     url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml",
@@ -76,11 +85,18 @@ window.onload = function() {
     ],
     plugins: [
         DisableTryItOutPlugin
-    ]
+    ],
+    onComplete: goToHash
   })
 
   window.ui = ui
 }
+
+$(document).ready(function () {
+    $('html, body').animate({
+        scrollTop: $(window.location.hash).offset().top
+    }, 'slow');
+});
 </script>
 
 
