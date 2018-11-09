@@ -65,10 +65,7 @@ const DisableTryItOutPlugin = function() {
 
 function goToHash(){
 	if(window.location.hash) {
-		$(window.location.hash).children().first().click()
-		$('#wrapper').animate({
-			scrollTop: $(window.location.hash).offset().top
-		}, 1000);
+	    $(document).scrollTop( $('a[href$="'+window.location.hash+'"]').offset().top ); 	   
 	}
 }
 
