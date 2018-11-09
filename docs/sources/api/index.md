@@ -36,72 +36,13 @@ The other four oxd APIs are:
 
 Before using the above workflow you will need to obtain an access token to secure the interaction with `oxd-server`. You can follow the two steps below. 
 
- - [Register site](#register-site) (returns `client_id` and `client_secret`. Make sure the `uma_protection` scope is present in the request)
- - [Get client token](#get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`)
+ - [Register site](#/developers/register-site) (returns `client_id` and `client_secret`. Make sure the `uma_protection` scope is present in the request)
+ - [Get client token](#/developers/get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`)
  
 Pass the obtained access token in `Authorization: Bearer <access_token>` header in all future calls to the `oxd-server`.
 
 
-<link rel="stylesheet" type="text/css" href="../../swagger/swagger-ui.css">
-
-<div id="swagger-ui"></div>
-
-<script src="../swagger/swagger-ui-bundle.js"></script>
-<script src="../swagger/swagger-ui-standalone-preset.js"></script>
-
-<script>
-
-const DisableTryItOutPlugin = function() {
-  return {
-    statePlugins: {
-      spec: {
-        wrapSelectors: {
-          allowTryItOutFor: () => () => false
-        }
-      }
-    }
-  }
-}
-
-function goToHash(){
-	if(window.location.hash) {
-	    $(document).scrollTop( $('a[href$="'+window.location.hash+'"]').offset().top ); 	   
-	}
-}
-
-function waitAndGoToHash() {
-	window.setTimeout(goToHash,3000);
-}
-
-window.onload = function() {
-  const ui = SwaggerUIBundle({
-    url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml",
-    dom_id: '#swagger-ui',
-    docExpansion: 'full',
-    deepLinking: true,
-    defaultModelRendering: 'model',
-    presets: [
-      SwaggerUIBundle.presets.apis,
-      SwaggerUIStandalonePreset
-    ],
-    plugins: [
-        DisableTryItOutPlugin
-    ],
-    onComplete: waitAndGoToHash
-  })
-
-  window.ui = ui
-}
-
-$(document).ready(function () {
-    $('html, body').animate({
-        scrollTop: $(window.location.hash).offset().top
-    }, 'slow');
-});
-</script>
-
-
-#### Register Site
+#### Register Site [API](#/developers/register-site)
 
 The client must first register itself with the `oxd-server`. 
 
@@ -575,6 +516,65 @@ Example of Response:
 ```
 https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
 ```
+
+<link rel="stylesheet" type="text/css" href="../../swagger/swagger-ui.css">
+
+<div id="swagger-ui"></div>
+
+<script src="../swagger/swagger-ui-bundle.js"></script>
+<script src="../swagger/swagger-ui-standalone-preset.js"></script>
+
+<script>
+
+const DisableTryItOutPlugin = function() {
+  return {
+    statePlugins: {
+      spec: {
+        wrapSelectors: {
+          allowTryItOutFor: () => () => false
+        }
+      }
+    }
+  }
+}
+
+function goToHash(){
+	if(window.location.hash) {
+	    //$(document).scrollTop( $('a[href$="'+window.location.hash+'"]').offset().top ); 	   
+	}
+}
+
+function waitAndGoToHash() {
+	window.setTimeout(goToHash,3000);
+}
+
+window.onload = function() {
+  const ui = SwaggerUIBundle({
+    url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml",
+    dom_id: '#swagger-ui',
+    docExpansion: 'full',
+    deepLinking: true,
+    defaultModelRendering: 'model',
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIStandalonePreset
+    ],
+    plugins: [
+        DisableTryItOutPlugin
+    ],
+    onComplete: waitAndGoToHash
+  })
+
+  window.ui = ui
+}
+
+$(document).ready(function () {
+    $('html, body').animate({
+        scrollTop: $(window.location.hash).offset().top
+    }, 'slow');
+});
+</script>
+
 
 ## References
 
