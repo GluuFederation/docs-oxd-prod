@@ -173,15 +173,17 @@ $ sudo apt-get remove oxd-server-4.0.beta
 ### View, delete entries inside the oxd-server database with lsox.sh or lsox.bat scripts
 
 There are three types of parameters which can be used by lsox.sh/lsox.bat files:
+
  - `-l` - list all oxd_ids inside the oxd database
  - `-oxd_id <oxd_id>` - view JSON representation of the entity by oxd_id
  - `-d` - removes entity by oxd_id.
+ - `-a` - authorization `access_token` (e.g. `lsox.sh -a gf4566-dlt456-emtr56-ddmg5kd`). It is optional if oxd is not running. If it is running then it is REQUIRED. This is true if h2 database is used for persistence which is default. The reason is that if oxd is running it locks h2 database file. The lock is exclusive, so script can't access the file while oxd is running. To handle it script needs authorization via `-a` parameter. Authorization means `access_token` obtained via `/get-client-token` API call (same as Authorization header value used for all API calls).
 
 The script is located in `/opt/oxd-server/bin/lsox.sh`. If you hit the script without any parameters, it shows a hint:
 ```
 yuriy@yuriyz:~/oxd-server-distribution/bin$ sh lsox.sh
 BASEDIR=.
-CONF=./../conf/oxd-conf.json
+CONF=./../conf/oxd-server.yml
 Missing required option: oxd_id
 usage: utility-name
  -oxd_id,--oxd_id <arg>   oxd_id is unique identifier within oxd database
@@ -196,7 +198,7 @@ A typical call looks like this:
 ```
 yuriy@yuriyz:~/oxd-server-4.0.beta-SNAPSHOT-distribution/bin$ sh oxd-show.sh -oxd_id d8cc6dea-4d66-4995-b6e1-da3a33722f2e
 BASEDIR=.
-CONF=./../conf/oxd-conf.json
+CONF=./../conf/oxd-server.yml
 
 yuriy@yuriyz:~/oxd-server-4.0.beta-SNAPSHOT-distribution/bin$JSON for oxd_id d8cc6dea-4d66-4995-b6e1-da3a33722f2e
 {"scope":["openid","uma_protection","profile"],"contacts":[],"pat":null,"rpt":null,"oxd_id":"d8cc6dea-4d66-4995-b6e1-da3a33722f2e","op_host":"https://ce-dev4.gluu.org","op_discovery_path":null,"id_token":null,"access_token":null,"authorization_redirect_uri":"https://client.example.com/cb","logout_redirect_uri":"https://client.example.com/cb","application_type":"web","redirect_uris":["https://client.example.com/cb"],"claims_redirect_uri":[],"response_types":["code"],"front_channel_logout_uri":[""],"client_id":"@!38D4.410C.1D43.8932!0001!37F2.B744!0008!B390.5F6D.2051.A8C0","client_secret":"4a72e386-97ed-49a0-a338-cd448e5020b3","client_registration_access_token":"920fdb64-9bd7-4b5f-8a8c-8689e29860b8","client_registration_client_uri":"https://ce-dev4.gluu.org/oxauth/restv1/register?client_id=@!38D4.410C.1D43.8932!0001!37F2.B744!0008!B390.5F6D.2051.A8C0","client_id_issued_at":1528879584000,"client_secret_expires_at":1528965984000,"client_name":null,"sector_identifier_uri":null,"client_jwks_uri":null,"token_endpoint_auth_signing_alg":null,"token_endpoint_auth_method":null,"is_setup_client":null,"setup_oxd_id":null,"setup_client_id":null,"ui_locales":["en"],"claims_locales":["en"],"acr_values":[""],"grant_types":["authorization_code","urn:ietf:params:oauth:grant-type:uma-ticket","client_credentials"],"user_id":null,"user_secret":null,"pat_expires_in":0,"pat_created_at":null,"pat_refresh_token":null,"uma_protected_resources":[],"rpt_token_type":null,"rpt_pct":null,"rpt_upgraded":null,"rpt_expires_at":null,"rpt_created_at":null,"oxd_rp_programming_language":"java"}
