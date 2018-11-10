@@ -63,7 +63,7 @@ Learn more in the [oxd API section](./api/index.md) of the documentation.
 ## Native Libraries
 
 oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml). It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
-
+Check our FAQ about easiest way to generate native client [here](https://gluu.org/docs/oxd/4.0.beta/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
 
 ## Source code
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
