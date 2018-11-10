@@ -104,3 +104,11 @@ Since `3.1.4` we have forced users to have the `oxd` scope associated with `prot
 ### I got a `Failed to obtain PAT.` error in oxd-server.log. How can I solve it?
 
 During client registration (via `/register-site` command) make sure that you have `client_credentials` as value of `grant_type`. Without it oxd will not be able to obtain UMA PAT because it is using client credentials for it (e.g. grant_type: [`client_credentials`, `authorization_code`]).
+
+### What is the easiest way to generate native library for oxd?
+
+oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml). It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
+
+You can easily generate appropriate client via https://app.swaggerhub.com GUI, just add swagger spec and in upper right corner it's possible to download client as shown below:
+
+![swaggerhun](../img/generate_swagger_client.png)
