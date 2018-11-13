@@ -17,7 +17,7 @@ table .model {
   width: 150px;
 }
 
-.prop {
+p.a {
   word-break: break-word;
   word-wrap: break-word;
 }
