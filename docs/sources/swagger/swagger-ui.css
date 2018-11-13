@@ -1,11 +1,13 @@
 .responses-table {
   table-layout: fixed;
   width: 100% !important;
+  overflow-wrap: break-all;
 }
 
 .model-box {
   table-layout: fixed;
   width: 100% !important;
+  overflow-wrap: break-all;
 }
 /*
 table .model {
@@ -15,6 +17,7 @@ table .model {
 */
 .response-col_status {
   width: 150px;
+  overflow-wrap: break-all;
 }
 
 .prop {
