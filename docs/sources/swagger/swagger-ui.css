@@ -19,8 +19,7 @@ table .model {
 
 .prop {
   width: 80%;
-  word-wrap: break-all;
-  word-wrap: break-all;
+  word-wrap: break-word;
   overflow-wrap: break-word;
 }
 
