@@ -19,6 +19,7 @@ table .model {
 
 .prop {
   word-break: break-all;
+  word-wrap: break-word;
 }
 
 .swagger-ui{
