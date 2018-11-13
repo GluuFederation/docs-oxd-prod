@@ -1,11 +1,19 @@
 .responses-table {
   table-layout: fixed;
   width: 100% !important;
+  word-break: break-all;
+  word-wrap: break-all;
+  overflow-wrap: break-all;
+  -ms-word-break: break-all;
 }
 
 .model-box {
   table-layout: fixed;
   width: 100% !important;
+  word-break: break-all;
+  word-wrap: break-all;
+  overflow-wrap: break-all;
+  -ms-word-break: break-all;
 }
 /*
 table .model {
@@ -15,6 +23,10 @@ table .model {
 */
 .response-col_status {
   width: 150px;
+  word-break: break-all;
+  word-wrap: break-all;
+  overflow-wrap: break-all;
+  -ms-word-break: break-all;
 }
 
 .prop {
