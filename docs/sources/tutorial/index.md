@@ -1,22 +1,24 @@
-# Gluu Oxd Server Tutorial (Python)
+# Gluu oxd Server Tutorial (Python)
 
-In this tutorial I am going to explain how we can interact with Gluu oxd Server for SSO with the [authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) 
+In this tutorial I am going to explain how we can interact with the oxd Server for SSO with using the [authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) 
 using Python CGI and Apache, in the hopes that programmers of other languages will benefit.
 
 ## Preliminary
 
-For this tutorial we need a Gluu Server 3.1.4, Gluu oxd Server 4.0.beta and a https & cgi enabled
+For this tutorial our OpenID Connect Provider (OP) is Gluu Server 3.1.4, and we are using oxd Server 4.0.beta and an https & cgi enabled
 web server, Apache in our case. 
 
 ### Gluu Server 3.1.4 (OP)
-Gluu Server will act as the OpenID Connect Provider (OP). Follow 
-[these instructions](https://gluu.org/docs/ce/3.1.4/installation-guide/install/) 
-to install your Gluu Server. In this tutorial I installed Gluu Server on host **op.server.com**
+As stated above, in this tutorial we're using Gluu Server 3.1.4 as our OP. 
+
+Follow [these instructions](https://gluu.org/docs/ce/3.1.4/installation-guide/install/) to install your Gluu Server. In this tutorial I installed Gluu Server on host **op.server.com**
+
 Add a test user. I added user `test_user`
 
-### Gluu oxd Server 4.0.beta
-To install Gluu oxd Server 4.0.0, follow 
-[these instructions](./install/index.md). Gluu oxd Server will be installed on host **oxd.server.com**, but could be installed on the same server as the Gluu Server if needed, as there will be no port conflicts.
+### oxd Server 4.0.beta
+To install oxd Server 4.0.0, follow [these instructions](./install/index.md). 
+
+For this tutorial I installed oxd Server on its own host, **oxd.server.com**. For testing purposes oxd can also be installed on the same server as the Gluu Server if needed, as there are no port conflicts.
 
 My **defaultSiteConfig** section of `oxd-server.yml` configuration is as follows:
 
@@ -58,7 +60,7 @@ We will use Python's requests module to interact with oxd's REST API:
 sudo apt-get install python-requests
 ```
 
-## Steps for SSO with Gluu oxd Server
+## Steps for SSO 
 
 These are the steps that will be performed for SSO, step numbers maps the steps in cgi script
 
