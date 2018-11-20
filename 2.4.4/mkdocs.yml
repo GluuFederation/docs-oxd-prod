@@ -14,6 +14,7 @@ markdown_extensions:
 - admonition
 - toc:
      permalink: '#'
+- pymdownx.superfences
 pages:
 - Home: 'index.md'
 # Protocol
