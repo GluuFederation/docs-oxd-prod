@@ -140,7 +140,7 @@ H2 storage configuration sample:
 
 - **op_host:** Provide the URL of your OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`")
 
-- **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example, if it is `https://example.com/.well-known/openid-configuration` then the path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then the path is `oxauth`  
+- **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example, if it is `https://example.com/.well-known/openid-configuration` then the path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then the path is `/oxauth`  
 
 - **authorization_redirect_uri:** URL which the OpenID Connect Provider (OP) will redirect the person to after successful authentication
 
