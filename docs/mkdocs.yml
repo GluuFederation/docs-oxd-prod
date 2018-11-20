@@ -16,7 +16,7 @@ markdown_extensions:
 pages:
 - Home: 'index.md'
 - Release Notes: 'release-notes/index.md'
-- Whats new in 4.x: '3.1.x-intro.md'
+- Whats new in 4.x: '4.x-intro.md'
 - 'Install & Run': 'install/index.md'
 - 'Tutorial': 'tutorial/index.md'
 - 'Upgrade': 'upgrade/index.md'

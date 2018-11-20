@@ -4,7 +4,7 @@
 oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). 
 
 !!! Note
-    oxd 4.0.beta is available under the Apache2 open source license! [Learn more](./3.1.x-intro.md#whats-new)
+    oxd 4.0.beta is available under the Apache2 open source license! [Learn more](4.x-intro.md)
 
 ## Architecture 
 The oxd Linux package includes the `oxd-server` which is simple REST application.
@@ -62,7 +62,8 @@ Learn more in the [oxd API section](./api/index.md) of the documentation.
 
 ## Native Libraries
 
-oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml). It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)  
+oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml). It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
+Check our FAQ about easiest way to generate native client [here](https://gluu.org/docs/oxd/4.0.beta/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
 
 ## Source code
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
