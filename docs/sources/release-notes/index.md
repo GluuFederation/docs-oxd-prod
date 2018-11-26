@@ -1,6 +1,6 @@
 ## What's New in Version 4.0
 
-oxd 4.0 includes architectural changes as well as different bug fixing and improvements:
+oxd 4.0 includes architectural changes as well as different bug fixes and improvements:
 
  - introduced swagger 2.0 to oxd (we are planning to move to 3.0 when swagger codegen is ready)
  - socket transport is removed from oxd-server
