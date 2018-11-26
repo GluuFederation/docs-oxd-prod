@@ -1,24 +1,23 @@
 # oxd Tutorial (Python)
 
-In this tutorial I am going to explain how we can interact with the oxd Server for SSO with using the [authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) 
-using Python CGI and Apache, in the hopes that programmers of other languages will benefit.
+In this tutorial I am going to explain how you can interact with the oxd Server for SSO with using the [authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) 
+using Python CGI and Apache, in the hope that programmers of other languages will benefit.
 
 ## Preliminary
 
-For this tutorial our OpenID Connect Provider (OP) is Gluu Server 3.1.4, and we are using oxd Server 4.0.beta and an https & cgi enabled
-web server, Apache in our case. 
+For this tutorial, our OpenID Connect Provider (OP) is Gluu Server 3.1.4, and we are using oxd Server 4.0.beta and an https & cgi enabled web server -- Apache in our case. 
 
 ### Gluu Server 3.1.4 (OP)
-As stated above, in this tutorial we're using Gluu Server 3.1.4 as our OP. 
+As stated above, in this tutorial we're using Gluu Server 3.1.4 as the OP. 
 
-Follow [these instructions](https://gluu.org/docs/ce/3.1.4/installation-guide/install/) to install your Gluu Server. In this tutorial I installed Gluu Server on host **op.server.com**
+Follow [these instructions](https://gluu.org/docs/ce/3.1.4/installation-guide/install/) to install your Gluu Server. In this tutorial, I installed Gluu Server on host **op.server.com**.
 
-Add a test user. I added user `test_user`
+Add a test user. I added user `test_user`.
 
 ### oxd Server 4.0.beta
 To install oxd Server 4.0.0, follow [these instructions](./install/index.md). 
 
-For this tutorial I installed oxd Server on its own host, **oxd.server.com**. For testing purposes oxd can also be installed on the same server as the Gluu Server if needed, as there are no port conflicts.
+For this tutorial, I installed oxd Server on its own host, **oxd.server.com**. For testing purposes, oxd can also be installed on the same server as the Gluu Server if needed, as there are no port conflicts.
 
 My **defaultSiteConfig** section of `oxd-server.yml` configuration is as follows:
 
@@ -38,8 +37,7 @@ defaultSiteConfig:
 ### Apache Web Server (RP)
 
 Since we are going to write a cgi script for simplicity, we first need to get a working
-web server to act as the Relying Party (RP). Apache will be installed on the host **rp.server.com**. I am using Ubuntu 16.04 LTS for this purpose. First install apache web
-server:
+web server to act as the Relying Party (RP). Apache will be installed on the host **rp.server.com**. I am using Ubuntu 16.04 LTS for this purpose. First install apache web server:
 
 ```
 sudo apt-get update
@@ -62,31 +60,31 @@ sudo apt-get install python-requests
 
 ## Steps for SSO 
 
-These are the steps that will be performed for SSO, step numbers maps the steps in cgi script
+These are the steps that will be performed for SSO; step numbers map the steps in the cgi script:
 
 Step | Explanation | Endpoint
 -----|-------------|----------
-1 | Creating a client on Gluu server and registering your site to oxd Server  (we will do this dynamically, for clarities sake, though it is possible to automate this step in the cgi script). | [register-site](https://gluu.org/docs/oxd/api/#register-site)
-2 | Obtain access token from oxd Server. This token will be used in headers to authenticate to oxd server in all subsequent queries. I will call this as `oxd_access_token`. So, with the exception of this step headers of subsequent queries will be: <br> `Content-type: 'application/json` <br> `Authorization': 'Bearer <oxd_access_token>'` | [get-client-token](https://gluu.org/docs/oxd/api/#get-client-token)
-3 | Get authorization url. User will click on this url to reach Gluu's login page and will will be redirected to `authorization_redirect_uri` | [get-authorization-url](https://gluu.org/docs/oxd/api/#get-authorization-url)
-4 | We need to verify if `code` and `state` values returned by browser to our cgi script after authorization by Gluu Server. We can pass these values to oxd Server and obtain an access token to user's claims. | [get-tokens-by-code](https://gluu.org/docs/oxd/api/#get-tokens-id-access-by-code)
-5 | Query user information and display on page. | [get-user-info](https://gluu.org/docs/oxd/api/#get-user-info)
-6 | Query logout uri from oxd server. | [get-logout-uri](https://gluu.org/docs/oxd/api/#get-logout-uri)
+1 | Creating a client on Gluu server and registering your site to oxd Server  (we will do this dynamically, for clarity's sake, though it is possible to automate this step in the cgi script). | [register-site](https://gluu.org/docs/oxd/api/#register-site)
+2 | Obtain an access token from the oxd server. This token will be used in headers to authenticate to oxd server in all subsequent queries. I will call this the`oxd_access_token`. So, with the exception of this step headers of subsequent queries will be: <br> `Content-type: 'application/json` <br> `Authorization': 'Bearer <oxd_access_token>'` | [get-client-token](https://gluu.org/docs/oxd/api/#get-client-token)
+3 | Get authorization url. Users will click on this url to reach Gluu's login page and will be redirected to `authorization_redirect_uri` | [get-authorization-url](https://gluu.org/docs/oxd/api/#get-authorization-url)
+4 | You need to verify the `code` and `state` values returned by browser to your cgi script after authorization by Gluu Server. You can pass these values to the oxd server and obtain an access token to user's claims. | [get-tokens-by-code](https://gluu.org/docs/oxd/api/#get-tokens-id-access-by-code)
+5 | Query user information and display it on page. | [get-user-info](https://gluu.org/docs/oxd/api/#get-user-info)
+6 | Query the logout uri from the oxd server. | [get-logout-uri](https://gluu.org/docs/oxd/api/#get-logout-uri)
 
 ## Creating Client and Registering Site to Oxd Server
 
-Before start working on `oxd-server`, we need two settings on Gluu Server
+Before you start working on `oxd-server`, you'll need two settings on the Gluu Server:
 
 * Enable dynamic registration of clients: **Configuration->Manage Custom Script**, 
- click on **Client Registration** tab and and enable `client_registration` script, and
- click **Update** button. If you don't want to enable dynamic client registration,
+ click on the **Client Registration** tab and and enable the `client_registration` script, then
+ click the **Update** button. If you don't want to enable dynamic client registration,
  please register [a client manually](create_client.md).
  
-* Enable dynamic registration of "profile" scope: **OpenID Connect->Scopes**,
+* Enable dynamic registration of the "profile" scope: **OpenID Connect->Scopes**,
   click on the `profile` scope and set `Allow for dynamic registration` to "True".
-  clieck **Update** button.
+  Click the **Update** button.
 
-Following through first step we will register the client dynamically, and register the site to oxd. Write the following content to `data.json`:
+Following the first step, you will register the client dynamically, and register the site to oxd. Write the following content to `data.json`:
 
 ```
 {
@@ -116,16 +114,16 @@ Following through first step we will register the client dynamically, and regist
 ```
 
 !!! Note
-    If you created client manually you must supply `client_id` and `client_secret`
+    If you created client manually, you must supply `client_id` and `client_secret`.
 
-Now we create the client and regsiter our site on oxd server:
+Now you can create the client and regsiter your site on the oxd server:
 
 ```
 curl -k -X POST https://oxd.server.com:8443/register-site --header "Content-Type: application/json" -d @data.json 
 
 ```
 
-provide full path to `data.json` or execute this command in the same directory. This will output as follows:
+provide the full path to `data.json` or execute this command in the same directory. This will output as follows:
 
 ```
 {
@@ -140,7 +138,7 @@ provide full path to `data.json` or execute this command in the same directory. 
 }
 ```
 
-Take a note of `oxd_id`, `client_secret` and  `client_secret`, we will use them in subsequent queries and configuration. Be aware that these are uniquely generated identifiers and will not match what is shown above.
+Take a note of `oxd_id`, `client_secret` and  `client_secret`; you will use them in subsequent queries and configuration. Be aware that these are uniquely generated identifiers and will not match what is shown above.
 
 CGI Script
 ----------
@@ -273,12 +271,12 @@ else:
     print '<a href="{0}">Click here to login</a>'.format(result['authorization_url'])
 ```
 
-Now navigate to https://rp.server.com/cgi-bin/oxd.py you will see link **Click here to login**
+Now navigate to https://rp.server.com/cgi-bin/oxd.py and you will see a link **Click here to login**
 as below
 
 ![login link](fig1.png)
 
-Click the link, you will be redirected to Gluu login page, after entering credidentals and allowing
+Click on the link and you will be redirected to Gluu login page. Upon entering credidentals and allowing
 RP to access claims, you will see user info as:
 
 ![user info](fig2.png)
