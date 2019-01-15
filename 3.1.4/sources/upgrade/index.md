@@ -13,11 +13,38 @@ Before moving forward with an upgrade to oxd 3.1.4, review the following legacy 
 - UMA 1.0.1: **Not** supported in oxd 3.1.4 or Gluu Server 3.1.4    
 - OpenID Connect: Supported in all versions of oxd and Gluu Server         
 
-## OpenID Connect 
-Follow these steps to migrate your JSON files:
+## Upgrade
 
-- Open `oxd-conf.json` 
-- Modify `migration_source_folder_path` to point to the folder or directory that contains the JSON files
+Follow these steps to upgrade oxd server:
+
+1. Back up `oxd-server` with data 
+  - if `oxd-server` version is up to `3.0.2` (inclusively) - back up json files located in working directory of `oxd-server`
+  - if `oxd-server` version is `3.1.0` or later - back up h2 database file `oxd_db.mv.db` or in case of redis follow redis instructions how to back up data.
+2. Stop your current `oxd-server` and uninstall it.
+3. Install `oxd-server` 3.1.4   
+4. Open `/etc/oxd/oxd-server/oxd-conf.json`  
+5. Modify it:
+  - if `oxd-server` version is up to `3.0.2` (inclusively) - Modify `migration_source_folder_path` to point to the folder or directory that contains the JSON files
+  - if `oxd-server` version is `3.1.0` or later : configure h2 or redis as shown below.
+6. Start `oxd-server` as usual 
+
+**Snippet from oxd-conf.json for H2**     
+```json    
+    "storage":"h2",
+    "storage_configuration": {
+        "dbFileLocation":"/opt/oxd-server/data/oxd_db"
+    }    
+```
+
+**Snippet from oxd-conf.json for redis**
+```json
+  "storage":"redis",
+  "storage_configuration": {
+    "host":"localhost",
+    "port":6379
+  }
+```
+
 
 !!! Note: 
     If you are using Windows OS, don't forget to include the escape path separator (e.g. `C:\\OXD_OLD\\oxd-server\\conf`)
