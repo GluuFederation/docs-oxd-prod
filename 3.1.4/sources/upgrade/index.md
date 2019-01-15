@@ -1,10 +1,10 @@
 ## Overview
 
-If you are upgrading oxd to the latest version, we have included auto-migration functionality to easily transfer your data files. 
+The latest version of oxd includes auto-migration functionality to easily transfer your data files from an old server to a new server. 
 
-oxd now uses configurable data storage (`h2`, `redis`, etc.) instead of JSON files. Configure a new instance of oxd 3.1.4 to use storage with data filled by previous installation (e.g. `h2`, `redis`). 
+Instead of JSON files, oxd 3.1.4 now uses configurable data stores such as `h2`, `redis`, etc. You can configure a new instance of oxd 3.1.4 to use storage with data filled by previous installation (e.g. `h2`, `redis`). 
 
-If your existing oxd server uses json files for storage, please point the `migration_source_folder_path` in the new installation configuration property to the location where these files are located. Then start the `oxd-server` as usual.
+If your existing oxd server uses JSON files for storage, point the `migration_source_folder_path` property in the configuration file of the new installation to the location where the files are located. Then start the new `oxd-server`. 
 
 ## Legacy Compatibility
 Before moving forward with an upgrade to oxd 3.1.4, review the following legacy compatibility notes:
@@ -14,7 +14,7 @@ Before moving forward with an upgrade to oxd 3.1.4, review the following legacy 
 - OpenID Connect: Supported in all versions of oxd and Gluu Server         
 
 ## OpenID Connect 
-Follow these simple steps to migrate your JSON files:
+Follow these steps to migrate your JSON files:
 
 - Open `oxd-conf.json` 
 - Modify `migration_source_folder_path` to point to the folder or directory that contains the JSON files
