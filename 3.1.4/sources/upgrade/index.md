@@ -26,4 +26,4 @@ Follow these simple steps to migrate your JSON files:
 - Data migration will only happen once and will not initiate for subsequent oxd-server restarts  
 
 ## UMA 
-Auto-migration between UMA `1.0.1` and UMA `2` is not supported because of major changes between specifications. To view the UMA `2` specifications follow this [link](https://docs.kantarainitiative.org/uma/ed/uma-core-2.0-01.html#without-rpt).
+Auto-migration between UMA `1.0.1` and UMA `2` is **not** supported due to major changes between specifications. To view the UMA `2` specifications follow this [link](https://docs.kantarainitiative.org/uma/ed/uma-core-2.0-01.html#without-rpt).
