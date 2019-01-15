@@ -50,7 +50,7 @@ Follow these steps to upgrade oxd server:
 ```
 
 
-!!! Note: 
+!!! Note    
     If you are using Windows OS, don't forget to include the escape path separator (e.g. `C:\\OXD_OLD\\oxd-server\\conf`)
 
 - Restart `oxd-server` to import the files
