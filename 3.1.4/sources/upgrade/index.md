@@ -1,7 +1,10 @@
 ## Overview
 
-If you are upgrading `oxd-server` to the latest version, we have included auto-migration functionality to easily transfer your data files. `oxd-server` now uses configurable data storage (`h2`, `redis`, etc.) instead of JSON files.
-Configure upgraded `oxd-server` to use storage with data filled by previous installation (e.g. `h2`, `redis`). If it's old `oxd-server` which used json files as storage, please point `migration_source_folder_path` configuration property to location where these files are located. Then start `oxd-server` as usual.
+If you are upgrading oxd to the latest version, we have included auto-migration functionality to easily transfer your data files. 
+
+oxd now uses configurable data storage (`h2`, `redis`, etc.) instead of JSON files. Configure an upgraded instance of oxd to use storage with data filled by previous installation (e.g. `h2`, `redis`). 
+
+If it's an old instance of oxd which used json files as storage, please point `migration_source_folder_path` configuration property to the location where these files are located. Then start the `oxd-server` as usual.
 
 ## Legacy Compatibility
 Before moving forward with an upgrade to oxd 3.1.4, review the following legacy compatibility notes:
