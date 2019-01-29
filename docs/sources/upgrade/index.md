@@ -22,24 +22,24 @@ Follow these simple steps to migrate your JSON files:
 - Data migration will only happen once and will not initiate for subsequent oxd-server restarts  
 
 ## UMA 
-Auto-migration between UMA `1.0.1` and UMA `2` is not supported because of major changes between specifications. To view the UMA `2` specifications follow this [link](https://docs.kantarainitiative.org/uma/ed/uma-core-2.0-01.html#without-rpt).
+Auto-migration between UMA `1.0.1` and UMA `2` is not supported because of major changes between the specifications. To view the UMA `2` specifications follow this [link](https://docs.kantarainitiative.org/uma/ed/uma-core-2.0-01.html#without-rpt).
 
-## Using Upgrade Script
+## Using the Upgrade Script
 
-Download upgrade script and yaml template:
+Download the upgrade script and yaml template:
 
 ```
 # wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/upgrade/oxd-server.yml.temp
 # wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/upgrade/oxd_updater.py
 ```
 
-Install python yaml module:
+Install the python yaml module:
 
 ```
 # pip install pyyaml
 ```
 
-Run upgrade script:
+Run theupgrade script:
 
 ```
 # python oxd_updater.py

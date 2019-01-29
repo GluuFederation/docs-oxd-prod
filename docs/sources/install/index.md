@@ -11,11 +11,11 @@ oxd needs to be deployed on a server or VM with the following **minimum** requir
 !!! Note
     **oxd requires Java version 1.8**
 
-oxd 4.0.beta works with CE 3.1.4. After beta phase oxd 4.0 will work with CE 4.0.
+oxd 4.0.beta works with CE 3.1.4. After the beta phase, oxd 4.0 will work with CE 4.0.
 
 ## Linux Packages
 
-Before the installation make sure that Java 8 is installed on your OS. Please check it with
+Before the installation, make sure that Java 8 is installed on your OS. Please check it with
 ```
 # java -version
 java version "1.8.0_181"
@@ -118,15 +118,15 @@ The oxd-server is a self-contained program.
 
 To run oxd-server:
 
-1. download jar file http://ox.gluu.org/maven/org/xdi/oxd-server/4.0.beta-SNAPSHOT/oxd-server-4.0.beta-SNAPSHOT.jar
+1. download the jar file: http://ox.gluu.org/maven/org/xdi/oxd-server/4.0.beta-SNAPSHOT/oxd-server-4.0.beta-SNAPSHOT.jar
 
-1. download jar file http://ox.gluu.org/maven/org/bouncycastle/bcprov-jdk15on/1.54/bcprov-jdk15on-1.54.jar
+1. download the jar file: http://ox.gluu.org/maven/org/bouncycastle/bcprov-jdk15on/1.54/bcprov-jdk15on-1.54.jar
 
-1. download yml file https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/oxd-server/src/main/resources/oxd-server.yml
+1. download the yml file: https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/oxd-server/src/main/resources/oxd-server.yml
 
-1. download keystore file https://github.com/GluuFederation/oxd/raw/version_4.0.beta/oxd-server/src/main/resources/oxd-server.keystore
+1. download the keystore file: https://github.com/GluuFederation/oxd/raw/version_4.0.beta/oxd-server/src/main/resources/oxd-server.keystore
 
-1. put it in one directory, correct `oxd-server.yml` if needed, move inside it and run (java 1.8 is required)
+1. put it in one directory, correct `oxd-server.yml` if needed, move inside it and run the following (java 1.8 is required):
 
 Windows:
 ``` 
@@ -172,7 +172,7 @@ $ sudo apt-get remove oxd-server-4.0.beta
 
 ### View, delete entries inside the oxd-server database with lsox.sh or lsox.bat scripts
 
-There are three types of parameters which can be used by lsox.sh/lsox.bat files:
+There are four types of parameters which can be used by lsox.sh/lsox.bat files:
 
  - `-l` - list all oxd_ids inside the oxd database
  - `-oxd_id <oxd_id>` - view JSON representation of the entity by oxd_id

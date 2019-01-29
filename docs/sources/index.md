@@ -7,7 +7,7 @@ oxd exposes simple, static APIs web application developers can use to implement 
     oxd 4.0.beta is available under the Apache2 open source license! [Learn more](4.x-intro.md)
 
 ## Architecture 
-The oxd Linux package includes the `oxd-server` which is simple REST application.
+The oxd Linux package includes the `oxd-server` which is a simple REST application.
 
 ### oxd-server
 `oxd-server` is designed to work over the web, making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
