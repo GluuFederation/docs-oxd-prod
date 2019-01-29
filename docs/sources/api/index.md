@@ -97,6 +97,10 @@ These iFrames should be loaded automatically, enabling each application to get a
 
 [API Link](#operations-developers-update-site)
 
+#### Remove Site
+
+[API Link](#operations-developers-remove-site)
+
 ## UMA 2 Authorization 
 UMA 2 is a profile of OAuth 2.0 that defines RESTful, JSON-based, standardized flows and constructs for coordinating the protection of APIs and web resources. 
 
