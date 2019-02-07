@@ -65,7 +65,7 @@ Check our FAQ about easiest way to generate native client [here](https://gluu.or
 ## Source code
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
 
-## Licene
+## License
 oxd 4.0.beta is available under the AGPL open source license. 
 
 ## Support
