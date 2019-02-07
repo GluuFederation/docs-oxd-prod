@@ -33,17 +33,6 @@ oxd offers operational and security benefits for developers and organizations:
 - oxd centralizes and standardizes secure OAuth 2.0 implementations across heterogeneous web application environments    
 - When OAuth 2.0 vulnerabilities are discovered, simply update the oxd package--applications **never** have to be changed or regression tested    
 - oxd is written, maintained and supported by OAuth 2.0 security experts   
-
-
-## Compatibility
-oxd 4.0.beta has been tested against the following OAuth 2.0 servers:
-
-### OpenID Providers (OP)
-- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4), [3.1.5](https://gluu.org/docs/ce/3.1.5)
-
-
-### UMA Authorization Servers (AS)
-- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4), [3.1.5](https://gluu.org/docs/ce/3.1.5)
     
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
@@ -58,6 +47,16 @@ Learn more in the [oxd API section](./api/index.md) of the documentation.
 
 oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml). It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
 Check our FAQ about easiest way to generate native client [here](https://gluu.org/docs/oxd/4.0.beta/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
+
+## Compatibility
+oxd 4.0.beta has been tested against the following OAuth 2.0 servers:
+
+### OpenID Providers (OP)
+- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4), [3.1.5](https://gluu.org/docs/ce/3.1.5)
+
+
+### UMA Authorization Servers (AS)
+- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4), [3.1.5](https://gluu.org/docs/ce/3.1.5)
 
 ## Source code
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
