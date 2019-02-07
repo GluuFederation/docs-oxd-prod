@@ -40,7 +40,7 @@ oxd APIs are [swaggerized](https://github.com/GluuFederation/oxd/blob/version_4.
 For more information about generating native clients, [check our FAQ](https://gluu.org/docs/oxd/4.0.beta/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
 
 ## Compatibility
-oxd 4.0.beta has been tested against the following OAuth 2.0 servers:
+oxd 4.0.beta has been tested against the following OAuth 2.0 Authorization Servers:
 
 ### OpenID Providers (OP)
 - Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4), [3.1.5](https://gluu.org/docs/ce/3.1.5)
