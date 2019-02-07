@@ -39,14 +39,11 @@ oxd offers operational and security benefits for developers and organizations:
 oxd 4.0.beta has been tested against the following OAuth 2.0 servers:
 
 ### OpenID Providers (OP)
-- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4)
+- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4), [3.1.5](https://gluu.org/docs/ce/3.1.5)
 
 
 ### UMA Authorization Servers (AS)
-- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4)
-
-!!! Note
-    If you have successfully tested oxd against another OP or AS, please email details to [sales@gluu.org](mailto:sales@gluu.org).
+- Gluu Server [3.1.4](https://gluu.org/docs/ce/3.1.4), [3.1.5](https://gluu.org/docs/ce/3.1.5)
     
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
