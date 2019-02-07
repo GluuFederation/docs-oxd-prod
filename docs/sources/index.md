@@ -4,12 +4,13 @@
 oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). 
 
 ## Architecture 
-The oxd Linux package includes the `oxd-server` which is a simple REST application.
-
-### oxd-server
-`oxd-server` is designed to work over the web, making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
+The oxd Linux package includes the `oxd-server` which is a simple REST application. `oxd-server` is designed to work over the web, making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
 
 ![oxd-https-architecture](./img/oxd-https.jpg) 
+
+## Tutorial
+
+Follow our [tutorial](./tutorial/index.md) to learn how oxd works with a simple python application. 
 
 ## Get Started
 
@@ -21,18 +22,7 @@ To get started:
 
 1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs 
 
-1. Check [oxd API](./api/index.md) to understand how oxd works.
-
-## Tutorial
-
-Look into our [tutorial](./tutorial/index.md) that shows how to get simple python application work with oxd.  
-
-## Benefits
-oxd offers operational and security benefits for developers and organizations:
-
-- oxd centralizes and standardizes secure OAuth 2.0 implementations across heterogeneous web application environments    
-- When OAuth 2.0 vulnerabilities are discovered, simply update the oxd package--applications **never** have to be changed or regression tested    
-- oxd is written, maintained and supported by OAuth 2.0 security experts   
+1. Call the [oxd API](./api/index.md) to implement authentication and authorization against an external Authorization Server.
     
 ## API
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
@@ -45,8 +35,9 @@ Learn more in the [oxd API section](./api/index.md) of the documentation.
 
 ## Native Libraries
 
-oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml). It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
-Check our FAQ about easiest way to generate native client [here](https://gluu.org/docs/oxd/4.0.beta/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
+oxd APIs are [swaggerized](https://github.com/GluuFederation/oxd/blob/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml)! Use the [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/) to generate native libraries for your programming language of choice. 
+
+For more information about generating native clients, [check our FAQ](https://gluu.org/docs/oxd/4.0.beta/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
 
 ## Compatibility
 oxd 4.0.beta has been tested against the following OAuth 2.0 servers:
