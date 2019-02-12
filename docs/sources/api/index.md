@@ -431,8 +431,8 @@ https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
 
 ## API References
 
-oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml). It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
-Check our FAQ about easiest way to generate native client [here](https://gluu.org/docs/oxd/4.0.beta/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
+oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.0/oxd-server/src/main/resources/swagger.yaml). It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
+Check our FAQ about easiest way to generate native client [here](https://gluu.org/docs/oxd/4.0/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
 
 <link rel="stylesheet" type="text/css" href="../../swagger/swagger-ui.css">
 
@@ -467,7 +467,7 @@ function waitAndGoToHash() {
 
 window.onload = function() {
   const ui = SwaggerUIBundle({
-    url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml",
+    url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0/oxd-server/src/main/resources/swagger.yaml",
     dom_id: '#swagger-ui',
     docExpansion: 'full',
     deepLinking: true,
