@@ -29,8 +29,8 @@ Auto-migration between UMA `1.0.1` and UMA `2` is not supported because of major
 Download the upgrade script and yaml template:
 
 ```
-# wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/upgrade/oxd-server.yml.temp
-# wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0.beta/upgrade/oxd_updater.py
+# wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0/upgrade/oxd-server.yml.temp
+# wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0/upgrade/oxd_updater.py
 ```
 
 Install the python yaml module:
@@ -48,6 +48,6 @@ Run theupgrade script:
 The `oxd_updater.py` script:
   1. moves json data to `/opt/oxd-server/json_data_backup` and sets 
     `migration_source_folder_path: /opt/oxd-server/json_data_backup` in `oxd-server.yml`
-    so that oxd-server-4.0.beta migrates to h2 database
+    so that oxd-server migrates to h2 database
   1. merges `oxd-conf.json`, `oxd-default-site-config.json`, and `log4j.xml` into new configuration file `oxd-server.yml`
   
