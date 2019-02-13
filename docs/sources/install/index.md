@@ -166,7 +166,7 @@ $ sudo apt-get remove oxd-server
 ```
 
 !!! Note
-    You must use `apt-get purge oxd-server-4.0` or `apt-get remove --purge oxd-server-4.0` to uninstall and remove all the folders and services of oxd server.
+    You must use `apt-get purge oxd-server` or `apt-get remove --purge oxd-server` to uninstall and remove all the folders and services of the oxd server.
 
 ## Utility scripts
 
