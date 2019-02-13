@@ -30,7 +30,7 @@ Step 2: After the installation, [configure](../configuration/index.md) your oxd 
 
 Step 3: Run oxd server:             
  
-`/etc/init.d/oxd-server-4.0 start`
+`/etc/init.d/oxd-server start`
 
 !!! Note
     If you need to stop your `oxd-server`at any point, you can run the following command: `/etc/init.d/oxd-server stop` 
