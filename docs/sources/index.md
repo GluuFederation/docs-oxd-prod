@@ -4,7 +4,7 @@
 oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). 
 
 ## Architecture 
-The oxd Linux package includes the `oxd-server` which is a simple REST application. `oxd-server` is designed to work over the web, making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
+The oxd Linux package includes the `oxd-server` which is a simple REST application. `oxd-server` is designed to work over the web (via `https`), making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
 
 ![oxd-https-architecture](./img/oxd-https.jpg) 
 
