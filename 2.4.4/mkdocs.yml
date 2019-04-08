@@ -1,7 +1,7 @@
 site_name: oxd Docs
 site_description: Documentation for oxd OpenID Connect and UMA client software
 site_favicon: '/img/gluu_favicon.ico'
-copyright: Copyright &copy; 2018, Gluu, Inc.
+copyright: Copyright &copy; 2019, Gluu, Inc.
 docs_dir: sources 
 # repo_url: https://github.com/GluuFederation/docs-oxd
 repo_url: https://github.com/GluuFederation/docs-oxd-prod/tree/2.4.4/2.4.4
@@ -15,7 +15,7 @@ markdown_extensions:
 - toc:
      permalink: '#'
 - pymdownx.superfences
-pages:
+nav:
 - Home: 'index.md'
 # Protocol
 - oxd Server:
