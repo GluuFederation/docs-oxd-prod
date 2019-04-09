@@ -54,7 +54,7 @@ apt-get install oxd-server
 echo "deb https://repo.gluu.org/ubuntu/ xenial main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 apt-get update
-apt-get install oxd-server
+apt-get install oxd-server=3.1.4-*
 ```
 
 ### Debian 8 (Jessie)
@@ -92,7 +92,7 @@ wget https://repo.gluu.org/centos/Gluu-centos7.repo -O /etc/yum.repos.d/Gluu.rep
 wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
-yum install oxd-server
+yum install oxd-server-3.1.4
 ```
 
 ### RHEL 6
@@ -112,7 +112,7 @@ wget https://repo.gluu.org/rhel/Gluu-rhel7.repo -O /etc/yum.repos.d/Gluu.repo
 wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
-yum install oxd-server
+yum install oxd-server-3.1.4
 ```
 
 ## Service Operations
