@@ -15,7 +15,7 @@ markdown_extensions:
 - toc:
      permalink: '#'
 - pymdownx.superfences
-nav:
+pages:
 - Home: 'index.md'
 # Protocol
 - oxd Server:
