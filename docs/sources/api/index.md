@@ -97,6 +97,8 @@ These iFrames should be loaded automatically, enabling each application to get a
 
 [API Link](#operations-developers-update-site)
 
+During update site it's important to pay special attention to `response_types` and `grant_types`. If during registration specify `response_types=code` and `grant_types=authorization_code client_credentials` and then during update miss/omit them then OP falls back to `response_types=code` and sets `grant_types=authorization_code` (in this way dropping `client_credentials` grant type).
+
 #### Remove Site
 
 [API Link](#operations-developers-remove-site)
