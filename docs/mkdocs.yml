@@ -30,11 +30,11 @@ markdown_extensions:
 - codehilite     
 - pymdownx.superfences
 extra_css: 
-    - 'sources/swagger/swagger-ui.css'
+    - 'swagger/swagger-ui.css'
 extra_javascript: 
-    - 'sources/swagger/swagger-ui-bundle.js'
-    - 'sources/swagger/swagger-ui-standalone-preset.js'
-    - 'sources/swagger/swagger-ui.js'
+    - 'swagger/swagger-ui-bundle.js'
+    - 'swagger/swagger-ui-standalone-preset.js'
+    - 'swagger/swagger-ui.js'
 
 # Navigation
 nav:
