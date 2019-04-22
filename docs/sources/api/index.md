@@ -128,7 +128,7 @@ If the "and" rule is preferred, it can be achieved by adding an additional scope
 
 `Resource2` scopes: `read_write` (and associate `read` *and* `write` policies with the `read_write` scope)
 
-If access is not granted, an unauthorized HTTP code and registered ticket are returned. For example: 
+If access is not granted, an unauthorized HTTP code and registered ticket are returned (ticket is re-newed if `need_info` is returned on `/uma-rp-get-rpt`). For example: 
 
 ```language-http
 HTTP/1.1 401 Unauthorized
@@ -200,9 +200,9 @@ Request with `scope_expression`. `scope_expression` is a Gluu-invented extension
 POST /uma-rs-protect
 
 {
-    "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF",  <-REQUIRED
+    "oxd_id": "6F9619FF-8B86-D011-B42D-00CF4FC964FF",  <- REQUIRED
     "overwrite":false,                                 <- OPTIONAL oxd_id registers resource, if send uma_rs_protect second time with same oxd_id and overwrite=false then it will fail with error uma_protection_exists. overwrite=true means remove existing UMA Resource and register new based on JSON Document.
-    "resources": [  <-  REQUIRED
+    "resources": [                                     <- REQUIRED
       {
         "path": "/photo",
         "conditions": [
@@ -391,6 +391,8 @@ HTTP 1.1 200 OK
      "upgraded":true
 }
 ```
+
+If Need Info Error reponse is returned, then old ticket is invalidated and new ticket is returned inside Need Info Reponse. Make sure always new ticket is used.
 
 Needs Info Error Response:
 ```language-json
