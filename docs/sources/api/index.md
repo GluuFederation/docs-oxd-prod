@@ -398,24 +398,33 @@ Needs Info Error Response:
 ```language-json
 HTTP 1.1 403 Forbidden
 {
-     "error":"need_info",
-     "error_description":"The authorization server needs additional information in order to determine whether the client is authorized to have these permissions.",
-     "details": {  
-         "error":"need_info",
-         "ticket":"ZXJyb3JfZGV0YWlscw==",
-         "required_claims":[  
-             {  
-                 "claim_token_format":[  
-                     "http://openid.net/specs/openid-connect-core-1_0.html#IDToken"
-                 ],
-                 "claim_type":"urn:oid:0.9.2342.19200300.100.1.3",
-                 "friendly_name":"email",
-                 "issuer":["https://example.com/idp"],
-                 "name":"email23423453ou453"
-            }
-         ],
-         "redirect_user":"https://as.example.com/rqp_claims?id=2346576421"
-     }
+  "error": "need_info",
+  "ticket": "38569d82-6e4a-4287-aac8-1d9ea2b8c439",
+  "required_claims": [
+    {
+      "issuer": [
+        "https://gluu.local.org"
+      ],
+      "name": "country",
+      "claim_token_format": [
+        "http://openid.net/specs/openid-connect-core-1_0.html#IDToken"
+      ],
+      "claim_type": "string",
+      "friendly_name": "country"
+    },
+    {
+      "issuer": [
+        "https://gluu.local.org"
+      ],
+      "name": "city",
+      "claim_token_format": [
+        "http://openid.net/specs/openid-connect-core-1_0.html#IDToken"
+      ],
+      "claim_type": "string",
+      "friendly_name": "city"
+    }
+  ],
+  "redirect_user": "https://gluu.local.org/oxauth/restv1/uma/gather_claims?customUserParam2=value2&customUserParam1=value1&client_id=@!B28D.DF29.C16D.8E6F!0001!5489.C322!0008!7946.30C2.ACFC.73D8&ticket=38569d82-6e4a-4287-aac8-1d9ea2b8c439"
 }
 ```
 
