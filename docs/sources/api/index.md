@@ -29,8 +29,8 @@ you can think of the Authorization Code Flow as a three-step process:
 
 Before using the above workflow you will need to obtain an access token to secure the interaction with `oxd-server`. You can follow the two steps below. 
 
- - [Register site](#register-site) (returns `client_id` and `client_secret`. Make sure the `uma_protection` scope is present in the request)
- - [Get client token](#get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`)
+ - [Register site](#register-site) (returns `client_id` and `client_secret`. Make sure the `uma_protection` scope is present in the request and `grant_type` has `client_credentials` value.)
+ - [Get client token](#get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`. Note if `grant_type` does not have `client_credentials` value you will get error to check AS logs.)
  
 Pass the obtained access token in `Authorization: Bearer <access_token>` header in all future calls to the `oxd-server`.
 
