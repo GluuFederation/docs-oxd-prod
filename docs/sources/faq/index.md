@@ -53,7 +53,7 @@ This can happen if the `code` lifetime in `oxauth` server is very small and the 
 
 ```
 2018-04-05 14:30:32,530 ERROR [org.xdi.oxd.server.op.GetTokensByCodeOperation] Failed to get tokens because response code is: null
-2018-04-05 14:30:32,530 ERROR [org.xdi.oxd.server.Processor] No response from operation. Command: Command{command=GET_TOKENS_BY_CODE, params={"code":"cc36672e-f8b9-4958-9a7c-3d83c99c4289","state":"us7d1v37cn1fcsd1c0156adr16","oxd_id":"055cec18-bd2e-4b29-ae38-7428d1d7c7fb","protection_access_token":"51ebfa51-d290-410e-bd37-abb3a0d8ab0c"}}
+2018-04-05 14:30:32,530 ERROR [org.xdi.oxd.server.Processor] No response from operation. Command: Command{command=GET_TOKENS_BY_CODE, params={"code":"cc36672e-f8b9-4958-9a7c-3d83c99c4289","state":"us7d1v37cn1fcsd1c0156adr16","oxd_id":"055cec18-bd2e-4b29-ae38-7428d1d7c7fb"}}
 ```
 
 To fix it, increase the `authorizationCodeLifetime` oxauth configuration value as explained [here](https://gluu.org/docs/ce/admin-guide/oxtrust-ui/#oxauth-configuration).
@@ -94,8 +94,8 @@ The only way to avoid client expiration is to change client life time on OP. Onl
 ### How can I use oxd with AS that does not support UMA ?
 Please set `uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client` in `oxd-config.json` to "fails." Otherwise, you may get `no_uma_discovery_response` if UMA is not supported on the AS side.
 
-### I got a `protection_access_token_insufficient_scope` error when calling oxd-server. It worked perfectly in 3.1.x. What should I do ?
-Since `3.1.4` we have forced users to have the `oxd` scope associated with `protection_access_token`. If it is not present, then oxd rejects the calls.
+### I got a `access_token_insufficient_scope` error when calling oxd-server. It worked perfectly in 3.1.x. What should I do ?
+Since `3.1.4` we have forced users to have the `oxd` scope associated with `access_token`. If it is not present, then oxd rejects the calls.
  
   - Make sure you have the `oxd` scope present on AS
   - the `oxd` scope is present during the `/register-site` command in the `scope` field
