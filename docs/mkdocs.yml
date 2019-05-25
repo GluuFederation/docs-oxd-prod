@@ -8,10 +8,7 @@ copyright: Copyright &copy; 2019, Gluu, Inc.
 
 # Repository
 docs_dir: sources
-repo_name: GluuFederation/docs-oxd-prod
 repo_url: https://github.com/GluuFederation/docs-oxd-prod/tree/4.0/docs
-#repo_url: https://github.com/GluuFederation/docs-oxd-prod/
-#edit_uri: edit/4.0/docs/sources
 
 # Configuration
 theme_dir: theme/material
