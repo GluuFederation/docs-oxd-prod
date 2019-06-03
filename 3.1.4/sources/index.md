@@ -3,9 +3,6 @@
 ## Introduction
 oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). 
 
-!!! Note
-    oxd 3.1.4 is available under the Apache2 open source license! [Learn more](https://www.gluu.org/blog/oxd-3-1-4-is-ga-open-source/)
-
 ## Architecture 
 The oxd Linux package includes the core `oxd-server` and the optional `oxd-https-extension`. Web applications can leverage the oxd APIs via localhost with the oxd-server or over the web with the https-extension. 
 
@@ -91,6 +88,12 @@ The oxd source code is [available on GitHub](https://github.com/GluuFederation/o
 Gluu offers free community support for oxd on the [Gluu Support Portal](https://support.gluu.org). 
 
 If you need guaranteed response times, private support, and priority access to our team, Gluu offers a range of [VIP support plans](https://gluu.org/pricing). 
+
+
+## License
+
+oxd is available under the [AGPL open source license](https://github.com/GluuFederation/oxd/blob/master/license.md). 
+
 
 ## FAQ
 
