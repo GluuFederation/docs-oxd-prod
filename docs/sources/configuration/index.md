@@ -115,7 +115,7 @@ defaultSiteConfig:
 
 - **uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client:** Notifies the `oxd-server` whether to automatically register the `Claims Gathering Endpoint` as the `claims_redirect_uri` for a given client. It is useful for UMA 2 clients that wish to force authorization against the Gluu Server. To provide custom `claims_redirect_uri`, set this property to `false`
 
-- **add_client_credentials_grant_type_automatically_during_client_registration:** If set to `true` then `client_credentials` grant type is automatically added to clients registered by oxd. If `false`, then `client_credentials` will not be automatically added.
+- **add_client_credentials_grant_type_automatically_during_client_registration:** If set to `true` then `client_credentials` grant type is automatically added to clients registered by oxd. If `false`, then `client_credentials` will not be automatically added to clients, but user can still add this grant type to clients in AS.
 
 - **migration_source_folder_path:** Migration from previous versions is built into the `oxd-server`. To migrate old JSON files from previous versions, specify the path to folder/directory that contains those JSON files in this property. Those files will be read and imported once (during restart `oxd-server`, will not import them again). If using Windows OS, don't forget to escape the path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
 
