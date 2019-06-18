@@ -274,9 +274,9 @@ else:
 Now navigate to https://rp.server.com/cgi-bin/oxd.py and you will see a link **Click here to login**
 as below
 
-![login link](fig1.png)
+![login link](../img/tutorial_login.png)
 
 Click on the link and you will be redirected to Gluu login page. Upon entering credidentals and allowing
 RP to access claims, you will see user info as:
 
-![user info](fig2.png)
+![user info](../img/tutorial_user_info.png)
