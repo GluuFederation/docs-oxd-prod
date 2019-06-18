@@ -5,12 +5,12 @@ using Python CGI and Apache, in the hope that programmers of other languages wil
 
 ## Preliminary
 
-For this tutorial, our OpenID Connect Provider (OP) is Gluu Server 3.1.4, and we are using oxd Server 4.0 and an https & cgi enabled web server -- Apache in our case. 
+For this tutorial, our OpenID Connect Provider (OP) is Gluu Server 4.0, and we are using oxd Server 4.0 and an https & cgi enabled web server -- Apache in our case. 
 
-### Gluu Server 3.1.4 (OP)
-As stated above, in this tutorial we're using Gluu Server 3.1.4 as the OP. 
+### Gluu Server 4.0 (OP)
+As stated above, in this tutorial we're using Gluu Server 4.0 as the OP. 
 
-Follow [these instructions](https://gluu.org/docs/ce/3.1.4/installation-guide/install/) to install your Gluu Server. In this tutorial, I installed Gluu Server on host **op.server.com**.
+Follow [these instructions](https://gluu.org/docs/ce/4.0/installation-guide/install/) to install your Gluu Server. In this tutorial, I installed Gluu Server on host **op.server.com**.
 
 Add a test user. I added user `test_user`.
 
