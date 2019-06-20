@@ -196,7 +196,7 @@ usage: utility-name
 
 A typical call looks like this:
 ```
-yuriy@yuriyz:~/oxd-server-4.0-SNAPSHOT-distribution/bin$ sh oxd-show.sh -oxd_id d8cc6dea-4d66-4995-b6e1-da3a33722f2e
+yuriy@yuriyz:~/oxd-server-4.0-SNAPSHOT-distribution/bin$ sh lsox.sh -oxd_id d8cc6dea-4d66-4995-b6e1-da3a33722f2e -a gf4566-dlt456-emtr56-ddmg5kd
 BASEDIR=.
 CONF=./../conf/oxd-server.yml
 
