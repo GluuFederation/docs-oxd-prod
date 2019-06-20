@@ -14,13 +14,13 @@ Run the following command to stop your oxd server:
 
 ## Status 
 
-Run the following command to get the status of your oxd serveR: 
+Run the following command to get the status of your oxd server: 
 
 `/etc/init.d/oxd-server status`  
 
 ## Restart
 
-Run the following command to restart your oxd serveR: 
+Run the following command to restart your oxd server: 
 
 `/etc/init.d/oxd-server restart` 
 
