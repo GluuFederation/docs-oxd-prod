@@ -196,12 +196,16 @@ $ sudo apt-get remove oxd-server
 
 ### View, delete entries inside the oxd-server database with lsox.sh or lsox.bat scripts
 
-There are three types of parameters which can be used by lsox.sh/lsox.bat files:
- - `-l` - list all oxd_ids inside the oxd database
- - `-oxd_id <oxd_id>` - view JSON representation of the entity by oxd_id
- - `-d` - removes entity by oxd_id.
+There are three types of parameters which can be used by lsox.sh/lsox.bat files: 
+
+- `-l` - list all oxd_ids inside the oxd database  
+
+- `-oxd_id <oxd_id>` - view JSON representation of the entity by oxd_id
+
+- `-d` - removes entity by oxd_id.
 
 The script is located in `/opt/oxd-server/bin/lsox.sh`. If you hit the script without any parameters, it shows a hint:
+
 ```
 yuriy@yuriyz:~/oxd-server-distribution/bin$ sh lsox.sh
 BASEDIR=.
@@ -217,6 +221,7 @@ usage: utility-name
 ```
 
 A typical call looks like this:
+
 ```
 yuriy@yuriyz:~/oxd-server-3.1.4-SNAPSHOT-distribution/bin$ sh oxd-show.sh -oxd_id d8cc6dea-4d66-4995-b6e1-da3a33722f2e
 BASEDIR=.
