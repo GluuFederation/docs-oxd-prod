@@ -223,7 +223,7 @@ usage: utility-name
 A typical call looks like this:
 
 ```
-yuriy@yuriyz:~/oxd-server-3.1.4-SNAPSHOT-distribution/bin$ sh oxd-show.sh -oxd_id d8cc6dea-4d66-4995-b6e1-da3a33722f2e
+yuriy@yuriyz:~/oxd-server-3.1.4-SNAPSHOT-distribution/bin$ sh lsox.sh -oxd_id d8cc6dea-4d66-4995-b6e1-da3a33722f2e
 BASEDIR=.
 CONF=./../conf/oxd-conf.json
 
