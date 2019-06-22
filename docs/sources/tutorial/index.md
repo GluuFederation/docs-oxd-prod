@@ -52,6 +52,12 @@ sudo a2enmod ssl
 sudo a2ensite default-ssl.conf
 ```
 
+Restart apache:
+
+```
+service apache2 restart
+```
+
 We will use Python's requests module to interact with oxd's REST API:
 
 ```
