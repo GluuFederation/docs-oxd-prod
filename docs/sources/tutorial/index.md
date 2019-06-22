@@ -96,7 +96,7 @@ Following the first step, you will register the client dynamically, and register
 {
   "authorization_redirect_uri": "https://rp.server.com/cgi-bin/oxd.py/login",
   "op_host": "https://op.server.com",
-  "post_logout_redirect_uri": "https://rp.server.com/cgi-bin/oxd.py/logout",
+  "post_logout_redirect_uris": ["https://rp.server.com/cgi-bin/oxd.py/logout"],
   "application_type": "web",
   "response_types": ["code"],
   "grant_types": ["authorization_code", "client_credentials"],
