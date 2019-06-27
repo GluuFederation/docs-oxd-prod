@@ -68,7 +68,7 @@ HTTP/1.1 302 Found
 Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=af0ifjsldkj&scopes=openid%20profile
 ```
 
-The only required parameter for `/get-authorization-url` is `oxd_id`. The optional parameters are `scope`, `acr_values`, `prompt`, `authorization_redirect_uri`, `custom_parameters` and `params`. The custom parameters (in key and value pair) can be passed to OpenID Connect Provider (OP) using `custom_parameters` parameter. The standard parameters (in key and value pair) will be passed to OP using `params` parameter.
+The only required parameter for `/get-authorization-url` is `oxd_id`. The optional parameters are `scope`, `acr_values`, `prompt`, `authorization_redirect_uri`, `custom_parameters` and `params`. The custom parameters (in key and value pair) can be passed to OpenID Connect Provider (OP) using `custom_parameters` parameter. The standard parameters (in key and value pair) can be passed to OP using `params` parameter.
 
 #### Get Tokens (ID & Access) by Code
 
