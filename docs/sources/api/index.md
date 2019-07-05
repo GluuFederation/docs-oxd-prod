@@ -47,54 +47,96 @@ The `op_host` parameter is optional, but it must be specified in either the [def
 
 `/register-site` has many optional parameters. All the parameters for site registeration are listed below.
 
-- `op_host:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `op_host:` Provide the URL of OpenID Provider (OP). (Example : "`https://idp.example.org`"). If missing, must be present in defaults.
 
 - `op_discovery_path:` Path to the OpenID Connect Provider's discovery document. For example, if it is `https://example.com/.well-known/openid-configuration` then the path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then the path is `/oxauth`.  
 
-- `authorization_redirect_uri:` The only required parameter is the  `authorization_redirect_uri`. This provide the URL where the user will be redirected after successful authorization at the OpenID Connect Provider (OP). (Example : "authorization_redirect_uri" : "`https://client.site.org/home`").
+- `authorization_redirect_uri:` The only required parameter is the  `authorization_redirect_uri`. This provide the URL where the user will be redirected after successful authorization at the OpenID Connect Provider (OP). (Example : "`https://client.site.org/home`").
 
-- `post_logout_redirect_uris:` Provide the URLs supplied by the RP to request that the user be redirected to this location after a logout has been performed (Example : "post_logout_redirect_uris" : ["`https://client.site.org/login`", "`https://client.site.org/index`"]).
+- `post_logout_redirect_uris:` Provide the URLs supplied by the RP to request that the user be redirected to this location after a logout has been performed (Example : ["`https://client.site.org/login`", "`https://client.site.org/index`"]).
 
-- `redirect_uris:` Provide the list of redirection URIs (Example : "redirect_uris" : ["`https://client.site.org/home`", "`https://client.site.org/contacts`"]).
+- `redirect_uris:` Provide the list of redirection URIs (Example : ["`https://client.site.org/home`", "`https://client.site.org/contacts`"]).
 
-- `response_types:` Provide a list of the OAuth 2.0 response_type values that the Client is declaring that it will restrict itself to using. If omitted, the default is that the Client will use only the `code` response type  (Example : "response_types" : ["`code`", "`token`, `id_token`"]).
+- `response_types:` Provide a list of the OAuth 2.0 response_type values that the Client is declaring that it will restrict itself to using. If omitted, the default is that the Client will use only the `code` response type  (Example : ["`code`", "`token`, `id_token`"]).
 
-- `claims_redirect_uri:` Provide claims redirect URIs (Example : "claims_redirect_uri":"`https://idp.example.org`").
+- `claims_redirect_uri:` Provide claims redirect URIs (Example : "`https://idp.example.org`").
 
-- `client_id:` Provide the client id of existing client, ignores all other parameters and skips new client registration forcing to use existing client. `client_secret` is required if this parameter is set (Example : "client_id" : "`@!19CF.B296.532F.83E2!0001!25C1.E1E4!0008!8451.43B2.84C0.C235`").
+- `client_id:` Provide the client id of existing client, ignores all other parameters and skips new client registration forcing to use existing client. `client_secret` is required if this parameter is set (Example :  "`@!19CF.B296.532F.83E2!0001!25C1.E1E4!0008!8451.43B2.84C0.C235`").
 
-- `client_secret:` Provide client secret of existing client. `client_secret` is required if `client_id` parameter is set (Example : "client_secret" : "`f436b936-03fc-433f-9772-53c2bc9e1c74`").
+- `client_secret:` Provide client secret of existing client. `client_secret` is required if `client_id` parameter is set (Example :  "`f436b936-03fc-433f-9772-53c2bc9e1c74`").
 
 - `client_registration_access_token:` Provide client_registration_access_token of existing client.
 
-- `client_name:` Provide name of existing client (Example : "client_name" : "`Production Client 1`").
+- `client_name:` Provide name of existing client (Example : "`Production Client 1`").
 
-- `client_jwks_uri:` Returns the URL for the Client's JSON Web Key Set (JWK) document containing key(s) that are used for signing
-     * requests to the OP. The JWK Set may also contain the Client's encryption keys(s) that are used by the OP to
-     * encrypt the responses to the Client. When both signing and encryption keys are made available, a use (Key Use)
-     * parameter value is required for all keys in the document to indicate each key's intended usage..
+- `client_jwks_uri:` Provide the URL for the Client's JSON Web Key Set (JWK) document containing key(s) that are used for signing requests to the OP. The JWK Set may also contain the Client's encryption keys(s) that are used by the OP to encrypt the responses to the Client. When both signing and encryption keys are made available, a use (Key Use) parameter value is required for all keys in the document to indicate each key's intended usage .
 
-- `response_types:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `client_token_endpoint_auth_method:` Provide the requested authentication method for the Token Endpoint (Example : `none`, `client_secret_basic`, `client_secret_post`, `client_secret_jwt`, `private_key_jwt`, `access_token`, `tls_client_auth`, `self_signed_tls_client_auth`).
 
-- `response_types:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `client_token_endpoint_auth_signing_alg:` Provide the Requested Client Authentication method for the Token Endpoint (Example: "none", "HS256", "HS384", "HS512", "RS256", "RS384", "RS512", "ES256", "ES384", "ES512", "PS256", "PS384", "PS512").
 
-- `response_types:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `client_request_uris:` Provide a list of request_uri values that are pre-registered by the Client for use at the Authorization Server (Example : ["`https://client.site.org/home`", "`https://client.site.org/contacts`"]).
 
-- `response_types:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `client_frontchannel_logout_uris:` Provide frontchannel logout uris (Example : ["`https://client.site.org/logout`", "`https://client.site.org/index`"]).
 
-- `response_types:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `client_sector_identifier_uri:` Provide the URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP. The URL references a file with a single JSON array of redirect_uri values..
 
-- `response_types:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `scope:` Provide list of scope which are used during authentication to authorize access to resource (Example : ["`openid`", "`profile`", "`email`"]).
 
-- `response_types:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `ui_locales:` Provide ui_locales, which can be used to pass the localization from the client application to the server application in the authorize request (Example: ["`en-US`", "`de-CH`"]).
 
-- `response_types:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `claims_locales:`Provide claims_locales, which end-user's preferred languages and scripts for Claims being returned (Example: ["`en-US`", "`de-CH`"]).
 
-- `response_types:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `acr_values:` Provide Returns the Default requested Authentication Context Class Reference values (Example: ["`basic`"]).
 
-- `response_types:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `grant_types:` Provide a list of the OAuth 2.0 grant types that the Client is declaring that it will restrict itself to using (Example: [ "`authorization_code`", "`client_credentials`" ]).
 
-- `response_types:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+- `contacts:` Provide a list of e-mail addresses for people allowed to administer the information for this Client (Example: ["foo_bar@spam.org"]).
+
+- `trusted_client:` Specifies whether client is trusted. Default value is false.
+
+- `access_token_as_jwt:` Specifies whether access_token should be return as JWT or not. Default value is false.
+
+- `access_token_signing_alg:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `rpt_as_jwt:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
+- `contacts:` Provide the URL of OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`"). If missing, must be present in defaults.
+
 
 !!! Note
     `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).
