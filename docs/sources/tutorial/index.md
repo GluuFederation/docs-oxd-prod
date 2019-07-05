@@ -10,7 +10,7 @@ For this tutorial, our OpenID Connect Provider (OP) is Gluu Server 4.0, and we a
 ### Gluu Server 4.0 (OP)
 As stated above, in this tutorial we're using Gluu Server 4.0 as the OP. 
 
-Follow [these instructions](https://gluu.org/docs/ce/4.0/installation-guide/install/) to install your Gluu Server. In this tutorial, I installed Gluu Server on host **op.server.com**.
+Follow [these instructions](https://gluu.org/docs/oxd/4.0/install/) to install your Gluu Server. In this tutorial, I installed Gluu Server on host **op.server.com**.
 
 Add a test user. I added user `test_user`.
 
@@ -70,12 +70,12 @@ These are the steps that will be performed for SSO; step numbers map the steps i
 
 Step | Explanation | Endpoint
 -----|-------------|----------
-1 | Creating a client on Gluu server and registering your site to oxd Server  (we will do this dynamically, for clarity's sake, though it is possible to automate this step in the cgi script). | [register-site](https://gluu.org/docs/oxd/api/#register-site)
-2 | Obtain an access token from the oxd server. This token will be used in headers to authenticate to oxd server in all subsequent queries. I will call this the`oxd_access_token`. So, with the exception of this step headers of subsequent queries will be: <br> `Content-type: 'application/json` <br> `Authorization': 'Bearer <oxd_access_token>'` | [get-client-token](https://gluu.org/docs/oxd/api/#get-client-token)
-3 | Get authorization url. Users will click on this url to reach Gluu's login page and will be redirected to `authorization_redirect_uri` | [get-authorization-url](https://gluu.org/docs/oxd/api/#get-authorization-url)
-4 | You need to verify the `code` and `state` values returned by browser to your cgi script after authorization by Gluu Server. You can pass these values to the oxd server and obtain an access token to user's claims. | [get-tokens-by-code](https://gluu.org/docs/oxd/api/#get-tokens-id-access-by-code)
-5 | Query user information and display it on page. | [get-user-info](https://gluu.org/docs/oxd/api/#get-user-info)
-6 | Query the logout uri from the oxd server. | [get-logout-uri](https://gluu.org/docs/oxd/api/#get-logout-uri)
+1 | Creating a client on Gluu server and registering your site to oxd Server  (we will do this dynamically, for clarity's sake, though it is possible to automate this step in the cgi script). | [register-site](https://gluu.org/docs/oxd/4.0/api/#register-site)
+2 | Obtain an access token from the oxd server. This token will be used in headers to authenticate to oxd server in all subsequent queries. I will call this the`oxd_access_token`. So, with the exception of this step headers of subsequent queries will be: <br> `Content-type: 'application/json` <br> `Authorization': 'Bearer <oxd_access_token>'` | [get-client-token](https://gluu.org/docs/oxd/4.0/api/#get-client-token)
+3 | Get authorization url. Users will click on this url to reach Gluu's login page and will be redirected to `authorization_redirect_uri` | [get-authorization-url](https://gluu.org/docs/oxd/4.0/api/#operations-developers-get-authorization-url)
+4 | You need to verify the `code` and `state` values returned by browser to your cgi script after authorization by Gluu Server. You can pass these values to the oxd server and obtain an access token to user's claims. | [get-tokens-by-code](https://gluu.org/docs/oxd/4.0/api/#get-tokens-id-access-by-code)
+5 | Query user information and display it on page. | [get-user-info](https://gluu.org/docs/oxd/4.0/api/#get-user-info)
+6 | Query the logout uri from the oxd server. | [get-logout-uri](https://gluu.org/docs/oxd/4.0/api/#get-logout-uri)
 
 ## Creating Client and Registering Site to Oxd Server
 
