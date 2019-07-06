@@ -10,12 +10,12 @@ For this tutorial, our OpenID Connect Provider (OP) is Gluu Server 4.0, and we a
 ### Gluu Server 4.0 (OP)
 As stated above, in this tutorial we're using Gluu Server 4.0 as the OP. 
 
-Follow [these instructions](https://gluu.org/docs/oxd/4.0/install/) to install your Gluu Server. In this tutorial, I installed Gluu Server on host **op.server.com**.
+Follow [these instructions](https://gluu.org/docs/ce/4.0/installation-guide/install/) to install your Gluu Server. In this tutorial, I installed Gluu Server on host **op.server.com**.
 
 Add a test user. I added user `test_user`.
 
 ### oxd Server 4.0
-To install oxd Server 4.0.0, follow [these instructions](./install/index.md). 
+To install oxd Server 4.0.0, follow [these instructions](https://gluu.org/docs/oxd/4.0/install/). 
 
 For this tutorial, I installed oxd Server on its own host, **oxd.server.com**. For testing purposes, oxd can also be installed on the same server as the Gluu Server if needed, as there are no port conflicts.
 
