@@ -52,6 +52,13 @@ The `op_host` parameter is optional, but it must be specified in either the [def
 !!! Note
     `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).    
 
+#### Get Client Token
+
+[API Link](#operations-developers-get-client-token)
+
+Obtain an access token from the oxd server. This token will be used in headers to authenticate to oxd server in all subsequent queries. The required parameters for `/get-client-token` are `op_host`, `client_id` and `client_secret`.
+
+
 #### Get Authorization URL
 
 [API Link](#operations-developers-get-authorization-url)
