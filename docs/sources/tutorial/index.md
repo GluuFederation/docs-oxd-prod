@@ -15,7 +15,7 @@ Follow [these instructions](https://gluu.org/docs/ce/4.0/installation-guide/inst
 Add a test user. I added user `test_user`.
 
 ### oxd Server 4.0
-To install oxd Server 4.0.0, follow [these instructions](https://gluu.org/docs/oxd/4.0/install/). 
+To install oxd Server 4.0.0, follow [these instructions](../install/index.md). 
 
 For this tutorial, I installed oxd Server on its own host, **oxd.server.com**. For testing purposes, oxd can also be installed on the same server as the Gluu Server if needed, as there are no port conflicts.
 
