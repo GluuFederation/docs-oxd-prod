@@ -70,12 +70,12 @@ These are the steps that will be performed for SSO; step numbers map the steps i
 
 Step | Explanation | Endpoint
 -----|-------------|----------
-1 | Creating a client on Gluu server and registering your site to oxd Server  (we will do this dynamically, for clarity's sake, though it is possible to automate this step in the cgi script). | [register-site](https://gluu.org/docs/oxd/4.0/api/#register-site)
-2 | Obtain an access token from the oxd server. This token will be used in headers to authenticate to oxd server in all subsequent queries. I will call this the`oxd_access_token`. So, with the exception of this step headers of subsequent queries will be: <br> `Content-type: 'application/json` <br> `Authorization': 'Bearer <oxd_access_token>'` | [get-client-token](https://gluu.org/docs/oxd/4.0/api/#get-client-token)
-3 | Get authorization url. Users will click on this url to reach Gluu's login page and will be redirected to `authorization_redirect_uri` | [get-authorization-url](https://gluu.org/docs/oxd/4.0/api/#get-authorization-url)
-4 | You need to verify the `code` and `state` values returned by browser to your cgi script after authorization by Gluu Server. You can pass these values to the oxd server and obtain an access token to user's claims. | [get-tokens-by-code](https://gluu.org/docs/oxd/4.0/api/#get-tokens-id-access-by-code)
-5 | Query user information and display it on page. | [get-user-info](https://gluu.org/docs/oxd/4.0/api/#get-user-info)
-6 | Query the logout uri from the oxd server. | [get-logout-uri](https://gluu.org/docs/oxd/4.0/api/#get-logout-uri)
+1 | Creating a client on Gluu server and registering your site to oxd Server  (we will do this dynamically, for clarity's sake, though it is possible to automate this step in the cgi script). | [register-site](../api/#register-site)
+2 | Obtain an access token from the oxd server. This token will be used in headers to authenticate to oxd server in all subsequent queries. I will call this the`oxd_access_token`. So, with the exception of this step headers of subsequent queries will be: <br> `Content-type: 'application/json` <br> `Authorization': 'Bearer <oxd_access_token>'` | [get-client-token](../api/#get-client-token)
+3 | Get authorization url. Users will click on this url to reach Gluu's login page and will be redirected to `authorization_redirect_uri` | [get-authorization-url](../api/#get-authorization-url)
+4 | You need to verify the `code` and `state` values returned by browser to your cgi script after authorization by Gluu Server. You can pass these values to the oxd server and obtain an access token to user's claims. | [get-tokens-by-code](../api/#get-tokens-id-access-by-code)
+5 | Query user information and display it on page. | [get-user-info](../api/#get-user-info)
+6 | Query the logout uri from the oxd server. | [get-logout-uri](../api/#get-logout-uri)
 
 ## Creating Client and Registering Site to Oxd Server
 
