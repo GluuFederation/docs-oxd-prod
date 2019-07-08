@@ -36,7 +36,7 @@ Pass the obtained access token in `Authorization: Bearer <access_token>` header 
 
 
 #### Register Site 
-
+    
 [API Link](#operations-developers-register-site)
 
 The client must first register itself with the `oxd-server`. 
@@ -50,8 +50,14 @@ The only required parameter is the  `authorization_redirect_uri`. This is where 
 The `op_host` parameter is optional, but it must be specified in either the [default configuration file](../configuration/#oxd-confjson) or the API call. This is the URL at the OP where users will be sent for authentication. 
 
 !!! Note
-    `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).
-    
+    `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).    
+
+#### Get Client Token
+
+[API Link](#operations-developers-get-client-token)
+
+Obtain an access token from the oxd server. This token will be used in headers to authenticate to oxd server in all subsequent queries. The required parameters for `/get-client-token` are `op_host`, `client_id` and `client_secret`.
+
 
 #### Get Authorization URL
 
