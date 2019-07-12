@@ -74,7 +74,7 @@ HTTP/1.1 302 Found
 Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=af0ifjsldkj&scopes=openid%20profile
 ```
 
-The only required parameter for `/get-authorization-url` is `oxd_id`. The optional parameters are `scope`, `acr_values`, `prompt`, `redirect_uri`, `custom_parameters` and `params`. If redirect_uri not provided in request parameter of this command then after authorization it will redirect to the first URL from redirect_uris passed during client registration.
+The only required parameter for `/get-authorization-url` is `oxd_id`. `redirect_uri` is non-mandatory parameter in this command, if not provided then after authorization it will redirect to the first URL from `redirect_uris` provided during client registration.
 
 The custom parameters (in key and value pair) can be passed to OpenID Connect Provider (OP) using `custom_parameters` parameter. The standard parameters (in key and value pair) can be passed to OP using `params` parameter.
 
