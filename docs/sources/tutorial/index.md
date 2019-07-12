@@ -94,7 +94,7 @@ Following the first step, you will register the client dynamically, and register
 
 ```
 {
-  "authorization_redirect_uri": "https://rp.server.com/cgi-bin/oxd.py/login",
+  "redirect_uris": ["https://rp.server.com/cgi-bin/oxd.py/login", "https://rp.server.com/cgi-bin/oxd.py/index"],
   "op_host": "https://op.server.com",
   "post_logout_redirect_uris": ["https://rp.server.com/cgi-bin/oxd.py/logout"],
   "application_type": "web",
@@ -109,7 +109,6 @@ Following the first step, you will register the client dynamically, and register
   "client_frontchannel_logout_uris": [""],
   "client_sector_identifier_uri": "",
   "contacts": ["admin@example.com"],
-  "redirect_uris": [],
   "ui_locales": [""],
   "claims_locales": [""],
   "claims_redirect_uri": [],
