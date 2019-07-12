@@ -145,8 +145,6 @@ H2 storage configuration sample:
 
 - **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example, if it is `https://example.com/.well-known/openid-configuration` then the path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then the path is `/oxauth`  
 
-- **authorization_redirect_uri:** URL which the OpenID Connect Provider (OP) will redirect the person to after successful authentication
-
 - **post_logout_redirect_uri:** URL to which the RP is requesting that the End-User's User Agent be redirected after a logout has been performed
 
 - **redirect_uris:** Additional URLs that the OpenID Connect Provider (OP) will use to redirect the person to after successful authentication
