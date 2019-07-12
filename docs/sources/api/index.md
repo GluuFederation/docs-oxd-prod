@@ -45,7 +45,7 @@ If the registration is successful, oxd will dynamically register an OpenID Conne
 
 `register_site` has many optional parameters. 
 
-The only required parameter is the  `authorization_redirect_uri`. This is where the user will be redirected after successful authorization at the OpenID Connect Provider (OP).
+The only required parameter is the `redirect_uris` which is list of Redirection URIs used by the Client. The first URL in this list is where the user will be redirected after successful authorization at the OpenID Connect Provider (OP).
 
 The `op_host` parameter is optional, but it must be specified in either the [default configuration file](../configuration/#oxd-confjson) or the API call. This is the URL at the OP where users will be sent for authentication. 
 
@@ -74,7 +74,9 @@ HTTP/1.1 302 Found
 Location: https://client.example.org/cb?code=SplxlOBeZQQYbYS6WxSbIA&state=af0ifjsldkj&scopes=openid%20profile
 ```
 
-The only required parameter for `/get-authorization-url` is `oxd_id`. The optional parameters are `scope`, `acr_values`, `prompt`, `authorization_redirect_uri`, `custom_parameters` and `params`. The custom parameters (in key and value pair) can be passed to OpenID Connect Provider (OP) using `custom_parameters` parameter. The standard parameters (in key and value pair) can be passed to OP using `params` parameter.
+The only required parameter for `/get-authorization-url` is `oxd_id`. `redirect_uri` is a non-mandatory parameter in this command, if not provided then after authorization it will redirect to the first URL from `redirect_uris` list provided during client registration.
+
+The custom parameters (in key and value pair) can be passed to OpenID Connect Provider (OP) using `custom_parameters` parameter. The standard parameters (in key and value pair) can be passed to OP using `params` parameter.
 
 #### Get Tokens (ID & Access) by Code
 
