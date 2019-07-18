@@ -35,16 +35,6 @@ Step 3: Run oxd server:
 !!! Note
     If you need to stop your `oxd-server`at any point, you can run the following command: `/etc/init.d/oxd-server stop` 
 
-
-### Ubuntu 14.04 (trusty)
-
-```
-echo "deb https://repo.gluu.org/ubuntu/ trusty main" > /etc/apt/sources.list.d/gluu-repo.list
-curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
-apt-get update
-apt-get install oxd-server
-```
-
 ### Ubuntu 16.04 (xenial)
 
 ```
@@ -63,31 +53,11 @@ apt-get update
 apt-get install oxd-server
 ```
 
-### CentOS 6
-
-```
-wget https://repo.gluu.org/centos/Gluu-centos6.repo -O /etc/yum.repos.d/Gluu.repo
-wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-yum clean all
-yum install oxd-server
-```
-
 ### CentOS 7
 
 ```
 wget https://repo.gluu.org/centos/Gluu-centos7.repo -O /etc/yum.repos.d/Gluu.repo
 wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-yum clean all
-yum install oxd-server
-```
-
-### RHEL 6
-
-```
-wget https://repo.gluu.org/rhel/Gluu-rhel6.repo -O /etc/yum.repos.d/Gluu.repo
-wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
 yum install oxd-server
@@ -152,14 +122,14 @@ The following command can be run inside the oxd folder to run the build:
 
 ## oxd-server Uninstall Procedure
 
-### Ubuntu 14.04 (trusty)/Ubuntu 16.04 (xenial)/Debian 8 (Jessie)
+### Ubuntu 16.04 (xenial)/Debian 8 (Jessie)
 
 
 ```
 $ sudo apt-get remove oxd-server
 ```
 
-### CentOS 6/CentOS 7/RHEL 6/RHEL 7
+### CentOS 7/RHEL 7
 
 ```
 # yum remove oxd-server
