@@ -44,7 +44,7 @@ apt-get update
 apt-get install oxd-server
 ```
 
-### Debian 8 (Jessie)
+### Debian 9 (Jessie)
 
 ```
 echo "deb https://repo.gluu.org/debian/ jessie main" > /etc/apt/sources.list.d/gluu-repo.list
@@ -122,7 +122,7 @@ The following command can be run inside the oxd folder to run the build:
 
 ## oxd-server Uninstall Procedure
 
-### Ubuntu 16.04 (xenial)/Debian 8 (Jessie)
+### Ubuntu 16.04 (xenial)/Debian 9 (Jessie)
 
 
 ```
