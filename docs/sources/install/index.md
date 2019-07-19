@@ -105,12 +105,22 @@ yum install oxd-server
 
 ## Service Operations
 
+**Ubuntu 16.04 (xenial)**
 |Operation | Command|
 |------ |------ |
 |Start oxd server | `/etc/init.d/oxd-server start` |
 |Stop oxd server | `/etc/init.d/oxd-server stop` |
 |oxd server status | `/etc/init.d/oxd-server status`|
 |Restart oxd server | `/etc/init.d/oxd-server restart` |
+
+**Ubuntu 18.04 (bionic)/Debian 9 (stretch)/CentOS 7/RHEL 7**
+|Operation | Command|
+|------ |------ |
+|Start oxd server | `systemctl start oxd-server` |
+|Stop oxd server | `systemctl stop oxd-server` |
+|oxd server status | `systemctl status oxd-server`|
+|Restart oxd server | `systemctl restart oxd-server` |
+
 
 ## Manual installation
 
@@ -152,21 +162,29 @@ The following command can be run inside the oxd folder to run the build:
 
 ## oxd-server Uninstall Procedure
 
-### Ubuntu 14.04 (trusty)/Ubuntu 16.04 (xenial)/Debian 8 (Jessie)
-
-
-```
-$ sudo apt-get remove oxd-server
-```
-
-### CentOS 6/CentOS 7/RHEL 6/RHEL 7
+### Ubuntu 16.04 (xenial)
 
 ```
-# yum remove oxd-server
+/etc/init.d/oxd-server stop
+sudo apt-get remove oxd-server
+apt-get purge oxd-server
 ```
 
-!!! Note
-    You must use `apt-get purge oxd-server` or `apt-get remove --purge oxd-server` to uninstall and remove all the folders and services of the oxd server.
+### Ubuntu 18.04 (bionic)/Debian 9 (stretch)
+
+```
+systemctl stop oxd-server
+sudo apt-get remove oxd-server
+apt-get purge oxd-server
+```
+
+### CentOS 7/RHEL 7
+
+```
+systemctl stop oxd-server
+yum remove oxd-server
+rm -rf /opt/oxd-server.save
+```
 
 ## Utility scripts
 
