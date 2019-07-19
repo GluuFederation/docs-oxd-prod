@@ -11,7 +11,7 @@ oxd needs to be deployed on a server or VM with the following **minimum** requir
 !!! Note
     **oxd requires Java version 1.8**
 
-oxd 4.0 works with CE 3.1.4 and above.
+oxd 4.0 works with CE 3.1.6 and above.
 
 ## Linux Packages
 
