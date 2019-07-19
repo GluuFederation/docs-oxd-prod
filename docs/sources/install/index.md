@@ -106,6 +106,7 @@ yum install oxd-server
 ## Service Operations
 
 **Ubuntu 16.04 (xenial)**
+
 |Operation | Command|
 |------ |------ |
 |Start oxd server | `/etc/init.d/oxd-server start` |
@@ -114,6 +115,7 @@ yum install oxd-server
 |Restart oxd server | `/etc/init.d/oxd-server restart` |
 
 **Ubuntu 18.04 (bionic)/Debian 9 (stretch)/CentOS 7/RHEL 7**
+
 |Operation | Command|
 |------ |------ |
 |Start oxd server | `systemctl start oxd-server` |
