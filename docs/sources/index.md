@@ -1,4 +1,4 @@
-# oxd 4.0 Documentation
+# oxd 4.0 Beta Documentation
 
 ## Introduction
 oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). 
