@@ -19,7 +19,7 @@ oxd 4.0 includes architectural changes as well as different bug fixes and improv
 
 - [#342](https://github.com/GluuFederation/oxd/issues/342) Bug : we got `post_logout_redirect_uris` included into `redirect_uris`
 
-- [#338](https://github.com/GluuFederation/oxd/issues/338) add `idTokenSignedResponseAlg` to `/register-site` command
+- [#338](https://github.com/GluuFederation/oxd/issues/338) add `idTokenSignedResponseAlg` and other params to `/register-site` command
 
 - [#337](https://github.com/GluuFederation/oxd/issues/337) oxd has to use newest `setScope` oxauth-client method otherwise oxauth falls back to all default scopes
 
