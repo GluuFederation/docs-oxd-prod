@@ -25,8 +25,6 @@ oxd 4.0 includes architectural changes as well as different bug fixes and improv
 
 - [#334](https://github.com/GluuFederation/oxd/issues/334) Add `params` map to `/get-authorization-url` api
 
-- [#332](https://github.com/GluuFederation/oxd/issues/332) oxd-4.0: Remove redundant  Logger-specific levels (`Trace`) from oxd-server.yml
-
 - [#331](https://github.com/GluuFederation/oxd/issues/331) post_logout_redirect_uri is left empty when registering client via oxd
 
 - [#329](https://github.com/GluuFederation/oxd/issues/329) oxd: Getting Forbidden : 403 while using lsox script
