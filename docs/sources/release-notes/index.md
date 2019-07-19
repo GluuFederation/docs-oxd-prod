@@ -13,17 +13,29 @@ oxd 4.0 includes architectural changes as well as different bug fixes and improv
 
 ### New Features
 
+### Fixes / Enhancements
+
+- [#342](https://github.com/GluuFederation/oxd/issues/342) Bug : we got `post_logout_redirect_uris` included into `redirect_uris`
+
 - [#338](https://github.com/GluuFederation/oxd/issues/338) add `idTokenSignedResponseAlg` to `/register-site` command
 
 - [#337](https://github.com/GluuFederation/oxd/issues/337) oxd has to use newest `setScope` oxauth-client method otherwise oxauth falls back to all default scopes
 
 - [#334](https://github.com/GluuFederation/oxd/issues/334) Add `params` map to `/get-authorization-url` api
 
+- [#332](https://github.com/GluuFederation/oxd/issues/332) oxd-4.0: Remove redundant  Logger-specific levels (`Trace`) from oxd-server.yml
+
+- [#331](https://github.com/GluuFederation/oxd/issues/331) post_logout_redirect_uri is left empty when registering client via oxd
+
+- [#329](https://github.com/GluuFederation/oxd/issues/329) oxd: Getting Forbidden : 403 while using lsox script
+
 - [#323](https://github.com/GluuFederation/oxd/issues/323) Fix and enable back two tests which are failing against ce-dev5.
 
 - [#320](https://github.com/GluuFederation/oxd/issues/320) Removed confusing PAT abbr from code and docs
 
 - [#317](https://github.com/GluuFederation/oxd/issues/317) Fix oxd after oxauth is migrated to `org.json` from jettison. Build failed right now.
+
+- [#311](https://github.com/GluuFederation/oxd/issues/311) Gluu-3.1.6-oxd-server fails to start after restarting VM
 
 - [#310](https://github.com/GluuFederation/oxd/issues/310) Add `client_credentials` grant_type automatically to clients registered by oxd
 
@@ -33,7 +45,19 @@ oxd 4.0 includes architectural changes as well as different bug fixes and improv
 
 - [#306](https://github.com/GluuFederation/oxd/issues/306) Switch oxd 4.0 to oxauth-client 4.0 (from current 3.1.5)
 
+- [#305](https://github.com/GluuFederation/oxd/issues/305) Return id_token's claims as is in id_token_claims
+
+- [#292](https://github.com/GluuFederation/oxd/issues/292) oxd 4.0 fails if introspection response is customized on CE by interception script
+
+- [#279](https://github.com/GluuFederation/oxd/issues/279) Internal Server Error (500) while making get-tokens-by-code call
+
+- [#276](https://github.com/GluuFederation/oxd/issues/276) ValueError in output from 3.1.4-4.0beta upgrade
+
+- [#274](https://github.com/GluuFederation/oxd/issues/274) UnknownHostException at get-client-token call
+
 - [#272](https://github.com/GluuFederation/oxd/issues/272) Improve log message if certificate is not imported
+
+- [#269](https://github.com/GluuFederation/oxd/issues/269) BUG: Getting error in introspect-access-token
 
 - [#262](https://github.com/GluuFederation/oxd/issues/262) Create swagger based test for access_token as JWT
 
@@ -41,11 +65,16 @@ oxd 4.0 includes architectural changes as well as different bug fixes and improv
 
 - [#258](https://github.com/GluuFederation/oxd/issues/258) Create new `verify-jwt` command (required by GG)
 
+- [#245](https://github.com/GluuFederation/oxd/issues/245) invalid_id_token_unknown in get-tokens-by-code oxd command
+
 - [#244](https://github.com/GluuFederation/oxd/issues/244) Change package name to `oxd-server-4.0` with upgrade script
 
 - [#236](https://github.com/GluuFederation/oxd/issues/236) Change exception message for introspect unmatched client from ValidationService
 
 - [#233](https://github.com/GluuFederation/oxd/issues/233) Provide swagger based tests (copy of existing tests but based on swagger generated client)
+
+- [#228](https://github.com/GluuFederation/oxd/issues/228) Bug : Swagger client returns relative timestamps instead of number of seconds 
+since January 1 1970 UTC
 
 - [#225](https://github.com/GluuFederation/oxd/issues/225) Drop "status" from protocol for all commands that was used by sockets. In REST it is covered by HTTP status.
 
@@ -69,6 +98,8 @@ oxd 4.0 includes architectural changes as well as different bug fixes and improv
 
 - [#181](https://github.com/GluuFederation/oxd/issues/181) Introduce swagger 2.0 to oxd
 
+- [#180](https://github.com/GluuFederation/oxd/issues/180) Client gets deleted from oxd-server after update_site command
+
 - [#176](https://github.com/GluuFederation/oxd/issues/176) Investigate front-end API with GraphQL
 
 - [#155](https://github.com/GluuFederation/oxd/issues/155) added better error handling if pre-registered client is added without client_secret
@@ -83,44 +114,14 @@ oxd 4.0 includes architectural changes as well as different bug fixes and improv
 
 - [#122](https://github.com/GluuFederation/oxd/issues/122) oxd-https resources / packaging
 
+- [#118](https://github.com/GluuFederation/oxd/issues/118) dropwizard fails with jdk9
+
 - [#117](https://github.com/GluuFederation/oxd/issues/117) Connect : add explicit introspection operation to validate access_token
 
 - [#112](https://github.com/GluuFederation/oxd/issues/112) Change org.xdi -> org.gluu
 
-- [#95](https://github.com/GluuFederation/oxd/issues/95) oxd-https-extension : provide automatic test triggered by jenkins for the project
-- [#76](https://github.com/GluuFederation/oxd/issues/76) Sometimes if license details are changed license is not correctly update
-
-### Fixes
-
-- [#342](https://github.com/GluuFederation/oxd/issues/342) Bug : we got `post_logout_redirect_uris` included into `redirect_uris`
-
-- [#332](https://github.com/GluuFederation/oxd/issues/332) oxd-4.0: Remove redundant  Logger-specific levels (`Trace`) from oxd-server.yml
-
-- [#331](https://github.com/GluuFederation/oxd/issues/331) post_logout_redirect_uri is left empty when registering client via oxd
-
-- [#329](https://github.com/GluuFederation/oxd/issues/329) oxd: Getting Forbidden : 403 while using lsox script
-
-- [#311](https://github.com/GluuFederation/oxd/issues/311) Gluu-3.1.6-oxd-server fails to start after restarting VM
-
-- [#305](https://github.com/GluuFederation/oxd/issues/305) Return id_token's claims as is in id_token_claims
-
-- [#292](https://github.com/GluuFederation/oxd/issues/292) oxd 4.0 fails if introspection response is customized on CE by interception script
-
-- [#279](https://github.com/GluuFederation/oxd/issues/279) Internal Server Error (500) while making get-tokens-by-code call
-
-- [#276](https://github.com/GluuFederation/oxd/issues/276) ValueError in output from 3.1.4-4.0beta upgrade
-
-- [#274](https://github.com/GluuFederation/oxd/issues/274) UnknownHostException at get-client-token call
-
-- [#269](https://github.com/GluuFederation/oxd/issues/269) BUG: Getting error in introspect-access-token
-
-- [#245](https://github.com/GluuFederation/oxd/issues/245) invalid_id_token_unknown in get-tokens-by-code oxd command
-
-- [#228](https://github.com/GluuFederation/oxd/issues/228) Bug : Swagger client returns relative timestamps instead of number of seconds 
-since January 1 1970 UTC
-
-- [#180](https://github.com/GluuFederation/oxd/issues/180) Client gets deleted from oxd-server after update_site command
-
-- [#118](https://github.com/GluuFederation/oxd/issues/118) dropwizard fails with jdk9
-
 - [#108](https://github.com/GluuFederation/oxd/issues/108) Java Exception when Client is expired
+
+- [#95](https://github.com/GluuFederation/oxd/issues/95) oxd-https-extension : provide automatic test triggered by jenkins for the project
+
+- [#76](https://github.com/GluuFederation/oxd/issues/76) Sometimes if license details are changed license is not correctly update
