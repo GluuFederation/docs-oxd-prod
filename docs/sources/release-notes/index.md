@@ -15,6 +15,8 @@ oxd 4.0 includes architectural changes as well as different bug fixes and improv
 
 ### Fixes / Enhancements
 
+- [#347](https://github.com/GluuFederation/oxd/issues/347) Do not use PAT to request introspection (avoid exception related to missed `uma_protection` )
+
 - [#342](https://github.com/GluuFederation/oxd/issues/342) Bug : we got `post_logout_redirect_uris` included into `redirect_uris`
 
 - [#338](https://github.com/GluuFederation/oxd/issues/338) add `idTokenSignedResponseAlg` to `/register-site` command
