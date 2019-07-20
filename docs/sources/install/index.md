@@ -34,20 +34,30 @@ Step 3: Run oxd server:
 
 !!! Note
     If you need to stop your `oxd-server`at any point, you can run the following command: `/etc/init.d/oxd-server stop` 
+    
+    
+### Ubuntu 18.04 (bionic)
+
+```
+echo "deb https://repo.gluu.org/ubuntu/ bionic-devel main" > /etc/apt/sources.list.d/gluu-repo.list
+curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
+apt-get update
+apt-get install oxd-server
+```    
 
 ### Ubuntu 16.04 (xenial)
 
 ```
-echo "deb https://repo.gluu.org/ubuntu/ xenial main" > /etc/apt/sources.list.d/gluu-repo.list
+echo "deb https://repo.gluu.org/ubuntu/ xenial-devel main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install oxd-server
 ```
 
-### Debian 9 (Jessie)
+### Debian 9 (stretch)
 
 ```
-echo "deb https://repo.gluu.org/debian/ jessie main" > /etc/apt/sources.list.d/gluu-repo.list
+echo "deb https://repo.gluu.org/debian/ stretch-testing main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install oxd-server
@@ -56,7 +66,7 @@ apt-get install oxd-server
 ### CentOS 7
 
 ```
-wget https://repo.gluu.org/centos/Gluu-centos7.repo -O /etc/yum.repos.d/Gluu.repo
+wget https://repo.gluu.org/centos/Gluu-centos-7-testing.repo -O /etc/yum.repos.d/Gluu.repo
 wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
@@ -66,7 +76,7 @@ yum install oxd-server
 ### RHEL 7
 
 ```
-wget https://repo.gluu.org/rhel/Gluu-rhel7.repo -O /etc/yum.repos.d/Gluu.repo
+wget https://repo.gluu.org/rhel/Gluu-rhel-7-testing.repo -O /etc/yum.repos.d/Gluu.repo
 wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
