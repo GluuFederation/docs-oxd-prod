@@ -54,7 +54,7 @@ apt-get update
 apt-get install oxd-server
 ```
 
-### Debian 9 (Jessie)
+### Debian 9 (stretch)
 
 ```
 echo "deb https://repo.gluu.org/debian/ stretch-testing main" > /etc/apt/sources.list.d/gluu-repo.list
