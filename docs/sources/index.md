@@ -14,7 +14,10 @@ The oxd Linux package includes the `oxd-server` which is a simple REST applicati
 
 ## Tutorial
 
-Follow our [tutorial](./tutorial/index.md) to learn how oxd works with a simple python application. 
+Follow one of our tutorials to learn how oxd works: 
+
+- [Python](./tutorials/python/index.md)
+- [Java](./tutorials/java/index.md) 
 
 ## Get Started
 
