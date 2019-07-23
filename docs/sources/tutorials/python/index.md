@@ -1,4 +1,4 @@
-# oxd Tutorial (Python)
+# oxd tutorial - Python
 
 In this tutorial I am going to explain how you can interact with the oxd Server for SSO with using the [authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) 
 using Python CGI and Apache, in the hope that programmers of other languages will benefit.
