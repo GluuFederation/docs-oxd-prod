@@ -1,5 +1,9 @@
 # oxd 4.0 Beta Documentation
 
+!!! Attention
+    oxd 4.0 is currently in open Beta. Questions and feedback can be directed to [Gluu support](https://support.gluu.org). View [known issues](https://github.com/GluuFederation/oxd/milestone/8). 
+
+
 ## Introduction
 oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). 
 
