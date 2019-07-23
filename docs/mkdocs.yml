@@ -55,7 +55,9 @@ pages:
 - Release Notes: 'release-notes/index.md'
 - Whats new in 4.x: '4.x-intro.md'
 - 'Install & Run': 'install/index.md'
-- 'Tutorial': 'tutorial/index.md'
+- Tutorial: 
+        - 'Python': './tutorials/python/index.md'
+        - 'Java': './tutorials/java/index.md'
 - 'Upgrade': 'upgrade/index.md'
 - 'Configuration': 'configuration/index.md'
 - 'Logs': 'logs/index.md'
