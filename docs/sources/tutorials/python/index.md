@@ -1,11 +1,10 @@
 # oxd tutorial - Python
 
-In this tutorial I am going to explain how you can interact with the oxd Server for SSO with using the [authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) 
-using Python CGI and Apache, in the hope that programmers of other languages will benefit.
+In this tutorial I explain how to leverage the oxd server for SSO using the OpenID Connect [authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth), and Python CGI and Apache.
 
 ## Preliminary
 
-For this tutorial, our OpenID Connect Provider (OP) is Gluu Server 4.0, and we are using oxd Server 4.0 and an https & cgi enabled web server -- Apache in our case. 
+For this tutorial, our OpenID Connect Provider (OP) is Gluu Server 4.0. We are also using oxd 4.0 and an https & cgi enabled web server -- Apache in our case. 
 
 ### Gluu Server 4.0 (OP)
 As stated above, in this tutorial we're using Gluu Server 4.0 as the OP. 
@@ -77,20 +76,15 @@ Step | Explanation | Endpoint
 5 | Query user information and display it on page. | [get-user-info](../api/#get-user-info)
 6 | Query the logout uri from the oxd server. | [get-logout-uri](../api/#get-logout-uri)
 
-## Creating Client and Registering Site to Oxd Server
+## Creating Client and Registering Site
 
-Before you start working on `oxd-server`, you'll need two settings on the Gluu Server:
+Before you start working on `oxd-server`, you'll need two settings configured on the Gluu Server:
 
-* Enable dynamic registration of clients: **Configuration->Manage Custom Script**, 
- click on the **Client Registration** tab and and enable the `client_registration` script, then
- click the **Update** button. If you don't want to enable dynamic client registration,
- please register [a client manually](create_client.md).
- 
-* Enable dynamic registration of the "profile" scope: **OpenID Connect->Scopes**,
-  click on the `profile` scope and set `Allow for dynamic registration` to "True".
-  Click the **Update** button.
+- Enable dynamic registration of clients: **Configuration->Manage Custom Script**, click on the **Client Registration** tab and and enable the `client_registration` script, then click the **Update** button. If you don't want to enable dynamic client registration, please register [a client manually](create_client.md).
 
-Following the first step, you will register the client dynamically, and register the site to oxd. Write the following content to `data.json`:
+- Enable dynamic registration of the "profile" scope: **OpenID Connect->Scopes**, click on the `profile` scope and set `Allow for dynamic registration` to "True". Click the **Update** button.
+
+Now, you will register the client dynamically, and register the site to oxd. Write the following content to `data.json`:
 
 ```
 {
@@ -128,7 +122,7 @@ curl -k -X POST https://oxd.server.com:8443/register-site --header "Content-Type
 
 ```
 
-provide the full path to `data.json` or execute this command in the same directory. This will output as follows:
+Provide the full path to `data.json` or execute this command in the same directory. The output should be as follows:
 
 ```
 {
@@ -143,12 +137,12 @@ provide the full path to `data.json` or execute this command in the same directo
 }
 ```
 
-Take a note of `oxd_id`, `client_secret` and  `client_secret`; you will use them in subsequent queries and configuration. Be aware that these are uniquely generated identifiers and will not match what is shown above.
+Take note of `oxd_id`, `client_secret` and  `client_secret`; you will use them in subsequent queries and configuration. Note: these are uniquely generated identifiers. Your values will not match what's shown above.
 
 CGI Script
 ----------
 On the RP server (Apache/HTTPD), write the following content to `/usr/lib/cgi-bin/oxd.py` and make it executable with
-`chmod +x /usr/lib/cgi-bin/oxd.py`
+`chmod +x /usr/lib/cgi-bin/oxd.py` :
 
 ```
 #!/usr/bin/python
@@ -276,12 +270,11 @@ else:
     print '<a href="{0}">Click here to login</a>'.format(result['authorization_url'])
 ```
 
-Now navigate to `https://rp.server.com/cgi-bin/oxd.py` and you will see a link **Click here to login**
-as below
+Now, navigate to `https://rp.server.com/cgi-bin/oxd.py` and you will see the following link: **Click here to login**
 
 ![login link](../img/tutorial_login.png)
 
-Click on the link and you will be redirected to Gluu login page. Upon entering credidentals and allowing
+Click the link. You will be redirected to Gluu for sign in. Upon entering credidentals and allowing
 RP to access claims, you will see user info as:
 
 ![user info](../img/tutorial_user_info.png)
