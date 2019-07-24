@@ -62,7 +62,7 @@ Obtain an access token from the oxd server. This token will be used in headers t
 
 [API Link](#operations-developers-introspect-access-token)
 
-The operation introspect if the client access token obtained from the previous step is active or not.
+This operation introspect if the client access token obtained from the [previous step](#get-client-token) is active or not.
 
 #### Get Authorization URL
 
