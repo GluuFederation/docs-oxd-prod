@@ -28,12 +28,7 @@ Step 1: Find the proper Linux package below.
 
 Step 2: After the installation, [configure](../configuration/index.md) your oxd server.
 
-Step 3: Run oxd server:             
- 
-`/etc/init.d/oxd-server start`
-
-!!! Note
-    If you need to stop your `oxd-server`at any point, you can run the following command: `/etc/init.d/oxd-server stop` 
+Step 3: [Run](#service-operations) oxd server:             
     
     
 ### Ubuntu 18.04 (bionic)
