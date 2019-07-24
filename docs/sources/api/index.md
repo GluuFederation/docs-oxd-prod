@@ -58,6 +58,11 @@ The `op_host` parameter is optional, but it must be specified in either the [def
 
 Obtain an access token from the oxd server. This token will be used in headers to authenticate to oxd server in all subsequent queries. The required parameters for `/get-client-token` are `op_host`, `client_id` and `client_secret`.
 
+#### Introspect Access Token
+
+[API Link](#operations-developers-introspect-access-token)
+
+This operation introspect if the client access token obtained from the [previous step](#get-client-token) is active or not.
 
 #### Get Authorization URL
 
@@ -451,6 +456,17 @@ Example of Response:
 ```
 https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
 ```
+#### Get JSON Web Key Set
+
+[API Link](#operations-developers-get-json-web-key-set)
+
+This operation is used to get the JSON Web Key Set (JWKS) from OP host. The JWKS is a set of keys containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
+
+#### Get OP Discovery Configuration
+
+[API Link](#operations-developers-get-discovery)
+
+This operation fetches OP Discovery Configuration from OP host.
 
 ## API References
 
