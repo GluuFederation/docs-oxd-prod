@@ -17,7 +17,7 @@ oxd supports the OpenID Connect [Hybrid Flow](http://openid.net/specs/openid-con
 
 Learn more about authentication flows in the [OpenID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html). 
 
-### oxd OpenID Connect APIs
+### oxd Authorization Code Flow
 `oxd-server` provides seven APIs for OpenID Connect authentication. In general,
 you can think of the Authorization Code Flow as a three-step process: 
 
@@ -34,6 +34,7 @@ Before using the above workflow you will need to obtain an access token to secur
  
 Pass the obtained access token in `Authorization: Bearer <access_token>` header in all future calls to the `oxd-server`.
 
+### General OAuth2 APIs 
 
 #### Register Site 
     
@@ -52,17 +53,53 @@ The `op_host` parameter is optional, but it must be specified in either the [def
 !!! Note
     `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).    
 
+#### Update Site
+
+[API Link](#operations-developers-update-site)
+
+During update site it's important to pay special attention to `response_types` and `grant_types`. If during registration specify `response_types=code` and `grant_types=authorization_code client_credentials` and then during update miss/omit them then OP falls back to `response_types=code` and sets `grant_types=authorization_code` (in this way dropping `client_credentials` grant type).
+
+#### Remove Site
+
+[API Link](#operations-developers-remove-site)
+
 #### Get Client Token
 
 [API Link](#operations-developers-get-client-token)
 
 Obtain an access token from the oxd server. This token will be used in headers to authenticate to oxd server in all subsequent queries. The required parameters for `/get-client-token` are `op_host`, `client_id` and `client_secret`.
 
+#### Get Access Token by Refresh Token
+
+[API Link](#operations-developers-get-access-token-by-refresh-token)
+
+A Refresh Token can be used to obtain a renewed Access Token. 
+
 #### Introspect Access Token
 
 [API Link](#operations-developers-introspect-access-token)
 
 This operation introspect if the client access token obtained from the [previous step](#get-client-token) is active or not.
+
+#### Get User Info
+
+[API Link](#operations-developers-get-user-info)
+
+Use the access token from the step above to retrieve a JSON object with the user claims.
+
+#### Get JSON Web Key Set
+
+[API Link](#operations-developers-get-json-web-key-set)
+
+This operation is used to get the JSON Web Key Set (JWKS) from OP host. The JWKS is a set of keys containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
+
+#### Get OP Discovery Configuration
+
+[API Link](#operations-developers-get-discovery)
+
+This operation fetches OP Discovery Configuration from OP host.
+
+### OpenID Connect APIs
 
 #### Get Authorization URL
 
@@ -89,34 +126,11 @@ The custom parameters (in key and value pair) can be passed to OpenID Connect Pr
 
 Use the code and state obtained in the previous step to call this API to retrieve tokens.
 
-
-#### Get Access Token by Refresh Token
-
-[API Link](#operations-developers-get-access-token-by-refresh-token)
-
-A Refresh Token can be used to obtain a renewed Access Token. 
-
-#### Get User Info
-
-[API Link](#operations-developers-get-user-info)
-
-Use the access token from the step above to retrieve a JSON object with the user claims.
-
 #### Get Logout URI
 
 The `get_logout_uri` command uses front-channel logout. A page is returned with iFrames, each of which contains the logout URL of the applications that have a session in that browser. 
 
 These iFrames should be loaded automatically, enabling each application to get a notification of logout, and to hopefully clean up any cookies in the person's browser. If the person blocks [third-party cookies](https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie) in their browser, front-channel logout will not work.
-
-#### Update Site
-
-[API Link](#operations-developers-update-site)
-
-During update site it's important to pay special attention to `response_types` and `grant_types`. If during registration specify `response_types=code` and `grant_types=authorization_code client_credentials` and then during update miss/omit them then OP falls back to `response_types=code` and sets `grant_types=authorization_code` (in this way dropping `client_credentials` grant type).
-
-#### Remove Site
-
-[API Link](#operations-developers-remove-site)
 
 ## UMA 2 Authorization 
 UMA 2 is a profile of OAuth 2.0 that defines RESTful, JSON-based, standardized flows and constructs for coordinating the protection of APIs and web resources. 
@@ -385,6 +399,19 @@ HTTP/1.1 200 OK
 }
 ```
 
+#### UMA RP - Get Claims-Gathering URL
+
+[API Link](#operations-developers-uma-rp-get-claims-gathering-url)
+
+`ticket` parameter for this command MUST be newest, in 90% cases it is from `need_info` error.
+
+After being redirected to the Claims Gathering URL, the user goes through the claims gathering flow. If successful, the user is redirected back to `claims_redirect_uri` with a new ticket which should be provided with the next `uma_rp_get_rpt` call.
+
+Example of Response:
+
+```
+https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
+```
 
 ### UMA 2 Client APIs
 
@@ -442,31 +469,6 @@ HTTP 1.1 403 Forbidden
   "redirect_user": "https://gluu.local.org/oxauth/restv1/uma/gather_claims?customUserParam2=value2&customUserParam1=value1&client_id=@!B28D.DF29.C16D.8E6F!0001!5489.C322!0008!7946.30C2.ACFC.73D8&ticket=38569d82-6e4a-4287-aac8-1d9ea2b8c439"
 }
 ```
-
-#### UMA RP - Get Claims-Gathering URL
-
-[API Link](#operations-developers-uma-rp-get-claims-gathering-url)
-
-`ticket` parameter for this command MUST be newest, in 90% cases it is from `need_info` error.
-
-After being redirected to the Claims Gathering URL, the user goes through the claims gathering flow. If successful, the user is redirected back to `claims_redirect_uri` with a new ticket which should be provided with the next `uma_rp_get_rpt` call.
-
-Example of Response:
-
-```
-https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
-```
-#### Get JSON Web Key Set
-
-[API Link](#operations-developers-get-json-web-key-set)
-
-This operation is used to get the JSON Web Key Set (JWKS) from OP host. The JWKS is a set of keys containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
-
-#### Get OP Discovery Configuration
-
-[API Link](#operations-developers-get-discovery)
-
-This operation fetches OP Discovery Configuration from OP host.
 
 ## API References
 
