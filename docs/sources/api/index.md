@@ -34,7 +34,7 @@ Before using the above workflow you will need to obtain an access token to secur
  
 Pass the obtained access token in `Authorization: Bearer <access_token>` header in all future calls to the `oxd-server`.
 
-### General OAuth2 APIs 
+### General OAuth 2.0 APIs 
 
 #### Register Site 
     
