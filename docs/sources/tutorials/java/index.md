@@ -6,7 +6,7 @@ In this tutorial we will see how java web application can interact with the oxd 
 
 In [this repo](https://github.com/GluuFederation/oxd-java-sample/tree/version_4.0), you can find a Java web project that showcases how to integrate the library and illustrates the step-by-step process of OpenId Authentication.
 
-Check the [readme](https://github.com/GluuFederation/oxd-java-sample/blob/version_4.0/README.md) and learn how easy it is to get it up and running.
+This demo application uses basic well-known technologies part of the Java EE 7 web profile. We strove for not using additional frameworks in order to facilitate the understanding of project structure as well as its code.
 
 ## Requisites
 
@@ -117,6 +117,8 @@ This is the final step in this worflow in which client logs out user from the ap
     In oxd-server if `protect_commands_with_access_token` is set to `true` in oxd-server.yml, then all the API operations  (except Register Site) must be protected by an client access token. [Get Client Token](../../api/#get-client-token) allows you to obtain such a "client access token".
 
 ## API and Code Reference 
+
+To show how this [sample java application](https://github.com/GluuFederation/oxd-java-sample/tree/version_4.0) implements oxd apis to complete above sso steps, we have mapped the steps with Api and Code reference in below table.
 
 S.No. | Description | API | Code Ref. from Project (in [OxdService](https://github.com/GluuFederation/oxd-java-sample/blob/version_4.0/src/main/java/org/gluu/oxd/sample/bean/OxdService.java) class)
 ------|-------------|-----|-------------------------
