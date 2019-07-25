@@ -137,7 +137,7 @@ UMA 2 is a profile of OAuth 2.0 that defines RESTful, JSON-based, standardized f
 
 Using oxd, your application can delegate access management decisions, like who can access which resources, from what devices, to a central UMA Authorization Server (AS) like the [Gluu AS](https://gluu.org/docs/ce/admin-guide/uma/). 
 
-### UMA 2 Resource Server API's
+### UMA 2 Resource Server APIs
 
 Your client, acting as an [OAuth2 Resource Server](https://tools.ietf.org/html/rfc6749#section-1.1), MUST:
 
