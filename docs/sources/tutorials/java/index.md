@@ -1,70 +1,70 @@
 # oxd tutorial - Java
 
-In this tutorial we will see how java web application can interact with the oxd Server for SSO using the [authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth).
+In this tutorial we demonstrate how a java web application can leverage oxd for SSO using the [authorization code flow](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth).
 
 ## Overview
 
-In [this repo](https://github.com/GluuFederation/oxd-java-sample/tree/version_4.0), you can find a Java web project that showcases how to integrate the library and illustrates the step-by-step process of OpenId Authentication.
+A Java web project showcasing how to integrate the library and the step-by-step process of OpenID Authentication can be found in [this repo](https://github.com/GluuFederation/oxd-java-sample/tree/version_4.0).
 
-This demo application uses basic well-known technologies part of the Java EE 7 web profile. We strove for not using additional frameworks in order to facilitate the understanding of project structure as well as its code.
+The demo app uses standard well-known technologies included in the Java EE 7 web profile. No other frameworks are used in order to facilitate the understanding of project structure as well as its code.
 
-## Requisites
+## Prerequisites
 
 1. Java 8+
 
-Install [Java Standard Edition](http://www.oracle.com/technetwork/java/javase/downloads/2133151) version 8 or higher.
+    Install [Java Standard Edition](http://www.oracle.com/technetwork/java/javase/downloads/2133151) version 8 or higher.
 
-2. Maven 3+
+1. Maven 3+
 
-Download [maven](https://maven.apache.org/download.cgi) and follow the simple installation instructions. Ensure the `bin` directory is added to your PATH.
+    Download [maven](https://maven.apache.org/download.cgi) and follow the simple installation instructions. Ensure the `bin` directory is added to your PATH.
 
-3. An OpenID Connect Provider (OP), like the Gluu Server
+1. An OpenID Connect Provider (OP), like the Gluu Server
 
-Learn how to download and install Gluu server by visiting this [page](https://gluu.org/docs/ce/installation-guide/).
+    Learn how to deploy Gluu [in the docs](https://gluu.org/docs/ce/installation-guide/).
 
-4. oxd-server - 4.0
+1. oxd-server 4.0
 
-Download and install [oxd-server 4.0](https://gluu.org/docs/oxd/4.0/). For the purposes of this demo app, built-in default configuration files will work.
+    Download and install [oxd-server 4.0](https://gluu.org/docs/oxd/4.0/). For the purposes of this demo app, built-in default configuration files will work.
 
 ## Run
 
 1. Ensure that Gluu server and oxd-server are running and accessible.
 
-2. Clone `oxd-java-sample` project from [Github](https://github.com/GluuFederation/oxd-java-sample) to your local disk
+1. Clone `oxd-java-sample` project from [Github](https://github.com/GluuFederation/oxd-java-sample) to your local disk
 
-If you have `git` installed, just open a console and run below command to clone the project.
+    If you have `git` installed, just open a console and run below command to clone the project.
 
-```
-git clone https://github.com/GluuFederation/oxd-java-sample.git
-```
+    ```
+    git clone https://github.com/GluuFederation/oxd-java-sample.git
+    ```
 
-After the project is cloned switch to version_4.0 branch using below command.
+    After the project is cloned switch to version_4.0 branch using below command.
 
-```
-git checkout version_4.0
-```
+    ```
+    git checkout version_4.0
+    ```
 
-3. Issue the below command to start the app
+1. Issue the below command to start the app
 
-```
-mvn jetty:run
-```
+    ```
+    mvn jetty:run
+    ```
 
-Depending on your connection speed and computer performance, you will have to wait a couple of minutes for the first time you run this command. It will download all required dependencies and do some configurations on your behalf.
+    Depending on connection speed and computer performance, it may take a couple of minutes to complete. It is downloading all required dependencies and performing initial configurations.
 
-Once you see in the console a message like ... INFO:oejs.Server:main: Started @XXXms you will know all is already set. Then open a browser and point to https://localhost:8463/.
+    The project is ready to go once the console displays a message like ... `INFO:oejs.Server:main: Started @XXXms`. Open a browser and point to https://localhost:8463/.
 
-## What happens upon start
+## Configurations
 
 When the app is starting, it will try to automatically interact with an available oxd-server and attempt to register a site. It does so by searching for connection parameters in local disk, Java system properties or just assuming typical default values.
 
-If no site registration was possible upon start, the UI of the app will show you a warning stating that action needs to be taken and will take you to a form to complete/provide required values.
+If no site registration was possible upon start, the UI of the app will display a warning stating that action needs to be taken and will present a form to provide the required values.
 
 ![Home Page](../../img/home.png)
 
 ### Site Registration
 
-The form will be already populated with some default values. After completing the form click on `Save` button. This action will trigger [site registration](https://gluu.org/docs/oxd/api/#register-site) and will display `OXD ID`, `OXD Client ID`, `OXD Client secret` and `OXD Client name` on Screen (as shown in figure below)
+The form will be already populated with some default values. After completing the form, click `Save`. This action will trigger [site registration](https://gluu.org/docs/oxd/api/#register-site) and will display `OXD ID`, `OXD Client ID`, `OXD Client secret` and `OXD Client name` on the screen (as shown in figure below)
 
 ![Site Registration](../../img/settings.png)
 
@@ -86,7 +86,7 @@ The authourization URL obtained in step 1 is displayed on screen and on click of
 
 ![OAuth Page](../../img/OAuth.png)
 
-#### Step 3 : Authorization Server authenticates the End-User and sends him back to the Client with an Authorization Code.
+#### Step 3 : Authorization Server authenticates the End-User and sends them back to the Client with an Authorization Code.
 
 User enters `username` and `password` and submit in OP login page. Authorization Server authenticates the End-User and sends him back to the Client with an Authorization code.
 
