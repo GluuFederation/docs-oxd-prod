@@ -108,7 +108,7 @@ To run oxd-server:
 
 1. create a new directory ($OXD_SERVER_HOME) with appropriate name and unzip the downloaded `oxd-server-4.0.b1-distribution.zip` into it.
 
-1. move to `$OXD_SERVER_HOME/conf` folder and edit `oxd-server.yml` file to make necessary changes (like setting correct absolute path of `oxd-server.keystore` in `keyStorePath` property etc.)
+1. move to `$OXD_SERVER_HOME/conf` folder and edit `oxd-server.yml` file to make necessary configuration changes (like setting correct absolute path of `oxd-server.keystore` in `keyStorePath` property etc.)
 
 1. now go to `$OXD_SERVER_HOME/bin` folder and start oxd-server using below command
 
