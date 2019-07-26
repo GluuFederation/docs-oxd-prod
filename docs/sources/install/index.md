@@ -112,12 +112,12 @@ To run oxd-server:
 
 1. now go to `$OXD_SERVER_HOME/bin` folder and start oxd-server using below command
 
-Windows:
+   Windows:
 ```
 oxd-start.bat 
 ```
 
-Linux:
+   Linux:
 ```
 sh oxd-start.sh
 ```
