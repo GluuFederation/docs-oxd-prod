@@ -2,9 +2,11 @@
 ## Overview
 oxd offers an easy API for OAuth 2.0, [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html), and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html). 
 
-- The [oxd OpenID Connect APIs](#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user 
+- The [oxd OAuth APIs](#oauth-2-0-apis) can be used to send a user to an OAuth 2.0 Authorization Server (AS) for authorization. 
 
-- The [oxd UMA APIs](#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs      
+- The [oxd OpenID Connect APIs](#openid-connect-apis) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user 
+
+- The oxd UMA APIs can be used to send a user to an UMA Authorization Server (AS) for access policy enforcement, and are separated into two sections: [UMA 2.0 Resource Server APIs](#uma-2-resource-server-apis) and [UMA 2.0 Client APIs](#uma-2-client-apis). 
 
 ## OAuth 2.0 APIs 
 
