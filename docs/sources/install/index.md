@@ -104,24 +104,22 @@ The oxd-server is a self-contained program.
 
 To run oxd-server:
 
-1. download the jar file: http://ox.gluu.org/maven/org/xdi/oxd-server/4.0-SNAPSHOT/oxd-server-4.0-SNAPSHOT.jar
+1. download oxd distribution zip: https://ox.gluu.org/maven/org/gluu/oxd-server/4.0.b1/oxd-server-4.0.b1-distribution.zip
 
-1. download the jar file: http://ox.gluu.org/maven/org/bouncycastle/bcprov-jdk15on/1.54/bcprov-jdk15on-1.54.jar
+1. create a new directory ($OXD_SERVER_HOME) with appropriate name and unzip the downloaded `oxd-server-4.0.b1-distribution.zip` into it.
 
-1. download the yml file: https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0/oxd-server/src/main/resources/oxd-server.yml
+1. move to `$OXD_SERVER_HOME/conf` folder and edit `oxd-server.yml` file to make necessary changes (like setting correct absolute path of `oxd-server.keystore` in `keyStorePath` property etc.)
 
-1. download the keystore file: https://github.com/GluuFederation/oxd/raw/version_4.0/oxd-server/src/main/resources/oxd-server.keystore
-
-1. put it in one directory, correct `oxd-server.yml` if needed, move inside it and run the following (java 1.8 is required):
+1. now go to `$OXD_SERVER_HOME/bin` folder and start oxd-server using below command
 
 Windows:
-``` 
-java -Djava.net.preferIPv4Stack=true -cp bcprov-jdk15on-1.54.jar;oxd-server-4.0-SNAPSHOT.jar org.xdi.oxd.server.OxdServerApplication server oxd-server.yml
+```
+oxd-start.bat 
 ```
 
-Unix:
-``` 
-java -Djava.net.preferIPv4Stack=true -cp bcprov-jdk15on-1.54.jar:oxd-server-4.0-SNAPSHOT.jar org.xdi.oxd.server.OxdServerApplication server oxd-server.yml
+Linux:
+```
+sh oxd-start.sh
 ```
 
 ## Manual Build oxd-server Server
