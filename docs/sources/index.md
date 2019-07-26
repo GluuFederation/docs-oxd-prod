@@ -32,13 +32,39 @@ To get started:
 1. Call the [oxd API](./api/index.md) to implement authentication and authorization against an external Authorization Server.
     
 ## API
-oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
 
-- The [oxd OpenID Connect APIs](./api/index.md#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user. 
+oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0.
 
-- The [oxd UMA APIs](./api/index.md#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access management policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs.   
+Before using oxd API you will need to obtain an access token to secure the interaction with `oxd-server`. You can follow the two steps below. 
 
-Learn more in the [oxd API section](./api/index.md) of the documentation.  
+ - [Register site](./api/index.md#register-site) (returns `client_id` and `client_secret`. Make sure the `uma_protection` scope is present in the request and `grant_type` has `client_credentials` value. If `add_client_credentials_grant_type_automatically_during_client_registration` field in `/opt/oxd-server/conf/oxd-server.yml` is set to `true` then `client_credentials` grant type will be automatically added to clients registered using oxd server.)
+ - [Get client token](./api/index.md#get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`. Note if `grant_type` does not have `client_credentials` value you will get error to check AS logs.)
+ 
+Pass the obtained access token in `Authorization: Bearer <access_token>` header in all future calls to the `oxd-server`.
+
+[oxd API References](./api/index.md) 
+
+### OpenID Connect Authentication
+
+OpenID Connect is a simple identity layer on top of OAuth 2.0. 
+
+Technically OpenID Connect is not an authentication protocol--it enables a person to authorize the release of personal information from an "identity provider" to a separate application. In the process of authorizing the release of information, the person is authenticated (if no previous session exists).  
+
+#### Authentication Flow
+oxd supports the OpenID Connect [Hybrid Flow](http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) and [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) for authentication. 
+
+Learn more about authentication flows in the [OpenID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html). 
+
+#### oxd Authorization Code Flow
+
+You can think of the Authorization Code Flow as a three-step process: 
+
+ - Redirect a person to the authorization URL and obtain a code [/get-authorization-url](./api/index.md#get-authorization-url)
+ - Use the code to obtain tokens (access_token, id_token and refresh_token) [/get-tokens-id-access-by-code](./api/index.md#get-tokens-id-access-by-code)
+ - Use the access token to obtain user claims [/get-user-info](./api/index.md#get-user-info)
+   
+
+### OpenID Connect Authentication  
 
 ## Native Libraries
 
