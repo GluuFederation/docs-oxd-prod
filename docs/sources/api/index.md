@@ -456,7 +456,7 @@ It is possible to generated native library in your favorite language by [Swagger
 
 Check our FAQ about easiest way to generate native client [here](https://gluu.org/docs/oxd/4.0/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
 
-```
+
 <link rel="stylesheet" type="text/css" href="../../swagger/swagger-ui.css">
 
 <div id="swagger-ui"></div>
@@ -515,7 +515,7 @@ $(document).ready(function () {
 });
 </script>
 
-```
+
 
 ## References
 
