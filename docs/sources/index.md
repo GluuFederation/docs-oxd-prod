@@ -62,9 +62,13 @@ You can think of the Authorization Code Flow as a three-step process:
  - Redirect a person to the authorization URL and obtain a code [/get-authorization-url](./api/index.md#get-authorization-url)
  - Use the code to obtain tokens (access_token, id_token and refresh_token) [/get-tokens-id-access-by-code](./api/index.md#get-tokens-id-access-by-code)
  - Use the access token to obtain user claims [/get-user-info](./api/index.md#get-user-info)
-   
 
-### OpenID Connect Authentication  
+### UMA 2 Authorization 
+
+UMA 2 is a profile of OAuth 2.0 that defines RESTful, JSON-based, standardized flows and constructs for coordinating the protection of APIs and web resources. 
+
+Using oxd, your application can delegate access management decisions, like who can access which resources, from what devices, to a central UMA Authorization Server (AS) like the [Gluu AS](https://gluu.org/docs/ce/admin-guide/uma/). 
+ 
 
 ## Native Libraries
 
