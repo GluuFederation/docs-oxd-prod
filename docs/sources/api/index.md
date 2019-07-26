@@ -454,7 +454,7 @@ oxd has defined swagger specification [here](https://github.com/GluuFederation/o
 
 It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
 
-Check our FAQ about easiest way to generate native client [here](https://gluu.org/docs/oxd/4.0/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
+Check our FAQ about easiest way to generate native client [here](../faq/index.md#what-is-the-easiest-way-to-generate-native-library-for-oxd).
 
 
 <link rel="stylesheet" type="text/css" href="../../swagger/swagger-ui.css">
