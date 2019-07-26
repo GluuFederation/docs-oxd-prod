@@ -1,42 +1,14 @@
-# OpenID Connect & UMA Protocol Overview
-
-oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0. 
+# oxd APIs
+## Overview
+oxd offers an easy API for OAuth 2.0, [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html), and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html). 
 
 - The [oxd OpenID Connect APIs](#openid-connect-authentication) can be used to send a user to an OpenID Connect Provider (OP) for authentication and to gather identity information ("claims") about the user 
 
 - The [oxd UMA APIs](#uma-2-authorization) can be used to send a user to an UMA Authorization Server (AS) for access policy enforcement, for example to centrally manage which people (or software clients) can access which web pages and APIs      
 
-## OpenID Connect Authentication
+## OAuth 2.0 APIs 
 
-OpenID Connect is a simple identity layer on top of OAuth 2.0. 
-
-Technically OpenID Connect is not an authentication protocol--it enables a person to authorize the release of personal information from an "identity provider" to a separate application. In the process of authorizing the release of information, the person is authenticated (if no previous session exists).  
-
-### Authentication Flow
-oxd supports the OpenID Connect [Hybrid Flow](http://openid.net/specs/openid-connect-core-1_0.html#HybridFlowAuth) and [Authorization Code Flow](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth) for authentication. 
-
-Learn more about authentication flows in the [OpenID Connect spec](http://openid.net/specs/openid-connect-core-1_0.html). 
-
-### oxd Authorization Code Flow
-`oxd-server` provides seven APIs for OpenID Connect authentication. In general,
-you can think of the Authorization Code Flow as a three-step process: 
-
- 1. Redirect a person to the authorization URL and obtain a code [/get-authorization-url](#get-authorization-url)
- 1. Use the code to obtain tokens (access_token, id_token and refresh_token) [/get-tokens-id-access-by-code](#get-tokens-id-access-by-code)
- 1. Use the access token to obtain user claims [/get-user-info](#get-user-info)
-
-**IMPORTANT** : 
-
-Before using the above workflow you will need to obtain an access token to secure the interaction with `oxd-server`. You can follow the two steps below. 
-
- - [Register site](#register-site) (returns `client_id` and `client_secret`. Make sure the `uma_protection` scope is present in the request and `grant_type` has `client_credentials` value. If `add_client_credentials_grant_type_automatically_during_client_registration` field in `/opt/oxd-server/conf/oxd-server.yml` is set to `true` then `client_credentials` grant type will be automatically added to clients registered using oxd server.)
- - [Get client token](#get-client-token) (pass `client_id` and `client_secret` to obtain `access_token`. Note if `grant_type` does not have `client_credentials` value you will get error to check AS logs.)
- 
-Pass the obtained access token in `Authorization: Bearer <access_token>` header in all future calls to the `oxd-server`.
-
-### General OAuth 2.0 APIs 
-
-#### Register Site 
+### Register Site 
     
 [API Link](#operations-developers-register-site)
 
@@ -53,55 +25,55 @@ The `op_host` parameter is optional, but it must be specified in either the [def
 !!! Note
     `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).    
 
-#### Update Site
+### Update Site
 
 [API Link](#operations-developers-update-site)
 
 During update site it's important to pay special attention to `response_types` and `grant_types`. If during registration specify `response_types=code` and `grant_types=authorization_code client_credentials` and then during update miss/omit them then OP falls back to `response_types=code` and sets `grant_types=authorization_code` (in this way dropping `client_credentials` grant type).
 
-#### Remove Site
+### Remove Site
 
 [API Link](#operations-developers-remove-site)
 
-#### Get Client Token
+### Get Client Token
 
 [API Link](#operations-developers-get-client-token)
 
 Obtain an access token from the oxd server. This token will be used in headers to authenticate to oxd server in all subsequent queries. The required parameters for `/get-client-token` are `op_host`, `client_id` and `client_secret`.
 
-#### Get Access Token by Refresh Token
+### Get Access Token by Refresh Token
 
 [API Link](#operations-developers-get-access-token-by-refresh-token)
 
 A Refresh Token can be used to obtain a renewed Access Token. 
 
-#### Introspect Access Token
+### Introspect Access Token
 
 [API Link](#operations-developers-introspect-access-token)
 
 This operation introspect if the client access token obtained from the [previous step](#get-client-token) is active or not.
 
-#### Get User Info
+### Get User Info
 
 [API Link](#operations-developers-get-user-info)
 
 Use the access token from the step above to retrieve a JSON object with the user claims.
 
-#### Get JSON Web Key Set
+### Get JSON Web Key Set
 
 [API Link](#operations-developers-get-json-web-key-set)
 
 This operation is used to get the JSON Web Key Set (JWKS) from OP host. The JWKS is a set of keys containing the public keys that should be used to verify any JSON Web Token (JWT) issued by the authorization server.
 
-#### Get OP Discovery Configuration
+### Get OP Discovery Configuration
 
 [API Link](#operations-developers-get-discovery)
 
 This operation fetches OP Discovery Configuration from OP host.
 
-### OpenID Connect APIs
+## OpenID Connect APIs
 
-#### Get Authorization URL
+### Get Authorization URL
 
 [API Link](#operations-developers-get-authorization-url)
 
@@ -120,24 +92,19 @@ The only required parameter for `/get-authorization-url` is `oxd_id`. `redirect_
 
 The custom parameters (in key and value pair) can be passed to OpenID Connect Provider (OP) using `custom_parameters` parameter. The standard parameters (in key and value pair) can be passed to OP using `params` parameter.
 
-#### Get Tokens (ID & Access) by Code
+### Get Tokens (ID & Access) by Code
 
 [API Link](#operations-developers-get-tokens-by-code)
 
 Use the code and state obtained in the previous step to call this API to retrieve tokens.
 
-#### Get Logout URI
+### Get Logout URI
 
 The `get_logout_uri` command uses front-channel logout. A page is returned with iFrames, each of which contains the logout URL of the applications that have a session in that browser. 
 
 These iFrames should be loaded automatically, enabling each application to get a notification of logout, and to hopefully clean up any cookies in the person's browser. If the person blocks [third-party cookies](https://en.wikipedia.org/wiki/HTTP_cookie#Third-party_cookie) in their browser, front-channel logout will not work.
 
-## UMA 2 Authorization 
-UMA 2 is a profile of OAuth 2.0 that defines RESTful, JSON-based, standardized flows and constructs for coordinating the protection of APIs and web resources. 
-
-Using oxd, your application can delegate access management decisions, like who can access which resources, from what devices, to a central UMA Authorization Server (AS) like the [Gluu AS](https://gluu.org/docs/ce/admin-guide/uma/). 
-
-### UMA 2 Resource Server APIs
+## UMA 2 Resource Server APIs
 
 Your client, acting as an [OAuth2 Resource Server](https://tools.ietf.org/html/rfc6749#section-1.1), MUST:
 
@@ -173,7 +140,7 @@ HTTP/1.1 403 Forbidden
 Warning: 199 - "UMA Authorization Server Unreachable"
 ```
 
-#### UMA RS Protect Resources
+### UMA RS Protect Resources
 
 [API Link](#operations-developers-uma-rs-protect)
 
@@ -301,7 +268,7 @@ POST /uma-rs-protect
 ```
 
 
-#### UMA RS Check Access
+### UMA RS Check Access
 
 [API Link](#operations-developers-uma-rs-check-access)
 
@@ -374,7 +341,7 @@ HTTP/1.1 400 Bad request
 }
 ```
 
-#### UMA 2 Introspect RPT
+### UMA 2 Introspect RPT
 
 [API Link](#operations-developers-introspect-rpt)
 
@@ -399,7 +366,7 @@ HTTP/1.1 200 OK
 }
 ```
 
-#### UMA RP - Get Claims-Gathering URL
+### UMA RP - Get Claims-Gathering URL
 
 [API Link](#operations-developers-uma-rp-get-claims-gathering-url)
 
@@ -413,11 +380,11 @@ Example of Response:
 https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
 ```
 
-### UMA 2 Client APIs
+## UMA 2 Client APIs
 
 If your application is calling UMA 2 protected resources, use these APIs to obtain an RPT token.
 
-#### UMA RP - Get RPT
+### UMA RP - Get RPT
 
 [API Link](#operations-developers-uma-rp-get-rpt)
 
