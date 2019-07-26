@@ -352,7 +352,7 @@ HTTP/1.1 400 Bad request
 }
 ```
 
-### UMA 2 Introspect RPT
+### UMA Introspect RPT
 
 [API Link](#operations-developers-introspect-rpt)
 
@@ -377,28 +377,13 @@ HTTP/1.1 200 OK
 }
 ```
 
-### UMA RP - Get Claims-Gathering URL
-
-[API Link](#operations-developers-uma-rp-get-claims-gathering-url)
-
-`ticket` parameter for this command MUST be newest, in 90% cases it is from `need_info` error.
-
-After being redirected to the Claims Gathering URL, the user goes through the claims gathering flow. If successful, the user is redirected back to `claims_redirect_uri` with a new ticket which should be provided with the next `uma_rp_get_rpt` call.
-
-Example of Response:
-
-```
-https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
-```
-
-## UMA 2 Client APIs
-
-If your application is calling UMA 2 protected resources, use these APIs to obtain an RPT token.
+## UMA 2 Relying Party APIs 
 
 ### UMA RP - Get RPT
 
-[API Link](#operations-developers-uma-rp-get-rpt)
+If your application is calling UMA 2 protected resources, use these APIs to obtain an RPT token.
 
+[API Link](#operations-developers-uma-rp-get-rpt)
 
 Successful Response:
 
@@ -447,6 +432,21 @@ HTTP 1.1 403 Forbidden
   "redirect_user": "https://gluu.local.org/oxauth/restv1/uma/gather_claims?customUserParam2=value2&customUserParam1=value1&client_id=@!B28D.DF29.C16D.8E6F!0001!5489.C322!0008!7946.30C2.ACFC.73D8&ticket=38569d82-6e4a-4287-aac8-1d9ea2b8c439"
 }
 ```
+
+### UMA RP - Get Claims-Gathering URL
+
+[API Link](#operations-developers-uma-rp-get-claims-gathering-url)
+
+`ticket` parameter for this command MUST be newest, in 90% cases it is from `need_info` error.
+
+After being redirected to the Claims Gathering URL, the user goes through the claims gathering flow. If successful, the user is redirected back to `claims_redirect_uri` with a new ticket which should be provided with the next `uma_rp_get_rpt` call.
+
+Example of Response:
+
+```
+https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
+```
+
 
 ## API References
 
