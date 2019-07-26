@@ -39,7 +39,16 @@ During update site it's important to pay special attention to `response_types` a
 
 [API Link](#operations-developers-get-client-token)
 
-Obtain an access token from the oxd server. This token will be used in headers to authenticate to oxd server in all subsequent queries. The required parameters for `/get-client-token` are `op_host`, `client_id` and `client_secret`.
+Obtain an bearer access token from the oxd server.
+[The OAuth 2.0 Authorization Framework: Bearer Token Usage](https://tools.ietf.org/html/rfc6750).
+
+The token should be used to access a protected resources.
+
+Gluu-gateway supports only [Authorization Request Header Field](https://tools.ietf.org/html/rfc6750#section-2.1).
+
+Oxd server is also protected by [Authorization Request Header Field](https://tools.ietf.org/html/rfc6750#section-2.1) and the token must be used in all subsequent oxd queries.
+
+The required parameters for `/get-client-token` are `op_host`, `client_id` and `client_secret`.
 
 ### Get Access Token by Refresh Token
 
@@ -51,7 +60,7 @@ A Refresh Token can be used to obtain a renewed Access Token.
 
 [API Link](#operations-developers-introspect-access-token)
 
-This operation introspect if the client access token obtained from the [previous step](#get-client-token) is active or not.
+This operation introspect if the client OAuth2 bearer access token obtained from the [previous step](#get-client-token) is active or not.
 
 ### Get User Info
 
