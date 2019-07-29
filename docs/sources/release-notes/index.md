@@ -2,7 +2,7 @@
 
 oxd 4.0 includes architectural changes as well as different bug fixes and improvements:
 
- - introduced swagger 2.0 to oxd (we are planning to move to 3.0 when swagger codegen is ready)
+ - introduced [support for swagger 2.0](../api/index.md#api-references) to oxd (we are planning to move to 3.0 when swagger codegen is ready)
  - socket transport is removed from oxd-server
  - https transport is made as main transport for oxd-server
  - oxd-https-extension module is completely removed
