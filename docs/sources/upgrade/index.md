@@ -29,14 +29,7 @@ Auto-migration between UMA `1.0.1` and UMA `2` is not supported because of major
 Download the upgrade script and yaml template:
 
 ```
-# wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0/upgrade/oxd-server.yml.temp
 # wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0/upgrade/oxd_updater.py
-```
-
-Install the python yaml module:
-
-```
-# pip install pyyaml
 ```
 
 Run theupgrade script:
