@@ -38,14 +38,12 @@ Run theupgrade script:
 # python oxd_updater.py
 ```
 
-The `oxd_updater.py` script:
-  1. Adds gluu (repo.gluu.org) repository
-  1. Removes if you have oxd server
-  1. Installs recent oxd-server
-  1. moves json data to `/opt/oxd-server/json_data_backup` and sets 
-    `migration_source_folder_path: /opt/oxd-server/json_data_backup` in `oxd-server.yml`
-    so that oxd-server migrates to h2 database
-  1. merges `oxd-conf.json`, `oxd-default-site-config.json`, and `log4j.xml` into new configuration file `oxd-server.yml`
-  
-  !!! Note
-     Do not install recent version of oxd-server if you are planning to use `oxd_updater.py`, it will perform everything needed. 
+The `oxd_updater.py` script:    
+  1. Adds Gluu (repo.gluu.org) repository       
+  1. Removes the old oxd server (if applicable)       
+  1. Installs latest oxd server     
+  1. Moves json data to `/opt/oxd-server/json_data_backup` and sets `migration_source_folder_path: /opt/oxd-server/json_data_backup` in `oxd-server.yml` so that oxd migrates to h2 database
+  1. Merges `oxd-conf.json`, `oxd-default-site-config.json`, and `log4j.xml` into the new, single configuration file: `oxd-server.yml`      
+
+!!! Note  
+    Do not install the latest version of oxd when using `oxd_updater.py` -- the script will perform everything needed. 
