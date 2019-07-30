@@ -15,8 +15,8 @@ Follow these simple steps to migrate your JSON files:
 - Open `oxd-conf.json` 
 - Modify `migration_source_folder_path` to point to the folder or directory that contains the JSON files
 
-!!! Note 
-    If you are using Windows OS, don't forget to include the escape path separator (e.g. `C:\\OXD_OLD\\oxd-server\\conf`)
+    !!! Note 
+        If you are using Windows OS, don't forget to include the escape path separator (e.g. `C:\\OXD_OLD\\oxd-server\\conf`)
 
 - Restart `oxd-server` to import the files
 - Data migration will only happen once and will not initiate for subsequent oxd-server restarts  
