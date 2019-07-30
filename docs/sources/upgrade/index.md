@@ -32,7 +32,7 @@ Download the upgrade script:
 # wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0/upgrade/oxd_updater.py
 ```
 
-Run theupgrade script:
+Run the upgrade script:
 
 ```
 # python oxd_updater.py
