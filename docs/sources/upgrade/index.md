@@ -40,9 +40,9 @@ Run the upgrade script:
 
 The `oxd_updater.py` script:    
 
-1. Adds Gluu (repo.gluu.org) repository       
+1. Adds Gluu repository (`repo.gluu.org`)       
 
-1. Removes the old oxd server (if applicable)       
+1. Removes old oxd server (if applicable)       
 
 1. Installs latest oxd server     
 
