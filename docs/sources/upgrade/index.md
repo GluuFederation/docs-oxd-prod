@@ -26,7 +26,7 @@ Auto-migration between UMA `1.0.1` and UMA `2` is not supported because of major
 
 ## Using the Upgrade Script
 
-Download the upgrade script and yaml template:
+Download the upgrade script:
 
 ```
 # wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0/upgrade/oxd_updater.py
@@ -39,8 +39,13 @@ Run theupgrade script:
 ```
 
 The `oxd_updater.py` script:
+  1. Adds gluu (repo.gluu.org) repository
+  1. Removes if you have oxd server
+  1. Installs recent oxd-server
   1. moves json data to `/opt/oxd-server/json_data_backup` and sets 
     `migration_source_folder_path: /opt/oxd-server/json_data_backup` in `oxd-server.yml`
     so that oxd-server migrates to h2 database
   1. merges `oxd-conf.json`, `oxd-default-site-config.json`, and `log4j.xml` into new configuration file `oxd-server.yml`
   
+  !!! Note
+     Do not install recent version of oxd-server if you are planning to use `oxd_updater.py`, it will perform everything needed. 
