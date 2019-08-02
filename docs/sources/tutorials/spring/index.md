@@ -50,14 +50,14 @@ In this tutorial we demonstrate how a java spring web application can leverage o
     6 | oxd.server.scopes | Comma separated scopes the Client is declaring that it will restrict itself to using. | oxd.server.scopes=openid,profile,uma_protection,oxd
     7 | oxd.server.grant-types | Comma separated Grant Types the Client is declaring that it will restrict itself to using. | oxd.server.grant-types=authorization_code,client_credentials
 
-1. Change directory to the cloned `oxd-spring` project (${OXD_SPRING_HOME}) and run maven command to build the executable jar:
+1. Change directory to `${OXD_SPRING_HOME}` and run maven command to build the executable jar:
 
     ```
     cd oxd-spring 
     mvn clean package -Dmaven.test.skip=true
     ```
 
-    Depending on connection speed and computer performance, it may take a couple of minutes to complete. It is downloading all required     dependencies and will the executable jar file.
+    Depending on connection speed and computer performance, it may take a couple of minutes to complete. It is downloading all required     dependencies and bild the executable jar file.
     
 1. Now you can run the executable jar using below command:
 
@@ -71,7 +71,7 @@ In this tutorial we demonstrate how a java spring web application can leverage o
 
     ![Home Page](../../img/spring_home.png)
     
-1. After login the application will display User information from OP. To Logout of application and click on `Logout` link on top menu. 
+1. After login the application will display information of the logged in user from OP. To Logout of application and click on `Logout` link on top menu. This will initiate the logout process and OP will make the browser return to a predefined "[Post Logout Uri](https://github.com/GluuFederation/oxd-spring/blob/version_4.0/src/main/resources/application.properties#L27)
 
     ![Uder Info](../../img/spring_userInfo.png)
     
