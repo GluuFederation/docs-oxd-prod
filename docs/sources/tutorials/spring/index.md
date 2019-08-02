@@ -71,7 +71,7 @@ In this tutorial we demonstrate how a java spring web application can leverage o
 
     ![Home Page](../../img/spring_home.png)
     
-1. After login the application will display information of the logged in user from OP. To Logout of application and click on `Logout` link on top menu. This will initiate the logout process and OP will make the browser return to a predefined "[Post Logout Uri](https://github.com/GluuFederation/oxd-spring/blob/version_4.0/src/main/resources/application.properties#L27)
+1. After login the application will display information of the logged in user from OP. To Logout of application and click on `Logout` link on top menu. This will initiate the logout process and OP will make the browser return to a predefined [Post Logout Uri](https://github.com/GluuFederation/oxd-spring/blob/version_4.0/src/main/resources/application.properties#L27).
 
     ![Uder Info](../../img/spring_userInfo.png)
     
