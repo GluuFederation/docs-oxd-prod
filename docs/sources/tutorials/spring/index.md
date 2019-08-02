@@ -68,3 +68,14 @@ In this tutorial we demonstrate how a java spring web application can leverage o
     The first time you run the application, it tries to register site using the parameters specified in [application.properties](https://github.com/GluuFederation/oxd-spring/blob/version_4.0/src/main/resources/application.properties). If registration was successful, then [oxd.server.op-host](https://github.com/GluuFederation/oxd-spring/blob/version_4.0/src/main/resources/application.properties#L19) and received from oxd server `oxdId` are stored in the H2 database (which is embedded in oxd-spring-4.0-SNAPSHOT.jar). Next time you run the application with the same [oxd.server.op-host](https://github.com/GluuFederation/oxd-spring/blob/version_4.0/src/main/resources/application.properties#L19), it will obtain `oxdId` from database.
     
 1. Open a browser and point the browser to https://localhost:8080/. This will display Home Page of oxd-spring application with `Login To Gluu` button. Click on the button to log into application using OAuth 2.0 security. 
+
+    ![Home Page](../../img/spring_home.png)
+    
+1. After login the application will display User information from OP. To Logout of application and click on `Logout` link on top menu. 
+
+    ![Uder Info](../../img/spring_userInfo.png)
+    
+## Support
+
+Please report technical issues and suspected bugs on 
+our [Support Page](https://support.gluu.org/).
