@@ -46,9 +46,9 @@ In this tutorial we demonstrate how a java spring web application can leverage o
     2 | oxd.server.op-host | Provide the URL of your OpenID Provider (OP). | oxd.server.op-host=https://www.your-ophost.com
     3 | oxd.server.host | Hostname of oxd-server | oxd.server.host=www.your-oxd-server.com
     4 | oxd.server.port | Port of oxd-server | oxd.server.port=8443
-    5 | oxd.server.acr-values | Comma separated preferred authentication methods the client will receive from the OP. | oxd.server.acr- values=basic
-    6 | oxd.server.scopes | Comma separated scopes the Client is declaring that it will restrict itself to using. | oxd.server.scopes=openid,profile,uma_protection,oxd
-    7 | oxd.server.grant-types | Comma separated Grant Types the Client is declaring that it will restrict itself to using. | oxd.server.grant-types=authorization_code,client_credentials
+    5 | oxd.server.acr-values | Comma separated preferred authentication methods. | oxd.server.acr- values=basic
+    6 | oxd.server.scopes | Comma separated scopes that the client can use. | oxd.server.scopes=openid,profile,uma_protection,oxd
+    7 | oxd.server.grant-types | Comma separated Grant Types that the client can use. | oxd.server.grant-types=authorization_code,client_credentials
 
 1. Change directory to `${OXD_SPRING_HOME}` and run maven command to build the executable jar:
 
@@ -57,7 +57,7 @@ In this tutorial we demonstrate how a java spring web application can leverage o
     mvn clean package -Dmaven.test.skip=true
     ```
 
-    Depending on connection speed and computer performance, it may take a couple of minutes to complete. It is downloading all required     dependencies and bild the executable jar file.
+    Depending on connection speed and computer performance, it may take a couple of minutes to download all required dependencies and build the executable jar file.
     
 1. Now you can run the executable jar using below command:
 
