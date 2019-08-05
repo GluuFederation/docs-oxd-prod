@@ -58,6 +58,7 @@ pages:
 - Tutorials: 
         - 'Python': './tutorials/python/index.md'
         - 'Java': './tutorials/java/index.md'
+        - 'Spring': './tutorials/spring/index.md'
 - 'Upgrade': 'upgrade/index.md'
 - 'Configuration': 'configuration/index.md'
 - 'Logs': 'logs/index.md'
