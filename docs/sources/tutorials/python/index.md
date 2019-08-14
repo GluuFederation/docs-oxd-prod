@@ -23,7 +23,7 @@ My **defaultSiteConfig** section of `oxd-server.yml` configuration is as follows
 ```
 defaultSiteConfig:
   op_host: 'https://op.server.org'
-  op_discovery_path: ''
+  op_discovery_path: '/oxauth/'
   response_types: ['code']
   grant_type: ['authorization_code']
   acr_values: ['']
