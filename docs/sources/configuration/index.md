@@ -29,6 +29,7 @@ protect_commands_with_access_token: true
 uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client: true
 add_client_credentials_grant_type_automatically_during_client_registration: true
 migration_source_folder_path: ''
+allowed_op_hosts: []
 storage: h2
 storage_configuration:
   dbFileLocation: /opt/oxd-server/data/oxd_db
@@ -118,6 +119,8 @@ defaultSiteConfig:
 - **add_client_credentials_grant_type_automatically_during_client_registration:** If set to `true` then `client_credentials` grant type is automatically added to clients registered by oxd. If `false`, then `client_credentials` will not be automatically added to clients, but user can still add this grant type while registering clients in AS.
 
 - **migration_source_folder_path:** Migration from previous versions is built into the `oxd-server`. To migrate old JSON files from previous versions, specify the path to folder/directory that contains those JSON files in this property. Those files will be read and imported once (during restart `oxd-server`, will not import them again). If using Windows OS, don't forget to escape the path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
+
+- **allowed_op_hosts:** Array containing a list of the `op_host` urls. oxd can only access the `op_hosts` from this list and all other calls (to IDPs not present in this list ) will be rejected. If the list is empty then oxd is allowed to access any OpenID Connect Provider.
 
 - **storage:** This value can either be `h2` or `redis`. If `redis` is set, then `storage_configuration` must be specified with redis configuration details
 
