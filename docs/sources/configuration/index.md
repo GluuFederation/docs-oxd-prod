@@ -235,15 +235,15 @@ H2 storage configuration sample:
 
 - **access_token_as_jwt:** Specifies whether access_token should be return as JWT or not. Default value is false
 
-- **access_token_signing_alg:** Sets signing algorithm used for JWT signing. Valid values are none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512, PS256, PS384, PS512
+- **access_token_signing_alg:** Provide signing algorithm used for JWT signing. Valid values are none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512, PS256, PS384, PS512
 
 - **rpt_as_jwt:** Specifies whether RPT should be return as JWT or not. Default value is false
 
-- **logo_uri:** Specifies an URL that references a logo for the Client application
+- **logo_uri:** Provide an URL that references a logo for the Client application
 
-- **client_uri:** Specifies an URL of the home page of the Client
+- **client_uri:** Provide an URL of the home page of the Client
 
-- **policy_uri:** Specifies an URL that the Relying Party Client provides to the End-User to read about the how the profile data will be used
+- **policy_uri:** Provide an URL that the Relying Party Client provides to the End-User to read about the how the profile data will be used
 
 - **front_channel_logout_session_required:** Specifies if front channel logout session required. Default value is false
 
@@ -253,26 +253,42 @@ H2 storage configuration sample:
 
 - **id_token_binding_cnf:** Specifies Token Binding of ID Tokens
 
-- **tls_client_auth_subject_dn:** 
+- **tls_client_auth_subject_dn:** Specifies tls_client_auth_subject_dn, which the OAuth client will use in mutual-TLS authentication
 
-- **run_introspection_script_beforeaccess_token_as_jwt_creation_and_include_claims:** 
+- **run_introspection_script_beforeaccess_token_as_jwt_creation_and_include_claims:** Choose to run introspection script before access_token_as_jwt creation and include claims. Default value is false
 
-- **id_token_signed_response_alg:** 
+- **id_token_signed_response_alg:** Choose the JWS alg algorithm (JWA) required for the ID Token issued to this client_id. Valid values are none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512, PS256, PS384, PS512
 
-- **id_token_encrypted_response_alg:** 
-- **id_token_encrypted_response_enc:** 
-- **user_info_signed_response_alg:** 
-- **user_info_encrypted_response_alg:** 
-- **user_info_encrypted_response_enc:** 
-- **request_object_signing_alg:** 
-- **request_object_encryption_alg:** 
-- **request_object_encryption_enc:** 
-- **default_max_age:** 
-- **require_auth_time:** 
-- **initiate_login_uri:** 
-- **authorized_origins:** 
-- **access_token_lifetime:** 
-- **software_id:** 
-- **software_version:** 
-- **software_statement:** 
-- **custom_attributes:** 
+- **id_token_encrypted_response_alg:** Choose the JWE alg algorithm (JWA) required for encrypting the ID Token issued to this client_id. Valid values are RSA1_5, RSA-OAEP, A128KW, A256KW
+
+- **id_token_encrypted_response_enc:** Choose the JWE enc algorithm (JWA) required for symmetric encryption of the ID Token issued to this client_id. Valid values are A128CBC+HS256, A256CBC+HS512, A128GCM, A256GCM
+
+- **user_info_signed_response_alg:** Choose the JWS alg algorithm (JWA) required for UserInfo responses. Valid values are none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512, PS256, PS384, PS512
+
+- **user_info_encrypted_response_alg:** Choose the JWE alg algorithm (JWA) required for encrypting UserInfo responses. Valid values are RSA1_5, RSA_OAEP, A128KW, A256KW
+
+- **user_info_encrypted_response_enc:** Choose the JWE enc algorithm (JWA) required for symmetric encryption of UserInfo responses. Valid values are A128CBC+HS256, A256CBC+HS512, A128GCM, A256GCM
+
+- **request_object_signing_alg:** Choose the JWS alg algorithm (JWA) that must be required by the Authorization Server. Valid values are none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512, PS256, PS384, PS512
+
+- **request_object_encryption_alg:** Choose the JWE alg algorithm (JWA) the RP is declaring that it may use for encrypting Request Objects sent to the OP. Valid values are RSA1_5, RSA_OAEP, A128KW, A256KW
+
+- **request_object_encryption_enc:** Choose the JWE enc algorithm (JWA) the RP is declaring that it may use for encrypting Request Objects sent to the OP. Valid values are A128CBC+HS256, A256CBC+HS512, A128GCM, A256GCM
+
+- **default_max_age:** Provide the Default Maximum Authentication Age (in Integer)
+
+- **require_auth_time:** Specifies the Boolean value specifying whether the auth_time claim in the id_token is required. It is required when the value is true. The auth_time claim request in the request object overrides this setting
+
+- **initiate_login_uri:** Provide the URI using the https scheme that the authorization server can call to initiate a login at the client
+
+- **authorized_origins:** JSON array of authorized JavaScript origins example: List [ "beem://www.test.com", "fb://app.local.url" ]
+
+- **access_token_lifetime:** Provide the Client-specific access token expiration (in Integer)
+
+- **software_id:** Provide a unique identifier string (UUID) assigned by the client developer or software publisher used by registration endpoints to identify the client software to be dynamically registered
+
+- **software_version:** Provide a version identifier string for the client software identified by `software_id`. The value of the `software_version` should change on any update to the client software identified by the same `software_id`
+
+- **software_statement:** Provide a software statement containing client metadata values about the client software as claims. This is a string value containing the entire signed JWT
+
+- **custom_attributes:** Json object to provide custom attribute to registration client
