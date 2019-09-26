@@ -86,6 +86,49 @@ defaultSiteConfig:
   ui_locales: ['en']
   claims_locales: ['en']
   contacts: []
+  redirect_uris: []
+  logout_redirect_uris: []
+  client_name: ''
+  client_jwks_uri: ''
+  token_endpoint_auth_method: ''
+  token_endpoint_auth_signing_alg: ''
+  request_uris: []
+  front_channel_logout_uris: []
+  sector_identifier_uri: ''
+  claims_redirect_uri: []
+  client_id: ''
+  client_secret: ''
+  trusted_client: false
+  access_token_as_jwt: false
+  access_token_signing_alg: ''
+  rpt_as_jwt: false
+  logo_uri: ''
+  client_uri: ''
+  policy_uri: ''
+  front_channel_logout_session_required: false
+  tos_uri: ''
+  jwks: ''
+  id_token_binding_cnf: ''
+  tls_client_auth_subject_dn: ''
+  run_introspection_script_beforeaccess_token_as_jwt_creation_and_include_claims: false
+  id_token_signed_response_alg: ''
+  id_token_encrypted_response_alg: ''
+  id_token_encrypted_response_enc: ''
+  user_info_signed_response_alg: ''
+  user_info_encrypted_response_alg: ''
+  user_info_encrypted_response_enc: ''
+  request_object_signing_alg: ''
+  request_object_encryption_alg: ''
+  request_object_encryption_enc: ''
+  default_max_age: null
+  require_auth_time: false
+  initiate_login_uri: ''
+  authorized_origins: []
+  access_token_lifetime: null
+  software_id: ''
+  software_version: ''
+  software_statement: ''
+  custom_attributes: {}
 
 ```
 ### Server configuration fields descriptions
@@ -126,6 +169,8 @@ defaultSiteConfig:
 
 - **storage_configuration:** Storage configuration details. Required if the `redis` value is set for the `storage` key
 
+- **redirect_uris:** Provide the URL of OpenID Provider (OP). If missing, must be present in defaults.
+
 Redis storage configuration sample:
 
 ```yaml
@@ -148,9 +193,9 @@ H2 storage configuration sample:
 
 - **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example, if it is `https://example.com/.well-known/openid-configuration` then the path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then the path is `/oxauth`  
 
-- **post_logout_redirect_uri:** URL to which the RP is requesting that the End-User's User Agent be redirected after a logout has been performed
+- **logout_redirect_uris:** Provide the URLs supplied by the RP to request that the user be redirected to this location after a logout has been performed.
 
-- **redirect_uris:** Additional URLs that the OpenID Connect Provider (OP) will use to redirect the person to after successful authentication
+- **redirect_uris:** Provide the list of redirection URIs. The first URL is where the user will be redirected after successful authorization at the OpenID Connect Provider (OP).
 
 - **response_types:** JSON array containing a list of the OAuth 2.0 response_type values that the site is declaring that it will restrict itself to using
 
@@ -165,3 +210,69 @@ H2 storage configuration sample:
 - **claims_locales:** End-User's preferred languages and scripts for Claims being returned, represented as a space-separated list of BCP47 [RFC5646] language tag values, ordered by preference
 
 - **contacts:** Array of e-mail addresses for people responsible for this client
+
+- **client_name:** Provide name of the client registered in OpenID Connect Provider
+
+- **client_jwks_uri:** Provide the URL for the Client’s JSON Web Key Set (JWK) document containing key(s) that are used for signing requests to the OP. The JWK Set may also contain the Client’s encryption keys(s) that are used by the OP to encrypt the responses to the Client. When both signing and encryption keys are made available, a use (Key Use) parameter value is required for all keys in the document to indicate each key’s intended usage
+
+- **token_endpoint_auth_method:** Provide the requested authentication method for the Token Endpoint. Valid values are none, client_secret_basic, client_secret_post, client_secret_jwt, private_key_jwt, access_token, tls_client_auth, self_signed_tls_client_auth
+
+- **token_endpoint_auth_signing_alg:** Provide the Requested Client Authentication method for the Token Endpoint. Valid values are none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512, PS256, PS384, PS512
+
+- **request_uris:** JSON array of request_uri values that are pre-registered by the Client for use at the Authorization Server
+
+- **front_channel_logout_uris:** JSON array of frontchannel logout uris.
+
+- **sector_identifier_uri:** Provide the URL using the https scheme to be used in calculating Pseudonymous Identifiers by the OP. The URL references a file with a single JSON array of redirect_uri values
+
+- **claims_redirect_uri:** JSON array of claims redirect uris
+
+- **client_id:** Provide the client id of existing client, ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
+
+- **client_secret:** Provide the client secret of existing client, must be used together with client_id
+
+- **trusted_client:** Specifies whether client is trusted. Default value is false
+
+- **access_token_as_jwt:** Specifies whether access_token should be return as JWT or not. Default value is false
+
+- **access_token_signing_alg:** Sets signing algorithm used for JWT signing. Valid values are none, HS256, HS384, HS512, RS256, RS384, RS512, ES256, ES384, ES512, PS256, PS384, PS512
+
+- **rpt_as_jwt:** Specifies whether RPT should be return as JWT or not. Default value is false
+
+- **logo_uri:** Specifies an URL that references a logo for the Client application
+
+- **client_uri:** Specifies an URL of the home page of the Client
+
+- **policy_uri:** Specifies an URL that the Relying Party Client provides to the End-User to read about the how the profile data will be used
+
+- **front_channel_logout_session_required:** Specifies if front channel logout session required. Default value is false
+
+- **tos_uri:** Specifies an URL that the Relying Party Client provides to the End-User to read about the Relying Party’s terms
+
+- **jwks:** Client’s JSON Web Key Set (JWK) document, passed by value. The semantics of the jwks parameter are the same as the jwks_uri parameter, other than that the JWK Set is passed by value, rather than by reference. This parameter is intended only to be used by Clients that, for some reason, are unable to use the jwks_uri parameter, for instance, by native applications that might not have a location to host the contents of the JWK Set. If a Client can use jwks_uri, it must not use jwks. One significant downside of jwks is that it does not enable key rotation. The jwks_uri and jwks parameters must not be used together
+
+- **id_token_binding_cnf:** Specifies Token Binding of ID Tokens
+
+- **tls_client_auth_subject_dn:** 
+
+- **run_introspection_script_beforeaccess_token_as_jwt_creation_and_include_claims:** 
+
+- **id_token_signed_response_alg:** 
+
+- **id_token_encrypted_response_alg:** 
+- **id_token_encrypted_response_enc:** 
+- **user_info_signed_response_alg:** 
+- **user_info_encrypted_response_alg:** 
+- **user_info_encrypted_response_enc:** 
+- **request_object_signing_alg:** 
+- **request_object_encryption_alg:** 
+- **request_object_encryption_enc:** 
+- **default_max_age:** 
+- **require_auth_time:** 
+- **initiate_login_uri:** 
+- **authorized_origins:** 
+- **access_token_lifetime:** 
+- **software_id:** 
+- **software_version:** 
+- **software_statement:** 
+- **custom_attributes:** 
