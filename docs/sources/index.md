@@ -1,11 +1,11 @@
-# oxd 4.0 Beta Documentation
+# oxd 4.0 Documentation
 
 !!! Attention
-    oxd 4.0 is currently in open Beta. Questions and feedback can be directed to [Gluu support](https://support.gluu.org). View [known issues](https://github.com/GluuFederation/oxd/milestone/8). 
+    Questions and feedback on oxd 4.0 can be directed to [Gluu support](https://support.gluu.org). View [known issues](https://github.com/GluuFederation/oxd/milestone/8). 
 
 
 ## Introduction
-oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce). 
+oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce/4.0/). 
 
 ## Architecture 
 The oxd Linux package includes the `oxd-server` which is a simple REST application. `oxd-server` is designed to work over the web (via `https`), making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
@@ -81,11 +81,11 @@ For more information about generating native clients, [check our FAQ](https://gl
 oxd 4.0 has been tested against the following OAuth 2.0 Authorization Servers:
 
 ### OpenID Providers (OP)
-- Gluu Server [4.0 Beta](https://gluu.org/docs/ce/4.0), [3.1.6](https://gluu.org/docs/ce/3.1.6)
+- Gluu Server [4.0](https://gluu.org/docs/ce/4.0), [3.1.6](https://gluu.org/docs/ce/3.1.6)
 
 
 ### UMA Authorization Servers (AS)
-- Gluu Server [4.0 Beta](https://gluu.org/docs/ce/4.0), [3.1.6](https://gluu.org/docs/ce/3.1.6)
+- Gluu Server [4.0](https://gluu.org/docs/ce/4.0), [3.1.6](https://gluu.org/docs/ce/3.1.6)
 
 ## Source code
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
