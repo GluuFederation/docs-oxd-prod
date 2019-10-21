@@ -34,7 +34,7 @@ Step 3: [Run](#service-operations) oxd server:
 ### Ubuntu 18.04 (bionic)
 
 ```
-echo "deb https://repo.gluu.org/ubuntu/ bionic-devel main" > /etc/apt/sources.list.d/gluu-repo.list
+echo "deb https://repo.gluu.org/ubuntu/ bionic main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install oxd-server
@@ -43,7 +43,7 @@ apt-get install oxd-server
 ### Ubuntu 16.04 (xenial)
 
 ```
-echo "deb https://repo.gluu.org/ubuntu/ xenial-devel main" > /etc/apt/sources.list.d/gluu-repo.list
+echo "deb https://repo.gluu.org/ubuntu/ xenial main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install oxd-server
@@ -52,7 +52,7 @@ apt-get install oxd-server
 ### Debian 9 (stretch)
 
 ```
-echo "deb https://repo.gluu.org/debian/ stretch-testing main" > /etc/apt/sources.list.d/gluu-repo.list
+echo "deb https://repo.gluu.org/debian/ stretch-stable main" > /etc/apt/sources.list.d/gluu-repo.list
 curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -
 apt-get update
 apt-get install oxd-server
@@ -61,7 +61,7 @@ apt-get install oxd-server
 ### CentOS 7
 
 ```
-wget https://repo.gluu.org/centos/Gluu-centos-7-testing.repo -O /etc/yum.repos.d/Gluu.repo
+wget https://repo.gluu.org/centos/Gluu-centos7.repo -O /etc/yum.repos.d/Gluu.repo
 wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
@@ -71,7 +71,7 @@ yum install oxd-server
 ### RHEL 7
 
 ```
-wget https://repo.gluu.org/rhel/Gluu-rhel-7-testing.repo -O /etc/yum.repos.d/Gluu.repo
+wget https://repo.gluu.org/rhel/Gluu-rhel7.repo -O /etc/yum.repos.d/Gluu.repo
 wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
 yum clean all
@@ -104,9 +104,9 @@ The oxd-server is a self-contained program.
 
 To run oxd-server:
 
-1. download oxd distribution zip: https://ox.gluu.org/maven/org/gluu/oxd-server/4.0.b1/oxd-server-4.0.b1-distribution.zip
+1. download oxd distribution zip: https://ox.gluu.org/maven/org/gluu/oxd-server/4.0.Final/oxd-server-4.0.Final-distribution.zip
 
-1. create a new directory ($OXD_SERVER_HOME) with appropriate name and unzip the downloaded `oxd-server-4.0.b1-distribution.zip` into it.
+1. create a new directory ($OXD_SERVER_HOME) with appropriate name and unzip the downloaded `oxd-server-4.0.Final-distribution.zip` into it.
 
 1. move to `$OXD_SERVER_HOME/conf` folder and edit `oxd-server.yml` file to make necessary configuration changes (like setting correct absolute path of `oxd-server.keystore` in `keyStorePath` property etc.)
 
