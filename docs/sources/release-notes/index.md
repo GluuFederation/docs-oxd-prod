@@ -2,15 +2,6 @@
 
 oxd 4.0 includes architectural changes as well as different bug fixes and improvements:
 
- - introduced [support for swagger 2.0](../api/index.md#api-references) to oxd (we are planning to move to 3.0 when swagger codegen is ready)
- - socket transport is removed from oxd-server
- - https transport is made as main transport for oxd-server
- - oxd-https-extension module is completely removed
- - all configuration is now in one single yaml file, [see sample oxd-server.yml](https://github.com/GluuFederation/oxd/blob/version_4.0.beta/oxd-server/src/main/resources/oxd-server.yml)
- - new tests set-up and tear-down based on dropwizard
- - Upgraded dropwizard to latest stable 1.3.1 version
- - Changed oxd commands runner to avoid additional serialization/deserialization which improves performance.
-
 ### New Features
 
 ### Fixes / Enhancements
