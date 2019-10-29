@@ -3,10 +3,10 @@
 We have included auto-migration functionality to easily transfer existing data files to the latest version of oxd. `oxd-server` now uses configurable data storage (`h2`, `redis`, etc.) instead of JSON files.
 
 ## Legacy Compatibility
-Before moving forward with an upgrade to oxd 4.0, review the following legacy compatibility notes:
+Before moving forward with an upgrade to oxd 4.1, review the following legacy compatibility notes:
 
-- UMA 2.0: Supported in oxd 4.0 (since 3.1.4) and Gluu Server 4.0 (since 3.1.4)      
-- UMA 1.0.1: **Not** supported in oxd 4.0 (since 3.1.4) or Gluu Server 4.0 (since 3.1.4)    
+- UMA 2.0: Supported in oxd 4.1 (since 3.1.4) and Gluu Server 4.1 (since 3.1.4)      
+- UMA 1.0.1: **Not** supported in oxd 4.1 (since 3.1.4) or Gluu Server 4.1 (since 3.1.4)    
 - OpenID Connect: Supported in all versions of oxd and Gluu Server         
 
 ## OpenID Connect Data Migration
@@ -29,7 +29,7 @@ Auto-migration between UMA `1.0.1` and UMA `2` is not supported because of major
 Upgrades oxd server from 3.1.x to 4.x version. Download the upgrade script:
 
 ```
-# wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0/upgrade/oxd_updater.py
+# wget https://raw.githubusercontent.com/GluuFederation/oxd/version_4.1/upgrade/oxd_updater.py
 ```
 
 Run the upgrade script:
