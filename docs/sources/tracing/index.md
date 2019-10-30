@@ -1,6 +1,6 @@
 # Tracing in oxd
 ## Overview
-oxd uses OpenTracing  to profile and monitor the end-points requested on oxd-server. OpenTracing is comprised of an API specification, frameworks and libraries that have implemented the specification, and documentation for the project. OpenTracing allows developers to add instrumentation to their application code using APIs that do not lock them into any one particular product or vendor.
+oxd uses OpenTracing  to profile and monitor the end-points requested on oxd-server. [OpenTracing](https://opentracing.io) is comprised of an API specification, frameworks and libraries that have implemented the specification, and documentation for the project. OpenTracing allows developers to add instrumentation to their application code using APIs that do not lock them into any one particular product or vendor.
 
 ## Supported tracers in oxd
 OpenTracing abstracts away the differences among numerous tracer implementations. This means that instrumentation would remain the same irrespective of the tracer system being used by the developer. OXD server supports 2 tracers which are [Jaeger](https://www.jaegertracing.io) or [Zipkin](https://zipkin.io) record the Spans and publish them on UI. To enable tracing in oxd first we need to install tracer either `Jaeger` or `Zipkin`.
@@ -24,9 +24,9 @@ To enable tracing in oxd-server follow below steps:
 
 **tracer** - mention tracer used for publishing traces whether "jaeger" or "zipkin".
 
-**tracer_host** - mention tracer host
+**tracer_host** - mention tracer host.
 
-**tracer_port** - mention tracer port.
+**tracer_port** - mention tracer port. For "jaeger" tracer default port is "5775" and for "zipkin" tracer default port is "9411".
 ```
 
 1. Restart oxd-server. 
