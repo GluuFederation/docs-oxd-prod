@@ -31,7 +31,7 @@ The `op_host` parameter is optional, but it must be specified in either the [def
 
 [API Link](#operations-developers-update-site)
 
-During update site it's important to pay special attention to `response_types` and `grant_types`. If during registration specify `response_types=code` and `grant_types=authorization_code client_credentials` and then during update miss/omit them then OP falls back to `response_types=code` and sets `grant_types=authorization_code` (in this way dropping `client_credentials` grant type).
+Update site will allow us to modify the client information on OpenID Connect Provider (OP). The only required parameter for this operation is `oxd_id` of client (generated during site registration). Other parameters are same as `Register site` parameters except `op_host`. `op_host` cannot be updated using this operation.
 
 ### Remove Site
 
