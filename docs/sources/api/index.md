@@ -31,7 +31,7 @@ The `op_host` parameter is optional, but it must be specified in either the [def
 
 [API Link](#operations-developers-update-site)
 
-Update site will allow us to modify the client information on OpenID Connect Provider (OP). The only required parameter for this operation is `oxd_id` of client (generated during site registration). Other parameters are same as `Register site` parameters except `op_host`. `op_host` cannot be updated using this operation.
+`Update site` modifies the client information on an OpenID Connect Provider (OP). The only required parameter for this operation is client's `oxd_id` parameter (which is generated during site registration). The other parameters are the same as the `Register site` parameters, except that `op_host` cannot be updated using this operation.
 
 ### Remove Site
 
