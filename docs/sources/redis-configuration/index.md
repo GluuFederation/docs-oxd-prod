@@ -33,16 +33,12 @@ In `Cluster` mode oxd stores client details in multiple running Redis server. To
 
 1. Download and install [oxd 4.0](https://gluu.org/docs/oxd/4.0/).
 
-1. Download and install [Redis](https://redis.io/topics/quickstart) on local server.  
+1. Download and install [Redis](https://redis.io/topics/quickstart) on different virtual machines (VMs).  
 
-1. Start different instance of Redis server on different ports (say 6379, 6380, 6381 and 6382) using below commands each executed on different terminal windows:
+1. Start Redis server on different VMs using below command:
 
     ```
-    redis-server --port 6379
-    redis-server --port 6380
-    redis-server --port 6381
-    redis-server --port 6382
-    
+    redis-server
     ```
 
 1. In `/opt/oxd-server/conf/oxd-server.yml` of oxd set following `storage_configuration`.
@@ -50,7 +46,7 @@ In `Cluster` mode oxd stores client details in multiple running Redis server. To
     ```
     storage: redis
     storage_configuration:
-    servers: "localhost:6379,localhost:6380,localhost:6381,localhost:6382"
+    servers: "redis-host1-IP:6379,redis-host2-IP:6380,redis-host3-IP:6381,redis-host4-IP:6382"
     redisProviderType: CLUSTER
     ```
     
