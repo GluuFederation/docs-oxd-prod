@@ -21,8 +21,8 @@ When Redis is configured in `Standalone` mode, oxd stores client details in sing
     ```
     storage: redis
     storage_configuration:
-    servers: "localhost:6379"
-    redisProviderType: STANDALONE
+        servers: "localhost:6379"
+        redisProviderType: STANDALONE
     ```
     
 1. Start oxd server and execute client registration command. This will store client information in Redis storage.
@@ -46,8 +46,8 @@ In `Cluster` mode oxd stores client details in multiple running Redis server. To
     ```
     storage: redis
     storage_configuration:
-    servers: "redis-host1-IP:6379,redis-host2-IP:6380,redis-host3-IP:6381,redis-host4-IP:6382"
-    redisProviderType: CLUSTER
+        servers: "redis-host1-IP:6379,redis-host2-IP:6380,redis-host3-IP:6381,redis-host4-IP:6382"
+        redisProviderType: CLUSTER
     ```
     
 1. Start oxd server and execute client registration command. This will store client information in any one of the Redis server instance.
