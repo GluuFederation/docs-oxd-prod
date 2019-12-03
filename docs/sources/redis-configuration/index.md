@@ -1,10 +1,10 @@
 # Redis configuration in oxd
 
-OXD maintains a copy of client details registered in `OpenID Connect provider` in its storage. The storage used in oxd can be either `H2` or `Redis` depending on need of the project. OXD has feature to configure `Redis` storage in standalone, sharded and cluster configuration modes which will be covered in detail in this section.
+OXD maintains a copy of client details registered in `OpenID Connect provider` in oxd storage. The storage used in oxd can be either `H2` or `Redis` depending on need of the project. OXD has feature to configure `Redis` storage in standalone, sharded or cluster mode which will be covered in detail in this section.
 
 ## Redis in `Standalone` mode
 
-In `Standalone` mode oxd stores client details in single Redis server. To configure Redis in `Standalone` mode we need to follow below steps:
+When Redis is configured in `Standalone` mode, oxd stores client details in single Redis server. To configure Redis in `Standalone` mode we need to follow below steps:
 
 1. Download and install [oxd 4.0](https://gluu.org/docs/oxd/4.0/).
 
@@ -35,7 +35,7 @@ In `Cluster` mode oxd stores client details in multiple running Redis server. To
 
 1. Download and install [Redis](https://redis.io/topics/quickstart) on local server.  
 
-1. Start different instance of Redis server on different ports (say 6379, 6380, 6381 and 6382) using below commands each on different terminal windows:
+1. Start different instance of Redis server on different ports (say 6379, 6380, 6381 and 6382) using below commands each executed on different terminal windows:
 
     ```
     redis-server --port 6379
