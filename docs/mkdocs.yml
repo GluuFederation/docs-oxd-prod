@@ -53,6 +53,7 @@ nav:
         - 'Spring': './tutorials/spring/index.md'
 - 'Upgrade': 'upgrade/index.md'
 - 'Configuration': 'configuration/index.md'
+- 'Redis configuration': 'redis-configuration/index.md'
 - 'Logs': 'logs/index.md'
 - 'API': 'api/index.md'
 - 'Security Considerations': 'security/index.md'
