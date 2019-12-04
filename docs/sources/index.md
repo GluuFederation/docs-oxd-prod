@@ -10,7 +10,7 @@ oxd exposes simple, static APIs web application developers can use to implement 
 ## Architecture 
 The oxd Linux package includes the `oxd-server` which is a simple REST application. `oxd-server` is designed to work over the web (via `https`), making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
 
-oxd saves data in own persistence (`h2`, `redis`) and acts as RP for OP. Therefore if client is created by oxd on OP side it is highly recommended to update client's data via oxd API. Otherwise if change client's data by configuring OP directly then data in oxd persistence can be outdated which can lead to confusion.
+oxd saves data in own persistence (`h2`, `redis`) and acts as RP for OP. Therefore if client is created by oxd on OP side it is highly recommended to update client's data via oxd API. Otherwise if change client's data by configuring OP directly then data in oxd persistence can be outdated which can lead to confusion and unexpected behavior.
 
 ![oxd-https-architecture](./img/oxd-https.jpg) 
 
