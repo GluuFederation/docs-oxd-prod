@@ -1,4 +1,4 @@
-# Redis configuration in oxd
+# Redis in oxd
 
 OXD maintains a copy of client details registered in `OpenID Connect provider` in oxd storage. The storage used in oxd can be either `H2` or `Redis` depending on need of the project. OXD has feature to configure `Redis` storage in standalone, sharded or cluster mode which will be covered in detail in this section.
 
