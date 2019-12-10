@@ -34,7 +34,27 @@ You can use any convenient database viewer to view/edit data inside the database
 
 We can use Sql clients like `DBeaver` to view and edit data in database. The steps are:
 
-- Download, install and start [DBeaver](https://dbeaver.io/download/).
-- 
+1. Download, install and start [DBeaver](https://dbeaver.io/download/).
+
+1. Click on `Database --> New Database Connection` option on to menu of `DBeaver`. This will opean a popup window listing many DBs supported by `DBeaver`
+
+    ![dbeaver_connection](../img/1_dbeaver_connection.png)
+
+1. On appeared popup select `H2 Embedded` database and then click on `Next` button.
+
+    ![dbeaver_select_h2](../img/2_dbeaver_select_h2.png)
+    
+1. On next popup provide path of H2 embedded database (`oxd_db.mv.db` file) in Database/Schema textbox along with DB username/password. Then click on`Finish` button.
+
+    ![dbeaver_test_connection](../img/3_dbeaver_test_connection.png)
+    
+1. The database connection will be shown on `Database Navigator`. To connect it right click on it and click on connect option.
+
+    ![dbeaver_db_connect](../img/4_dbeaver_db_connect.png)
+    
+1. To view/edit data doulble click on tables under `PUBLIC --> Tables`. This will display the data in tables. The data can also be modified.
+
+    ![dbeaver_data](../img/5_dbeaver_data.png)
+    
 
 
