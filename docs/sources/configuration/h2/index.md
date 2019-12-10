@@ -36,7 +36,7 @@ We can use Sql clients like `DBeaver` to view and edit data in database. The ste
 
 1. Download, install and start [DBeaver](https://dbeaver.io/download/).
 
-1. Click on `Database --> New Database Connection` option on to menu of `DBeaver`. This will opean a popup window listing many DBs supported by `DBeaver`
+1. Click on `Database --> New Database Connection` option on top menu of `DBeaver`. This will open a popup window listing many DBs supported by `DBeaver`
 
     ![dbeaver_connection](../../img/1_dbeaver_connection.png)
 
@@ -44,11 +44,11 @@ We can use Sql clients like `DBeaver` to view and edit data in database. The ste
 
     ![dbeaver_select_h2](../../img/2_dbeaver_select_h2.png)
     
-1. On next popup provide path of H2 embedded database (`oxd_db.mv.db` file) in Database/Schema textbox along with DB username/password. Then click on`Finish` button.
+1. On next popup provide path of H2 embedded database (i.e. `oxd_db.mv.db` file) in `Database/Schema` textbox along with DB username/password. Then click on`Finish` button.
 
     ![dbeaver_test_connection](../../img/3_dbeaver_test_connection.png)
     
-1. The database connection will be shown on `Database Navigator`. To connect it right click on it and click on connect option.
+1. The newly created database connection will be shown on `Database Navigator`. To connect it right click on it and then click on connect option.
 
     ![dbeaver_db_connect](../../img/4_dbeaver_db_connect.png)
     
