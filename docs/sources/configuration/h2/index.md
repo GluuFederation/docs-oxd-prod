@@ -1,4 +1,4 @@
-# Using H2 storage oxd
+# Using H2 storage in oxd
 
 ## H2 configuration in oxd
 
