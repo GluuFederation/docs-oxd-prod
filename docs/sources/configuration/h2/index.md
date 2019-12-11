@@ -14,7 +14,7 @@ The storage used in oxd can be either `H2` or `Redis`. To use `H2` database as s
 
 By default, the oxd-server persists data inside H2 embedded database. On your disk, it should look like an `oxd_db.mv.db` file. In `dbFileLocation` parameter of `oxd-server.yml` the path is set where `oxd_db.mv.db` is generated.
 
-## H2 tools to view data in H2 DB
+## H2 tools to view/edit data in H2 DB
 
 
 The oxd-server persists data inside H2 embedded database, it should look like an `oxd_db.mv.db` file on disk.
@@ -30,13 +30,13 @@ You can use any convenient database viewer to view/edit data inside the database
  
  After hitting the "Connect" button, you will be able to view/modify data manually. Please be careful not to corrupt the data inside. Otherwise, oxd-server will not be able to operate in its normal mode.
  
- ## DBeaver to view data in H2 DB
+## DBeaver to view/edit data in H2 DB
 
 We can use Sql clients like `DBeaver` to view and edit data in database. The steps are:
 
 1. Download, install and start [DBeaver](https://dbeaver.io/download/).
 
-1. Click on `Database --> New Database Connection` option on top menu of `DBeaver`. This will open a popup window listing many DBs supported by `DBeaver`
+1. Click on `Database --> New Database Connection` option on top menu of `DBeaver`. This will open a popup window listing many DBs supported by `DBeaver`.
 
     ![dbeaver_connection](../../img/1_dbeaver_connection.png)
 
