@@ -1,4 +1,4 @@
-# H2 database
+# Using H2 storage oxd
 
 ## H2 configuration in oxd
 
