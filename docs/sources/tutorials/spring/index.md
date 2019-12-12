@@ -3,9 +3,10 @@
 In this tutorial we demonstrate how a java spring web application can leverage oxd 4.0 for SSO using the authorization code flow.
 
 !!! Attention
-    1. oxd-spring application will only work with oxd-4.0 installed on remote server if `SSL certificate by Certificate Authority` is configured to oxd. 
+    For oxd-4.0 and oxd-spring application running on different servers then it essential to install and configure `SSL certificate by Certificate Authority` with oxd. This is mandatory so that oxd-spring application can access oxd-server without throwing any ssl exception. But, if oxd-spring and oxd-server are running on same server then `oxd-spring` application will work even with oxd configured with self-signed certificate.
     
-    1. oxd-spring application will work with oxd 4.0 configured with self-signed certificate if oxd-spring and oxd-4.0 both are running on same machine.
+    
+    will work with oxd 4.0 configured with self-signed certificate if oxd-spring and oxd-4.0 both are running on same machine.
     
 ## Prerequisites
 
