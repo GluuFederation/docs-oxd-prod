@@ -450,7 +450,7 @@ https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
 
 ## API References
 
-oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.1/oxd-server/src/main/resources/swagger.yaml). 
+oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.1/oxd-server/src/main/resources/swagger.yaml).
 
 It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
 
