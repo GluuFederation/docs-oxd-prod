@@ -26,7 +26,7 @@ The username/password of H2 database can be configured in oxd by setting `userna
       password: secret
     ```
 
-On staring oxd-server it creates H2 embedded database file if it already does not exist. When H2 username/password is already set in `oxd-server.yml` file, oxd sets the configured login details to H2 database. In case it is not set then oxd sets default login details to H2 database. The default login details are provided below:
+On starting oxd-server it creates H2 embedded database file if it already does not exist. When H2 username/password is already set in `oxd-server.yml` file, oxd sets the configured login details to H2 database (only during creation of embedded database file). In case, it is not set then oxd sets default login details to H2 database. The default login details are provided below:
 
     ```
     username: oxd
