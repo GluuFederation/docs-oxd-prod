@@ -107,7 +107,7 @@ During client registration (via `/register-site` command) make sure that you hav
 
 ### What is the easiest way to generate native library for oxd?
 
-oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.1.beta/oxd-server/src/main/resources/swagger.yaml). It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
+oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.0.beta/oxd-server/src/main/resources/swagger.yaml). It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
 
 You can easily generate appropriate client via https://app.swaggerhub.com GUI, just add swagger spec and in upper right corner it's possible to download client as shown below:
 
