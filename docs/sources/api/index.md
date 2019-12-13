@@ -81,7 +81,7 @@ This operation is used to get the JSON Web Key Set (JWKS) from OP host. The JWKS
 [API Link](#operations-developers-get-discovery)
 
 This operation fetches OP Discovery Configuration from OP host.
-## API References
+
 ## OpenID Connect APIs
 
 ### Get Authorization URL
