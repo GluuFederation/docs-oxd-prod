@@ -81,7 +81,7 @@ This operation is used to get the JSON Web Key Set (JWKS) from OP host. The JWKS
 [API Link](#operations-developers-get-discovery)
 
 This operation fetches OP Discovery Configuration from OP host.
-
+## API References
 ## OpenID Connect APIs
 
 ### Get Authorization URL
@@ -450,7 +450,7 @@ https://client.example.com/cb?ticket=e8e7bc0b-75de-4939-a9b1-2425dab3d5ec
 
 ## API References
 
-oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.0/oxd-server/src/main/resources/swagger.yaml). 
+oxd has defined swagger specification [here](https://github.com/GluuFederation/oxd/blob/version_4.1/oxd-server/src/main/resources/swagger.yaml).
 
 It is possible to generated native library in your favorite language by [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/)
 
@@ -490,7 +490,7 @@ function waitAndGoToHash() {
 
 window.onload = function() {
   const ui = SwaggerUIBundle({
-    url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.0/oxd-server/src/main/resources/swagger.yaml",
+    url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.1/oxd-server/src/main/resources/swagger.yaml",
     dom_id: '#swagger-ui',
     docExpansion: 'full',
     deepLinking: true,

@@ -201,7 +201,7 @@ H2 storage configuration sample:
 
 - **grant_type:** JSON array containing a list of the OAuth 2.0 Grant Types that the Client is declaring that it will restrict itself to using
 
-- **acr_values:** Preferred authentication method the client will receive from the OP (e.g. basic, Duo, U2F). The specified acr value must be enabled at the OP. If no value is specified, the client will receive the default authentication mechanism specified by the OP. Learn more about how Gluu Server uses acr's in [the docs](https://gluu.org/docs/ce/4.0/authn-guide/intro/). 
+- **acr_values:** Preferred authentication method the client will receive from the OP (e.g. basic, Duo, U2F). The specified acr value must be enabled at the OP. If no value is specified, the client will receive the default authentication mechanism specified by the OP. Learn more about how Gluu Server uses acr's in [the docs](https://gluu.org/docs/ce/4.1/authn-guide/intro/).
 
 - **scope:** JSON array containing a list of the scopes that the Client is declaring that it will restrict itself to using
 
