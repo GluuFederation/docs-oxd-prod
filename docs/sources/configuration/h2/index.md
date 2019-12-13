@@ -16,6 +16,7 @@ By default, the oxd-server persists data inside H2 embedded database. On your di
 
 ## H2 tools to view/edit data in H2 DB
 
+
 The oxd-server persists data inside H2 embedded database, it should look like an `oxd_db.mv.db` file on disk.
 You can use any convenient database viewer to view/edit data inside the database. We recommend to use the browser-based viewer H2:
 
