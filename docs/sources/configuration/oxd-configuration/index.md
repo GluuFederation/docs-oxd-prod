@@ -154,7 +154,7 @@ defaultSiteConfig:
 
 - **nonce_expiration_in_minutes:** Expiration time of `nonce` parameter in seconds
 
-- **rp_cache_expiration_in_minutes:** Expiration time of Client metadata stored in cache in minutes. Default value is 60 minutes
+- **rp_cache_expiration_in_minutes:** Expiration time of registered Client metadata stored in cache (in minutes). Default value is 60 minutes
 
 - **public_op_key_cache_expiration_in_minutes:** OP keys are put into cache after fetching. This value controls how long to keep it in cache (after expiration on first attempt keys are fetched again from OP)
 
