@@ -24,6 +24,7 @@ crypt_provider_dn_name: ''
 support-google-logout: true
 state_expiration_in_minutes: 5
 nonce_expiration_in_minutes: 5
+rp_cache_expiration_in_minutes: 60
 public_op_key_cache_expiration_in_minutes: 60
 protect_commands_with_access_token: true
 uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client: true
@@ -152,6 +153,8 @@ defaultSiteConfig:
 - **state_expiration_in_minutes:** Expiration time of `state` parameter in seconds
 
 - **nonce_expiration_in_minutes:** Expiration time of `nonce` parameter in seconds
+
+- **rp_cache_expiration_in_minutes:** Expiration time of Client metadata stored in cache in minutes. Default value is 60 minutes
 
 - **public_op_key_cache_expiration_in_minutes:** OP keys are put into cache after fetching. This value controls how long to keep it in cache (after expiration on first attempt keys are fetched again from OP)
 
