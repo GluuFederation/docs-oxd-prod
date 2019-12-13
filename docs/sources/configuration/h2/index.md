@@ -14,27 +14,7 @@ The storage used in oxd can be either `H2` or `Redis`. To use `H2` database as s
 
 By default, the oxd-server persists data inside H2 embedded database. On your disk, it should look like an `oxd_db.mv.db` file. In `dbFileLocation` parameter of `oxd-server.yml` the path is set where `oxd_db.mv.db` is generated.
 
-## H2 username/password configuration
-
-The username/password of H2 database can be configured in oxd by setting `username` and `password` parameters under `storage_configuration` in `/opt/oxd-server/conf/oxd-server.yml` file as shown below.
-
-    ```
-    storage: h2
-    storage_configuration
-      dbFileLocation: /opt/oxd-server/data/oxd_db 
-      username: oxd_user
-      password: secret
-    ```
-
-On starting oxd-server it creates H2 embedded database file if it already does not exist. When H2 username/password is already set in `oxd-server.yml` file, oxd sets the configured login details to H2 database (only during creation of embedded database file). In case, it is not set then oxd sets default login details to H2 database. The default login details are provided below:
-
-    ```
-    username: oxd
-    password: oxd
-    ```
-
 ## H2 tools to view/edit data in H2 DB
-
 
 The oxd-server persists data inside H2 embedded database, it should look like an `oxd_db.mv.db` file on disk.
 You can use any convenient database viewer to view/edit data inside the database. We recommend to use the browser-based viewer H2:
