@@ -5,9 +5,6 @@ In this tutorial we demonstrate how a java spring web application can leverage o
 !!! Attention
     For `oxd-4.0` and `oxd-spring` application running on different servers then it is essential to install and configure `SSL certificate by Certificate Authority` with oxd. This is required so that oxd-spring application can access oxd-server without throwing any ssl exception. But, if `oxd-spring` and `oxd-server` are running on same server then `oxd-spring` application will work even with `oxd` configured with `self-signed certificate`.
     
-    
-    will work with oxd 4.0 configured with self-signed certificate if oxd-spring and oxd-4.0 both are running on same machine.
-    
 ## Prerequisites
 
 1. Java 8+
