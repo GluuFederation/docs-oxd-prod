@@ -24,6 +24,13 @@ The only required parameter is the `redirect_uris` which is list of Redirection 
 
 The `op_host` parameter is optional, but it must be specified in either the [default configuration file](../configuration/#oxd-confjson) or the API call. This is the URL at the OP where users will be sent for authentication. 
 
+oxd saves data in its own persistence (`h2`, `redis`) and acts as RP for OP. It is possible that the admin goes to OP directly and change client data there. In that case, oxd will not know about it and can act on outdated data. To prevent this confusion user can set `sync_client_from_op` and `sync_client_period_in_seconds` parameters during client registration so that oxd can synchronize with the client data from OP whenever required.
+
+- The `sync_client_from_op` parameter should be set to `true` to enable the synchronization of the client from OP to oxd persistence. The default value is `false` which means synchronization is disabled. 
+
+- In `sync_client_period_in_seconds` users can specify the period after which the oxd can sync again with client data at OP. For example, if for a client `sync_client_period_in_seconds` is set to `60` then it means oxd can sync the client again only after 60 seconds from last sync time. The default value is `86400` seconds.
+
+
 !!! Note
     `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).    
 
@@ -32,6 +39,8 @@ The `op_host` parameter is optional, but it must be specified in either the [def
 [API Link](#operations-developers-update-site)
 
 `Update site` modifies the client information on an OpenID Connect Provider (OP). The only required parameter for this operation is client's `oxd_id` parameter (which is generated during site registration). The other parameters are the same as the `Register site` parameters, except that `op_host` cannot be updated using this operation.
+
+The value of `sync_client_from_op` and `sync_client_period_in_seconds` parameters can be modified using this command to enabled/disable synchronization of RP with client data at OP.
 
 ### Remove Site
 
