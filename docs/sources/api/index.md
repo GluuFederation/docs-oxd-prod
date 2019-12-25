@@ -24,6 +24,9 @@ The only required parameter is the `redirect_uris` which is list of Redirection 
 
 The `op_host` parameter is optional, but it must be specified in either the [default configuration file](../configuration/#oxd-confjson) or the API call. This is the URL at the OP where users will be sent for authentication. 
 
+oxd saves data in its own persistence (`h2`, `redis`) and acts as RP for OP. It is possible that the admin goes to OP directly and change client data there. In that case, oxd will not know about it and can act on outdated data. To prevent this confusion the client created by oxd on OP can be configured so that oxd can sync with the client data from OP whenever required. The `sync_client_from_op` parameter should be set to `true` to enable the synchronization of the client from OP to oxd persistence. By default, its value is `false` which means synchronization is disabled. In `sync_client_period_in_seconds` we can specify the period after which the oxd can sync again with client data at OP. The default value `sync_client_period_in_seconds` is 86400 seconds.
+
+
 !!! Note
     `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).    
 
