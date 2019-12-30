@@ -288,6 +288,43 @@ POST /uma-rs-protect
 ```
 
 
+### UMA RS Modify Resource
+
+[API Link](#operations-developers-uma-rs-modify)
+
+To modify any particular resource from resource set `/uma-rs-modify` should be used.
+
+Request:
+
+```
+POST /uma-rs-modify
+
+{
+        "oxd_id": "ffe704de-3e71-4231-9c80-94a69d6c6218",   <- REQUIRED
+        "path": "/photo",   <- REQUIRED
+	"http_method": "POST",   <- REQUIRED
+	"scopes":[
+                     "http://photoz.example.com/prod/live/all",
+                     "http://photoz.example.com/prod/live/add"
+                 ]  					      <- REQUIRED if `scope_expression` is not present
+       
+}
+```
+
+Request with `scope_expression`.
+
+```
+POST /uma-rs-modify
+
+{
+        "oxd_id": "ffe704de-3e71-4231-9c80-94a69d6c6218",   <- REQUIRED
+        "path": "/photo",   <- REQUIRED
+	"http_method": "POST",   <- REQUIRED
+	"scope_expression": "{'rule':{'or':[{'var':0},{'var':1}]},'data':['http://photoz.example.com/prod/live/a1','http://photoz.example.com/prod/live/a2']}" <- REQUIRED if `scopes` is not present
+       
+}
+```
+
 ### UMA RS Check Access
 
 [API Link](#operations-developers-uma-rs-check-access)
