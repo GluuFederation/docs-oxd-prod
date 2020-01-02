@@ -207,16 +207,17 @@ if path_info.startswith('/login'):
     result = post_data('get-user-info', data, oxd_access_token)
     
     # Finally print user info
-    for cl in result['claims']:
-        print '<br><b>{0} :</b> {1}'.format(cl, result['claims'][cl][0])
+    for cl in result:
+        print '<br><b>{0} :</b> {1}'.format(cl, result[cl])
     
-    print '<br><a href="/logoutme">Click here to logout</a>'
+    print '<br><a href="logoutme">Click here to logout</a>'
 
 #If user wants to logout, he should first come to this pasge
 elif path_info.startswith('/logoutme'):
 
     data = {
         "oxd_id": oxd_id,
+        "post_logout_redirect_uri": "https://{}/cgi-bin/oxd.py/logout".format(os.environ['SERVER_NAME'])
     }
 
     # Read access_token that we previously saved
