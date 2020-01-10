@@ -26,7 +26,7 @@ To get started:
 
 1. [Install](./install/index.md) `oxd-server` 
 
-1. [Configure](./configuration/index.md) the `oxd-server`           
+1. [Configure](./configuration/oxd-configuration/index.md) the `oxd-server`           
 
 1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs 
 
