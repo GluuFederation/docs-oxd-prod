@@ -80,7 +80,7 @@ Step | Explanation | Endpoint
 
 Before you start working on `oxd-server`, you'll need two settings configured on the Gluu Server:
 
-- Enable dynamic registration of clients: **Configuration->Manage Custom Script**, click on the **Client Registration** tab and and enable the `client_registration` script, then click the **Update** button. If you don't want to enable dynamic client registration, please register [a client manually](create_client.md).
+- Enable dynamic registration of clients: **Configuration->Manage Custom Script**, click on the **Client Registration** tab and and enable the `client_registration` script, then click the **Update** button. If you don't want to enable dynamic client registration, please register [a client manually](https://gluu.org/docs/ce/admin-guide/openid-connect/#client-registration-configuration).
 
 - Enable dynamic registration of the "profile" scope: **OpenID Connect->Scopes**, click on the `profile` scope and set `Allow for dynamic registration` to "True". Click the **Update** button.
 
