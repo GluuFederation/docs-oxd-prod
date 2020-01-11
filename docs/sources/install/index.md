@@ -26,7 +26,7 @@ The oxd Linux packages provide an easy way to install the `oxd-server`. Follow t
 
 Step 1: Find the proper Linux package below.     
 
-Step 2: After the installation, [configure](../configuration/index.md) your oxd server.
+Step 2: After the installation, [configure](../configuration/oxd-configuration/index.md) your oxd server.
 
 Step 3: [Run](#service-operations) oxd server:             
     
