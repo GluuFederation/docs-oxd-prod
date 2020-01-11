@@ -3,7 +3,7 @@
 oxd configuration is located at `/opt/oxd-server/conf/oxd-server.yml`. It consists of three major parts:
 
 - `server configuration` - oxd specific configuration
-- `defaultSiteConfig` - fallback configuration values for the OpenID Connect `/register-site` command. Learn more on the [oxd API page](../api/index.md#register-site)
+- `defaultSiteConfig` - fallback configuration values for the OpenID Connect `/register-site` command. Learn more on the [oxd API page](../../api/index.md#register-site)
 - Everything else that is inside comes from the Dropwizard framework. For a complete list of server-related parameters, click [here](http://www.dropwizard.io/1.3.1/docs/manual/configuration.html)
 
 Here we will explain `server configuration` and `defaultSiteConfig`. Dropwizard configuration parameters can be checked in the Dropwizard [configuration documentation](http://www.dropwizard.io/1.3.1/docs/manual/configuration.html).
