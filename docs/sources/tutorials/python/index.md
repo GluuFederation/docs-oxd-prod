@@ -80,7 +80,7 @@ Step | Explanation | Endpoint
 
 Before you start working on `oxd-server`, you'll need two settings configured on the Gluu Server:
 
-- Enable dynamic registration of clients: **Configuration->Manage Custom Script**, click on the **Client Registration** tab and and enable the `client_registration` script, then click the **Update** button. If you don't want to enable dynamic client registration, please register [a client manually](create_client.md).
+- Enable dynamic registration of clients: **Configuration->Manage Custom Script**, click on the **Client Registration** tab and and enable the `client_registration` script, then click the **Update** button. If you don't want to enable dynamic client registration, please register [a client manually](https://gluu.org/docs/ce/admin-guide/openid-connect/#client-registration-configuration).
 
 - Enable dynamic registration of the "profile" scope: **OpenID Connect->Scopes**, click on the `profile` scope and set `Allow for dynamic registration` to "True". Click the **Update** button.
 
@@ -207,10 +207,10 @@ if path_info.startswith('/login'):
     result = post_data('get-user-info', data, oxd_access_token)
     
     # Finally print user info
-    for cl in result['claims']:
-        print '<br><b>{0} :</b> {1}'.format(cl, result['claims'][cl][0])
+    for cl in result:
+        print '<br><b>{0} :</b> {1}'.format(cl, result[cl])
     
-    print '<br><a href="/logoutme">Click here to logout</a>'
+     print '<br><a href="logoutme">Click here to logout</a>'
 
 #If user wants to logout, he should first come to this pasge
 elif path_info.startswith('/logoutme'):
