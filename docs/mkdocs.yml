@@ -54,7 +54,10 @@ nav:
         - 'Java': './tutorials/java/index.md'
         - 'Spring': './tutorials/spring/index.md'
 - 'Upgrade': 'upgrade/index.md'
-- 'Configuration': 'configuration/index.md'
+- Configuration: 
+        - 'Configuration': './configuration/oxd-configuration/index.md'
+        - 'H2': './configuration/h2/index.md'
+        - 'Redis': './configuration/redis/index.md'
 - 'Redis configuration': 'redis-configuration/index.md'
 - 'Logs': 'logs/index.md'
 - 'API': 'api/index.md'
