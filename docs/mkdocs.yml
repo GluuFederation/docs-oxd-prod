@@ -23,6 +23,11 @@ theme:
 extra:
     version: '4.1'
     
+# Tracking
+google_analytics:
+  - 'UA-31008645-7'
+  - 'auto'
+  
 # Extensions
 markdown_extensions:
 - admonition
