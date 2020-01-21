@@ -329,7 +329,9 @@ POST /uma-rs-modify
 
 [API Link](#operations-developers-uma-rs-check-access)
 
-Operation to check whether access can be granted or not.
+Operation to check whether access can be granted or not. 
+
+In `scopes` parameter user can explicitly specify the scope(s) to check.
 
 Request:
 
@@ -339,7 +341,8 @@ POST /uma-rs-check-access
     "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",
     "rpt":"eyJ0 ... NiJ9.eyJ1c ... I6IjIifX0.DeWt4Qu ... ZXso",    <-- REQUIRED - RPT or blank value if not sent by RP
     "path":"<path of resource>",                                   <-- REQUIRED - Resource Path (e.g. http://rs.com/phones), /phones should be passed
-    "http_method":"<http method of RP request>"                    <-- REQUIRED - HTTP method of RP request (GET, POST, PUT, DELETE)
+    "http_method":"<http method of RP request>",                    <-- REQUIRED - HTTP method of RP request (GET, POST, PUT, DELETE)
+    "scopes": ["http://photoz.example.com/prod/live/all", "http://photoz.example.com/prod/live/add"]
 }
 ```
 
