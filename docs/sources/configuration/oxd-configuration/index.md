@@ -99,7 +99,6 @@ defaultSiteConfig:
   claims_redirect_uri: []
   client_id: ''
   client_secret: ''
-  trusted_client: false
   access_token_as_jwt: false
   access_token_signing_alg: ''
   rpt_as_jwt: false
@@ -233,8 +232,6 @@ H2 storage configuration sample:
 - **client_id:** Provide the client id of existing client, ignores all other parameters and skips new client registration forcing to use existing client (client_secret is required if this parameter is set)
 
 - **client_secret:** Provide the client secret of existing client, must be used together with client_id
-
-- **trusted_client:** Specifies whether client is trusted. Default value is false
 
 - **access_token_as_jwt:** Specifies whether access_token should be return as JWT or not. Default value is false
 
