@@ -22,7 +22,7 @@ If the registration is successful, oxd will dynamically register an OpenID Conne
 
 The only required parameter is the `redirect_uris` which is list of Redirection URIs used by the Client. The first URL in this list is where the user will be redirected after successful authorization at the OpenID Connect Provider (OP).
 
-The `op_host` parameter is optional, but it must be specified in either the [default configuration file](../configuration/#oxd-confjson) or the API call. This is the URL at the OP where users will be sent for authentication. 
+The `op_host` parameter is optional, but it must be specified in either the [default configuration file](../configuration/oxd-configuration/index.md) or the API call. This is the URL at the OP where users will be sent for authentication. 
 
 !!! Note
     `op_host` must point to a valid OpenID Connect Provider (OP) that supports [Client Registration](http://openid.net/specs/openid-connect-registration-1_0.html#ClientRegistration).    
