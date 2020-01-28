@@ -83,11 +83,11 @@ For more information about generating native clients, [check our FAQ](https://gl
 oxd 4.1 has been tested against the following OAuth 2.0 Authorization Servers:
 
 ### OpenID Providers (OP)
-- Gluu Server [4.1](https://gluu.org/docs/ce/4.1), [3.1.6](https://gluu.org/docs/ce/3.1.6)
+- Gluu Server [4.1](https://gluu.org/docs/ce/4.1), [4.0](https://gluu.org/docs/ce/4.0), [3.1.6](https://gluu.org/docs/ce/3.1.6)
 
 
 ### UMA Authorization Servers (AS)
-- Gluu Server [4.1](https://gluu.org/docs/ce/4.1), [3.1.6](https://gluu.org/docs/ce/3.1.6)
+- Gluu Server [4.1](https://gluu.org/docs/ce/4.1), [4.0](https://gluu.org/docs/ce/4.0), [3.1.6](https://gluu.org/docs/ce/3.1.6)
 
 ## Source code
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
