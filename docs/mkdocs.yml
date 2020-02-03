@@ -58,7 +58,7 @@ nav:
         - 'Python': './tutorials/python/index.md'
         - 'Java': './tutorials/java/index.md'
         - 'Spring': './tutorials/spring/index.md'
-        - 'oxd Windows installer': './tutorials/windowsInstaller/index.md'
+        - 'Windows Installer': './tutorials/windowsInstaller/index.md'
 - 'Upgrade': 'upgrade/index.md'
 - Configuration: 
         - 'Configuration': './configuration/oxd-configuration/index.md'
