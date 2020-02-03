@@ -2,9 +2,9 @@
 
 This tutorial covers the steps involved to generate the EXE file for the installation of oxd-server as service on Windows operating system.
 
-## How to generate oxd windows executable installation file (`oxd-server.exe`)
+## How to generate oxd windows executable installation file (`oxd-server.exe`)?
 
-The important point to be noted here is that the EXE file can be only generated in windows OS. oxd team is working to generate EXE in Linux OS.
+The important point to be noted here is that the EXE file can be only generated in windows OS. oxd team is working furthur so that windows executable installation file can also be generated in Linux OS.
 
 #### Prerequisites
 
@@ -20,9 +20,9 @@ The important point to be noted here is that the EXE file can be only generated 
 
    Download and install [Inno Setup](http://www.jrsoftware.org/isdl.php) on Windows OS. Set `INNOSETUP_HOME` environment variable pointing to the home folder of Inno Setup installation (eg: `C:\Program Files (x86)\Inno Setup 5`).
 
-#### Steps
+#### Steps to generate EXE
 
-1. Clone 4.0 version of oxd project from [Github](https://github.com/GluuFederation/oxd)
+1. Clone oxd project from [Github](https://github.com/GluuFederation/oxd)
 
    If you have `git` installed, just open a console and run below command to clone the project.
    ```
@@ -40,9 +40,9 @@ The important point to be noted here is that the EXE file can be only generated 
 
 ### oxd installation using EXE file
 
-1. To install oxd double click on `oxd-server.exe`.
+1. To install oxd using EXE file double click on `oxd-server.exe`.
 
-1. During installation first page that will appear will ask whether install oxd as windows service or not. Select the checkbox to install `oxd as service`.
+1. During installation first page that will appear will ask whether oxd should be installed as windows service or not. Select the checkbox to install `oxd as service`.
 
    ![Page 1](../../img/1_oxd_windows_installation.png)
 
