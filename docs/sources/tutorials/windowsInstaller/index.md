@@ -46,11 +46,11 @@ The important point to be noted here is that the EXE file can be only generated 
 
    ![Page 1](../../img/1_oxd_windows_installation.png)
 
-1. The second page will have license agreement which you need to accept before moving forward.
+1. The second page will have license agreement which need to accepted before moving forward.
 
    ![Page 2](../../img/2_oxd_windows_installation.png)
 
-1. The final page will allow you select installation directory of oxd server.
+1. The final page will allow user to select installation directory of oxd server.
 
    ![Page 3](../../img/3_oxd_windows_installation.png)
    
@@ -64,5 +64,5 @@ If installed as `windows service` then the oxd server will start automatically a
 
    ![Uninstall](../../img/oxd_windows_uninstall.png)
 
-2. oxd can be also unstalled using `unins000.exe` file inside oxd installation directory (eg: `D:\softwares\oxd-server\unins000.exe`).
+2. oxd can be also uninstalled using `unins000.exe` file inside oxd installation directory (eg: `D:\softwares\oxd-server\unins000.exe`).
 
