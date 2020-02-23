@@ -78,8 +78,7 @@ logging:
       maxFileSize: 10MB
 
 defaultSiteConfig:
-  op_host: ''
-  op_discovery_path: ''
+  op_configuration_endpoint: ''
   response_types: ['code']
   grant_type: ['authorization_code']
   acr_values: ['']
@@ -191,9 +190,7 @@ H2 storage configuration sample:
 
 ### defaultSiteConfig Field Descriptions
 
-- **op_host:** Provide the URL of your OpenID Provider (OP). (Example : "op_host":"`https://idp.example.org`")
-
-- **op_discovery_path:** Path to the OpenID Connect Provider's discovery document. For example, if it is `https://example.com/.well-known/openid-configuration` then the path is blank ` `. But if it is `https://example.com/oxauth/.well-known/openid-configuration` then the path is `/oxauth`  
+- **op_configuration_endpoint:** Provide the openid configuration endpoint URL. (Example: "op_configuration_endpoint": "`https://op.example.com/.well-known/openid-configuration`")
 
 - **logout_redirect_uris:** Provide the URLs supplied by the RP to request that the user be redirected to this location after a logout has been performed.
 
