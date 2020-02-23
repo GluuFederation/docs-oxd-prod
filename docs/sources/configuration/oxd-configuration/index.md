@@ -190,7 +190,7 @@ H2 storage configuration sample:
 
 ### defaultSiteConfig Field Descriptions
 
-- **op_configuration_endpoint:** The openid configuration endpoint URL. (Example: "op_configuration_endpoint": "`https://op.example.com/.well-known/openid-configuration`")
+- **op_configuration_endpoint:** Provide the openid configuration endpoint URL. (Example: "op_configuration_endpoint": "`https://op.example.com/.well-known/openid-configuration`")
 
 - **logout_redirect_uris:** Provide the URLs supplied by the RP to request that the user be redirected to this location after a logout has been performed.
 
