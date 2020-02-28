@@ -210,6 +210,54 @@ POST /uma-rs-protect
         ]
 }
 ```
+The creation (`iat`) and expiration (`exp`) timestamp (in seconds) of each resource can be specified in JSON.
+
+Request:
+
+```
+POST /uma-rs-protect
+
+{
+        "oxd_id":"6F9619FF-8B86-D011-B42D-00CF4FC964FF",   <- REQUIRED
+        "overwrite":false,                                 <- OPTIONAL oxd_id registers resource, if send uma_rs_protect second time with same oxd_id and overwrite=false then it will fail with error uma_protection_exists. overwrite=true means remove existing UMA Resource and register new based on JSON Document.
+        "resources":[        <-  REQUIRED
+            {
+                "path":"/photo",
+                "conditions":[
+                    {
+                        "httpMethods":["GET"],
+                        "scopes":[
+                            "http://photoz.example.com/dev/actions/view"
+                        ]
+                    },
+                    {
+                        "httpMethods":["PUT", "POST"],
+                        "scopes":[
+                            "http://photoz.example.com/dev/actions/all",
+                            "http://photoz.example.com/dev/actions/add"
+                        ],
+                        "ticketScopes":[
+                            "http://photoz.example.com/dev/actions/add"
+                        ]
+                    }
+                ],
+		"iat": 1582890956, 
+		"exp": 2079299799
+            },
+            {
+                "path":"/document",
+                "conditions":[
+                    {
+                        "httpMethods":["GET"],
+                        "scopes":[
+                            "http://photoz.example.com/dev/actions/view"
+                        ]
+                    }
+                ]
+            }
+        ]
+}
+```
 
 Request with `scope_expression`. `scope_expression` is a Gluu-invented extension that allows a JsonLogic expression instead of a single list of scopes. Read more about `scope_expression` [here](https://gluu.org/docs/ce/admin-guide/uma).
 ```language-json
