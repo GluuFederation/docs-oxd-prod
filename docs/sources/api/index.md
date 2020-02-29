@@ -210,9 +210,7 @@ POST /uma-rs-protect
         ]
 }
 ```
-The creation (`iat`) and expiration (`exp`) timestamp (in seconds) of each resource can be specified in JSON.
-
-Request:
+The creation (`iat`) and expiration (`exp`) timestamp (in seconds) of each resource can be also specified in JSON.
 
 ```
 POST /uma-rs-protect
@@ -241,8 +239,8 @@ POST /uma-rs-protect
                         ]
                     }
                 ],
-		"iat": 1582890956, 
-		"exp": 2079299799
+		"iat": 1582890956,                         <- OPTIONAL
+		"exp": 2079299799                          <- OPTIONAL
             },
             {
                 "path":"/document",
