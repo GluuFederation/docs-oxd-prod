@@ -4,6 +4,8 @@
 
 The storage used in oxd can be either `H2` or `Redis`. To use `H2` database as storage in oxd-server we need to follow below step:
 
+- [Log](https://www.gluu.org/docs/ce/4.1/installation-guide/install-ubuntu/#start-the-server-and-log-in) into Gluu CE server.
+
 - In `/opt/oxd-server/conf/oxd-server.yml` file of installed oxd-server set following parameters.
 
     ```
