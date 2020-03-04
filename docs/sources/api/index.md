@@ -490,7 +490,7 @@ function waitAndGoToHash() {
 
 window.onload = function() {
   const ui = SwaggerUIBundle({
-    url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.1/oxd-server/src/main/resources/swagger.yaml",
+    url: "https://raw.githubusercontent.com/GluuFederation/oxd/version_4.1.0/oxd-server/src/main/resources/swagger.yaml",
     dom_id: '#swagger-ui',
     docExpansion: 'full',
     deepLinking: true,
