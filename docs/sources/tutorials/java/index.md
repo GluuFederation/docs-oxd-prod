@@ -18,7 +18,7 @@ The demo app uses standard well-known technologies included in the Java EE 7 web
 
     Download [maven](https://maven.apache.org/download.cgi) and follow the simple installation instructions. Ensure the `bin` directory is added to your PATH.
 
-1. An OpenID Connect Provider (OP), like the [Gluu Server bundled with oxd](../../install/index.md).
+1. Install [Gluu Server bundled with oxd](../../install/index.md).
 
 ## Run
 
