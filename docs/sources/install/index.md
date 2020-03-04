@@ -185,7 +185,7 @@ openssl pkcs12 -export -out fullcert.pkcs12 -in fullcert.pem
 
 5. Now change directory to `/opt/oxd-server/conf` of oxd bundled with CE.
 
-6. Set the path of `PKCS12 format` file (created in step 3) in `server.applicationConnectors.keyStorePath`and `server.adminConnectors.keyStorePath` fields. Also set `PKCS12` export password in `server.applicationConnectors.keyStorePassword`and `server.adminConnectors.keyStorePassword` fields. For example:
+6. Set the path of `PKCS12 format` file (created in step 3) in `server.applicationConnectors.keyStorePath`and `server.adminConnectors.keyStorePath` fields of `/opt/oxd-server/conf/oxd-server.yml`. Also set `PKCS12` export password in `server.applicationConnectors.keyStorePassword`and `server.adminConnectors.keyStorePassword` fields. For example:
 
 ```
 # Connectors
