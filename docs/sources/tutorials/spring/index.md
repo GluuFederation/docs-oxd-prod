@@ -3,7 +3,7 @@
 In this tutorial we demonstrate how a java spring web application can leverage oxd 4.1 for SSO using the authorization code flow.
 
 !!! Attention
-    For `oxd-4.0` and `oxd-spring` application running on different servers then it is essential to install and configure `SSL certificate by Certificate Authority` with oxd. This is required so that oxd-spring application can access oxd-server without throwing any ssl exception. But, if `oxd-spring` and `oxd-server` are running on same server then `oxd-spring` application will work even with `oxd` configured with `self-signed certificate`.
+    For `oxd-4.1` and `oxd-spring` application running on different servers then it is essential to install and configure `SSL certificate by Certificate Authority` with oxd. This is required so that oxd-spring application can access oxd-server without throwing any ssl exception. But, if `oxd-spring` and `oxd-server` are running on same server then `oxd-spring` application will work even with `oxd` configured with `self-signed certificate`.
     
 ## Prerequisites
 
@@ -15,14 +15,8 @@ In this tutorial we demonstrate how a java spring web application can leverage o
 
     Download [maven](https://maven.apache.org/download.cgi) and follow the simple installation instructions. Ensure the `bin` directory is added to your PATH.
 
-1. An OpenID Connect Provider (OP), like the Gluu Server
+1. Install [Gluu Server bundled with oxd](../../install/index.md).
 
-    Learn how to deploy Gluu [in the docs](https://gluu.org/docs/ce/installation-guide/).
-
-1. oxd-server 4.1
-
-    Download and install [oxd-server 4.1](https://gluu.org/docs/oxd/4.1/). For the purposes of this demo app, built-in default configuration files will work.
-    
 ## Run
 
 1. Ensure that Gluu server and oxd-server are running and accessible.
