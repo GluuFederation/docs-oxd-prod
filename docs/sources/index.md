@@ -32,17 +32,17 @@ To get started:
 
 1. Restart oxd server using below command.
 
-**Ubuntu 16.04 (xenial)**
+    **Ubuntu 16.04 (xenial)**
 
-|Operation | Command|
-|------ |------ |
-|Restart oxd server | `/etc/init.d/oxd-server restart` |
+    |Operation | Command|
+    |------ |------ |
+    |Restart oxd server | `/etc/init.d/oxd-server restart` |
 
-**Ubuntu 18.04 (bionic)/Debian 9 (stretch)/CentOS 7/RHEL 7**
+    **Ubuntu 18.04 (bionic)/Debian 9 (stretch)/CentOS 7/RHEL 7**
 
-|Operation | Command|
-|------ |------ |
-|Restart oxd server | `systemctl restart oxd-server` |
+    |Operation | Command|
+    |------ |------ |
+    |Restart oxd server | `systemctl restart oxd-server` |
 
 1. After Gluu CE server installation is completed wait for about 10 minutes in total for the server to restart and finalize its configuration. After that period, to access Gluu CE server, sign in via a web browser to `hostname` provided during installation. For quick check whether oxd-server is alive use oxd `Health Check` endpoint `https://$HOSTNAME:8443/health-check`. This should return `{"status":"running"}` ensuring the successful installation of oxd.
 
