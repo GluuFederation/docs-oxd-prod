@@ -6,7 +6,7 @@ OXD maintains a copy of client details registered in `OpenID Connect provider` i
 
 When Redis is configured in `Standalone` mode, oxd stores client details in single Redis server. To configure Redis in `Standalone` mode we need to follow below steps:
 
-1. [Install](https://gluu.org/docs/ce/4.1/installation-guide) Gluu CE and ensure to hit Y when `Install Oxd?` is prompted while    running [setup scripts](https://gluu.org/docs/ce/4.1/installation-guide/setup_py/#setup-prompt).
+1. [Install](../../install/index.md) Gluu CE with oxd.
 
 1. Download and install [Redis](https://redis.io/topics/quickstart) on local server.  
 
@@ -31,7 +31,7 @@ When Redis is configured in `Standalone` mode, oxd stores client details in sing
 
 In `Cluster` mode oxd stores client details in multiple running Redis server. To configure Redis in `Cluster` mode we need to follow below steps:
 
-1. [Install](https://gluu.org/docs/ce/4.1/installation-guide) Gluu CE and ensure to hit Y when `Install Oxd?` is prompted while    running [setup scripts](https://gluu.org/docs/ce/4.1/installation-guide/setup_py/#setup-prompt).
+1. [Install](../../install/index.md) Gluu CE with oxd.
 
 1. Download and install [Redis](https://redis.io/topics/quickstart) on different virtual machines (VMs).  
 
