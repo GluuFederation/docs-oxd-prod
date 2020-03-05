@@ -137,35 +137,35 @@ yuriy@yuriyz:~/oxd-server-4.0-SNAPSHOT-distribution/bin$JSON for oxd_id d8cc6dea
 
 The following is the easiest way to gather CA trusted certificates from Let's Encrypt with Certbot for your Gluu Server. Inside the Gluu Server chroot, run the following commands:
 
-```
-apt-get update
-apt-get install software-properties-common
-add-apt-repository ppa:certbot/certbot
-apt-get update
-apt-get install python-certbot-apache 
-```
+   ```
+   apt-get update
+   apt-get install software-properties-common
+   add-apt-repository ppa:certbot/certbot
+   apt-get update
+   apt-get install python-certbot-apache 
+   ```
 
 Now that you have certbot installed, you can run the following:
 
-```
-certbot --apache
-```
+   ```
+   certbot --apache
+   ```
 
 This will prompt you with some additional questions and the automatically configure your Gluu Server's apache configuration to utilize the Let's Encrypt certs that it downloads to `/etc/letsencrypt/live/$HOSTNAME/cert.pem`, `/etc/letsencrypt/live/$HOSTNAME/privkey.pem` and `/etc/letsencrypt/live/$HOSTNAME/chain.pem`.
 
 If you only want the certificates and for certbot to not handle configuring your web server configuration, run
 
-```
-certbot --apache certonly
-```
+   ```
+   certbot --apache certonly
+   ```
 
 **Automating Renewal**
 
 Run below command to automate certificate renewal.
 
-```
-certbot renew
-```
+   ```
+   certbot renew
+   ```
 
 **Configuring Let's Encrypt Certificate to oxd packed with Gluu CE**
 
@@ -173,35 +173,35 @@ Follow below steps to use the Let's Encrypt Certificate configured to Gluu CE in
 
 1. Change directory to `/etc/letsencrypt/live/$HOSTNAME/`. This directory should have the following certificate files: `cert.pem`, `chain.pem`, `fullchain.pem` and `privkey.pem`.
 
-2. Concatenate all PEM files into one file `fullcert.pem` using command `cat /etc/letsencrypt/live/$HOSTNAME/*.pem > fullcert.pem`.
+1. Concatenate all PEM files into one file `fullcert.pem` using command `cat /etc/letsencrypt/live/$HOSTNAME/*.pem > fullcert.pem`.
 
-3. Then use OpenSSL to convert `fullcert.pem` into PKCS12 format. 
+1. Then use OpenSSL to convert `fullcert.pem` into PKCS12 format. 
 
-```
-openssl pkcs12 -export -out fullcert.pkcs12 -in fullcert.pem
-```
+   ```
+   openssl pkcs12 -export -out fullcert.pkcs12 -in fullcert.pem
+   ```
 
-4. It will prompt to enter `Export Password`. Type export password and press enter to create `fullcert.pkcs12`.
+1. It will prompt to enter `Export Password`. Type export password and press enter to create `fullcert.pkcs12`.
 
-5. Now change directory to `/opt/oxd-server/conf` of oxd bundled with CE.
+1. Now change directory to `/opt/oxd-server/conf` of oxd bundled with CE.
 
-6. Set the path of `PKCS12 format` file (created in step 3) in `server.applicationConnectors.keyStorePath`and `server.adminConnectors.keyStorePath` fields of `/opt/oxd-server/conf/oxd-server.yml`. Also set `PKCS12` export password in `server.applicationConnectors.keyStorePassword`and `server.adminConnectors.keyStorePassword` fields. For example:
+1. Set the path of `PKCS12 format` file (created in step 3) in `server.applicationConnectors.keyStorePath`and `server.adminConnectors.keyStorePath` fields of `/opt/oxd-server/conf/oxd-server.yml`. Also set `PKCS12` export password in `server.applicationConnectors.keyStorePassword`and `server.adminConnectors.keyStorePassword` fields. For example:
 
-```
-# Connectors
-server:
-  applicationConnectors:
-    - type: https
-      port: 8443
-      keyStorePath:/etc/letsencrypt/live/www.ce-hostname.com/fullcert.pkcs12
-      keyStorePassword: example
-      validateCerts: false
-  adminConnectors:
-    - type: https
-      port: 8444
-      keyStorePath: /etc/letsencrypt/live/www.ce-hostname.com/fullcert.pkcs12
-      keyStorePassword: example
-      validateCerts: false
-```
+   ```
+   # Connectors
+   server:
+     applicationConnectors:
+       - type: https
+         port: 8443
+         keyStorePath:/etc/letsencrypt/live/www.ce-hostname.com/fullcert.pkcs12
+         keyStorePassword: example
+         validateCerts: false
+     adminConnectors:
+       - type: https
+         port: 8444
+         keyStorePath: /etc/letsencrypt/live/www.ce-hostname.com/fullcert.pkcs12
+         keyStorePassword: example
+         validateCerts: false
+   ```
 
-7. Restart oxd server. This will configure Let's Encrypt Certificate to oxd.
+1. Restart oxd server. This will configure Let's Encrypt Certificate to oxd.
