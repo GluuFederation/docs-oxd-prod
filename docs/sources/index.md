@@ -8,7 +8,7 @@
 oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce/4.1/). 
 
 ## Architecture 
-The oxd Linux package includes the `oxd-server` which is a simple REST application. `oxd-server` is designed to work over the web (via `https`), making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
+Starting with version 4.1, oxd is offered as one of the several components of the Gluu Server CE. To include oxd in CE instance, just ensure to hit Y when prompted at installation time. The oxd Linux package includes the `oxd-server` which is a simple REST application. `oxd-server` is designed to work over the web (via `https`), making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
 
 oxd saves data in own persistence (`h2`, `redis`) and acts as RP for OP. Therefore if client is created by oxd on OP side it is highly recommended to update client's data via oxd API. Otherwise if change client's data by configuring OP directly then data in oxd persistence can be outdated which can lead to confusion and unexpected behavior.
 
@@ -26,13 +26,27 @@ Follow one of our tutorials to learn how oxd works:
 
 To get started:
 
-1. [Install](./install/index.md) `oxd-server` 
+1. [Install](https://gluu.org/docs/ce/4.1/installation-guide) Gluu CE and ensure to hit Y when `Install Oxd?` is prompted while    running [setup scripts](https://gluu.org/docs/ce/4.1/installation-guide/setup_py/#setup-prompt).
 
 1. [Configure](./configuration/oxd-configuration/index.md) the `oxd-server`           
 
-1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs 
+1. Restart oxd server using below command.
 
-1. Call the [oxd API](./api/index.md) to implement authentication and authorization against an external Authorization Server.
+**Ubuntu 16.04 (xenial)**
+
+|Operation | Command|
+|------ |------ |
+|Restart oxd server | `/etc/init.d/oxd-server restart` |
+
+**Ubuntu 18.04 (bionic)/Debian 9 (stretch)/CentOS 7/RHEL 7**
+
+|Operation | Command|
+|------ |------ |
+|Restart oxd server | `systemctl restart oxd-server` |
+
+1. After Gluu CE server installation is completed wait for about 10 minutes in total for the server to restart and finalize its configuration. After that period, to access Gluu CE server, sign in via a web browser to `hostname` provided during installation. For quick check whether oxd-server is alive use oxd `Health Check` endpoint `https://$HOSTNAME:8443/health-check`. This should return `{"status":"running"}` ensuring the successful installation of oxd.
+
+Call the [oxd API](./api/index.md) to implement authentication and authorization against an external Authorization Server.
     
 ## API
 

@@ -10,97 +10,34 @@ oxd needs to be deployed on a server or VM with the following **minimum** requir
 
 !!! Note
     **oxd requires Java version 1.8**
+    
+## Installation via Linux Packages
 
-oxd 4.0 works with CE 3.1.6 and above.
+Starting with version 4.1, oxd is offered as one of the several components of the Gluu Server CE. To include oxd in your instance, just ensure to hit Y when prompted at [installation](https://gluu.org/docs/ce/4.1/installation-guide) time.
 
-## Linux Packages
-
-Before the installation, make sure that Java 8 is installed on your OS. Please check it with
-```
-# java -version
-java version "1.8.0_181"
-```
-If the above command confirms that Java 8 is installed, you can go on with the oxd installation.
-
-The oxd Linux packages provide an easy way to install the `oxd-server`. Follow the steps below to get started:
-
-Step 1: Find the proper Linux package below.     
+Step 1: [Install](https://gluu.org/docs/ce/4.1/installation-guide) Gluu CE and ensure to hit Y when `Install Oxd?` is prompted while    running [setup scripts](https://gluu.org/docs/ce/4.1/installation-guide/setup_py/#setup-prompt).
 
 Step 2: After the installation, [configure](../configuration/oxd-configuration/index.md) your oxd server.
 
-Step 3: [Run](#service-operations) oxd server:             
+Step 3: Restart oxd server using below command.
     
-    
-### Ubuntu 18.04 (bionic)
-
-```
-echo "deb https://repo.gluu.org/ubuntu/ bionic main" > /etc/apt/sources.list.d/gluu-repo.list
-curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
-apt-get update
-apt-get install oxd-server
-```    
-
-### Ubuntu 16.04 (xenial)
-
-```
-echo "deb https://repo.gluu.org/ubuntu/ xenial main" > /etc/apt/sources.list.d/gluu-repo.list
-curl https://repo.gluu.org/ubuntu/gluu-apt.key | apt-key add -
-apt-get update
-apt-get install oxd-server
-```
-
-### Debian 9 (stretch)
-
-```
-echo "deb https://repo.gluu.org/debian/ stretch-stable main" > /etc/apt/sources.list.d/gluu-repo.list
-curl https://repo.gluu.org/debian/gluu-apt.key | apt-key add -
-apt-get update
-apt-get install oxd-server
-```
-
-### CentOS 7
-
-```
-wget https://repo.gluu.org/centos/Gluu-centos7.repo -O /etc/yum.repos.d/Gluu.repo
-wget https://repo.gluu.org/centos/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-yum clean all
-yum install oxd-server
-```
-
-### RHEL 7
-
-```
-wget https://repo.gluu.org/rhel/Gluu-rhel7.repo -O /etc/yum.repos.d/Gluu.repo
-wget https://repo.gluu.org/rhel/RPM-GPG-KEY-GLUU -O /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-GLUU
-yum clean all
-yum install oxd-server
-```
-
-## Service Operations
-
 **Ubuntu 16.04 (xenial)**
 
 |Operation | Command|
 |------ |------ |
-|Start oxd server | `/etc/init.d/oxd-server start` |
-|Stop oxd server | `/etc/init.d/oxd-server stop` |
-|oxd server status | `/etc/init.d/oxd-server status`|
 |Restart oxd server | `/etc/init.d/oxd-server restart` |
 
 **Ubuntu 18.04 (bionic)/Debian 9 (stretch)/CentOS 7/RHEL 7**
 
 |Operation | Command|
 |------ |------ |
-|Start oxd server | `systemctl start oxd-server` |
-|Stop oxd server | `systemctl stop oxd-server` |
-|oxd server status | `systemctl status oxd-server`|
 |Restart oxd server | `systemctl restart oxd-server` |
+
+After Gluu CE server installation is completed wait for about 10 minutes in total for the server to restart and finalize its configuration. After that period, to access Gluu CE server, sign in via a web browser to `hostname` provided during installation. For quick check whether oxd-server is alive use oxd `Health Check` endpoint `https://$HOSTNAME:8443/health-check`. This should return `{"status":"running"}` ensuring the successful installation of oxd.
 
 ## Manual installation
 
-The oxd-server is a self-contained program.  
+The oxd-server is a self-contained program. It can also be installed independently without Gluu CE server.
 
 To run oxd-server:
 
@@ -193,5 +130,78 @@ BASEDIR=.
 CONF=./../conf/oxd-server.yml
 
 yuriy@yuriyz:~/oxd-server-4.0-SNAPSHOT-distribution/bin$JSON for oxd_id d8cc6dea-4d66-4995-b6e1-da3a33722f2e
-{"scope":["openid","uma_protection","profile"],"contacts":[],"pat":null,"rpt":null,"oxd_id":"d8cc6dea-4d66-4995-b6e1-da3a33722f2e","op_host":"https://ce-dev4.gluu.org","op_discovery_path":null,"id_token":null,"access_token":null,"logout_redirect_uri":"https://client.example.com/cb","application_type":"web","redirect_uris":["https://client.example.com/cb"],"claims_redirect_uri":[],"response_types":["code"],"front_channel_logout_uri":[""],"client_id":"@!38D4.410C.1D43.8932!0001!37F2.B744!0008!B390.5F6D.2051.A8C0","client_secret":"4a72e386-97ed-49a0-a338-cd448e5020b3","client_registration_access_token":"920fdb64-9bd7-4b5f-8a8c-8689e29860b8","client_registration_client_uri":"https://ce-dev4.gluu.org/oxauth/restv1/register?client_id=@!38D4.410C.1D43.8932!0001!37F2.B744!0008!B390.5F6D.2051.A8C0","client_id_issued_at":1528879584000,"client_secret_expires_at":1528965984000,"client_name":null,"sector_identifier_uri":null,"client_jwks_uri":null,"token_endpoint_auth_signing_alg":null,"token_endpoint_auth_method":null,"is_setup_client":null,"setup_oxd_id":null,"setup_client_id":null,"ui_locales":["en"],"claims_locales":["en"],"acr_values":[""],"grant_types":["authorization_code","urn:ietf:params:oauth:grant-type:uma-ticket","client_credentials"],"user_id":null,"user_secret":null,"pat_expires_in":0,"pat_created_at":null,"pat_refresh_token":null,"uma_protected_resources":[],"rpt_token_type":null,"rpt_pct":null,"rpt_upgraded":null,"rpt_expires_at":null,"rpt_created_at":null,"oxd_rp_programming_language":"java"}
+{"scope":["openid","uma_protection","profile"],"contacts":[],"pat":null,"rpt":null,"oxd_id":"d8cc6dea-4d66-4995-b6e1-da3a33722f2e","op_configuration_endpoint":"https://ce-dev4.gluu.org/.well-known/openid-configuration","id_token":null,"access_token":null,"logout_redirect_uri":"https://client.example.com/cb","application_type":"web","redirect_uris":["https://client.example.com/cb"],"claims_redirect_uri":[],"response_types":["code"],"front_channel_logout_uri":[""],"client_id":"@!38D4.410C.1D43.8932!0001!37F2.B744!0008!B390.5F6D.2051.A8C0","client_secret":"4a72e386-97ed-49a0-a338-cd448e5020b3","client_registration_access_token":"920fdb64-9bd7-4b5f-8a8c-8689e29860b8","client_registration_client_uri":"https://ce-dev4.gluu.org/oxauth/restv1/register?client_id=@!38D4.410C.1D43.8932!0001!37F2.B744!0008!B390.5F6D.2051.A8C0","client_id_issued_at":1528879584000,"client_secret_expires_at":1528965984000,"client_name":null,"sector_identifier_uri":null,"client_jwks_uri":null,"token_endpoint_auth_signing_alg":null,"token_endpoint_auth_method":null,"is_setup_client":null,"setup_oxd_id":null,"setup_client_id":null,"ui_locales":["en"],"claims_locales":["en"],"acr_values":[""],"grant_types":["authorization_code","urn:ietf:params:oauth:grant-type:uma-ticket","client_credentials"],"user_id":null,"user_secret":null,"pat_expires_in":0,"pat_created_at":null,"pat_refresh_token":null,"uma_protected_resources":[],"rpt_token_type":null,"rpt_pct":null,"rpt_upgraded":null,"rpt_expires_at":null,"rpt_created_at":null,"oxd_rp_programming_language":"java"}
 ```
+
+## Configuring Let's Encrypt CA trusted Certificates in Gluu CE server and oxd
+
+The following is the easiest way to gather CA trusted certificates from Let's Encrypt with Certbot for your Gluu Server. Inside the Gluu Server chroot, run the following commands:
+
+```
+apt-get update
+apt-get install software-properties-common
+add-apt-repository ppa:certbot/certbot
+apt-get update
+apt-get install python-certbot-apache 
+```
+
+Now that you have certbot installed, you can run the following:
+
+```
+certbot --apache
+```
+
+This will prompt you with some additional questions and the automatically configure your Gluu Server's apache configuration to utilize the Let's Encrypt certs that it downloads to `/etc/letsencrypt/live/$HOSTNAME/cert.pem`, `/etc/letsencrypt/live/$HOSTNAME/privkey.pem` and `/etc/letsencrypt/live/$HOSTNAME/chain.pem`.
+
+If you only want the certificates and for certbot to not handle configuring your web server configuration, run
+
+```
+certbot --apache certonly
+```
+
+**Automating Renewal**
+
+Run below command to automate certificate renewal.
+
+```
+certbot renew
+```
+
+**Configuring Let's Encrypt Certificate to oxd packed with Gluu CE**
+
+Follow below steps to use the Let's Encrypt Certificate configured to Gluu CE in oxd.
+
+1. Change directory to `/etc/letsencrypt/live/$HOSTNAME/`. This directory should have the following certificate files: `cert.pem`, `chain.pem`, `fullchain.pem` and `privkey.pem`.
+
+2. Concatenate all PEM files into one file `fullcert.pem` using command `cat /etc/letsencrypt/live/$HOSTNAME/*.pem > fullcert.pem`.
+
+3. Then use OpenSSL to convert `fullcert.pem` into PKCS12 format. 
+
+```
+openssl pkcs12 -export -out fullcert.pkcs12 -in fullcert.pem
+```
+
+4. It will prompt to enter `Export Password`. Type export password and press enter to create `fullcert.pkcs12`.
+
+5. Now change directory to `/opt/oxd-server/conf` of oxd bundled with CE.
+
+6. Set the path of `PKCS12 format` file (created in step 3) in `server.applicationConnectors.keyStorePath`and `server.adminConnectors.keyStorePath` fields of `/opt/oxd-server/conf/oxd-server.yml`. Also set `PKCS12` export password in `server.applicationConnectors.keyStorePassword`and `server.adminConnectors.keyStorePassword` fields. For example:
+
+```
+# Connectors
+server:
+  applicationConnectors:
+    - type: https
+      port: 8443
+      keyStorePath:/etc/letsencrypt/live/www.ce-hostname.com/fullcert.pkcs12
+      keyStorePassword: example
+      validateCerts: false
+  adminConnectors:
+    - type: https
+      port: 8444
+      keyStorePath: /etc/letsencrypt/live/www.ce-hostname.com/fullcert.pkcs12
+      keyStorePassword: example
+      validateCerts: false
+```
+
+7. Restart oxd server. This will configure Let's Encrypt Certificate to oxd.
