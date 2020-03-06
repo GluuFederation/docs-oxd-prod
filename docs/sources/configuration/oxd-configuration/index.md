@@ -149,9 +149,9 @@ defaultSiteConfig:
 
 - **support-google-logout:** Choose whether to support Google logout or not. Only use this if you are using Google as your OP
 
-- **state_expiration_in_minutes:** Expiration time of `state` parameter in seconds
+- **state_expiration_in_minutes:** Expiration time of `state` parameter in minutes
 
-- **nonce_expiration_in_minutes:** Expiration time of `nonce` parameter in seconds
+- **nonce_expiration_in_minutes:** Expiration time of `nonce` parameter in minutes
 
 - **public_op_key_cache_expiration_in_minutes:** OP keys are put into cache after fetching. This value controls how long to keep it in cache (after expiration on first attempt keys are fetched again from OP)
 
