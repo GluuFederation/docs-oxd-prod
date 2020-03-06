@@ -155,7 +155,7 @@ defaultSiteConfig:
 
 - **public_op_key_cache_expiration_in_minutes:** OP keys are put into cache after fetching. This value controls how long to keep it in cache (after expiration on first attempt keys are fetched again from OP)
 
-- **protect_commands_with_access_token:** If only using the `oxd-server`, this value can be `false`. If using the `oxd-https-extension`, then this value MUST be `true` in order to protect communication between `oxd-https-extension` and the client application (RP)
+- **protect_commands_with_access_token:** In order to protect communication between `oxd-server` and the client application (RP) this value MUST be set to `true`.
 
 - **uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client:** Notifies the `oxd-server` whether to automatically register the `Claims Gathering Endpoint` as the `claims_redirect_uri` for a given client. It is useful for UMA 2 clients that wish to force authorization against the Gluu Server. To provide custom `claims_redirect_uri`, set this property to `false`
 
