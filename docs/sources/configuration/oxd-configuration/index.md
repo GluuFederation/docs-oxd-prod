@@ -148,9 +148,9 @@ defaultSiteConfig:
 
 - **support-google-logout:** Choose whether to support Google logout or not. Only use this if you are using Google as your OP
 
-- **state_expiration_in_minutes:** Expiration time of `state` parameter in seconds
+- **state_expiration_in_minutes:** Expiration time of `state` parameter in minutes
 
-- **nonce_expiration_in_minutes:** Expiration time of `nonce` parameter in seconds
+- **nonce_expiration_in_minutes:** Expiration time of `nonce` parameter in minutes
 
 - **rp_cache_expiration_in_minutes:** Expiration time of registered Client metadata stored in cache (in minutes). Default value is 60 minutes
 
