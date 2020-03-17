@@ -1,10 +1,14 @@
 # Using RDBMS storage in oxd
 
-oxd can be configured with any RDBMS for saving data in own persistence. The RDMS configuration in oxd is same for all relational database.  It has been successfully tested with `Mysql` and `Postgres` database and configuration of these two database will be discussed in this section.
+oxd can be configured with any RDBMS for saving data in own persistence. The RDMS configuration in oxd is same for all relational database.
 
-## Mysql and Postgres configuration in oxd
+## Relational database configuration in oxd
 
-To use `Mysql` or `Postgres` database as storage in oxd-server we need to configure following fields in `/opt/oxd-server/conf/oxd-server.yml` file of installed oxd-server:
+Follow below steps to use `Mysql` or `Postgres` or any other relational database as storage in oxd-server.
+
+1. Copy the database driver jar file in `/opt/oxd-server/lib` directory of installed oxd-server. For exmaple to use `Mysql` database as storage in oxd add `mysql-connector-<version>.jar` in `/opt/oxd-server/lib`.
+
+1. Add following fields in `/opt/oxd-server/conf/oxd-server.yml` file of installed oxd-server:
 
 - **storage** set this field `jdbc` to configure any relational database to oxd.
 
@@ -32,8 +36,10 @@ Mysql storage configuration sample:
 Postgres storage configuration sample:
 
     ```
+    storage: jdbc
     driver: org.postgresql.Driver
     jdbcUrl: jdbc:postgresql://<hostname>:5432/<database_name>
     username: oxd_username
     password: oxd_password
     ```
+1. Restart `oxd-server`.
