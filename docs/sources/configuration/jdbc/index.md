@@ -37,9 +37,10 @@ Follow below steps to use `Mysql` or `Postgres` or any other relational database
 
         ```
         storage: jdbc
-        driver: org.postgresql.Driver
-        jdbcUrl: jdbc:postgresql://<hostname>:5432/<database_name>
-        username: oxd_username
-        password: oxd_password
+        storage_configuration
+          driver: org.postgresql.Driver
+          jdbcUrl: jdbc:postgresql://<hostname>:5432/<database_name>
+          username: oxd_username
+          password: oxd_password
         ```
 1. Restart `oxd-server`. After the server is restarted it will use configured database as storage.
