@@ -42,4 +42,4 @@ Follow below steps to use `Mysql` or `Postgres` or any other relational database
         username: oxd_username
         password: oxd_password
         ```
-1. Restart `oxd-server`. After the server is restarted it will configured database as storage.
+1. Restart `oxd-server`. After the server is restarted it will use configured database as storage.
