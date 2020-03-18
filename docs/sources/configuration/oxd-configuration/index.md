@@ -166,15 +166,13 @@ defaultSiteConfig:
 
 - **allowed_op_hosts:** Array containing a list of the `op_host` urls. oxd can only access the `op_hosts` from this list and all other calls (to IDPs not present in this list ) will be rejected. If the list is empty then oxd is allowed to access any OpenID Connect Provider.
 
-- **storage:** This value can either be `h2` or `redis`. If `redis` is set, then `storage_configuration` must be specified with redis configuration details
+- **storage:** This value can be `h2` or `jdbc` or `redis`. 
 
-- **storage_configuration:** Storage configuration details. Required if the `redis` value is set for the `storage` key
-
-- **redirect_uris:** Provide the URL of OpenID Provider (OP). If missing, must be present in defaults.
+- **storage_configuration:** Storage configuration details of the storage set in `storage` field. For more details check [H2](../h2/index.md), [Redis](../redis/index.md) and [JDBC](../jdbc/index.md) configuration page.
 
 Redis storage configuration sample:
 
-```yaml
+```
   storage_configuration
     host: localhost
     port: 6379  
@@ -187,6 +185,16 @@ H2 storage configuration sample:
       dbFileLocation: /opt/oxd-server/data/oxd_db    
 ```
 
+JDBC storage configuration sample:
+
+```
+storage: jdbc
+storage_configuration:
+    driver: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://hostname:port/database
+    username: user
+    password: secret
+```
 
 ### defaultSiteConfig Field Descriptions
 
