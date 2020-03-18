@@ -34,6 +34,10 @@ allowed_op_hosts: []
 storage: h2
 storage_configuration:
   dbFileLocation: /opt/oxd-server/data/oxd_db
+proxy_configuration:
+  host: 'localhost'
+  port: 8888
+  protocol: 'http'
 
 # Dropwizard configurations
 # Connectors
@@ -173,6 +177,7 @@ defaultSiteConfig:
 Redis storage configuration sample:
 
 ```
+  storage: redis
   storage_configuration
     host: localhost
     port: 6379  
@@ -180,7 +185,8 @@ Redis storage configuration sample:
 
 H2 storage configuration sample:
 
-```yaml
+```
+    storage: h2
     storage_configuration
       dbFileLocation: /opt/oxd-server/data/oxd_db    
 ```
@@ -194,6 +200,24 @@ storage_configuration:
     jdbcUrl: jdbc:mysql://hostname:port/database
     username: user
     password: secret
+```
+#### Proxy server setting
+
+- **proxy_configuration:** oxd can be configured so that it connects to `OP_HOST` through the `forward proxy`. In order to configure proxy server to oxd `host`, `port` and `protocol` should be set.
+
+- **host** Provide `hostname` of the proxy server. This field is mandatory to configure proxy server.
+
+- **port** Provide `port` of the proxy server. This field is not mandatory.
+
+- **protocol** Provide `protocol` of the proxy server either `http` or `https`. This field is not mandatory. The default protocol is `http`.
+
+Proxy server configuration sample:
+
+```
+proxy_configuration:
+  host: `localhost`
+  port: 8888
+  protocol: `http`
 ```
 
 ### defaultSiteConfig Field Descriptions
