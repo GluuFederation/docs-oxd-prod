@@ -16,8 +16,6 @@ As stated above, in this tutorial we're using Gluu Server 4.1 as the OP.
 ### oxd Server 4.1
 To install oxd Server 4.1.0, follow [these instructions](../../install/index.md). 
 
-For this tutorial, I installed oxd Server on its own host, **oxd.server.com**. For testing purposes, oxd can also be installed on the same server as the Gluu Server if needed, as there are no port conflicts.
-
 My **defaultSiteConfig** section of `oxd-server.yml` configuration is as follows:
 
 ```
@@ -31,6 +29,48 @@ defaultSiteConfig:
   ui_locales: ['en']
   claims_locales: ['en']
   contacts: []
+  redirect_uris: []
+  logout_redirect_uris: []
+  client_name: ''
+  client_jwks_uri: ''
+  token_endpoint_auth_method: ''
+  token_endpoint_auth_signing_alg: ''
+  request_uris: []
+  front_channel_logout_uris: []
+  sector_identifier_uri: ''
+  claims_redirect_uri: []
+  client_id: ''
+  client_secret: ''
+  access_token_as_jwt: false
+  access_token_signing_alg: ''
+  rpt_as_jwt: false
+  logo_uri: ''
+  client_uri: ''
+  policy_uri: ''
+  front_channel_logout_session_required: false
+  tos_uri: ''
+  jwks: ''
+  id_token_binding_cnf: ''
+  tls_client_auth_subject_dn: ''
+  run_introspection_script_beforeaccess_token_as_jwt_creation_and_include_claims: false
+  id_token_signed_response_alg: ''
+  id_token_encrypted_response_alg: ''
+  id_token_encrypted_response_enc: ''
+  user_info_signed_response_alg: ''
+  user_info_encrypted_response_alg: ''
+  user_info_encrypted_response_enc: ''
+  request_object_signing_alg: ''
+  request_object_encryption_alg: ''
+  request_object_encryption_enc: ''
+  default_max_age: null
+  require_auth_time: false
+  initiate_login_uri: ''
+  authorized_origins: []
+  access_token_lifetime: null
+  software_id: ''
+  software_version: ''
+  software_statement: ''
+  custom_attributes: {}
 ```
 
 ### Apache Web Server (RP)
@@ -82,7 +122,7 @@ Before you start working on `oxd-server`, you'll need two settings configured on
 
 - Enable dynamic registration of clients: **Configuration->Manage Custom Script**, click on the **Client Registration** tab and and enable the `client_registration` script, then click the **Update** button. If you don't want to enable dynamic client registration, please register [a client manually](https://gluu.org/docs/ce/admin-guide/openid-connect/#client-registration-configuration).
 
-- Enable dynamic registration of the "profile" scope: **OpenID Connect->Scopes**, click on the `profile` scope and set `Allow for dynamic registration` to "True". Click the **Update** button.
+- Enable dynamic registration of the "profile" scope: **OpenID Connect->Scopes**, click on the `profile` scope and set `Default scope` to "True". Click the **Update** button.
 
 Now, you will register the client dynamically, and register the site to oxd. Write the following content to `data.json`:
 
@@ -107,8 +147,7 @@ Now, you will register the client dynamically, and register the site to oxd. Wri
   "claims_locales": [""],
   "claims_redirect_uri": [],
   "client_id": "",
-  "client_secret": "",
-  "trusted_client": true
+  "client_secret": ""
 }
 ```
 
