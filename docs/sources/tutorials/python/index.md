@@ -7,14 +7,11 @@ In this tutorial I explain how to leverage the oxd server for SSO using the Open
 For this tutorial, our OpenID Connect Provider (OP) is Gluu Server 4.1. We are also using oxd 4.1 and an https & cgi enabled web server -- Apache in our case. 
 
 ### Gluu Server 4.1 (OP)
-As stated above, in this tutorial we're using Gluu Server 4.1 as the OP. 
+As stated above, in this tutorial we're using Gluu Server 4.1 as the OP. Starting with version 4.1, oxd is offered as one of the several components of the Gluu Server CE.
 
-- Follow [these instructions](https://gluu.org/docs/ce/4.1/installation-guide/install/) to install Gluu Server 4.1. In this tutorial, I installed Gluu Server on host **op.server.com**.
+- Follow [these instructions](../../install/index.md) to install Gluu Server 4.1 with oxd. In this tutorial, I installed Gluu Server on host **op.server.com**.
 
 - Add a test user. I added user `test_user`.
-
-### oxd Server 4.1
-To install oxd Server 4.1.0, follow [these instructions](../../install/index.md). 
 
 My **defaultSiteConfig** section of `oxd-server.yml` configuration is as follows:
 
@@ -154,10 +151,10 @@ Now, you will register the client dynamically, and register the site to oxd. Wri
 !!! Note
     If you created client manually, you must supply `client_id` and `client_secret`.
 
-Now you can create the client and regsiter your site on the oxd server:
+Now you can create the client and regsiter your site on the oxd server. oxd server will be running port `8443` of installed Gluu CE server:
 
 ```
-curl -k -X POST https://oxd.server.com:8443/register-site --header "Content-Type: application/json" -d @data.json 
+curl -k -X POST https://op.server.com:8443/register-site --header "Content-Type: application/json" -d @data.json 
 
 ```
 
@@ -195,7 +192,7 @@ oxd_id = '$YOUR_OXD_ID'
 client_secret = '$YOUR_CLIENT_SECRET'
 client_id = '$YOUR_CLIENT_ID'
 op_host = 'https://op.server.com/'
-oxd_server = 'https://oxd.server.com:8443/'
+oxd_server = 'https://op.server.com:8443/'
 
 print 'Content-type: text/html'
 
