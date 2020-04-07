@@ -49,6 +49,12 @@ The demo app uses standard well-known technologies included in the Java EE 7 web
     ```
     mvn jetty:run
     ```
+    
+    To allow the application to trust all certificates issue the below command to start the app.
+   
+    ```
+    mvn jetty:run -Dtrust.all.client=true
+    ```
 
     Depending on connection speed and computer performance, it may take a couple of minutes to complete. It is downloading all required dependencies and performing initial configurations.
 
