@@ -27,6 +27,9 @@ nonce_expiration_in_minutes: 5
 rp_cache_expiration_in_minutes: 60
 public_op_key_cache_expiration_in_minutes: 60
 protect_commands_with_access_token: true
+accept_id_token_without_signature: false
+id_token_validation_c_hash_required: true
+id_token_validation_at_hash_required: true
 uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client: true
 add_client_credentials_grant_type_automatically_during_client_registration: true
 migration_source_folder_path: ''
@@ -161,6 +164,12 @@ defaultSiteConfig:
 - **public_op_key_cache_expiration_in_minutes:** OP keys are put into cache after fetching. This value controls how long to keep it in cache (after expiration on first attempt keys are fetched again from OP)
 
 - **protect_commands_with_access_token:** In order to protect communication between `oxd-server` and the client application (RP) this value MUST be set to `true`.
+
+- **accept_id_token_without_signature** In order to allow `id_token` without any signature, set this field to `true`. The default value of this property is `false` which means `id_token` should be signed with algorithm.
+
+- **id_token_validation_c_hash_required** If this property is set to `true` then `c_hash` validation in id_token will be done in `code id_token` and `code id_token token` hybrid flows. The default value of this property is `true`.
+
+- **id_token_validation_at_hash_required** If this property is set to `true` then `at_hash` validation in id_token will be done in 'id_token token' (Implicit) and `code id_token token` (Hybrid) flows. The default value of this property is `true`.
 
 - **uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client:** Notifies the `oxd-server` whether to automatically register the `Claims Gathering Endpoint` as the `claims_redirect_uri` for a given client. It is useful for UMA 2 clients that wish to force authorization against the Gluu Server. To provide custom `claims_redirect_uri`, set this property to `false`
 
