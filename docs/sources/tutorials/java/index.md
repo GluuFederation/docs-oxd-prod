@@ -18,13 +18,7 @@ The demo app uses standard well-known technologies included in the Java EE 7 web
 
     Download [maven](https://maven.apache.org/download.cgi) and follow the simple installation instructions. Ensure the `bin` directory is added to your PATH.
 
-1. An OpenID Connect Provider (OP), like the Gluu Server
-
-    Learn how to deploy Gluu [in the docs](https://gluu.org/docs/ce/installation-guide/).
-
-1. oxd-server 4.1
-
-    Download and install [oxd-server 4.1](https://gluu.org/docs/oxd/4.1/). For the purposes of this demo app, built-in default configuration files will work.
+1. Install [Gluu Server bundled with oxd](../../install/index.md).
 
 ## Run
 
@@ -49,12 +43,13 @@ The demo app uses standard well-known technologies included in the Java EE 7 web
     ```
     mvn jetty:run
     ```
-    
-    To allow the application to trust all certificates issue the below command to start the app.
+   
+   To allow the application to trust all certificates issue the below command to start the app.
    
     ```
-    mvn jetty:run -Dtrust.all.client=true
+     mvn jetty:run -Dtrust.all.client=true
     ```
+
 
     Depending on connection speed and computer performance, it may take a couple of minutes to complete. It is downloading all required dependencies and performing initial configurations.
 
