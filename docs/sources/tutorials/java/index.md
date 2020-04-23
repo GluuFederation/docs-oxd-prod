@@ -32,12 +32,6 @@ The demo app uses standard well-known technologies included in the Java EE 7 web
     git clone https://github.com/GluuFederation/oxd-java-sample.git
     ```
 
-    After the project is cloned switch to version_4.1 branch using below command.
-
-    ```
-    git checkout version_4.1
-    ```
-
 1. Issue the below command to start the app
 
     ```
