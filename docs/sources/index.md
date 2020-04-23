@@ -32,7 +32,7 @@ To get started:
 
 1. Restart oxd server using below command.
 
-**Ubuntu 16.04 (xenial)**
+    **Ubuntu 16.04 (xenial)**
 
     |Operation | Command|
     |------ |------ |
