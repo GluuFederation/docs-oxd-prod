@@ -1,16 +1,16 @@
-# oxd 4.1 Documentation
+# oxd 4.2 Documentation
 
 !!! Attention
-    Questions and feedback on oxd 4.1 can be directed to [Gluu support](https://support.gluu.org). View [known issues](https://github.com/GluuFederation/oxd/milestone/8). 
+    Questions and feedback on oxd 4.2 can be directed to [Gluu support](https://support.gluu.org). View [known issues](https://github.com/GluuFederation/oxd/milestone/8). 
 
 
 ## Introduction
-oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce/4.1/). 
+oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce/4.2/). 
 
 ## Architecture 
-The oxd Linux package includes the `oxd-server` which is a simple REST application. `oxd-server` is designed to work over the web (via `https`), making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
+Starting with version 4.1, oxd is offered as one of the several components of the Gluu Server CE. To include oxd in CE instance, just ensure to hit Y when prompted at installation time. The oxd Linux package includes the `oxd-server` which is a simple REST application. `oxd-server` is designed to work over the web (via `https`), making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
 
-oxd saves data in its own persistence (`h2`, `redis`) and acts as RP for OP. It is possible that the admin goes to OP directly and change client data there. In that case, oxd will not know about it and can act on outdated data. To prevent this confusion user can configure client during registration so that oxd can automatically synchronize with the client data from OP whenever required. Check [Register site](./api/index.md#register-site) for more details.
+oxd saves data in its own persistence (`RDMBS`, `redis`) and acts as RP for OP. It is possible that the admin goes to OP directly and change client data there. In that case, oxd will not know about it and can act on outdated data. To prevent this confusion user can configure client during registration so that oxd can automatically synchronize with the client data from OP whenever required. Check [Register site](./api/index.md#register-site) for more details.
 
 ![oxd-https-architecture](./img/oxd-https.jpg) 
 
@@ -26,13 +26,27 @@ Follow one of our tutorials to learn how oxd works:
 
 To get started:
 
-1. [Install](./install/index.md) `oxd-server` 
+1. [Install](https://gluu.org/docs/ce/4.2/installation-guide) Gluu CE and ensure to hit Y when `Install Oxd?` is prompted while    running [setup scripts](https://gluu.org/docs/ce/4.2/installation-guide/setup_py/#setup-prompt).
 
 1. [Configure](./configuration/oxd-configuration/index.md) the `oxd-server`           
 
-1. [Start](./install/index.md) the `oxd-server`, as described in the installation docs 
+1. Restart oxd server using below command.
 
-1. Call the [oxd API](./api/index.md) to implement authentication and authorization against an external Authorization Server.
+    **Ubuntu 16.04 (xenial)**
+
+    |Operation | Command|
+    |------ |------ |
+    |Restart oxd server | `/etc/init.d/oxd-server restart` |
+
+    **Ubuntu 18.04 (bionic)/Debian 9 (stretch)/CentOS 7/RHEL 7**
+
+    |Operation | Command|
+    |------ |------ |
+    |Restart oxd server | `systemctl restart oxd-server` |
+
+1. After Gluu CE server installation is completed wait for about 10 minutes in total for the server to restart and finalize its configuration. After that period, to access Gluu CE server, sign in via a web browser to `hostname` provided during installation. For quick check whether oxd-server is alive use oxd `Health Check` endpoint `https://$HOSTNAME:8443/health-check`. This should return `{"status":"running"}` ensuring the successful installation of oxd.
+
+Call the [oxd API](./api/index.md) to implement authentication and authorization against an external Authorization Server.
     
 ## API
 
@@ -75,25 +89,25 @@ Using oxd, your application can delegate access management decisions, like who c
 
 ## Native Libraries
 
-oxd APIs are [swaggerized](https://github.com/GluuFederation/oxd/blob/version_4.1/oxd-server/src/main/resources/swagger.yaml)! Use the [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/) to generate native libraries for your programming language of choice. 
+oxd APIs are [swaggerized](https://github.com/GluuFederation/oxd/blob/version_4.2/oxd-server/src/main/resources/swagger.yaml)! Use the [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/) to generate native libraries for your programming language of choice. 
 
 For more information about generating native clients, [check our FAQ](https://gluu.org/docs/oxd/4.1/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
 
 ## Compatibility
-oxd 4.1 has been tested against the following OAuth 2.0 Authorization Servers:
+oxd 4.2 has been tested against the following OAuth 2.0 Authorization Servers:
 
 ### OpenID Providers (OP)
-- Gluu Server [4.1](https://gluu.org/docs/ce/4.1), [3.1.6](https://gluu.org/docs/ce/3.1.6)
+- Gluu Server [4.2](https://gluu.org/docs/ce/4.2), [4.1](https://gluu.org/docs/ce/4.1), [3.1.6](https://gluu.org/docs/ce/3.1.6)
 
 
 ### UMA Authorization Servers (AS)
-- Gluu Server [4.1](https://gluu.org/docs/ce/4.1), [3.1.6](https://gluu.org/docs/ce/3.1.6)
+- Gluu Server [4.2](https://gluu.org/docs/ce/4.2), [4.1](https://gluu.org/docs/ce/4.1), [3.1.6](https://gluu.org/docs/ce/3.1.6)
 
 ## Source code
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
 
 ## License
-oxd 4.1 is available under the AGPL open source license. 
+oxd 4.2 is available under the AGPL open source license. 
 
 ## Support
 Gluu offers support for oxd on the [Gluu Support Portal](https://support.gluu.org). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 

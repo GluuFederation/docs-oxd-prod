@@ -1,6 +1,6 @@
 # Configuration (oxd-server.yml)
 
-oxd configuration is located at `/opt/oxd-server/conf/oxd-server.yml`. It consists of three major parts:
+oxd configuration is located at `/opt/oxd-server/conf/oxd-server.yml` inside Gluu Server chroot. It consists of three major parts:
 
 - `server configuration` - oxd specific configuration
 - `defaultSiteConfig` - fallback configuration values for the OpenID Connect `/register-site` command. Learn more on the [oxd API page](../../api/index.md#register-site)
