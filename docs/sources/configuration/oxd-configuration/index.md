@@ -180,7 +180,7 @@ defaultSiteConfig:
 
 - **allowed_op_hosts:** Array containing a list of the `op_host` urls. oxd can only access the `op_hosts` from this list and all other calls (to IDPs not present in this list ) will be rejected. If the list is empty then oxd is allowed to access any OpenID Connect Provider.
 
-- **protect_commands_with_oxd_id** RP can use different Authorization Servers (AS) to protect oxd API’s with access token. This field contains array of `oxd_id` of AS registered with oxd which are allowed to protect oxd API’s. Eg: `protect_commands_with_oxd_id: ['<oxd_id1>', '<oxd_id2>', '<oxd_id3>' ...]`. If it is missed from the configuration then any AS registered with oxd can be used for protecting oxd end-points.
+- **protect_commands_with_oxd_id** RP can use different Authorization Servers (AS) for protecting oxd API’s with access token. This field contains array of `oxd_id` of AS registered with oxd which are allowed to protect oxd API’s. Eg: `protect_commands_with_oxd_id: ['<oxd_id1>', '<oxd_id2>', '<oxd_id3>' ...]`. If it is missed from the configuration then any AS registered with oxd can be used for protecting oxd end-points.
 
 - **storage:** This value can be `h2` or `jdbc` or `redis`. 
 
