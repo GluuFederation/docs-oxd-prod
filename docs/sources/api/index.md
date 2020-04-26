@@ -65,9 +65,9 @@ The required parameters for `/get-client-token` are `op_host`, `client_id` and `
 
 oxd can also be configured to use a different Authorization Server (AS) for `access_token` validation other then the one processing API call. Follow below steps to configure another AS to protect APIs calls:
 
-1. Register client (AS1) in oxd using `/register-site`.
+1. Register client (say AS1) in oxd using `/register-site`.
 
-1. Register the AS (AS2) to used for protecting APIs using `/register-site` end-point.
+1. Register the AS (say AS2, to protect APIs) using `/register-site` end-point.
 
 1. Generate access token using `/get-client-token` by passing `op_host`, `client_id` and `client_secret` of the registered AS2.
 
