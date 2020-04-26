@@ -63,7 +63,7 @@ The required parameters for `/get-client-token` are `op_host`, `client_id` and `
 
 **Using Different AS for `access_token` validation**
 
-oxd can also be configured to a different Authorization Server (AS) for `access_token` validation other then the one processing API call. Follow below steps to configure another AS to protect APIs calls:
+oxd can also be configured to use a different Authorization Server (AS) for `access_token` validation other then the one processing API call. Follow below steps to configure another AS to protect APIs calls:
 
 1. Register client (AS1) in oxd using `/register-site`.
 
@@ -73,7 +73,7 @@ oxd can also be configured to a different Authorization Server (AS) for `access_
 
 1. In subsequent apis call pass `AuthorizationOxdId: <oxd_id>` HTTP header along with `Authorization: <access_token>` HTTP header. In `AuthorizationOxdId` set `oxd_id` of Authorization Server (AS2) for protecting APIs.
 
-`protect_commands_with_oxd_id` array is to limit oxd_id's that can be send via `AuthorizationOxdId` header. However if this field is missed from configuration then any oxd_id (i.e. AS registered to oxd) can be send using `AuthorizationOxdId` header.
+`protect_commands_with_oxd_id` array in `/opt/oxd-server/conf/oxd-server.yml` is to limit oxd_id's that can be send via `AuthorizationOxdId` header. However if this field is missed from configuration then any oxd_id (i.e. AS registered to oxd) can be send using `AuthorizationOxdId` header.
 
 ### Get Access Token by Refresh Token
 
