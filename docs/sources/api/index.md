@@ -73,7 +73,7 @@ oxd can also be configured to use a different Authorization Server (AS) for `acc
 
 1. In subsequent apis call pass `AuthorizationOxdId: <oxd_id>` HTTP header along with `Authorization: <access_token>` HTTP header. In `AuthorizationOxdId` set `oxd_id` of Authorization Server (AS2) for protecting APIs.
 
-`protect_commands_with_oxd_id` array in `/opt/oxd-server/conf/oxd-server.yml` is to limit oxd_id's that can be send via `AuthorizationOxdId` header. However if this field is missed from configuration then any oxd_id (i.e. AS registered to oxd) can be send using `AuthorizationOxdId` header.
+`protect_commands_with_oxd_id` array in `/opt/oxd-server/conf/oxd-server.yml` is to limit oxd_id's that can be send via `AuthorizationOxdId` header. However if this field is missed from configuration then any oxd_id (i.e. AS registered to oxd) can be used to validate access token.
 
 ### Get Access Token by Refresh Token
 
