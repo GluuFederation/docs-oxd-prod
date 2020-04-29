@@ -4,7 +4,7 @@ This tutorial covers the steps involved to generate the EXE file for the install
 
 ## How to generate oxd windows executable installation file (`oxd-server.exe`)?
 
-The important point to be noted here is that the EXE file can be only generated in windows OS. oxd team is working furthur so that in upcoming oxd release windows executable installation file can also be generated in Linux OS.
+The important point to be noted here is that the EXE file can be only generated in windows OS. oxd team is working further so that in upcoming oxd release windows executable installation file can also be generated in Linux OS.
 
 #### Prerequisites
 
