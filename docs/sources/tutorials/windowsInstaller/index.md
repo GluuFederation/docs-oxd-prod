@@ -28,7 +28,7 @@ The important point to be noted here is that the EXE file can be only generated 
    ```
    git clone https://github.com/GluuFederation/oxd.git
    ```
-1. Check latest version of `commons daemon windows binaries` at https://downloads.apache.org/commons/daemon/binaries/windows/ and update the version in `commons-daemon.bin.version` property in `${OXD_HOME}/oxd-server/pom.xml`.
+1. Check the latest version of `commons daemon windows binaries` at https://downloads.apache.org/commons/daemon/binaries/windows/ and update the version in `commons-daemon.bin.version` property in `${OXD_HOME}/oxd-server/pom.xml`.
 
    ```
    <commons-daemon.bin.version>1.2.1</commons-daemon.bin.version>
