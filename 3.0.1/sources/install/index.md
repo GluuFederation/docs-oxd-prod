@@ -143,7 +143,9 @@ in the above folder you just created.
 
 4. Now configure oxd following the [configuration instructions](../conf/index.md). 
 
-5. `$ nohup bin/oxd-start.sh &`
+5. `$ chmod +x bin/oxd-start.sh`
+
+6. `$ nohup bin/oxd-start.sh &`
 
 ## Manual Build oxd Server
 
