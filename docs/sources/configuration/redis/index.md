@@ -1,6 +1,8 @@
 # Using Redis storage in oxd
 
-OXD maintains a copy of client details registered in `OpenID Connect provider` in oxd storage. The storage used in oxd can be either any relational database (like `H2`, `Mysql`, `Postgres` etc) or `Redis`. OXD has feature to configure `Redis` storage in standalone, sharded or cluster mode which will be covered in detail in this section.
+## Overview
+
+[Redis](https://redis.io/) is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes with radius queries and streams. oxd can be configured to use `Redis` as storage to maintain a copy of client details registered in `OpenID Connect provider`. There are some easy steps to use `Redis` in standalone and cluster mode with oxd which will be covered in detail in this section.
 
 ## Redis in `Standalone` mode
 
