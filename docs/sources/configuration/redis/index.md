@@ -18,7 +18,7 @@ When Redis is configured in `Standalone` mode, oxd stores client details in sing
     redis-server
     ```
 
-1. In `/opt/oxd-server/conf/oxd-server.yml` (of Gluu Server chroot) of oxd set following `storage_configuration`.
+1. In `/opt/oxd-server/conf/oxd-server.yml` (of Gluu Server chroot) set following `storage_configuration`.
 
     ```
     storage: redis
@@ -43,7 +43,7 @@ In `Cluster` mode oxd stores client details in multiple running Redis server. To
     redis-server
     ```
 
-1. In `/opt/oxd-server/conf/oxd-server.yml` (of Gluu Server chroot) of oxd set following `storage_configuration`.
+1. In `/opt/oxd-server/conf/oxd-server.yml` (of Gluu Server chroot) set following `storage_configuration`.
 
     ```
     storage: redis
