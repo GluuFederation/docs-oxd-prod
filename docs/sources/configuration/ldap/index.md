@@ -23,7 +23,7 @@ To use Gluu server's `ldap` as storage in oxd-server we need to follow below ste
     salt: /etc/gluu/conf/salt
   ```
   
-  In Gluu CE server the [persistance](https://www.gluu.org/docs/gluu-server/reference/persistence) configuration files are stored at       location `/etc/gluu/conf`. Following oxd following 3 configuration files are used for ldap connection:              `/etc/gluu/conf/gluu.properties`, `/etc/gluu/conf/gluu-ldap.properties` and `/etc/gluu/conf/salt`.
+  In Gluu CE server the [persistance](https://www.gluu.org/docs/gluu-server/reference/persistence) configuration files are stored at       location `/etc/gluu/conf`. Following 3 configuration files are used for ldap connection:              `/etc/gluu/conf/gluu.properties`, `/etc/gluu/conf/gluu-ldap.properties` and `/etc/gluu/conf/salt`.
   
 3. Restart oxd server. Once oxd is successfully restarted then it will start using the `ldap` storage configured in `oxd-server.yml`.
 
