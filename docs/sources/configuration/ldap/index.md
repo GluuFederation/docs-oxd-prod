@@ -88,7 +88,7 @@ This file contain salt string to decode the encoded values from `gluu-ldap.prope
 
 To use any local or remote `ldap` as storage in oxd-server we need to follow below step:
 
-1. Create the persistance files with connection properties as described [here](/#fields-details-of-configuration-files).
+1. Create the persistance files with connection properties as described [here](#fields-details-of-configuration-files).
 
 1. In /opt/oxd-server/conf/oxd-server.yml file of installed oxd-server set `ldap` as `storage`, `baseDn` as `o=gluu` and path of persistance configuration properties files as shown below. 
 
