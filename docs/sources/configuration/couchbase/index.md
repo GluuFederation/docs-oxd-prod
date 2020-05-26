@@ -33,6 +33,8 @@ To use Gluu server's `Couchbase` as storage in oxd-server we need to follow belo
 
 ### Fields details of configuration files
 
+[Refer this](https://www.gluu.org/docs/gluu-server/reference/persistence) tutorials for more information on gluu persistance. You can also search [Gluu Server docs](https://www.gluu.org/docs/gluu-server) to learn more.
+
 **gluu.properties fields**
 
 oxd read `persistence.type` field from this file to find whether the storage is `ldap` or `couchbase`. The path of this file is set to `type` field in `oxd-server.yml`.
