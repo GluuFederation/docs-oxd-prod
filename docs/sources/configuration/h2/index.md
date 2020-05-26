@@ -1,8 +1,8 @@
 # Using H2 storage in oxd
 
-## H2 configuration in oxd
+## Overview
 
-The storage used in oxd can be either any relational database (like `H2`, `Mysql`, `Postgres` etc) or `Redis`. To use `H2` database as storage in oxd-server we need to follow below step:
+`H2` is an open source and very fast database engine. It is written in java and has small footprint (around 2 MB) with low memory requirements. The storage used in oxd can be any relational database including `H2`. To use `H2` database as storage in oxd-server we need to follow below step:
 
 - In `/opt/oxd-server/conf/oxd-server.yml` file of installed oxd-server set following parameters.
 

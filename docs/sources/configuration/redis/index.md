@@ -1,12 +1,14 @@
 # Using Redis storage in oxd
 
-OXD maintains a copy of client details registered in `OpenID Connect provider` in oxd storage. The storage used in oxd can be either any relational database (like `H2`, `Mysql`, `Postgres` etc) or `Redis`. OXD has feature to configure `Redis` storage in standalone, sharded or cluster mode which will be covered in detail in this section.
+## Overview
+
+[Redis](https://redis.io/) is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs, geospatial indexes with radius queries and streams. oxd can be configured to use `Redis` as storage to maintain a copy of client details registered in `OpenID Connect provider`. There are some easy steps to use `Redis` in standalone and cluster mode with oxd which will be covered in detail in this section.
 
 ## Redis in `Standalone` mode
 
 When Redis is configured in `Standalone` mode, oxd stores client details in single Redis server. To configure Redis in `Standalone` mode we need to follow below steps:
 
-1. Download and install [oxd 4.0](https://gluu.org/docs/oxd/4.0/).
+1. Install [Gluu Server bundled with oxd](../../install/index.md).
 
 1. Download and install [Redis](https://redis.io/topics/quickstart) on local server.  
 
@@ -16,7 +18,7 @@ When Redis is configured in `Standalone` mode, oxd stores client details in sing
     redis-server
     ```
 
-1. In `/opt/oxd-server/conf/oxd-server.yml` of oxd set following `storage_configuration`.
+1. In `/opt/oxd-server/conf/oxd-server.yml` (of Gluu Server chroot) set following `storage_configuration`.
 
     ```
     storage: redis
@@ -31,7 +33,7 @@ When Redis is configured in `Standalone` mode, oxd stores client details in sing
 
 In `Cluster` mode oxd stores client details in multiple running Redis server. To configure Redis in `Cluster` mode we need to follow below steps:
 
-1. Download and install [oxd 4.0](https://gluu.org/docs/oxd/4.0/).
+1. Install [Gluu Server bundled with oxd](../../install/index.md).
 
 1. Download and install [Redis](https://redis.io/topics/quickstart) on different virtual machines (VMs).  
 
@@ -41,7 +43,7 @@ In `Cluster` mode oxd stores client details in multiple running Redis server. To
     redis-server
     ```
 
-1. In `/opt/oxd-server/conf/oxd-server.yml` of oxd set following `storage_configuration`.
+1. In `/opt/oxd-server/conf/oxd-server.yml` (of Gluu Server chroot) set following `storage_configuration`.
 
     ```
     storage: redis
