@@ -34,6 +34,7 @@ To use Gluu server's `ldap` as storage in oxd-server we need to follow below ste
 ### Fields details of configuration files
 
 **gluu.properties fields**
+
 oxd read `persistence.type` field from this file to find whether the storage is `ldap` or `couchbase`. The path of this file is set to `type` field in `oxd-server.yml`.
 
   ```
