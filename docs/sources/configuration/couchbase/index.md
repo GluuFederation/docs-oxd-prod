@@ -95,7 +95,7 @@ This file contain salt string to decode the encoded values from `gluu-couchbase.
 
 ## Using any local or remote `couchbase` server in oxd
 
-To use any local or remote `ldap` as storage in oxd-server we need to follow below steps:
+To use any local or remote `couchbase` as storage in oxd-server we need to follow below steps:
 
 1. Create the persistance files with connection properties as described [here](#fields-details-of-configuration-files).
 
