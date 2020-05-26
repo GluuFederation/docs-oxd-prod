@@ -8,7 +8,7 @@ oxd can also be configured to use any remote or local `ldap` (which is not used 
 
 ## Using Gluu server's `ldap` in oxd
 
-To use Gluu server's `ldap` as storage in oxd-server we need to follow below step:
+To use Gluu server's `ldap` as storage in oxd-server we need to follow below steps:
 
 1. [Login](https://www.gluu.org/docs/gluu-server/installation-guide/install-ubuntu/#start-the-server-and-log-in) to Gluu CE Server.
 
@@ -86,7 +86,7 @@ This file contain salt string to decode the encoded values from `gluu-ldap.prope
 
 ## Using any local or remote `ldap` server in oxd
 
-To use any local or remote `ldap` as storage in oxd-server we need to follow below step:
+To use any local or remote `ldap` as storage in oxd-server we need to follow below steps:
 
 1. Create the persistance files with connection properties as described [here](#fields-details-of-configuration-files).
 
