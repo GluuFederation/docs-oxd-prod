@@ -24,7 +24,7 @@ The only required parameter is the `redirect_uris` which is list of Redirection 
 
 The `op_host` parameter is optional, but it must be specified in either the [default configuration file](../configuration/#oxd-confjson) or the API call. This is the URL at the OP where users will be sent for authentication. 
 
-oxd saves data in its own persistence (`RDBMS`, `redis`) and acts as RP for OP. It is possible that the admin goes to OP directly and change client data there. In that case, oxd will not know about it and can act on outdated data. To prevent this confusion user can set `sync_client_from_op` and `sync_client_period_in_seconds` parameters during client registration so that oxd can synchronize with the client data from OP whenever required.
+oxd saves data in its own persistence (`RDBMS`, `redis`, etc.) and acts as RP for OP. It is possible that the admin goes to OP directly and change client data there. In that case, oxd will not know about it and can act on outdated data. To prevent this confusion user can set `sync_client_from_op` and `sync_client_period_in_seconds` parameters during client registration so that oxd can synchronize with the client data from OP whenever required.
 
 - The `sync_client_from_op` parameter should be set to `true` to enable the synchronization of the client from OP to oxd persistence. The default value is `false` which means synchronization is disabled. 
 
