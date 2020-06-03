@@ -10,7 +10,7 @@ oxd exposes simple, static APIs web application developers can use to implement 
 ## Architecture 
 Starting with version 4.1, oxd is offered as one of the several components of the Gluu Server CE. To include oxd in CE instance, just ensure to hit Y when prompted at installation time. The oxd Linux package includes the `oxd-server` which is a simple REST application. `oxd-server` is designed to work over the web (via `https`), making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
 
-oxd saves data in its own persistence (`RDMBS`, `redis` etc) and acts as RP for OP. It is possible that the admin goes to OP directly and change client data there. In that case, oxd will not know about it and can act on outdated data. To prevent this confusion user can configure client during registration so that oxd can automatically synchronize with the client data from OP whenever required. Check [Register site](./api/index.md#register-site) for more details.
+oxd saves data in its own persistence (`RDMBS`, `redis`, etc.) and acts as RP for OP. It is possible that the admin goes to OP directly and change client data there. In that case, oxd will not know about it and can act on outdated data. To prevent this confusion user can configure client during registration so that oxd can automatically synchronize with the client data from OP whenever required. Check [Register site](./api/index.md#register-site) for more details.
 
 ![oxd-https-architecture](./img/oxd-https.jpg) 
 
