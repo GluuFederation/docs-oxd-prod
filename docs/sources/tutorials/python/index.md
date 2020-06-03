@@ -14,7 +14,7 @@ As stated above, in this tutorial we're using Gluu Server 4.2 as the OP.
 - Add a test user. I added user `test_user`.
 
 ### oxd Server 4.2
-To install oxd Server 4.1.0, follow [these instructions](../../install/index.md). 
+To install oxd Server 4.2.0, follow [these instructions](../../install/index.md). 
 
 For this tutorial, I installed oxd Server on its own host, **oxd.server.com**. For testing purposes, oxd can also be installed on the same server as the Gluu Server if needed, as there are no port conflicts.
 
