@@ -6,6 +6,12 @@ oxd 4.2 includes architectural changes as well as different bug fixes and improv
 
 ### Fixes / Enhancements
 
+- [#477](https://github.com/GluuFederation/oxd/issues/477) Add persistence manager support from oxcore
+
+- [#471](https://github.com/GluuFederation/oxd/issues/471) Set default `sync_client_from_op` and `sync_client_period_in_seconds` in RP for clients created using oxd version <= 4.1
+
+- [#466](https://github.com/GluuFederation/oxd/issues/466) Support different AS for `access_token` validation (other then the one processing API call)
+
 - [#464](https://github.com/GluuFederation/oxd/issues/464) Make `Bearer` case insensitive in oxd
 
 - [#454](https://github.com/GluuFederation/oxd/issues/454) Verify the `at_hash` presence in the ID_token for "id_token token" (Implicit) and "code id_token token" (hybrid) flow.
