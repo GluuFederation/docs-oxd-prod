@@ -19,7 +19,7 @@ Zipkin installation procedure is available at following [link](https://zipkin.io
 To enable tracing in oxd-server follow below steps:
 
 1. In `oxd-server.yml` set following properties to enable tracing.
-```
+
 **enable_tracing** - set this property to "true" to enable tracing in oxd-server. To disable it set this property to "false".
 
 **tracer** - mention tracer used for publishing traces whether "jaeger" or "zipkin".
@@ -27,7 +27,6 @@ To enable tracing in oxd-server follow below steps:
 **tracer_host** - mention tracer host.
 
 **tracer_port** - mention tracer port. For "jaeger" tracer default port is "5775" and for "zipkin" tracer default port is "9411".
-```
 
 1. Restart oxd-server. 
 
