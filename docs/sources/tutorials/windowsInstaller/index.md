@@ -1,16 +1,20 @@
 # oxd as windows service
 
-This tutorial covers the steps involved to generate the EXE file for the installation of oxd-server as service on Windows operating system.
+## Overview
 
-## How to generate oxd windows executable installation file (`oxd-server.exe`)?
+Microsoft Windows services enable to create long-running executable applications that run in their own Windows sessions. These services can be automatically started when the computer boots, can be paused and restarted, and do not show any user interface. These features make services ideal for use on a server or whenever you need long-running functionality that does not interfere with other users who are working on the same computer.
 
-The important point to be noted here is that the EXE file can be only generated in windows OS. oxd team is working further so that in upcoming oxd release windows executable installation file can also be generated in Linux OS.
+This tutorial covers the steps involved to generate the `exe` file for the installation of oxd-server as service on Windows operating system.
+
+## Generate oxd windows executable installation file
+
+The important point to be noted here is that the `exe` file can be only generated in Windows OS. oxd team is working further so that in upcoming oxd release windows executable installation file can also be generated in Linux OS.
 
 #### Prerequisites
 
 1. Windows OS
 
-   We can generate EXE only on Windows OS.
+   We can generate `exe` only on Windows OS.
 
 1. JRE 8+
 
@@ -46,7 +50,7 @@ The important point to be noted here is that the EXE file can be only generated 
 
 ### oxd installation using EXE file
 
-1. To install oxd using EXE file double click on `oxd-server.exe`.
+1. To install oxd using `exe` file double click on `oxd-server.exe`.
 
 1. During installation first page that will appear will ask whether oxd should be installed as windows service or not. Select the checkbox to install `oxd as service`.
 
