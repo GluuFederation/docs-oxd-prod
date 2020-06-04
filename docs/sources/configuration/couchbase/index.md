@@ -104,10 +104,10 @@ To use any local or remote `couchbase` as storage in oxd-server we need to follo
         ```
         storage: couchbase
         storage_configuration:
-        baseDn: o=gluu
-        type: /opt/oxd-server/conf/gluu.properties
-        connection: /opt/oxd-server/conf/gluu-ldap.properties
-        salt: /opt/oxd-server/conf/salt
+          baseDn: o=gluu
+          type: /opt/oxd-server/conf/gluu.properties
+          connection: /opt/oxd-server/conf/gluu-ldap.properties
+          salt: /opt/oxd-server/conf/salt
         ```
 
 
