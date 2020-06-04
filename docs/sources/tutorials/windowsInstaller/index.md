@@ -28,25 +28,25 @@ The important point to be noted here is that the `exe` file can be only generate
 
 1. Clone oxd project from [Github](https://github.com/GluuFederation/oxd)
 
-   If you have `git` installed, just open a console and run below command to clone the project.
+      If you have `git` installed, just open a console and run below command to clone the project.
    
-   ```
-   git clone https://github.com/GluuFederation/oxd.git
-   ```
+      ```
+      git clone https://github.com/GluuFederation/oxd.git
+      ```
    
 1. Check the latest version of `commons daemon windows binaries` at https://downloads.apache.org/commons/daemon/binaries/windows/ and update the version in `commons-daemon.bin.version` property in `${OXD_HOME}/oxd-server/pom.xml`.
 
-   ```
-   <commons-daemon.bin.version>1.2.1</commons-daemon.bin.version>
-   ```
+      ```
+      <commons-daemon.bin.version>1.2.1</commons-daemon.bin.version>
+      ```
 
 1. Issue the below command to build oxd project
    
-   ```
-    mvn clean install -Dmaven.test.skip=true -P windows-build
-   ```
+      ```
+      mvn clean install -Dmaven.test.skip=true -P windows-build
+      ```
    
-   Depending on connection speed and computer performance, it may take a couple of minutes to download all required dependencies and build the project.
+      Depending on connection speed and computer performance, it may take a couple of minutes to download all required dependencies and build the project.
 
 1. Extract `oxd-server-distribution.zip` generated in `${OXD_HOME}/oxd-server/target` folder. Change directory to the `bin` folder inside the extracted zip file.
 
