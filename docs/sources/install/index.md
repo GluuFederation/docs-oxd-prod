@@ -13,7 +13,7 @@ oxd needs to be deployed on a server or VM with the following **minimum** requir
     
 ## Installation via Linux Packages
 
-Starting with version 4.1, oxd is offered as one of the several components of the Gluu Server CE. To include oxd in your instance, just ensure to hit Y when prompted at [installation](https://gluu.org/docs/ce/4.2/installation-guide) time.
+In version 4.2, oxd is offered as one of the several components of the Gluu Server CE. To include oxd in your instance, just ensure to hit Y when prompted at [installation](https://gluu.org/docs/ce/4.2/installation-guide) time.
 
 Step 1: [Install](https://gluu.org/docs/ce/4.2/installation-guide) Gluu CE and ensure to hit Y when `Install Oxd?` is prompted while    running [setup scripts](https://gluu.org/docs/ce/4.2/installation-guide/setup_py/#setup-prompt).
 
@@ -43,7 +43,7 @@ To run oxd-server:
 
 1. download oxd distribution zip: https://ox.gluu.org/maven/org/gluu/oxd-server/4.2.0-SNAPSHOT/oxd-server-4.2.0-SNAPSHOT-distribution.zip
 
-1. create a new directory ($OXD_SERVER_HOME) with appropriate name and unzip the downloaded `oxd-server-4.1.Final-distribution.zip` into it.
+1. create a new directory ($OXD_SERVER_HOME) with appropriate name and unzip the downloaded `oxd-server-4.2.Final-distribution.zip` into it.
 
 1. move to `$OXD_SERVER_HOME/conf` folder and edit `oxd-server.yml` file to make necessary configuration changes (like setting correct absolute path of `oxd-server.keystore` in `keyStorePath` property etc.)
 
