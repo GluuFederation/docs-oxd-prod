@@ -68,7 +68,7 @@ The important point to be noted here is that the `exe` file can be only generate
 
       ![Page 3](../../img/3_oxd_windows_installation.png)
    
-If installed as `windows service` then the oxd server will start automatically after the windows machine is started and there is no need to start oxd manually.
+      If installed as `windows service` then the oxd server will start automatically after the windows machine is started and there is no need to start oxd manually.
 
       ![Page 4](../../img/4_oxd_windows_installation.png)
    
