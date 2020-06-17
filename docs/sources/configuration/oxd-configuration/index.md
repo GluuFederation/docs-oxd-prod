@@ -10,7 +10,7 @@ Here we will explain `server configuration` and `defaultSiteConfig`. Dropwizard 
 
 The content of the `/opt/oxd-server/conf/oxd-server.yml` file is as follows:
 
-```yaml
+```
 oxd-server.yml
 
 # server configuration
@@ -34,6 +34,7 @@ uma2_auto_register_claims_gathering_endpoint_as_redirect_uri_of_client: true
 add_client_credentials_grant_type_automatically_during_client_registration: true
 migration_source_folder_path: ''
 allowed_op_hosts: []
+bind_ip_addresses: []
 protect_commands_with_oxd_id: []
 storage: h2
 storage_configuration:
@@ -179,6 +180,8 @@ defaultSiteConfig:
 - **migration_source_folder_path:** Migration from previous versions is built into the `oxd-server`. To migrate old JSON files from previous versions, specify the path to folder/directory that contains those JSON files in this property. Those files will be read and imported once (during restart `oxd-server`, will not import them again). If using Windows OS, don't forget to escape the path separator, e.g. `C:\\OXD_OLD\\oxd-server\\conf`
 
 - **allowed_op_hosts:** Array containing a list of the `op_host` urls. oxd can only access the `op_hosts` from this list and all other calls (to IDPs not present in this list ) will be rejected. If the list is empty then oxd is allowed to access any OpenID Connect Provider.
+
+- **bind_ip_addresses:** Array containing list of `ip-address` allowed to make request to oxd end-points (Example: `"bind_ip_addresses": ['192.465.10.113', '192.215.10.213']`). If this field is empty or added in `oxd-server.yml` then oxd will only allow localhost ip-address to make request to oxd. To allow all callers to make request to oxd add '*' to this array (Example: `"bind_ip_addresses": ['*']`).
 
 - **protect_commands_with_oxd_id** RP can use different Authorization Servers (AS) for protecting oxd API’s with access token. This field contains array of `oxd_id` of AS registered with oxd which are allowed to protect oxd API’s. Eg: `protect_commands_with_oxd_id: ['<oxd_id1>', '<oxd_id2>', '<oxd_id3>' ...]`. If it is missed from the configuration then any AS registered with oxd can be used for protecting oxd end-points.
 
