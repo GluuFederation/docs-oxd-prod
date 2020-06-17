@@ -181,7 +181,7 @@ defaultSiteConfig:
 
 - **allowed_op_hosts:** Array containing a list of the `op_host` urls. oxd can only access the `op_hosts` from this list and all other calls (to IDPs not present in this list ) will be rejected. If the list is empty then oxd is allowed to access any OpenID Connect Provider.
 
-- **bind_ip_addresses:** Array containing list of `ip-address` allowed to make request to oxd end-points (Example: `"bind_ip_addresses": ['192.465.10.113', '192.215.10.213']`). If this field is empty or added in `oxd-server.yml` then oxd will only allow localhost ip-address to make request to oxd. To allow all callers to make request to oxd add '*' to this array (Example: `"bind_ip_addresses": ['*']`).
+- **bind_ip_addresses:** Array containing list of `ip-address` which are allowed to make request to oxd end-points (Example: `"bind_ip_addresses": ['192.465.10.113', '192.215.10.213']`). If this field is empty or not added in `oxd-server.yml` then oxd will only allow localhost to access oxd apis. Adding `'*'` to this array will allow all caller ip-addresses to make request to oxd (Example: `"bind_ip_addresses": ['*']`).
 
 - **protect_commands_with_oxd_id** RP can use different Authorization Servers (AS) for protecting oxd API’s with access token. This field contains array of `oxd_id` of AS registered with oxd which are allowed to protect oxd API’s. Eg: `protect_commands_with_oxd_id: ['<oxd_id1>', '<oxd_id2>', '<oxd_id3>' ...]`. If it is missed from the configuration then any AS registered with oxd can be used for protecting oxd end-points.
 
