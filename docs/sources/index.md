@@ -53,7 +53,7 @@ Call the [oxd API](./api/index.md) to implement authentication and authorization
 oxd implements the [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) and [UMA 2.0](https://docs.kantarainitiative.org/uma/wg/oauth-uma-grant-2.0-05.html) profiles of OAuth 2.0.
 
 !!! Attention
-    By default oxd allows only `localhost` to access its apis. To make request from another server or VM add its ip-address to `bind_ip_addresses` array in `oxd-server.yml`. Check [configurations](./configuration/oxd-configuration/#server-configuration-fields-descriptions) for details.
+    By default oxd allows only `localhost` to access its apis. To make request from another server or VM add its ip-address to `bind_ip_addresses` array in `oxd-server.yml`. Check [configurations](./configuration/oxd-configuration/index.md#server-configuration-fields-descriptions) for details.
     
 Before using oxd API you will need to obtain an access token to secure the interaction with `oxd-server`. You can follow the two steps below. 
 
