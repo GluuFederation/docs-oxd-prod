@@ -105,6 +105,18 @@ This operation is used to get the JSON Web Key Set (JWKS) from OP host. The JWKS
 
 This operation fetches OP Discovery Configuration from OP host.
 
+### Get RP JSON Web Key Set
+
+[API Link](#operations-developers-get-rp-jwks)
+
+This operation is used to get the JSON Web Key Set (JWKS) of the Relying Party (RP). The JWKS is a set of keys containing the public keys that should be used by OP host to verify any JSON Web Token (JWT) issued by the RP.
+
+### Get Request Object Uri
+
+[API Link](#operations-developers-get-request-object-uri)
+
+This operation is used to generate `request_uri`. The `request_uri` Authorization Request parameter enables OpenID Connect requests to be passed by reference, rather than by value.
+
 ## OpenID Connect APIs
 
 ### Get Authorization URL
