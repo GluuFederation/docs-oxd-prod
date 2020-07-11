@@ -578,7 +578,7 @@ It is possible to generated native library in your favorite language by [Swagger
 Check our FAQ about easiest way to generate native client [here](../faq/index.md#what-is-the-easiest-way-to-generate-native-library-for-oxd).
 
 
-<link rel="stylesheet" type="text/css" href="../../swagger/swagger-ui.css">
+<link rel="stylesheet" type="text/css" href="../swagger/swagger-ui.css">
 
 <div id="swagger-ui"></div>
 
