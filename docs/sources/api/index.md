@@ -115,7 +115,7 @@ This operation is used to get the JSON Web Key Set (JWKS) of the Relying Party (
 
 [API Link](#operations-developers-get-request-object-uri)
 
-This operation is used to generate `request_uri`. The `request_uri` Authorization Request parameter enables OpenID Connect requests to be passed by reference, rather than by value.
+This operation is used to generate `[request_uri](https://openid.net/specs/openid-connect-core-1_0.html#RequestUriParameter)`. The `request_uri` Authorization Request parameter enables OpenID Connect requests to be passed by reference, rather than by value.
 
 ## OpenID Connect APIs
 
