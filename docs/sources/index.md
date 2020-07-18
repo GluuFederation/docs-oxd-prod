@@ -94,7 +94,7 @@ Using oxd, your application can delegate access management decisions, like who c
 
 oxd APIs are [swaggerized](https://github.com/GluuFederation/oxd/blob/version_4.2/oxd-server/src/main/resources/swagger.yaml)! Use the [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/) to generate native libraries for your programming language of choice. 
 
-For more information about generating native clients, [check our FAQ](https://gluu.org/docs/oxd/4.1/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
+For more information about generating native clients, [check our FAQ](https://gluu.org/docs/oxd/4.2/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
 
 ## Compatibility
 oxd 4.2 has been tested against the following OAuth 2.0 Authorization Servers:
