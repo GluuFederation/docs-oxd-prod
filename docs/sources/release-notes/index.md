@@ -5,8 +5,8 @@ oxd 4.2 includes architectural changes as well as different bug fixes and improv
 ### New Features
 
 ### Fixes / Enhancements
-- [#499](https://github.com/GluuFederation/oxd/issues/499) Passing `Request Object by Value` and `Request Object by Reference` in Authorization Request
 - [#503](https://github.com/GluuFederation/oxd/issues/503) Add `bindhost` with default value localhost
+- [#499](https://github.com/GluuFederation/oxd/issues/499) Passing `Request Object by Value` and `Request Object by Reference` in Authorization Request
 - [#495](https://github.com/GluuFederation/oxd/issues/498) Use WebFinger (RFC7033) and OpenID Provider Issuer Discovery to determine the location of the OpenID Provider
 - [#501](https://github.com/GluuFederation/oxd/issues/501) Correct security alert in test dependency
 - [#57](https://github.com/GluuFederation/oxd/issues/57) UMA protection for oauth2 hack
