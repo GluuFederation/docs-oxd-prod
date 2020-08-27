@@ -2,9 +2,16 @@
 
 oxd 4.2 includes architectural changes as well as different bug fixes and improvements:
 
-### New Features
+<!---
 
-### Fixes / Enhancements
+### Fixes / Enhancements in 4.2.0
+
+- [#510](https://github.com/GluuFederation/oxd/issues/510) Save `client_id` and `client_secret` in oxd storage (in RP table) when passed as a parameter during client registration 
+- [#515](https://github.com/GluuFederation/oxd/issues/515) Updated dependency versions
+
+--->
+
+### Fixes / Enhancements in 4.2.0
 - [#503](https://github.com/GluuFederation/oxd/issues/503) Add `bindhost` with default value localhost
 - [#499](https://github.com/GluuFederation/oxd/issues/499) Passing `Request Object by Value` and `Request Object by Reference` in Authorization Request
 - [#495](https://github.com/GluuFederation/oxd/issues/498) Use WebFinger (RFC7033) and OpenID Provider Issuer Discovery to determine the location of the OpenID Provider
