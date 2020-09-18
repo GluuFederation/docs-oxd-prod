@@ -24,6 +24,8 @@ crypt_provider_dn_name: ''
 support-google-logout: true
 state_expiration_in_minutes: 5
 nonce_expiration_in_minutes: 5
+encode_state_from_request_parameter: true
+encode_nonce_from_request_parameter: true
 rp_cache_expiration_in_minutes: 60
 public_op_key_cache_expiration_in_minutes: 60
 protect_commands_with_access_token: true
@@ -160,6 +162,10 @@ defaultSiteConfig:
 - **state_expiration_in_minutes:** Expiration time of `state` parameter in minutes
 
 - **nonce_expiration_in_minutes:** Expiration time of `nonce` parameter in minutes
+
+- **encode_state_from_request_parameter:** Encode the `state` passed with api-request if set to `true`. The default value of this property is `false` which means `state` will not be encoded.
+
+- **encode_nonce_from_request_parameter:** Encode the `nonce` passed with api-request if set to `true`. The default value of this property is `false` which means `nonce` will not be encoded.
 
 - **rp_cache_expiration_in_minutes:** Expiration time of registered Client metadata stored in cache (in minutes). Default value is 60 minutes
 
