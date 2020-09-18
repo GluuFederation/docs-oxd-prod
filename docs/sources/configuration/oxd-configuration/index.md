@@ -21,7 +21,10 @@ trust_store_password: ''
 crypt_provider_key_store_path: ''
 crypt_provider_key_store_password: ''
 crypt_provider_dn_name: ''
-fapi_enabled: true
+fapi_enabled: false
+mtls_enabled: false
+mtls_client_key_store_path: ''
+mtls_client_key_store_password: ''
 support-google-logout: true
 state_expiration_in_minutes: 5
 nonce_expiration_in_minutes: 5
@@ -159,6 +162,12 @@ defaultSiteConfig:
 - **crypt_provider_dn_name:** Cryptologic service provider's domain name
 
 - **fapi_enabled:** If set to `true` then FAPI related validation are enabled in oxd. The default value of this property is `false`.
+
+- **mtls_enabled:** If set to `true` then mtls authentication is enabled in oxd. For mtls authentication the values of `mtls_client_key_store_path` and `mtls_client_key_store_password` are also mandatory. The default value of this property is `false`.
+
+- **mtls_client_key_store_path:** Path to client's key store for mtls authentication.
+
+-- **mtls_client_key_store_password** Password to access the client's key store.
 
 - **support-google-logout:** Choose whether to support Google logout or not. Only use this if you are using Google as your OP
 
