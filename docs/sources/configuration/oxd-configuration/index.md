@@ -25,6 +25,8 @@ fapi_enabled: false
 mtls_enabled: false
 mtls_client_key_store_path: ''
 mtls_client_key_store_password: ''
+tls_version: ['TLSv1.2']
+tls_secure_cipher: ['TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384']
 support-google-logout: true
 state_expiration_in_minutes: 5
 nonce_expiration_in_minutes: 5
@@ -168,6 +170,10 @@ defaultSiteConfig:
 - **mtls_client_key_store_path:** Path to client's key store for mtls authentication.
 
 - **mtls_client_key_store_password:** Password to access the client's key store.
+
+- **tls_version:** Array containing list of supported tls versions for communicating with OP server.
+
+- **tls_secure_cipher:** Array containing list of supported tls ciphers for communicating with OP server.
 
 - **support-google-logout:** Choose whether to support Google logout or not. Only use this if you are using Google as your OP
 
