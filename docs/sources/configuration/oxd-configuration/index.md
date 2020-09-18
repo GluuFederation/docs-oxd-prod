@@ -167,7 +167,7 @@ defaultSiteConfig:
 
 - **mtls_client_key_store_path:** Path to client's key store for mtls authentication.
 
--- **mtls_client_key_store_password** Password to access the client's key store.
+- **mtls_client_key_store_password:** Password to access the client's key store.
 
 - **support-google-logout:** Choose whether to support Google logout or not. Only use this if you are using Google as your OP
 
