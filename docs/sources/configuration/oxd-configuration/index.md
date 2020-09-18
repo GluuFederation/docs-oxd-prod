@@ -163,9 +163,9 @@ defaultSiteConfig:
 
 - **nonce_expiration_in_minutes:** Expiration time of `nonce` parameter in minutes
 
-- **encode_state_from_request_parameter:** Encode the state passed with api-request if set to true. The default value of this property is false which means state will not be encoded.
+- **encode_state_from_request_parameter:** Encode the `state` passed with api-request if set to `true`. The default value of this property is false which means `state` will not be encoded.
 
-- **encode_nonce_from_request_parameter:** Encode the nonce passed with api-request if set to true. The default value of this property is false which means nonce will not be encoded.
+- **encode_nonce_from_request_parameter:** Encode the `nonce` passed with api-request if set to `true`. The default value of this property is false which means `nonce` will not be encoded.
 
 - **rp_cache_expiration_in_minutes:** Expiration time of registered Client metadata stored in cache (in minutes). Default value is 60 minutes
 
