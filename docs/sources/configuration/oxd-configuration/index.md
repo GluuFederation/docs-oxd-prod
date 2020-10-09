@@ -191,9 +191,9 @@ defaultSiteConfig:
 
 - **protect_commands_with_oxd_id** RP can use different Authorization Servers (AS) for protecting oxd API’s with access token. This field contains array of `oxd_id` of AS registered with oxd which are allowed to protect oxd API’s. Eg: `protect_commands_with_oxd_id: ['<oxd_id1>', '<oxd_id2>', '<oxd_id3>' ...]`. If it is missed from the configuration then any AS registered with oxd can be used for protecting oxd end-points.
 
-- **storage:** This value can be [h2](../h2/index.md) or [jdbc](../jdbc/index.md) or [redis](../redis/index.md) or [ldap](../ldap/ldap.md#using-any-local-or-remote-ldap-server-in-oxd) or [couchbase](../couchbase/couchbase.md#using-any-local-or-remote-couchbase-server-in-oxd). oxd can also be configured to use storage of Gluu server by setting this field to `gluu_server_configuration`.Refer [ldap](../ldap/ldap.md#using-gluu-servers-ldap-in-oxd) and [couchbase](../couchbase/couchbase.md#using-gluu-servers-couchbase-in-oxd) for configuration details.
+- **storage:** This value can be [h2](../h2/index.md) or [jdbc](../jdbc/index.md) or [redis](../redis/index.md) or [ldap](../ldap/ldap.md#using-any-local-or-remote-ldap-server-in-oxd) or [couchbase](../couchbase/index.md#using-any-local-or-remote-couchbase-server-in-oxd). oxd can also be configured to use storage of Gluu server by setting this field to `gluu_server_configuration`. Refer [ldap](../ldap/index.md#using-gluu-servers-ldap-in-oxd) and [couchbase](../couchbase/index.md#using-gluu-servers-couchbase-in-oxd) for configuration details.
 
-- **storage_configuration:** Storage configuration details of the storage set in `storage` field. For more details check [H2](../h2/index.md), [Redis](../redis/index.md), [JDBC](../jdbc/index.md), [ldap](../ldap/ldap.md) and [couchbase](../couchbase/couchbase.md) configuration page.
+- **storage_configuration:** Storage configuration details of the storage set in `storage` field. For more details check [H2](../h2/index.md), [Redis](../redis/index.md), [JDBC](../jdbc/index.md), [ldap](../ldap/index.md) and [couchbase](../couchbase/index.md) configuration page.
 
 Redis storage configuration sample:
 
