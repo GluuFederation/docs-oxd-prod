@@ -65,15 +65,7 @@ The following command can be run inside the oxd folder to run the build:
 
 ## oxd-server Uninstall Procedure
 
-### Ubuntu 16.04 (xenial)
-
-```
-/etc/init.d/oxd-server stop
-sudo apt-get remove oxd-server
-apt-get purge oxd-server
-```
-
-### Ubuntu 18.04 (bionic)/Debian 9 (stretch)
+### Ubuntu 18.04 (bionic)/Ubuntu 20.x (focal)/Debian 9 (stretch)/Debian 10 (buster)
 
 ```
 systemctl stop oxd-server
@@ -81,7 +73,7 @@ sudo apt-get remove oxd-server
 apt-get purge oxd-server
 ```
 
-### CentOS 7/RHEL 7
+### CentOS 7/CentOS 8/RHEL 7/RHEL 8
 
 ```
 systemctl stop oxd-server
