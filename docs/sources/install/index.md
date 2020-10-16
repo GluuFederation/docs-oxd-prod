@@ -20,14 +20,6 @@ Step 1: [Install](https://gluu.org/docs/ce/4.2/installation-guide) Gluu CE and e
 Step 2: After the installation, [configure](../configuration/oxd-configuration/index.md) your oxd server.
 
 Step 3: Restart oxd server using below command.
-    
-**Ubuntu 16.04 (xenial)**
-
-|Operation | Command|
-|------ |------ |
-|Restart oxd server | `/etc/init.d/oxd-server restart` |
-
-**Ubuntu 18.04 (bionic)/Debian 9 (stretch)/CentOS 7/RHEL 7**
 
 |Operation | Command|
 |------ |------ |
