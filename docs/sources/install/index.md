@@ -33,7 +33,7 @@ The oxd-server is a self-contained program. It can also be installed independent
 
 To run oxd-server:
 
-1. download oxd distribution zip: https://ox.gluu.org/maven/org/gluu/oxd-server/4.2.0-SNAPSHOT/oxd-server-4.2.0-SNAPSHOT-distribution.zip
+1. download oxd distribution zip: https://ox.gluu.org/maven/org/gluu/oxd-server/4.2.1.Final/oxd-server-4.2.1.Final-distribution.zip
 
 1. create a new directory ($OXD_SERVER_HOME) with appropriate name and unzip the downloaded `oxd-server-4.2.Final-distribution.zip` into it.
 
