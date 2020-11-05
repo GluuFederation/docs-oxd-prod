@@ -56,7 +56,7 @@ nav:
 - Whats new in 4.x: '4.x-intro.md'
 - 'Install & Run': 'install/index.md'
 - Tutorials:
-        - 'Sample Applications using oxd':
+        - 'Sample Applications':
             - 'Python': './tutorials/python/index.md'
             - 'Java': './tutorials/java/index.md'
             - 'Spring': './tutorials/spring/index.md'
