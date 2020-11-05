@@ -55,10 +55,11 @@ nav:
 - Release Notes: 'release-notes/index.md'
 - Whats new in 4.x: '4.x-intro.md'
 - 'Install & Run': 'install/index.md'
-- Tutorials: 
-        - 'Python': './tutorials/python/index.md'
-        - 'Java': './tutorials/java/index.md'
-        - 'Spring': './tutorials/spring/index.md'
+- Tutorials:
+        - 'Sample Applications using oxd':
+            - 'Python': './tutorials/python/index.md'
+            - 'Java': './tutorials/java/index.md'
+            - 'Spring': './tutorials/spring/index.md'
         - 'Windows Installer': './tutorials/windowsInstaller/index.md'
 - 'Upgrade': 'upgrade/index.md'
 - Configuration: 
