@@ -29,7 +29,6 @@ oxd 4.2 includes architectural changes as well as different bug fixes and improv
 - [#501](https://github.com/GluuFederation/oxd/issues/501) Correct security alert in test dependency
 - [#499](https://github.com/GluuFederation/oxd/issues/499) Passing `Request Object by Value` and `Request Object by Reference` in Authorization Request
 - [#495](https://github.com/GluuFederation/oxd/issues/498) Use WebFinger (RFC7033) and OpenID Provider Issuer Discovery to determine the location of the OpenID Provider
-- [#501](https://github.com/GluuFederation/oxd/issues/501) Correct security alert in test dependency
 - [#57](https://github.com/GluuFederation/oxd/issues/57) UMA protection for oauth2 hack
 - [#458](https://github.com/GluuFederation/oxd/issues/458) Add border around error logs to highlight the errors
 - [#486](https://github.com/GluuFederation/oxd/issues/486) Improve error message when client_secret is not returned by OP
