@@ -16,6 +16,7 @@ oxd 4.2 includes architectural changes as well as different bug fixes and improv
 - [#519](https://github.com/GluuFederation/oxd/issues/519) Validate `s_hash` in id_token
 - [#518](https://github.com/GluuFederation/oxd/issues/518) For `private_key_jwt`, `tls_client_auth`, `self_signed_tls_client_auth` allow certificate-based client authentication.
 - [#517](https://github.com/GluuFederation/oxd/issues/517) Add fields to select `tlsVersion` and `ciphers` in oxd configuration
+- [#476](https://github.com/GluuFederation/oxd/issues/476) Check if issuer from OpenID Provider Configuration Information matches with Webfinger issuer
 
 ### Fixes / Enhancements in 4.2.1
 - [#510](https://github.com/GluuFederation/oxd/issues/510) Save `client_id` and `client_secret` in oxd storage (in Rp table) when it is passed as paramater during client registration.
