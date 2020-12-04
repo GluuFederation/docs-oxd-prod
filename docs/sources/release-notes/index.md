@@ -6,23 +6,27 @@ oxd 4.2 includes architectural changes as well as different bug fixes and improv
 - [#565](https://github.com/GluuFederation/oxd/issues/565) Create `login initiation endpoint` in oxd to initiate Login from a Third Party
 - [#560](https://github.com/GluuFederation/oxd/issues/560) Displaying oxd version in `/health-check` and `/opt/oxd-server/bin/oxd-server version` output
 - [#557](https://github.com/GluuFederation/oxd/issues/557) Automation of swagger client generation in oxd
+- [#555](https://github.com/GluuFederation/oxd/issues/555) Handle jwks from OP where keys are without `kid`
 - [#550](https://github.com/GluuFederation/oxd/issues/550) Add `id_token_hint` parameter in LogoutUrl
 - [#549](https://github.com/GluuFederation/oxd/issues/549) Encode client_id in authorization_url (from `/get-authorization-url`)
+- [#543](https://github.com/GluuFederation/oxd/issues/543) Removed re-fetching of jwks from OP server during token validation
 - [#542](https://github.com/GluuFederation/oxd/issues/542) FAPI: Audience, Issuer, nonce claim is mandatory in id_token
 - [#541](https://github.com/GluuFederation/oxd/issues/541) FAPI: The iat value in the `id_token` should not be very old.
-- [#538](https://github.com/GluuFederation/oxd/issues/538) Write test with state=base64urlencode(url)
 - [#537](https://github.com/GluuFederation/oxd/issues/537) The algorithm used to sign the `id_token` should match with `id_token_signed_response_alg` set during client registration.
 - [#536](https://github.com/GluuFederation/oxd/issues/536) FAPI: If the ID Token contains multiple audiences, the Client SHOULD verify that an azp Claim is present.
 - [#519](https://github.com/GluuFederation/oxd/issues/519) Validate `s_hash` in id_token
 - [#518](https://github.com/GluuFederation/oxd/issues/518) For `private_key_jwt`, `tls_client_auth`, `self_signed_tls_client_auth` allow certificate-based client authentication.
 - [#517](https://github.com/GluuFederation/oxd/issues/517) Add fields to select `tlsVersion` and `ciphers` in oxd configuration
+- [#511](https://github.com/GluuFederation/oxd/issues/511) Add `client_assertion`, `TokenEndpointAuthSigningAlgorithm` params in ` /get-tokens-by-code`.
 - [#476](https://github.com/GluuFederation/oxd/issues/476) Check if issuer from OpenID Provider Configuration Information matches with Webfinger issuer
 
 ### Fixes / Enhancements in 4.2.1
+- [#538](https://github.com/GluuFederation/oxd/issues/538) Write test with state=base64urlencode(url)
 - [#510](https://github.com/GluuFederation/oxd/issues/510) Save `client_id` and `client_secret` in oxd storage (in Rp table) when it is passed as paramater during client registration.
 
 ### Fixes / Enhancements in 4.2.0
 - [#503](https://github.com/GluuFederation/oxd/issues/503) Add `bindhost` with default value localhost
+- [#501](https://github.com/GluuFederation/oxd/issues/501) Correct security alert in test dependency
 - [#499](https://github.com/GluuFederation/oxd/issues/499) Passing `Request Object by Value` and `Request Object by Reference` in Authorization Request
 - [#495](https://github.com/GluuFederation/oxd/issues/498) Use WebFinger (RFC7033) and OpenID Provider Issuer Discovery to determine the location of the OpenID Provider
 - [#501](https://github.com/GluuFederation/oxd/issues/501) Correct security alert in test dependency
