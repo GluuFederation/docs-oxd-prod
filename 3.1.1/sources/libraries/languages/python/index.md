@@ -21,7 +21,7 @@ python setup.py install
 #### Important Links
 
 * [oxd docs](https://gluu.org/docs/oxd)
-* oxd-python [API docs](https://rawgit.com/GluuFederation/oxd-python/master/docs/html/index.html) for the auto-generated pydocs, which includes more in-depth information about the various functions and parameters.
+* oxd-python [API docs](https://cdn.rawgit.com/GluuFederation/oxd-python/d07704e9672148d6cf6c41154f9988d61adbea27/docs/html/index.html) for the auto-generated pydocs, which includes more in-depth information about the various functions and parameters.
 * See the code of a [sample Flask app](https://github.com/GluuFederation/oxd-python/blob/master/examples/flask_app) built using oxd-python.
 * Browse the oxd-python [source code on Github](https://github.com/GluuFederation/oxd-python).
 
