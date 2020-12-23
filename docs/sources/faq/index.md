@@ -84,6 +84,7 @@ ERROR [2020-12-23 07:05:29,164] org.gluu.oxauth.client.OpenIdConfigurationClient
 ```
 
 The above error happens because oxd trust store file does not trust the CA of the Openid provider (OP). If you see the output in the logs similar to what is shown below, check the following:
+
 - `trust_store_path` in `oxd-server.yml` is correct and points to correct truststore file.
 - `trust_store_password` in `oxd-server.yml` should have correct password of the truststore file.
 - The truststore file should have OP's root certificate. This can be verified using below `keytool` command or by using tools like [Keystore Exploler](https://keystore-explorer.org/). Import the OP certificate into truststore if not present.
