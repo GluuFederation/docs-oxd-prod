@@ -21,9 +21,18 @@ trust_store_password: ''
 crypt_provider_key_store_path: ''
 crypt_provider_key_store_password: ''
 crypt_provider_dn_name: ''
+fapi_enabled: false
+mtls_enabled: false
+mtls_client_key_store_path: ''
+mtls_client_key_store_password: ''
+tls_version: ['TLSv1.2']
+tls_secure_cipher: ['TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384']
 support-google-logout: true
 state_expiration_in_minutes: 5
 nonce_expiration_in_minutes: 5
+encode_state_from_request_parameter: true
+encode_nonce_from_request_parameter: true
+encode_client_id_in_authorization_url: true
 encode_state_from_request_parameter: true
 encode_nonce_from_request_parameter: true
 rp_cache_expiration_in_minutes: 60
@@ -151,11 +160,23 @@ defaultSiteConfig:
 
 - **trust_store_password:** Password to access the trust store
 
-- **crypt_provider_key_store_path:** Path to the cryptologic service provider's key store
+- **crypt_provider_key_store_path:** Path to the cryptologic service provider's key store. This key store is used for storing client side jwks. 
   
 - **crypt_provider_key_store_password:** Password to access the cryptologic service provider's key store
  
 - **crypt_provider_dn_name:** Cryptologic service provider's domain name
+
+- **fapi_enabled:** If set to `true` then FAPI related validation are enabled in oxd. The default value of this property is `false`.
+
+- **mtls_enabled:** If set to `true` then mtls authentication is enabled in oxd. For mtls authentication the values of `mtls_client_key_store_path` and `mtls_client_key_store_password` are also mandatory. The default value of this property is `false`.
+
+- **mtls_client_key_store_path:** Path to client's key store for mtls authentication.
+
+- **mtls_client_key_store_password:** Password to access the client's key store.
+
+- **tls_version:** Array containing list of supported tls versions for communicating with OP server.
+
+- **tls_secure_cipher:** Array containing list of supported tls ciphers for communicating with OP server.
 
 - **support-google-logout:** Choose whether to support Google logout or not. Only use this if you are using Google as your OP
 
@@ -166,6 +187,8 @@ defaultSiteConfig:
 - **encode_state_from_request_parameter:** Encode the `state` passed with api-request if set to `true`. The default value of this property is `false` which means `state` will not be encoded.
 
 - **encode_nonce_from_request_parameter:** Encode the `nonce` passed with api-request if set to `true`. The default value of this property is `false` which means `nonce` will not be encoded.
+
+- **encode_client_id_in_authorization_url:** Encode the `client_id` passed with `authorization-url` if set to `true`. The default value of this property is `false` which means `client_id` will not be encoded.
 
 - **rp_cache_expiration_in_minutes:** Expiration time of registered Client metadata stored in cache (in minutes). Default value is 60 minutes
 
