@@ -71,6 +71,29 @@ java.lang.RuntimeException: oxd requested scope PROTECTION but AS returned acces
 	at org.xdi.oxd.server.service.UmaTokenService.obtainTokenWithClientCredentials(UmaTokenService.java:196)
 	at org.xdi.oxd.server.service.UmaTokenService.obtainToken(UmaTokenService.java:169)
 ```
+### `oxd-server` unable to find valid certification path to requested target.
+
+```
+ERROR [2020-12-23 07:05:29,164] org.gluu.oxauth.client.OpenIdConfigurationClient: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+...
+! Causing: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+...
+! Causing: javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+! at sun.security.ssl.Alerts.getSSLException(Unknown Source)
+...
+```
+
+The above error happens because Java’s default trust store file does not trust our custom CA. If you see the output in the logs similar to what is shown below, check the following:
+- `trust_store_path` in `oxd-server.yml` is correct and points to correct truststore file.
+- `trust_store_password` in `oxd-server.yml` should have correct of the truststore file.
+- The truststore file should have Openid provider's root certificate. This can be verified using below `keytool` command or by using tools like [Keystore Exploler](https://keystore-explorer.org/). Import the OP certificate into truststore if not present.
+
+| Command | Description |
+|----------|------------|
+| `keytool -v -list -keystore <truststore_file>.keystore` | Details of certificates persent in truststore file |
+| `keytool -import -file <op_root_cert>.pem -alias <alias_name> -root -keystore <truststore_file>.keystore` | Importing certificate into truststore file |
+
+- If required then `trust_all_certs` field can be set to `true` in `oxd-server.yml` to trust all certificates.
 
 ### How can I view data inside oxd database manually without oxd-server? 
 
