@@ -83,15 +83,15 @@ ERROR [2020-12-23 07:05:29,164] org.gluu.oxauth.client.OpenIdConfigurationClient
 ...
 ```
 
-The above error happens because Java’s default trust store file does not trust our custom CA. If you see the output in the logs similar to what is shown below, check the following:
+The above error happens because oxd trust store file does not trust the CA of the Openid provider (OP). If you see the output in the logs similar to what is shown below, check the following:
 - `trust_store_path` in `oxd-server.yml` is correct and points to correct truststore file.
-- `trust_store_password` in `oxd-server.yml` should have correct of the truststore file.
-- The truststore file should have Openid provider's root certificate. This can be verified using below `keytool` command or by using tools like [Keystore Exploler](https://keystore-explorer.org/). Import the OP certificate into truststore if not present.
+- `trust_store_password` in `oxd-server.yml` should have correct password of the truststore file.
+- The truststore file should have OP's root certificate. This can be verified using below `keytool` command or by using tools like [Keystore Exploler](https://keystore-explorer.org/). Import the OP certificate into truststore if not present.
 
 | Command | Description |
 |----------|------------|
-| `keytool -v -list -keystore <truststore_file>.keystore` | Details of certificates persent in truststore file |
-| `keytool -import -file <op_root_cert>.pem -alias <alias_name> -root -keystore <truststore_file>.keystore` | Importing certificate into truststore file |
+| `keytool -v -list -keystore <truststore_file>.keystore` | Details of certificates persent in the truststore file |
+| `keytool -import -file <op_root_cert>.pem -alias <alias_name> -root -keystore <truststore_file>.keystore` | Importing certificate into the truststore file |
 
 - If required then `trust_all_certs` field can be set to `true` in `oxd-server.yml` to trust all certificates.
 
