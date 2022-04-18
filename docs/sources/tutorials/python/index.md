@@ -4,17 +4,17 @@ In this tutorial I explain how to leverage the oxd server for SSO using the Open
 
 ## Preliminary
 
-For this tutorial, our OpenID Connect Provider (OP) is Gluu Server 4.2. We are also using oxd 4.2 and an https & cgi enabled web server -- Apache in our case. 
+For this tutorial, our OpenID Connect Provider (OP) is Gluu Server 4.4. We are also using oxd 4.4 and an https & cgi enabled web server -- Apache in our case. 
 
-### Gluu Server 4.2 (OP)
-As stated above, in this tutorial we're using Gluu Server 4.2 as the OP. 
+### Gluu Server 4.4 (OP)
+As stated above, in this tutorial we're using Gluu Server 4.4 as the OP. 
 
-- Follow [these instructions](https://gluu.org/docs/ce/4.2/installation-guide/install/) to install Gluu Server 4.2. In this tutorial, I installed Gluu Server on host **op.server.com**.
+- Follow [these instructions](https://gluu.org/docs/ce/4.4/installation-guide/install/) to install Gluu Server 4.4. In this tutorial, I installed Gluu Server on host **op.server.com**.
 
 - Add a test user. I added user `test_user`.
 
-### oxd Server 4.2
-To install oxd Server 4.2.0, follow [these instructions](../../install/index.md). 
+### oxd Server 4.4
+To install oxd Server 4.4.0, follow [these instructions](../../install/index.md). 
 
 For this tutorial, I installed oxd Server on its own host, **oxd.server.com**. For testing purposes, oxd can also be installed on the same server as the Gluu Server if needed, as there are no port conflicts.
 
