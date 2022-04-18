@@ -1,6 +1,6 @@
 # oxd-spring <!-- intro -->
 
-In this tutorial we demonstrate how a java spring web application can leverage oxd 4.2 for SSO using the authorization code flow.
+In this tutorial we demonstrate how a java spring web application can leverage oxd 4.3 for SSO using the authorization code flow.
 
 !!! Attention
     For `oxd-4.x` and `oxd-spring` application running on different servers then it is essential to install and configure `SSL certificate by Certificate Authority` with oxd. This is required so that oxd-spring application can access oxd-server without throwing any ssl exception. But, if `oxd-spring` and `oxd-server` are running on same server then `oxd-spring` application will work even with `oxd` configured with `self-signed certificate`.
@@ -53,10 +53,10 @@ In this tutorial we demonstrate how a java spring web application can leverage o
 1. Now you can run the executable jar using below command:
 
     ```
-    java -jar target/oxd-spring-4.2-SNAPSHOT.jar
+    java -jar target/oxd-spring-4.3-SNAPSHOT.jar
     ```
 
-    The first time you run the application, it tries to register site using the parameters specified in [application.properties](https://github.com/GluuFederation/oxd-spring/blob/master/src/main/resources/application.properties). If registration was successful, then registration details and `oxdId` are stored in the H2 database (which is embedded in oxd-spring-4.2-SNAPSHOT.jar). Next time you run the application with the same [oxd.server.op-host](https://github.com/GluuFederation/oxd-spring/blob/master/src/main/resources/application.properties#L19), it will obtain `oxdId` from database.
+    The first time you run the application, it tries to register site using the parameters specified in [application.properties](https://github.com/GluuFederation/oxd-spring/blob/master/src/main/resources/application.properties). If registration was successful, then registration details and `oxdId` are stored in the H2 database (which is embedded in oxd-spring-4.3-SNAPSHOT.jar). Next time you run the application with the same [oxd.server.op-host](https://github.com/GluuFederation/oxd-spring/blob/master/src/main/resources/application.properties#L19), it will obtain `oxdId` from database.
     
 1. Open a browser and point to https://localhost:8080/. This will display Home Page of oxd-spring application with `Login To Gluu` button. Click on the button to log into application using OAuth 2.0 security. 
 

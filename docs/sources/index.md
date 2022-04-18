@@ -1,11 +1,11 @@
-# oxd 4.2 Documentation
+# oxd 4.3 Documentation
 
 !!! Attention
-    Questions and feedback on oxd 4.2 can be directed to [Gluu support](https://support.gluu.org). View [known issues](https://github.com/GluuFederation/oxd/milestone/8). 
+    Questions and feedback on oxd 4.3 can be directed to [Gluu support](https://support.gluu.org). View [known issues](https://github.com/GluuFederation/oxd/milestone/8). 
 
 
 ## Introduction
-oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce/4.2/). 
+oxd exposes simple, static APIs web application developers can use to implement user authentication and authorization against an OAuth 2.0 authorization server like [Gluu](https://gluu.org/docs/ce/4.3/). 
 
 ## Architecture 
 Starting with version 4.1, oxd is offered as one of the several components of the Gluu Server CE. To include oxd in CE instance, just ensure to hit Y when prompted at installation time. The oxd Linux package includes the `oxd-server` which is a simple REST application. `oxd-server` is designed to work over the web (via `https`), making it possible for many apps across many servers to leverage a central oxd service for OAuth 2.0 security.
@@ -26,7 +26,7 @@ Follow one of our tutorials to learn how oxd works:
 
 To get started:
 
-1. [Install](https://gluu.org/docs/ce/4.2/installation-guide) Gluu CE and ensure to hit Y when `Install Oxd?` is prompted while    running [setup scripts](https://gluu.org/docs/ce/4.2/installation-guide/setup_py/#setup-prompt).
+1. [Install](https://gluu.org/docs/ce/4.3/installation-guide) Gluu CE and ensure to hit Y when `Install Oxd?` is prompted while    running [setup scripts](https://gluu.org/docs/ce/4.3/installation-guide/setup_py/#setup-prompt).
 
 1. [Configure](./configuration/oxd-configuration/index.md) the `oxd-server`           
 
@@ -92,25 +92,25 @@ Using oxd, your application can delegate access management decisions, like who c
 
 ## Native Libraries
 
-oxd APIs are [swaggerized](https://github.com/GluuFederation/oxd/blob/version_4.2/oxd-server/src/main/resources/swagger.yaml)! Use the [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/) to generate native libraries for your programming language of choice. 
+oxd APIs are [swaggerized](https://github.com/GluuFederation/oxd/blob/version_4.3/oxd-server/src/main/resources/swagger.yaml)! Use the [Swagger Code Generator](https://swagger.io/tools/swagger-codegen/) to generate native libraries for your programming language of choice. 
 
-For more information about generating native clients, [check our FAQ](https://gluu.org/docs/oxd/4.2/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
+For more information about generating native clients, [check our FAQ](https://gluu.org/docs/oxd/4.3/faq/#what-is-the-easiest-way-to-generate-native-library-for-oxd).
 
 ## Compatibility
-oxd 4.2 has been tested against the following OAuth 2.0 Authorization Servers:
+oxd 4.3 has been tested against the following OAuth 2.0 Authorization Servers:
 
 ### OpenID Providers (OP)
-- Gluu Server [4.2](https://gluu.org/docs/ce/4.2), [4.1](https://gluu.org/docs/ce/4.1), [3.1.6](https://gluu.org/docs/ce/3.1.6)
+- Gluu Server [4.3](https://gluu.org/docs/ce/4.3), [4.1](https://gluu.org/docs/ce/4.1), [3.1.6](https://gluu.org/docs/ce/3.1.6)
 
 
 ### UMA Authorization Servers (AS)
-- Gluu Server [4.2](https://gluu.org/docs/ce/4.2), [4.1](https://gluu.org/docs/ce/4.1), [3.1.6](https://gluu.org/docs/ce/3.1.6)
+- Gluu Server [4.3](https://gluu.org/docs/ce/4.3), [4.1](https://gluu.org/docs/ce/4.1), [3.1.6](https://gluu.org/docs/ce/3.1.6)
 
 ## Source code
 The oxd source code is [available on GitHub](https://github.com/GluuFederation/oxd). 
 
 ## License
-oxd 4.2 is available under the AGPL open source license. 
+oxd 4.3 is available under the AGPL open source license. 
 
 ## Support
 Gluu offers support for oxd on the [Gluu Support Portal](https://support.gluu.org). In fact, we use oxd and a Gluu Server to provide single sign-on across our oxd portal and support app! 
