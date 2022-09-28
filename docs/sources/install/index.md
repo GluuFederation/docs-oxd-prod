@@ -124,9 +124,9 @@ The following is the easiest way to gather CA trusted certificates from Let's En
    ```
    apt-get update
    apt-get install software-properties-common
-   add-apt-repository ppa:certbot/certbot
+   sudo apt-add-repository -r ppa:certbot/certbot
    apt-get update
-   apt-get install python-certbot-apache 
+   apt-get install python3-certbot-apache 
    ```
 
 Now that you have certbot installed, you can run the following:
